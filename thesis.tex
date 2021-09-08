@@ -1,10 +1,10 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
-\title{An NTNU Thesis \LaTeX{} Document Class}
-\shorttitle{An NTNU Thesis Document Class}
-\author{Community of Practice in Computer Science Education at NTNU}
-\shortauthor{CoPCSE$@$NTNU}
-\date{CC-BY \ntnuthesisdate}
+\title{Sha Categories [Working Title]}
+\shorttitle{Sha Cat}
+\author{Thomas Wilskow Thorbjørnsen}
+\shortauthor{Thomas W Thorbjørnsen}
+\date{\today}
 
 \addbibresource{thesis.bib}
 
@@ -12,28 +12,28 @@
 
 \begin{document}
 
-\input{chapters/0a-abstract.tex}
-\input{chapters/0b-sammendrag.tex}
+% \input{chapters/0a-abstract.tex}
+% \input{chapters/0b-sammendrag.tex}
 
-\tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings
+\tableofcontents % This lists each listable section, subsection and subsubsection 
+\listoffigures % This lists each figure
+\listoftables % This lists each table
+% \lstlistoflistings % This lists each code snippet
 
 \printglossary[type=\acronymtype] % Print acronyms
 \printglossary                    % Print glossary
 
-\input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+% \input{chapters/1-introduction}
+% \input{chapters/2-usage.tex}
+% \input{chapters/3-structure.tex}
+% \input{chapters/4-conclusion.tex}
 
 \chapter*{\bibname}
 \printbibliography[heading=none]
 
-\input{chapters/papers.tex}
+% \input{chapters/papers.tex}
 
 \appendix
-\input{appendices/a-appendix.tex}
+% \input{appendices/a-appendix.tex}
 
 \end{document}
