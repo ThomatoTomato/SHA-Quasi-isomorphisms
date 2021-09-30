@@ -1,18 +1,45 @@
 \documentclass[american,titlepage]{ntnuthesis}
 
-\title{Sha-Categories \& Quasi-isomorphisms}
-\shorttitle{Sha Cat}
-\author{Thomas Wilskow Thorbjørnsen}
-\shortauthor{Thorbjørnsen}
-\date{\today}
+% --- Ams theorem definitions --- %
+    \usepackage{amsthm}
 
-\addbibresource{thesis.bib}
+    % --- Defining theorem env --- % 
+    \theoremstyle{plain}
+    \newtheorem{thm}{Theorem}[section]
+    \newtheorem{lemma}[thm]{Lemma}
+    \newtheorem{prop}[thm]{Proposition}
+    \newtheorem{cor}{Corollary}[thm]
 
-\input{glossary.tex} % add glossary and acronym lists before document
+    % --- Defining definition env --- %
+    \theoremstyle{definition}
+    \newtheorem{definition}[thm]{Definition}
 
-\usepackage{subfiles} % Allows compilation of each subfile, rather to compile everything at once
-% Subfiles must have this file as option while using the documentclass subfile
-% Loading a subfile is done with \subfile{"path-to-file"}
+    % --- Defining remark env --- %
+    \theoremstyle{remark}
+    \newtheorem{remark}[thm]{Remark}
+    \newtheorem{construction}[thm]{Construction}
+    \newtheorem{observation}[thm]{Observation}
+
+    % --- Defining proof environment --- %
+
+% --- Front page --- %
+    \title{Sha-Categories \& Quasi-isomorphisms}
+    \shorttitle{Sha Cat}
+    \author{Thomas Wilskow Thorbjørnsen}
+    \shortauthor{Thorbjørnsen}
+    \date{\today}
+
+% --- Bibliography --- %
+    \addbibresource{thesis.bib}
+
+% --- Glossary --- %
+    \input{glossary.tex} % add glossary and acronym lists before document
+
+% --- Folder structure --- %
+    \usepackage{subfiles} 
+    % Allows compilation of each subfile, rather to compile everything at once
+    % Subfiles must have this file as option while using the documentclass subfile
+    % Loading a subfile is done with \subfile{"path-to-file"}
 
 \begin{document}
 
