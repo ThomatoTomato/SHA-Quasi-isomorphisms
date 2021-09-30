@@ -1,6 +1,6 @@
-\documentclass[british,titlepage]{ntnuthesis}
+\documentclass[american,titlepage]{ntnuthesis}
 
-\title{Sha Categories [Working Title]}
+\title{Sha-Categories \& Quasi-isomorphisms}
 \shorttitle{Sha Cat}
 \author{Thomas Wilskow Thorbjørnsen}
 \shortauthor{Thomas W Thorbjørnsen}
@@ -10,30 +10,38 @@
 
 \input{glossary.tex} % add glossary and acronym lists before document
 
+\usepackage{subfiles} % Allows compilation of each subfile, rather to compile everything at once
+% Subfiles must have this file as option while using the documentclass subfile
+% Loading a subfile is done with \subfile{"path-to-file"}
+
 \begin{document}
 
-% \input{chapters/0a-abstract.tex}
-% \input{chapters/0b-sammendrag.tex}
+    % --- Preface --- %
+    \subfile{chapters/preface/preface.tex}
 
-\tableofcontents % This lists each listable section, subsection and subsubsection 
-\listoffigures % This lists each figure
-\listoftables % This lists each table
-% \lstlistoflistings % This lists each code snippet
+    % --- Structure --- %
+    \tableofcontents % This lists each listable section, subsection and subsubsection 
+    % \listoffigures % This lists each figure
+    % \listoftables % This lists each table
+    % \lstlistoflistings % This lists each code snippet
 
-\printglossary[type=\acronymtype] % Print acronyms
-\printglossary                    % Print glossary
+    \printglossary[type=\acronymtype] % Print acronyms
+    \printglossary                    % Print glossary
 
-% \input{chapters/1-introduction}
-% \input{chapters/2-usage.tex}
-% \input{chapters/3-structure.tex}
-% \input{chapters/4-conclusion.tex}
+    % --- Chapter 1 --- %
+    \chapter{Preliminaries}
 
-\chapter*{\bibname}
-\printbibliography[heading=none]
+        \subfile{chapters/preliminaries/localization/localization.tex}
+        \newpage
 
-% \input{chapters/papers.tex}
+        \subfile{chapters/preliminaries/triangulated/triangulated.tex}
 
-\appendix
+    \chapter*{\bibname}
+    \printbibliography[heading=none]
+
+    % \input{chapters/papers.tex}
+
+    \appendix
 % \input{appendices/a-appendix.tex}
 
 \end{document}
