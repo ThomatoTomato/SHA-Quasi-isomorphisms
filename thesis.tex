@@ -11,8 +11,8 @@
     \theoremstyle{plain}
     \newtheorem{thm}{Theorem}[section]
     \newtheorem{lemma}[thm]{Lemma}
-    \newtheorem{prop}[thm]{Proposition}
-    \newtheorem{cor}{Corollary}[thm]
+    \newtheorem{proposition}[thm]{Proposition}
+    \newtheorem{corollary}{Corollary}[thm]
 
     % --- Defining definition env --- %
     \theoremstyle{definition}
@@ -25,6 +25,9 @@
     \newtheorem{observation}[thm]{Observation}
 
     % --- Defining proof environment --- %
+
+% --- Macros --- %
+    \newcommand{\startset}[1]{\{#1\}}
 
 % --- Front page --- %
     \title{Sha-Categories \& Quasi-isomorphisms}

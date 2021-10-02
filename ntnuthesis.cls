@@ -190,6 +190,10 @@
 
 %% CUSTOMISATION
 
+% Paragraph spacing
+\setlength{\parindent}{0em}
+%\setlength{\parskip}{1em}
+
 % Page geometry and spacing (same for even and odd pages)
 \geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
 \frenchspacing
