@@ -1,7 +1,14 @@
 \documentclass[american,titlepage]{ntnuthesis}
 
+% --- Other packages --- %
+    \usepackage{microtype}
+
 % --- Tikz --- %
+    \usepackage{pgfplots}
+    \pgfplotsset{compat=1.15}
     \usepackage{tikz}
+    \usetikzlibrary{graphs}
+    \usetikzlibrary{arrows}
     \usepackage{tikz-cd}
 
 % --- Ams theorem definitions --- %
@@ -63,17 +70,16 @@
     \printglossary                    % Print glossary
 
     % --- Chapter 1 --- %
-    \chapter{Preliminaries}
+    \chapter{Bar and Cobar Construction}
 
-        \subfile{chapters/preliminaries/localization/localization.tex}
-        \newpage
-
-        \subfile{chapters/preliminaries/triangulated/triangulated.tex}
+        \input{chapters/twisting/twisting.tex}
 
     \chapter*{\bibname}
     \printbibliography[heading=none]
 
     % \input{chapters/papers.tex}
+
+    % --- Appendix A --- %
 
     \appendix
 % \input{appendices/a-appendix.tex}

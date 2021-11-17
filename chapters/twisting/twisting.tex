@@ -1,0 +1,182 @@
+\documentclass[../../thesis.tex]{subfiles}
+
+\begin{document}
+    \section{Algebras, Coalgebras and Twisting Morphisms}
+
+        In this section we will look at a result of associative algebras over a field $\mathbb{K}$. Given a coassociative conilpotent coalgebra $C$ and an associative algebra $A$, we say that a linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurar-Cartan equation:
+            \begin{equation*}
+                \partial\alpha + \alpha\star\alpha = 0.
+            \end{equation*}
+        Let $Tw(C,A)$ be the set of twisting morphisms, then considering it as a functor $Tw : Coalg^{op}\times Alg \rightarrow Ab$ we want to show that it is represented in both arguments. Moreover, this representation give rise to an adjoint pair of functors, called the Bar and Cobar construction.
+
+            \begin{center}
+                \begin{tikzcd}
+                    Alg \ar[bend left]{r}[pos=0.52]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ Coalg} \ar[bend left]{l}[pos=0.48]{\Omega}
+                \end{tikzcd}
+            \end{center}
+
+        To obtain this result we need to define a twisting morphism. Thus this section will define algebras, coalgebras and convolution algebras before we state the result of the Bar and Cobar construction.
+
+        \subsection{Algebras}
+
+            In this subsection we will define different types of associative algebras. The class of our main concerns are the unital associative algebras, and these will be referred to as algebras. The collection of algebras together with homomorphisms between them form the category $Alg$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
+
+            \begin{definition}[Algebra]
+                Let $\mathbb{K}$ be a field. An algebra $A$ is a $\mathbb{K}$-module with structure morphisms called multiplication and unit,
+                \begin{align*}
+                    (\cdot_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
+                    \nu_A & : \mathbb{K} \rightarrow A,
+                \end{align*}
+                satisfying the associativity and identity laws. 
+                \begin{align*}
+                    (associativity)\quad & (a \cdot_A b) \cdot_A c = a \cdot_A (b \cdot_A c) \\
+                    (unitality)\quad & \nu_A(1) \cdot_A a = a = a \cdot_A \nu_A(1)
+                \end{align*}
+            \end{definition}
+            \begin{remark}
+                Whenever $A$ does not posess a unit morphism, we will call $A$ a non-unital algebra. Only the associativity law must hold.
+            \end{remark}
+            Alternatively, instead of using equations, we may represent the laws with commutative diagrams. 
+            \begin{center}
+                (associativity)\quad
+                \begin{tikzcd}
+                    A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\cdot_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\cdot_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\cdot_A)} \\
+                    A \otimes_{\mathbb{K}} A \ar[]{r}[]{(\cdot_A)} & A
+                \end{tikzcd} \\
+                (unitality) \quad
+                \begin{tikzcd}
+                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \nu_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\cdot_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\nu_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
+                    & A
+                \end{tikzcd}
+            \end{center}
+            We may also present the structure of algebras by electric circuits. Such circuits are read from top to bottom, where morphisms are composed by lines. Morphisms in such diagrams may be highlighted with figures, conjunctions or twistings. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
+                    \node at (-2.25, 0) {(Multiplication)};
+                    
+                    \node (1) at (1,1) {};
+                    \node (2) at (-1,1) {};
+                    \node[op] (3) at (0,0) {$\cdot_A$};
+                    \node (4) at (0,-1) {};
+
+                    \graph {
+                        (1) --[line width = 1pt] (3);
+                        (2) --[line width = 1pt] (3);
+                        (3) --[line width = 1pt] (4);
+                    };
+
+                    \node at (1.5,0) {$=$};
+
+                    \draw [line width=1pt] (2,1)-- (3,0);
+                    \draw [line width=1pt] (3,0)-- (3,-1);
+                    \draw [line width=1pt] (4,1)-- (3,0);
+                \end{tikzpicture} \quad
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-1.5,0.5) {(Unit)};
+                    
+                    \node[op] (1) at (0,1) {$\nu_A$};
+                    \draw [line width=1pt] (1) -- (0,0);
+
+                    \node at (0.75, 0.5) {$=$};
+
+                    \node[op, scale=1] (2) at (1.25,1) {};
+                    \draw [line width=1pt] (2) -- (1.25,0);
+
+                    \node at (0,-0.5) {};
+                \end{tikzpicture}
+            \end{center}
+            With these operators we obtain the electric laws for an algebra.
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-2.4,0) {(Associativity)};
+
+                    \draw [line width=1pt] (0,1) -- (1,0);
+                    \draw [line width=1pt] (1,0) -- (2,1);
+                    \draw [line width=1pt] (0.5,0.5) -- (1,1);
+                    \draw [line width=1pt] (1,0) -- (1,-1);
+
+                    \node at (2.5,0) {$=$};
+
+                    \draw [line width=1pt] (3,1) -- (4,0);
+                    \draw [line width=1pt] (4,0) -- (5,1);
+                    \draw [line width=1pt] (4,1) -- (4.5,0.5);
+                    \draw [line width=1pt] (4,0) -- (4,-1);
+                \end{tikzpicture} \\
+
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-2,0) {(unitality)};
+
+                    \node[op, scale=0.75] (1) at (0.25, 0.75) {};
+                    \draw [line width=1pt] (1) -- (1,0);
+                    \draw [line width=1pt] (1,0) -- (2,1);
+                    \draw [line width=1pt] (1,0) -- (1,-1);
+
+                    \node at (2.25,0) {$=$};
+
+                    \draw [line width=1.5pt] (3,1) -- (3,-1);
+
+                    \node at (3.75,0) {$=$};
+
+                    \draw [line width=1pt] (4,1) -- (5,0);
+                    \node[op, scale=0.75] (2) at (5.75,0.75) {};
+                    \draw [line width=1pt] (5,0) -- (2);
+                    \draw [line width=1pt] (5,0) -- (5,-1);
+                \end{tikzpicture}
+            \end{center}
+
+            \begin{definition}[Algebra homomorphisms]
+                Let $A$ and $B$ be algebras. Then $f: A\rightarrow B$ is an algebra homomorphism if
+                \begin{enumerate}
+                    \item $f$ is $\mathbb{K}$-linear
+                    \item $f(ab)=f(a)f(b)$
+                    \item $f(\nu_A) = \nu_B$
+                \end{enumerate}
+                Whenever $A$ and $B$ are non-unital, we only require 1 and 2 for a homomorphism of non-unital algebras.
+            \end{definition}
+
+            \begin{definition}[Categories of algebras]
+                \begin{itemize}
+                    \item Let $Alg$ denote the category of algebras. It's objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $Alg(A,B)$.
+                    \item Let $nAlg$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $nAlg(A,B)$.
+                \end{itemize}
+            \end{definition}
+
+            \begin{definition}[Augmented algebras]
+                Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
+            \end{definition}
+
+            As a module $\mathbb{K}$ is free, so if $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The kernel of $\varepsilon$ is called the augmentation ideal and we will denote it as $\bar{A}$. This kernel is an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse.
+
+            \begin{definition}
+                Define tensor algebra
+            \end{definition}
+
+            Observe that the tensor algebra is augmented. Define the reduced tensor algebra as the augmentation ideal.
+
+            \begin{proposition}
+                Tensor algebra is free algebra, reduced tensor algebra is free non-unital algebra.
+            \end{proposition}
+
+            \begin{definition}
+                Define a left-module over an algebra 
+            \end{definition}
+
+            \begin{proposition}
+                Find free modules
+            \end{proposition}
+            
+        \subsection{Coalgebras}
+
+        \subsection{Derivations, Coderivations and Convolution Algebras}
+
+        \subsection{Twisting Morphisms}
+
+
+    \section{Strongly Homotopy Associative Algebras, Coalgebras and Twisting Morphisms}
+
+        \subsection{Sha Algebras}
+
+        \subsection{Sha Coalgebras}
+
+        \subsection{Twisting Sha Morphisms}
+\end{document}
