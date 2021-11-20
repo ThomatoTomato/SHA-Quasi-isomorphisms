@@ -3,7 +3,7 @@
 \begin{document}
     \section{Algebras, Coalgebras and Twisting Morphisms}
 
-        In this section we will look at a result of associative algebras over a field $\mathbb{K}$. Given a coassociative conilpotent coalgebra $C$ and an associative algebra $A$, we say that a linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurar-Cartan equation:
+        In this section we will look at a result of associative algebras over a field $\mathbb{K}$. Given a coassociative conilpotent differential graded coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
             \begin{equation*}
                 \partial\alpha + \alpha\star\alpha = 0.
             \end{equation*}
@@ -25,12 +25,12 @@
                 Let $\mathbb{K}$ be a field. An algebra $A$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called multiplication and unit,
                 \begin{align*}
                     (\nabla_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
-                    \nu_A & : \mathbb{K} \rightarrow A,
+                    \upsilon_A & : \mathbb{K} \rightarrow A,
                 \end{align*}
                 satisfying the associativity and identity laws. 
                 \begin{align*}
                     (associativity)\quad & (a \nabla_A b) \nabla_A c = a \nabla_A (b \nabla_A c) \\
-                    (unitality)\quad & \nu_A(1) \nabla_A a = a = a \nabla_A \nu_A(1)
+                    (unitality)\quad & \upsilon_A(1) \nabla_A a = a = a \nabla_A \upsilon_A(1)
                 \end{align*}
             \end{definition}
             \begin{remark}
@@ -45,7 +45,7 @@
                 \end{tikzcd} \\
                 (unitality) \quad
                 \begin{tikzcd}
-                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \nu_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\nabla_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\nu_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
+                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \upsilon_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\nabla_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\upsilon_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
                     & A
                 \end{tikzcd}
             \end{center}
@@ -74,7 +74,7 @@
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \node at (-1.5,0.5) {(Unit)};
                     
-                    \node[op] (1) at (0,1) {$\nu_A$};
+                    \node[op] (1) at (0,1) {$\upsilon_A$};
                     \draw [line width=1pt] (1) -- (0,0);
 
                     \node at (0.75, 0.5) {$=$};
@@ -129,7 +129,7 @@
                 \begin{enumerate}
                     \item $f$ is $\mathbb{K}$-linear
                     \item $f(ab)=f(a)f(b)$
-                    \item $f(\nu_A) = \nu_B$
+                    \item $f(\upsilon_A) = \upsilon_B$
                 \end{enumerate}
                 Whenever $A$ and $B$ are non-unital, we only require 1 and 2 for a homomorphism of non-unital algebras.
             \end{definition}
@@ -145,7 +145,7 @@
                 Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
             \end{definition}
 
-            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\nu_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse.
+            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse.
 
             \begin{definition}[Tensor algebra]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor algebra $T(V)$ of $V$ as the module
@@ -159,7 +159,7 @@
                 \end{align*}
                 The unit is given by including $\mathbb{K}$ into $T(V)$.
                 \begin{align*}
-                    \nu_{T(V)} : \mathbb{K} & \rightarrow T(V) \\
+                    \upsilon_{T(V)} : \mathbb{K} & \rightarrow T(V) \\
                     1 & \mapsto 1
                 \end{align*}
             \end{definition}
@@ -167,9 +167,9 @@
             Observe that the tensor algebra is augmented. The projection from $T(V)$ into $\mathbb{K}$ is an algebra homomorphism, so we may split the tensor algebra into its unit and its augmentation ideal $T(V) \simeq \mathbb{K}\oplus\bar{T(V)}$. We call $\bar{T(V)}$ the reduced tensor algebra.
 
             \begin{proposition}[Tensor algebra is free]
-                The tensor algebra is the free algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $mod_{\mathbb{K}}(V,A)\simeq Alg_{\mathbb{K}}(T(V),A)$.
+                The tensor algebra is the free algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq Alg_{\mathbb{K}}(T(V),A)$.
 
-                The reduced tensor algebra is the fre non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $mod_{\mathbb{K}}(V,A)\simeq nAlg_{\mathbb{K}}(\bar{T(V)},A)$.
+                The reduced tensor algebra is the fre non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq nAlg_{\mathbb{K}}(\bar{T(V)},A)$.
             \end{proposition}
 
             \begin{proof}
@@ -236,10 +236,10 @@
                 Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, $f(am) = af(m)$.
             \end{definition}
 
-            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. 
+            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\_,\_)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. 
 
             \begin{proposition}
-                Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Mod_{\mathbb{K}}(M,N)\simeq Mod_{A}(A\otimes_{\mathbb{K}}M,N)$.
+                Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
             
         \subsection{Coalgebras}
@@ -362,10 +362,10 @@
             \end{example}
 
             \begin{definition}[Coaugmented coalgebras]
-                Let $C$ be a coalgebra. $C$ is coagumented if there is a coalgebra homomorphism $\nu:\mathbb{K}\rightarrow C$.
+                Let $C$ be a coalgebra. $C$ is coagumented if there is a coalgebra homomorphism $\upsilon:\mathbb{K}\rightarrow C$.
             \end{definition}
 
-            If $C$ is a coaugmented coalgebra, then it splits as $C\simeq \mathbb{K}\oplus Cok\nu$. The splitting is given by counitality of $\nu$, as $\varepsilon_C(\nu) = id_{\mathbb{K}}$. We call the cokernel $Cok\nu = \bar{C}$ for the coaugmentation quotient or reduced coalgebra, and its reduced coproduct may be explicitly given as
+            If $C$ is a coaugmented coalgebra, then it splits as $C\simeq \mathbb{K}\oplus Cok\upsilon$. The splitting is given by counitality of $\upsilon$, as $\varepsilon_C(\upsilon) = id_{\mathbb{K}}$. We call the cokernel $Cok\upsilon = \bar{C}$ for the coaugmentation quotient or reduced coalgebra, and its reduced coproduct may be explicitly given as
             \begin{align*}
                 \bar{\Delta}_C(c) = \Delta_C(c) - 1\otimes c - c\otimes 1. 
             \end{align*}
@@ -398,11 +398,11 @@
 
             \begin{definition}[Conilpotent coalgebras]
                 Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $CoAlg^{Conil}_{\mathbb{K}}$.
-            \end{proposition}
             \end{definition}
-
+            
             \begin{proposition}[Conilpotent tensor coalgebra]
                 Let $V$ be a $\mathbb{K}$-module. The tensor coalgebra $T^c(V)$ is conilpotent.
+            \end{proposition}
 
             \begin{proof}
                 Let $v\in V$, then $\Delta_{T^c(V)}(v)=1\otimes v + v\otimes 1$ and $\bar{\Delta}_{T^c(V)}(v)=0$. We then observe the following:
@@ -415,7 +415,7 @@
             \end{proof}
 
             \begin{proposition}[Cofree tensor coalgebra]
-                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Mod_{\mathbb{K}}(\bar{C}, V)\simeq CoAlg^{Conil}_{\mathbb{K}}(C, T^c(V))$.
+                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq CoAlg^{Conil}_{\mathbb{K}}(C, T^c(V))$.
             \end{proposition}
 
             \begin{proof}
@@ -484,13 +484,286 @@
                 Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$.
             \end{definition}
 
-            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms are $C$-colinear. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
+            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $CoHom_C(\_,\_)$ are $C$-colinear. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
             \begin{proposition}
-                Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Mod_{\mathbb{K}}(N,M)\simeq CoMod_C(N,C\otimes_{\mathbb{K}}M)$. 
+                Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq CoHom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
 
-        \subsection{Derivations, Coderivations and Convolution Algebras}
+        \subsection{Differentials and Convolution Algebras}
+            In this subsection we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
+
+            \begin{definition}[Derivations and Coderivations]
+                Let $M$ be an $A$-bimodule. A $\mathbb{K}$-linear morphism $d:A\rightarrow M$ is called a derivation if $d(ab)=d(a)b+ad(b)$, i.e. electrically:
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        
+                        \node at (-0.5, 1) {a};
+                        \node at (0.5, 1) {b};
+                        \node[op, scale = 0.75] (d) at (0,-0.5) {d};
+                        
+                        \draw [line width=1pt] (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0.5,0.5) -- (0.5, 0.75);
+                        \draw [line width=1pt] (0,0) -- (d) -- (0,-1);
+                        
+                        \node at (1,0) {$=$};
+
+                        \node at (1.5, 1) {a};
+                        \node at (2.5, 1) {b};
+
+                        \node[op, scale = 0.75] (e) at (1.5, 0.25) {d};
+                        \node[op, scale = 0.5] (r) at (2,-0.5) {$\mu_M^r$};
+
+                        
+                        \draw [line width=1pt] (1.5, 0.75) -- (e) -- (1.5, 0) -- (r) -- (2.5,0) -- (2.5,0.75);
+                        \draw [line width=1pt] (r) -- (2,-1);
+
+                        \node at (3,0) {$+$};
+
+                        \node at (3.5, 1) {a};
+                        \node at (4.5, 1) {b};
+
+                        \node[op, scale = 0.75] (f) at (4.5, 0.25) {d};
+                        \node[op, scale = 0.5] (l) at (4,-0.5) {$\mu_M^l$};
+
+                        
+                        \draw [line width=1pt] (3.5, 0.75) --  (3.5, 0) -- (l) -- (4.5,0) -- (f) -- (4.5,0.75);
+                        \draw [line width=1pt] (l) -- (4,-1);
+                    \end{tikzpicture}
+                \end{center}
+
+                Let $N$ be a $C$-bicomodule. A $\mathbb{K}$-linear morphism $d:N\rightarrow C$ is called a coderivation if $\Delta_C\circ d = (d\otimes id_C)\circ\omega_N^r + (id_C\otimes d)\circ\omega_N^l$, i.e. electrically:
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        
+                        \node[op, scale = 0.75] (d) at (0,0.5) {d};
+                        
+                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.5, -0.5) -- (0,0) -- (0.5,-0.5) -- (0.5, -0.75);
+                        \draw [line width=1pt] (0,0) -- (d) -- (0,1);
+                        
+                        \node at (1,0) {$=$};
+
+                        \node[op, scale = 0.75] (e) at (1.5, -0.25) {d};
+                        \node[op, scale = 0.5] (r) at (2,0.5) {$\omega_N^r$};
+
+                        
+                        \draw [line width=1pt] (1.5, -0.75) -- (e) -- (1.5, 0) -- (r) -- (2.5,0) -- (2.5,-0.75);
+                        \draw [line width=1pt] (r) -- (2,1);
+
+                        \node at (3,0) {$+$};
+
+                        \node[op, scale = 0.75] (f) at (4.5, -0.25) {d};
+                        \node[op, scale = 0.5] (l) at (4,0.5) {$\omega_N^l$};
+
+                        
+                        \draw [line width=1pt] (3.5, -0.75) --  (3.5, 0) -- (l) -- (4.5,0) -- (f) -- (4.5,-0.75);
+                        \draw [line width=1pt] (l) -- (4,1);
+                    \end{tikzpicture}
+                \end{center}
+            \end{definition}
+
+            \begin{proposition}
+                Let $V$ be a $\mathbb{K}$-module and $M$ be a $T(V)$-bimodule. A $\mathbb{K}$-linear morphism $f:V\rightarrow M$ uniquely determines a derivation $d_f:T(V)\rightarrow M$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(V,M)\simeq Der(T(V),M)$.
+
+
+                Let $N$ be a $T^c(V)$-comodule. A $\mathbb{K}$-linear morphism $g:M\rightarrow V$ uniquely determines a coderivation $d_g^c:N\rightarrow T^c(V)$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,V)\simeq Coder(N,T^c(V))$.
+            \end{proposition}
+
+            \begin{proof}
+                ...
+            \end{proof}
+
+            \begin{definition}[Differential algebra]
+                Let $A$ be an algebra. We say that $A$ is a differential algebra if it is equipped with at least one derivation $d:A\rightarrow A$. Dually, a coalgebra $C$ is called differential if it is equipped with at least one coderivation $d:C\rightarrow C$.
+            \end{definition}
+
+            \begin{definition}[A-derivation]
+                Let $(A,d_A)$ be a differential algebra and $M$ a left $A$-module. A $\mathbb{K}$-linear morphism $d_M:M\rightarrow M$ is called an $A$-derivation if $d_M(am)=d_A(a)m + ad_M(m)$, or electrically:
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        
+                        \node at (-0.5, 1) {a};
+                        \node at (0.5, 1) {m};
+                        \node[op, scale = 0.5] (d) at (0,-0.5) {$d_M$};
+                        
+                        \draw [line width=1pt] (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0.5,0.5) -- (0.5, 0.75);
+                        \draw [line width=1pt] (0,0) -- (d) -- (0,-1);
+                        
+                        \node at (1,0) {$=$};
+
+                        \node at (1.5, 1) {a};
+                        \node at (2.5, 1) {m};
+
+                        \node[op, scale = 0.5] (e) at (1.5, 0.25) {$d_A$};
+
+                        
+                        \draw [line width=1pt] (1.5, 0.75) -- (e) -- (1.5, 0) -- (2,-0.5) -- (2.5,0) -- (2.5,0.75);
+                        \draw [line width=1pt] (2,-0.5) -- (2,-1);
+
+                        \node at (3,0) {$+$};
+
+                        \node at (3.5, 1) {a};
+                        \node at (4.5, 1) {m};
+
+                        \node[op, scale = 0.5] (f) at (4.5, 0.25) {$d_M$};
+                        
+                        \draw [line width=1pt] (3.5, 0.75) --  (3.5, 0) -- (4,-0.5) -- (4.5,0) -- (f) -- (4.5,0.75);
+                        \draw [line width=1pt] (4,-0.5) -- (4,-1);
+                    \end{tikzpicture}
+                \end{center}
+                Dually, given a differential coalgebra $(C,d_C)$ and $N$ a left $C$-comodule, a $\mathbb{K}$-linear morphism $d_N:N\rightarrow N$ is a coderivation if $\omega_N\circ d_N = (d_C\otimes id_N + id_C\otimes d_N)\circ \omega_N$, or electrically:
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        
+                        \node[op, scale = 0.5] (d) at (0,0.5) {$d_N$};
+                        
+                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.5, -0.5) -- (0,0) -- (0.5,-0.5) -- (0.5, -0.75);
+                        \draw [line width=1pt] (0,0) -- (d) -- (0,1);
+                        
+                        \node at (1,0) {$=$};
+
+                        \node[op, scale = 0.5] (e) at (1.5, -0.25) {$d_C$};
+                        
+                        \draw [line width=1pt] (1.5, -0.75) -- (e) -- (1.5, 0) -- (2,0.5) -- (2.5,0) -- (2.5,-0.75);
+                        \draw [line width=1pt] (2,0.5) -- (2,1);
+
+                        \node at (3,0) {$+$};
+
+                        \node[op, scale = 0.5] (f) at (4.5, -0.25) {$d_N$};
+                        
+                        \draw [line width=1pt] (3.5, -0.75) --  (3.5, 0) -- (4,0.5) -- (4.5,0) -- (f) -- (4.5,-0.75);
+                        \draw [line width=1pt] (4,0.5) -- (4,1);
+                    \end{tikzpicture}
+                \end{center}
+            \end{definition}
+
+            \begin{proposition}
+                Let $A$ be a differential algebra and $M$ a $\mathbb{K}$-module. A $\mathbb{K}$-linear morphism $f:M\rightarrow A\otimes_{\mathbb{K}} M$ uniquely determines a derivation $d_f:A\otimes M\rightarrow A\otimes M$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,A\otimes_{\mathbb{K}}M)\simeq Der(A\otimes_{\mathbb{K}}M)$. Moreover, $d_f$ is given as $(\nabla_A\otimes id_M)\circ (id_A\otimes f) + d_A\otimes id_M$.
+
+                Dually, if $C$ is a differential coalgebra and $N$ is a $\mathbb{K}$-module, then a $\mathbb{K}$-linear morphism $g:C\otimes N\rightarrow N$ uniquely determines a coderivation $d_g:C\otimes_{\mathbb{K}}N\rightarrow C\otimes_{\mathbb{K}}N$. There is an isomorphism $Hom_{\mathbb{K}}(C\otimes_{\mathbb{K}}N,N)\simeq Coder(C\otimes_{\mathbb{K}}N)$, and $d_g$ is given as $(id_C\otimes g)\circ (\Delta_C\otimes id_N) + d_C\otimes id_N$.
+            \end{proposition}
+
+            \begin{proof}
+                ...
+            \end{proof}
+
+            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \substack{\bigoplus \\ z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$, and the graded module of morphisms between two graded objects is denoted as $Hom_{\mathbb{K}}^*(M^*,N^*)$. We will use the Koszul-sign convention for this category, so a graded derivation uses Koszul sign rule to determine the sign.
+            
+
+            $M^{\bullet}$ is called a chain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$, and the module of morphisms between two chain complexes is denoted as $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
+
+            \begin{proposition}
+                Let $M^{\bullet}$ and $N^{\bullet}$ be two chain complexes. The graded module of morphisms $Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a chain complex, given by the differential $\partial(f) = d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}$.
+            \end{proposition}
+
+            \begin{proof}
+                We observe that $\partial : Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet}) \rightarrow Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a morphism of degree $1$. It remains to check that $\partial^2 = 0$. Pick any homogenous morphism $f : M^{\bullet}\rightarrow N^{\bullet}$.
+                \begin{multline*}
+                    \partial^2(f) = \partial(d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}) = \partial(d_N^{\bullet}\circ f) - (-1)^{|f|}\partial(f\circ d_M^{\bullet}) \\ = - (-1)^{|d_N^{\bullet}\circ f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} + (-1)^{|f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} = 0
+                \end{multline*}
+            \end{proof}
+
+            Observe that $f:M^{\bullet}\rightarrow N^{\bullet}$ of degree $0$ is a chain morphism if and only if $\partial(f) = 0$. We then observe that $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})\simeq Z^0Hom_{\mathbb{K}}^*(M^{\bullet})$
+
+
+            To complete the definitions of graded modules and chain complexes to algebras we would like the structure morphisms to respect the given structure. E.g. if $a$ and $b$ are homogenous elements, we would like that the degree of $ab$ is the sum of its parts, i.e. $|ab| = |a| + |b|$. Since multiplication by identity doesn't do anything, we want that the identity lives in the $0$'th degree, and so forth.
+
+            \begin{definition}[Graded algebra]
+                Let $A^*$ be a graded $\mathbb{K}$-module. We say that $A^*$ is a graded algebra if $A^*$ is an algebra such that $\nabla_A$ and $\upsilon_A$ are homogenous and of degree $0$.
+                Dually, $C^*$ is a graded coalgebra if $\Delta_C$ and $\varepsilon_C$ are homogenous and of degree $0$.
+            \end{definition}
+
+            \begin{definition}[Differential graded algebra]
+                Let $A^{\bullet}$ be a chain complex over $\mathbb{K}$. We say that $A^{\bullet}$ is a differential graded algebra, or dg algebra, if it is a graded algebra and the differential is a graded derivation, i.e. $d_A(ab) = d_A(a)b + (-1)^{|a|}ad_A(b)$.
+
+                Dually, $C^{\bullet}$ is a differential graded coalgebra if $C^{\bullet}$ is a graded coalgebra and the differential is a graded coderivation.
+            \end{definition}
+
+            Let $C$ be a coalgebra and $A$ an algebra, then if $f,g:C\rightarrow A$ are $\mathbb{K}$-linear morphism we may define $f\star g = \nabla_A(f\otimes g)\Delta_C$. We call the operation $\star$ for convolution.
+
+            \begin{proposition}[Convolution algebra]
+                The $\mathbb{K}$-module $Hom_{\mathbb{K}}(C,A)$ is an associative algebra when equipped with convolution $\star:Hom_{\mathbb{K}}(C,A)\rightarrow Hom_{\mathbb{K}}(C,A)$. The unit is given by $1 \mapsto \upsilon_A\circ\varepsilon_C$.
+            \end{proposition}
+
+            \begin{proof}
+                This proposition follows from (co)associativity and (co)unitality of (C) A.
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        % \node at (-3, 0) {Associativity};
+                        
+                        \node at (-3,0) {$(f\star g) \star h$};
+
+                        \node at (-1, 0) {$=$};
+
+                        \node[op, scale = 0.75] (f1) at (0,0) {f};
+                        \node[op, scale = 0.75] (g1) at (1,0) {g};
+                        \node[op, scale = 0.75] (h1) at (2,0) {h};
+
+                        \draw (1, 1.5) -- (1,1.25) -- (0.5,1) -- (0.5, 0.75) -- (0,0.5) -- (f1) -- (0,-0.5) -- (0.5, -0.75) -- (0.5,-1) -- (1,-1.25) -- (1, -1.5);
+                        \draw (0.5, 0.75) -- (1,0.5) -- (g1) -- (1, -0.5) -- (0.5, -0.75);
+                        \draw (1,1.25) -- (2,0.75) -- (h1) -- (2, -0.75) -- (1, -1.25);
+
+                        \node at (3,0) {$=$};
+
+                        \node[op, scale = 0.75] (f2) at (4,0) {f};
+                        \node[op, scale = 0.75] (g2) at (5,0) {g};
+                        \node[op, scale = 0.75] (h2) at (6,0) {h};
+
+                        \draw (5, 1.5) -- (5,1.25) -- (4, 0.75) -- (f2) -- (4,-0.5) -- (4.5, -0.75) -- (4.5,-1) -- (5,-1.25) -- (5, -1.5);
+                        \draw (5, 1.25) -- (5.5, 1) -- (5.5, 0.75) -- (5,0.5) -- (g2) -- (5, -0.5) -- (4.5, -0.75);
+                        \draw (5.5, 0.75) -- (6, 0.5) -- (h2) -- (6, -0.75) -- (5, -1.25);
+                        
+                        \node at (7,0) {$=$};
+
+                        \node[op, scale = 0.75] (f3) at (8,0) {f};
+                        \node[op, scale = 0.75] (g3) at (9,0) {g};
+                        \node[op, scale = 0.75] (h3) at (10,0) {h};
+
+                        \draw (9, 1.5) -- (9,1.25) -- (8, 0.75) -- (f3) -- (8,-0.75) -- (9,-1.25) -- (9, -1.5);
+                        \draw (9, 1.25) -- (9.5, 1) -- (9.5, 0.75) -- (9,0.5) -- (g3) -- (9, -0.5) -- (9.5, -0.75);
+                        \draw (9.5, 0.75) -- (10, 0.5) -- (h3) -- (10, -0.5) -- (9.5, -0.75) -- (9.5, -1) -- (9,-1.25);
+
+                        \node at (11, 0) {$=$};
+
+                        \node at (13, 0) {$f\star (g\star h)$};
+                    \end{tikzpicture}
+
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                        \node at (-6, 0) {$(\upsilon_A\circ\varepsilon_C)\star f$};
+
+                        \node at (-4, 0) {$=$};
+
+                        \node[op, scale = 0.75] (f3) at (-2,0) {f};
+                        \node[op, scale = 0.5] (c') at (-3, 0.25) {};
+                        \node[op, scale = 0.5] (u') at (-3, -0.25) {};
+
+                        \draw (-2.5, 1.25) -- (-2.5, 1) -- (-2, 0.75) -- (f3) -- (-2,-0.75) -- (-2.5,-1) -- (-2.5,-1.25);
+                        \draw (-2.5, 1) -- (-3, 0.75) -- (c');
+                        \draw (u') -- (-3, -0.75) -- (-2.5, -1);
+
+                        \node at (-1,0) {$=$};
+
+                        \node[op, scale = 0.75] (f1) at (0,0) {f};
+
+                        \draw (0,1) -- (f1) -- (0,-1);
+
+                        \node at (1,0) {$=$};
+
+                        \node[op, scale = 0.75] (f2) at (2,0) {f};
+                        \node[op, scale = 0.5] (c) at (3, 0.25) {};
+                        \node[op, scale = 0.5] (u) at (3, -0.25) {};
+
+                        \draw (2.5, 1.25) -- (2.5, 1) -- (2, 0.75) -- (f2) -- (2,-0.75) -- (2.5,-1) -- (2.5,-1.25);
+                        \draw (2.5, 1) -- (3, 0.75) -- (c);
+                        \draw (u) -- (3, -0.75) -- (2.5, -1);
+
+                        \node at (4,0) {$=$};
+
+                        \node at (6, 0) {$f\star (\upsilon_A\circ\varepsilon_C)$};
+                    \end{tikzpicture}
+                \end{center}
+            \end{proof}
 
         \subsection{Twisting Morphisms}
 
