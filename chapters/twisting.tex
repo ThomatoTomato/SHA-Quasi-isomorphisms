@@ -242,8 +242,8 @@
                 \end{align*}
                 satisfying the coassociativity and coidentity laws. 
                 \begin{align*}
-                    (coassociativity)\quad & (\Delta_C\otimes id_C)\circ\Delta_C(c) = (id_C\otimes\Delta_C)\circ\Delta_C(c) \\
-                    (counitality) \quad & (id_C\otimes\varepsilon_C)\circ\Delta_C(c) = c = (\varepsilon_C\otimes id_C)\circ\Delta_C(c)
+                    \text{(coassociativity)} \quad & (\Delta_C\otimes id_C)\circ\Delta_C(c) = (id_C\otimes\Delta_C)\circ\Delta_C(c) \\
+                    \text{(counitality)} \quad & (id_C\otimes\varepsilon_C)\circ\Delta_C(c) = c = (\varepsilon_C\otimes id_C)\circ\Delta_C(c)
                 \end{align*}
             \end{definition}
 
@@ -252,75 +252,67 @@
             We may dualize the electric circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit is a sink. 
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
-                    \node at (-2.5, 0) {(Comultiplication)};
+                    \node at (-3.5, 0) {(Comultiplication)};
                     
-                    \node (1) at (0,1) {};
-                    \node (2) at (-1,-1) {};
-                    \node[op] (3) at (0,0) {$\Delta_C$};
-                    \node (4) at (1,-1) {};
+                    \node[op, scale=0.75] (1) at (0,0) {$\Delta_C$};
 
-                    \graph {
-                        (1) --[line width = 1pt] (3);
-                        (2) --[line width = 1pt] (3);
-                        (3) --[line width = 1pt] (4);
-                    };
+                    \draw [line width=1pt] (0,1) -- (1) -- (-0.5, -0.5) -- (-0.5, -1);
+                    \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1);
 
                     \node at (1.5,0) {$=$};
 
-                    \draw [line width=1pt] (2,-1)-- (3,0);
-                    \draw [line width=1pt] (3,0)-- (3,1);
-                    \draw [line width=1pt] (4,-1)-- (3,0);
-                \end{tikzpicture} \quad
+                    \draw [line width=1pt] (3, 1) -- (3, 0) -- (2.5, -0.5) -- (2.5, -1);
+                    \draw [line width=1pt] (3, 0) -- (3.5, -0.5) -- (3.5, -1);
+
+                \end{tikzpicture} \qquad
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-1.5,-0.5) {(Counit)};
+                    \node at (-2.5, 0) {(Counit)};
                     
-                    \node[op] (1) at (0,-1) {$\varepsilon_C$};
-                    \draw [line width=1pt] (1) -- (0,0);
+                    \node[op, scale=0.75] (1) at (0,-1) {$\varepsilon_C$};
+                    \draw [line width=1pt] (0, 1) -- (1);
 
-                    \node at (0.75, -0.5) {$=$};
+                    \node at (1, 0) {$=$};
 
-                    \node[op, scale=1] (2) at (1.25,-1) {};
-                    \draw [line width=1pt] (2) -- (1.25,0);
+                    \node[op, scale=1] (2) at (2, -1) {};
+                    \draw [line width=1pt] (2, 1) -- (2);
 
                     \node at (0,0.5) {};
                 \end{tikzpicture}
             \end{center}
-            We then obtain the electric laws for a coalgebra by flipping the diagrams around.
+            We then obtain the electric laws for a coalgebra by flipping the circuits around.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2.4,0) {(Coassociativity)};
+                    \node at (-3.5,0) {(Coassociativity)};
 
-                    \draw [line width=1pt] (0,-1) -- (1,0);
-                    \draw [line width=1pt] (1,0) -- (2,-1);
-                    \draw [line width=1pt] (0.5,-0.5) -- (1,-1);
-                    \draw [line width=1pt] (1,0) -- (1,1);
+                    \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
+                    \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
+                    \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1.25);
 
-                    \node at (2.5,0) {$=$};
+                    \node at (1.5,0) {$=$};
 
-                    \draw [line width=1pt] (3,-1) -- (4,0);
-                    \draw [line width=1pt] (4,0) -- (5,-1);
-                    \draw [line width=1pt] (4,-1) -- (4.5,-0.5);
-                    \draw [line width=1pt] (4,0) -- (4,1);
+                    \draw [line width=1pt] (3, 1) -- (3, 0) -- (3.5, -0.5) -- (3.5, -0.75) -- (3.25, -1) -- (3.25, -1.25);
+                    \draw [line width=1pt] (3.5, -0.75) -- (3.75, -1) -- (3.75, -1.25);
+                    \draw [line width=1pt] (3, 0) -- (2.5, -0.5) -- (2.5, -1.25);
                 \end{tikzpicture} \\
 
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2,0) {(Counitality)};
+                    \node at (-3,0) {(Counitality)};
 
-                    \node[op, scale=0.75] (1) at (0.25, -0.75) {};
-                    \draw [line width=1pt] (1) -- (1,0);
-                    \draw [line width=1pt] (1,0) -- (2,-1);
-                    \draw [line width=1pt] (1,0) -- (1,1);
+                    \node[op, scale=0.75] (1) at (-0.5, -1) {};
 
-                    \node at (2.25,0) {$=$};
+                    \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
+                    \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
 
-                    \draw [line width=1.5pt] (3,1) -- (3,-1);
+                    \node at (1,0) {$=$};
 
-                    \node at (3.75,0) {$=$};
+                    \draw [line width=1pt] (2,1) -- (2,-1);
 
-                    \draw [line width=1pt] (4,-1) -- (5,0);
-                    \node[op, scale=0.75] (2) at (5.75,-0.75) {};
-                    \draw [line width=1pt] (5,0) -- (2);
-                    \draw [line width=1pt] (5,0) -- (5,1);
+                    \node at (3,0) {$=$};
+                    
+                    \node[op, scale=0.75] (2) at (4.5,-1) {};
+
+                    \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
+                    \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
                 \end{tikzpicture}
             \end{center}
 
@@ -426,45 +418,44 @@
                 Let $C$ be a coalgebra. A $\mathbb{K}$-module $M$ is said to ba left (right) $C$-comodule if there exist a structure morphism $\omega_M: M \rightarrow C\otimes_{\mathbb{K}}M$ ($\omega_M: M \rightarrow M\otimes_{\mathbb{K}}C$) called comultiplication. We require that $\omega_M$ is coassociative with respect to the comultiplication of $C$ and preserves the counit of $C$, i.e. the electric laws are satisfied.
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-2.4,0) {(Coassociativity)};
-                        
-                        \node at (1,1.5) {M};
+                        \node at (-3.5,0) {(Coassociativity)};
 
-                        \node[op, scale = 0.5] (a) at (1,0) {$\omega_M$};
+                        \node at (0, 1.5) {M};
+                        \node[op, scale=0.5] (1) at (0, 0) {$\omega_M$};
+    
+                        \draw [line width=1pt] (0, 1) -- (1) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
+                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
+                        \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1.25);
+    
+                        \node at (1.5,0) {$=$};
 
-                        \draw [line width=1pt] (0,-1) -- (a);
-                        \draw [line width=1pt] (a) -- (2,-1);
-                        \draw [line width=1pt] (0.5,-0.5) -- (1,-1);
-                        \draw [line width=1pt] (a) -- (1,1);
-                        
-                        \node at (2.5,0) {$=$};
-                        
-                        \node at (4,1.5) {M};
-
-                        \node[op, scale = 0.5] (b) at (4.5,-0.5) {$\omega_M$};
-                        \node[op, scale = 0.5] (c) at (4,0) {$\omega_M$};
-
-                        \draw [line width=1pt] (3,-1) -- (c);
-                        \draw [line width=1pt] (c) -- (b) -- (5,-1);
-                        \draw [line width=1pt] (4,-1) -- (b);
-                        \draw [line width=1pt] (c) -- (4,1);
-                    \end{tikzpicture}\\
-
+                        \node at (3, 1.5) {M};
+                        \node[op, scale=0.5] (2) at (3, 0) {$\omega_M$};
+                        \node[op, scale=0.5] (3) at (3.5, -0.75) {$\omega_M$};
+    
+                        \draw [line width=1pt] (3, 1) -- (2) -- (3) -- (3.25, -1) -- (3.25, -1.25);
+                        \draw [line width=1pt] (3) -- (3.75, -1) -- (3.75, -1.25);
+                        \draw [line width=1pt] (2) -- (2.5, -0.5) -- (2.5, -1.25);
+                    \end{tikzpicture} \\
+    
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-2,0) {(Counitality)};
+                        \node at (-3,0) {(Counitality)};
     
-                        \node at (1,1.5) {M};
-
-                        \node[op, scale=0.75] (1) at (0.25, -0.75) {};
-                        \draw [line width=1pt] (1) -- (1,0);
-                        \draw [line width=1pt] (1,0) -- (1.75,-0.75);
-                        \draw [line width=1pt] (1,0) -- (1,1);
+                        \node[op, scale=0.75] (1) at (-0.5, -1) {};
     
-                        \node at (2.25,0) {$=$};
+                        \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
+                        \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
     
-                        \node at (3,1.5) {M};
-
-                        \draw [line width=1.5pt] (3,-0.75) -- (3,1);
+                        \node at (1,0) {$=$};
+    
+                        \draw [line width=1pt] (2,1) -- (2,-1);
+    
+                        \node at (3,0) {$=$};
+                        
+                        \node[op, scale=0.75] (2) at (4.5,-1) {};
+    
+                        \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
+                        \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
                     \end{tikzpicture}
                 \end{center}
             \end{definition}
