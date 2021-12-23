@@ -1,39 +1,5 @@
 \documentclass[american,titlepage]{ntnuthesis}
 
-% --- Other packages --- %
-    \usepackage{microtype}
-
-% --- Tikz --- %
-    \usepackage{pgfplots}
-    \pgfplotsset{compat=1.15}
-    \usepackage{tikz}
-    \usetikzlibrary{graphs}
-    \usetikzlibrary{arrows}
-    \usepackage{tikz-cd}
-
-% --- Ams theorem definitions --- %
-    \usepackage{amsthm}
-
-    % --- Defining theorem env --- % 
-    \theoremstyle{plain}
-    \newtheorem{thm}{Theorem}[section]
-    \newtheorem{lemma}[thm]{Lemma}
-    \newtheorem{proposition}[thm]{Proposition}
-    \newtheorem{corollary}{Corollary}[thm]
-
-    % --- Defining definition env --- %
-    \theoremstyle{definition}
-    \newtheorem{definition}[thm]{Definition}
-
-    % --- Defining remark env --- %
-    \theoremstyle{remark}
-    \newtheorem{remark}[thm]{Remark}
-    \newtheorem{construction}[thm]{Construction}
-    \newtheorem{observation}[thm]{Observation}
-    \newtheorem{example}[thm]{Example}
-
-    % --- Defining proof environment --- %
-
 % --- Macros --- %
     \newcommand{\startset}[1]{\{#1\}}
 
@@ -59,30 +25,27 @@
 \begin{document}
 
     % --- Preface --- %
-    \subfile{chapters/preface/preface.tex}
+    \subfile{chapters/preface.tex}
+
 
     % --- Structure --- %
     \tableofcontents % This lists each listable section, subsection and subsubsection 
-    % \listoffigures % This lists each figure
-    % \listoftables % This lists each table
-    % \lstlistoflistings % This lists each code snippet
 
     \printglossary[type=\acronymtype] % Print acronyms
     \printglossary                    % Print glossary
 
+
     % --- Chapter 1 --- %
     \chapter{Bar and Cobar Construction}
+        \subfile{chapters/twisting.tex}
 
-        \input{chapters/twisting/twisting.tex}
 
+    % --- Bibliography --- %
     \chapter*{\bibname}
     \printbibliography[heading=none]
 
-    % \input{chapters/papers.tex}
 
     % --- Appendix A --- %
-
     \appendix
-% \input{appendices/a-appendix.tex}
 
 \end{document}

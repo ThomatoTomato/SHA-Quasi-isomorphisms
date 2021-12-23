@@ -141,18 +141,25 @@
 
 %% PACKAGE LOADING
 
-\RequirePackage[utf8]{inputenc}             % for special characters in input
-\RequirePackage[T1]{fontenc}                % modern font encoding
-\RequirePackage[charter, cal=cmcal]{mathdesign} % main font with math support
-\RequirePackage[scaled=.88, sfdefault]{atkinson} % sans serif font
-\RequirePackage[scaled=.82]{DejaVuSansMono} % monospace font (for code)
+
+% --- Fonts --- %
+\RequirePackage{fontspec}                   % Lualatex font encoding
+\setmainfont{Atkinson Hyperlegible}         % Set main font to Atkinson Hyperlegible
+
+% --- Layout & Graphics --- %
+\RequirePackage{geometry}                   % page layout
 \RequirePackage{listings}                   % code listings
 \RequirePackage{etoolbox}                   % fixing list of listings spacing
-\RequirePackage{babel}                      % language specifics
-\RequirePackage{geometry}                   % page layout
 \RequirePackage{enumitem}                   % customising list appearance
 \RequirePackage{graphicx}                   % including figures
+\RequirePackage{xcolor}                     % selecting text color
+\RequirePackage{emptypage}                  % empty pages should be blank
+% \RequirePackage{microtype}
+
+% --- Math --- %
 \RequirePackage{amsmath}                    % advanced math typesetting
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}                     % theorem environments
 \RequirePackage[                            % subfigures with captions within figures
     font=small,                             % and customisation of captions
     labelfont=bf,
@@ -163,8 +170,9 @@
     labelfont=bf,
     margin=\parindent
 ]{subcaption}
-\RequirePackage{xcolor}                     % selecting text color
-\RequirePackage{emptypage}                  % empty pages should be blank
+
+% --- Bibliography --- %
+\RequirePackage{babel}                      % language specifics
 \RequirePackage{csquotes}                   % recommended for biblatex
 \RequirePackage[
     backend=biber,
@@ -177,9 +185,7 @@
     sorting=none,
     dashed=false
 ]{biblatex}                                 % for bibliography
-\RequirePackage{csvsimple}                  % tables from csv files
 \RequirePackage{booktabs}                   % better formatting of tables
-\RequirePackage{gnuplottex}                 % for generating gnuplots on the fly
 \RequirePackage{hyperref}                   % interactive cross references
 \ifcapitalize
     \RequirePackage[capitalize,noabbrev]{cleveref}   % automatic cross references
@@ -188,11 +194,20 @@
 \fi
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
 
+
+% --- Tikz & Plots--- %
+\RequirePackage{pgfplots}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+
 %% CUSTOMISATION
 
-% Paragraph spacing
-\setlength{\parindent}{0em}
-%\setlength{\parskip}{1em}
+% pgf customs
+\pgfplotsset{compat=1.15}
+
+% Tikz customs
+\usetikzlibrary{graphs}
+\usetikzlibrary{arrows}
 
 % Page geometry and spacing (same for even and odd pages)
 \geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
@@ -274,54 +289,23 @@
 \definecolor{thesisred}{rgb}{.4, .05, .15}
 \definecolor{thesisgreen}{rgb}{.2, .3, .2}
 
-% Formatting of code listings
-\lstset{
-    frame=single,
-    basicstyle=\fontsize{9}{10}\ttfamily,
-    keywordstyle=\color{thesisblue}\bfseries,
-    stringstyle=\color{thesisred},
-    commentstyle=\color{thesisgreen},
-    identifierstyle=\color{black},
-    numberstyle=\fontsize{7}{8}\selectfont,
-    literate=
-        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-        {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-        {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-        {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-        {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-        {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-        {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-        {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-        {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
-        {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-        {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-        {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-        {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-        {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
-}
+%Defining theorem environments
+% --- Defining theorem env --- % 
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{corollary}{Corollary}[thm]
 
-% Ensure list of listings have additional spacing between chapters to match figures and tables
-\pretocmd{\chapter}{\addtocontents{lol}{\protect\addvspace{10\p@}}}{}{}
+% --- Defining definition env --- %
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
 
-% Settings for hyperref: setting all the links black for best printing. They will still be clickable in the PDF
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,    % internal links (change box color with linkbordercolor)
-    citecolor=black,    % links to bibliography
-    filecolor=black,    % file links
-    urlcolor=black      % external links
-}
+% --- Defining remark env --- %
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{construction}[thm]{Construction}
+\newtheorem{observation}[thm]{Observation}
+\newtheorem{example}[thm]{Example}
 
-% Fix list of listings not rendering correctly for LaTeX generated by Sphinx, which uses literalblock instead of lstlisting
-\let\l@literalblock\l@lstlisting
-
-% Renew \lstlistoflistings command to avoid issues with incorrect headers for long lists
-% Uses unnumbered chapter instead of a float like in the original source code.
-% Based on source code for listings package https://ctan.uib.no/macros/latex/contrib/listings/listings.dtx line: 14635
-\renewcommand*{\lstlistoflistings}{%
-       \begingroup%
-       \chapter*{\lstlistlistingname}%
-       \parskip\z@\parindent\z@\parfillskip \z@ \@plus 1fil%
-       \@starttoc{lol}%
-       \endgroup%
-       }%
+% --- Defining proof environment --- %
