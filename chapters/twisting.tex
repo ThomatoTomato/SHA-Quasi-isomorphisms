@@ -19,117 +19,28 @@
 
         \subsection{Algebras}
 
-            In this subsection we will look at associative algebras. We will define unital associative algebras and non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
+            This subsection is a review of associative algebras. We will define unital associative algebras and possibly non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
 
             \begin{definition}[Algebra]
-                Let $\mathbb{K}$ be a field. An algebra $A$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called multiplication and unit,
+                Let $\mathbb{K}$ be a field with unit $1$. An algebra $A$ over $\mathbb{K}$ is a vector space with structure morphisms called multiplication and unit,
                 \begin{align*}
                     (\nabla_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
                     \upsilon_A & : \mathbb{K} \rightarrow A,
                 \end{align*}
                 satisfying the associativity and identity laws. 
                 \begin{align*}
-                    (associativity)\quad & (a \nabla_A b) \nabla_A c = a \nabla_A (b \nabla_A c) \\
-                    (unitality)\quad & \upsilon_A(1) \nabla_A a = a = a \nabla_A \upsilon_A(1)
+                    \text{(associativity)}\quad & (a \nabla_A b) \nabla_A c = a \nabla_A (b \nabla_A c) \\
+                    \text{(unitality)}\quad & \upsilon_A(1) \nabla_A a = a = a \nabla_A \upsilon_A(1)
                 \end{align*}
-            \end{definition}
-            \begin{remark}
                 Whenever $A$ does not posess a unit morphism, we will call $A$ a non-unital algebra. Only the associativity law must hold.
-            \end{remark}
-            Alternatively, instead of using equations, we may represent the laws with commutative diagrams. 
-            \begin{center}
-                (associativity)\quad
-                \begin{tikzcd}
-                    A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\nabla_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\nabla_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\nabla_A)} \\
-                    A \otimes_{\mathbb{K}} A \ar[]{r}[]{(\nabla_A)} & A
-                \end{tikzcd} \\
-                (unitality) \quad
-                \begin{tikzcd}
-                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \upsilon_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\nabla_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\upsilon_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
-                    & A
-                \end{tikzcd}
-            \end{center}
-            We may also present the structure of algebras by electric circuits. Such circuits are read from top to bottom, where morphisms are composed by lines. Morphisms in such diagrams may be highlighted with figures, conjunctions or twistings. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
-                    \node at (-2.25, 0) {(Multiplication)};
-                    
-                    \node (1) at (1,1) {};
-                    \node (2) at (-1,1) {};
-                    \node[op] (3) at (0,0) {$\nabla_A$};
-                    \node (4) at (0,-1) {};
-
-                    \graph {
-                        (1) --[line width = 1pt] (3);
-                        (2) --[line width = 1pt] (3);
-                        (3) --[line width = 1pt] (4);
-                    };
-
-                    \node at (1.5,0) {$=$};
-
-                    \draw [line width=1pt] (2,1)-- (3,0);
-                    \draw [line width=1pt] (3,0)-- (3,-1);
-                    \draw [line width=1pt] (4,1)-- (3,0);
-                \end{tikzpicture} \quad
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-1.5,0.5) {(Unit)};
-                    
-                    \node[op] (1) at (0,1) {$\upsilon_A$};
-                    \draw [line width=1pt] (1) -- (0,0);
-
-                    \node at (0.75, 0.5) {$=$};
-
-                    \node[op, scale=1] (2) at (1.25,1) {};
-                    \draw [line width=1pt] (2) -- (1.25,0);
-
-                    \node at (0,-0.5) {};
-                \end{tikzpicture}
-            \end{center}
-            With these operators we obtain the electric laws for an algebra.
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2.4,0) {(Associativity)};
-
-                    \draw [line width=1pt] (0,1) -- (1,0);
-                    \draw [line width=1pt] (1,0) -- (2,1);
-                    \draw [line width=1pt] (0.5,0.5) -- (1,1);
-                    \draw [line width=1pt] (1,0) -- (1,-1);
-
-                    \node at (2.5,0) {$=$};
-
-                    \draw [line width=1pt] (3,1) -- (4,0);
-                    \draw [line width=1pt] (4,0) -- (5,1);
-                    \draw [line width=1pt] (4,1) -- (4.5,0.5);
-                    \draw [line width=1pt] (4,0) -- (4,-1);
-                \end{tikzpicture} \\
-
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2,0) {(unitality)};
-
-                    \node[op, scale=0.75] (1) at (0.25, 0.75) {};
-                    \draw [line width=1pt] (1) -- (1,0);
-                    \draw [line width=1pt] (1,0) -- (2,1);
-                    \draw [line width=1pt] (1,0) -- (1,-1);
-
-                    \node at (2.25,0) {$=$};
-
-                    \draw [line width=1.5pt] (3,1) -- (3,-1);
-
-                    \node at (3.75,0) {$=$};
-
-                    \draw [line width=1pt] (4,1) -- (5,0);
-                    \node[op, scale=0.75] (2) at (5.75,0.75) {};
-                    \draw [line width=1pt] (5,0) -- (2);
-                    \draw [line width=1pt] (5,0) -- (5,-1);
-                \end{tikzpicture}
-            \end{center}
+            \end{definition}
 
             \begin{definition}[Algebra homomorphisms]
                 Let $A$ and $B$ be algebras. Then $f: A\rightarrow B$ is an algebra homomorphism if
                 \begin{enumerate}
                     \item $f$ is $\mathbb{K}$-linear
                     \item $f(ab)=f(a)f(b)$
-                    \item $f(\upsilon_A) = \upsilon_B$
+                    \item $f\circ\upsilon_A = \upsilon_B$
                 \end{enumerate}
                 Whenever $A$ and $B$ are non-unital, we only require 1 and 2 for a homomorphism of non-unital algebras.
             \end{definition}
@@ -140,6 +51,84 @@
                     \item Let $nAlg_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $nAlg_{\mathbb{K}}(A,B)$.
                 \end{itemize}
             \end{definition}
+
+            Observe that for an algebra $A$, the triple $(A,\nabla_A,\upsilon_A)$ is a monoid in $mod_{\mathbb{K}}$. Thus, we may say that an algebra is a triple where the following diagrams commute. 
+            \begin{center}
+                \begin{tikzcd}
+                    A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\nabla_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\nabla_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\nabla_A)} \\
+                    A \otimes_{\mathbb{K}} A \ar[]{r}[]{(\nabla_A)} & A
+                \end{tikzcd} \quad
+                \begin{tikzcd}
+                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \upsilon_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\nabla_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\upsilon_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
+                    & A
+                \end{tikzcd}
+            \end{center}
+            The final method we will use to represent an algebra are electric circuits. An electric circuit is a diagram read from top to bottom, where each column represent a different vector space in a tensor. Morphisms in such diagrams are figures, conjunctions, twistings and etc. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-3, 0) {(Multiplication)};
+                    
+                    \node[op, scale = 0.75] (1) at (0,0) {$\nabla_A$};
+
+                    \draw [line width=1pt] (-0.5, 1) -- (-0.5, 0.5) -- (1) -- (0, -1);
+                    \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (1);
+
+
+                    \node at (1.5,0) {$=$};
+
+                    \draw [line width=1pt] (2.5,1) -- (2.5, 0.5) -- (3,0) -- (3,-1);
+                    \draw [line width=1pt] (3.5,1) -- (3.5, 0.5) -- (3,0);
+                \end{tikzpicture} \qquad
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-1.5,0.25) {(Unit)};
+                    
+                    \node[op, scale = 0.75] (1) at (0,1) {$\upsilon_A$};
+                    \draw [line width=1pt] (1) -- (0,-0.75);
+
+                    \node at (1, 0.25) {$=$};
+
+                    \node[op, scale=1] (2) at (1.75,1) {};
+                    \draw [line width=1pt] (2) -- (1.75,-0.75);
+
+                    \node at (0,-0.5) {};
+                \end{tikzpicture}
+            \end{center}
+            Using these operations we can now reformulate the algebra laws. These are the electric laws for an algebra:
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-3,0.5) {(Associativity)};
+
+                    \draw [line width=1pt] (-0.75, 1.25) -- (-0.75, 1) -- (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
+                    \draw [line width=1pt] (-0.25, 1.25) -- (-0.25, 1) -- (-0.5, 0.75);
+                    \draw (0.5, 1.25) -- (0.5, 0.5) -- (0,0);
+
+                    \node at (1.25,0.5) {$=$};
+
+                    \draw [line width=1pt] (2,1.25) -- (2, 0.5) -- (2.5, 0) -- (2.5, -0.5);
+                    \draw [line width=1pt] (2.75, 1.25) -- (2.75, 1) -- (3, 0.75) -- (3, 0.5) -- (2.5, 0);
+                    \draw [line width=1pt] (3.25, 1.25) -- (3.25, 1) -- (3, 0.75);
+                \end{tikzpicture} \\
+
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node at (-2,0) {(unitality)};
+
+                    \node[op, scale=0.75] (1) at (-0.5, 1) {};
+
+                    \draw [line width=1pt] (1) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
+                    \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (0,0);
+
+                    \node at (1.25,0.) {$=$};
+
+                    \draw [line width=1pt] (2, 1) -- (2, -0.5);
+
+                    \node at (2.75,0) {$=$};
+
+                    \node[op, scale=0.75] (2) at (4.5, 1) {};
+                    \draw [line width=1pt] (3.5, 1) -- (3.5, 0.5) -- (4, 0) -- (4, -0.5);
+                    \draw [line width=1pt] (2) -- (4.5, 0.5) -- (4, 0);
+
+                \end{tikzpicture}
+            \end{center}
 
             \begin{definition}[Augmented algebras]
                 Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
@@ -187,47 +176,47 @@
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         \node at (-2.4,0) {(Associativity)};
                         
-                        \node at (0,1.5) {A};
-                        \node at (1,1.5) {A};
-                        \node at (2,1.5) {M};
+                        \node at (0,1.75) {A};
+                        \node at (1,1.75) {A};
+                        \node at (2,1.75) {M};
 
-                        \node[op, scale = 0.5] (a) at (1,0) {$\mu_M$};
+                        \node[op, scale = 0.5] (a) at (1,-0.25) {$\mu_M$};
 
-                        \draw [line width=1pt] (0,1) -- (a);
-                        \draw [line width=1pt] (a) -- (2,1);
-                        \draw [line width=1pt] (0.5,0.5) -- (1,1);
+                        \draw [line width=1pt] (0,1.25) -- (0, 1) -- ((0.5, 0.5) -- (0.5, 0.25) -- (a);
+                        \draw [line width=1pt] (a) -- (2,0.5) -- (2,1.25);
+                        \draw [line width=1pt] (0.5,0.5) -- (1,1) -- (1, 1.25);
                         \draw [line width=1pt] (a) -- (1,-1);
                         
                         \node at (2.5,0) {$=$};
                         
-                        \node at (3,1.5) {A};
-                        \node at (4,1.5) {A};
-                        \node at (5,1.5) {M};
+                        \node at (3,1.75) {A};
+                        \node at (4,1.75) {A};
+                        \node at (5,1.75) {M};
 
                         \node[op, scale = 0.5] (b) at (4.5,0.5) {$\mu_M$};
-                        \node[op, scale = 0.5] (c) at (4,0) {$\mu_M$};
+                        \node[op, scale = 0.5] (c) at (4,-0.25) {$\mu_M$};
 
-                        \draw [line width=1pt] (3,1) -- (c);
-                        \draw [line width=1pt] (c) -- (b) -- (5,1);
-                        \draw [line width=1pt] (4,1) -- (b);
+                        \draw [line width=1pt] (3,1.25) -- (3, 0.5) -- (c);
+                        \draw [line width=1pt] (c) -- (b) -- (5,1) -- (5,1.25);
+                        \draw [line width=1pt] (4, 1.25) -- (4,1) -- (b);
                         \draw [line width=1pt] (c) -- (4,-1);
                     \end{tikzpicture}\\
 
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         \node at (-2,0) {(unitality)};
     
-                        \node at (1.75,1) {M};
+                        \node at (1.75,1.5) {M};
 
-                        \node[op, scale=0.75] (1) at (0.25, 0.75) {};
-                        \draw [line width=1pt] (1) -- (1,0);
-                        \draw [line width=1pt] (1,0) -- (1.75,0.75);
-                        \draw [line width=1pt] (1,0) -- (1,-1);
+                        \node[op, scale=0.75] (1) at (0.25, 1) {};
+                        \draw [line width=1pt] (1) -- (0.25, 0.75) -- (1,0);
+                        \draw [line width=1pt] (1,0) -- (1.75,0.75) -- (1.75, 1);
+                        \draw [line width=1pt] (1,0) -- (1,-0.75);
     
                         \node at (2.25,0) {$=$};
     
-                        \node at (3,1) {M};
+                        \node at (3,1.5) {M};
 
-                        \draw [line width=1.5pt] (3,0.75) -- (3,-1);
+                        \draw [line width=1.5pt] (3,1) -- (3,-0.75);
                     \end{tikzpicture}
                 \end{center}
             \end{definition}

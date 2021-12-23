@@ -212,6 +212,8 @@
 % Page geometry and spacing (same for even and odd pages)
 \geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
 \frenchspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 
 % Roman page numbers from the beginning of the document
 \pagenumbering{roman}

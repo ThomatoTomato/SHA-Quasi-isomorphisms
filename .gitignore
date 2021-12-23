@@ -19,4 +19,6 @@
 *.glg
 *.gls
 *.synctex.gz
+*.fdb_latexmk
+*.fls
 *~
