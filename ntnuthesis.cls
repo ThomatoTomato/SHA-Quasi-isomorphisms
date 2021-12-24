@@ -213,7 +213,7 @@
 \geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
 \frenchspacing
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{1em}
 
 % Roman page numbers from the beginning of the document
 \pagenumbering{roman}
