@@ -208,9 +208,10 @@
 % Tikz customs
 \usetikzlibrary{graphs}
 \usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
 
 % Page geometry and spacing (same for even and odd pages)
-\geometry{left=4cm, right=4cm, top=4cm, bottom=4.5cm}
+\geometry{left=2.5cm, right=2.5cm, top=4cm, bottom=4.5cm}
 \frenchspacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}

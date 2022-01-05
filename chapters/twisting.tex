@@ -11,7 +11,7 @@
 
             \begin{center}
                 \begin{tikzcd}
-                    Alg_{\mathbb{K}} \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ CoAlg}_{\mathbb{K}} \ar[bend left]{l}[pos=0.45]{\Omega}
+                    \substack{Aug \\ Alg}_{\mathbb{K}}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ CoAlg}_{\mathbb{K}}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
                 \end{tikzcd}
             \end{center}
 
@@ -135,7 +135,7 @@
                 Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
             \end{definition}
 
-            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse.
+            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse. The category of augmented algebras is denoted as $AugAlg_\mathbb{K}$ or $\substack{Aug \\ Alg}_\mathbb{K}$.
 
             \begin{definition}[Tensor algebra]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor algebra $T(V)$ of $V$ as the module
@@ -217,7 +217,7 @@
     
                         \node at (3,1.5) {M};
 
-                        \draw [line width=1.5pt] (3,1) -- (3,-0.75);
+                        \draw [line width=1pt] (3,1) -- (3,-0.75);
                     \end{tikzpicture}
                 \end{center}
             \end{definition}
@@ -380,10 +380,10 @@
             \end{align*}
 
             \begin{definition}[Conilpotent coalgebras]
-                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $CoAlg^{Conil}_{\mathbb{K}}$.
+                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $ConilCoAlg_\mathbb{K}$ or $\substack{Conil \\ CoAlg}_{\mathbb{K}}$.
             \end{definition}
             
-            \begin{proposition}[Conilpotent tensor coalgebra]
+            \begin{proposition}[Conilpotent tensor coalgebra]\label{prop: conilpotent-tensor}
                 Let $V$ be a $\mathbb{K}$-module. The tensor coalgebra $T^c(V)$ is conilpotent.
             \end{proposition}
 
@@ -397,8 +397,8 @@
                 This shows that the coradical filtration is exhaustive.
             \end{proof}
 
-            \begin{proposition}[Cofree tensor coalgebra]
-                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq CoAlg^{Conil}_{\mathbb{K}}(C, T^c(V))$.
+            \begin{proposition}[Cofree tensor coalgebra]\label{prop: cofree-tensor}
+                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq \substack{Conil \\ CoAlg}_{\mathbb{K}}(C, T^c(V))$.
             \end{proposition}
 
             \begin{proof}
@@ -409,7 +409,7 @@
                     \item (Homomorphism property)\quad Given $c\in C$ then $\Delta_{T^c(V)}(g(c))=(g\otimes g)\circ\Delta_C(c)$
                 \end{enumerate}
 
-                We will construct the maps for the isomorphism explicitly. If $g:C\rightarrow T^c(V)$ is a coalgebra homomorphism, then composing with projection gives a map $\pi\circ g:C\rightarrow V$. Note that $\pi\circ g(1)=0$, so this is essentially a map $\pi\circ g:\bar{C}\rightarrow V$. For the other direction, let $\bar{g}:\bar{C}\rightarrow V$. Then we define $g$ as
+                We will construct the maps for the isomorphism explicitly. If $g:C\rightarrow T^c(V)$ is a coalgebra homomorphism, then composing with projection gives a map $\pi\circ g:C\rightarrow V$. Note that $\pi\circ g(1)=0$, so this is essentially a map $\pi\circ g:\bar{C}\rightarrow V$. For the other direction, let $\bar{g}:\bar{C}\rightarrow V$. We will then define $g$ as
                 \begin{align*}
                     g = id_{\mathbb{K}} \oplus \sum_{i=1}^{\infty}(\otimes^{i}\bar{g})\bar{\Delta}_C^{i-1}.
                 \end{align*}
@@ -473,7 +473,7 @@
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq CoHom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
 
-        \subsection{Differentials and Convolution Algebras}
+        \subsection{Derivations and DG-Algebras}
             In this subsection we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
 
             \begin{definition}[Derivations and Coderivations]
@@ -545,15 +545,28 @@
                 \end{center}
             \end{definition}
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: tensor-derivation}
                 Let $V$ be a $\mathbb{K}$-module and $M$ be a $T(V)$-bimodule. A $\mathbb{K}$-linear morphism $f:V\rightarrow M$ uniquely determines a derivation $d_f:T(V)\rightarrow M$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(V,M)\simeq Der(T(V),M)$.
 
 
-                Let $N$ be a $T^c(V)$-comodule. A $\mathbb{K}$-linear morphism $g:M\rightarrow V$ uniquely determines a coderivation $d_g^c:N\rightarrow T^c(V)$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,V)\simeq Coder(N,T^c(V))$.
+                Let $N$ be a $T^c(V)$-cobimodule. A $\mathbb{K}$-linear morphism $g:M\rightarrow V$ uniquely determines a coderivation $d_g^c:N\rightarrow T^c(V)$, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,V)\simeq Coder(N,T^c(V))$.
             \end{proposition}
 
             \begin{proof}
-                ...
+                Let $a_1\otimes ... \otimes a_n$ be an elementary tensor of $T(V)$. We define $d_f(a_1\otimes ... \otimes a_n) = \sum_{i=1}^n a_1...f(a_i)...a_n$ and $d_f(1) = 0$. Notice that $d_f$ is by definition a derivation.
+                
+                Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose that $g: M \rightarrow N$ is a morphism between $T(V)$-bimodules, then naturality follows from bi-linearity.
+
+                In the dual case, $d_g^c$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. We define the reduced coactions as $\bar{\omega}^l_N = \omega^l_N - \_\otimes 1$ and $\bar{\omega}^r_N = \omega^r_N - 1\otimes\_\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k, k'>0$ such that ${\bar{\omega}^{l^k}_N}(n) = 0$ and ${\bar{\omega}^{r^{k'}}_N}(n)=0$.
+
+                Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. $n_{(k)}^{(i)} = \bar{\omega}^{r^i}_N\bar{\omega}^{l^{k-i}}_N(n)$. The extension of $n$ by $k$ coactions is then the sum over every position $i$, $n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}$. Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
+
+                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes g \otimes \pi$ as a morphism which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
+                \begin{align*}
+                    d_g^c(n) = \sum_{k=0}^\infty \sum_{i=0}^k g_{(k)}^{(i)}(n_{(k)}^{(i)})
+                \end{align*}
+                
+                Upon closer inspection we may observe that this is the dual construction of the derivation morphism. It is well-defined as the sum is finite by the finiteness restrictions. The map is a coderivation by duality, and the natural isomorphism is given by composition with the projection map $\pi$.
             \end{proof}
 
             \begin{definition}[Differential algebra]
@@ -630,10 +643,32 @@
                 ...
             \end{proof}
 
-            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \substack{\bigoplus \\ z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$, and the graded module of morphisms between two graded objects is denoted as $Hom_{\mathbb{K}}^*(M^*,N^*)$. We will use the Koszul-sign convention for this category, so a graded derivation uses Koszul sign rule to determine the sign.
+            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \substack{\bigoplus \\ z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^*$. Generally $\mathcal{C}^*$ is the category of graded objects whenever it makes sense, and the graded $\mathbb{K}$-module of morphisms between two graded objects is denoted as $Hom_{\mathbb{K}}^*(M^*,N^*)$.
             
 
-            $M^{\bullet}$ is called a chain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
+            $M^{\bullet}$ is called a chain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
+
+
+            The functor $\_[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\_[0] \simeq \bar{\mathbb{K}}\otimes\_$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\_[n] \simeq \bar{\mathbb{K}}[n]\otimes\_$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
+
+
+            In electric diagrams we will write triangles for the differential if there are no ambiguity.
+
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                    \node[op, scale = 0.75] (1) at (0,0) {$d_M^\bullet$};
+
+                    \draw [line width = 1pt] (0, 1) -- (1) -- (0, -1);
+
+                    \node at (1, 0) {$=$};
+
+                    \node[diff, scale=0.75] (2) at (2, 0) {};
+
+                    \draw [line width = 1pt] (2, 1) -- (2) -- (2, -1);
+                    
+                \end{tikzpicture}
+            \end{center}
 
             \begin{proposition}
                 Let $M^{\bullet}$ and $N^{\bullet}$ be two chain complexes. The graded module of morphisms $Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a chain complex, given by the differential $\partial(f) = d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}$.
@@ -642,9 +677,30 @@
             \begin{proof}
                 We observe that $\partial : Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet}) \rightarrow Hom_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a morphism of degree $1$. It remains to check that $\partial^2 = 0$. Pick any homogenous morphism $f : M^{\bullet}\rightarrow N^{\bullet}$.
                 \begin{multline*}
-                    \partial^2(f) = \partial(d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}) = \partial(d_N^{\bullet}\circ f) - (-1)^{|f|}\partial(f\circ d_M^{\bullet}) \\ = - (-1)^{|d_N^{\bullet}\circ f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} + (-1)^{|f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} = 0
+                    \partial^2(f) = \partial(d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}) = \partial(d_N^{\bullet}\circ f) - (-1)^{|f|}\partial(f\circ d_M^{\bullet}) \\ = - (-1)^{|d_N^{\bullet}\circ f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} - (-1)^{|f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} = 0
                 \end{multline*}
             \end{proof}
+
+            In an electric diagram we write $\partial f$ as a sum of circuits.
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                    \node at (0,0) {$\partial f =$};
+
+                    \node[op, scale=0.75] (f1) at (1, 0.5) {$f$};
+                    \node[diff, scale=0.75] (d1) at (1, -0.5) {};
+
+                    \draw [line width = 1pt] (1, 1) -- (f1) -- (d1) -- (1, -1);
+
+                    \node at (2.5, 0) {$+(-1)^{|f|}$};
+
+                    \node[diff, scale=0.75] (d2) at (4, 0.5) {};
+                    \node[op, scale=0.75] (f2) at (4, -0.5) {$f$};
+
+                    \draw [line width = 1pt] (4, 1) -- (d2) -- (f2) -- (4, -1);
+
+                \end{tikzpicture}
+            \end{center}
 
             Observe that $f:M^{\bullet}\rightarrow N^{\bullet}$ of degree $0$ is a chain morphism if and only if $\partial(f) = 0$. We then observe that $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})\simeq Z^0Hom_{\mathbb{K}}^*(M^{\bullet})$.
 
@@ -662,10 +718,12 @@
                 Dually, $C^{\bullet}$ is a differential graded coalgebra if $C^{\bullet}$ is a graded coalgebra and the differential is a graded coderivation.
             \end{definition}
 
+        \subsection{Convolution Algebras}
+
             Let $C$ be a coalgebra and $A$ an algebra, then if $f,g:C\rightarrow A$ are $\mathbb{K}$-linear morphism we may define $f\star g = \nabla_A(f\otimes g)\Delta_C$. We call the operation $\star$ for convolution.
 
             \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={triangle, draw, scale=0.75}, scale=0.7]
 
                     \node at (-2.5, 0) {$f\star g$};
 
@@ -803,7 +861,7 @@
             \end{proposition}
 
             \begin{proof}
-                The proof follows quickly from (co)associativity and (co)unitality.
+                The proof quickly follows from (co)associativity and (co)unitality.
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
     
@@ -863,8 +921,337 @@
                 \end{center}
             \end{proof}
 
+            Suppose that $C$ and $A$ are differential graded (co)algebras. We want to expect that the differential $\partial$ makes $Hom_\mathbb{K}^*(C,A)$ into a dg-algebra.
+            
+            \begin{proposition}
+                The convolution algebra $(Hom_\mathbb{K}^*(C,A),\star)$ is a dg-algebra with differential $\partial$.
+            \end{proposition}
+
+            \begin{proof}
+                We know that $(Hom_\mathbb{K}^*(C,A),\star)$ is a convolution algebra and that $(Hom_\mathbb{K}^*(C,A),\partial)$ is a chain complex. It remains to verify that the differential is compatible with the multiplication, i.e. $\partial(f\star g) = \partial{f}\star g + (-1)^{|f|}f\star\partial{g}$.
+
+                Let $f,g\in Hom_\mathbb{K}^*(C,A)$ be two homogenous morphisms. The key property to arrive at the result is that the differential in a dg-(co)algebra is a (co)derivation. We denote the degree of $f\star g$ as $|f\star g| = |f| + |g| = d$
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$\partial (f\star g) =$};
+
+                        \node at (1.35,0) {$\partial$};
+                        \node[op, scale = 0.75] (f1) at (2, 0) {$f$};
+                        \node[op, scale = 0.75] (g1) at (3, 0) {$g$};
+
+                        \draw [line width = 1pt] (2.5, 1.25) -- (2.5, 1) -- (2, 0.5) -- (f1) -- (2, -0.5) -- (2.5, -1) -- (2.5, -1.25);
+                        \draw [line width = 1pt] (2.5, 1) -- (3, 0.5) -- (g1) -- (3, -0.5) -- (2.5, -1);
+
+
+                        \node at (4, 0) {$=$};
+
+
+                        \node[diff, scale=0.75] (d1) at (5.5, -1) {};
+                        \node[op, scale=0.75] (f2) at (5, 0.5) {$f$};
+                        \node[op, scale=0.75] (g2) at (6, 0.5) {$g$};
+
+                        \draw [line width = 1pt] (5.5, 1.75) -- (5.5, 1.5) -- (5, 1) -- (f2) -- (5, 0) -- (5.5, -0.5) -- (d1) -- (5.5, -1.5);
+                        \draw [line width = 1pt] (5.5, 1.5) -- (6, 1) -- (g2) -- (6, 0) -- (5.5, -0.5);
+
+                        \node at (7.5, 0) {$-(-1)^{d}$};
+
+                        \node[op, scale = 0.75] (f3) at (9, -0.5) {$f$};
+                        \node[op, scale = 0.75] (g3) at (10, -0.5) {$g$};
+                        \node[diff, scale = 0.75] (d2) at (9.5, 1) {};
+
+                        \draw [line width = 1pt] (9.5, 1.5) -- (d2) -- (9.5, 0.5) -- (9, 0) -- (f3) -- (9, -1) -- (9.5, -1.5) -- (9.5, -1.75);
+                        \draw [line width = 1pt] (9.5, 0.5) -- (10, 0) -- (g3) -- (10, -1) -- (9.5, -1.5);
+
+                    \end{tikzpicture}
+                \end{center}
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (f1) at (1, 0.5) {$f$};
+                        \node[op, scale = 0.75] (g1) at (2, 0) {$g$};
+                        \node[diff, scale = 0.75] (d1) at (1, -0.25) {};
+
+                        \draw [line width = 1pt] (1.5, 1.75) -- (1.5, 1.5) -- (1, 1) -- (f1) -- (d1) -- (1, -0.75) -- (1.5, -1.25) -- (1.5, -1.5); 
+                        \draw [line width = 1pt] (1.5, 1.5) -- (2, 1) -- (g1) -- (2, -0.75) -- (1.5, -1.25);
+
+                        \node at (3.5, 0) {$+(-1)^{|f|}$};
+
+                        \node[op, scale = 0.75] (f2) at (5, 0) {$f$};
+                        \node[op, scale = 0.75] (g2) at (6, 0.5) {$g$};
+                        \node[diff, scale = 0.75] (d2) at (6, -0.25) {};
+
+                        \draw [line width = 1pt] (5.5, 1.75) -- (5.5, 1.5) -- (5, 1) -- (f2) -- (5, -0.75) -- (5.5, -1.25) -- (5.5, -1.5);
+                        \draw [line width = 1pt] (5.5, 1.5) -- (6, 1) -- (g2) -- (d2) -- (6, -0.75) -- (5.5, -1.25) -- (5.5, -1.5);
+
+                        \node at (8.25, 0) {$-(-1)^{d}((-1)^{|g|}$};
+
+                        \node[op, scale = 0.75] (f3) at (10.5, -0.25) {$f$};
+                        \node[op, scale = 0.75] (g3) at (11.5, 0) {$g$};
+                        \node[diff, scale = 0.75] (d3) at (10.5, 0.5) {};
+
+                        \draw [line width = 1pt] (11, 1.75) -- (11, 1.5) -- (10.5, 1) -- (d3) -- (f3) -- (10.5, -0.75) -- (11, -1.25) -- (11, -1.5);
+                        \draw [line width = 1pt] (11, 1.5) -- (11.5, 1) -- (g3) -- (11.5, -0.75) -- (11, -1.25);
+
+                        \node at (12.25, 0) {$+$};
+
+                        \node[op, scale = 0.75] (f4) at (13, 0) {$f$};
+                        \node[op, scale = 0.75] (g4) at (14, -0.25) {$g$};
+                        \node[diff, scale = 0.75] (d4) at (14, 0.5) {};
+
+                        \draw [line width = 1pt] (13.5, 1.75) -- (13.5, 1.5) -- (13, 1) -- (f4) -- (13, -0.75) -- (13.5, -1.25) -- (13.5, -1.5);
+                        \draw [line width = 1pt] (13.5, 1.5) -- (14, 1) -- (d4) -- (g4) -- (14, -0.75) -- (13.5, -1.25);
+                        \node at (14.5, 0) {$)$};
+                    \end{tikzpicture}
+                \end{center}
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (f1) at (1, 0.5) {$f$};
+                        \node[op, scale = 0.75] (g1) at (2, 0) {$g$};
+                        \node[diff, scale = 0.75] (d1) at (1, -0.25) {};
+
+                        \draw [line width = 1pt] (1.5, 1.75) -- (1.5, 1.5) -- (1, 1) -- (f1) -- (d1) -- (1, -0.75) -- (1.5, -1.25) -- (1.5, -1.5); 
+                        \draw [line width = 1pt] (1.5, 1.5) -- (2, 1) -- (g1) -- (2, -0.75) -- (1.5, -1.25);
+                        
+                        \node at (3.5, 0) {$-(-1)^{|f|}$};
+
+                        \node[op, scale = 0.75] (f3) at (5, -0.25) {$f$};
+                        \node[op, scale = 0.75] (g3) at (6, 0) {$g$};
+                        \node[diff, scale = 0.75] (d3) at (5, 0.5) {};
+
+                        \draw [line width = 1pt] (5.5, 1.75) -- (5.5, 1.5) -- (5, 1) -- (d3) -- (f3) -- (5, -0.75) -- (5.5, -1.25) -- (5.5, -1.5);
+                        \draw [line width = 1pt] (5.5, 1.5) -- (6, 1) -- (g3) -- (6, -0.75) -- (5.5, -1.25) -- (5.5, -1.5);
+
+                        \node at (7.5, 0) {$+(-1)^{|f|}($};
+
+                        \node[op, scale = 0.75] (f2) at (9, 0) {$f$};
+                        \node[op, scale = 0.75] (g2) at (10, 0.5) {$g$};
+                        \node[diff, scale = 0.75] (d2) at (10, -0.25) {};
+
+                        \draw [line width = 1pt] (9.5, 1.75) -- (9.5, 1.5) -- (9, 1) -- (f2) -- (9, -0.75) -- (9.5, -1.25) -- (9.5, -1.5);
+                        \draw [line width = 1pt] (9.5, 1.5) -- (10, 1) -- (g2) -- (d2) -- (10, -0.75) -- (9.5, -1.25) -- (9.5, -1.5);
+
+
+                        \node at (11.5, 0) {$-(-1)^{|g|}$};
+
+                        \node[op, scale = 0.75] (f4) at (13, 0) {$f$};
+                        \node[op, scale = 0.75] (g4) at (14, -0.25) {$g$};
+                        \node[diff, scale = 0.75] (d4) at (14, 0.5) {};
+
+                        \draw [line width = 1pt] (13.5, 1.75) -- (13.5, 1.5) -- (13, 1) -- (f4) -- (13, -0.75) -- (13.5, -1.25) -- (13.5, -1.5);
+                        \draw [line width = 1pt] (13.5, 1.5) -- (14, 1) -- (d4) -- (g4) -- (14, -0.75) -- (13.5, -1.25);
+                        \node at (14.5, 0) {$)$};
+                    \end{tikzpicture}
+                \end{center}
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (df) at (1, 0) {$\partial f$};
+                        \node[op, scale = 0.75] (g) at (2, 0) {$g$};
+
+                        \draw [line width = 1pt] (1.5, 1.25) -- (1.5, 1) -- (1, 0.5) -- (df) -- (1, -0.5) -- (1.5, -1) -- (1.5, -1.25);
+                        \draw [line width = 1pt] (1.5, 1) -- (2, 0.5) -- (g) -- (2, -0.5) -- (1.5, -1);
+
+                        \node at (3.5, 0) {$+(-1)^{|f|}$};
+
+                        \node[op, scale = 0.75] (f) at (5, 0) {$f$};
+                        \node[op, scale = 0.75] (dg) at (6, 0) {$\partial g$};
+                        
+                        \draw [line width = 1pt] (5.5, 1.25) -- (5.5, 1) -- (5, 0.5) -- (f) -- (5, -0.5) -- (5.5, -1) -- (5.5, -1.25);
+                        \draw [line width = 1pt] (5.5, 1) -- (6, 0.5) -- (dg) -- (6, -0.5) -- (5.5, -1); 
+
+                        \node at (7, 0) {$=$};
+
+                        \node at (10.5, 0) {$\partial (f) \star g + (-1) ^{|f|}f \star \partial (g)$};
+
+                    \end{tikzpicture}
+                \end{center}
+
+            \end{proof}
+
         \subsection{Twisting Morphisms}
 
+            In this subsection we will define twisting morphisms from coalgebras to algebras. They are of importance as the bifunctor $Tw(C,A)$ is represented in both arguments. To understand the elements of $Tw$ we start this section be reviewing the Maurer-Cartan equation.
+
+            Suppose that $C$ is a dg-coalgebra and $A$ is a dg-algebra. We say that a morphism $\alpha\in Hom_\mathbb{K}^*(C,A)$ is twisting if it is of degree $-1$ and satisfies the Maurer-Cartan equation:
+            \begin{align*}
+                \partial\alpha + \alpha\star\alpha = 0\text{.}
+            \end{align*}
+            We say that $\alpha$ is an element of $Tw(C,A)\subset Hom_\mathbb{K}^{-1}(C,A)\subset Hom_\mathbb{K}^*(C,A)$. In light of proposition \ref{prop: convolution to endomorphism}, every morphism between coalgebras and algebras extend to a unique (co)derivation on the tensor product $C\otimes_\mathbb{K}A$. Let $d_\alpha^r$ denote this unique morphism. In the case of dg-coalgebras and dg-algebras we perturbate the total differential on the tensor with $d_\alpha^r$, as in proposition \ref{prop: free-derivation}. We call this derivation for the perturbated derivative.
+            \begin{align*}
+                d_\alpha^\bullet = d_{C\otimes_\mathbb{K}A}^\bullet + d_\alpha^r = d_C^\bullet\otimes id_A + id_C\otimes d_A^\bullet + d_\alpha^r
+            \end{align*}
+            \begin{proposition}\label{prop: twisted-differential}
+                Suppose that $C$ is a dg-coalgebra and $A$ is a dg-algebra, and $\alpha\in Hom_\mathbb{K}^*(C,A)$. The perturbated derivation satisfies the following relation.
+                \begin{align*}
+                    {d^\bullet_\alpha}^2 = d^r_{\partial \alpha + \alpha\star\alpha}
+                \end{align*}
+                Moreover, a morphism is twisting if and only if the perturbated derivative is a differential.
+            \end{proposition}
+
+            \begin{proof}
+                ${d^\bullet_\alpha}^2 = d_{C\otimes_\mathbb{K}A}^\bullet \circ d_\alpha^r + d_\alpha^r \circ d_{C\otimes_\mathbb{K}A}^\bullet + {d_\alpha^r}^2$. By proposition \ref{prop: convolution to endomorphism} $d_?^r$ is an algebra homomorphism from the convolution algebra to the endomorphism algebra, thus ${d_\alpha^r}^2 = d_{\alpha\star\alpha}^r$.
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$d_{C\otimes_\mathbb{K} A}^\bullet\circ d_\alpha^r=$};
+                        
+                        \node[diff, scale = 0.75] (dc1) at (2.25,0) {};
+                        \node[op, scale = 0.75] (f1) at (3.25, 0) {$f$};
+
+                        \draw [line width = 1pt] (2.75, 1.75) -- (2.75, 1.5) -- (2.25, 1) -- (dc1) -- (2.25, -1.75);
+                        \draw [line width = 1pt] (2.75, 1.5) -- (3.25, 1) -- (f1) -- (3.25, -1) -- (3.75, -1.5) -- (3.75, -1.75);
+                        \draw [line width = 1pt] (4.25, 1.75) -- (4.25, -1) -- (3.75, -1.5);
+
+                        \node at (4.75, 0) {$+$};
+
+                        \node[op, scale = 0.75] (f2) at (6.25, 0.5) {$f$};
+                        \node[diff, scale = 0.75] (da1) at (6.25, -0.5) {};
+
+                        \draw [line width = 1pt] (5.75, 1.75) -- (5.75, 1.5) -- (5.25, 1) -- (5.25, -1.75);
+                        \draw [line width = 1pt] (5.75, 1.5) -- (6.25, 1) -- (f2) -- (da1) -- (6.25, -1) -- (6.75, -1.5) -- (6.75, -1.75);
+                        \draw [line width = 1pt] (7.25, 1.75) -- (7.25, -1) -- (6.75, -1.5);
+
+                        \node at (7.75, 0) {$-$};
+
+                        \node[op, scale = 0.75] (f3) at (9.25, 0) {$f$};
+                        \node[diff, scale = 0.75] (da2) at (10.25, 0) {};
+
+                        \draw [line width = 1pt] (8.75, 1.75) -- (8.75, 1.5) -- (8.25, 1) -- (8.25, -1.75);
+                        \draw [line width = 1pt] (8.75, 1.5) -- (9.25, 1) -- (f3) -- (9.25, -1) -- (9.75, -1.5) -- (9.75, -1.75);
+                        \draw [line width = 1pt] (10.25, 1.75) -- (da2) -- (10.25, -1) -- (9.75, -1.5);
+
+                    \end{tikzpicture}
+                \end{center}
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (0,0) {$d_\alpha^r\circ d_{C\otimes_\mathbb{K} A}^\bullet=-$};
+                        
+                        \node[diff, scale = 0.75] (dc1) at (2.25,0) {};
+                        \node[op, scale = 0.75] (f1) at (3.25, 0) {$f$};
+
+                        \draw [line width = 1pt] (2.75, 1.75) -- (2.75, 1.5) -- (2.25, 1) -- (dc1) -- (2.25, -1.75);
+                        \draw [line width = 1pt] (2.75, 1.5) -- (3.25, 1) -- (f1) -- (3.25, -1) -- (3.75, -1.5) -- (3.75, -1.75);
+                        \draw [line width = 1pt] (4.25, 1.75) -- (4.25, -1) -- (3.75, -1.5);
+
+                        \node at (4.75, 0) {$+$};
+
+                        \node[op, scale = 0.75] (f2) at (6.25, -0.5) {$f$};
+                        \node[diff, scale = 0.75] (da1) at (6.25, 0.5) {};
+
+                        \draw [line width = 1pt] (5.75, 1.75) -- (5.75, 1.5) -- (5.25, 1) -- (5.25, -1.75);
+                        \draw [line width = 1pt] (5.75, 1.5) -- (6.25, 1) -- (da1) -- (f2) -- (6.25, -1) -- (6.75, -1.5) -- (6.75, -1.75);
+                        \draw [line width = 1pt] (7.25, 1.75) -- (7.25, -1) -- (6.75, -1.5);
+
+                        \node at (7.75, 0) {$+$};
+
+                        \node[op, scale = 0.75] (f3) at (9.25, 0) {$f$};
+                        \node[diff, scale = 0.75] (da2) at (10.25, 0) {};
+
+                        \draw [line width = 1pt] (8.75, 1.75) -- (8.75, 1.5) -- (8.25, 1) -- (8.25, -1.75);
+                        \draw [line width = 1pt] (8.75, 1.5) -- (9.25, 1) -- (f3) -- (9.25, -1) -- (9.75, -1.5) -- (9.75, -1.75);
+                        \draw [line width = 1pt] (10.25, 1.75) -- (da2) -- (10.25, -1) -- (9.75, -1.5);
+
+                    \end{tikzpicture}
+                \end{center}
+
+                By summing the above terms we get 
+                \begin{align*}
+                    d_{C\otimes_\mathbb{K}A}^\bullet\circ d_\alpha^r + d_\alpha^r\circ d_{C\otimes_\mathbb{K} A}^\bullet = d_{d_C^\bullet\circ\alpha + \alpha\circ d_A^\bullet}^r = d_{\partial\alpha}^r\text{,}
+                \end{align*}
+                to obtain the result.
+                \begin{align*}
+                    {d_\alpha^\bullet}^2 = d_{C\otimes_\mathbb{K}A}^\bullet \circ d_\alpha^r + d_\alpha^r \circ d_{C\otimes_\mathbb{Kwe}A}^\bullet + {d\alpha^r}^2 = d_{\partial \alpha}^r + d_{\alpha\star\alpha}^r = d_{\partial \alpha + \alpha\star\alpha}
+                \end{align*}
+            \end{proof}
+
+            \begin{corollary}
+                If $\alpha:C\rightarrow A$ is a twisting morphism, then $(C\otimes_\mathbb{K}A, d_\alpha^\bullet)$ is a chain complex. It is called the right twisted tensor product and is denoted as $C\otimes_\alpha A$.
+            \end{corollary}
+
+            Normally $A\otimes C$ and $C\otimes A$ are isomorphic as modules. In general, it is not true that $C\otimes_\alpha A$ and $A\otimes\alpha C$ are isomorphic, since we choose a particular side to perform the twisting. However, if $A$ is commutative and $C$ is cocommutative then they are isomorphic. To illustrate we realize the unique derivation above as a right derivative. The left derivative $d_\alpha^l$ is then defined analogously.
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                    \node at (0, 0) {$d_\alpha^l =$};
+
+                    \node[op, scale = 0.75] (a) at (2, 0) {$\alpha$};
+
+                    \draw [line width = 1pt] (1, 1.25) -- (1, -0.5) -- (1.5, -1) -- (1.5, -1.25);
+                    \draw [line width = 1pt] (2.5, 1.25) -- (2.5, 1) -- (2, 0.5) -- (a) -- (2, -0.5) -- (1.5, -1) -- (1.5, -1.25);
+                    \draw [line width = 1pt] (2.5, 1) -- (3, 0.5) -- (3, -1.25);
+                    
+                \end{tikzpicture}
+            \end{center}
+
+            \begin{remark}
+                Functoriality of $\otimes_\alpha$ is obtained from the category of elements. I propose that there is an equivalence of categories, that is:
+                \begin{align*}
+                    \int_{(C,A)} Tw(C,A) \simeq \text{right twisted tensors.}
+                \end{align*}
+            \end{remark}
+
+        \subsection{Bar and Cobar Construction}
+
+            In this section we will construct the representation functors for the restricted bifunctor $Tw:ConilCoAlg_\mathbb{K}^\bullet\times AugAlg_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}$. This is what is known as the bar and cobar constructions of algebras.
+
+            The bar construction is a functor from augmented algebras to conilpotent dg-coalgebras. Let $A$ be an augmented algebra, then we may regard $\bar{A}$ as a graded augmented algebra where every summand is of degree $0$. Notice that $\bar{A}[1]$ is the same graded module, but concentrated in degree $1$ instead. The multiplication is transformed into a morphism $\nabla_A[1]:\bar{A}[1]^{\otimes 2}\rightarrow \bar{A}[1]$ which is of degree $-1$.
+
+            The bar complex of $A$ is the cofree tensor coalgebra $BA = T^c(\bar{A}[1])$. We know from proposition \ref{prop: conilpotent-tensor} that this algebra is conilpotent. Let $p:T^c(\bar{A}[1])\rightarrow \bar{A}[1]^{\otimes 2}$ be the projection morphism. Since $T^c(\bar{A}[1])$ is a $T^c(\bar{A}[1])$-bicomodule, proposition \ref{prop: tensor-derivation} gives us a unique coderivation of degree $-1$ which coincides with $\nabla_A[1]\circ p$, call it $d_2:BA\rightarrow BA$.
+            
+            \begin{proposition}
+                Let $A$ be an augmented algebra, then $(BA, d_2)$ is a conilpotent dg-coalgebra.
+            \end{proposition}
+
+            \begin{proof}
+                We will prove the dual case later.
+            \end{proof}
+
+            $BA$ obtains a grading from $d_2$, we will call this the cofree grading. Observe that the bar complex is the same as the Hochschild complex of $A$.
+
+            If $(A, d_A^\bullet)$ is a dg-algebra, then $A$ already has a grading. We will call this grading for the homological grading. Recall that $A$ induces a differential on the tensor $A^{\otimes n}$ by $d_{A^{\otimes n}}^\bullet = \sum_{i=1}^n id_A\otimes ... \otimes d_A^\bullet \otimes ... \otimes id_A$, which preserves the homological degree. We may define $d_1 : BA \rightarrow BA$ as the extension of $d_A^\bullet$ to $BA$. To turn $d_1$ into a morphism of degree $-1$ we give $BA$ a new grading. The total grading of $BA$ is the sum of the cofree grading and the homological grading. With this grading both $d_1$ and $d_2$ are homogenous of degree $-1$. The total differential is given by $d_{BA}^\bullet = d_1 + d_2$.
+
+            \begin{proposition}
+                $(BA, d_{BA}^\bullet)$ is a conilpotent dg-coalgebra.
+            \end{proposition}
+
+            \begin{proof}
+                It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$.
+
+                \begin{multline*}
+                    d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_A^\bullet[1](a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
+                \end{multline*}
+                \begin{multline*}
+                    d_2\circ d_1 (a_1\otimes a_2) = d_2\circ (d_A^\bullet[1]\otimes id_{A[1]} + id_{A[1]}\otimes d_A^\bullet[1]) (a_1\otimes a_2) \\ = -d_2 \circ (d_A^\bullet(a_1)\otimes a_2 + (-1)^{|a_1|+1}a_1\otimes d_A^\bullet(a_2)) \\ = (-1)^{|d_A^\bullet(a_1)|+1}d_A^\bullet(a_1)a_2 + (-1)^{2|a_1|+2}a_1d_A^\bullet d_A^\bullet(a_2) \\ = (-1)^{|a_1|}d_A^\bullet(a_1)a_2 + a_1d_A^\bullet (a_2) = -d_1\circ d_2 (a_1\otimes a_2)
+                \end{multline*}
+            \end{proof}
+
+            On the other hand, the cobar construction is a functor from conilpotent coalgebras to dg-algebras. Let $C$ be a conilpotent coalgebra, we regard it as a graded coalgebra concentrated in degree $0$. In the same manner $\bar{C}[-1]$ is a graded coalgebra of degree $-1$. Thus $\bar{C}[-1]^{\otimes 2}$ is of degree $-2$ and the map $\bar{\Delta_C}[-1]$ is of degree $-1$. 
+
+            The cobar complex of $C$ is the free tensor algebra $\Omega C = T(\bar{C}[-1])$. Let $i:C[-1]^{\otimes 2}\rightarrow T(C[-1])$ be the inclusion morphism. By proposition \ref{prop: tensor-derivation} there is a unique derivation of degree $-1$ which coincides with $\bar{\Delta_C}[-1]$, call it $d_2: \Omega C\rightarrow \Omega C$.
+
+            \begin{proposition}
+                Let $C$ be a conilpotent coalgebra, then $(\Omega C, d_2)$ is an augmented dg-algebra.
+            \end{proposition}
+
+            \begin{proof}
+                
+            \end{proof}
+
+            Likewise, if $C$ is a dg-coalgebra then it already has a grading. Define the total grading on $\Omega C$ to be the sum of the gradings. $d_C^\bullet$ induces a differential on the tensor
 
     \section{Strongly Homotopy Associative Algebras, Coalgebras and Twisting Morphisms}
 
