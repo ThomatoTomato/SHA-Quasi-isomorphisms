@@ -1206,19 +1206,137 @@
 
         \subsection{Bar and Cobar Construction}
 
-            In this section we will construct the representation functors for the restricted bifunctor $Tw:ConilCoAlg_\mathbb{K}^\bullet\times AugAlg_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}$. This is what is known as the bar and cobar constructions of algebras.
+            The bar and cobar construction has been subjected to abstraction many times since its creation (Reference here!). The bar construction was made by MacLane and Moore in the 50s (Reference here!). It's dual, the cobar construction was made by Adams (reference here! Jeg har kildene på lesesal, lover) to complement their work. We will mainly follow the work of \cite{Loday12} to obtain the bar and cobar construction. The approach which we are going to take is slightly inspired by MacLanes\cite{MacLane71} canonical resolutions of comonads.
 
-            The bar construction is a functor from augmented algebras to conilpotent dg-coalgebras. Let $A$ be an augmented algebra, then we may regard $\bar{A}$ as a graded augmented algebra where every summand is of degree $0$. Notice that $\bar{A}[1]$ is the same graded module, but concentrated in degree $1$ instead. The multiplication is transformed into a morphism $\nabla_A[1]:\bar{A}[1]^{\otimes 2}\rightarrow \bar{A}[1]$ which is of degree $-1$.
+            For our purposes, the bar construction of an augmented algebra is a simplicial resoulution with the cofree coalgebra structure. For a dg-algebra, we will realize this resoultion as the total complex of its resoultion. Dually, the cobar construction of a conilpotent coalgebra is a cosimplicial resolution with the free algebra structure. We will see that these constructions defines an adjoint pair of functors.
 
-            The bar complex of $A$ is the cofree tensor coalgebra $BA = T^c(\bar{A}[1])$. We know from proposition \ref{prop: conilpotent-tensor} that this algebra is conilpotent. Let $p:T^c(\bar{A}[1])\rightarrow \bar{A}[1]^{\otimes 2}$ be the projection morphism. Since $T^c(\bar{A}[1])$ is a $T^c(\bar{A}[1])$-bicomodule, proposition \ref{prop: tensor-derivation} gives us a unique coderivation of degree $-1$ which coincides with $\nabla_A[1]\circ p$, call it $d_2:BA\rightarrow BA$.
+            \begin{definition}
+                The simplex category $\Delta$ consists of ordered sets $[0] = \emptyset$ and $[n] = \startset{1,...,n}$ for any $n\in\mathbb{N}$. A morphism is a monotone function between the sets.
+
+                $\Delta^+$ is the full subcategory of $\Delta$ where $n>0$. $\Delta_+$ is the wide subcategory of $\Delta$ with only injective functions.
+            \end{definition} 
+
+            The simplex category comes equipped with coface and codegeneracy morphisms. The coface maps are the injective morphisms $\delta_i : [n] \rightarrow [n+1]$, and the codegeneracy maps are the surjective morphisms $\sigma_i: [n] \rightarrow [n-1]$.
+            \begin{align*}
+                \delta_i(k) = \biggl\{\substack{k\text{, if }k<i \\ k+1\text{, otherwise}} \qquad
+                \sigma_i(k) = \biggl\{\substack{k\text{, if }k\leq i \\ k-1\text{, otherwise}}
+            \end{align*}
+
+            Every morphism in $\Delta$ may be realized as a composition of coface and codegeneracy maps, see \cite{MacLane71}. Furthermore, these maps are characterized by some identites, called the cosimplicial identites. 
+            \begin{align*}
+                1.&\ \delta_j\delta_i = \delta_i\delta_{j-1} \text{, if }i<j \\
+                2.&\ \sigma_j\delta_i = \delta_i\sigma_{j-1} \text{, if }i<j \\
+                3.&\ \sigma_j\delta_i = id \text{, if }i=j\text{ or }i=j+1 \\
+                4.&\ \sigma_j\delta_i = \delta_{i-1}\sigma_j \text{, if }i>j+1 \\
+                5.&\ \sigma_j\sigma_i = \sigma_i\sigma_{j+1} \text{, if }i\leq j
+            \end{align*}
+            We may arrange the arrows of the simplex category in the following way:
+            \begin{center}
+                \begin{tikzcd}
+                    {[}0{]} \ar[]{r}[]{} & {[}1{]} \ar[yshift = 0.5ex]{r}[]{\delta_i} \ar[yshift = -0.5ex]{r}[]{} & {[}2{]} \ar[yshift = 0.75ex]{r}[]{\delta_i} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[]{} & {[}3{]} \ar[yshift = 1ex]{r}[]{\delta_i} \ar[yshift = 0.33ex]{r}[]{} \ar[yshift = -0.33ex]{r}[]{} \ar[yshift = -1ex]{r}[]{} & ...
+                \end{tikzcd}
+
+                \begin{tikzcd}
+                    {[}0{]} & {[}1{]} & {[}2{]} \ar[]{l}[above]{\sigma_1} & {[}3{]} \ar[yshift = 0.5ex]{l}[above]{\sigma_i} \ar[yshift = -0.5ex]{l}[]{} & ... \ar[yshift = 0.75ex]{l}[above]{\sigma_i} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{}
+                \end{tikzcd}
+            \end{center}
+
+            Let $\mathcal{C}$ be a category. A simplicial object in $\mathcal{C}$ is a functor $S:(\Delta^+)^{op}\rightarrow \mathcal{C}$. It may be viewed as a collection of objects $\startset{S_n}_{n\in\mathbb{N}^+}$ together with face maps $d^i:S_n\rightarrow S_{n-1}$ and degeneracy maps $s^i:S_n \rightarrow S_{n+1}$ satisfying the simplicial identities. An augmented simplicial object is a functor $S:\Delta^{op}\rightarrow \mathcal{C}$. The restricted functor $S^+:(\Delta^+)^{op}\rightarrow \mathcal{C}$ is the augmentation ideal of $S$. An augmented semi-simplicial object is a functor $S:(\Delta_+)^{op}\rightarrow \mathcal{C}$. Dually, a cosimplicial object is a functor $S:\Delta^+\rightarrow \mathcal{C}$, it may be regarded as a sequence of objects with coface and codegeneracy maps satisfying the cosimplicial identities.
+            
+            Let $\mathcal{A}$ be an abelian category. To each semi-simplical object $M:(\Delta^+_+)^{op}\rightarrow \mathcal{A}$ there is an associated chain complex $M^\bullet$. Let $M^\bullet = \bigoplus_{i=1}^\infty M[i]$ with differential $d_M^n = \sum_{i=1}^n (-1)^{i-1}d^i$. This differential is well-defined by simplicial identity $1$.
+            \begin{center}
+                \begin{tikzcd}
+                    ... \ar[]{r}[]{} & M_3 \ar[]{r}[]{d^1-d^2+d^3} & M_2 \ar[]{r}[]{d^1-d^2} & M_1 \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+                \end{tikzcd}
+            \end{center}
+
+            A monad is a monoid in the monoidal category of endofunctors. This is a functor $M:\mathcal{C}\rightarrow\mathcal{C}$, with natural transformations $\mu:M^2\implies M$ and $\eta:Id_\mathcal{C}\implies M$ called multiplication and unit. The triple $(M, \mu, \eta)$ is a monad whenever it is a monoid, i.e. multiplication satisfies associativity and unit is the unit of the multiplication. Dually a comonad $W:\mathcal{C}\rightarrow\mathcal{C}$ is a triple $(W, \nu, \varepsilon)$ such that it is a comonoid. 
+
+            \begin{proposition}
+                Suppose that $W:\mathcal{C}\rightarrow\mathcal{C}$ is comonad. The sequence of functors $(W^{n})_\mathbb{N}$ is an augmented simplicial functor with face and degeneracy maps
+                \begin{align*}
+                    d_n^i & = W^i\varepsilon_{W^{n-i}} \\
+                    s_n^i & = W^i\nu_{W^{n-i}}\text{.}
+                \end{align*}
+
+                Suppose that $M:\mathcal{C}\rightarrow\mathcal{C}$ is a monad. The sequence of functors $(M^{n})_\mathbb{N}$ is a coaugmented cosimplicial functor with coface and codegeneracy maps
+                \begin{align*}
+                    d^n_i & = M^i\eta_{M^{n-i}} \\
+                    s^n_i & = M^i\mu_{M^{n-i}}\text{.}
+                \end{align*}
+            \end{proposition}
+
+            \begin{proof}
+                Follows from the universal property of the simplex category, see \cite{MacLane71}.
+            \end{proof}
+
+            Let $W^?:\Delta^{op}\rightarrow\mathcal{C}$ denote the simplical functor. If $C\in\mathcal{C}$ is an object, then there is a simplical object, denoted $W_C^?$. The face and degeneracy maps are obtained by applying $C$, i.e. $(d_n^i)_C$ and $(s_n^i)_C$. Dually, if $M$ is a monad we obtain a cosimplicial object $M_C^?$.
+
+            \begin{definition}
+                Suppose that $\mathcal{A}$ is an abelian category. Let $W:\mathcal{A}\rightarrow\mathcal{A}$ be a comonad and $A$ and object of $\mathcal{A}$. The canonical $W$-projective resolution of $A$ is the chain complex $W^\bullet_A$ together with an augmentation $\varepsilon_A:W^\bullet_A \rightarrow A$.
+
+                Dually, suppose that $M:\mathcal{A}\rightarrow\mathcal{A}$ is a monad. The canonical $M$-injective resolution of A is the chain complex $M_A^\bullet$ together with an augmentation $\eta_A:A\rightarrow MA$.
+            \end{definition}
+
+            \begin{remark}
+                It makes sense to call these canonical resolutions for projective or injective. Whenever the object $A$ is $W$-projective we get that the augmentation is a quasi-isomorphism. See Weibel for more information.
+            \end{remark}
+
+            \begin{lemma}\label{lem: adjoints-make-monads}
+                Suppose that there is an adjoint pair of functors $F: \mathcal{C}\rightleftharpoons\mathcal{D}:G$, where $F$ is left adjoint to $G$. The composite $GF$ is a monad, and $FG$ is a comonad.
+            \end{lemma}
+
+            We will use this lemma to construct the canonical resolution for algebras. One may observe that this is the same as the Hochschild complex.
+
+            \begin{example}
+                Let $A$ be an algebra over the ring $\mathbb{K}$. The functor $A\otimes_\mathbb{K}\_:Mod_\mathbb{K}\rightarrow Mod_A$ is the free $A$-module over a $\mathbb{K}$-module. Let $U:Mod_A\rightarrow Mod_\mathbb{K}$ denote the forgetfull functor. 
+
+                \begin{minipage}[c]{0.3\textwidth}
+                    \begin{center}
+                        \begin{tikzcd}
+                            Mod_\mathbb{K} \ar[phantom]{r}{\top} \ar[bend right]{r}[below]{A\otimes_\mathbb{K}\_} & Mod_A \ar[bend right]{l}[above]{U}
+                        \end{tikzcd}
+                    \end{center}
+                \end{minipage}
+                \begin{minipage}[c]{0.7\textwidth}
+                    The unit of the adjunction is given by adjoining the unit of $A$, $\eta_M(m) = 1_A \otimes m$. The counit is given by the structure morphism of each $A$-module, i.e. $\varepsilon_M:A\otimes_\mathbb{K}M\rightarrow M$ is the algebra action. These morphisms are by definition natural and satisfy the triangle identities.
+                \end{minipage}
+
+                By lemma \ref{lem: adjoints-make-monads} $A\otimes_\mathbb{K}U : Mod_A \rightarrow Mod_A$ is a comonad. $\varepsilon$ is the counit and the comultiplication is given by $A\otimes_\mathbb{K}\eta_U$. If $M$ is an $A$-module we get the canonical free-resolution of $M$ as $A\otimes_\mathbb{K}U_M^\bullet$:
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar[]{r}[]{} & A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{r}[]{\substack{\varepsilon_{A\otimes\mathbb{K}M} \\ -A\otimes_\mathbb{K}\varepsilon_M}} & A\otimes_\mathbb{K}M \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+                    \end{tikzcd}
+                \end{center}
+            \end{example}
+
+            If $A$ is an augmented algebra, then there is an $A$-linear morphism $\varepsilon_\mathbb{K}: A \rightarrow \mathbb{K}$. The augmented canonical free-resolution of $\mathbb{K}$ is the Hochschild complex for $A$, i.e. $A\otimes_\mathbb{K}U_\mathbb{K}^\bullet \rightarrow \mathbb{K}$ is
+            \begin{center}
+                \begin{tikzcd}
+                    ... \ar[]{r}[]{} & A\otimes_\mathbb{K}A \ar[]{r}[]{\substack{\varepsilon_{A} \\ -A\otimes_\mathbb{K}\varepsilon_\mathbb{K}}} & A \ar[]{r}[]{\varepsilon_\mathbb{K}} & \mathbb{K} \ar[]{r}[]{0} & ...
+                \end{tikzcd}
+            \end{center} 
+
+            The bar construction $BA$ is the restriction of the augmented Hochschild complex to the augmentation ideal of $A$. The differential is called $d_2$.
+            \begin{center}
+                \begin{tikzcd}
+                    
+                    ... \ar[]{r}[]{} & \bar{A}^{\otimes 3} \ar[]{r}[]{\substack{\varepsilon_{A\otimes A} \\ -A\otimes_\mathbb{K}\varepsilon_A}} & \bar{A}^{\otimes 2} \ar[]{r}[]{\varepsilon_A} & \bar{A} \ar[]{r}[]{0} & \mathbb{K} \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+                \end{tikzcd}
+            \end{center}
+            
+            We want to realize the bar construction as a conilpotent coalgebra. Notice that as a graded vector space, $BA$ is isomorphic to the cofree tensor coalgebra of the shifted augmentation ideal $T^c(\bar{A}[1])$. The multiplication has an associated morphism $\mu:\bar{A}[1]^{\otimes 2}\rightarrow \bar{A}[1]$ which is of degree $-1$. By Koszul sign rule we are forced to let $\mu(ab) = (-1)^{|a|}\varepsilon_A(ab)$, since $|a| = 0$ we obtain $\mu(ab) = \varepsilon_A(ab)$. 
+
+            By proposition \ref{prop: tensor-derivation}, we know that there is a coderivation $d_2$ defined by extending $\mu$. This map is defined levelvise as 
+            \begin{multline*}
+                d_2^n (a_1...a_n) = \sum_{i=1}^n \mu_{(n)}^{i}(a_1...a_n) \\
+                = \sum_{i=1}^n(-1)^{i-1 + |a_1| + |a_2| + ... + |a_i|}a_1...\mu(a_ia_{i+1})...a_n = \sum_{i=1}^n(-1)^{i-1}a_1...\mu(a_ia_{i+1})...a_n. 
+            \end{multline*}
+            We see that both $d_2$ are the same map, so we obtain the following result.
             
             \begin{proposition}
                 Let $A$ be an augmented algebra, then $(BA, d_2)$ is a conilpotent dg-coalgebra.
             \end{proposition}
-
-            \begin{proof}
-                We will prove the dual case later.
-            \end{proof}
 
             $BA$ obtains a grading from $d_2$, we will call this the cofree grading. Observe that the bar complex is the same as the Hochschild complex of $A$.
 

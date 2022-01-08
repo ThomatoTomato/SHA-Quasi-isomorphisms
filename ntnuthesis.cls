@@ -200,6 +200,9 @@
 \RequirePackage{tikz}
 \RequirePackage{tikz-cd}
 
+% --- Tools --- %
+\RequirePackage{todonotes}
+
 %% CUSTOMISATION
 
 % pgf customs
