@@ -1249,105 +1249,138 @@
                     ... \ar[]{r}[]{} & M_3 \ar[]{r}[]{d^1-d^2+d^3} & M_2 \ar[]{r}[]{d^1-d^2} & M_1 \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
                 \end{tikzcd}
             \end{center}
+            As face maps and degeneracy maps have the same identites, but flipped around, we could also have defined a chain complex by using the degeneracies instead.
 
-            A monad is a monoid in the monoidal category of endofunctors. This is a functor $M:\mathcal{C}\rightarrow\mathcal{C}$, with natural transformations $\mu:M^2\implies M$ and $\eta:Id_\mathcal{C}\implies M$ called multiplication and unit. The triple $(M, \mu, \eta)$ is a monad whenever it is a monoid, i.e. multiplication satisfies associativity and unit is the unit of the multiplication. Dually a comonad $W:\mathcal{C}\rightarrow\mathcal{C}$ is a triple $(W, \nu, \varepsilon)$ such that it is a comonoid. 
+            The simplex category has a universal monoid. Let $+:\Delta\time\Delta\rightarrow\Delta$ be a functor acting on objects and morphisms as:
+            \begin{align*}
+                [m]+[n] = [m+n] \\
+                (f+g)(k) = \biggl\{\substack{f(k)\text{, if }k\leq m \\ g(k)+m\text{, otherwise}}
+            \end{align*}
+            Notice that $[0]+\_\simeq Id_\Delta$, so $(\Delta, +, [0])$ is a monoidal category. Since $[1]$ is terminal in $\Delta$ it becomes a monoid with $\delta_0: [0]\rightarrow [1]$ as unit and $\sigma_1:[2]\rightarrow [1]$ as multiplication. Associativity and unitality is satisfied by uniqueness of morphisms $f:[n]\rightarrow [1]$.
+            \begin{proposition}\label{prop: universal-monoid}
+                Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta\rightarrow \mathcal{C}$, such that $F[1] \simeq C$, $F\delta_0 \simeq \eta$ and $F\sigma_1 \simeq \mu$.
+            \end{proposition} 
 
-            \begin{proposition}
-                Suppose that $W:\mathcal{C}\rightarrow\mathcal{C}$ is comonad. The sequence of functors $(W^{n})_\mathbb{N}$ is an augmented simplicial functor with face and degeneracy maps
-                \begin{align*}
-                    d_n^i & = W^i\varepsilon_{W^{n-i}} \\
-                    s_n^i & = W^i\nu_{W^{n-i}}\text{.}
-                \end{align*}
+            % A monad is a monoid in the monoidal category of endofunctors. This is a functor $M:\mathcal{C}\rightarrow\mathcal{C}$, with natural transformations $\mu:M^2\implies M$ and $\eta:Id_\mathcal{C}\implies M$ called multiplication and unit. The triple $(M, \mu, \eta)$ is a monad whenever it is a monoid, i.e. multiplication satisfies associativity and unit is the unit of the multiplication. Dually a comonad $W:\mathcal{C}\rightarrow\mathcal{C}$ is a triple $(W, \nu, \varepsilon)$ such that it is a comonoid. 
 
-                Suppose that $M:\mathcal{C}\rightarrow\mathcal{C}$ is a monad. The sequence of functors $(M^{n})_\mathbb{N}$ is a coaugmented cosimplicial functor with coface and codegeneracy maps
-                \begin{align*}
-                    d^n_i & = M^i\eta_{M^{n-i}} \\
-                    s^n_i & = M^i\mu_{M^{n-i}}\text{.}
-                \end{align*}
-            \end{proposition}
+            % \begin{proposition}
+            %     Suppose that $W:\mathcal{C}\rightarrow\mathcal{C}$ is comonad. The sequence of functors $(W^{n})_\mathbb{N}$ is an augmented simplicial functor with face and degeneracy maps
+            %     \begin{align*}
+            %         d_n^i & = W^i\varepsilon_{W^{n-i}} \\
+            %         s_n^i & = W^i\nu_{W^{n-i}}\text{.}
+            %     \end{align*}
 
-            \begin{proof}
-                Follows from the universal property of the simplex category, see \cite{MacLane71}.
-            \end{proof}
+            %     Suppose that $M:\mathcal{C}\rightarrow\mathcal{C}$ is a monad. The sequence of functors $(M^{n})_\mathbb{N}$ is a coaugmented cosimplicial functor with coface and codegeneracy maps
+            %     \begin{align*}
+            %         d^n_i & = M^i\eta_{M^{n-i}} \\
+            %         s^n_i & = M^i\mu_{M^{n-i}}\text{.}
+            %     \end{align*}
+            % \end{proposition}
 
-            Let $W^?:\Delta^{op}\rightarrow\mathcal{C}$ denote the simplical functor. If $C\in\mathcal{C}$ is an object, then there is a simplical object, denoted $W_C^?$. The face and degeneracy maps are obtained by applying $C$, i.e. $(d_n^i)_C$ and $(s_n^i)_C$. Dually, if $M$ is a monad we obtain a cosimplicial object $M_C^?$.
+            % \begin{proof}
+            %     Follows from the universal property of the simplex category, see \cite{MacLane71}.
+            % \end{proof}
 
-            \begin{definition}
-                Suppose that $\mathcal{A}$ is an abelian category. Let $W:\mathcal{A}\rightarrow\mathcal{A}$ be a comonad and $A$ and object of $\mathcal{A}$. The canonical $W$-projective resolution of $A$ is the chain complex $W^\bullet_A$ together with an augmentation $\varepsilon_A:W^\bullet_A \rightarrow A$.
+            % Let $W^?:\Delta^{op}\rightarrow\mathcal{C}$ denote the simplical functor. If $C\in\mathcal{C}$ is an object, then there is a simplical object, denoted $W_C^?$. The face and degeneracy maps are obtained by applying $C$, i.e. $(d_n^i)_C$ and $(s_n^i)_C$. Dually, if $M$ is a monad we obtain a cosimplicial object $M_C^?$.
 
-                Dually, suppose that $M:\mathcal{A}\rightarrow\mathcal{A}$ is a monad. The canonical $M$-injective resolution of A is the chain complex $M_A^\bullet$ together with an augmentation $\eta_A:A\rightarrow MA$.
-            \end{definition}
+            % \begin{definition}
+            %     Suppose that $\mathcal{A}$ is an abelian category. Let $W:\mathcal{A}\rightarrow\mathcal{A}$ be a comonad and $A$ and object of $\mathcal{A}$. The canonical $W$-projective resolution of $A$ is the chain complex $W^\bullet_A$ together with an augmentation $\varepsilon_A:W^\bullet_A \rightarrow A$.
 
-            \begin{remark}
-                It makes sense to call these canonical resolutions for projective or injective. Whenever the object $A$ is $W$-projective we get that the augmentation is a quasi-isomorphism. See Weibel for more information.
-            \end{remark}
+            %     Dually, suppose that $M:\mathcal{A}\rightarrow\mathcal{A}$ is a monad. The canonical $M$-injective resolution of A is the chain complex $M_A^\bullet$ together with an augmentation $\eta_A:A\rightarrow MA$.
+            % \end{definition}
 
-            \begin{lemma}\label{lem: adjoints-make-monads}
-                Suppose that there is an adjoint pair of functors $F: \mathcal{C}\rightleftharpoons\mathcal{D}:G$, where $F$ is left adjoint to $G$. The composite $GF$ is a monad, and $FG$ is a comonad.
-            \end{lemma}
+            % \begin{remark}
+            %     It makes sense to call these canonical resolutions for projective or injective. Whenever the object $A$ is $W$-projective we get that the augmentation is a quasi-isomorphism. See Weibel for more information.
+            % \end{remark}
 
-            We will use this lemma to construct the canonical resolution for algebras. One may observe that this is the same as the Hochschild complex.
+            % \begin{lemma}\label{lem: adjoints-make-monads}
+            %     Suppose that there is an adjoint pair of functors $F: \mathcal{C}\rightleftharpoons\mathcal{D}:G$, where $F$ is left adjoint to $G$. The composite $GF$ is a monad, and $FG$ is a comonad.
+            % \end{lemma}
 
-            \begin{example}
-                Let $A$ be an algebra over the ring $\mathbb{K}$. The functor $A\otimes_\mathbb{K}\_:Mod_\mathbb{K}\rightarrow Mod_A$ is the free $A$-module over a $\mathbb{K}$-module. Let $U:Mod_A\rightarrow Mod_\mathbb{K}$ denote the forgetfull functor. 
+            % We will use this lemma to construct the canonical resolution for algebras. One may observe that this is the same as the Hochschild complex.
 
-                \begin{minipage}[c]{0.3\textwidth}
-                    \begin{center}
-                        \begin{tikzcd}
-                            Mod_\mathbb{K} \ar[phantom]{r}{\top} \ar[bend right]{r}[below]{A\otimes_\mathbb{K}\_} & Mod_A \ar[bend right]{l}[above]{U}
-                        \end{tikzcd}
-                    \end{center}
-                \end{minipage}
-                \begin{minipage}[c]{0.7\textwidth}
-                    The unit of the adjunction is given by adjoining the unit of $A$, $\eta_M(m) = 1_A \otimes m$. The counit is given by the structure morphism of each $A$-module, i.e. $\varepsilon_M:A\otimes_\mathbb{K}M\rightarrow M$ is the algebra action. These morphisms are by definition natural and satisfy the triangle identities.
-                \end{minipage}
+            % \begin{example}
+            %     Let $A$ be an algebra over the ring $\mathbb{K}$. The functor $A\otimes_\mathbb{K}\_:Mod_\mathbb{K}\rightarrow Mod_A$ is the free $A$-module over a $\mathbb{K}$-module. Let $U:Mod_A\rightarrow Mod_\mathbb{K}$ denote the forgetfull functor. 
 
-                By lemma \ref{lem: adjoints-make-monads} $A\otimes_\mathbb{K}U : Mod_A \rightarrow Mod_A$ is a comonad. $\varepsilon$ is the counit and the comultiplication is given by $A\otimes_\mathbb{K}\eta_U$. If $M$ is an $A$-module we get the canonical free-resolution of $M$ as $A\otimes_\mathbb{K}U_M^\bullet$:
-                \begin{center}
-                    \begin{tikzcd}
-                        ... \ar[]{r}[]{} & A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{r}[]{\substack{\varepsilon_{A\otimes\mathbb{K}M} \\ -A\otimes_\mathbb{K}\varepsilon_M}} & A\otimes_\mathbb{K}M \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
-                    \end{tikzcd}
-                \end{center}
-            \end{example}
+            %     \begin{minipage}[c]{0.3\textwidth}
+            %         \begin{center}
+            %             \begin{tikzcd}
+            %                 Mod_\mathbb{K} \ar[phantom]{r}{\top} \ar[bend right]{r}[below]{A\otimes_\mathbb{K}\_} & Mod_A \ar[bend right]{l}[above]{U}
+            %             \end{tikzcd}
+            %         \end{center}
+            %     \end{minipage}
+            %     \begin{minipage}[c]{0.7\textwidth}
+            %         The unit of the adjunction is given by adjoining the unit of $A$, $\eta_M(m) = 1_A \otimes m$. The counit is given by the structure morphism of each $A$-module, i.e. $\varepsilon_M:A\otimes_\mathbb{K}M\rightarrow M$ is the algebra action. These morphisms are by definition natural and satisfy the triangle identities.
+            %     \end{minipage}
 
-            If $A$ is an augmented algebra, then there is an $A$-linear morphism $\varepsilon_\mathbb{K}: A \rightarrow \mathbb{K}$. The augmented canonical free-resolution of $\mathbb{K}$ is the Hochschild complex for $A$, i.e. $A\otimes_\mathbb{K}U_\mathbb{K}^\bullet \rightarrow \mathbb{K}$ is
+            %     By lemma \ref{lem: adjoints-make-monads} $A\otimes_\mathbb{K}U : Mod_A \rightarrow Mod_A$ is a comonad. $\varepsilon$ is the counit and the comultiplication is given by $A\otimes_\mathbb{K}\eta_U$. If $M$ is an $A$-module we get the canonical free-resolution of $M$ as $A\otimes_\mathbb{K}U_M^\bullet$:
+            %     \begin{center}
+            %         \begin{tikzcd}
+            %             ... \ar[]{r}[]{} & A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{r}[]{\substack{\varepsilon_{A\otimes\mathbb{K}M} \\ -A\otimes_\mathbb{K}\varepsilon_M}} & A\otimes_\mathbb{K}M \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+            %         \end{tikzcd}
+            %     \end{center}
+            % \end{example}
+
+            An algebra $A$ is a monoid in the monoidal category $(Mod_\mathbb{K}, \otimes_\mathbb{K}, \mathbb{K})$. By proposition \ref{prop: universal-monoid} we may think of $A$ as an augmented cosimplicial object $A:\Delta \rightarrow Mod_\mathbb{K}$. Notice that all of the cosimplical identities follow from associativity and unitality. If $A$ is an augmented algebra, we may instead give it the structure of an augmented simplicial set. Let $d^1_1 = \varepsilon_A$ be the augmentation. We define $d^n_n = A^{\otimes n-1}\otimes\varepsilon_A$ and set $d^i_n = A^{i-1}\otimes \nabla_A \otimes A^{\otimes n-i-1}$. All the degeneracies are set to be the units, i.e. $s^i_n = A^{\otimes i}\otimes \upsilon_A \otimes A^{\otimes n-i-1}$. One may check that this structure defines a simplical object $A:\Delta^{op}\rightarrow Mod_\mathbb{K}$. Observe that the associated chain complex $A^\bullet$ is exactly the Hochschild complex of $A$. We depict the simplicial object as the following diagram:
             \begin{center}
                 \begin{tikzcd}
-                    ... \ar[]{r}[]{} & A\otimes_\mathbb{K}A \ar[]{r}[]{\substack{\varepsilon_{A} \\ -A\otimes_\mathbb{K}\varepsilon_\mathbb{K}}} & A \ar[]{r}[]{\varepsilon_\mathbb{K}} & \mathbb{K} \ar[]{r}[]{0} & ...
+                    \mathbb{K} & A \ar[]{l}[above]{\varepsilon_A} & A^{\otimes 2} \ar[yshift = 0.5ex]{l}[above]{\nabla_A} \ar[yshift = -0.5ex]{l}[]{A\otimes \varepsilon_A} & A^{\otimes 3} \ar[yshift = 0.75ex]{l}[above]{\nabla_A} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{A^{\otimes 2}\otimes \varepsilon_A} & ... \ar[yshift = 1ex]{l}[above]{\nabla_A} \ar[yshift = 0.33ex]{l}[]{} \ar[yshift = -0.33ex]{l}[]{} \ar[yshift = -1ex]{l}[]{A^{\otimes 4}\otimes\varepsilon_A} 
                 \end{tikzcd}
-            \end{center} 
 
-            The bar construction $BA$ is the restriction of the augmented Hochschild complex to the augmentation ideal of $A$. The differential is called $d_2$.
-            \begin{center}
                 \begin{tikzcd}
-                    
-                    ... \ar[]{r}[]{} & \bar{A}^{\otimes 3} \ar[]{r}[]{\substack{\varepsilon_{A\otimes A} \\ -A\otimes_\mathbb{K}\varepsilon_A}} & \bar{A}^{\otimes 2} \ar[]{r}[]{\varepsilon_A} & \bar{A} \ar[]{r}[]{0} & \mathbb{K} \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+                    \mathbb{K} & A \ar[]{r}[]{s^1} & A^{\otimes 2} \ar[yshift = 0.5ex]{r}[]{s^i} \ar[yshift = -0.5ex]{r}[]{} & A^{\otimes 3} \ar[yshift = 0.75ex]{r}[]{s^i} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[]{} & ...
                 \end{tikzcd}
             \end{center}
-            
-            We want to realize the bar construction as a conilpotent coalgebra. Notice that as a graded vector space, $BA$ is isomorphic to the cofree tensor coalgebra of the shifted augmentation ideal $T^c(\bar{A}[1])$. The multiplication has an associated morphism $\mu:\bar{A}[1]^{\otimes 2}\rightarrow \bar{A}[1]$ which is of degree $-1$. By Koszul sign rule we are forced to let $\mu(ab) = (-1)^{|a|}\varepsilon_A(ab)$, since $|a| = 0$ we obtain $\mu(ab) = \varepsilon_A(ab)$. 
 
-            By proposition \ref{prop: tensor-derivation}, we know that there is a coderivation $d_2$ defined by extending $\mu$. This map is defined levelvise as 
-            \begin{multline*}
-                d_2^n (a_1...a_n) = \sum_{i=1}^n \mu_{(n)}^{i}(a_1...a_n) \\
-                = \sum_{i=1}^n(-1)^{i-1 + |a_1| + |a_2| + ... + |a_i|}a_1...\mu(a_ia_{i+1})...a_n = \sum_{i=1}^n(-1)^{i-1}a_1...\mu(a_ia_{i+1})...a_n. 
-            \end{multline*}
-            We see that both $d_2$ are the same map, so we obtain the following result.
-            
+            The augmentation ideal $\bar{A}$ carries a natural semi-simplical structure induced by $A$. By restricting each of the face maps ${\bar{d}}^i = d^i {\mid}_{\bar{A}}:\bar{A}^{\otimes n} \rightarrow \bar{A}^{\otimes n-1}$ we obtain the maps together with the simplical identity 1. This is the non-unital Hochschild complex of $A$. We may depict the semi-simplical object as the following diagram:
+            \begin{center}
+                \begin{tikzcd}
+                    \mathbb{K} & \bar{A} \ar[]{l}[above]{0} & \bar{A}^{\otimes 2} \ar[yshift = 0.5ex]{l}[above]{\nabla_A} \ar[yshift = -0.5ex]{l}[]{0} & \bar{A}^{\otimes 3} \ar[yshift = 0.75ex]{l}[above]{\nabla_A} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{0} & ... \ar[yshift = 1ex]{l}[above]{\nabla_A} \ar[yshift = 0.33ex]{l}[]{} \ar[yshift = -0.33ex]{l}[]{} \ar[yshift = -1ex]{l}[]{0} 
+                \end{tikzcd}
+            \end{center}
+
+            Notice that as graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. We will now instead consider the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Notice that $\nabla_{A[1]}$ is a morphism of degree $-1$. Repeating Koszul sign rule, we may se that associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
+
             \begin{proposition}
-                Let $A$ be an augmented algebra, then $(BA, d_2)$ is a conilpotent dg-coalgebra.
+                The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
+                \begin{align*}
+                    \bar{d}^i = (-1)^{i-1}d^i = (-1)^{i-1}(\nabla_{A[1]})_{(i-1)}^{(n-1)}\text{.}
+                \end{align*}
             \end{proposition}
 
-            $BA$ obtains a grading from $d_2$, we will call this the cofree grading. Observe that the bar complex is the same as the Hochschild complex of $A$.
+            \begin{corollary}
+                The differential $d_{\bar{A}[1]}^\bullet$ is a coderivation for the cofree coalgebra $T^c(\bar{A}[1])$. Thus $(\bar{A}[1]^\bullet, d_{\bar{A}[1]}^\bullet)$ is a dg-coalgebra.
+            \end{corollary}
 
-            If $(A, d_A^\bullet)$ is a dg-algebra, then $A$ already has a grading. We will call this grading for the homological grading. Recall that $A$ induces a differential on the tensor $A^{\otimes n}$ by $d_{A^{\otimes n}}^\bullet = \sum_{i=1}^n id_A\otimes ... \otimes d_A^\bullet \otimes ... \otimes id_A$, which preserves the homological degree. We may define $d_1 : BA \rightarrow BA$ as the extension of $d_A^\bullet$ to $BA$. To turn $d_1$ into a morphism of degree $-1$ we give $BA$ a new grading. The total grading of $BA$ is the sum of the cofree grading and the homological grading. With this grading both $d_1$ and $d_2$ are homogenous of degree $-1$. The total differential is given by $d_{BA}^\bullet = d_1 + d_2$.
+            \begin{proof}
+                The differential is given by the alternating sum of face maps.
+                \begin{align*}
+                    d_{\bar{A}[1]}^n = \sum_{i=1}^n (-1)^{i-1}\bar{d}^i = \sum_{i=1}^n (-1)^{2(i-1)}d^i = \sum_{i=1}^n (\nabla_{A[1]})_{(i-1)}^{(n-1)}
+                \end{align*}
+                By injecting $\bar{A}[1]$ into $T^c(\bar{A}[1])$ we may think of $\nabla_{\bar{A}[1]} : \bar{A}[1]^{\otimes 2} \rightarrow T^c(\bar{A}[1])$ as a morphism into the tensor coalgebra. By using proposition \ref{prop: tensor-derivation}, $\nabla_{\bar{A}[1]}$ extends uniquely into a coderivation:
+                \begin{align*}
+                    d_{\bar{A}[1]}^c = \sum_{n=0}^{\infty}\sum_{i=0}^n(\nabla_{\bar{A}[1]})_{(i)}^{(n)} = d_{\bar{A}[1]}^\bullet\text{.}
+                \end{align*}
+            \end{proof}
+
+            If $(A, d_A^\bullet)$ is an augmented dg-algebra, then $A$ is a simplical object of $Mod_\mathbb{K}^\bullet$. It has an associated chain complex. Taking the alternate sum of face maps gives us a double complex as below. We define the double complex $A^\bullet$ as the associated chain complex to $A$.
+            \begin{center}
+                \begin{tikzcd}
+                    & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \\
+                    ... \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} & (A^{\otimes 2})^{1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & (A^{\otimes 2})^0 \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & (A^{\otimes 2})^{-1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & ... \\
+                    ... \ar[]{r}[below]{d_A^\bullet} & A^{1} \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & A^0 \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & A^{-1} \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & ... \\
+                    ... \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & \mathbb{K} \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & ...
+                \end{tikzcd}
+            \end{center}
+        
+            For simplicity we write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. The total associated chain complex is the total complex for $Tot(A^\bullet)$, denoted $A^\bullet$ if there are no confusion. In the case of the suspended algebra, the signs mess up commutativity of the squares, thus we change the sign of the horizontal differential to $(-1)^n$. We may also define the differential of the total complex simply as the sum of $d_1$ and $d_2$.
 
             \begin{proposition}
-                $(BA, d_{BA}^\bullet)$ is a conilpotent dg-coalgebra.
+                Let $A$ an augmented dg-algebra. The bar complex $BA$ is the total associated chain complex $\bar{A}[1]^\bullet$ of the suspended augmentation ideal $\bar{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
             \end{proposition}
 
             \begin{proof}
-                It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$.
+                    It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$.
 
                 \begin{multline*}
                     d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_A^\bullet[1](a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
@@ -1357,19 +1390,53 @@
                 \end{multline*}
             \end{proof}
 
-            On the other hand, the cobar construction is a functor from conilpotent coalgebras to dg-algebras. Let $C$ be a conilpotent coalgebra, we regard it as a graded coalgebra concentrated in degree $0$. In the same manner $\bar{C}[-1]$ is a graded coalgebra of degree $-1$. Thus $\bar{C}[-1]^{\otimes 2}$ is of degree $-2$ and the map $\bar{\Delta_C}[-1]$ is of degree $-1$. 
+            \begin{remark}
+                For now we don't need to show that $BA$ is a functor. This property follows from $BA$ being the representing object of $Tw(\_,A)$.
+            \end{remark}
 
-            The cobar complex of $C$ is the free tensor algebra $\Omega C = T(\bar{C}[-1])$. Let $i:C[-1]^{\otimes 2}\rightarrow T(C[-1])$ be the inclusion morphism. By proposition \ref{prop: tensor-derivation} there is a unique derivation of degree $-1$ which coincides with $\bar{\Delta_C}[-1]$, call it $d_2: \Omega C\rightarrow \Omega C$.
+            On the other hand, a coalgebra $C$ is a comonoid in $Mod_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid} we may think of it as a simplical object $C:(\Delta)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplical identities follows from coassociativity and counitality. A coaugmented coalgebra $C$ may be given a cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\bar{C}$ is a semi-cosimplical object of $Mod_\mathbb{K}$. Observe that $\bar{C}$ has an associated chain complex like $\bar{A}$, but every arrow goes in the opposite direction.
+
+            \begin{center}
+                \begin{tikzcd}
+                    \mathbb{K} \ar[]{r}[]{\upsilon_C} & C \ar[yshift = 0.5ex]{r}[]{\Delta_C} \ar[yshift = -0.5ex]{r}[below]{A\otimes \upsilon_C} & C^{\otimes 2} \ar[yshift = 0.75ex]{r}[]{\Delta_C} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[below]{C^{\otimes 2}\otimes \upsilon_C} & C^{\otimes 3} \ar[yshift = 1ex]{r}[]{\Delta_C} \ar[yshift = 0.33ex]{r}[]{} \ar[yshift = -0.33ex]{r}[]{} \ar[yshift = -1ex]{r}[below]{C^{\otimes 4}\otimes\upsilon_C} & ... 
+                \end{tikzcd}
+
+                \begin{tikzcd}
+                    \mathbb{K} & C & C^{\otimes 2} \ar[]{l}[above]{s_1} & C^{\otimes 3} \ar[yshift = 0.5ex]{l}[above]{s_i} \ar[yshift = -0.5ex]{l}[]{} & ... \ar[yshift = 0.75ex]{l}[above]{s_i} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{}
+                \end{tikzcd}
+            \end{center}
+            
+            The cobar construction is made from the inverse shifted, or desuspended coalgebra $C[-1]$. We realize it as the free tensor algebra $T(\bar{C}[-1])$, where the comultiplication $\Delta_{\bar{C}[-1]}$ induces a derivation $d_{\bar{C}[-1]}$ by proposition \ref{prop: tensor-derivation}.
+
+            \begin{remark}
+                As we have chosen to define $\nabla_{A[-1]}(a_1\otimes a_2)=(-1)^{|a_1|}a_1a_2$, we are forced by the linear dual to define $\Delta_{C[-1]}(s^{-1}c)=-(-1)^{|c_{(1)}|}s^{-1}c_{(1)}\otimes s^{-1}c_{(2)}$.
+            \end{remark}
 
             \begin{proposition}
-                Let $C$ be a conilpotent coalgebra, then $(\Omega C, d_2)$ is an augmented dg-algebra.
+                Let $C$ be a coaugmented dg-coalgebra. The cobar complex $\Omega C$ is the total associated chain complex $\bar{C}[-1]^\bullet$ of the desuspended coaugmentation quotient $\bar{C}$. $(\Omega C, D_{\Omega C}^\bullet)$ is the free algebra equipped with $d_{\Omega C}^\bullet = d_1 + d_2$ as derivation.
             \end{proposition}
 
-            \begin{proof}
-                
-            \end{proof}
+            We will now see that the bar and cobar construction defines an adjoint pair of functors. Note that since for any conilpotent dg-coalgebra $C$, the object $\Omega C$ represents the functor in the category of augmented algebras. By Yoneda's lemma, the data of morphisms are then defined, so $\Omega$ does truly define a functor.
 
-            Likewise, if $C$ is a dg-coalgebra then it already has a grading. Define the total grading on $\Omega C$ to be the sum of the gradings. $d_C^\bullet$ induces a differential on the tensor
+            \begin{thm}
+                Let $C$ be a conilpotent dg-coalgebra and $A$ an augmented dg-algebra. The functor $Tw(C,A)$ is represented in both arguments, i.e.
+                \begin{align*}
+                    \substack{Aug \\ Alg}^\bullet(\Omega C, A)\simeq Tw(C, A) \simeq\substack{Conil \\ CoAlg}^\bullet(C, BA)\text{.}
+                \end{align*}
+            \end{thm}
+
+            \begin{proof}
+                We will show that $\Omega C$ represents the set of twisting morphisms in the first argument. Showing that $BA$ represents the second argument uses every dual proposition. Thus, it is necessary that $C$ is conilpotent, in order to dualize the arguments.
+
+                Suppose that $f:\Omega C \rightarrow A$ is an augmented dg-algebra homomorphism. $f$ is then a morphism of degree $0$. By freeness, $f$ is uniquely determined by a morphism $f\mid_{\bar{C}[-1]}:\bar{C}\rightarrow \bar{A}$ of degree $0$, which corresponds to a morphism $f':C\rightarrow A$ of degree $-1$. 
+
+                Since $f$ is a morphism of chain complexes it commutes with the differential, i.e. 
+                \begin{align*}
+                    f\circ d_{\Omega C}^\bullet = d_A^\bullet\circ f \\
+                    f\circ (d_1 + d_2) = d_A^\bullet\circ f 
+                \end{align*}
+                This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
+            \end{proof}
 
     \section{Strongly Homotopy Associative Algebras, Coalgebras and Twisting Morphisms}
 
