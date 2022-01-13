@@ -1,25 +1,26 @@
 \documentclass[../thesis.tex]{subfiles}
 
 \begin{document}
-    \section{Algebras, Coalgebras and Twisting Morphisms}
+        A strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
 
-        In this section we will look at a result of associative algebras over a field $\mathbb{K}$. Given a coassociative conilpotent differential graded coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
+
+        In order to understand the bar construction we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
             \begin{equation*}
                 \partial\alpha + \alpha\star\alpha = 0.
             \end{equation*}
-        Let $Tw(C,A)$ be the set of twisting morphisms, then considering it as a functor $Tw : CoAlg_{\mathbb{K}}^{op}\times Alg_{\mathbb{K}} \rightarrow Ab$ we want to show that it is represented in both arguments. Moreover, this representation give rise to an adjoint pair of functors, called the Bar and Cobar construction.
+        Let $Tw(C,A)$ be the set of twisting morphisms, then considering it as a functor $Tw : CoAlg_{\mathbb{K}}^{op}\times Alg_{\mathbb{K}} \rightarrow Ab$ we want to show that it is represented in both arguments. Moreover, these representations give rise to an adjoint pair of functors, called the bar and cobar construction.
 
-            \begin{center}
-                \begin{tikzcd}
-                    \substack{Aug \\ Alg}_{\mathbb{K}}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ CoAlg}_{\mathbb{K}}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
-                \end{tikzcd}
-            \end{center}
+        \begin{center}
+            \begin{tikzcd}
+                \substack{Aug \\ Alg}_{\mathbb{K}}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ CoAlg}_{\mathbb{K}}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
+            \end{tikzcd}
+        \end{center}
 
-        To obtain this result we need to define a twisting morphism. Thus this section will define algebras, coalgebras and convolution algebras before we state the result of the Bar and Cobar construction.
+        
 
-        \subsection{Algebras}
+    \section{Algebras}
 
-            This subsection is a review of associative algebras. We will define unital associative algebras and possibly non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
+            This section is a review of associative algebras. We will define unital associative algebras and possibly non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
 
             \begin{definition}[Algebra]
                 Let $\mathbb{K}$ be a field with unit $1$. An algebra $A$ over $\mathbb{K}$ is a vector space with structure morphisms called multiplication and unit,
@@ -232,8 +233,8 @@
                 Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
             
-        \subsection{Coalgebras}
-            This subsection aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the algebras. Thus we will see that the proper dual concept will be of conilpotent coalgebras. We will see that the cofree coalgebra is conilpotent.
+    \section{Coalgebras}
+            This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the algebras. Thus we will see that the proper dual concept will be of conilpotent coalgebras. We will see that the cofree coalgebra is conilpotent.
 
             \begin{definition}[Coalgebra]
                 Let $\mathbb{K}$ be a field. A coalgebra $C$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called comultiplication and counit,
@@ -473,8 +474,8 @@
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq CoHom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
 
-        \subsection{Derivations and DG-Algebras}
-            In this subsection we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
+    \section{Derivations and DG-Algebras}
+            In this section we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
 
             \begin{definition}[Derivations and Coderivations]
                 Let $M$ be an $A$-bimodule. A $\mathbb{K}$-linear morphism $d:A\rightarrow M$ is called a derivation if $d(ab)=d(a)b+ad(b)$, i.e. electrically:
@@ -718,7 +719,7 @@
                 Dually, $C^{\bullet}$ is a differential graded coalgebra if $C^{\bullet}$ is a graded coalgebra and the differential is a graded coderivation.
             \end{definition}
 
-        \subsection{Convolution Algebras}
+    \section{Convolution Algebras}
 
             Let $C$ be a coalgebra and $A$ an algebra, then if $f,g:C\rightarrow A$ are $\mathbb{K}$-linear morphism we may define $f\star g = \nabla_A(f\otimes g)\Delta_C$. We call the operation $\star$ for convolution.
 
@@ -1080,9 +1081,9 @@
 
             \end{proof}
 
-        \subsection{Twisting Morphisms}
+    \section{Twisting Morphisms}
 
-            In this subsection we will define twisting morphisms from coalgebras to algebras. They are of importance as the bifunctor $Tw(C,A)$ is represented in both arguments. To understand the elements of $Tw$ we start this section be reviewing the Maurer-Cartan equation.
+            In this section we will define twisting morphisms from coalgebras to algebras. They are of importance as the bifunctor $Tw(C,A)$ is represented in both arguments. To understand the elements of $Tw$ we start this section be reviewing the Maurer-Cartan equation.
 
             Suppose that $C$ is a dg-coalgebra and $A$ is a dg-algebra. We say that a morphism $\alpha\in Hom_\mathbb{K}^*(C,A)$ is twisting if it is of degree $-1$ and satisfies the Maurer-Cartan equation:
             \begin{align*}
@@ -1204,7 +1205,7 @@
                 \end{align*}
             \end{remark}
 
-        \subsection{Bar and Cobar Construction}
+    \section{Bar and Cobar Construction}
 
             The bar and cobar construction has been subjected to abstraction many times since its creation (Reference here!). The bar construction was made by MacLane and Moore in the 50s (Reference here!). It's dual, the cobar construction was made by Adams (reference here! Jeg har kildene på lesesal, lover) to complement their work. We will mainly follow the work of \cite{Loday12} to obtain the bar and cobar construction. The approach which we are going to take is slightly inspired by MacLanes\cite{MacLane71} canonical resolutions of comonads.
 
@@ -1348,7 +1349,7 @@
                 \end{align*}
             \end{proposition}
 
-            \begin{corollary}
+            \begin{corollary}\label{cor: a-to-dgc}
                 The differential $d_{\bar{A}[1]}^\bullet$ is a coderivation for the cofree coalgebra $T^c(\bar{A}[1])$. Thus $(\bar{A}[1]^\bullet, d_{\bar{A}[1]}^\bullet)$ is a dg-coalgebra.
             \end{corollary}
 
@@ -1409,7 +1410,7 @@
             The cobar construction is made from the inverse shifted, or desuspended coalgebra $C[-1]$. We realize it as the free tensor algebra $T(\bar{C}[-1])$, where the comultiplication $\Delta_{\bar{C}[-1]}$ induces a derivation $d_{\bar{C}[-1]}$ by proposition \ref{prop: tensor-derivation}.
 
             \begin{remark}
-                As we have chosen to define $\nabla_{A[-1]}(a_1\otimes a_2)=(-1)^{|a_1|}a_1a_2$, we are forced by the linear dual to define $\Delta_{C[-1]}(s^{-1}c)=-(-1)^{|c_{(1)}|}s^{-1}c_{(1)}\otimes s^{-1}c_{(2)}$.
+                As we have chosen to define $\nabla_{A[1]}(a_1\otimes a_2)=(-1)^{|a_1|}a_1a_2$, we are forced by the linear dual to define $\Delta_{C[-1]}(c)=-(-1)^{|c_{(1)}|}c_{(1)}\otimes c_{(2)}$.
             \end{remark}
 
             \begin{proposition}
@@ -1438,11 +1439,20 @@
                 This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
             \end{proof}
 
-    \section{Strongly Homotopy Associative Algebras, Coalgebras and Twisting Morphisms}
+    \section{Strongly Homotopy Associative Algebras and Coalgebras}
+        We have seen from corollary \ref{cor: a-to-dgc} that any algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that $T^c(A[1])$ with coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra. The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
-        \subsection{Sha Algebras}
+        \begin{definition}
+            An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $-1$.
+        \end{definition}
 
-        \subsection{Sha Coalgebras}
+        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $-1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $-1$, we get that $m_n$ is of degree $n-2$.
+        \begin{center}
+            \begin{tikzcd}
+                A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{s^{\otimes n}} & A \\
+                A[1]^{\otimes n} \ar[]{r}[]{\widetilde{m}_n} & A[1] \ar[]{u}[right]{\simeq}[]{s^{-1}}
+            \end{tikzcd}
+        \end{center}
 
-        \subsection{Twisting Sha Morphisms}
+
 \end{document}
