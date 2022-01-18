@@ -562,7 +562,7 @@
 
                 Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. $n_{(k)}^{(i)} = \bar{\omega}^{r^i}_N\bar{\omega}^{l^{k-i}}_N(n)$. The extension of $n$ by $k$ coactions is then the sum over every position $i$, $n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}$. Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
 
-                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes g \otimes \pi$ as a morphism which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
+                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes \pi \circ g \otimes \pi$ as a morphism which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
                 \begin{align*}
                     d_g^c(n) = \sum_{k=0}^\infty \sum_{i=0}^k g_{(k)}^{(i)}(n_{(k)}^{(i)})
                 \end{align*}
@@ -1446,7 +1446,7 @@
             An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $-1$.
         \end{definition}
 
-        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $-1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $-1$, we get that $m_n$ is of degree $n-2$.
+        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $-1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $-1$, we get that $m_n$ is of degree $n-2$.
         \begin{center}
             \begin{tikzcd}
                 A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{s^{\otimes n}} & A \\
@@ -1454,5 +1454,54 @@
             \end{tikzcd}
         \end{center}
 
+        \begin{proposition}\label{prop: A-infinity def}
+            An $A_\infty$-algebra is equivalent to a graded vector space $A$ together with homogenous morphisms $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$. Moreover, the morphism must satisfy the following relations for any $n\geq 1$:
+            \begin{align*}
+                (\text{rel}_n)\qquad \sum_{p+q+r = n}(-1)^{p+qr}m_{p+1+r}\circ (id^{\otimes p}\otimes m_q \otimes id^{\otimes r}) = 0
+            \end{align*}
+        \end{proposition}
 
+        \begin{remark}
+            We make a more convenient notation for $(\text{rel}_n)$, called partial composition $\circ_i$.
+            \begin{align*}
+                & m_{p+1+r} \circ_{p+1} m_q = m_k \circ (id^{\otimes p}\otimes m_q \otimes id^{\otimes r}) \\
+                (\text{rel}_n)\qquad & \sum_{p+q+r = n} (-1)^{p+qr} m_{p+1+r} \circ_{p+1} m_q = 0
+            \end{align*}
+        \end{remark}
+
+        Before starting with the proof we will use a lemma for checking whether a coderivation $m: T^c(A) \rightarrow T^c(A)$ is a differential.
+
+        \begin{lemma}\label{lem: coderivation-is-diff?}
+            Let $m: T^c(A) \rightarrow T^c(A)$ be a coderivation, and denote $m_n = m|_{A^{\otimes n}}$. $m$ is a differential if and only if the following relations are satisfied:
+            \begin{align*}
+                (\text{rel}_n)\qquad & \sum_{p+q+r = n}m_{p+1+r}\circ_{p+1}m_q = 0
+            \end{align*}
+        \end{lemma}
+
+        \begin{proof}
+            By proposition \ref{prop: tensor-derivation} we may write $m = \sum_{n = 0}^\infty \sum_{i = 0}^n m_{(n)}^{(i)}$. By using partial composition, we rewrite its n'th component as:
+            \begin{align*}
+                m_n = \sum_{q=1}^n\sum_{p = 1}^n id^{\otimes (n-q)}\circ_{p} m_q = \sum_{p + q + r = n}id^{\otimes (p+1+r)}\circ_{p+1}m_q
+            \end{align*}
+
+            For $m^2$ we write it's n'th component as $m^2_n$. Observe the following:
+            \begin{align*}
+                & m^2_n = m\circ m_n = m\circ \sum_{p + q + r = n}id^{\otimes (p+1+r)}\circ_{p+1}m_q = \sum_{p + q + r = n}m\circ_{p+1}m_q \\
+                & \pi m^2_n = \pi \sum_{p + q + r = n}m\circ_{p+1}m_q = \sum_{p + q + r = n}m_{p+1+r}\circ_{p+1}m_q
+            \end{align*}
+            Since every coderivation are uniquely determined by $\pi$, its projection onto $A$ we get that $m^2 = 0$ if and only if
+            \begin{align*}
+                \sum_{p+q+r = n}m_{p+1+r}\circ_{p+1}m_q = 0\text{.}
+            \end{align*}
+        \end{proof}
+
+        \begin{proof}[Proof of proposition \ref{prop: A-infinity def}]
+            Let $(A,m)$ be an $A_\infty$-algebra. We denote the n'th component of $m$ as $\widetilde{m}_n$. The n'th components thus define maps $m_n:A^{\otimes n}\rightarrow A$ as $m_n = s^{-1}\widetilde{m}_ns^{\otimes n}$.
+
+            Since $m^2 = 0$, we know by the above lemma that the n'th component of $m^2$ is:
+            \begin{multline*}
+                \sum_{p + q + r = n}\widetilde{m}_{p+1+r}\circ_{p+1}\widetilde{m}_q \\
+                = \sum_{p + q + r = n}sm_{p+1+r}s^{-\otimes (p+1+r)}\circ_{p+1}sm_qs^{-\otimes q} = \sum_{p + q + r = n}(-1)^{pq+r}sm_{p+1+r}\circ_{p+1}m_q s^{-\otimes n} = 0
+            \end{multline*}
+        \end{proof}
 \end{document}
