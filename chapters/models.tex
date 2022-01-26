@@ -1,0 +1,44 @@
+\documentclass[../thesis.tex]{subfiles}
+
+\begin{document}    
+
+    Quillen envisioned a more general approach to homotopy theory, which he dubbed homotopical algebra. A homotopy theory was then enclosed by the structure of a model category, then a closed model category. Many of the results from classical homotopy theory was then recovered in this new setting of model categories. The theorem which we are concerned about is Whiteheads theorem:
+
+    \begin{thm}[Whiteheads Theorem]
+        Let $X$ and $Y$ be two CW-complexes. If $f:X\rightarrow Y$ is a weak equivalence, then it is also a homotopy equivalence. I.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
+    \end{thm}
+
+    If we employ Quillens model category onto the category Top, we get that a space $X$ is bifibrant if and only if it is a CW-complex. The natural generalization is then to not ask of $X$ to be a CW-complex, but a bifibrant object.
+
+    \begin{thm}[Generalized Whiteheads Theorem]
+        Let $\mathcal{C}$ be a model category. Suppose that $X$ and $Y$ are bifibrant objects of $\mathcal{C}$, and that there is a weak-equivalence $f:X\rightarrow Y$. Then $f$ is also a homotopy equivalence, i.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
+    \end{thm}
+
+    The category of differential graded (co)algebras employs such a model category. Here we let the weak-equivalences be quasi-isomorphisms. Moreover, in this case the bar and cobar construction is a Quillen equivalence between the model structures. As we will see, a dg-coalgebra will be bifibrant exactly when it is an $A_\infty$-algebra. Thus, by Whiteheads theorem, quasi-isomorphisms lift to homotopy equivalences. In this case the derived category of $A_\infty$-algebras is equivalent to the homotopy category of $A_\infty$-algebras.
+
+    We will conclude this section by looking at the category of algebras as a subcategory of $A_\infty$-algebras. The derived category may then be expressed as the homotopy category $A_\infty$-algebras, restricted to algebras.
+
+    \section{Model categories}
+
+        In this section we will define Quillens model category. As one may see is that in practice there are a plethora of semantically different definitions of model categories, however they are all made to be equivalent. The difference comes down to preference. In this thesis we will use the definitions as they are developed in Mark Hoveys book \todo{reference here}. We will then go on to prove the basic results known about model categories, its associated homotopy category and Quillen functors between model categories.
+
+        Before we state the definition of a model category we need some preliminary definitions. For this section, let $\mathcal{C}$ be a category.
+
+        \begin{definition}[Retract]
+            A morphism $f:A\rightarrow B$ in $\mathcal{C}$ is a retract of a morphism $g: c\rightarrow D$ if it fits in a commutative diagram:
+            \begin{center}
+                \begin{tikzcd}
+                    A \ar[]{d}[]{f} \ar[]{r}[]{} \ar[bend left]{rr}[]{id_A}& C \ar[]{d}[]{g} \ar[]{r}[]{} & A \ar[]{d}[]{f} \\
+                    B \ar[]{r}[]{} \ar[bend right]{rr}[below]{id_B} & D \ar[]{r}[]{} & B
+                \end{tikzcd}
+            \end{center}
+        \end{definition}
+
+        \begin{definition}[Functorial factorization]
+            
+        \end{definition}
+
+    \section{A Model structure on DG-Algebras}
+
+    \section{The Adjoint Lifted Model Structure on DG-Coalgebras and SHA-Algebras}
+\end{document}
