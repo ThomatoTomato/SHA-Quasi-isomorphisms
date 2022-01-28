@@ -35,8 +35,135 @@
         \end{definition}
 
         \begin{definition}[Functorial factorization]
-            
+            A pair of functors $\alpha, \beta: \mathcal{C}^\rightarrow\rightarrow\mathcal{C}^\rightarrow$ is called a functorial factorization if for any morphism $f = \beta(f)\circ\alpha(f)$. We will denote the morphisms in the factorization as $f_\alpha$ and $f_\beta$. The functorial factorization may be depicted by the following commutative diagram:
+            \begin{center}
+                \begin{tikzcd}
+                    A \ar[]{rr}[]{f} \ar[]{rd}[below]{f_\alpha} & & B \\
+                    & C \ar[]{ru}[below]{f_\beta}
+                \end{tikzcd}
+            \end{center}
         \end{definition}
+
+        \begin{definition}[Lifting properties]
+            Suppose that the morphisms $i: A \rightarrow B$ and $p: C \rightarrow D$ fits inside a commutative square. $i$ is said to have the left lifting property with resptect to $p$, or $p$ has the right lifting property with respect to $i$, if there is an $h : B \rightarrow C$ such that the two triangles commute.
+            \begin{center}
+                \begin{tikzcd}
+                    A \ar[]{r}[]{} \ar[]{d}[]{i} & C \ar[]{d}[]{p} \\
+                    B \ar[]{r}[]{} \ar[dashed]{ru}[]{h} & D
+                \end{tikzcd}
+            \end{center}
+        \end{definition}
+
+        \begin{remark}
+            We will call the left lifting property for LLP and the right lifting property for RLP.
+        \end{remark}
+
+        \subsection{Model categories}
+
+            \begin{definition}[Model category]
+                Let $\mathcal{C}$ be a bicomplete category, i.e. has every small limit and colimit. $\mathcal{C}$ admits a model structure if there are three wide subcategories each defining a class of morphisms:
+                \begin{itemize}
+                    \item $Ac\subset Mor(\mathcal{C})$ are called weak equivalences
+                    \item $Cof\subset Mor(\mathcal{C})$ are called cofibrations
+                    \item $Fib\subset Mor(\mathcal{C})$ are called fibrations
+                \end{itemize}
+                In addition we call morphisms in $Cof\cap Ac$ for acyclic cofibrations and $Fib\cap Ac$ for acyclic fibrations. Moreover, $\mathcal{C}$ has two functorial factorizations $(\alpha, \beta)$ and $(\gamma, \delta)$. The following axioms should be satisfied:
+                \begin{itemize}
+                    \item[\textbf{MC1}] The class of weak equivalences satisfy the $2$-out-of-$3$ property, i.e. if $f$ and $g$ are composable morphisms such that $2$ out of $f$, $g$ and $gf$ are weak equivalences, then so is the third.
+                    \item[\textbf{MC2}] The three classes $Ac$, $Cof$ and $Fib$ are retraction closed, i.e. if $f$ is a retraction of $g$, and $g$ is either a weak-equivalence, cofibration or fibration, then so is $f$.
+                    \item[\textbf{MC3}] The class of cofibrations have the left lifting property with respect to acyclic fibrations, and fibrations have the right lifting property with respect to acyclic cofibrations.
+                    \item[\textbf{MC4}] Given any morphism $f$, $f_\alpha$ is a cofibration, $f_\beta$ is an acyclic fibration, $f_\gamma$ is an acyclic cofibration and $f_\delta$ is a fibration.      
+                \end{itemize}
+            \end{definition}
+
+            A model category $\mathcal{C}$ is now defined to be a category equipped with a particular model structure. Notice that a category may admit several model structures. We will postpone examples until sufficient theory have been developed. For more topological examples, we refer to Dwayer-Spalinski and Hovey.
+
+            An interesting and a not so non-trivial property of model categories is that giving all three classes $Ac$, $Cof$ and $Fib$ is redundant. Given the class of weak equivalences and either cofibrations or fibrations, the model structure is determined. Thus the classes of fibrations are determined by acyclic cofibrations and cofibrations are determined by fibrations. The next two results will show this.
+
+            \begin{lemma}[The retract argument]\label{lem: retract-argument}
+                Let $\mathcal{C}$ be a category. Suppose there is a factorization $f = pi$ and that $f$ has LLP with respect to $p$, then $f$ is a retract of $i$. Dually, if $f$ har RLP to $i$, then it is a retract of $p$.
+            \end{lemma}
+
+            \begin{proof}
+                We assume that $f : A \rightarrow C$ has LLP with respect to $p : B \rightarrow C$. Then we may find a lift $r : C \rightarrow B$, which realize $f$ as a retract of $i$.
+                
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{d}[]{f} \ar[]{r}[]{i} & B \ar[]{d}[]{p} \\
+                        C \ar[equal]{r}[]{} \ar[dashed]{ru}[]{r} & C
+                    \end{tikzcd} $\implies$
+                    \begin{tikzcd}
+                        A \ar[equal]{r}[]{} \ar[]{d}[]{f} & A \ar[equal]{r}[]{} \ar[]{d}[]{i} & A \ar[]{d}[]{f} \\
+                        C \ar[]{r}[]{r} & B \ar[]{r}[]{p} & C
+                    \end{tikzcd}
+                \end{center}
+            \end{proof}
+
+            \begin{proposition}
+                Let $\mathcal{C}$ be a model category. A morphism $f$ is a cofibration (acyclic cofibration) if and only if $f$ has LLP with respect acyclic fibrations (fibrations). Dually, $f$ is a fibration (acyclic fibration) if and only if it has RLP with respect to acyclic cofibrations (cofibrations).
+            \end{proposition}
+
+            \begin{proof}
+            Assume that $f$ is a cofibration. By MC3, we know that $f$ has LLP with respect to acyclic fibrations. Assume instead that $f$ has LLP with respect to ever acyclic fibration. By MC4 we factor $f = f_\alpha\circ f_\beta$, where $f_\alpha$ is a cofibration and $f_\beta$ is an acyclic fibration. Since we assume $f$ to have LLP with respect to $f_\beta$, by lemma \ref{lem: retract-argument} we know that $f$ is a retract of $f_\alpha$. Thus by MC2, we know that $f$ is a cofibration. 
+            \end{proof}
+
+            \begin{corollary}\label{cor: stable-cofib-base-change}
+                Let $\mathcal{C}$ be a model category. Cofibrations are stable under pushouts, i.e. if $f$ is a cofibration, then $f'$ is a cofibration.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{} \ar[]{d}[]{f} \ar[phantom]{rd}[near end]{\lrcorner} & C \ar[]{d}[]{f'} \\
+                        B \ar[]{r}[]{} & D
+                    \end{tikzcd}
+                \end{center}
+                Dually, fibrations are stable under pullbacks.
+            \end{corollary}
+
+            \begin{proof}
+                Maybe, if I am in the mood \emoji{woman-tipping-hand-medium-light-skin-tone} \emoji{nail-polish-medium-light-skin-tone} \emoji{crown}
+            \end{proof}
+
+            Since we assume that every model category $\mathcal{C}$ is bicomplete, we know that it has both an initial and a terminal object. We let $\emptyset$ denote the initial object and $*$ denote the terminal object. 
+
+            \begin{definition}[Cofibrant, fibrant and bifibrant objects]
+                Let $\mathcal{C}$ be a model category. An object $X$ is called cofibrant if the unique morphism $\emptyset \rightarrow X$ is a cofibration. Dually, $X$ is called fibrant if the unique morphism $X \rightarrow *$ is fibrant. If $X$ is both cofibrant and fibrant, we call it bifibrant.
+            \end{definition}
+
+            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant. We make the following remarks.
+
+            \begin{remark}
+                Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition $QX$ is cofibrant and weakly equivalent to $X$.
+
+                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = tar \circ \alpha$.
+
+                Dually, we get a fibrant replacement $R$ by dualizing the above argument.
+            \end{remark}
+
+            Our first step towards the generalized Whiteheads theorem is Ken-Brown's lemma.
+
+            \begin{lemma}[Ken Brown's lemma]\label{lem: Ken-Brown}
+                Let $\mathcal{C}$ be a model category and $\mathcal{D}$ be a category with weak equivalences satisfying the $2$-out-of-$3$ property. If $F:\mathcal{C} \rightarrow \mathcal{D}$ is a functor sending acyclic cofibrations between cofibrant objects to weak equivalences, then $F$ takes all weak equivalences between cofibrant objects to weak equivalences. Dually, if $F$ takes all acyclic fibrations between fibrant objects to weak equivalences, then $F$ takes all weak equivalences between fibrant objects to weak equivalences.
+            \end{lemma}
+
+            \begin{proof}
+                Suppose that $A$ and $B$ are cofibrant objects and that $f:A\rightarrow B$ is a weak equivalence. Using the universal property of the coproduct we define the map $(f, id_B) = p: A\coprod B \rightarrow B$. $p$ has a functorial factorization into a cofibration and acyclic fibration, $p = p_\beta\circ p_\alpha$. We recollect the maps in the following pushout diagram:
+                \begin{center}
+                    \begin{tikzcd}
+                        \emptyset \ar[]{d}[]{} \ar[]{r}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & B \ar[]{d}[]{i_2} \ar[bend left]{rrddd}[]{id_B} \\
+                        A \ar[]{r}[]{i_1} \ar[bend right]{rrrdd}[]{f} & A\coprod B \ar[]{rd}[]{p_\alpha} \\
+                        & & C \ar[]{rd}[]{p_\beta} \\
+                        & & & D
+                    \end{tikzcd}
+                \end{center}
+                By lemma \ref{cor: stable-cofib-base-change} both $i_1$ and $i_2$ are cofibrations. Since $f$, $id_B$ and $p_\beta$ are weak equivalences, so are $p_\alpha\circ i_1$ and $p_\alpha\circ i_2$ by MC2. Moreover, they are acyclic cofibrations.
+
+                Assume that $F:\mathcal{C}\rightarrow\mathcal{D}$ is a functor as described above. Then by assumption, $F(p_\alpha\circ i_1)$ and $F(p_\alpha\circ i_2)$ are weak equivalences. Since a functor sends identity to identity, we also know that $F(id_B)$ is a weak equivelnce. Thus by the $2$-out-of-$3$ property $F(p_\beta)$ is a weak equivalence, as $F(p_\beta)\circ F(p_\alpha\circ i_2) = id_{F(B)}$. Again, by $2$-out-of-$3$ property $F(f)$ is a weak equivelnce, as $F(f) = F(p_\beta)\circ F(p_\alpha\circ i_1)$.
+            \end{proof}
+
+        \subsection{Homotopy category}
+
+            Let $\mathcal{C}$ be a category with a class of weak equivalences
+
+        \subsection{Quillen Functors}
 
     \section{A Model structure on DG-Algebras}
 

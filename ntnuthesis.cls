@@ -145,6 +145,7 @@
 % --- Fonts --- %
 \RequirePackage{fontspec}                   % Lualatex font encoding
 \setmainfont{Atkinson Hyperlegible}         % Set main font to Atkinson Hyperlegible
+\RequirePackage{emoji}
 
 % --- Layout & Graphics --- %
 \RequirePackage{geometry}                   % page layout
