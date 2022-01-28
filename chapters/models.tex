@@ -128,17 +128,25 @@
                 Let $\mathcal{C}$ be a model category. An object $X$ is called cofibrant if the unique morphism $\emptyset \rightarrow X$ is a cofibration. Dually, $X$ is called fibrant if the unique morphism $X \rightarrow *$ is fibrant. If $X$ is both cofibrant and fibrant, we call it bifibrant.
             \end{definition}
 
-            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant. We make the following remarks.
+            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant.
 
-            \begin{remark}
+            \begin{construction}
                 Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition $QX$ is cofibrant and weakly equivalent to $X$.
 
                 $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = tar \circ \alpha$.
 
                 Dually, we get a fibrant replacement $R$ by dualizing the above argument.
-            \end{remark}
+            \end{construction}
 
-            Our first step towards the generalized Whiteheads theorem is Ken-Brown's lemma.
+            We collect the following properties
+
+            \begin{lemma}\label{lem: Q-preserves-weak}
+                The cofibrant replacement $Q$ and fibrant replacement $R$ preserves weak equivalences. 
+            \end{lemma}
+
+            \begin{proof}
+                Clear from the $2$-out-of-$3$ property.
+            \end{proof}
 
             \begin{lemma}[Ken Brown's lemma]\label{lem: Ken-Brown}
                 Let $\mathcal{C}$ be a model category and $\mathcal{D}$ be a category with weak equivalences satisfying the $2$-out-of-$3$ property. If $F:\mathcal{C} \rightarrow \mathcal{D}$ is a functor sending acyclic cofibrations between cofibrant objects to weak equivalences, then $F$ takes all weak equivalences between cofibrant objects to weak equivalences. Dually, if $F$ takes all acyclic fibrations between fibrant objects to weak equivalences, then $F$ takes all weak equivalences between fibrant objects to weak equivalences.
@@ -161,7 +169,87 @@
 
         \subsection{Homotopy category}
 
-            Let $\mathcal{C}$ be a category with a class of weak equivalences
+            Homotopy theory at it's most abstract is the study of categories and functors up to weak equivalences. Here, a weak equivalence may be anything, but most commonly it is a weak equivalence in topological homotopy or a quasi-isomorphism in homological algebra. The biggest concern when dealing with such concepts is to make a functor well-defined up to these chosen weak-equivalences. To this end, there is a construction to amend these problems, known as derived functors. We define a homotopical category in the sense of Riehl.
+
+            \begin{definition}[Homotopical Category]
+                Let $\mathcal{C}$ be a category. $\mathcal{C}$ is Homotopical if there is a wide subcategory constituting a class of morphisms known as weak equivalences, $Ac\subset Mor\mathcal{C}$. The weak equivalences should satisfy the \textbf{$2$-out-of-$6$ property}, i.e. given three composable morphisms $f$, $g$ and $g$, if $gf$ and $hg$ are weak equivalences, then so are $f$, $g$, $h$ and $hgf$.
+
+                \begin{center}
+                    \begin{tikzcd}[row sep = large]
+                        A \ar[]{r}[]{f} \ar[]{rd}[]{gf} \ar[dotted]{rrd}[]{} & B \ar[]{d}[]{g} \ar[]{rd}[]{hg} \\
+                        & C \ar[]{r}[]{h} & D
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            \begin{remark}
+                Notice that the $2$-out-of-$6$ property is stronger than the $2$-out-of-$3$ property. To see this, let either $f$, $g$ or $h$ be the identity, and then conclude with the $2$-out-of-$3$ property.
+            \end{remark}
+            
+            Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This concept is due to Gabriel and Zisman \todo{citation needed}.
+
+            \begin{definition}
+                Let $\mathcal{C}$ be a homotopical category. It's homotopy category $Ho\mathcal{C} = \mathcal{C}[Ac^{-1}]$, together with a localization functor $q:\mathcal{C}\rightarrow Ho\mathcal{C}$. Recall that the localization are determined by the following universal property: If $F:\mathcal{C}\rightarrow \mathcal{D}$ is a functor sending weak equivalences to isomorphisms, then it uniquely factors through the homotopy category up to a unique natural isomorphism $\eta$.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[""{name = U, below}]{rr}[]{F} \ar[]{rd}[]{q} & & \mathcal{D} \\
+                        & Ho\mathcal{C} \ar[]{ru}[]{F'} \ar[Rightarrow, from=U]{}[]{\eta}
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            \begin{remark}
+                A renown problem with localizations is that even if $\mathcal{C}$ is a locally small category, any localization $\mathcal{C}[S^{-1}]$ does not need to be. Thus, without a good theory of classes or higher universes, we cannot in general ensure that the localization still exists as a locally small category.
+            \end{remark}
+
+            We see from the definition of the homotopy category that a functor $F$ admits a lift $F'$ to the homotopy category whenever weak equivalences are sent to isomorphisms. Moreover, if we have a functor $F$ between homotopical categories which preserves weak equivalences, it then induces a functor between the homotopy categories.
+            
+            \begin{definition}[Homotopical functors]
+                A functor $F:\mathcal{C}\rightarrow \mathcal{D}$ between homotopical categories is homotopical if it preserves weak equivalences. Moreover, there is a lift of functors as in the following diagram.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[""{name=U, below}]{r}[]{F} \ar[]{d}[]{q_\mathcal{C}} & \mathcal{D} \ar[]{d}[]{q_\mathcal{D}} \ar[Rightarrow]{dl}[]{\eta} \\
+                        Ho\mathcal{C} \ar[dashed, ""{name=V, above}]{r}[]{F'} & Ho\mathcal{D}
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            Derived functors come into play whenever this is not the case. These lifts are however the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but a general account of it may be found in \todo{citation needed}. However, model categories serve as a usefull tool to simplify this discussion. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of derived functors.
+
+            \begin{proposition}
+                Any model category $\mathcal{C}$ is a homotopical category.
+            \end{proposition}
+
+            \begin{proof}
+                Idea for proof. We want to do use thm 3.1. on nlab \url{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/two-out-of-six%20property#BlumbergMandell}. Reference to the lemma which we will use, may be found on webpage.
+            \end{proof}
+
+            Since every model category is homotopical, it also has an associated homotopy category $Ho\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$ and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects respectively.
+
+            \begin{proposition}
+                Let $\mathcal{C}$ be a model category. The following categories are equivalent:
+                \begin{itemize}
+                    \item $Ho\mathcal{C}$
+                    \item $Ho\mathcal{C}_c$
+                    \item $Ho\mathcal{C}_f$
+                    \item $Ho\mathcal{C}_{cf}$
+                \end{itemize}
+            \end{proposition}
+
+            \begin{proof}
+                We show that $Ho\mathcal{C} \simeq Ho\mathcal{C}_c$. The inclusion $i:\mathcal{C}_c\rightarrow \mathcal{C}$ clearly preserves weak equivalences, thus $i$ is homotopical and admits a lift. Moreover, since the cofibrant replacement is also homotopical, it also has a lift.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C}_c \ar[]{r}[]{i} \ar[]{d}[]{} & \mathcal{C} \ar[]{d}[]{} \\
+                        Ho\mathcal{C}_c \ar[dashed, bend right]{r}[below]{Ho\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{Q}
+                    \end{tikzcd}
+                \end{center}
+            \end{proof}
+
+            It is clear that $Q$ is the quasi-inverse of $i$.
 
         \subsection{Quillen Functors}
 
