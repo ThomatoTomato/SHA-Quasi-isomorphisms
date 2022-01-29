@@ -323,7 +323,7 @@
 
             It is important to know that this is not a priori an equivalence relation. This is amended by taking both fibrant and cofibrant replacements. We see this in the following proposition.
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: basic-homotopy}
                 Let $\mathcal{C}$ be a model category, and $f,g:X\rightarrow Y$ be morphisms. We have the following:
                 \begin{enumerate}
                     \item If $f \overset{l}{\sim}$ and $h: Y \rightarrow Z$, then $hf \overset{l}{\sim} hg$.
@@ -400,11 +400,11 @@
                 Homotopy is a congruence relation on $\mathcal{C}_{cf}$. In this manner, the category $\mathcal{C}_{cf}/\sim$ is well-defined, exists and inverts every homotopy equivalence.
             \end{corollary}
 
-            \begin{lemma}[Weird Whiteheads lemma]
+            \begin{lemma}[Weird Whitehead]\label{lem: Weird-Whitehead}
                 Let $\mathcal{C}$ be a model category. Suppose that $C$ is cofibrant and $h: X \rightarrow Y$ is an acyclic fibration or a weak equivalence between fibrant objects, then $h$ induces an isomorphism:
                 \begin{center}
                     \begin{tikzcd}
-                        \sfrac{\mathcal{C}(C,X)}{\overset{l}{\sim}} \ar[]{r}[]{\overset{h_*}{\simeq}} & \sfrac{\mathcal{C}(X, Y)}{\overset{l}{\sim}}
+                        \sfrac{\mathcal{C}(C,X)}{\overset{l}{\sim}} \ar[]{r}[]{\overset{h_*}{\simeq}} & \sfrac{\mathcal{C}(C, Y)}{\overset{l}{\sim}}
                     \end{tikzcd}
                 \end{center}
 
@@ -417,15 +417,42 @@
             \end{lemma}
 
             \begin{proof}
+                We assume $\mathcal{C}$ to be cofibrant and $h:X\rightarrow Y$ to ba an acyclic fibration. We first prove that $h$ is surjective. Let $f:C\rightarrow Y$. By RLP of $h$ there is a morphism $f':C\rightarrow X$ such that $f = hf'$.
+                \begin{center}
+                    \begin{tikzcd}
+                        \emptyset \ar[]{r}[]{} \ar[]{d}[]{} & X \ar[]{d}[]{h} \\
+                        C \ar[]{r}[]{f} \ar[dashed]{ru}[]{f'} & Y
+                    \end{tikzcd}
+                \end{center}
                 
+                To show injectivity we assume $f,g:C\rightarrow X$ such that $hf\overset{l}{\sim} hg$, in particular there is a left homotopy $H:C\wedge I \rightarrow Y$. Remember that since $C$ is cofibrant, the map $p_0$ is a cofibration. We find a left homotopy $H:C\wedge I \rightarrow X$ witnessing $f\overset{l}{\sim} g$ by the following lift.
+                \begin{center}
+                    \begin{tikzcd}
+                        C\coprod C \ar[]{r}[]{f+g} \ar[]{d}[]{p_0} & X \ar[]{d}[]{h} \\
+                        C\wedge I \ar[dashed]{ru}[]{H'} \ar[]{r}[]{H} & Y
+                    \end{tikzcd}
+                \end{center}
+
+                Moreover, if we assume both $X$ and $Y$ to be fibrant, the functor $\sfrac{\mathcal{C}(C,\_)}{\overset{l}{\sim}}$ sends acyclic fibrations to isomorphisms, i.e. to weak equivalences. By Ken Brown's lemma, lemma \ref{lem: Ken-Brown}, the afformentioned functor sends weak equivalences between fibrant objects to isomorphisms.
             \end{proof}
 
-            \begin{thm}[Generalized Whiteheads theorem]
+            \begin{thm}[Generalized Whiteheads theorem]\label{thm: Whitehead}
                 Let $\mathcal{C}$ be a model category. Suppose that $f : X \rightarrow Y$ is a morphism of bifibrant objects, then $f$ is a weak equivalence if and only if $f$ is a homotopy equivalence.
             \end{thm}
 
             \begin{proof}
-                
+                Suppose first that $f$ is a weak equivalence. Pick a bifibrant object $A$, then by lemma \ref{lem: Weird-Whitehead} $f_*:\sfrac{\mathcal{C}(A,X)}{\sim}\rightarrow \sfrac{\mathcal{C}(A,Y)}{\sim}$ is an isomorphism. Letting $A = Y$ we know that there is a morphism $g:Y\rightarrow X$, such that $f_*g = fg \sim id_Y$. Furthermore, by proposition \ref{prop: basic-homotopy}, since $X$ is bifibrant composing on the right preserves homotopy equivalence, e.g. $fgf \sim f$. By letting $A = X$, we get that $f_*gf = fgf \sim f = f_*id_X$, thus $gf \sim id_X$.
+
+                For the opposite direction, assume that $f$ is a homotopy equivalence. We factor $f$ into an acyclic cofibration $f_\gamma$ and a fibration $f_\delta$, i.e. $X \overset{f_\gamma}{\rightarrow} Z \overset{f_\delta}{\rightarrow} Y$. Observe that $Z$ is bifibrant as $X$ and $Y$ is, in particular, $f_\gamma$ is a weak equivalence of bifibrant objects, so it is a homotopy equivalence. 
+
+                It is enough to show that $f_\delta$ is a weak equivalence. Let $g$ be the homotopy inverse of $f$, and $H:Y\wedge I \rightarrow Y$ is a left homotopy witnessing $fg \sim id_Y$. Since $Y$ is bifibrant, the following square has a lift.
+                \begin{center}
+                    \begin{tikzcd}
+                        Y \ar[]{r}[]{f_\gamma g} \ar[]{d}[]{i_0} & Z \ar[]{d}[]{f_\delta} \\
+                        Y\wedge I \ar[]{r}[]{H} \ar[dashed]{ru}[]{H'} & Y
+                    \end{tikzcd}
+                \end{center}
+                Let $h = H'i_1$, then by definition we know that $f_\delta H'i_1 = id_Y$. Moreover, $H$ is a left homotopy witnessing $f_\gamma g \sim h$. Let $g': Z\rightarrow X$ be the homotopy inverse of $f_\gamma$. We have the following relations $f_\delta \sim f_\delta f_\gamma g' \sim fg'$, and $hf_\delta \sim (f_\gamma g)(fg') \sim f_\gamma g' \sim id_Z$. Let $H'':Z\wedge I\rightarrow Z$ be a left homotopy witnessing this homotopy. Since $Z$ is bifibrant, $i_0$ and $i_1$ are weak equivalences. By the $2$-out-of-$3$ property $H''$ and $hf_\delta$ are weak equivalences. Since $f_\delta h = id_Y$, it follows that $f_\delta$ is a retract of $f_\delta h$, and is thus a weak equivalence.
             \end{proof}
 
             \begin{corollary}
@@ -433,7 +460,7 @@
             \end{corollary}
 
             \begin{proof}
-                
+                By generalized Whiteheads theorem, theorem \ref{thm: Whitehead} weak equivalences and homotopy equivalences coincide. The corollary follows steadily from both the universal property of the localization category and the quotient category. 
             \end{proof}
 
             We collect the results from above in the following theorem.
