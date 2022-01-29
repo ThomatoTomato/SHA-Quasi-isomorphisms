@@ -128,7 +128,7 @@
                 Let $\mathcal{C}$ be a model category. An object $X$ is called cofibrant if the unique morphism $\emptyset \rightarrow X$ is a cofibration. Dually, $X$ is called fibrant if the unique morphism $X \rightarrow *$ is fibrant. If $X$ is both cofibrant and fibrant, we call it bifibrant.
             \end{definition}
 
-            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant.
+            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant. We will make it precise what it means for two objects to be weakly equivalent later.
 
             \begin{construction}
                 Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition $QX$ is cofibrant and weakly equivalent to $X$.
@@ -199,6 +199,10 @@
                 \end{center}
             \end{definition}
 
+            \begin{definition}
+                Suppose that $\mathcal{C}$ is a homotopical category. Two objects of $\mathcal{C}$ are said to be weakly equivalent if they are isomorphic in $Ho\mathcal{C}$. I.e. there is some zig-zag relation between the objects, consisting only of weak equivalences.
+            \end{definition}
+
             \begin{remark}
                 A renown problem with localizations is that even if $\mathcal{C}$ is a locally small category, any localization $\mathcal{C}[S^{-1}]$ does not need to be. Thus, without a good theory of classes or higher universes, we cannot in general ensure that the localization still exists as a locally small category.
             \end{remark}
@@ -247,9 +251,206 @@
                         Ho\mathcal{C}_c \ar[dashed, bend right]{r}[below]{Ho\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{Q}
                     \end{tikzcd}
                 \end{center}
+
+                It is clear that $Q$ is the quasi-inverse of $i$.
+
             \end{proof}
 
-            It is clear that $Q$ is the quasi-inverse of $i$.
+            As of now we still don't see how model categories will fix the size issues. To do this we will develop homotopy equivalence $\sim$. We will see that on the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will in fact be a congruence relation. Moreover, there is an equivalence of categories $Ho\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+
+            \begin{definition}[Cylinder and path objects]
+                Let $\mathcal{C}$ be a model category. Given an object $X$, a cylinder object $X\wedge I$ is a factorization of the fold map $i:X\coprod X \rightarrow X$, such that $p_0$ is a cofibration and that $p_1$ is a weak equivalence. 
+                
+                \begin{center}
+                    \begin{tikzcd}
+                        X\coprod X \ar[]{rr}[]{i} \ar[]{rd}[]{p_0} & & X \\
+                        & X\wedge I \ar[]{ru}[]{p_1}
+                    \end{tikzcd}
+                \end{center}
+
+                Dually, a path object  $X^{I}$ is a factorization of the diagonal map $i: X \rightarrow X\prod X$, such that $p_0$ is a weak equivalence and that $p_1$ is a fibration.
+                
+                \begin{center}
+                    \begin{tikzcd}
+                        X \ar[]{rr}[]{i} \ar[]{rd}[]{p_0} & & X\prod X\\
+                        & X^I \ar[]{ru}[]{p_1}
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            \begin{remark}
+                Even though we have written $X\wedge I$ suggestively to be a functor, it is not. There may be many choices for a cylinder object. However, by using the functorial factorization from MC4, we get a canonical choice of a cylinder object, as it factors every map into a cofibration and an acyclic fibration. By letting the cylinder object be this object, we do indeed obtain a functor.
+            \end{remark}
+
+            \begin{proposition}
+                Let $\mathcal{C}$ be a model category and $X$ an object of $\mathcal{C}$. Given two cylinder objects $X\wedge I$ and $X\wedge I'$, then they are weakly equivalent. 
+            \end{proposition}
+
+            \begin{proof}
+                It is enough to show that there is a weak equivalence from any cylinder object into one specified cylinder object. This is in fact true for the functorial cylinder object $X\wedge I$, as the final morphism $p_1$ is an acyclic fibration, which enables a lift which is a weak equivalence by the $2$-out-of-$3$ property.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        X\coprod X \ar[]{r}[]{p_0} \ar[]{d}[]{p_0'} & X\wedge I \ar[]{d}[]{p_1} \\
+                        X\wedge I' \ar[]{r}[]{p_1'} \ar[dashed]{ru}[]{} & X
+                    \end{tikzcd}
+                \end{center}
+            \end{proof}
+
+            \begin{definition}[Homotopy equivalence]
+                Let $f,g: X\rightarrow Y$. A left homotopy between $f$ and $g$ is a morphism $H:X\wedge I \rightarrow Y$ such that $Hi_0 = f$ and $Hi_1 = g$. $f$ and $g$ are left homotopic if a left homotopy exists, and it is denoted $f \overset{l}{\sim} g$.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        X \ar[]{d}[]{} \ar[dotted]{rd}[]{i_0} \ar[bend left]{rrd}[]{f} \\
+                        X\coprod X \ar[]{r}[]{p_0} & X\wedge I \ar[]{r}[]{H} & Y \\
+                        X \ar[]{u}[]{} \ar[dotted]{ru}[]{i_1} \ar[bend right]{rru}[]{g}
+                    \end{tikzcd}
+                \end{center}
+                
+                A right homotopy between $f$ and $g$ is a morphism $H: X \rightarrow Y^I$ such that $i_0H = f$ and $i_1H = g$. $f$ and $g$ are right homotopic if a right homotopy exists, and it is denoted $f \overset{r}{\sim} g$.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        & & Y \\
+                        X \ar[]{r}[]{H} \ar[bend left]{rru}[]{f} \ar[bend right]{rrd}[]{g} & Y^I \ar[]{r}[]{p_1} \ar[dotted]{ru}[]{i_0} \ar[dotted]{rd}[]{i_1} & Y\prod Y \ar[]{u}[]{} \ar[]{d}[]{} \\
+                        & & Y
+                    \end{tikzcd}
+                \end{center}
+
+                $f$ and $g$ are said to be homotopic if they are both left and right homotopic, it is denoted $f \sim g$. $f$ is said to be a homotopy equivalence, if it has a homotopy inverse $h: Y \rightarrow X$, such that $hf \sim id_X$ and $fh \sim id_Y$. 
+            \end{definition}
+
+            It is important to know that this is not a priori an equivalence relation. This is amended by taking both fibrant and cofibrant replacements. We see this in the following proposition.
+
+            \begin{proposition}
+                Let $\mathcal{C}$ be a model category, and $f,g:X\rightarrow Y$ be morphisms. We have the following:
+                \begin{enumerate}
+                    \item If $f \overset{l}{\sim}$ and $h: Y \rightarrow Z$, then $hf \overset{l}{\sim} hg$.
+                    \item If $Y$ is fibrant, $f \overset{l}{\sim} g$ and $h: W \rightarrow X$, then $fh \overset{l}{\sim} gh$.
+                    \item If $X$ is cofibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X,Y)$.
+                    \item If $X$ is cofibrant and $f \overset{l}{\sim} g$, then $f \overset{r}{\sim} g$.
+                \end{enumerate}
+            \end{proposition}
+
+            \begin{proof}
+                This proof is due to Mark Hovey \todo{citation needed}.
+
+                $(1.)$ Assume that $f \overset{l}{\sim} g$ and $h:Y\rightarrow Z$. Let $H:X\wedge I \rightarrow Y$ denote the left homotopy between $f$ and $g$. The left homotopy between $hf$ and $hg$ is given as $hH$.
+
+                $(2.)$ Assume that $Y$ is fibrant, $f \overset{l}{\sim} g$ and that $h:W\rightarrow X$. Let $H:X\wedge I\rightarrow Y$ be a left homotopy. We construct a new cylinder object for the homotopy. Factor $p_1:X\wedge I \rightarrow X$ as $q_1\circ q_0$ where $q_0: X\wedge I \rightarrow X\wedge I'$ is an acyclic cofibration and $q_1:X\wedge I'\rightarrow X$ is a fibration. By the $2$-out-of-$3$ property $q_1$ is an acyclic fibration, as $p_1$ and $q_0$ are weak equivalences. $X\wedge I'$ is a cylinder object as $q_0\circ p_0$ is a cofibration and $q_1$ is a weak equivalence. Since we assume $Y$ to be fibrant we lift the left homotopy $H:X\wedge I\rightarrow Y$ to the left homotopy $H':X\wedge I'\rightarrow Y$ with the following diagram:
+                \begin{center}
+                    \begin{tikzcd}
+                        X\wedge I \ar[]{r}[]{H} \ar[]{d}[]{q_0} & Y \ar[]{d}[]{} \\
+                        X\wedge I' \ar[]{r}[]{} \ar[dashed]{ru}[]{H'} & *
+                    \end{tikzcd}                    
+                \end{center}
+                We can find the appropriate homotopy needed with lift given by the following diagram:
+                \begin{center}
+                    \begin{tikzcd}[column sep = large]
+                        W\coprod W \ar[]{r}[]{q_0p_0(h\coprod h)} \ar[]{d}[]{p_0'} & X\wedge I' \ar[]{d}[]{q_1} \\
+                        W\wedge I \ar[]{r}[]{hp_1'} \ar[dashed]{ru}[]{k} & X
+                    \end{tikzcd}
+                \end{center}
+                Then the morphism $H'k$ is the desired left homotopy witnessing $fh \overset{l}{\sim} gh$.
+
+                $(3.)$ Assume that $X$ is cofibrant. First observe that a left homotopy is reflexive and symmetric. We must show that in this case it is also transitative. Thus, assume that $f,g,h:X\rightarrow Y$ and that $H:X\wedge I\rightarrow Y$ is a left homotopy witnessing $f \overset{l}{\sim} g$ and that $H':X\wedge I'\rightarrow Y$ is a left homotopy witnessing $g\overset{l}{\sim} h$. We first observe that $i_0: X\rightarrow X\wedge I$ is a weak equivalence, as $id_X = p_1i_0$ where $id_X$ and $p_1$ are weak equivalences. Since $X$ is assumed to be cofibrant, we see that $X\coprod X$ is cofibrant by the following pushout:
+                \begin{center}
+                    \begin{tikzcd}
+                        * \ar[]{r}[]{} \ar[]{d}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & X \ar[]{d}[]{inr}\\
+                        X \ar[]{r}[]{inl} & X\coprod X
+                    \end{tikzcd}
+                \end{center}
+                Moreover, both $inl$ and $inr$ are cofibrations. This shows that $i_0$ is a cofibration as $i_0 = p_0\circ inr$ is a composition of two cofibrations. $i_0$ is thus an acyclic cofibration. We define an almost cylinder object $C$ by the pushout of $i_1$ and $i_0'$. We define the maps $t$ and $H''$ by using the universal property in the following manner:
+                \begin{center}
+                    \begin{tikzcd}
+                        X \ar[]{r}[]{i_1} \ar[]{d}[]{i_0'} & X\wedge I \ar[]{d}[]{} \ar[bend left]{rdd}[]{p_1} \\
+                        X\wedge I' \ar[]{r}[]{} \ar[bend right]{rrd}[]{p_1'} & C \ar[dashed]{rd}[]{t} \\
+                        & & X
+                    \end{tikzcd}\qquad
+                    \begin{tikzcd}
+                        X \ar[]{r}[]{i_1} \ar[]{d}[]{i_0'} & X\wedge I \ar[]{d}[]{} \ar[bend left]{rdd}[]{H} \\
+                        X\wedge I' \ar[]{r}[]{} \ar[bend right]{rrd}[]{H'} & C \ar[dashed]{rd}[]{H''} \\
+                        & & X
+                    \end{tikzcd}
+                \end{center}
+                Observe that there is a factorization of the fold map $X\coprod X \overset{s}{\rightarrow} C \overset{t}{\rightarrow} X$. However, $s$ may not be a cofibration, so we replace $C$ with the cylinder object $X\wedge I''$ such that we have the factorization $X\coprod X \overset{s_\alpha}{\rightarrow} X\wedge I'' \overset{ts_\beta}{\rightarrow} X$. The morphism $Hs_\beta$ is then our required homotopy for $f\overset{l}{\sim}g$.
+
+                $(4.)$ Suppose that $X$ is cofibrant and that $H:X\wedge I\rightarrow Y$ is a left homotopy for $f \overset{l}{\sim} g$. Pick a path object for $Y$, such that we have the factorization $Y\overset{q_0}{\rightarrow}Y^I\overset{q_1}{\rightarrow}Y\prod Y$ where $q_0$ is a weak equivalence and $q_1$ is a fibration. Again, as $X$ is cofibrant we get that $i_0$ is an acyclic cofibration, so we have the following lift of the homotopy:
+                \begin{center}
+                    \begin{tikzcd}
+                        X \ar[]{r}[]{q_0f} \ar[]{d}[]{i_0} & Y^I \ar[]{d}[]{q_1} \\
+                        X\wedge I \ar[]{r}[]{(fp_1, H)} \ar[dashed]{ru}[]{J} & Y\prod Y
+                    \end{tikzcd}
+                \end{center}
+                The right homotopy is given by injecting away from $f$, i.e. $H' = Ji_1$.
+            \end{proof}
+
+            \begin{corollary}
+                We collect the dual results of the above proposition, and thus have the following.
+                \begin{enumerate}
+                    \item If $f \overset{r}{\sim}$ and $h: W \rightarrow X$, then $fh \overset{r}{\sim} gh$.
+                    \item If $X$ is cofibrant, $f \overset{r}{\sim} g$ and $h: Y \rightarrow Z$, then $hf \overset{r}{\sim} hg$.
+                    \item If $Y$ is fibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X,Y)$.
+                    \item If $Y$ is fibrant and $f \overset{r}{\sim} g$, then $f \overset{l}{\sim} g$.
+                \end{enumerate}
+            \end{corollary}
+
+            \begin{corollary}
+                Homotopy is a congruence relation on $\mathcal{C}_{cf}$. In this manner, the category $\mathcal{C}_{cf}/\sim$ is well-defined, exists and inverts every homotopy equivalence.
+            \end{corollary}
+
+            \begin{lemma}[Weird Whiteheads lemma]
+                Let $\mathcal{C}$ be a model category. Suppose that $C$ is cofibrant and $h: X \rightarrow Y$ is an acyclic fibration or a weak equivalence between fibrant objects, then $h$ induces an isomorphism:
+                \begin{center}
+                    \begin{tikzcd}
+                        \sfrac{\mathcal{C}(C,X)}{\overset{l}{\sim}} \ar[]{r}[]{\overset{h_*}{\simeq}} & \sfrac{\mathcal{C}(X, Y)}{\overset{l}{\sim}}
+                    \end{tikzcd}
+                \end{center}
+
+                Dually, if $X$ is fibrant and $h : C \rightarrow D$ is an acyclic cofibration or a weak equivalence between cofibrant objects, then $h$ induces an isomorphism:
+                \begin{center}
+                    \begin{tikzcd}
+                        \sfrac{\mathcal{C}(D, X)}{\overset{r}{\sim}} \ar[]{r}[]{\overset{h^*}{\simeq}} & \sfrac{\mathcal{C}(C, X)}{\overset{r}{\sim}}
+                    \end{tikzcd}
+                \end{center}
+            \end{lemma}
+
+            \begin{proof}
+                
+            \end{proof}
+
+            \begin{thm}[Generalized Whiteheads theorem]
+                Let $\mathcal{C}$ be a model category. Suppose that $f : X \rightarrow Y$ is a morphism of bifibrant objects, then $f$ is a weak equivalence if and only if $f$ is a homotopy equivalence.
+            \end{thm}
+
+            \begin{proof}
+                
+            \end{proof}
+
+            \begin{corollary}
+                The category $\sfrac{\mathcal{C}_{cf}}{\sim}$ satisfy the universal property of the localization of $\mathcal{C}_{cf}$ by the weak equivalences. I.e. there is a categorical equivalence $Ho\mathcal{C}_{cf} \simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+            \end{corollary}
+
+            \begin{proof}
+                
+            \end{proof}
+
+            We collect the results from above in the following theorem.
+
+            \begin{thm}[Fundamental theorem of model categories]
+                Let $\mathcal{C}$ be a model category and denote $q: \mathcal{C} \rightarrow Ho\mathcal{C}$ the localization functor. Let $X$ and $Y$ be objects of $\mathcal{C}$.
+                \begin{enumerate}
+                    \item There is an equivalence of categories $Ho\mathcal{C}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+                    \item There are natural isomorphisms $\sfrac{\mathcal{C}_{cf}}{\sim}(QRX,QRY)\simeq Ho\mathcal{C}(X, Y) \simeq \sfrac{\mathcal{C}_{cf}}{\sim}(RQX, RQY)$. Additionally, $Ho\mathcal{C}(X, Y)\simeq \sfrac{\mathcal{C}_{cf}}{\sim}(QX, RY)$.
+                    \item The localization $q$ identifies left or right homotopic morphisms.
+                    \item A morphism $f: X \rightarrow Y$ is a weak equivalence if and only if $qf$ is an isomorphism.
+                \end{enumerate}
+            \end{thm}
+
+            \begin{proof}
+                This is clear by the results above.
+            \end{proof}
 
         \subsection{Quillen Functors}
 
