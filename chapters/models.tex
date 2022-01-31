@@ -465,7 +465,7 @@
 
             We collect the results from above in the following theorem.
 
-            \begin{thm}[Fundamental theorem of model categories]
+            \begin{thm}[Fundamental theorem of model categories]\label{thm: Fundamental-thm-model}
                 Let $\mathcal{C}$ be a model category and denote $q: \mathcal{C} \rightarrow Ho\mathcal{C}$ the localization functor. Let $X$ and $Y$ be objects of $\mathcal{C}$.
                 \begin{enumerate}
                     \item There is an equivalence of categories $Ho\mathcal{C}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
@@ -479,7 +479,137 @@
                 This is clear by the results above.
             \end{proof}
 
-        \subsection{Quillen Functors}
+        \subsection{Quillen adjoints}
+
+            We now want to study morphisms, or certain functors, between model categories. Like in the case of homotopical functors we want these morphisms to induce a functor between the homotopy categories. However, we also want them to respect the cofibration and fibration structure, not just weak equivalences. In this way we will instead look towards derived functors to be able to define this extension to the homotopy category. We recall the definition of a total (left/right) derived functor. In the case of model categories, we get a simple description for some of these derived functors which are of special interest.
+
+            \begin{definition}[Total derived functors]
+                Let $\mathcal{C}$ and $\mathcal{D}$ be homotopical categories, and $F:\mathcal{C}\rightarrow\mathcal{D}$ a functor. Whenever it exists, a total left derived functor of $F$, is a functor $\mathbb{L}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ with a natural transformation $\varepsilon :\mathbb{L}F\circ q \Rightarrow q\circ F$ satisfying the universal property: If $G:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ is a functor and there is a natural transformation $\alpha :G\circ q \Rightarrow q\circ F$, then it factors uniquely up to unique isomorphism through $\varepsilon$.
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \\
+                        Ho\mathcal{C} \ar[dashed]{r}[]{\mathbb{L}F} \ar[Rightarrow]{ru}[]{\varepsilon} & Ho\mathcal{D}
+                    \end{tikzcd}\qquad
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[phantom, ""{name = Y}]{}[]{} \ar[]{d}[]{q} \\
+                        Ho\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{L}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = U, to = V]{}[]{\exists !} \ar[Rightarrow, from = X, to = Y, end anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[]{\varepsilon} & Ho\mathcal{D}
+                    \end{tikzcd}
+                \end{center}
+
+                Dually, whenever it exists, a total right derived functor of $F$, is a functor $\mathbb{R}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ with a natural transformation $\eta :q\circ F \Rightarrow \mathbb{R}F \circ q$ having the opposite universal property.
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \ar[Rightarrow]{ld}[]{\eta} \\
+                        Ho\mathcal{C} \ar[dashed]{r}[]{\mathbb{R}F} & Ho\mathcal{D}
+                    \end{tikzcd}\qquad
+                    \begin{tikzcd}
+                        \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[phantom, ""{name = Y}]{}[]{} \ar[]{d}[]{q} \\
+                        Ho\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{R}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = V, to = U]{}[left]{\exists !} \ar[Rightarrow, from = Y, to = X, start anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[left, yshift = 0.5ex]{\eta} & Ho\mathcal{D}
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            \begin{definition}[Deformation]
+                A left (right) deformation on a homotopical category $\mathcal{C}$ is an endofunctor $Q$ together with a natural weak equivalence $q:Q \Rightarrow Id_\mathcal{C}$ ($q:Id_\mathcal{C}\Rightarrow Q$).
+
+                A left (right) deformation on a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ between homotopical categories, is a left (right) deformation $Q$ on $\mathcal{C}$ such that weak equivalences in the image of $Q$ is preserved by $F$.
+            \end{definition}
+
+            \begin{remark}[Cofibrant and fibrant replacement]
+                If $\mathcal{C}$ is a model category, then we have a left and a right deformation. The cofibrant replacement $Q$ defines a left deformation, and the fibrant replacement defines a right deformation. Notice that this is only due to the fact that the factorization system is functorial.
+            \end{remark}
+
+            \begin{proposition}
+                Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between homotopical categories. If $F$ has a left deformation $Q$, then the total left derived functor $\mathbb{L}F$ exists. Moreover, the functor $FQ$ is homotopical, and $\mathbb{L}F$ is the unique extension of $FQ$.
+            \end{proposition}
+
+            \begin{proof}
+                This \emoji{memo} is \emoji{memo} going \emoji{memo} to \emoji{memo} take \emoji{memo} some \emoji{memo} work. 
+            \end{proof}
+
+            Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
+
+            \begin{definition}[Quillen adjunction]
+                Let $\mathcal{C}$ and $\mathcal{D}$ be model categories. \begin{enumerate}
+                    \item A left Quillen functor is a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves cofibrations and acyclic cofibrations.
+                    \item A right Quillen functor is a fucntor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves fibrations and acyclic fibrations.
+                    \item Suppose that $(F,U)$ is an adjunction where $F:\mathcal{C}\rightarrow\mathcal{D}$ is left adjoint to $U$. $(F,U)$ is called a Quillen adjunction if $F$ is a left Quillen functor and $U$ is a right Quillen functor.
+                \end{enumerate}
+            \end{definition}
+
+            \begin{remark}
+                By Ken Browns lemma, lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = Ho FQ$.
+            \end{remark}
+
+            In order to eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. The direction of the arrow can be chosen to be along either the left or right adjoints, we make the convention of following the left adjoint functors. We summarize the following properties.
+
+            \begin{lemma}
+                Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and suppose there is an adjunction $F:\mathcal{C}\rightleftharpoons\mathcal{D}:U$. The following are equivalent:
+                \begin{enumerate}
+                    \item $(F,U)$ is a Quillen equivalence.
+                    \item $F$ is a left Quillen functor.
+                    \item $U$ is a right Quillen functor.
+                \end{enumerate}
+            \end{lemma}
+
+            \begin{proof}
+                This follows from naturality of the adjunction. I.e. any square in $\mathcal{C}$, with the right side from $\mathcal{D}$ is commutative if and only if any square in $\mathcal{D}$ with the left side from $\mathcal{C}$ is commutative. Now, $f$ has LLP with respect to $Ug$ if and only if $Ff$ has LLP with respect to $g$.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{k} \ar[]{d}[left]{f} & UX \ar[]{d}[]{Ug} \\
+                        B \ar[]{r}[]{l} \ar[dotted]{ru}[]{h} & UY
+                    \end{tikzcd} $\rightsquigarrow$
+                    \begin{tikzcd}
+                        FA \ar[]{r}[]{k^T} \ar[]{d}[left]{Ff} & X \ar[]{d}[]{g} \\
+                        FB \ar[]{r}[]{l^T} \ar[dotted]{ru}[]{h^T} & Y
+                    \end{tikzcd}
+                \end{center} 
+            \end{proof}
+
+            \begin{proposition}
+                Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The functors $\mathbb{L}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ and $\mathbb{R}U: Ho\mathcal{D}\rightarrow Ho\mathcal{C}$ forms an adjoint pair.
+            \end{proposition}
+
+            \begin{proof}
+                We must show that $Ho\mathcal{D}(\mathbb{L}FX, Y) \simeq Ho\mathcal{D}(X, \mathbb{R}UY)$. By using the fundamental theorem of model categories, theorem \ref{thm: Fundamental-thm-model}, we have the following isomorphisms: $Ho\mathcal{D}(\mathbb{L}FX,Y)\simeq \sfrac{\mathcal{C}(FQX,RY)}{\sim}$ and $Ho\mathcal{D}(X,\mathbb{R}UY)\simeq\sfrac{\mathcal{D}(QX,URY)}{\sim}$. In other words, if we assume $X$ to be cofibrant, and $Y$ to be fibrant, we must show that the adjunction preserves homotopy equivalences.
+
+                We show it for one direction. Suppose that the morphisms $f,g:FA\rightarrow B$ are homotopic, witnessed by a right homotopy $H:FA\rightarrow B^I$. Since we assume $U$ to preserve products, fibrations and weak equivalences between fibrant objects, $U(B^I)$ is a path object for $UB$. Thus the transpose $H^T:A\rightarrow U(B^I)$ is the desired homotopy witnessing $f^T \sim g^T$
+            \end{proof}
+
+            \begin{definition}[Quillen equivalence]
+                Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ be a Quillen adjunction. $(F,U)$ is called a Quillen equivalence if for any cofibrant $X$ in $\mathcal{C}$, fibrant $Y$ in $\mathcal{D}$ and any morphism $f:FX\rightarrow Y$ is a weak equivalence if and only if its transpose $f^T:X\rightarrow UY$ is a weak equivalence.
+            \end{definition}
+
+            \begin{proposition}
+                Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The following are equivalent:
+                \begin{enumerate}
+                    \item $(F,U)$ is a Quillen equivalence.
+                    \item Let $\eta :Id_\mathcal{C}\Rightarrow UF$ denote the unit, and $\varepsilon :FU\Rightarrow Id_\mathcal{D}$ denote the counit. The composite $Ur_{F}\eta : Id_{\mathcal{C}_c} \Rightarrow URF|_{\mathcal{C}_c}$, and $\varepsilon_{FQU}Fq_{U}:FQU|_{\mathcal{D}_f} \Rightarrow Id_{\mathcal{D}_f}$ are natural weak equivalences.
+                    \item The derived adjunction $(\mathbb{L}F, \mathbb{R}U)$ is an equivalence of categories.
+                \end{enumerate}
+            \end{proposition}
+
+            \begin{proof}
+                Firstly observe that $2.\implies3.$ by definition. Secondly observe that equivalences both preserves and reflects isomorphisms, from this we get $3. \implies 1.$. We now show $1.\implies 2.$. Pick $X$ in $\mathcal{C}$ such that $X$ is cofibrant. Since $(F,U)$ is assumed to be a Quillen adjunction we know that $FX$ is still cofibrant. The fibrant replacement $r_{FX}:FX\rightarrow RFX$ gives us a weak equivalence. Furthermore, since $(F,U)$ is assumed to be a Quillen equivalence, its transpose $r_{FX}^T: X \rightarrow URFX$ is a weak equivalence. Unwinding the definition of the transpose we get that $r_{FX}^T = Ur_{rFX}\eta_X$.
+
+            \end{proof}
+
+            We have the following refinement.
+
+            \begin{corollary}
+                Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The following are equivalent:
+                \begin{enumerate}
+                    \item $(F,U)$ is a Quillen equivalence.
+                    \item $F$ reflects weak equivalences between cofibrant objects, and $\varepsilon_{FQU}F_{qU} : FQU|_{\mathcal{D}_f} \Rightarrow Id_{\mathcal{D}_f}$ is a natural weak equivalence.
+                    \item $U$ reflects weak equivalences between fibrant objects, and $U_{rF}\eta : Id_{\mathcal{C}_c} \Rightarrow URF|{\mathcal{C}_c}$ is a natural weak equivalence.
+                \end{enumerate}
+            \end{corollary}
+
+            \begin{proof}
+                We start by showing $1. \implies 2.$ and $3.$. We already know that the derived unit and counit are isomorphism in homotopy, so we only need to show that $F$ ($U$) reflects weak equivalences between cofibrant (fibrant) objects. Suppose that $Ff:FX\rightarrow FY$ is a weak equivalence between cofibrant objects. Since $F$ preserves weak equivalences between cofibrant objects, we get that $FQf$ is a weak equivalence, or that $\mathbb{L}Ff$ is an isomorphism. By assumption, $\mathbb{L}F$ is an equivalence of categories, so $f$ is a weak equivalence as needed.
+
+                We assume $2.\implies 1.$, the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism, in particular the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, call it $\eta_X' : FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflects weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
+            \end{proof}
 
     \section{A Model structure on DG-Algebras}
 
