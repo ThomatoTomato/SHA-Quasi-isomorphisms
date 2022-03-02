@@ -61,7 +61,7 @@
         \subsection{Model categories}
 
             \begin{definition}[Model category]
-                Let $\mathcal{C}$ be a bicomplete category, i.e. has every small limit and colimit. $\mathcal{C}$ admits a model structure if there are three wide subcategories each defining a class of morphisms:
+                Let $\mathcal{C}$ be a category with all finite limits and colimits. $\mathcal{C}$ admits a model structure if there are three wide subcategories each defining a class of morphisms:
                 \begin{itemize}
                     \item $Ac\subset Mor(\mathcal{C})$ are called weak equivalences
                     \item $Cof\subset Mor(\mathcal{C})$ are called cofibrations
@@ -546,7 +546,7 @@
             \begin{lemma}
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and suppose there is an adjunction $F:\mathcal{C}\rightleftharpoons\mathcal{D}:U$. The following are equivalent:
                 \begin{enumerate}
-                    \item $(F,U)$ is a Quillen equivalence.
+                    \item $(F,U)$ is a Quillen adjunction.
                     \item $F$ is a left Quillen functor.
                     \item $U$ is a right Quillen functor.
                 \end{enumerate}
@@ -613,5 +613,83 @@
 
     \section{A Model structure on DG-Algebras}
 
-    \section{The Adjoint Lifted Model Structure on DG-Coalgebras and SHA-Algebras}
+            Our first step towards identifying $\infty$-quasi-isomorphism of strongly homotopy associative algebras is to study the homotopy theory of associative algebras. Finding a model structure of algebras was first considered by Munkholm and Gugenheim and Bousfield. In Munkholms paper he finds a model structure on a particular subcategory of algebras. This work has later been generalized, first by Hinich and the by Jardine in the same year. Hinich finds a condition for whenever a category is a model category with a pre-specified structure. Jardine works builds on the work of Gugenheim and he shows that the category of associative algebras over any commutative ring is a model category.
+
+            We will follow the approach of Hinich, as it will be usefull later on. Where Hinich use theory of algebraic operads to show that the category of algebras is a model category, we will however give a more explicit formulation.
+
+            Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F$ and $\#$.
+            \begin{center}
+                \begin{tikzcd}
+                    \mathcal{C} \ar[bend right]{r}[below]{\#} \ar[phantom]{r}[]{\bot}& Ch(\mathbb{K}) \ar[bend right]{l}[above]{F}
+                \end{tikzcd}
+            \end{center}
+            Furthermore. suppose that $\mathcal{C}$ satsifies the conditions:
+            \begin{itemize}
+                \item[(H0)] $\mathcal{C}$ admits finite limits and every small colimit. The functor $\#$ commutes with filtered colimits.
+                \item[(H1)] Let $M$ be the complex below, concentrated in $0$ and $1$.
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \mathbb{K} \ar[]{r}[]{id} & \mathbb{K} \ar[]{r}[]{} & 0 \ar[]{r}[]{} & ...
+                    \end{tikzcd}
+                \end{center}
+
+                For any $d\in \mathbb{Z}$ and for any $A\in\mathcal{C}$ the injection $A \rightarrow A \coprod F(M[d])$ induces a quasi-isomorphism $A^\# \rightarrow (A\coprod F(M[d]))^\#$.
+            \end{itemize}
+
+            We already know some categories which satsifies this condition.
+            \begin{example}
+                \begin{enumerate}
+                    \item Let $A$ be a dg-algebra over $\mathbb{K}$. Then $mod^A$ has $H0$ and $H1$.
+                    \item The categories $Alg_\mathbb{K}$ and $AugAlg_\mathbb{K}$ satsifies $H0$ and $H1$.
+                \end{enumerate}
+            \end{example}
+                
+            We define the classes of weak equivalences, fibrations and cofibrations. Let $f\in \mathcal{C}$ be a morphism, then:
+            \begin{itemize}
+                \item $f\in Ac$ if $f^\#$ is a quasi-isomorphism.
+                \item $f\in Fib$ if $f^\#$ is surjective on each component.
+                \item $f\in Cof$ if $f$ has LLP to acyclic fibrations.
+            \end{itemize}
+
+            \begin{thm}
+                The category $\mathcal{C}$ as defined as above is a model category.
+            \end{thm}
+
+            Before we show this theorem we need to understand the cofibrations better. Let $A\in\mathcal{C}$, $M\in Ch(\mathbb{K})$ and $\alpha : M \rightarrow A^\#$ a morphism in $Ch(\mathbb{K})$. We define a functor 
+            \begin{align*}
+                h_{A,\alpha}(B) = \startset{(f,t)\mid f\in \mathcal{C}(A,B), t\in Hom^{-1}_\mathbb{K}(M, B^\#)\ s.t.\ \partial t = f^\#\circ\alpha}.
+            \end{align*}
+            Note that $t$ is not a morphism of chain maps. This is a homogenous morphism of degree $-1$.
+
+            We define the object $A\langle M, \alpha\rangle$ as the pushout:
+            \begin{center}
+                \begin{tikzcd}
+                    F(A^\#) \ar[]{r}[]{} \ar[]{d}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & A \ar[]{d}[]{} \\
+                    F(cone(\alpha)) \ar[]{r}[]{} & A\langle M,\alpha\rangle
+                \end{tikzcd}
+            \end{center}
+                
+            \begin{proposition}
+                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$.
+            \end{proposition}
+
+            \begin{proof}
+                To show that this object is representing $h_{A,\alpha}$ we can find a universal element of the set $h_{A,\alpha}(A\langle M,\alpha\rangle)$. 
+            \end{proof}
+
+            \begin{definition}
+                \begin{itemize}
+                    \item If $M$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call the map $A\rightarrow A\langle M,\alpha\rangle$ for a standard cofibration.
+                    \item If $M$ is a contractible complex, we call the map $A\rightarrow A\langle M,\alpha\rangle$ for a standard acyclic cofibration.
+                \end{itemize}
+            \end{definition}
+
+            \begin{proposition}
+                Standard cofibrations are cofibrations and standard acyclic cofibrations are acyclic cofibrations.
+            \end{proposition}
+
+            \begin{proof}[proof of theorem]
+                
+            \end{proof}
+    \section{A Model Structure on DG-Coalgebras}
 \end{document}
