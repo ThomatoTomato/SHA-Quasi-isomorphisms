@@ -617,13 +617,7 @@
 
             We will follow the approach of Hinich, as it will be usefull later on. Where Hinich use theory of algebraic operads to show that the category of algebras is a model category, we will however give a more explicit formulation.
 
-            Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F$ and $\#$.
-            \begin{center}
-                \begin{tikzcd}
-                    \mathcal{C} \ar[bend right]{r}[below]{\#} \ar[phantom]{r}[]{\bot}& Ch(\mathbb{K}) \ar[bend right]{l}[above]{F}
-                \end{tikzcd}
-            \end{center}
-            Furthermore. suppose that $\mathcal{C}$ satsifies the conditions:
+            Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F:\mathcal{C}\rightleftharpoons Ch(\mathbb{K}):\#$, where $F$ is left adjoint to $\#$. Furthermore, suppose that $\mathcal{C}$ satsifies the $2$ conditions:
             \begin{itemize}
                 \item[(H0)] $\mathcal{C}$ admits finite limits and every small colimit. The functor $\#$ commutes with filtered colimits.
                 \item[(H1)] Let $M$ be the complex below, concentrated in $0$ and $1$.
@@ -632,19 +626,18 @@
                         ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \mathbb{K} \ar[]{r}[]{id} & \mathbb{K} \ar[]{r}[]{} & 0 \ar[]{r}[]{} & ...
                     \end{tikzcd}
                 \end{center}
-
                 For any $d\in \mathbb{Z}$ and for any $A\in\mathcal{C}$ the injection $A \rightarrow A \coprod F(M[d])$ induces a quasi-isomorphism $A^\# \rightarrow (A\coprod F(M[d]))^\#$.
             \end{itemize}
 
-            We already know some categories which satsifies this condition.
             \begin{example}
+                We already know some categories which satsifies these conditions.
                 \begin{enumerate}
                     \item Let $A$ be a dg-algebra over $\mathbb{K}$. Then $mod^A$ has $H0$ and $H1$.
                     \item The categories $Alg_\mathbb{K}$ and $AugAlg_\mathbb{K}$ satsifies $H0$ and $H1$.
                 \end{enumerate}
             \end{example}
                 
-            We define the classes of weak equivalences, fibrations and cofibrations. Let $f\in \mathcal{C}$ be a morphism, then:
+            With this adjunction, we may define three classes of morphisms: weak equivalences, fibrations and cofibrations. Let $f\in \mathcal{C}$ be a morphism, then:
             \begin{itemize}
                 \item $f\in Ac$ if $f^\#$ is a quasi-isomorphism.
                 \item $f\in Fib$ if $f^\#$ is surjective on each component.
@@ -659,22 +652,32 @@
             \begin{align*}
                 h_{A,\alpha}(B) = \startset{(f,t)\mid f\in \mathcal{C}(A,B), t\in Hom^{-1}_\mathbb{K}(M, B^\#)\ s.t.\ \partial t = f^\#\circ\alpha}.
             \end{align*}
-            Note that $t$ is not a morphism of chain maps. This is a homogenous morphism of degree $-1$.
+            Note that $t$ is not a morphism of chain maps. This is a homogenous morphism of degree $-1$. The differential then promotes this morphism to a chain map, and $t$ is thus a homotopy for the comoposite $f^\#\circ\alpha$.
 
-            We define the object $A\langle M, \alpha\rangle$ as the pushout:
+            This functor is represented by an object of $\mathcal{C}$. We define this representing object $A\langle M, \alpha\rangle$ as the pushout:
             \begin{center}
                 \begin{tikzcd}
-                    F(A^\#) \ar[]{r}[]{} \ar[]{d}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & A \ar[]{d}[]{} \\
-                    F(cone(\alpha)) \ar[]{r}[]{} & A\langle M,\alpha\rangle
+                    F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & A \ar[]{d}[]{a} \\
+                    F(cone(\alpha)) \ar[]{r}[]{e} & A\langle M,\alpha\rangle
                 \end{tikzcd}
             \end{center}
+            Let $i: M[1] \rightarrow cone(\alpha)$ be a homogenous morphism which is the injection when considered as graded modules. Notice that we have a pair of morphisms $(a, e^Ti)\in h_{A,\alpha}(A\langle M,\alpha\rangle)$.
                 
             \begin{proposition}
-                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$.
+                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\_)$ is a natural isomorphism. Moreover, the pair $(a,e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e. the natural isomorphism is induced by this element under Yoneda's lemma.
             \end{proposition}
 
             \begin{proof}
-                To show that this object is representing $h_{A,\alpha}$ we can find a universal element of the set $h_{A,\alpha}(A\langle M,\alpha\rangle)$. 
+                Let $(f,t)\in h_{A,\alpha}(B)$ for some $B\in\mathcal{C}$. The condition that $\partial t = f^\#\alpha$ is equivalent to say that $f^\#$ extends to a morphism $f' : cone(\alpha) \rightarrow B^\#$ along $t$, i.e. $f' = \begin{pmatrix}f^\# & t\end{pmatrix}$. This concludes the isomorphism part, as being an element $(f,t)$ is equivalent to the existence of the diagram below, where $\widetilde{f}$ is uniquely determined.
+                \begin{center}
+                    \begin{tikzcd}
+                        F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} & A \ar[]{d}[]{a} \ar[bend left]{ddr}[]{f} \\
+                        F(cone(\alpha)) \ar[bend right]{rrd}[]{f'} \ar[]{r}[]{e} & A\langle M,\alpha\rangle \ar[dashed]{rd}[]{\widtilde{f}} \\
+                        & & B
+                    \end{tikzcd}
+                \end{center}
+te
+                To obtain naturality, we observe that the element $(a, e^Ti)$ is in fact universal.
             \end{proof}
 
             \begin{definition}
@@ -688,8 +691,28 @@
                 Standard cofibrations are cofibrations and standard acyclic cofibrations are acyclic cofibrations.
             \end{proposition}
 
+            If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and cycle to kill itself".
+
+            \begin{center}
+                \begin{tikzcd}
+                    ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \mathbb{K} \ar[]{r}[]{id} & \mathbb{K} \ar[]{r}[]{} & 0 \ar[]{r}[]{} & ...
+                \end{tikzcd}
+            \end{center}
+
             \begin{proof}[proof of theorem]
+                \textbf{MC1} and \textbf{MC2} are satisfied. By definition we also have the first part of \textbf{MC3}. We start by checking \textbf{MC4}.
+
+                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Given any $b\in B^\#$, let $C_b = A\langle T_b,S_b; dT_b = S_b\rangle$. We define $g_b: C_b \rightarrow B$ by the conditions that it acts on $A$ as $f$, $g_b^\#(T_b) = b$ and $g_b^\#(S_b)=db$. Iterating this construction for every $b\in B$, we obtain an object $C$, such that the injection $A \rightarrow C$ is an acyclic standard cofibration, and the map $g : C \rightarrow B$ is a fibration. This gives us a factorization $f = f_\delta\circ f_\gamma$, where $f_\gamma$ is the injection and $f_\delta = g$.
+
+                To obtain the other factorization we start with our previous factorization. We let $C_0 = C$. From $C_0$ there is a morphism $g_0 : C_0 \rightarrow B$, which is surjective and surjective on kernels. This may fail to be a quasi-isomorphism. Pick a pair of elements $(c,b)$, such that $c\in ZC_0^\#$ and $g_0^\#(c) = db$. We add a variable to $C_0$ to kill this cycle, i.e. let $C_1 = C_0\langle T, dT = c\rangle$. We iterate this procedure for any boundary in $B^\#$, to obtain $C$ as the colimit. Then the injection $A \rightarrow C$ is a colimit of standard cofibrations and the morphism $g' : C \rightarrow B$ is an acyclic fibration.
                 
+                It remains to check the last part of \textbf{CM3}. Suppose that $f:A\rightarrow B$ is an acyclic cofibration. By \textbf{CM4}, we know that it factors as $f = f_\delta \circ f_\gamma$, where $f_\delta$ is an acyclic fibration and $f_\gamma$ is a standard acyclic fibration. We thus obtain that $f$ is a retract of $f_\gamma$ by the commutative diagram below.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f_\gamma} \ar[]{d}[]{f} & C \ar[]{d}[]{f_\delta} \\
+                        B \ar[equal]{r}[]{} \ar[dashed]{ru}[]{} & B
+                    \end{tikzcd}
+                \end{center}
             \end{proof}
     \section{A Model Structure on DG-Coalgebras}
 \end{document}
