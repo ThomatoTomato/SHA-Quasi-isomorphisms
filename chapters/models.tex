@@ -519,30 +519,6 @@
                 If $\mathcal{C}$ is a model category, then we have a left and a right deformation. The cofibrant replacement $Q$ defines a left deformation, and the fibrant replacement defines a right deformation. Notice that this is only due to the fact that the factorization system is functorial.
             \end{remark}
 
-            \begin{proposition}
-                Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between homotopical categories. If $F$ has a left deformation $Q$, then the total left derived functor $\mathbb{L}F$ exists. Moreover, the functor $FQ$ is homotopical, and $\mathbb{L}F$ is the unique extension of $FQ$.
-            \end{proposition}
-
-            \begin{proof}
-                This \emoji{memo} is \emoji{memo} going \emoji{memo} to \emoji{memo} take \emoji{memo} some \emoji{memo} work. 
-            \end{proof}
-
-            Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
-
-            \begin{definition}[Quillen adjunction]
-                Let $\mathcal{C}$ and $\mathcal{D}$ be model categories. \begin{enumerate}
-                    \item A left Quillen functor is a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves cofibrations and acyclic cofibrations.
-                    \item A right Quillen functor is a fucntor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves fibrations and acyclic fibrations.
-                    \item Suppose that $(F,U)$ is an adjunction where $F:\mathcal{C}\rightarrow\mathcal{D}$ is left adjoint to $U$. $(F,U)$ is called a Quillen adjunction if $F$ is a left Quillen functor and $U$ is a right Quillen functor.
-                \end{enumerate}
-            \end{definition}
-
-            \begin{remark}
-                By Ken Browns lemma, lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = Ho FQ$.
-            \end{remark}
-
-            In order to eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. The direction of the arrow can be chosen to be along either the left or right adjoints, we make the convention of following the left adjoint functors. We summarize the following properties.
-
             \begin{lemma}
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and suppose there is an adjunction $F:\mathcal{C}\rightleftharpoons\mathcal{D}:U$. The following are equivalent:
                 \begin{enumerate}
@@ -611,11 +587,13 @@
                 We assume $2.\implies 1.$, the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism, in particular the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, call it $\eta_X' : FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflects weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
             \end{proof}
 
-    \section{A Model structure on DG-Algebras}
+    \section{Model structures Algebraic Categories}
 
-            Our first step towards identifying $\infty$-quasi-isomorphism of strongly homotopy associative algebras is to study the homotopy theory of associative algebras. Finding a model structure of algebras was first considered by Munkholm and Gugenheim and Bousfield. In Munkholms paper he finds a model structure on a particular subcategory of algebras. This work has later been generalized, first by Hinich and the by Jardine in the same year. Hinich finds a condition for whenever a category is a model category with a pre-specified structure. Jardine works builds on the work of Gugenheim and he shows that the category of associative algebras over any commutative ring is a model category.
+            In order to understand $\infty$-quasi-isomorphism of strongly homotopy associative algebras we will study different homotopy theories of various categories. Munkholm \cite{Munkholm78} successfully showed that the derived category of augmented algebras is equivalent to the derived category of augmented algebras equipped with $\infty$-morphisms. Well, to be more precise, he showed that certain subcategories of augmented algebras had this property. Lefevre-Hasagawas phd thesis \cite{LefevreHasegawa03} builds upon this identification, but with help of further devolpment within the field. We will follow the approach of Lefevre-Hasagawa, by comparing the model structure for algebras and coalgebras,
 
-            We will follow the approach of Hinich, as it will be usefull later on. Where Hinich use theory of algebraic operads to show that the category of algebras is a model category, we will however give a more explicit formulation.
+        \subsection{DG-Algebras as a Model Category}
+
+            Bousefield and Gugenheim \cite{Bousfield76} proved that the category of commutative dg-algebras had a model structure whenever the base field was a field of characteristic $0$. In a joint project, Jardines paper from 1997 \cite{Jardine97} shows that this construction may be extended to dg-algebras over any commutative ring. On the other hand, Munkholm expanded on the ideas from Bousfield and Gugenheim to get an identification of derived categories. Also, Hinichs paper from 1997 \cite{Hinich97} details another method to obtain the model category which we want. We will follow the approach of Hinich, as it will be usefull later on. Notice that where Hinich use theory of algebraic operads to show that the category of algebras is a model category, we will however give a more explicit formulation.
 
             Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F:\mathcal{C}\rightleftharpoons Ch(\mathbb{K}):\#$, where $F$ is left adjoint to $\#$. Furthermore, suppose that $\mathcal{C}$ satsifies the $2$ conditions:
             \begin{itemize}
@@ -628,16 +606,9 @@
                 \end{center}
                 For any $d\in \mathbb{Z}$ and for any $A\in\mathcal{C}$ the injection $A \rightarrow A \coprod F(M[d])$ induces a quasi-isomorphism $A^\# \rightarrow (A\coprod F(M[d]))^\#$.
             \end{itemize}
-
-            \begin{example}
-                We already know some categories which satsifies these conditions.
-                \begin{enumerate}
-                    \item Let $A$ be a dg-algebra over $\mathbb{K}$. Then $mod^A$ has $H0$ and $H1$.
-                    \item The categories $Alg_\mathbb{K}$ and $AugAlg_\mathbb{K}$ satsifies $H0$ and $H1$.
-                \end{enumerate}
-            \end{example}
                 
-            With this adjunction, we may define three classes of morphisms: weak equivalences, fibrations and cofibrations. Let $f\in \mathcal{C}$ be a morphism, then:
+            With this adjunction in mind, we define weak equivalences, fibrations and cofibrations as follows:
+            Let $f\in \mathcal{C}$ be a morphism
             \begin{itemize}
                 \item $f\in Ac$ if $f^\#$ is a quasi-isomorphism.
                 \item $f\in Fib$ if $f^\#$ is surjective on each component.
@@ -645,7 +616,7 @@
             \end{itemize}
 
             \begin{thm}
-                The category $\mathcal{C}$ as defined as above is a model category.
+                The category $\mathcal{C}$ equipped with the weak equivalences, fibrations and cofibrations as defined above is a model category.
             \end{thm}
 
             Before we show this theorem we need to understand the cofibrations better. Let $A\in\mathcal{C}$, $M\in Ch(\mathbb{K})$ and $\alpha : M \rightarrow A^\#$ a morphism in $Ch(\mathbb{K})$. We define a functor 
@@ -672,24 +643,36 @@
                 \begin{center}
                     \begin{tikzcd}
                         F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} & A \ar[]{d}[]{a} \ar[bend left]{ddr}[]{f} \\
-                        F(cone(\alpha)) \ar[bend right]{rrd}[]{f'} \ar[]{r}[]{e} & A\langle M,\alpha\rangle \ar[dashed]{rd}[]{\widtilde{f}} \\
+                        F(cone(\alpha)) \ar[bend right]{rrd}[]{f'} \ar[]{r}[]{e} & A\langle M,\alpha\rangle \ar[dashed]{rd}[]{\widetilde{f}} \\
                         & & B
                     \end{tikzcd}
                 \end{center}
-te
-                To obtain naturality, we observe that the element $(a, e^Ti)$ is in fact universal.
+  
+                To obtain naturality, we use the adjunction to observe that the element $(a, e^Ti)$ is in fact universal.
             \end{proof}
 
+            We are now in a position to explicitly find some important cofibrations. We collect these morphisms into the "standard" cofibrations.
+
             \begin{definition}
+                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Suppose that $f$ factors as a transfinite composition of morphisms on the form $A_i \rightarrow A_i\langle M,\alpha\rangle$, i.e. $f$ factors into the diagram below, where $A_{i+1} = A_i\langle M,\alpha\rangle$.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{} & A_1 \ar[]{r}[]{} & A_2 \ar[]{r}[]{} & ... \ar[]{r}[]{} & B
+                    \end{tikzcd}
+                \end{center}
                 \begin{itemize}
-                    \item If $M$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call the map $A\rightarrow A\langle M,\alpha\rangle$ for a standard cofibration.
-                    \item If $M$ is a contractible complex, we call the map $A\rightarrow A\langle M,\alpha\rangle$ for a standard acyclic cofibration.
+                    \item If every such $M$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call $f$ a standard cofibration.
+                    \item If every such $M$ is a contractible complex, we call $f$ a standard acyclic cofibration.
                 \end{itemize}
             \end{definition}
 
             \begin{proposition}
-                Standard cofibrations are cofibrations and standard acyclic cofibrations are acyclic cofibrations.
+                Every standard cofibration is a cofibration, and every standard acyclic cofibration is an acyclic cofibrations. Every standard acyclic cofibration also has LLP with respect to fibrations. We will see that these morphisms in some sense generate every (acyclic) cofibration.
             \end{proposition}
+
+            \begin{proof}
+                This can be shown.
+            \end{proof}
 
             If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and cycle to kill itself".
 
@@ -714,5 +697,41 @@ te
                     \end{tikzcd}
                 \end{center}
             \end{proof}
+
+            The following corollary will concretize what it means that the standard cofibrations generate every cofibration. This corollary is really a step used within in the proof.
+
+            \begin{corollary}
+                Any (acyclic) cofibration is a retract of a standard (acyclic) cofibration.
+            \end{corollary}
+
+            We may immedietly apply this theorem to some familiar examples.
+
+            \begin{corollary}
+                Let $A$ be a dg-algebra over the field $\mathbb{K}$. The category $mod_A$ of left modules is a model category.
+            \end{corollary}
+
+            \begin{proof}[sketch of proof]
+                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\_$. H0 is satisfied as this category is bicomplete, and filtered colimits may be thought of as unions of sets. Moreover, since $mod_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
+            \end{proof}
+
+            \begin{corollary}
+                The categories $Alg^\bullet_\mathbb{K}$ ($AugAlg^\bullet_\mathbb{K}$) are model categories.
+            \end{corollary}
+
+            \begin{proof}
+                We establish the adjunction by letting $F = \bar{T} (T)$, the reduced tensor algebra of a cochain complex. For the same reasons as above, H0 is trivially satisfied. To show H1 we must find the coproduct and what $\bar{T}(M)$ is. ...
+            \end{proof}
+
+            We summarize the last result:
+
+            The category of augmented dg-algebras $AugAlg^\bullet_\mathbb{K}$ is a model category. Let $f:X\rightarrow Y$ be a homomorphism of augmented algebras. 
+            \begin{itemize}
+                \item $f\in Ac$ if $f^\#$ is a quasi-isomorphism.
+                \item $f\in Fib$ if $f^\#$ is surjective onto every component.
+                \item $f\in Cof$ if $f$ has LLP wrt. to every acyclic fibration.
+            \end{itemize}
+            
+            The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\bar{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective. Every dg-algebra which is isomorphic to a tensor algebra when considered as a graded algebra is cofibrant.
+            
     \section{A Model Structure on DG-Coalgebras}
 \end{document}

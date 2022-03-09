@@ -1439,6 +1439,119 @@
                 This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
             \end{proof}
 
+            Associated to this adjunction, we obtain universal elements, together with universal properties. Let $A$ be an augmented dg-algebra, then the identity of the coalgebras $id_{BA} : BA \rightarrow BA$, the counit $\varepsilon_A : \Omega BA \rightarrow A$ and a twisting morphism $\pi_A : BA \rightarrow A$ are equivalent by the adjunction and representation. Dually, the identity of algebras $id_{\Omega C} : \Omega C\rightarrow\Omega C$, the unit $\eta_C : C \rightarrow B\Omega C$ and the twisting morphism $\iota_C : C\rightarrow \Omega C$ are equivalent. The morphisms $\pi_A$ and $\iota_C$ are called the universal elements. We summarize their universal property in the following corollary.
+
+            \begin{corollary}\label{cor: universal-twisting}
+                Let $A$ be an augmented dg-algebra, and $C$ a conilpotent dg-coalgebra. The any twisting morphism $\alpha : C \rightarrow A$ factors uniquely through either $\pi_A$ or $\iota_C$.
+                
+                \begin{center}
+                    \begin{tikzcd}
+                        & \Omega C \ar[dashed]{rd}[]{g_\alpha}\\
+                        C \ar[]{rr}[]{\alpha} \ar[]{ru}[]{\iota_C} \ar[dashed]{rd}[]{f_\alpha} & & A \\
+                        & BA \ar[]{ru}[]{\pi_A}
+                    \end{tikzcd}
+                \end{center}
+                Moreover, the morphism $f_\alpha$ is a morphism of dg-coalgebras, and $g_\alpha$ is a morphism of dg-algebras.
+            \end{corollary}
+
+            \begin{definition}[Augmented Bar-Cobar construction]
+                Let $A$ be an augmented dg-algebra. The (right) augmented bar construction is the right twisted tensor product $BA \otimes_{\pi_A} A$, where $\pi_A$ is the universal twisting morphism.
+
+                Let $C$ be a conilpotent dg-coalgebra. The (right) augmented cobar construction is the right twisted tensor product $C \otimes_{\iota_C} \Omega C$, where $\iota_C$ is the universal twisting morphism.
+            \end{definition}
+
+            \begin{remark}
+                We could have defined the augmented bar-cobar construction as the left twisted tensor product. There is really no preference of handedness. Whenever we wish to be precise which handedness we will use it will be specified, e.g. the left augmented bar construction of $A$.
+            \end{remark}
+
+            \begin{proposition}\label{prop: aug-bar-ac}
+                The augmentation ideal of the augmented bar (cobar) construction is acyclic, i.e. $BA \bar{\otimes}_{\pi_A} A$ ($A \bar{\otimes}_{\pi_A} BA$) and $C \bar{\otimes}_{\iota_C}\Omega C$ ($\Omega C \bar{\otimes}_{\iota_C} C$) are acyclic.
+            \end{proposition}
+
+            \begin{proof}
+                calculate kernel of the augmentation map, and find a homotopy of the identity.
+            \end{proof}
+
+    \section{Comparison Lemma}
+
+        In this section we wish to deduce the fundamental theorem of twisting morphisms. In order to this we will need a result by Henri Cartan \cite{Cartan55}, called the comparison lemma. This section follows Loday \cite{Loday12}, and takes inspiration from Lefevre-Hasagawa \cite{LefevreHasegawa03}.
+        
+        In order to state the comparison lemma we need to understand what it means for a dg-algebra to be connected. We define weight, which is a second grading for the objects.
+
+        \begin{definition}[Weight graded cochain complexes]
+            Let $N = \startset{0, 1, ...}$ be an indexing set, which is possibly finite. A cochain complex $M$ is weight graded if it splits as a direct sum $M\simeq \bigoplus_{n\in N} M_{(n)}$ indexed over $N$. Let $m\in M$, then $m$ has weight $n$ if $m\in M_{(n)}$, has homological degree $n'$ if $m\in M^{n'}$ and (total) degree $|m| = n + n'$.
+
+            A dg-(co)algebra is weight graded if the weight on the cochain complex respects the (co)multiplication. A weight graded dg-(co)algebra will be called a wdg-(co)algebra.
+        \end{definition}
+
+        \begin{definition}[Connected cochain complexes]
+            A weight graded cochain complex $M$ is called connected if $M_(0)\simeq \mathbb{K}$ and is concentrated in homological degree $0$. 
+        \end{definition}
+
+        \begin{lemma}[Comparison Lemma]\label{lem: comparison}
+            Let $g:A\rightarrow A'$ be a morphism of connected wdg-algebras, and $f:C\rightarrow C'$ be a morphism of connected wdg-coalgebras. Suppose there are twisting morphisms $\alpha: C \rightarrow A$ and $\alpha ':C'\rightarrow A'$ such that $f$ and $g$ becomes a morphism of twisted tensors. If two out of $f$, $g$ and $f\otimes g$ are quasi-isomorphisms, then so is the third.
+        \end{lemma}
+
+        \begin{proof}
+            
+        \end{proof}
+
+        \begin{thm}[Fundamental Theorem of Twisting Morphisms]\label{thm: fundamental-thm-of-twisting}
+            Let $A$ be a connected wdg-algebra, $C$ be a connected wdg-coalgebra and $\alpha : C\rightarrow A$ a twisting morphism. The following are equivalent:
+            \begin{enumerate}
+                \item The augmentation ideal of the right twisted tensor product $C \bar{\otimes}_\alpha A$ is acyclic
+                \item The augmentation ideal of the left twisted tensor product $A \bar{\otimes}_\alpha C$ is acyclic
+                \item The morphism $f_\alpha : C \rightarrow BA$ is a quasi-isomorphism
+                \item The morphism $g_\alpha : \Omega C \rightarrow A$ is a quasi-isomorphism
+            \end{enumerate}
+        \end{thm}
+
+        \begin{proof}
+            In order to do this proof we must first observe that the bar and cobar construction preserve the weight grading, and therefore the connectedness.
+            
+            We prove 1. $\iff$ 3., the other equivalences are analogous. By corollary \ref{cor: universal-twisting}, the morphism $id_C \otimes g_\alpha : C \otimes_{\iota_C} \Omega C \rightarrow C \otimes_{\alpha} A$ is a morphism of twisting tensor products. Since $id_C$ is a quasi-isomorphism, we get by \ref{lem: comparison} that $id_C \otimes g_\alpha$ is a quasi-isomorphism if and only if $g_\alpha$ is a quasi-isomorphism if and only if $\bar{g}_\alpha$ is a quasi-isomorphism. By \ref{prop: aug-bar-ac} $C \bar{\otimes}_{\iota_C} \Omega C$ is acyclic, so $\bar{g}_\alpha$ is a quasi-isomorphism if and only if $C\bar{\otimes}_\alpha A$ is acyclic.
+        \end{proof}
+
+        \begin{corollary}
+            Let $A$ be a connected wdg-algebra, $C$ be a connected wdg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$, and the unit $\eta_C : C \rightarrow B\Omega C$ are quasi-isomorphisms. 
+        \end{corollary}
+
+        We now know some cases where the unit and the counit are quasi-isomorphisms. However, we would like to promote this result to every (conilpotent) augmented dg-(co)algebra. To this end we will find suitable filtrations to realize the associated graded as a connected wdg-(co)algebra and then get isomorphisms on the associated graded. The problem would then be to lift such quasi-isomorphisms back to our original objects.
+        
+        Recall that a filtration on a chain complex $M$ is a sequence of inclusions $M_0 \subseteq M_1 \subseteq ...$. The filtration is called exhaustive if $\varinjlim M_i \simeq M$, and admissable if $Fr_0M \simeq \mathbb{K}$ as well. Since each inclusion respect the differential, we may find the cokernel of each inclusion. The associated graded $grM$ is then the graded complex given by $gr_0M = M_0$ and $gr_iM = M_i/M_{i-1}$. A dg-(co)algebra is filtered if the filtration respects the (co)multiplication. If $f : M \rightarrow N$ is a morphism of filtered cochain complexes, then it defines a morphism $grf : grM \rightarrow grN$ on the associated graded. We call $f$ a graded quasi-isomorphism if $grf$ is a quasi-isomorphism.
+
+        Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Moreover, since $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$ we may define the comultiplication of the associated graded to be trivial, and this we will do. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
+
+        \begin{lemma}
+            Let $f : C\rightarrow C'$ be a graded quasi-isomorphism between conilpotent dg-coalgebras, then $\Omega f : \Omega C \rightarrow \Omega C'$ is a quasi-isomorphism. 
+        \end{lemma}
+
+        \begin{proof}
+            
+        \end{proof}
+
+        For completeness we include the following statement.
+
+        \begin{lemma}
+            Let $f : A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf : BA \rightarrow BA'$ is a quasi-isomorphism.
+        \end{lemma}
+
+        \begin{proof}
+            
+        \end{proof}
+
+        \begin{proposition}
+            Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
+        \end{proposition}
+
+        \begin{proof}
+            We pick the filtration $\mathbb{K} \subseteq A \subseteq A \subseteq ...$ for $A$. The associated graded $grA$ is $A$ but with almost trivial multiplication $grA \simeq \mathbb{K}\oplus \bar{A}$. Given a dg-coalgebra $M$, we may find a filtration on $\Omega M$ as $\Omega M_i = \bigoplus_{k \leq i} \Omega M^k$. Notice that the counit $\varepsilon_A : \Omega BA \rightarrow A$ becomes a filtered morphism together with these filtrations. thus $gr\varepsilon_A : gr\Omega BA \rightarrow grA$ is a morphism of augmented dg-algebras. By \ref{thm: fundamental-thm-of-twisting} $gr\varepsilon_A$ is a quasi-isomorphism if and only if the augmentation ideal of $gr\Omega BA \otimes A$ is acyclic.
+
+            Considered as cochain complexes, $A\simeq grA$, so there is a quasi-isomorphism $gr\varepsilon_A : \Omega BA \rightarrow A$.
+
+            The other direction is analogously, but we use the coradical filtration for $C$ to see that $gr\eta_C : grC \rightarrow grB\Omega C$ is a quasi-isomorphism.
+        \end{proof}
+
     \section{Strongly Homotopy Associative Algebras and Coalgebras}
         We have seen from corollary \ref{cor: a-to-dgc} that any algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that $T^c(A[1])$ with coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra. The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
