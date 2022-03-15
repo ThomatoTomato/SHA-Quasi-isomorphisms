@@ -169,7 +169,7 @@
 
         \subsection{Homotopy category}
 
-            Homotopy theory at it's most abstract is the study of categories and functors up to weak equivalences. Here, a weak equivalence may be anything, but most commonly it is a weak equivalence in topological homotopy or a quasi-isomorphism in homological algebra. The biggest concern when dealing with such concepts is to make a functor well-defined up to these chosen weak-equivalences. To this end, there is a construction to amend these problems, known as derived functors. We define a homotopical category in the sense of Riehl.
+            Homotopy theory at it's most abstract is the study of categories and functors up to weak equivalences. Here, a weak equivalence may be anything, but most commonly it is a weak equivalence in topological homotopy or a quasi-isomorphism in homological algebra. The biggest concern when dealing with such concepts is to make a functor well-defined up to these chosen weak-equivalences. To this end, there is a construction to amend these problems, known as derived functors. We define a homotopical category in the sense of Riehl \cite{Riehl16}.
 
             \begin{definition}[Homotopical Category]
                 Let $\mathcal{C}$ be a category. $\mathcal{C}$ is Homotopical if there is a wide subcategory constituting a class of morphisms known as weak equivalences, $Ac\subset Mor\mathcal{C}$. The weak equivalences should satisfy the \textbf{$2$-out-of-$6$ property}, i.e. given three composable morphisms $f$, $g$ and $g$, if $gf$ and $hg$ are weak equivalences, then so are $f$, $g$, $h$ and $hgf$.
@@ -220,7 +220,7 @@
                 \end{center}
             \end{definition}
 
-            Derived functors come into play whenever this is not the case. These lifts are however the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but a general account of it may be found in \todo{citation needed}. However, model categories serve as a usefull tool to simplify this discussion. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of derived functors.
+            Derived functors come into play whenever this is not the case. These lifts are however the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but a general account of it may be found in \cite{Riehl16}, \todo{More citations?}. As we will see, model categories are a nice environment to work with these concepts. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of some important derived functors.
 
             \begin{proposition}
                 Any model category $\mathcal{C}$ is a homotopical category.
@@ -519,7 +519,31 @@
                 If $\mathcal{C}$ is a model category, then we have a left and a right deformation. The cofibrant replacement $Q$ defines a left deformation, and the fibrant replacement defines a right deformation. Notice that this is only due to the fact that the factorization system is functorial.
             \end{remark}
 
-            \begin{lemma}
+            \begin{proposition}
+                Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between homotopical categories. If $F$ has a left deformation $Q$, then the total left derived functor $\mathbb{L}F$ exists. Moreover, the functor $FQ$ is homotopical, and $\mathbb{L}F$ is the unique extension of $FQ$.
+            \end{proposition}
+
+            \begin{proof}
+                We will not give a proof here. A proof may be found in Reihl \cite{Riehl16} under proposition 6.4.11.
+            \end{proof}
+
+            Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
+
+            \begin{definition}[Quillen adjunction]
+                Let $\mathcal{C}$ and $\mathcal{D}$ be model categories. \begin{enumerate}
+                    \item A left Quillen functor is a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves cofibrations and acyclic cofibrations.
+                    \item A right Quillen functor is a fucntor $F:\mathcal{C}\rightarrow\mathcal{D}$ such that it preserves fibrations and acyclic fibrations.
+                    \item Suppose that $(F,U)$ is an adjunction where $F:\mathcal{C}\rightarrow\mathcal{D}$ is left adjoint to $U$. $(F,U)$ is called a Quillen adjunction if $F$ is a left Quillen functor and $U$ is a right Quillen functor.
+                \end{enumerate}
+            \end{definition}
+
+            \begin{remark}
+                By Ken Browns lemma, lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = Ho FQ$.
+            \end{remark}
+
+            In order to eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. The direction of the arrow can be chosen to be along either the left or right adjoints, we make the convention of following the left adjoint functors. We summarize the following properties.
+
+            \begin{lemma}\label{lem: Quill-adj}
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and suppose there is an adjunction $F:\mathcal{C}\rightleftharpoons\mathcal{D}:U$. The following are equivalent:
                 \begin{enumerate}
                     \item $(F,U)$ is a Quillen adjunction.
@@ -556,7 +580,7 @@
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ be a Quillen adjunction. $(F,U)$ is called a Quillen equivalence if for any cofibrant $X$ in $\mathcal{C}$, fibrant $Y$ in $\mathcal{D}$ and any morphism $f:FX\rightarrow Y$ is a weak equivalence if and only if its transpose $f^T:X\rightarrow UY$ is a weak equivalence.
             \end{definition}
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: Quill-Eq}
                 Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The following are equivalent:
                 \begin{enumerate}
                     \item $(F,U)$ is a Quillen equivalence.
@@ -572,7 +596,7 @@
 
             We have the following refinement.
 
-            \begin{corollary}
+            \begin{corollary}\label{cor: Quill-Eq}
                 Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The following are equivalent:
                 \begin{enumerate}
                     \item $(F,U)$ is a Quillen equivalence.
@@ -584,10 +608,10 @@
             \begin{proof}
                 We start by showing $1. \implies 2.$ and $3.$. We already know that the derived unit and counit are isomorphism in homotopy, so we only need to show that $F$ ($U$) reflects weak equivalences between cofibrant (fibrant) objects. Suppose that $Ff:FX\rightarrow FY$ is a weak equivalence between cofibrant objects. Since $F$ preserves weak equivalences between cofibrant objects, we get that $FQf$ is a weak equivalence, or that $\mathbb{L}Ff$ is an isomorphism. By assumption, $\mathbb{L}F$ is an equivalence of categories, so $f$ is a weak equivalence as needed.
 
-                We assume $2.\implies 1.$, the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism, in particular the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, call it $\eta_X' : FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflects weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
+                We will show $2.\implies 1.$, the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism, in particular the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, call it $\eta_X' : FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflects weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
             \end{proof}
 
-    \section{Model structures Algebraic Categories}
+    \section{Model structures on Algebraic Categories}
 
             In order to understand $\infty$-quasi-isomorphism of strongly homotopy associative algebras we will study different homotopy theories of various categories. Munkholm \cite{Munkholm78} successfully showed that the derived category of augmented algebras is equivalent to the derived category of augmented algebras equipped with $\infty$-morphisms. Well, to be more precise, he showed that certain subcategories of augmented algebras had this property. Lefevre-Hasagawas phd thesis \cite{LefevreHasegawa03} builds upon this identification, but with help of further devolpment within the field. We will follow the approach of Lefevre-Hasagawa, by comparing the model structure for algebras and coalgebras,
 
@@ -634,7 +658,7 @@
             \end{center}
             Let $i: M[1] \rightarrow cone(\alpha)$ be a homogenous morphism which is the injection when considered as graded modules. Notice that we have a pair of morphisms $(a, e^Ti)\in h_{A,\alpha}(A\langle M,\alpha\rangle)$.
                 
-            \begin{proposition}
+            \begin{proposition}\label{prop: universal-h}
                 The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\_)$ is a natural isomorphism. Moreover, the pair $(a,e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e. the natural isomorphism is induced by this element under Yoneda's lemma.
             \end{proposition}
 
@@ -662,19 +686,42 @@
                 \end{center}
                 \begin{itemize}
                     \item If every such $M$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call $f$ a standard cofibration.
-                    \item If every such $M$ is a contractible complex, we call $f$ a standard acyclic cofibration.
+                    \item If every such $M$ is a contractible complex (and $\alpha = 0$), we call $f$ a standard acyclic cofibration.
                 \end{itemize}
             \end{definition}
 
             \begin{proposition}
-                Every standard cofibration is a cofibration, and every standard acyclic cofibration is an acyclic cofibrations. Every standard acyclic cofibration also has LLP with respect to fibrations. We will see that these morphisms in some sense generate every (acyclic) cofibration.
+                Every standard cofibration is a cofibration, and every standard acyclic cofibration has LLP with respect to fibrations. Moreover, if $\alpha = 0$, then every standard acyclic cofibration is also a weak equivalence. We will see that these morphisms in some sense generate every (acyclic) cofibration.
             \end{proposition}
 
             \begin{proof}
-                This can be shown.
+                First observe that every standard cofibration may be made iteratively from the chain complexes $\mathbb{K}[n]$, and likewise, every standard acyclic cofibration may be made iteratively from $M$ as in $H1$.
+
+                We first prove that if $M \simeq \mathbb{K}[n]$, and $\alpha : M \rightarrow A^\#$ is any map, then the map $A \rightarrow A\langle M,\alpha\rangle$ is a cofibration. This amounts to show that it has LLP to every acyclic fibration. Suppose that $h: B \rightarrow C$ is an acyclic fibration and that there is a commutative square as below.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f} \ar[]{d}[]{a} & B \ar[]{d}[]{h} \\
+                        A\langle M,\alpha\rangle \ar[]{r}[]{g} & C
+                    \end{tikzcd}
+                \end{center}
+                
+                By the universal property of $h_{A,\alpha}$ \ref{prop: universal-h} it suffices to find a pair $(f',t')$ such that $f: A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, $\partial t = f^\#\alpha$ and that $h$ induces a morphism $h : (f',t') \rightarrow g$. We see that we are forced to choose $f' = f$ as $hf = ga$. We know there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $C^{\#^{n-1}}$. By surjectivity of $h^\#$ there is an element $u$ of $B^{\#^{n-1}}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $Ker h^\#$, which is acyclic. This element is furthermore a cycle, so by acyclicity there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
+                
+                Secondly we prove that if $M$ is in as $H1$ and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration.This amounts to show that it has LLP to every fibration. Suppose that $h: B \rightarrow C$ is a fibration and that there is a commutative square as below.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f} \ar[]{d}[]{a} & B \ar[]{d}[]{h} \\
+                        A\langle M,\alpha\rangle \ar[]{r}[]{g} & C
+                    \end{tikzcd}
+                \end{center}
+
+                We will again use \ref{prop: universal-h}, so it suffices to find a $(t')$ such that $\partial t' = f^\#\alpha$. Let $t : M \rightarrow C^\#$ such that $\partial t = h^\# f^\# \alpha$. 
+
+                Finally we will assume that $\alpha = 0$. In this case the cone is a direct sum $cone(\alpha) = A^\# \oplus M$. Since $F$ is left adjoint to $\#$, we know that $Fcone(\alpha) \simeq F(A^\#)\coprod FM$. By $H1$ we get that the map $A \rightarrow A\langle M,\alpha\rangle \simeq A\coprod FM$ is a weak equivalence.
+
             \end{proof}
 
-            If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and cycle to kill itself".
+            In light of the above proposition we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and cycle to kill itself".
 
             \begin{center}
                 \begin{tikzcd}
@@ -727,11 +774,142 @@
             The category of augmented dg-algebras $AugAlg^\bullet_\mathbb{K}$ is a model category. Let $f:X\rightarrow Y$ be a homomorphism of augmented algebras. 
             \begin{itemize}
                 \item $f\in Ac$ if $f^\#$ is a quasi-isomorphism.
-                \item $f\in Fib$ if $f^\#$ is surjective onto every component.
+                \item $f\in Fib$ if $f^\#$ is an epimorphism (surjective onto every component).
                 \item $f\in Cof$ if $f$ has LLP wrt. to every acyclic fibration.
             \end{itemize}
             
             The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\bar{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective. Every dg-algebra which is isomorphic to a tensor algebra when considered as a graded algebra is cofibrant.
             
-    \section{A Model Structure on DG-Coalgebras}
+    \subsection{A Model Structure on DG-Coalgebras}
+
+            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory of dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinichs paper \cite{Hinich01} which describes a model structure on dg-coalgebras, but in relation to dg-lie algebras.
+
+            Let $f: C \rightarrow D$, the category of dg-coalgerbas will be equipped with the three following classes of morphisms:
+            \begin{itemize}
+                \item $f\in Ac$ if $\Omega f$ is a quasi-isomorphism.
+                \item $f\in Fib$ if $f$ has RLP wrt. to every acyclic cofibration.
+                \item $f\in Cof$ if $f^\#$ is a monomorphism (injective in every component).
+            \end{itemize}
+
+            Before we show that this defines a model structure on dg-coalgebras we need some preliminary results. First recall that $f : C \rightarrow D$ a morphism between dg-coalgebras is a graded quasi-isomorphism if $grf$ is a quasi-isomorphism. Lemma \ref{lem: graded-qif-are-w} says that whenever such $f$ are graded quasi-isomorphisms, $f$ is a weak equivalence. This is quite convenient, since this gives us a method to check that a morphism is a weak equivalence without evaluating it on the cobar construction. Moreover, both the unit and the counit of the bar-cobar adjunction are weak equivalences by proposition \ref{prop: unit-counit-qif}. With the following lemma we see that the bar-cobar adjunction is a Quillen equivalence if the category of dg-coalgebras is a model category.
+
+            \begin{lemma}\label{lem: bar-cobar-Quill-adj}
+                Let $f: C\rightarrow D$ be a morphism of dg-coalgebras, then:
+                \begin{itemize}
+                    \item if $f$ is a cofibration, then $\Omega f$ is a standard cofibration.
+                    \item if $f$ is a weak equivalence, then $\Omega f$ is as well.
+                \end{itemize}
+
+                Almost dually, let $f: A\rightarrow B$ be a morphism of dg-algebras, then:
+                \begin{itemize}
+                    \item if $f$ is a fibration, then $B f$ is a fibration.
+                    \item if $f$ is a weak equivalence, then $B f$ is as well.
+                \end{itemize}
+            \end{lemma}
+
+            \begin{proof}
+                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on D: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and that $\Omega$ commutes with colimits, there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
+
+                If $f$ is a weak equivalence, then $\Omega f$ is a quasi-isomorphism by definition.
+
+                By lemma \ref{lem: Quill-adj}, or adjointness more specifically, $B$ preserving fibrations is a consequence of $\Omega$ preserving cofibrations.
+
+                It remains to show that if $f: A\rightarrow B$ is a quasi-isomorphism, then $Bf$ is a weak equivalence. Now, $Bf$ is a weak equivalence if and only if $\Omega Bf$ is a quasi-isomorphism. By \ref{prop: unit-counit-qif}, the counit $A \rightarrow \Omega BA$ is a quasi-isomorphism, so $Bf$ is a weak equivalence by 2-out-of-3 property.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f} & B \\
+                        \Omega BA \ar[]{u}[]{\varepsilon_A} \ar[]{r}[]{\Omega Bf} & \Omega BB \ar[]{u}[]{\varepsilon_B}
+                    \end{tikzcd}
+                \end{center}
+            \end{proof}
+
+            We will need one more technical lemma.
+
+            \begin{lemma}\label{lem: tech-fac}
+                Let $A$ be a dg-algebra, $D$ a dg-coalgebra and $p: A \rightarrow \Omega D$ a fibration of algebras. The projection morphism $\pi : BA\prod_{B\Omega D}D \rightarrow BA$ is an acyclic cofibration.
+                \begin{center}
+                    \begin{tikzcd}
+                        BA\prod_{B\Omega D}D \ar[]{d}[]{\pi} \ar[]{r}[]{} & D \ar[]{d}[]{\eta_D} \\
+                        BA \ar[]{r}[]{Bp} & B\Omega D
+                    \end{tikzcd}
+                \end{center}
+            \end{lemma}
+
+            \begin{proof}
+                Technical
+            \end{proof}
+
+            \begin{thm}
+                The category $ConilCoalg^\bullet_{\mathbb{K}}$ is a model category with the classes $Ac$, $Fib$ and $Cof$ as defined above.
+            \end{thm}
+
+            \begin{proof}
+                The axioms \textbf{MC1} and \textbf{MC2} are immediet. Also, fibrations having RLP wrt. acyclic cofibrations is by definition.
+
+                We show \textbf{MC4} first. Let $f : C\rightarrow D$ be a morphism of coalgebras. There is a factorization $\Omega f = pi$ of morphisms between algebras, where $i$ is a cofibration, $p$ is a fibration and at least one of $i$ and $p$ are quasi-isomorphisms. Applying bar we get a factorization $B\Omega f = BiBp$, where $Bp$ is a fibration and at least one of $Bi$ and $Bp$ are weak equivalences.
+                \begin{center}
+                    \begin{tikzcd}
+                        \Omega C \ar[]{rr}[]{\Omega f} \ar[]{rd}[]{i} && \Omega D \\
+                        & A \ar[]{ru}[]{p}
+                    \end{tikzcd} $\rightsquigarrow$
+                    \begin{tikzcd}
+                        B\Omega C \ar[]{rr}[]{B\Omega F} \ar[]{rd}[]{Bi} && B\Omega D \\
+                        & BA \ar[]{ru}[]{Bp}
+                    \end{tikzcd}
+                \end{center}
+
+                We construct a pullback with $Bp$ and $\eta_D$. By \ref{lem: tech-fac} the morphism $\pi$ is an acyclic cofibration. We collect our morphisms in a big diagram. The dashed arrow exists since the rightmost square is a pullback.
+                \begin{center}
+                    \begin{tikzcd}
+                        & BA\prod_{B\Omega D}D \ar[]{ddd}[]{} \ar[]{rd}[]{q} \ar[phantom]{ddddr}[very near start]{\ulcorner} \\
+                        C \ar[dashed]{ru}[]{j} \ar[crossing over]{rr}[near start]{f} \ar[]{ddd}[]{\eta_C} && D \ar[]{ddd}[]{\eta_D} \\
+                        \\
+                        & BA \ar[]{rd}[]{Bp} \\
+                        B\Omega C \ar[]{rr}[]{B\Omega f} \ar[]{ru}[]{Bi} && B\Omega D
+                    \end{tikzcd}
+                \end{center}
+                
+                First notice that $q$ is a fibration, since fibrations are stable under pullbacks. $j$ is a cofibration, or a monomorphism, as the composition $Bi\eta_C$ is a monomorphism. Thus it remains to see that if $Bi$ ($Bp$) is a weak equivalence, then $j$ ($q$) is as well. This is evident from the $2$-out-of-$3$ property, as $\eta$ is a natural weak equivalence, $\pi$ is a weak equivalence and $Bi$ ($Bp$) is a weak equivalence.
+                
+                We now show \textbf{CM3}. Suppose that there is a square as below, where $i$ is a cofibration and $t$ is an acyclic cofibration.
+                \begin{center}
+                    \begin{tikzcd}
+                        E \ar[]{r}[]{} \ar[]{d}[]{i} & C \ar[]{d}[]{t} \\
+                        F \ar[]{r}[]{} & D
+                    \end{tikzcd}
+                \end{center}
+                
+                We can factor $t$ as $t = qj$ by \textbf{CM4}. Notice that $t$ is a retract of $q$, i.e. there is a commutative diagram as below.
+                \begin{center}
+                    \begin{tikzcd}
+                        C \ar[equal]{r}[]{} \ar[]{d}[]{j} & C \ar[]{d}[]{t} \\
+                        BA\prod_{B\Omega A}D \ar[]{r}[]{} \ar[]{r}[]{q} \ar[]{ru}[]{} & D
+                    \end{tikzcd}
+                \end{center}
+                
+                So in order to find a lift to $C$, we may instead find a lift to $BA\prod_{B\Omega D}D$. Since $p$ is an acyclic fibration by construction and $\Omega i$ is a cofibration by \ref{lem: bar-cobar-Quill-adj}, there is a lift $h: \Omega E \rightarrow A$ of algebras. We obtain our desired lift from the bar-cobar adjunction and the universal property of the pullback.
+                \begin{center}
+                    \begin{tikzcd}
+                        E \ar[]{d}[]{i} \ar[]{r}[]{} & BA\prod_{B\Omega D}D \ar[crossing over]{d}[]{q} \ar[]{r}[]{\pi} \ar[phantom]{rd}[very near start]{\ulcorner} & BA \ar[]{d}[]{Bp} \\
+                        F \ar[]{r}[]{} \ar[dotted]{rru}[near end, below]{h^T} \ar[dashed]{ru}[]{} & D \ar[]{r}[]{\eta_D} & B\Omega D
+                    \end{tikzcd} $\leftrightsquigarrow$
+                    \begin{tikzcd}
+                        \Omega E \ar[]{d}[]{\Omega i} \ar[]{r}[]{} & A \ar[]{d}[]{p} \\
+                        \Omega F \ar[]{r}[]{} \ar[dotted]{ru}[]{h} & \Omega D
+                \end{tikzcd}
+            \end{center}
+        \end{proof}
+
+        We restate the corollary of the adjunction.
+        \begin{corollary}
+            The bar-cobar construction $B: AugAlg^\bullet_\mathbb{K} \rightleftharpoons ConilCoalg^\bullet_\mathbb{K} : \Omega$ as a Quillen equivalence.
+        \end{corollary}
+
+        \begin{proof}
+            We first observe that $(B, \Omega)$ is a Quillen adjunction by lemma \ref{lem: bar-cobar-Quill-adj}. Moreover, since the unit and counit are weak equivalences by proposition \ref{prop: unit-counit-qif}, it follows by either proposition \ref{prop: Quill-Eq} or its corollary \ref{cor: Quill-Eq} that $(B, \Omega)$ is a Quillen equivalence.
+        \end{proof}
+
+    \section{}
+
 \end{document}

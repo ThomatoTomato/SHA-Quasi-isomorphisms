@@ -1522,7 +1522,7 @@
 
         Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Moreover, since $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$ we may define the comultiplication of the associated graded to be trivial, and this we will do. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
 
-        \begin{lemma}
+        \begin{lemma}\label{lem: graded-qif-are-w}
             Let $f : C\rightarrow C'$ be a graded quasi-isomorphism between conilpotent dg-coalgebras, then $\Omega f : \Omega C \rightarrow \Omega C'$ is a quasi-isomorphism. 
         \end{lemma}
 
@@ -1540,14 +1540,14 @@
             
         \end{proof}
 
-        \begin{proposition}
+        \begin{proposition}\label{prop: unit-counit-qif}
             Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
         \end{proposition}
 
         \begin{proof}
-            We pick the filtration $\mathbb{K} \subseteq A \subseteq A \subseteq ...$ for $A$. The associated graded $grA$ is $A$ but with almost trivial multiplication $grA \simeq \mathbb{K}\oplus \bar{A}$. Given a dg-coalgebra $M$, we may find a filtration on $\Omega M$ as $\Omega M_i = \bigoplus_{k \leq i} \Omega M^k$. Notice that the counit $\varepsilon_A : \Omega BA \rightarrow A$ becomes a filtered morphism together with these filtrations. thus $gr\varepsilon_A : gr\Omega BA \rightarrow grA$ is a morphism of augmented dg-algebras. By \ref{thm: fundamental-thm-of-twisting} $gr\varepsilon_A$ is a quasi-isomorphism if and only if the augmentation ideal of $gr\Omega BA \otimes A$ is acyclic.
+            We pick the filtration $\mathbb{K} \subseteq A \subseteq A \subseteq ...$ for $A$. The associated graded $grA$ is $A$ but with almost trivial multiplication $grA \simeq \mathbb{K}\oplus \bar{A}$. Given a dg-coalgebra $M$, we may find a filtration on $\Omega M$ as $\Omega M_i = \bigoplus_{k \leq i} \Omega M^k$. Notice that the counit $\varepsilon_A : \Omega BA \rightarrow A$ becomes a filtered morphism together with these filtrations. thus $gr\varepsilon_A : gr\Omega BA \rightarrow grA$ is a morphism of augmented dg-algebras. By \ref{thm: fundamental-thm-of-twisting} $gr\varepsilon_A$ is a quasi-isomorphism if and only if the augmentation ideal of $gr\Omega BA \otimes grA$ is acyclic.
 
-            Considered as cochain complexes, $A\simeq grA$, so there is a quasi-isomorphism $gr\varepsilon_A : \Omega BA \rightarrow A$.
+            Considered as cochain complexes, $A\simeq grA$ and $gr\Omega BA \simeq \Omega BA$, so there is a quasi-isomorphism $gr\varepsilon_A : \Omega BA \rightarrow A$.
 
             The other direction is analogously, but we use the coradical filtration for $C$ to see that $gr\eta_C : grC \rightarrow grB\Omega C$ is a quasi-isomorphism.
         \end{proof}
