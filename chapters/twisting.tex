@@ -1553,7 +1553,7 @@
         \end{proof}
 
     \section{Strongly Homotopy Associative Algebras and Coalgebras}
-        We have seen from corollary \ref{cor: a-to-dgc} that any algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that $T^c(A[1])$ with coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra. The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
+        We have seen from corollary \ref{cor: a-to-dgc} that any dg-algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that the coalgebra $T^c(A[1])$ together with a coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra? The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
         \begin{definition}
             An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $-1$.
@@ -1642,7 +1642,11 @@
         We define the homotopy of an $A_\infty$-algebra to be the homology of the chain complex $(A, m_1)$. Since $\partial(m_3) = m_2\circ_1m_2 - m_2\circ_2m_2$, we get that $m_2$ is associative in homology. Thus for any $A_\infty$-algebra $A$, the homotopy $HA$ is an associative algebra. The operadic homology of $A$ is defined as the homology of $(T^c(A[1]), m)$, which is the non-unital augmented Hochschild homology of $A$.
 
         \begin{example}
-            An associative dg-algebra is an $A_\infty$ algebra with trivial higher morphisms.
+            Suppose that $V$ is a cochain complex with differential $d$. Then $V$ is an $A_\infty$-algebra with trivial multiplication. In other words $m^1 = d$ and $m^i = 0$ for any $i>1$.
+        \end{example}
+
+        \begin{example}
+            Suppose that $A$ is a dg-algebra. Then $A$ is an $A_\infty$-algebra where $m^1 = d$, $m^2 = \cdot$ and $m^i=0$ for any $i>2$.
         \end{example}
 
         \begin{example}
@@ -1662,14 +1666,30 @@
 
         An $\infty$-quasi-isomorphism is an $\infty$-morphism $f$ such that $f_1$ is a quasi-isomorphism.
 
-        Let $Alg_\infty$ denote the category of $A_\infty$-algebras. The morphisms in this category are the $\infty$-morphisms. Observe that the bar construction $B : Alg_\infty \rightarrow ConilCoalg^\bullet$ is a fully fatihful functor, identifying $Alg_\infty$ as a subcategory of $ConilCoalg^\bullet$.
+        Let $Alg_\infty$ denote the category of $A_\infty$-algebras. The morphisms in this category are the $\infty$-morphisms. Observe that we may extend the bar construction $B : Alg_\infty \rightarrow ConilCoalg^\bullet$ to a fully fatihful functor, identifying $Alg_\infty$ as a subcategory of $ConilCoalg^\bullet$. This subcategory is namely the full subcategory of every dg-coalgebra that is isomorphic, as a coalgebra, to a cofree tensor coalgebra. Also, the category of dg-algebras is a non-full subcategory of $A_\infty$-algebras. This inclusion is really the recontextualization of a dg-algebra into an $A_\infty$-algebra.
 
-        Dual to $A\infty$-algebras we got $A_\infty$-coalgebras. This will be th
+        Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.
 
         \begin{definition}
-            A graded vector space $C$ is called an $A_\infty$-coalgebra if it is a dg-algebra of the form $(\bar{T}(B[-1]), d)$ where $d$ is a derivation of degree $-1$. Dually, this is equivalent to a chain complex $(B, d^1)$, where $d^1$ is of degree $1$, and together with morphisms $d^n : B \rightarrow B^{\otimes n}$. The morphism should satisfy the relations:
+            A graded vector space $C$ is called a conilpotent $A_\infty$-coalgebra if it is a dg-algebra of the form $(\bar{T}(C[-1]), d)$ where $d$ is a derivation of degree $-1$.
+        \end{definition}
+
+        \begin{remark}
+            For the rest of this thesis, an $A_\infty$-coalgebra should be understood as a conilpotent $A_\infty$-coalgebra unless otherwise specified.
+        \end{remark}
+
+        \begin{corollary}
+            $C$ is an $A_\infty$-coalgebra with differential $d$ then there is a chain complex $(C, d^1)$, where $d^1$ is of degree $1$, and together with morphisms $d^n : C \rightarrow C^{\otimes n}$ such that $d$ uniquely determines each $d^i$ for any $i>0$. Conversely, if the morphisms $d^i$ satisfy $\text{(rel)}_n$, then they uniquely determine a $d$ such that $C$ is an $A_\infty$-coalgebra.
             \begin{align*}
                 (\text{rel}_n)\qquad & \sum_{p+q+r = n}(-1)^{pq+r}d^{p+1+q}\circ^{op}_{p+1}d^q = 0
             \end{align*}
-        \end{definition}
+        \end{corollary}
+
+        A morphism of $A_\infty$-coalgebras would be defined in the same manner, but opposite. So an $\infty$-comorphism $f: C \rightsquigarrow D$ is either a morphism $\widetilde{f}: (T(C[-1]), m^C) \rightarrow (T(D[-1]),m^D)$ of dg-algebras. Equivalently such an $\infty$-comorphism is a collection of morphisms $f_n : C \rightarrow D^{\otimes n}$ of degree $n-2$ such that $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
+        \begin{align*}
+            & (\text{rel}_n)\qquad \partial(f_n) = \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ^{op}_{p+1}m^D_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^C_k \circ^{op} (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k}) \\
+            & \text{where } e \text{ is given as: } e = (k-1)(i_1-1) + (k-2)(i_2-1) + ... + 2(i_{k-2}-1) + (i_{k-1} - 1)
+        \end{align*}
+
+        We denote $Coalg_\infty$ as the category of $A_\infty$-coalgebras. In the same manner, the cobar construction extends to this category and gives us an identification of $A_\infty$-coalgebras and a subcategory of dg-algebras. This subcategory consists of every dg-algebra that is isomorphic, as an algebra, to a free tensor algebra. Lastly, every dg-coalgebra is an $A_\infty$-coalgebra by letting every morphism $m^i = 0$ where $i>2$. This gives a non full inclusion. 
 \end{document}

@@ -910,6 +910,37 @@
             We first observe that $(B, \Omega)$ is a Quillen adjunction by lemma \ref{lem: bar-cobar-Quill-adj}. Moreover, since the unit and counit are weak equivalences by proposition \ref{prop: unit-counit-qif}, it follows by either proposition \ref{prop: Quill-Eq} or its corollary \ref{cor: Quill-Eq} that $(B, \Omega)$ is a Quillen equivalence.
         \end{proof}
 
-    \section{}
+    \section{Homotopy theory of $A_{\infty}$-algebras}
+
+        This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertability of every strongly homotopy associative quasi-isomorphism, and the relation to associative algebras. This discussion will end with mentioning different results which gives a clearer description of fibrations, cofibrations and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $Alg_\infty$.
+
+        
+
+        \begin{proposition}
+            Let $C$ be a conilpotent dg-coalgebra. Then $C$ is cofibrant, and $C$ is fibrant if and only if there is a cochain complex $V$, such that $C \simeq T^c(V)$ as complexes.
+        \end{proposition}
+
+        \begin{proof}
+            To see that $C$ is cofibrant is the same as to verify that the map $\mathbb{K}\rightarrow C$ is a monomorphism, but this is clear.
+
+            We start by assuming that $C$ is fibrant. Then there is a lift in the square below, making the unit split-mono.
+            \begin{center}
+                \begin{tikzcd}
+                    C \ar[equal]{r}[]{} \ar[]{d}[]{\eta_C} & C \ar[]{d}[]{0} \\
+                    B\Omega C \ar[]{r}[]{0} \ar[dashed]{ru}[]{r} & 0
+                \end{tikzcd}
+            \end{center}
+            Consider the morphism $p_1^C : C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1 : B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. Clearly, $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(Fr_1C)$.
+
+            Now, assume that $C$ is isomorphic to $T^c(V)$ as coalgebras for some cochain complex $V$. Note that, by definition, $C$ is an $A_\infty$-algebra. By definition, we have a commutative square of $A_\infty$-algebras. Since every $A_\infty$-algebra is bifibrant, we know that this diagram has a lift, exhibiting $C$ as a retract of $B\Omega C$.
+            \begin{center}
+                \begin{tikzcd}
+                    C \ar[equal]{r}[]{} \ar[]{d}[]{} & C \ar[]{d}[]{} \\
+                    B\Omega C \ar[]{r}[]{} \ar[dashed]{ru}[]{} & 0
+                \end{tikzcd}
+            \end{center}
+
+            We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow 0$ is epi. By lemma \ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
+        \end{proof}
 
 \end{document}
