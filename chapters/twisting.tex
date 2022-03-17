@@ -1,7 +1,7 @@
 \documentclass[../thesis.tex]{subfiles}
 
 \begin{document}
-        A strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
+        In Stasheffs papers \todo{Se over disse kildene igjen, slik at jeg ikke dummer meg ut}\cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
 
 
         In order to understand the bar construction we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
@@ -16,7 +16,7 @@
             \end{tikzcd}
         \end{center}
 
-        
+        The bar and cobar construction will be the basis for our discussion of $A_\infty$-algebras. As the bar construction can be used to define $A_\infty$-algebras, we may easily dualize this to define $A_\infty$-coalgebras in terms of the cobar construction. This chapter will follow the notations and progression presented in Loday and Vallete \cite{Loday12} to develop the theory for the bar-cobar adjunction.
 
     \section{Algebras}
 
@@ -1207,7 +1207,7 @@
 
     \section{Bar and Cobar Construction}
 
-            The bar and cobar construction has been subjected to abstraction many times since its creation (Reference here!). The bar construction was made by MacLane and Moore in the 50s (Reference here!). It's dual, the cobar construction was made by Adams (reference here! Jeg har kildene på lesesal, lover) to complement their work. We will mainly follow the work of \cite{Loday12} to obtain the bar and cobar construction. The approach which we are going to take is slightly inspired by MacLanes\cite{MacLane71} canonical resolutions of comonads.
+            The bar construction was first formalized for augmented skew-commutative dg-rings by Eilenberg and Mac Lane \cite{Eilenberg53}. The bar construction then served as a tool to calculate the homology of the Eilenberg-Mac Lane spaces. This construction was later dualized by Adams \cite{Adams56} to obtain the cobar construction. It's first purpose was to serve as a method for constructing an injective resolution in order to calculate the cotor resolution \cite{Eilenberg65}. With time, the bar-cobar construction have been subjected to much generalization, such as a fattened tensor product on simplicially enriched, tensored and cotensored categories \cite{Riehl14}. We will mainly follow the work of \cite{Loday12} to obtain the bar and cobar construction. The approach which we are going to take is also slightly inspired by MacLanes\cite{MacLane71} canonical resolutions of comonads.
 
             For our purposes, the bar construction of an augmented algebra is a simplicial resoulution with the cofree coalgebra structure. For a dg-algebra, we will realize this resoultion as the total complex of its resoultion. Dually, the cobar construction of a conilpotent coalgebra is a cosimplicial resolution with the free algebra structure. We will see that these constructions defines an adjoint pair of functors.
 

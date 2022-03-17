@@ -20,7 +20,7 @@
 
     \section{Model categories}
 
-        In this section we will define Quillens model category. As one may see is that in practice there are a plethora of semantically different definitions of model categories, however they are all made to be equivalent. The difference comes down to preference. In this thesis we will use the definitions as they are developed in Mark Hoveys book \todo{reference here}. We will then go on to prove the basic results known about model categories, its associated homotopy category and Quillen functors between model categories.
+        In this section we will define Quillens model category. As one may see is that in practice there are a plethora of semantically different definitions of model categories, however they are all made to be equivalent. The difference comes down to preference. In this thesis we will use the definitions as they are developed in Mark Hoveys book \cite{Hovey99}. We will then go on to prove the basic results known about model categories, its associated homotopy category and Quillen functors between model categories.
 
         Before we state the definition of a model category we need some preliminary definitions. For this section, let $\mathcal{C}$ be a category.
 
@@ -76,7 +76,15 @@
                 \end{itemize}
             \end{definition}
 
-            A model category $\mathcal{C}$ is now defined to be a category equipped with a particular model structure. Notice that a category may admit several model structures. We will postpone examples until sufficient theory have been developed. For more topological examples, we refer to Dwayer-Spalinski and Hovey.
+            \begin{remark}
+                The class $Ac$ has every isomorphism. This is because every isomorphism is a retract of some identity morphism.
+            \end{remark}
+
+            \begin{remark}
+                The type of category which has been introduced above was first called a closed model category by Quillen \cite{Quillen67}. In his sense, a model category does not require to have either finite limits or finite colimits. In our case, we will explicitly state whenever a model category is non-closed, i.e. does not have every limit or colimit.
+            \end{remark}
+
+            A model category $\mathcal{C}$ is now defined to be a category equipped with a particular model structure. Notice that a category may admit several model structures. We will postpone examples until sufficient theory have been developed. For more topological examples, we refer to Dwayer-Spalinski \cite{Dwyer95} and Hovey \cite{Hovey99}.
 
             An interesting and a not so non-trivial property of model categories is that giving all three classes $Ac$, $Cof$ and $Fib$ is redundant. Given the class of weak equivalences and either cofibrations or fibrations, the model structure is determined. Thus the classes of fibrations are determined by acyclic cofibrations and cofibrations are determined by fibrations. The next two results will show this.
 
@@ -119,10 +127,10 @@
             \end{corollary}
 
             \begin{proof}
-                Follows from the universal property of pushouts. \emoji{woman-tipping-hand-medium-light-skin-tone} \emoji{nail-polish-medium-light-skin-tone} \emoji{crown}
+                This is clear by the universal property of pushouts.
             \end{proof}
 
-            Since we assume that every model category $\mathcal{C}$ is bicomplete, we know that it has both an initial and a terminal object. We let $\emptyset$ denote the initial object and $*$ denote the terminal object. 
+            Since we assume that every model category $\mathcal{C}$ is admits finite limits and colimits, we know that it has both an initial and a terminal object. We let $\emptyset$ denote the initial object and $*$ denote the terminal object. 
 
             \begin{definition}[Cofibrant, fibrant and bifibrant objects]
                 Let $\mathcal{C}$ be a model category. An object $X$ is called cofibrant if the unique morphism $\emptyset \rightarrow X$ is a cofibration. Dually, $X$ is called fibrant if the unique morphism $X \rightarrow *$ is fibrant. If $X$ is both cofibrant and fibrant, we call it bifibrant.
@@ -185,8 +193,12 @@
             \begin{remark}
                 Notice that the $2$-out-of-$6$ property is stronger than the $2$-out-of-$3$ property. To see this, let either $f$, $g$ or $h$ be the identity, and then conclude with the $2$-out-of-$3$ property.
             \end{remark}
+
+            \begin{remark}
+                The collection of weak equivalences contains every isomorphism. To see this pick an isomorphism $f$ and $f^{-1}$, then the compositions are the identity on the domain and codomain, which are assumed to be in $Ac$.
+            \end{remark}
             
-            Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This concept is due to Gabriel and Zisman \todo{citation needed}.
+            Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This construction is developed in Gabriel and Zisman \cite{Zisman67} called calculus of fractions. This method essentially tries to mimic localization for commutative rings in a category theoretic fashion.
 
             \begin{definition}
                 Let $\mathcal{C}$ be a homotopical category. It's homotopy category $Ho\mathcal{C} = \mathcal{C}[Ac^{-1}]$, together with a localization functor $q:\mathcal{C}\rightarrow Ho\mathcal{C}$. Recall that the localization are determined by the following universal property: If $F:\mathcal{C}\rightarrow \mathcal{D}$ is a functor sending weak equivalences to isomorphisms, then it uniquely factors through the homotopy category up to a unique natural isomorphism $\eta$.
@@ -524,8 +536,12 @@
             \end{proposition}
 
             \begin{proof}
-                We will not give a proof here. A proof may be found in Reihl \cite{Riehl16} under proposition 6.4.11.
+                Since we already have a candidate for the derived functor, the proof must just check that it has the universal property. A proof may be found in Reihl \cite{Riehl16} under proposition 6.4.11.
             \end{proof}
+
+            \begin{remark}
+                There is a somewhat weaker statement by Dwayer and Spalinski \cite{Dwyer95}. If we instead ask for functors $F$ which have the cofibrant replacement $Q$ (fibrant replacement $R$) as a left (right) deformation we may make this proof more explicit. This is theorem 9.3.
+            \end{remark}
 
             Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
 
