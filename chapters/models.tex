@@ -232,14 +232,93 @@
                 \end{center}
             \end{definition}
 
-            Derived functors come into play whenever this is not the case. These lifts are however the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but a general account of it may be found in \cite{Riehl16}, \todo{More citations?}. As we will see, model categories are a nice environment to work with these concepts. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of some important derived functors.
+            Derived functors come into play whenever this is not the case. These lifts are however the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but an account of it may be found in \cite{Riehl16}. As we will see, model categories are a nice environment to work with these concepts. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of some important derived functors.
 
             \begin{proposition}
                 Any model category $\mathcal{C}$ is a homotopical category.
             \end{proposition}
 
             \begin{proof}
-                Idea for proof. We want to do use thm 3.1. on nlab \url{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/two-out-of-six%20property#BlumbergMandell}. Reference to the lemma which we will use, may be found on webpage.
+                To show that a model category is homotopical it suffices to show that $Ac$ satisfies the $2$-out-of-$6$ property. Assume there are $3$ composable morphisms $f,g,h$ such that $gf,hg\in Ac$. By the $2$-out-of-$3$ property for $Ac$ it is enough to show that at least one of $f,g,h,fgh$ is a weak equivalence to deduce that every other morphism is a weak equivalence.
+                \begin{center}
+                    \begin{tikzcd}[row sep = large]
+                        A \ar[]{r}[]{f} \ar[]{rd}[]{gf} \ar[dotted]{rrd}[]{} & B \ar[]{d}[]{g} \ar[]{rd}[]{hg} \\
+                        & C \ar[]{r}[]{h} & D
+                    \end{tikzcd}
+                \end{center}
+
+                To be able to use the model structure, we will first show that we may assume $f,g$ to be cofibrant and $g,h$ to be fibrant. We know by MC4 that $f,g,gf$ may be factored into a cofibration composed with an acyclic fibration, e.g. $f = f_\beta f_\alpha$. Since $gf$ is a weak equivalence, so is $(gf)_\alpha$ by the $2$-out-of-$3$ property.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{rr}[]{f} \ar[]{rd}[below]{f_\alpha} && B \\
+                        & B' \ar[]{ru}[below]{f_\beta}
+                    \end{tikzcd}
+                    \begin{tikzcd}
+                        B \ar[]{rr}[]{g} \ar[]{rd}[below]{g_\alpha} && C \\
+                        & C' \ar[]{ru}[below]{g_\beta}
+                    \end{tikzcd}
+                    \begin{tikzcd}
+                        A \ar[]{rr}[]{gf} \ar[]{rd}[below]{(gf)_\alpha}&& C \\
+                        & C'' \ar[]{ru}[below]{(gf)_\beta}
+                    \end{tikzcd}
+                \end{center}
+
+                Notice that the "cofibrant approximation" of the map from $A$ to $C$ either goes through $C'$ or $C''$. We conjoin these by taking the pullback. Since acyclic fibrations are stable over pullbacks, we get a pullback square where every morphism is an acyclic fibration. Thus the map $A\rightarrow \widetilde{C}$ is a weak equivalence by $2$-out-of-$3$.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[bend right]{rdd}[]{(gf)_\alpha} \ar[bend left]{rrd}[]{g_\alpha} \ar[dashed]{rd}[]{} \\
+                        & \widetilde{C} \ar[]{d}[]{} \ar[]{r}[]{} \ar[phantom]{rd}[very near start]{\ulcorner} & C' \ar[]{d}[]{g_\beta}\\
+                        & C'' \ar[]{r}[]{(gf)_\beta}& C
+                    \end{tikzcd}
+                \end{center}
+
+                To replace $f$ with $f_\alpha$ we must lift the composition into our "new" $C$, which is $\widetilde{C}$. This is done by using MC3, as $f_\alpha$ is a cofibration and the pullback square above consists entirely of acyclic fibrations.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{} \ar[]{d}[]{f_\alpha} & \widetilde{C} \ar[]{d}[]{} \\
+                        B' \ar[]{r}[]{} \ar[dashed]{ru}[]{} & C
+                    \end{tikzcd}
+                \end{center}
+
+                To summarize we have the following diagram, where every squiggly arrow is a weak equivalence.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f_\alpha} \ar[squiggly]{rd}[]{t} & B' \ar[squiggly]{r}[]{} \ar[]{d}[]{s} & B \ar[]{d}[]{} \ar[squiggly]{rd}[]{} \\
+                        & \widetilde{C} \ar[squiggly]{r}[]{} & C \ar[]{r}[]{} & D
+                    \end{tikzcd}
+                \end{center}
+
+                We now wish to promote the arrow $s:B'\rightarrow \widetilde{C}$ into a cofibration. We do this by factoring both $s$ and $t$ with $MC4$. Notice that $s_\beta$, $t_\beta$ and $t_\alpha$ are weak equivalences.
+                \begin{center}
+                    \begin{tikzcd}
+                        B' \ar[]{rr}[]{s} \ar[]{rd}[]{s_\alpha} && \widetilde{C}\\
+                        & \widetilde{C}' \ar[]{ru}[]{s_\beta}
+                    \end{tikzcd}
+                    \begin{tikzcd}
+                        A \ar[]{rr}[]{t} \ar[]{rd}[]{t_\alpha} && \widetilde{C} \\
+                        & \widetilde{C}'' \ar[]{ru}[]{t_\beta}
+                    \end{tikzcd}
+                \end{center}
+
+                To obtain our final factorization we use RLP of $s_\beta$ on $t_\alpha$.
+                \begin{center}
+                    \begin{tikzcd}
+                        & B' \ar[]{d}[]{s_\alpha}\\
+                        A \ar[]{r}[]{} \ar[]{ru}[]{f_\alpha} \ar[]{d}[]{t_\alpha} & \widetilde{C}' \ar[]{d}[]{s_\beta} \\
+                        \widetilde{C}'' \ar[]{r}[]{t_\beta} \ar[dashed]{ru}[]{} & \widetilde{C}
+                    \end{tikzcd}
+                \end{center}
+
+                We have now obtained a factorization of $gf$ which are two cofibrations followed by an acyclic fibration, in such a manner that it is compatible with the original composition. The dual to this claim is that we may also factor $hg$ into two fibrations which is preceeded by an acyclic cofibration. In other words, we may assume without loss of generality that $f$ and $g$ are cofibrations, and that $g$ and $h$ are fibrations.
+                
+                In this case we will show that $g$ is an isomorphism. Consider the diagram below with lifts $i$ and $j$, these exists since we assume $gf$ and $hg$ to be weak equivalences.
+                \begin{center}
+                    \begin{tikzcd}
+                        A \ar[]{r}[]{f} \ar[]{d}[]{gf} & B\ar[]{r}[]{id_B} \ar[]{d}[]{g} & B \ar[]{d}[]{hg} \\
+                        C \ar[]{r}[]{id_C} \ar[dashed]{ru}[]{i} & C \ar[]{r}[]{h} \ar[dashed]{ru}[]{j} & D
+                    \end{tikzcd}
+                \end{center}
+                Since the diagram is commutative, we get that $i = j$, and that $g$ is both split mono and split epi, with $i$ as its splitting.
             \end{proof}
 
             Since every model category is homotopical, it also has an associated homotopy category $Ho\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$ and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects respectively.
@@ -346,8 +425,6 @@
             \end{proposition}
 
             \begin{proof}
-                This proof is due to Mark Hovey \todo{citation needed}.
-
                 $(1.)$ Assume that $f \overset{l}{\sim} g$ and $h:Y\rightarrow Z$. Let $H:X\wedge I \rightarrow Y$ denote the left homotopy between $f$ and $g$. The left homotopy between $hf$ and $hg$ is given as $hH$.
 
                 $(2.)$ Assume that $Y$ is fibrant, $f \overset{l}{\sim} g$ and that $h:W\rightarrow X$. Let $H:X\wedge I\rightarrow Y$ be a left homotopy. We construct a new cylinder object for the homotopy. Factor $p_1:X\wedge I \rightarrow X$ as $q_1\circ q_0$ where $q_0: X\wedge I \rightarrow X\wedge I'$ is an acyclic cofibration and $q_1:X\wedge I'\rightarrow X$ is a fibration. By the $2$-out-of-$3$ property $q_1$ is an acyclic fibration, as $p_1$ and $q_0$ are weak equivalences. $X\wedge I'$ is a cylinder object as $q_0\circ p_0$ is a cofibration and $q_1$ is a weak equivalence. Since we assume $Y$ to be fibrant we lift the left homotopy $H:X\wedge I\rightarrow Y$ to the left homotopy $H':X\wedge I'\rightarrow Y$ with the following diagram:
@@ -853,7 +930,7 @@
             \end{lemma}
 
             \begin{proof}
-                Technical
+                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. To see that $\pi$ is a quasi-isomorphism it is enough to understand that it is a quasi-isomorphism as chain complexes. This is checked by Lefevre-Hasegawa \cite{LefevreHasegawa03}.
             \end{proof}
 
             \begin{thm}
