@@ -1531,7 +1531,24 @@
         \end{lemma}
 
         \begin{proof}
-            
+            We do this by considering a spectral sequence. Endow $C$ with a grading (as a vector space) induced by the coradical filtration, i.e. $c\in C$ has degree $|c|=n$ if $n$ is the smallest number such that $\bar{\Delta}^nc = 0$. We define a filtration on $\Omega C$ by
+            \begin{align*}
+                F_p\Omega C = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n|\leq p}
+            \end{align*}
+
+            Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, theorem 5.5.1 \cite{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
+
+            By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega grC)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n| = p}$.
+
+            Evaluating $f$ at the $0$'th page would the look like $E^0\Omega f \simeq \Omega grf$. By the mapping lemma, exercise 5.2.3 \cite{Weibel94}, it is enough to check that $\Omega grf$ is a quasi-isomorphism, to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega grf$ is a quasi-isomorphism by inspecting every $E^0_{p,\bullet}\Omega C$.
+
+            We define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
+            \begin{align*}
+                G_k = \startset{c_1[-1]\otimes ... \otimes c_n[-1] \mid n \geq -k}.
+            \end{align*}
+            We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the augmentation ideal $\bar{C}$. Again, by the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
+
+            To see that $\Omega grf$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (grC[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a graded quasi-isomorphisms and by the Kunneth-formual, theorem 3.6.3 \cite{Weibel94}, it follows that $E^Gf$ is a quasi-isomorphism.
         \end{proof}
 
         For completeness we include the following statement.
@@ -1541,7 +1558,7 @@
         \end{lemma}
 
         \begin{proof}
-            
+            Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunnet formula, theorem 3.6.3 \cite{Weibel94}.            
         \end{proof}
 
         \begin{proposition}\label{prop: unit-counit-qif}

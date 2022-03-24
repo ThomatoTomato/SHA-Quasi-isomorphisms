@@ -1007,7 +1007,83 @@
 
         This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertability of every strongly homotopy associative quasi-isomorphism, and the relation to associative algebras. This discussion will end with mentioning different results which gives a clearer description of fibrations, cofibrations and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $Alg_\infty$.
 
-        
+        Let $f: A \rightsquigarrow B$ be a morphism between $A_\infty$-algebras, the category of $A_\infty$-algebras will be equipped with the three following classes of morphisms:
+        \begin{itemize}
+            \item $f\in Ac$ if $f$ is an $\infty$-quasi-isomorphism, i.e. $f_1$ is a quasi-isomorphism.
+            \item $f\in Fib$ if $f_1$ is an epimorphism.
+            \item $f\in Cof$ if $f_1$ is a monomorphism.
+        \end{itemize}
+
+        This category does not make a model category in the sense of a closed model category, as we are lacking many finite limits. It does however come quite close to be such a category.
+
+        \begin{thm}\label{thm: model-A-inf}
+            The category $Alg_\infty$ equipped with the three classes as defined above satisfies:
+            \begin{itemize} 
+                \item[a] The axioms \textbf{MC1} through \textbf{MC4}.
+                \item[b] Given a diagram as below, where $p$ is a fibration, then its limit exists.
+                \begin{center}
+                    \begin{tikzcd}
+                        & A \ar[]{d}[]{p} \\
+                        B \ar[]{r}[]{} & C
+                    \end{tikzcd}
+                \end{center}
+            \end{itemize}
+        \end{thm}
+
+        Before we are able to prove this, we need some lemmata.
+
+        \begin{lemma}
+            let $A$ be an $A_\infty$-algebra, and $K$ a contractible complex considered as an $A_\infty$-algebra. If $g: (A,m_1^A) \rightarrow (K, m_1^K)$ is a cochain map, then it extends to an $\infty$-morphism $f: A \rightsquigarrow K$.
+        \end{lemma}
+
+        \begin{proof}
+            We construct each $f_i$ inductively. The case $i=1$ is degenerate as we have assumed $f_1 = g$.
+
+            Assume that we have already constructed $f_1$ through $f_n$. We observe that the sum below is a cycle of $Hom^*_\mathbb{K}(A,K)$.
+            \begin{align*}
+                \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ_{p+1}m^A_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^B_k \circ (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k})
+            \end{align*}
+            Thus since $K$ is contractible, $Hom^*_\mathbb{K}(A,K)$ is acyclic and there exists some morphism $f_{n+1}$ such that $\partial (f{n+1})$ is the sum above. This says that this extension does in fact satisfy $(rel_{n+1})$.
+        \end{proof}
+
+        \begin{lemma}\label{lem: strict-replacement}
+            Let $j: A \rightsquigarrow D$ be a cofibration of $A_\infty$-algberas, then there is an isomorphism $k: D\rightsquigarrow D'$ such that the composition $k\circ j : A \rightsquigarrow D'$ is a strict morphism of $A_\infty$-algebras.
+
+            Dually, if $j: A \rightsquigarrow D$ is a fibration, then there is an isomorphism $l : A' \rightsquigarrow A$ such that the composition $j\circ l : A' \rightsquigarrow D$ is a strict morphism of $A_\infty$-algebras.
+        \end{lemma}
+
+        \begin{proof}
+            A proof is given as lemma 1.3.3.3 in \cite{LefevreHasegawa03}.
+        \end{proof}
+
+        \begin{proof}[proof of \ref{thm: model-A-inf}]
+            We start by showing b. Suppose that we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
+            \begin{center}
+                \begin{tikzcd}
+                    & A \ar[two heads]{d}[]{g} \\
+                    A' \ar[]{r}[]{f} & A''
+                \end{tikzcd}
+            \end{center}
+            First notice that as dg-coalgebras, this pullback exists and defines a new dg-coalgebra $BA \prod_{BA''}BA'$.
+
+            Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = Kerg_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \bar{T}^c(K)\prod \bar{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products and we get, $\bar{T}^c(A'[1])\prod \bar{T}^c(K) \simeq \bar{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e. it is an $A_\infty$-algebra.
+
+            We now prove a. MC1 and MC2 are immediate, so we will not prove them.
+
+            We start by proving MC3. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration and $q$ is a fibration.
+            \begin{center}
+                \begin{tikzcd}
+                    A \ar[]{r}[]{f} \ar[]{d}[]{j} & B \ar[]{d}[]{q} \\
+                    C \ar[]{r}[]{g} & D
+                \end{tikzcd}
+            \end{center}
+
+            By lemma \ref{lem: strict-replacement}, we may assume assume that both $j$ and $q$ are strict morphisms. We now assume that $q$ is an $\infty$-quasi-isomorphism, the proof will be analogous if $j$ is an $\infty$-quasi-isomorphism instead.
+
+            
+        \end{proof}
+
+        With this model structure we are finally able to characterize the fibrant and cofibrant conilpotent dg-coalgebras.
 
         \begin{proposition}
             Let $C$ be a conilpotent dg-coalgebra. Then $C$ is cofibrant, and $C$ is fibrant if and only if there is a cochain complex $V$, such that $C \simeq T^c(V)$ as complexes.
@@ -1019,8 +1095,8 @@
             We start by assuming that $C$ is fibrant. Then there is a lift in the square below, making the unit split-mono.
             \begin{center}
                 \begin{tikzcd}
-                    C \ar[equal]{r}[]{} \ar[]{d}[]{\eta_C} & C \ar[]{d}[]{0} \\
-                    B\Omega C \ar[]{r}[]{0} \ar[dashed]{ru}[]{r} & 0
+                    C \ar[equal]{r}[]{} \ar[]{d}[]{\eta_C} & C \ar[]{d}[]{\varepsilon_C} \\
+                    B\Omega C \ar[]{r}[]{\varepsilon_{B\Omega C}} \ar[dashed]{ru}[]{r} & \mathbb{K}
                 \end{tikzcd}
             \end{center}
             Consider the morphism $p_1^C : C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1 : B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. Clearly, $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(Fr_1C)$.
@@ -1028,8 +1104,8 @@
             Now, assume that $C$ is isomorphic to $T^c(V)$ as coalgebras for some cochain complex $V$. Note that, by definition, $C$ is an $A_\infty$-algebra. By definition, we have a commutative square of $A_\infty$-algebras. Since every $A_\infty$-algebra is bifibrant, we know that this diagram has a lift, exhibiting $C$ as a retract of $B\Omega C$.
             \begin{center}
                 \begin{tikzcd}
-                    C \ar[equal]{r}[]{} \ar[]{d}[]{} & C \ar[]{d}[]{} \\
-                    B\Omega C \ar[]{r}[]{} \ar[dashed]{ru}[]{} & 0
+                    \bar{C} \ar[equal]{r}[]{} \ar[]{d}[]{} & \bar{C} \ar[]{d}[]{} \\
+                    \bar{B}\Omega C \ar[]{r}[]{} \ar[dashed]{ru}[]{} & \mathbb{K}
                 \end{tikzcd}
             \end{center}
 
