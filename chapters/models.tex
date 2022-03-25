@@ -485,7 +485,7 @@
                 \end{enumerate}
             \end{corollary}
 
-            \begin{corollary}
+            \begin{corollary}\label{cor: homotopy-is-eq-rel}
                 Homotopy is a congruence relation on $\mathcal{C}_{cf}$. In this manner, the category $\mathcal{C}_{cf}/\sim$ is well-defined, exists and inverts every homotopy equivalence.
             \end{corollary}
 
@@ -995,7 +995,7 @@
         \end{proof}
 
         We restate the corollary of the adjunction.
-        \begin{corollary}
+        \begin{corollary}\label{cor: cobar-bar-quill-eq}
             The bar-cobar construction $B: AugAlg^\bullet_\mathbb{K} \rightleftharpoons ConilCoalg^\bullet_\mathbb{K} : \Omega$ as a Quillen equivalence.
         \end{corollary}
 
@@ -1154,8 +1154,50 @@
             We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow 0$ is epi. By lemma \ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
         \end{proof}
 
-        Before we end this section we will state some results of the homotopy theory of $A_\infty$-algebras, relating them to homological algebra.
-        
+        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $Alg_\infty$ as a subcategory of $ConilCoalg_\mathbb{K}$ to essentially obtain 2 different model structure on this category. The following proposition tells us that these structures do not differ.
+
+        \begin{proposition}
+            Let $f : A \rightsquigarrow B$ be an $\infty$-morphism. Then we have the following:
+            \begin{itemize}
+                \item $f$ is an $\infty$-quasi-isomorphism if and only if $Bf$ is a weak equivalence.
+                \item $f_1$ is an epimorphism if and only if $Bf$ is a fibration.
+                \item $f_1$ is a monomorphism if and only if $Bf$ is a monomorphism.
+            \end{itemize}
+        \end{proposition}
+
+        \begin{proof}
+            This is proposition 1.3.3.5 in \cite{LefevreHasegawa03}.
+        \end{proof}
+
     \section{The Homotopy Category of $Alg_\infty$}
+
+    With the results we have establish, we are now ready to talk about homotopies in $Alg_\infty$.
+
+    \begin{thm}
+        In the category $Alg_\infty$ we have the following:
+        \begin{itemize}
+            \item Homotopy equivalence is an equivalence relation.
+            \item A morphism is an $\infty$-quasi-isomorphism if and only if it is a homotopy equivalence.
+            \item Let $dash \subseteq Alg_\infty$ be the full subcategory consisting of dg-algebras considered as $A_\infty$-algebras. $dash$ has an induced homotopy equivalence from $Alg_\infty$, and the inclusion $Alg \rightarrow dash$ induces an equivalence in homotopy $Alg[Qis^{-1}] \simeq \sfrac{dash}{\sim}$.
+        \end{itemize}
+    \end{thm}
+
+    \begin{proof}
+        The first point is obsreved from corollary \ref{cor: homotopy-is-eq-rel}, and the second point is Whiteheads theorem, theorem \ref{thm: Whitehead}.
+
+        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By corollary \ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $HoAlg \simeq HoCoalg$. Moreover, we know that by theorem \ref{thm: Fundamental-thm-model} that $HoCoalg \simeq \sfrac{Alg_\infty}{\sim}$. Notice that the image of $B$ is $dash$, so in homotopy, we get that the image $\sfrac{dash}{\sim}$ is equivalent to the essentiall image $HoAlg_\infty$.
+    \end{proof}
+
+    Homotopy equivalence in the algebraic sense and the model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e. $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras.
+
+    \begin{proposition}
+        Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g : C \rightarrow D$ are two morphisms. Then:
+        \begin{itemize}
+            \item If $f-g$ is null homotopic, then they are left homotopic.
+            \item If $D$ is fibrant, then $f-g$ is null homotopic if and only if $f$ and $g$ are left homotopic.
+        \end{itemize}
+    \end{proposition}
+    
+    This tells us that in general, these concepts are usually not the same. However, we know that the subcategory of bifibrant objects in this category is exactly the subcategory $Alg_\infty$. Thus for $A_\infty$-algebras homological homotopy is the same as model categorical homotopy. In this sense we obtain that the homotopy category in the homological sense is equivalent to the derived category.
 
 \end{document}
