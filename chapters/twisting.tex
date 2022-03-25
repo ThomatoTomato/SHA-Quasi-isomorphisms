@@ -12,7 +12,7 @@
 
         \begin{center}
             \begin{tikzcd}
-                \substack{Aug \\ Alg}_{\mathbb{K}}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \substack{Conil \\ CoAlg}_{\mathbb{K}}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
+                Alg_{\mathbb{K}, +}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & Coalg_{\mathbb{K}, conil}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
             \end{tikzcd}
         \end{center}
 
@@ -49,7 +49,7 @@
             \begin{definition}[Category of algebras]
                 \begin{itemize}
                     \item Let $Alg_{\mathbb{K}}$ denote the category of algebras. It's objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $Alg_{\mathbb{K}}(A,B)$.
-                    \item Let $nAlg_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $nAlg_{\mathbb{K}}(A,B)$.
+                    \item Let $\widehat{}{Alg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{Alg}_{\mathbb{K}}(A,B)$.
                 \end{itemize}
             \end{definition}
 
@@ -136,7 +136,7 @@
                 Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
             \end{definition}
 
-            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse. The category of augmented algebras is denoted as $AugAlg_\mathbb{K}$ or $\substack{Aug \\ Alg}_\mathbb{K}$.
+            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse. The category of augmented algebras is denoted as $Alg_{\mathbb{K},+}$ or $Alg_{\mathbb{K},+}$.
 
             \begin{definition}[Tensor algebra]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor algebra $T(V)$ of $V$ as the module
@@ -155,25 +155,25 @@
                 \end{align*}
             \end{definition}
 
-            Observe that the tensor algebra is augmented. The projection from $T(V)$ into $\mathbb{K}$ is an algebra homomorphism, so we may split the tensor algebra into its unit and its augmentation ideal $T(V) \simeq \mathbb{K}\oplus\bar{T(V)}$. We call $\bar{T(V)}$ the reduced tensor algebra.
+            Observe that the tensor algebra is augmented. The projection from $T(V)$ into $\mathbb{K}$ is an algebra homomorphism, so we may split the tensor algebra into its unit and its augmentation ideal $T(V) \simeq \mathbb{K}\oplus\bar{T}(V)$. We call $\bar{T}(V)$ the reduced tensor algebra.
 
             \begin{proposition}[Tensor algebra is free]
                 The tensor algebra is the free algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq Alg_{\mathbb{K}}(T(V),A)$.
 
-                The reduced tensor algebra is the fre non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq nAlg_{\mathbb{K}}(\bar{T(V)},A)$.
+                The reduced tensor algebra is the fre non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq \widehat{Alg}_{\mathbb{K}}(\bar{T}(V),A)$.
             \end{proposition}
 
             \begin{proof}
                 This proposition should be evident from the description of an algebra homomorphism from a tensor algebra. If $f: T(V) \rightarrow A$ is an algebra homomorphism, then $f$ must satisfy the following conditions:
                 \begin{itemize}
-                    \item (Unitality)\quad $f(1) = 1$
-                    \item (Homomorphism property)\quad Given $v,w\in V$, then $f(vw) = f(v)\nabla_Af(w)$
+                    \item Unitality:\quad $f(1) = 1$
+                    \item Homomorphism property:\quad Given $v,w\in V$, then $f(vw) = f(v)\nabla_Af(w)$
                 \end{itemize}
                 By induction, we see that $f$ is completely determined by where it sends the elements of $V$. Thus restriction by the inclusion of $V$ into $T(V)$ induces a bijection.
             \end{proof}
 
             \begin{definition}[Modules]
-                Let $A$ be an algebra. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow A$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow A$) called multiplication. We require that $\mu_M$ is associative with respect to the multiplication and preserves the unit of $A$, i.e. the electric laws are satisfied.
+                Let $A$ be an algebra. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow A$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow A$) called multiplication. We require that $\mu_M$ is associative with respect to the multiplication, and it preserves the unit of $A$. In other words, the electric laws below are satisfied.
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         \node at (-2.4,0) {(Associativity)};
@@ -224,17 +224,17 @@
             \end{definition}
 
             \begin{definition}[A-linear homomorphisms]
-                Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, $f(am) = af(m)$.
+                Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, i.e. $f(am) = af(m)$.
             \end{definition}
 
-            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\_,\_)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. 
+            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\_,\_)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. One may check that there is a free functor from $Mod_\mathbb{K}$ to $Mod_A$.
 
             \begin{proposition}
                 Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
             
     \section{Coalgebras}
-            This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the algebras. Thus we will see that the proper dual concept will be of conilpotent coalgebras. We will see that the cofree coalgebra is conilpotent.
+            This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the coalgebras. Thus we will see that the proper dual concept will be thath of conilpotent coalgebras.
 
             \begin{definition}[Coalgebra]
                 Let $\mathbb{K}$ be a field. A coalgebra $C$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called comultiplication and counit,
@@ -251,7 +251,7 @@
 
             We define repeated application of comultiplication as $\Delta_C^n = (\Delta_C\otimes id_C\otimes ...)\circ\Delta_C^{n-1}$. Notice that the choice of where we put comultiplication in the tensor does not matter, as coassociativity require all of the choices to be equal.
             
-            We may dualize the electric circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit is a sink. 
+            We may dualize the electric circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit becomes a sink. 
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
                     \node at (-3.5, 0) {(Comultiplication)};
@@ -332,7 +332,7 @@
             \begin{definition}[Category of Coalgebras]
                 \begin{itemize}
                     \item Let $CoAlg_{\mathbb{K}}$ denote the category of coalgebras. It's objects consists of every coalgebra $C$, and the morphisms are coalgebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $CoAlg_{\mathbb{K}}(C,D)$.
-                    \item Let $nCoAlg_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $C$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $nCoAlg_{\mathbb{K}}(C,D)$.
+                    \item Let $\widehat{CoAlg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $C$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $\widehat{CoAlg}_{\mathbb{K}}(C,D)$.
                 \end{itemize}
             \end{definition}
 
@@ -381,7 +381,7 @@
             \end{align*}
 
             \begin{definition}[Conilpotent coalgebras]
-                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $ConilCoAlg_\mathbb{K}$ or $\substack{Conil \\ CoAlg}_{\mathbb{K}}$.
+                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $CoAlg_{\mathbb{K},conil}$.
             \end{definition}
             
             \begin{proposition}[Conilpotent tensor coalgebra]\label{prop: conilpotent-tensor}
@@ -399,7 +399,7 @@
             \end{proof}
 
             \begin{proposition}[Cofree tensor coalgebra]\label{prop: cofree-tensor}
-                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq \substack{Conil \\ CoAlg}_{\mathbb{K}}(C, T^c(V))$.
+                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq CoAlg_{\mathbb{K}, conil}(C, T^c(V))$.
             \end{proposition}
 
             \begin{proof}
@@ -468,10 +468,10 @@
                 Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$.
             \end{definition}
 
-            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $CoHom_C(\_,\_)$ are $C$-colinear. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
+            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\_,\_)$ are $C$-colinear. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
             \begin{proposition}
-                Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq CoHom_C(N,C\otimes_{\mathbb{K}}M)$. 
+                Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq Hom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
 
     \section{Derivations and DG-Algebras}
@@ -641,7 +641,7 @@
             \end{proposition}
 
             \begin{proof}
-                ...
+                We must check that the given $d$ in facts defines an isomorphism. This is checked by calculation. 
             \end{proof}
 
             Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \substack{\bigoplus \\ z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^*$. Generally $\mathcal{C}^*$ is the category of graded objects whenever it makes sense, and the graded $\mathbb{K}$-module of morphisms between two graded objects is denoted as $Hom_{\mathbb{K}}^*(M^*,N^*)$.
@@ -703,8 +703,11 @@
                 \end{tikzpicture}
             \end{center}
 
-            Observe that $f:M^{\bullet}\rightarrow N^{\bullet}$ of degree $0$ is a chain morphism if and only if $\partial(f) = 0$. We then observe that $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})\simeq Z^0Hom_{\mathbb{K}}^*(M^{\bullet})$.
+            Observe that $f:M^{\bullet}\rightarrow N^{\bullet}$ of degree $0$ is a chain morphism if and only if $\partial(f) = 0$. We then observe that $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})\simeq Z^0Hom_{\mathbb{K}}^*(M^{\bullet})$. Moreover, if $f$ is a boundary, i.e. there is some $h$ such that $f = \partial h$, then $f$ null-homotopic. Thus the $0$'th homology $H^0Hom^*_\mathbb{K}(M^\bullet, N^\bullet)$ is the set of every chain map which is not null-homotopic up to null homotopy. We obtain this lemma immediate from this discussion.
 
+            \begin{lemma}
+                Suppose that $N^\bullet$ is a contractible chain complex. Then for any chain complex $M^\bullet$, the $0$'th homology of $Hom^*_\mathbb{K}(M^\bullet, N^\bullet)$ is $H^0Hom^*_\mathbb{K}(M^\bullet, N^\bullet)\simeq 0$
+            \end{lemma}
 
             To complete the definitions of graded modules and chain complexes to algebras we would like the structure morphisms to respect the given structure. E.g. if $a$ and $b$ are homogenous elements, we would like that the degree of $ab$ is the sum of its parts, i.e. $|ab| = |a| + |b|$. Since multiplication by identity doesn't do anything, we want that the identity lives in the $0$'th degree, and so forth.
 
@@ -831,7 +834,7 @@
                 (\alpha \otimes id_C) \circ \Delta_C : C \rightarrow A \otimes_\mathbb{K} C
             \end{align*}
 
-            Postcomposing with $A$s multiplication gives us a morphism from to the cofree $C$-comodule $C\otimes_\mathbb{K}A$ to $A$.
+            Postcomposing with the multiplication of $A$ gives us a morphism from to the cofree $C$-comodule $C\otimes_\mathbb{K}A$ to $A$.
             \begin{align*}
                 \nabla_A \circ (\alpha \otimes id_A) : C \otimes_\mathbb{K} A \rightarrow A
             \end{align*}
@@ -1212,9 +1215,9 @@
             For our purposes, the bar construction of an augmented algebra is a simplicial resoulution with the cofree coalgebra structure. For a dg-algebra, we will realize this resoultion as the total complex of its resoultion. Dually, the cobar construction of a conilpotent coalgebra is a cosimplicial resolution with the free algebra structure. We will see that these constructions defines an adjoint pair of functors.
 
             \begin{definition}
-                The simplex category $\Delta$ consists of ordered sets $[0] = \emptyset$ and $[n] = \startset{1,...,n}$ for any $n\in\mathbb{N}$. A morphism is a monotone function between the sets.
+                The simplex category $\Delta$ consists of ordered sets $[n] = \startset{0,...,n}$ for any $n\in\mathbb{N}$. A morphism in $\Delta$ is a monotone function between the sets.
 
-                $\Delta^+$ is the full subcategory of $\Delta$ where $n>0$. $\Delta_+$ is the wide subcategory of $\Delta$ with only injective functions.
+                $\Delta_+$ is the augmented simplex category, where we add the object $[-1] = \emptyset$. $\Delta^+$ is the non-full subcategory of $\Delta$, where all morphisms are injective functions.
             \end{definition} 
 
             The simplex category comes equipped with coface and codegeneracy morphisms. The coface maps are the injective morphisms $\delta_i : [n] \rightarrow [n+1]$, and the codegeneracy maps are the surjective morphisms $\sigma_i: [n] \rightarrow [n-1]$.
@@ -1231,35 +1234,35 @@
                 4.&\ \sigma_j\delta_i = \delta_{i-1}\sigma_j \text{, if }i>j+1 \\
                 5.&\ \sigma_j\sigma_i = \sigma_i\sigma_{j+1} \text{, if }i\leq j
             \end{align*}
-            We may arrange the arrows of the simplex category in the following way:
+            We may arrange the arrows of the augmented simplex category in the following way:
             \begin{center}
                 \begin{tikzcd}
-                    {[}0{]} \ar[]{r}[]{} & {[}1{]} \ar[yshift = 0.5ex]{r}[]{\delta_i} \ar[yshift = -0.5ex]{r}[]{} & {[}2{]} \ar[yshift = 0.75ex]{r}[]{\delta_i} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[]{} & {[}3{]} \ar[yshift = 1ex]{r}[]{\delta_i} \ar[yshift = 0.33ex]{r}[]{} \ar[yshift = -0.33ex]{r}[]{} \ar[yshift = -1ex]{r}[]{} & ...
+                    {[}-1{]} \ar[]{r}[]{} & {[}0{]} \ar[yshift = 0.5ex]{r}[]{\delta_i} \ar[yshift = -0.5ex]{r}[]{} & {[}1{]} \ar[yshift = 0.75ex]{r}[]{\delta_i} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[]{} & {[}2{]} \ar[yshift = 1ex]{r}[]{\delta_i} \ar[yshift = 0.33ex]{r}[]{} \ar[yshift = -0.33ex]{r}[]{} \ar[yshift = -1ex]{r}[]{} & ...
                 \end{tikzcd}
 
                 \begin{tikzcd}
-                    {[}0{]} & {[}1{]} & {[}2{]} \ar[]{l}[above]{\sigma_1} & {[}3{]} \ar[yshift = 0.5ex]{l}[above]{\sigma_i} \ar[yshift = -0.5ex]{l}[]{} & ... \ar[yshift = 0.75ex]{l}[above]{\sigma_i} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{}
+                    {[}-1{]} & {[}0{]} & {[}1{]} \ar[]{l}[above]{\sigma_1} & {[}2{]} \ar[yshift = 0.5ex]{l}[above]{\sigma_i} \ar[yshift = -0.5ex]{l}[]{} & ... \ar[yshift = 0.75ex]{l}[above]{\sigma_i} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{}
                 \end{tikzcd}
             \end{center}
 
-            Let $\mathcal{C}$ be a category. A simplicial object in $\mathcal{C}$ is a functor $S:(\Delta^+)^{op}\rightarrow \mathcal{C}$. It may be viewed as a collection of objects $\startset{S_n}_{n\in\mathbb{N}^+}$ together with face maps $d^i:S_n\rightarrow S_{n-1}$ and degeneracy maps $s^i:S_n \rightarrow S_{n+1}$ satisfying the simplicial identities. An augmented simplicial object is a functor $S:\Delta^{op}\rightarrow \mathcal{C}$. The restricted functor $S^+:(\Delta^+)^{op}\rightarrow \mathcal{C}$ is the augmentation ideal of $S$. An augmented semi-simplicial object is a functor $S:(\Delta_+)^{op}\rightarrow \mathcal{C}$. Dually, a cosimplicial object is a functor $S:\Delta^+\rightarrow \mathcal{C}$, it may be regarded as a sequence of objects with coface and codegeneracy maps satisfying the cosimplicial identities.
+            Let $\mathcal{C}$ be a category. A simplicial object in $\mathcal{C}$ is a functor $S:\Delta^{op}\rightarrow \mathcal{C}$. It may be viewed as a collection of objects $\startset{S_n}_{n\in\mathbb{N}}$ together with face maps $d^i:S_n\rightarrow S_{n-1}$ and degeneracy maps $s^i:S_n \rightarrow S_{n+1}$ satisfying the simplicial identities. An augmented simplicial object is a functor $S:\Delta_+^{op}\rightarrow \mathcal{C}$. The restricted functor $\bar{S}:\Delta^{op}\rightarrow \mathcal{C}$ is the augmentation ideal of $S$. An augmented semi-simplicial object is a functor $S:(\Delta_+^+)^{op}\rightarrow \mathcal{C}$. Dually, a cosimplicial object is a functor $S:\Delta\rightarrow \mathcal{C}$, it may be regarded as a sequence of objects with coface and codegeneracy maps satisfying the cosimplicial identities.
             
-            Let $\mathcal{A}$ be an abelian category. To each semi-simplical object $M:(\Delta^+_+)^{op}\rightarrow \mathcal{A}$ there is an associated chain complex $M^\bullet$. Let $M^\bullet = \bigoplus_{i=1}^\infty M[i]$ with differential $d_M^n = \sum_{i=1}^n (-1)^{i-1}d^i$. This differential is well-defined by simplicial identity $1$.
+            Let $\mathcal{A}$ be an abelian category. To each semi-simplical object $M:(\Delta^+)^{op}\rightarrow \mathcal{A}$ there is an associated chain complex $M^\bullet$. Let $M^\bullet = \bigoplus_{i=1}^\infty M[i]$ with differential $d_M^n = \sum_{i=1}^n (-1)^{i-1}d^i$. This differential is well-defined by simplicial identity $1$.
             \begin{center}
                 \begin{tikzcd}
-                    ... \ar[]{r}[]{} & M_3 \ar[]{r}[]{d^1-d^2+d^3} & M_2 \ar[]{r}[]{d^1-d^2} & M_1 \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
+                    ... \ar[]{r}[]{} & M_2 \ar[]{r}[]{d^1-d^2+d^3} & M_1 \ar[]{r}[]{d^1-d^2} & M_0 \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
                 \end{tikzcd}
             \end{center}
             As face maps and degeneracy maps have the same identites, but flipped around, we could also have defined a chain complex by using the degeneracies instead.
 
-            The simplex category has a universal monoid. Let $+:\Delta\time\Delta\rightarrow\Delta$ be a functor acting on objects and morphisms as:
+            The augmented simplex category has a universal monoid. Let $+:\Delta_+ \times \Delta_+ \rightarrow \Delta_+$ be a functor acting on objects and morphisms as:
             \begin{align*}
-                [m]+[n] = [m+n] \\
+                [m]+[n] = [m+n+1] \\
                 (f+g)(k) = \biggl\{\substack{f(k)\text{, if }k\leq m \\ g(k)+m\text{, otherwise}}
             \end{align*}
-            Notice that $[0]+\_\simeq Id_\Delta$, so $(\Delta, +, [0])$ is a monoidal category. Since $[1]$ is terminal in $\Delta$ it becomes a monoid with $\delta_0: [0]\rightarrow [1]$ as unit and $\sigma_1:[2]\rightarrow [1]$ as multiplication. Associativity and unitality is satisfied by uniqueness of morphisms $f:[n]\rightarrow [1]$.
+            Notice that $[-1]+\_\simeq Id_\Delta$, so $(\Delta, +, [-1])$ is a monoidal category. Since $[0]$ is terminal in $\Delta$ it becomes a monoid with $\delta_{-1}: [-1]\rightarrow [0]$ as unit and $\sigma_0:[1]\rightarrow [0]$ as multiplication. Associativity and unitality is satisfied by uniqueness of morphisms $f:[n]\rightarrow [0]$.
             \begin{proposition}\label{prop: universal-monoid}
-                Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta\rightarrow \mathcal{C}$, such that $F[1] \simeq C$, $F\delta_0 \simeq \eta$ and $F\sigma_1 \simeq \mu$.
+                Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta_+\rightarrow \mathcal{C}$, such that $F[0] \simeq C$, $F\delta_{-1} \simeq \eta$ and $F\sigma_0 \simeq \mu$.
             \end{proposition} 
 
             \begin{proof}
@@ -1326,7 +1329,7 @@
             %     \end{center}
             % \end{example}
 
-            An algebra $A$ is a monoid in the monoidal category $(Mod_\mathbb{K}, \otimes_\mathbb{K}, \mathbb{K})$. By proposition \ref{prop: universal-monoid} we may think of $A$ as an augmented cosimplicial object $A:\Delta \rightarrow Mod_\mathbb{K}$. Notice that all of the cosimplical identities follow from associativity and unitality. If $A$ is an augmented algebra, we may instead give it the structure of an augmented simplicial set. Let $d^1_1 = \varepsilon_A$ be the augmentation. We define $d^n_n = A^{\otimes n-1}\otimes\varepsilon_A$ and set $d^i_n = A^{i-1}\otimes \nabla_A \otimes A^{\otimes n-i-1}$. All the degeneracies are set to be the units, i.e. $s^i_n = A^{\otimes i}\otimes \upsilon_A \otimes A^{\otimes n-i-1}$. One may check that this structure defines a simplical object $A:\Delta^{op}\rightarrow Mod_\mathbb{K}$. Observe that the associated chain complex $A^\bullet$ is exactly the Hochschild complex of $A$. We depict the simplicial object as the following diagram:
+            An algebra $A$ is a monoid in the monoidal category $(Mod_\mathbb{K}, \otimes_\mathbb{K}, \mathbb{K})$. By proposition \ref{prop: universal-monoid} we may think of $A$ as an augmented cosimplicial object $A:\Delta_+ \rightarrow Mod_\mathbb{K}$. Notice that all of the cosimplical identities follow from associativity and unitality. If $A$ is an augmented algebra, we may instead give it the structure of an augmented simplicial set. Let $d^0_0 = \varepsilon_A$ be the augmentation. We define $d^n_n = A^{\otimes n-1}\otimes\varepsilon_A$ and set $d^i_n = A^{i-1}\otimes \nabla_A \otimes A^{\otimes n-i-1}$. All the degeneracies are set to be the units, i.e. $s^i_n = A^{\otimes i}\otimes \upsilon_A \otimes A^{\otimes n-i-1}$. One may check that this structure defines an augmented simplical object $A:\Delta_+^{op}\rightarrow Mod_\mathbb{K}$. Observe that the associated chain complex $A^\bullet$ is exactly the Hochschild complex of $A$. We depict the simplicial object as the following diagram:
             \begin{center}
                 \begin{tikzcd}
                     \mathbb{K} & A \ar[]{l}[above]{\varepsilon_A} & A^{\otimes 2} \ar[yshift = 0.5ex]{l}[above]{\nabla_A} \ar[yshift = -0.5ex]{l}[]{A\otimes \varepsilon_A} & A^{\otimes 3} \ar[yshift = 0.75ex]{l}[above]{\nabla_A} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{A^{\otimes 2}\otimes \varepsilon_A} & ... \ar[yshift = 1ex]{l}[above]{\nabla_A} \ar[yshift = 0.33ex]{l}[]{} \ar[yshift = -0.33ex]{l}[]{} \ar[yshift = -1ex]{l}[]{A^{\otimes 4}\otimes\varepsilon_A} 
@@ -1399,7 +1402,7 @@
                 For now we don't need to show that $BA$ is a functor. This property follows from $BA$ being the representing object of $Tw(\_,A)$.
             \end{remark}
 
-            On the other hand, a coalgebra $C$ is a comonoid in $Mod_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid} we may think of it as a simplical object $C:(\Delta)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplical identities follows from coassociativity and counitality. A coaugmented coalgebra $C$ may be given a cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\bar{C}$ is a semi-cosimplical object of $Mod_\mathbb{K}$. Observe that $\bar{C}$ has an associated chain complex like $\bar{A}$, but every arrow goes in the opposite direction.
+            On the other hand, a coalgebra $C$ is a comonoid in $Mod_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid} we may think of it as an augmented simplical object $C:(\Delta_+)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplical identities follows from coassociativity and counitality. A coaugmented coalgebra $C$ may be given an augmented cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\bar{C}$ is a semi-cosimplical object of $Mod_\mathbb{K}$. Observe that $\bar{C}$ has an associated chain complex like $\bar{A}$, but every arrow goes in the opposite direction.
 
             \begin{center}
                 \begin{tikzcd}
@@ -1446,7 +1449,7 @@
             Associated to this adjunction, we obtain universal elements, together with universal properties. Let $A$ be an augmented dg-algebra, then the identity of the coalgebras $id_{BA} : BA \rightarrow BA$, the counit $\varepsilon_A : \Omega BA \rightarrow A$ and a twisting morphism $\pi_A : BA \rightarrow A$ are equivalent by the adjunction and representation. Dually, the identity of algebras $id_{\Omega C} : \Omega C\rightarrow\Omega C$, the unit $\eta_C : C \rightarrow B\Omega C$ and the twisting morphism $\iota_C : C\rightarrow \Omega C$ are equivalent. The morphisms $\pi_A$ and $\iota_C$ are called the universal elements. We summarize their universal property in the following corollary.
 
             \begin{corollary}\label{cor: universal-twisting}
-                Let $A$ be an augmented dg-algebra, and $C$ a conilpotent dg-coalgebra. The any twisting morphism $\alpha : C \rightarrow A$ factors uniquely through either $\pi_A$ or $\iota_C$.
+                Let $A$ be an augmented dg-algebra, and $C$ a conilpotent dg-coalgebra. Any twisting morphism $\alpha : C \rightarrow A$ factors uniquely through either $\pi_A$ or $\iota_C$.
                 
                 \begin{center}
                     \begin{tikzcd}
@@ -1671,23 +1674,41 @@
         \end{example}
 
         \begin{example}
-            Eksemplet jeg fikk fra Torgeir.
+            Let $A$ be a connected weight-graded algebra over $\mathbb{K}$. We may then think of $\mathbb{K}$ as an $A$-module with trivial action, i.e. as the quotient $\sfrac{A}{A^{(i)}}_{(i\geq 1)}$, then $Ext^*_A(\mathbb{K},\mathbb{K})$ is an $A_\infty$-algebra. This was shown by Lu, Palmari, Wu and Zhang \cite{Lu06}.
         \end{example}
 
-        A morphism between $A_\infty$-algebras is called an $\infty$-morphism. Suppose that $A$ and $B$ are two $A_\infty$-algebras, an $\infty$-morphism $f:A\rightsquigarrow B$ is a dg-coalgebra homomorphism $\widetilde{f}:(\bar{T}^c(A[1]), m^A)\rightarrow (\bar{T}^c(B[1]), m^B)$. By proposition \ref{prop: tensor-derivation}, $\widetilde{f}$ is uniquely determined by homogenous morphisms $f_n : A^{\otimes n} \rightarrow B$ of degree $n-1$ for any $n\geq 1$. $f_1$ is required to be a morphism of the chain complexes $f_1:(A,m^A_1)\rightarrow (B,m^B_1)$. For any $n \geq 2$ $f$ should satisfy the relations:
-        \begin{align*}
-            & (\text{rel}_n)\qquad \partial(f_n) = \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ_{p+1}m^A_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^B_k \circ (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k}) \\
-            & \text{where } e \text{ is given as: } e = (k-1)(i_1-1) + (k-2)(i_2-1) + ... + 2(i_{k-2}-1) + (i_{k-1} - 1)
-        \end{align*}
+        Next we want to understand the category of $A_\infty$-algebras. A morphism between $A_\infty$-algebras is called an $\infty$-morphism. We define such an $\infty$-morphism $f:A\rightsquigarrow B$ between $A_\infty$-algebras as associated dg-coalgebra homomorphism $Bf:(\bar{T}^c(A[1]), m^A)\rightarrow (\bar{T}^c(B[1]), m^B)$. Here $Bf$ is purely formal, we will make sense of this soon.
+
+        \begin{proposition}
+            Let $A,B$ be two $A_\infty$-algebras. A collection of morphisms $f_n : A^\otimes n \rightarrow B$ of degree $n-1$ for any $n \geq 1$ defines an $\infty$-morphism $f : A \rightsquigarrow B$ if and only if $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
+            \begin{align*}
+                & (\text{rel}_n)\qquad \partial(f_n) = \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ_{p+1}m^A_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^B_k \circ (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k}) \\
+                & \text{where } e \text{ is given as: } e = (k-1)(i_1-1) + (k-2)(i_2-1) + ... + 2(i_{k-2}-1) + (i_{k-1} - 1)
+            \end{align*}
+        \end{proposition}
+        
+        \begin{proof}
+            This is immediate by the universal property of cofree coalgebras.
+        \end{proof}
 
         Since the composition of two dg-coalgebra homomorphism is again a dg-algebra homomorphism, we get that the composition of two $\infty$-morphisms is again an $\infty$-morphism. More explicitly if $f:A\rightsquigarrow B$ and $g: B\rightsquigarrow C$ are two $\infty$-morphisms, then their composition is defined as:
         \begin{align*}
             (fg)_n = \sum_r\sum_{i_1 + ... + i_r = n} (-1)^eg_r(f_{i_1}\otimes ... \otimes f_{i_r})\text{.}
         \end{align*}
 
-        An $\infty$-quasi-isomorphism is an $\infty$-morphism $f$ such that $f_1$ is a quasi-isomorphism.
+        \begin{definition}
+            $Alg_\infty$ denotes the category of $A_\infty$-algebras, and the morphisms in this category are the $\infty$-morphisms.
+        \end{definition}
 
-        Let $Alg_\infty$ denote the category of $A_\infty$-algebras. The morphisms in this category are the $\infty$-morphisms. Observe that we may extend the bar construction $B : Alg_\infty \rightarrow ConilCoalg^\bullet$ to a fully fatihful functor, identifying $Alg_\infty$ as a subcategory of $ConilCoalg^\bullet$. This subcategory is namely the full subcategory of every dg-coalgebra that is isomorphic, as a coalgebra, to a cofree tensor coalgebra. Also, the category of dg-algebras is a non-full subcategory of $A_\infty$-algebras. This inclusion is really the recontextualization of a dg-algebra into an $A_\infty$-algebra.
+        Observe that we may extend the bar construction to $B : Alg_\infty \rightarrow CoAlg_{\mathbb{K},conil}^\bullet$ to a fully fatihful functor. The subcategory of the essential image is the full subcategory of every dg-coalgebra that is isomorphic, as a graded coalgebra, to a cofree tensor coalgebra. Notice that the bar construction on the category of dg-algebras is a non-full injection into the category of $A_\infty$-algebras. Observe that this inclusion is the recontextualization of a dg-algebra into an $A_\infty$-algebra.
+
+        We call a quasi-isomorphism between $A_\infty$-algebras for an $\infty$-quasi-isomorphism. Given an $\infty$-morphism $f: A\rightsquigarrow B$, then we say that it is an $\infty$-quasi-isomorphism if $f_1$ is a quasi-isomorphism. If we wanted to be more stringent with this definition we would want an $\infty$-quasi-isomorphism to be an $\infty$-morphism which is a quasi-isomorphism of dg-coalgebras. We will see that these definitions are equivalent later.
+
+        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may however trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied:
+        \begin{multline*}
+            f_n - g_n = \sum (-1)^s m^B_{r+1+t}\circ (f_{i_1}\otimes ... \otimes f_{i_r} \otimes h_k \otimes g_{j_1} \otimes ... \otimes g_{j_t}) +  \sum (-1)^{j+kl}h_i \circ_{j+1} m_k^A
+        \end{multline*}
+        Where $s$ is some constant depending on $t,r$ and $k$. More details may be found in \cite{LefevreHasegawa03}.
 
         Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.
 

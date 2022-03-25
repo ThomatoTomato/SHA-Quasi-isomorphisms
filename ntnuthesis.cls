@@ -161,6 +161,7 @@
 \RequirePackage{amsmath}                    % advanced math typesetting
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}                     % theorem environments
+\RequirePackage{mathabx}
 \RequirePackage[                            % subfigures with captions within figures
     font=small,                             % and customisation of captions
     labelfont=bf,
