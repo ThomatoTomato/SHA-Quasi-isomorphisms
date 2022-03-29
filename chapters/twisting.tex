@@ -1429,7 +1429,7 @@
             \begin{thm}
                 Let $C$ be a conilpotent dg-coalgebra and $A$ an augmented dg-algebra. The functor $Tw(C,A)$ is represented in both arguments, i.e.
                 \begin{align*}
-                    \substack{Aug \\ Alg}^\bullet(\Omega C, A)\simeq Tw(C, A) \simeq\substack{Conil \\ CoAlg}^\bullet(C, BA)\text{.}
+                    Alg_{\mathbb{K},+}^\bullet(\Omega C, A)\simeq Tw(C, A) \simeq CoAlg_{\mathbb{K},Conil}^\bullet(C, BA)\text{.}
                 \end{align*}
             \end{thm}
 
@@ -1445,6 +1445,15 @@
                 \end{align*}
                 This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
             \end{proof}
+
+            \begin{remark}
+                These functors consists of a composition with the augmentation ideal (quotient) and then the (co)free tensor (co)algebra. By reversing these operations we obtain another adjunction which is more or less the same adjunction. By abuse of notation we will call these functors for the bar and cobar construction as well, and they induce and adjoint pair between dg-algebras and reduced conilpotent dg-coalgebras. In other words, given a dg-algebra $A$ and a reduced conilpotent dg-coalgebra $C$, $BA = \bar{T}^c(A[1])$ and $\Omega C = \bar{T}(C[-1])$.
+                \begin{center}
+                    \begin{tikzcd}
+                        Alg_\mathbb{K}^\bullet \ar[bend right]{r}[below]{B} \ar[phantom]{r}[pos = 0.78]{\bot} & CoAlg_{\mathbb{K},conil}^\bullet \ar[bend right]{l}[above]{\Omega}
+                    \end{tikzcd}
+                \end{center}
+            \end{remark}
 
             Associated to this adjunction, we obtain universal elements, together with universal properties. Let $A$ be an augmented dg-algebra, then the identity of the coalgebras $id_{BA} : BA \rightarrow BA$, the counit $\varepsilon_A : \Omega BA \rightarrow A$ and a twisting morphism $\pi_A : BA \rightarrow A$ are equivalent by the adjunction and representation. Dually, the identity of algebras $id_{\Omega C} : \Omega C\rightarrow\Omega C$, the unit $\eta_C : C \rightarrow B\Omega C$ and the twisting morphism $\iota_C : C\rightarrow \Omega C$ are equivalent. The morphisms $\pi_A$ and $\iota_C$ are called the universal elements. We summarize their universal property in the following corollary.
 
@@ -1697,18 +1706,41 @@
         \end{align*}
 
         \begin{definition}
+            An $\infty$-morphism $f: A\rightsquigarrow B$ is called strict if $f_n = 0$ for any $n\geq 2$. 
+        \end{definition}
+
+        \begin{definition}
             $Alg_\infty$ denotes the category of $A_\infty$-algebras, and the morphisms in this category are the $\infty$-morphisms.
         \end{definition}
 
-        Observe that we may extend the bar construction to $B : Alg_\infty \rightarrow CoAlg_{\mathbb{K},conil}^\bullet$ to a fully fatihful functor. The subcategory of the essential image is the full subcategory of every dg-coalgebra that is isomorphic, as a graded coalgebra, to a cofree tensor coalgebra. Notice that the bar construction on the category of dg-algebras is a non-full injection into the category of $A_\infty$-algebras. Observe that this inclusion is the recontextualization of a dg-algebra into an $A_\infty$-algebra.
+        Observe that we may extend the bar construction to $B : Alg_\infty \rightarrow CoAlg_{\mathbb{K},conil}^\bullet$ to a fully fatihful functor. This may be done explicitly by using proposition \ref{prop: tensor-derivation}. The subcategory of the essential image is the full subcategory of every dg-coalgebra that is isomorphic, as a graded coalgebra, to a cofree tensor coalgebra. Notice that the bar construction on the category of dg-algebras is a non-full injection into the category of $A_\infty$-algebras. Observe that this inclusion is the recontextualization of a dg-algebra into an $A_\infty$-algebra.
 
         We call a quasi-isomorphism between $A_\infty$-algebras for an $\infty$-quasi-isomorphism. Given an $\infty$-morphism $f: A\rightsquigarrow B$, then we say that it is an $\infty$-quasi-isomorphism if $f_1$ is a quasi-isomorphism. If we wanted to be more stringent with this definition we would want an $\infty$-quasi-isomorphism to be an $\infty$-morphism which is a quasi-isomorphism of dg-coalgebras. We will see that these definitions are equivalent later.
 
-        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may however trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied:
+        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may however trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied for any $n \geq 1$:
         \begin{multline*}
             f_n - g_n = \sum (-1)^s m^B_{r+1+t}\circ (f_{i_1}\otimes ... \otimes f_{i_r} \otimes h_k \otimes g_{j_1} \otimes ... \otimes g_{j_t}) +  \sum (-1)^{j+kl}h_i \circ_{j+1} m_k^A
         \end{multline*}
         Where $s$ is some constant depending on $t,r$ and $k$. More details may be found in \cite{LefevreHasegawa03}.
+
+        As in the same case for algebras, there is also a notion of unital $A_\infty$-algebras and augmented $A_\infty$-algebras. For this discussion it is important to note that the field $\mathbb{K}$ is also an $A_\infty$-algebra. This algebra will serve as the initial algebra, in the same way as it did for ordinary algebras.
+
+        \begin{definition}
+            A strictly unital $A_\infty$-algebra is an $A_\infty$-algebra $A$ together with a unit morphism $\upsilon_A : \mathbb{K} \rightarrow A$ of degree $0$ such that the following are satisfied:
+            \begin{itemize}
+                \item $m_1\circ \upsilon_A = 0$.
+                \item $m_2(id_A \otimes \upsilon_A) = id_A = m_2(\upsilon_A\otimes id_A)$.
+                \item $m_i \circ_k \upsilon_A = 0$ for any $i\geq 3$ and $0 \leq k < i$.
+            \end{itemize}
+        \end{definition}
+
+        A strictly unital $\infty$-morphism $f: A \rightsquigarrow B$ between strictly unital $A_\infty$-algebras is a morphism which preserves the unit. This means that $f_1\upsilon_A = \upsilon_B$ and $f_i \circ_k \upsilon_A = 0$ for any $i \geq 2$ and $0 \leq k < i$. The collection of strictly unital $A_\infty$-algebras and strictly unital $\infty$-morphisms form a non-full subcategory of $A_\infty$-algbras. A strict $\infty$-morphism which is unital at the level of chain complexes is automatically stricly unital. Strict unital will then mean strict and strictly unital. Note that $\mathbb{K}$ is strictly unital where the unit is $id_\mathbb{K}$.
+
+        \begin{definition}
+            An augmented $A_\infty$-algebra is a strictly unital $A_\infty$-algebra $A$ together with a strict unital morphism $\varepsilon_A : A \rightarrow \mathbb{K}$. The $\infty$-morphism $\varepsilon_A$ is called the augmentation of $A$.
+        \end{definition}
+
+        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $Alg_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $Alg_\infty \simeq Alg_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra is the kernel of the augmentation $\varepsilon_A$. A priori, it does not make sense to talk about this limit as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms does in fact have a kernel. This defines a functor, $\bar{\_} : Alg_{\infty ,+} \rightarrow Alg_\infty$, where $Ker\varepsilon_A = \bar{A}$. The quasi-inverse to this functor is free augmentations. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \otimes_k 1 = 0$ in the same manner. We obtain a functor $\_^+ : Alg_\infty \rightarrow Alg_{\infty, +}$.
 
         Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.
 
