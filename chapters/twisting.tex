@@ -1,6 +1,7 @@
 \documentclass[../thesis.tex]{subfiles}
 
 \begin{document}
+
         In Stasheffs papers \todo{Se over disse kildene igjen, slik at jeg ikke dummer meg ut}\cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
 
 
@@ -18,7 +19,8 @@
 
         The bar and cobar construction will be the basis for our discussion of $A_\infty$-algebras. As the bar construction can be used to define $A_\infty$-algebras, we may easily dualize this to define $A_\infty$-coalgebras in terms of the cobar construction. This chapter will follow the notations and progression presented in Loday and Vallete \cite{Loday12} to develop the theory for the bar-cobar adjunction.
 
-    \section{Algebras}
+    \section{Prelimaries}    
+    \subsection{Algebras}
 
             This section is a review of associative algebras. We will define unital associative algebras and possibly non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
 
@@ -233,7 +235,7 @@
                 Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
             
-    \section{Coalgebras}
+    \subsection{Coalgebras}
             This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the coalgebras. Thus we will see that the proper dual concept will be thath of conilpotent coalgebras.
 
             \begin{definition}[Coalgebra]
@@ -468,13 +470,13 @@
                 Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$.
             \end{definition}
 
-            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\_,\_)$ are $C$-colinear. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
+            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\_,\_)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
             \begin{proposition}
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq Hom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
 
-    \section{Derivations and DG-Algebras}
+    \subsection{Derivations and DG-Algebras}
             In this section we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
 
             \begin{definition}[Derivations and Coderivations]
@@ -721,8 +723,8 @@
 
                 Dually, $C^{\bullet}$ is a differential graded coalgebra if $C^{\bullet}$ is a graded coalgebra and the differential is a graded coderivation.
             \end{definition}
-
-    \section{Convolution Algebras}
+    \section{Cobar-Bar Adjunction}
+    \subsection{Convolution Algebras}
 
             Let $C$ be a coalgebra and $A$ an algebra, then if $f,g:C\rightarrow A$ are $\mathbb{K}$-linear morphism we may define $f\star g = \nabla_A(f\otimes g)\Delta_C$. We call the operation $\star$ for convolution.
 
@@ -1084,7 +1086,7 @@
 
             \end{proof}
 
-    \section{Twisting Morphisms}
+    \subsection{Twisting Morphisms}
 
             In this section we will define twisting morphisms from coalgebras to algebras. They are of importance as the bifunctor $Tw(C,A)$ is represented in both arguments. To understand the elements of $Tw$ we start this section be reviewing the Maurer-Cartan equation.
 
@@ -1208,7 +1210,7 @@
                 \end{align*}
             \end{remark}
 
-    \section{Bar and Cobar Construction}
+    \subsection{Bar and Cobar Construction}
 
             The bar construction was first formalized for augmented skew-commutative dg-rings by Eilenberg and Mac Lane \cite{Eilenberg53}. The bar construction then served as a tool to calculate the homology of the Eilenberg-Mac Lane spaces. This construction was later dualized by Adams \cite{Adams56} to obtain the cobar construction. It's first purpose was to serve as a method for constructing an injective resolution in order to calculate the cotor resolution \cite{Eilenberg65}. With time, the bar-cobar construction have been subjected to much generalization, such as a fattened tensor product on simplicially enriched, tensored and cotensored categories \cite{Riehl14}. We will mainly follow the work of \cite{Loday12} to obtain the bar and cobar construction. The approach which we are going to take is also slightly inspired by MacLanes\cite{MacLane71} canonical resolutions of comonads.
 
@@ -1446,6 +1448,8 @@
                 This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
             \end{proof}
 
+            For our convenience, we will give these isomorphisms some names. Whenever $\tau : C \rightarrow A$ is a twisting morphism, the induced morphism of algebras is denoted $f_\tau : \Omega C \rightarrow A$ and the induced morphism of coalgebras is denoted $g_\tau : C \rightarrow BA$.
+
             \begin{remark}
                 These functors consists of a composition with the augmentation ideal (quotient) and then the (co)free tensor (co)algebra. By reversing these operations we obtain another adjunction which is more or less the same adjunction. By abuse of notation we will call these functors for the bar and cobar construction as well, and they induce and adjoint pair between dg-algebras and reduced conilpotent dg-coalgebras. In other words, given a dg-algebra $A$ and a reduced conilpotent dg-coalgebra $C$, $BA = \bar{T}^c(A[1])$ and $\Omega C = \bar{T}(C[-1])$.
                 \begin{center}
@@ -1488,7 +1492,7 @@
                 calculate kernel of the augmentation map, and find a homotopy of the identity.
             \end{proof}
 
-    \section{Comparison Lemma}
+    \subsection{Comparison Lemma}
 
         In this section we wish to deduce the fundamental theorem of twisting morphisms. In order to this we will need a result by Henri Cartan \cite{Cartan55}, called the comparison lemma. This section follows Loday \cite{Loday12}, and takes inspiration from Lefevre-Hasagawa \cite{LefevreHasegawa03}.
         
@@ -1512,7 +1516,7 @@
             A proof may be found in either Cartans paper \cite{Cartan55} or Loday and Valletes book \cite{Loday12}.
         \end{proof}
 
-        \begin{thm}[Fundamental Theorem of Twisting Morphisms]\label{thm: fundamental-thm-of-twisting}
+        \begin{thm}[Fundamental Theorem of Twisting Morphisms I]\label{thm: fundamental-thm-of-twisting}
             Let $A$ be a connected wdg-algebra, $C$ be a connected wdg-coalgebra and $\alpha : C\rightarrow A$ a twisting morphism. The following are equivalent:
             \begin{enumerate}
                 \item The augmentation ideal of the right twisted tensor product $C \bar{\otimes}_\alpha A$ is acyclic
@@ -1586,6 +1590,7 @@
         \end{proof}
 
     \section{Strongly Homotopy Associative Algebras and Coalgebras}
+    \subsection{$A_\infty$-Algebras}
         We have seen from corollary \ref{cor: a-to-dgc} that any dg-algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that the coalgebra $T^c(A[1])$ together with a coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra? The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
         \begin{definition}
@@ -1740,8 +1745,9 @@
             An augmented $A_\infty$-algebra is a strictly unital $A_\infty$-algebra $A$ together with a strict unital morphism $\varepsilon_A : A \rightarrow \mathbb{K}$. The $\infty$-morphism $\varepsilon_A$ is called the augmentation of $A$.
         \end{definition}
 
-        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $Alg_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $Alg_\infty \simeq Alg_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra is the kernel of the augmentation $\varepsilon_A$. A priori, it does not make sense to talk about this limit as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms does in fact have a kernel. This defines a functor, $\bar{\_} : Alg_{\infty ,+} \rightarrow Alg_\infty$, where $Ker\varepsilon_A = \bar{A}$. The quasi-inverse to this functor is free augmentations. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \otimes_k 1 = 0$ in the same manner. We obtain a functor $\_^+ : Alg_\infty \rightarrow Alg_{\infty, +}$.
+        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $Alg_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $Alg_\infty \simeq Alg_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra is the kernel of the augmentation $\varepsilon_A$. A priori, it does not make sense to talk about this limit as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms does in fact have a kernel. This defines a functor, $\bar{\_} : Alg_{\infty ,+} \rightarrow Alg_\infty$, where $Ker\varepsilon_A = \bar{A}$. The quasi-inverse to this functor is free augmentations. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \circ_k 1 = 0$ in the same manner. We obtain a functor $\_^+ : Alg_\infty \rightarrow Alg_{\infty, +}$, where $A\oplus \mathbb{K} = A^+$.
 
+    \subsection{$A_\infty$-Coalgebras}    
         Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.
 
         \begin{definition}

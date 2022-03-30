@@ -1,0 +1,54 @@
+\documentclass[../thesis.tex]{subfiles}
+
+\begin{document}
+
+    In this chapter we wish to study the derived categories of $A_\infty$-algebras. At the heart of homological algebra is the derived category of algebras, so it is only natural to ask how this category looks like in the $A_\infty$ case. In the last chapter we studied the relationship between the category of algebras and coalgebras to understand how quasi-isomorphisms between $A_\infty$-algebras worked. In this chapter we will instead study the relationship between module and comodule categories in order to understand how quasi-isomorphisms between $A_\infty$-modules will work. At the heart of this discussion are twisting morphisms $\alpha : C \rightarrow A$, which allows us to study the relationship between $Mod^A$ and $CoMod^C$.
+
+    From twisting morphisms we will obtain functors $L_\alpha : CoMod^C \rightarrow Mod^A$ and $R_\alpha : Mod^A \rightarrow CoMod^C$ which create an adjoint pair of functors. Whenever the twisting morphism $\alpha$ is acyclic, this will in fact become a Quillen Equivalence.
+
+    We wish to reuse all of the methods we have gained and acquired thorughout this thesis. This chapter will mostly be reformulation and recontextualization of previous definitions, concepts and techniques. 
+
+    \section{Twisting Morphisms}
+
+        Twisting morphisms were already introduced in chapter 1. There, they were used mostly to be represented by the bar and cobar construction. Now we want twisting morphisms and twisting tensors to play a bigger role. In order to define the functors $L_\alpha$ and $R_\alpha$, these constructions will be crucial.  
+
+        \subsection{Twisted Tensor Products}
+
+            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\alpha : C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product was the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. The perturbation was defined as
+            \begin{align*}
+                d_\alpha^r = (\nabla_A\otimes id_C) \circ (id_A \otimes \alpha \otimes id_C) \circ (id_A \otimes \Delta_C).
+            \end{align*}
+
+            If $M$ is a right $A$-module and $N$ is a left $C$-comodule then the tensor product $M\otimes_\mathbb{K} N$ exists and is a $\mathbb{K}$-module with differential $d_{M\otimes N}$. We may define a perturbation to this differential as 
+            \begin{align*}
+                d_\alpha^r = (\mu_M\otimes id_N) \circ (id_M \otimes \alpha \otimes id_N) \circ (id_M \otimes \nu_N).
+            \end{align*}
+            By using the same line of thought as proposition \ref{prop: twisted-differential}, there is a twisted tensor product $M\otimes_\alpha N$ with differential $d_\alpha^\bullet = d_{M\otimes N} + d_\alpha^r$.
+            
+            \begin{definition}
+                Suppose that $M\in Mod^A$ ($M\in Mod_A$) and $N\in CoMod_C$ ($N\in CoMod^C$), then the right (left) twisted tensor product is the $\mathbb{K}$-module $M\otimes_\alpha N$ ($N\otimes_\alpha M$).
+            \end{definition}
+
+            Notice that right handedness and left handedness for the twisted tensor product is even more apparent than when defined for algebras and coalgebras.
+
+            Since $C$ is a left $C$-comodule we may define the functor $L_\alpha = \otimes_\alpha C$. Notice that $L_\alpha : Mod^A \rightarrow CoMod^C$ by using the cofree $C$-comodule structure on the right twisted tensor product. Likewise, since $A$ is a left $A$-module there is a functor $R_\alpha = \otimes_\alpha A$ where $R_\alpha : CoMod^C \rightarrow Mod^A$. Here we use the free module structure on the left twisted tensor product.
+
+            \begin{proposition}
+                Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. The functor $L_\alpha$ and $R_\alpha$ form an adjoint pair of categories.
+                \begin{center}
+                    \begin{tikzcd}
+                        CoMod^C \ar[bend left]{r}[]{L_\alpha} \ar[phantom]{r}[]{\bot} & Mod^A \ar[bend left]{l}[]{R_\alpha}
+                    \end{tikzcd}
+                \end{center}
+            \end{proposition}
+
+            \begin{proof}
+                
+            \end{proof}
+
+        \subsection{The Bar and Cobar Construction}
+
+        \subsection{Fundamental Theorem of Twisting Morphisms}
+
+    \section{Model Structure on Module Categories}
+\end{document}
