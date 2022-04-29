@@ -888,7 +888,52 @@
                 \item $f\in Cof$ if $f^\#$ is a monomorphism (injective in every component).
             \end{itemize}
 
-            Before we show that this defines a model structure on dg-coalgebras we need some preliminary results. First recall that $f : C \rightarrow D$ a morphism between dg-coalgebras is a graded quasi-isomorphism if $grf$ is a quasi-isomorphism. Lemma \ref{lem: graded-qif-are-w} says that whenever such $f$ are graded quasi-isomorphisms, $f$ is a weak equivalence. This is quite convenient, since this gives us a method to check that a morphism is a weak equivalence without evaluating it on the cobar construction. Moreover, both the unit and the counit of the bar-cobar adjunction are weak equivalences by proposition \ref{prop: unit-counit-qif}. With the following lemma we see that the bar-cobar adjunction is a Quillen equivalence if the category of dg-coalgebras is a model category.
+            Recall that a filtration on a chain complex $M$ is a sequence of inclusions $M_0 \subseteq M_1 \subseteq ...$. The filtration is called exhaustive if $\varinjlim M_i \simeq M$, and admissable if $Fr_0M \simeq \mathbb{K}$ as well. Since each inclusion respect the differential, we may find the cokernel of each inclusion. The associated graded $grM$ is then the graded complex given by $gr_0M = M_0$ and $gr_iM = M_i/M_{i-1}$. A dg-(co)algebra is filtered if the filtration respects the (co)multiplication. If $f : M \rightarrow N$ is a morphism of filtered cochain complexes, then it defines a morphism $grf : grM \rightarrow grN$ on the associated graded. We call $f$ a graded quasi-isomorphism if $grf$ is a quasi-isomorphism.
+
+            Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Moreover, since $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$ we may define the comultiplication of the associated graded to be trivial, and this we will do. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
+
+            \begin{lemma}\label{lem: graded-qif-are-w}
+                Let $f : C\rightarrow C'$ be a graded quasi-isomorphism between conilpotent dg-coalgebras, then $\Omega f : \Omega C \rightarrow \Omega C'$ is a quasi-isomorphism. 
+            \end{lemma}
+
+            \begin{proof}
+                We do this by considering a spectral sequence. Endow $C$ with a grading (as a vector space) induced by the coradical filtration, i.e. $c\in C$ has degree $|c|=n$ if $n$ is the smallest number such that $\bar{\Delta}^nc = 0$. We define a filtration on $\Omega C$ by
+                \begin{align*}
+                    F_p\Omega C = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n|\leq p}
+                \end{align*}
+
+                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, theorem 5.5.1 \cite{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
+
+                By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega grC)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n| = p}$.
+
+                Evaluating $f$ at the $0$'th page would the look like $E^0\Omega f \simeq \Omega grf$. By the mapping lemma, exercise 5.2.3 \cite{Weibel94}, it is enough to check that $\Omega grf$ is a quasi-isomorphism, to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega grf$ is a quasi-isomorphism by inspecting every $E^0_{p,\bullet}\Omega C$.
+
+                We define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
+                \begin{align*}
+                    G_k = \startset{c_1[-1]\otimes ... \otimes c_n[-1] \mid n \geq -k}.
+                \end{align*}
+                We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the augmentation ideal $\bar{C}$. Again, by the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
+
+                To see that $\Omega grf$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (grC[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a graded quasi-isomorphisms and by the Kunneth-formual, theorem 3.6.3 \cite{Weibel94}, it follows that $E^Gf$ is a quasi-isomorphism.
+            \end{proof}
+
+            For completeness we include the following statement.
+
+            \begin{lemma}
+                Let $f : A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf : BA \rightarrow BA'$ is both a filtered and unfiltered quasi-isomorphism.
+            \end{lemma}
+
+            \begin{proof}
+                Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunneth formula, theorem 3.6.3 \cite{Weibel94}.            
+            \end{proof}
+
+            \begin{proposition}\label{prop: unit-counit-qif}
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
+            \end{proposition}
+
+            \begin{proof}
+                
+            \end{proof}
 
             \begin{lemma}\label{lem: bar-cobar-Quill-adj}
                 Let $f: C\rightarrow D$ be a morphism of dg-coalgebras, then:
