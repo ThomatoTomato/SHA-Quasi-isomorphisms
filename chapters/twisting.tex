@@ -1094,12 +1094,12 @@
             \begin{align*}
                 \partial\alpha + \alpha\star\alpha = 0\text{.}
             \end{align*}
-            We say that $\alpha$ is an element of $Tw(C,A)\subset Hom_\mathbb{K}^{-1}(C,A)\subset Hom_\mathbb{K}^*(C,A)$. In light of proposition \ref{prop: convolution to endomorphism}, every morphism between coalgebras and algebras extend to a unique (co)derivation on the tensor product $C\otimes_\mathbb{K}A$. Let $d_\alpha^r$ denote this unique morphism. In the case of dg-coalgebras and dg-algebras we perturbate the total differential on the tensor with $d_\alpha^r$, as in proposition \ref{prop: free-derivation}. We call this derivation for the perturbated derivative.
+            We say that $\alpha$ is an element of $Tw(C,A)\subset Hom_\mathbb{K}^{1}(C,A)\subset Hom_\mathbb{K}^*(C,A)$. In light of proposition \ref{prop: convolution to endomorphism}, every morphism between coalgebras and algebras extend to a unique (co)derivation on the tensor product $C\otimes_\mathbb{K}A$. Let $d_\alpha^r$ denote this unique morphism. In the case of dg-coalgebras and dg-algebras we perturbate the total differential on the tensor with $d_\alpha^r$, as in proposition \ref{prop: free-derivation}. We call this derivation for the perturbated derivative.
             \begin{align*}
                 d_\alpha^\bullet = d_{C\otimes_\mathbb{K}A}^\bullet + d_\alpha^r = d_C^\bullet\otimes id_A + id_C\otimes d_A^\bullet + d_\alpha^r
             \end{align*}
             \begin{proposition}\label{prop: twisted-differential}
-                Suppose that $C$ is a dg-coalgebra and $A$ is a dg-algebra, and $\alpha\in Hom_\mathbb{K}^*(C,A)$. The perturbated derivation satisfies the following relation.
+                Suppose that $C$ is a dg-coalgebra and $A$ is a dg-algebra, and $\alpha\in Hom_\mathbb{K}^{-1}(C,A)$. The perturbated derivation satisfies the following relation.
                 \begin{align*}
                     {d^\bullet_\alpha}^2 = d^r_{\partial \alpha + \alpha\star\alpha}
                 \end{align*}
@@ -1249,7 +1249,7 @@
 
             Let $\mathcal{C}$ be a category. A simplicial object in $\mathcal{C}$ is a functor $S:\Delta^{op}\rightarrow \mathcal{C}$. It may be viewed as a collection of objects $\startset{S_n}_{n\in\mathbb{N}}$ together with face maps $d^i:S_n\rightarrow S_{n-1}$ and degeneracy maps $s^i:S_n \rightarrow S_{n+1}$ satisfying the simplicial identities. An augmented simplicial object is a functor $S:\Delta_+^{op}\rightarrow \mathcal{C}$. The restricted functor $\bar{S}:\Delta^{op}\rightarrow \mathcal{C}$ is the augmentation ideal of $S$. An augmented semi-simplicial object is a functor $S:(\Delta_+^+)^{op}\rightarrow \mathcal{C}$. Dually, a cosimplicial object is a functor $S:\Delta\rightarrow \mathcal{C}$, it may be regarded as a sequence of objects with coface and codegeneracy maps satisfying the cosimplicial identities.
             
-            Let $\mathcal{A}$ be an abelian category. To each semi-simplical object $M:(\Delta^+)^{op}\rightarrow \mathcal{A}$ there is an associated chain complex $M^\bullet$. Let $M^{-i} = M[i]$ with differential $d_M^{-n} = \sum_{i=1}^{n+1} (-1)^{i-1}d^i$. This differential is well-defined by simplicial identity $1$.
+            Let $\mathcal{A}$ be an abelian category. To each semi-simplical object $M:(\Delta^+)^{op}\rightarrow \mathcal{A}$ there is an associated chain complex $M^\bullet$. Let $M^{-i} = M_i$ with differential $d_M^{-n} = \sum_{i=1}^{n+1} (-1)^{i-1}d^i$. This differential is well-defined by simplicial identity $1$.
             \begin{center}
                 \begin{tikzcd}
                     ... \ar[]{r}[]{} & M_2 \ar[]{r}[]{d^1-d^2+d^3} & M_1 \ar[]{r}[]{d^1-d^2} & M_0 \ar[]{r}[]{0} & 0 \ar[]{r}[]{} & ...
@@ -1349,7 +1349,7 @@
                 \end{tikzcd}
             \end{center}
 
-            Notice that as graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. We will now instead consider the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Notice that $\nabla_{A[1]}$ is a morphism of degree $-1$. Repeating Koszul sign rule, we may se that associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
+            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Notice that $\nabla_{A[1]}$ is a morphism of degree $-1$. Repeating Koszul sign rule, we may se that associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
 
             \begin{proposition}
                 The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
