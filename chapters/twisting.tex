@@ -1349,7 +1349,7 @@
                 \end{tikzcd}
             \end{center}
 
-            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Notice that $\nabla_{A[1]}$ is a morphism of degree $-1$. Repeating Koszul sign rule, we may se that associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
+            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. $\nabla_{A[1]}$ is a morphism of degree $1$. Repeating Koszul sign rule, associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
 
             \begin{proposition}
                 The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
@@ -1357,6 +1357,10 @@
                     \bar{d}^i = (-1)^{i-1}d^i = (-1)^{i-1}(\nabla_{A[1]})_{(i-1)}^{(n-1)}\text{.}
                 \end{align*}
             \end{proposition}
+
+            \begin{proof}
+                This is evident from the above discussion.
+            \end{proof}
 
             \begin{corollary}\label{cor: a-to-dgc}
                 The differential $d_{\bar{A}[1]}^\bullet$ is a coderivation for the cofree coalgebra $T^c(\bar{A}[1])$. Thus $(\bar{A}[1]^\bullet, d_{\bar{A}[1]}^\bullet)$ is a dg-coalgebra.
@@ -1376,14 +1380,21 @@
             If $(A, d_A^\bullet)$ is an augmented dg-algebra, then $A$ is a simplical object of $Mod_\mathbb{K}^\bullet$. It has an associated chain complex. Taking the alternate sum of face maps gives us a double complex as below. We define the double complex $A^\bullet$ as the associated chain complex to $A$.
             \begin{center}
                 \begin{tikzcd}
-                    & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{d}[left]{\nabla_A} \ar[]{d}[]{} \ar[xshift = 1ex]{d}[]{A^{\otimes 2}\otimes\varepsilon_A} & \\
-                    ... \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} & (A^{\otimes 2})^{1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & (A^{\otimes 2})^0 \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & (A^{\otimes 2})^{-1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{d}[left]{\nabla_A} \ar[xshift = 0.5ex]{d}[]{A\otimes\varepsilon_A} & ... \\
-                    ... \ar[]{r}[below]{d_A^\bullet} & A^{1} \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & A^0 \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & A^{-1} \ar[]{r}[below]{d_A^\bullet} \ar[]{d}[]{\varepsilon_A} & ... \\
-                    ... \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & \mathbb{K} \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & ...
+                    ... \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & \mathbb{K} \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & ... \\
+                    ... \ar[]{r}[below]{d_A^\bullet} & A^{-1} \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & A^0 \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & A^{1} \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & ... \\
+                    ... \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} & (A^{\otimes 2})^{-1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^0 \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^{1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & ... \\
+                    & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & 
+                \end{tikzcd}
+                $=$
+                \begin{tikzcd}
+                  A[1]^{\otimes 0} \\
+                  A[1]^{\otimes 1} \ar[]{u}[]{} \\
+                  A[1]^{\otimes 2} \ar[]{u}[]{} \\
+                  \vdots \ar[]{u}[]{} 
                 \end{tikzcd}
             \end{center}
         
-            For simplicity we write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. The total associated chain complex is the total complex for $Tot(A^\bullet)$, denoted $A^\bullet$ if there are no confusion. In the case of the suspended algebra, the signs mess up commutativity of the squares, thus we change the sign of the horizontal differential to $(-1)^n$. We may also define the differential of the total complex simply as the sum of $d_1$ and $d_2$.
+            For simplicity we write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. The total associated chain complex is the total complex for $Tot(A^\bullet)$, denoted $A^\bullet$ if there are no confusion. In the case of the suspended algebra, the signs mess up commutativity of the squares, thus we should change the sign of the horizontal differential to $(-1)^n$. In this manner the total differential is simply the sum of $d_1$ and $d_2$.
 
             \begin{proposition}
                 Let $A$ an augmented dg-algebra. The bar complex $BA$ is the total associated chain complex $\bar{A}[1]^\bullet$ of the suspended augmentation ideal $\bar{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
@@ -1438,7 +1449,7 @@
             \begin{proof}
                 We will show that $\Omega C$ represents the set of twisting morphisms in the first argument. Showing that $BA$ represents the second argument uses every dual proposition. Thus, it is necessary that $C$ is conilpotent, in order to dualize the arguments.
 
-                Suppose that $f:\Omega C \rightarrow A$ is an augmented dg-algebra homomorphism. $f$ is then a morphism of degree $0$. By freeness, $f$ is uniquely determined by a morphism $f\mid_{\bar{C}[-1]}:\bar{C}\rightarrow \bar{A}$ of degree $0$, which corresponds to a morphism $f':C\rightarrow A$ of degree $-1$. 
+                Suppose that $f:\Omega C \rightarrow A$ is an augmented dg-algebra homomorphism. $f$ is then a morphism of degree $0$. By freeness, $f$ is uniquely determined by a morphism $f\mid_{\bar{C}[-1]}:\bar{C}[-1]\rightarrow \bar{A}$ of degree $0$, which corresponds to a morphism $f':C\rightarrow A$ of degree $1$. 
 
                 Since $f$ is a morphism of chain complexes it commutes with the differential, i.e. 
                 \begin{align*}
@@ -1539,14 +1550,14 @@
         % We now know some cases where the unit and the counit are quasi-isomorphisms. However, we would like to promote this result to every (conilpotent) augmented dg-(co)algebra. To this end we will find suitable filtrations to realize the associated graded as a connected wdg-(co)algebra and then get isomorphisms on the associated graded. The problem would then be to lift such quasi-isomorphisms back to our original objects.
 
     \section{Strongly Homotopy Associative Algebras and Coalgebras}
-    \subsection{$A_\infty$-Algebras}
+    \subsection{SHA-Algebras}
         We have seen from corollary \ref{cor: a-to-dgc} that any dg-algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that the coalgebra $T^c(A[1])$ together with a coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra? The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
         \begin{definition}
-            An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $-1$.
+            An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $1$.
         \end{definition}
 
-        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $-1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $-1$, we get that $m_n$ is of degree $n-2$.
+        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $-n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $1$, we get that $m_n$ is of degree $2-n$.
         \begin{center}
             \begin{tikzcd}
                 A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{s^{\otimes n}} & A \\
@@ -1555,9 +1566,9 @@
         \end{center}
 
         \begin{proposition}\label{prop: A-infinity def}
-            An $A_\infty$-algebra is equivalent to a graded vector space $A$ together with homogenous morphisms $m_n:A^{\otimes n}\rightarrow A$ of degree $n-2$. Moreover, the morphism must satisfy the following relations for any $n\geq 1$:
+            An $A_\infty$-algebra is equivalent to a graded vector space $A$ together with homogenous morphisms $m_n:A^{\otimes n}\rightarrow A$ of degree $2-n$. Moreover, the morphism must satisfy the following relations for any $n\geq 1$:
             \begin{align*}
-                (\text{rel}_n)\qquad \sum_{p+q+r = n}(-1)^{p+qr}m_{p+1+r}\circ (id^{\otimes p}\otimes m_q \otimes id^{\otimes r}) = 0
+                (\text{rel}_n)\qquad \sum_{p+q+r = n}(-1)^{pq+r}m_{p+1+r}\circ (id^{\otimes p}\otimes m_q \otimes id^{\otimes r}) = 0
             \end{align*}
         \end{proposition}
 
@@ -1565,7 +1576,7 @@
             We make a more convenient notation for $(\text{rel}_n)$, called partial composition $\circ_i$.
             \begin{align*}
                 & m_{p+1+r} \circ_{p+1} m_q = m_k \circ (id^{\otimes p}\otimes m_q \otimes id^{\otimes r}) \\
-                (\text{rel}_n)\qquad & \sum_{p+q+r = n} (-1)^{p+qr} m_{p+1+r} \circ_{p+1} m_q = 0
+                (\text{rel}_n)\qquad & \sum_{p+q+r = n} (-1)^{pq+r} m_{p+1+r} \circ_{p+1} m_q = 0
             \end{align*}
         \end{remark}
 
@@ -1606,7 +1617,7 @@
 
             Since suspension and desuspension are isomorphism we get that $m^2 = 0$ if and only if $(\text{rel}_n)$ are $0$ for every $n\geq 1$, i.e.
             \begin{align*}
-                \sum_{p+q+r = n} (-1)^{p+qr} m_{p+1+r} \circ_{p+1} m_q = 0
+                \sum_{p+q+r = n} (-1)^{pq+r} m_{p+1+r} \circ_{p+1} m_q = 0
             \end{align*}
         \end{proof}
 
@@ -1614,15 +1625,15 @@
         \begin{align*}
             (\text{rel}_1)\qquad & m_1\circ m_1 = 0 \\
             (\text{rel}_2)\qquad & m_1\circ m_2 - m_2\circ_{1}m_1 - m_2\circ_2m_1 = 0 \\
-            (\text{rel}_3)\qquad & m_1\circ m_3 + m_2\circ_1 m_2 - m_2\circ_2m_2 + m_3\circ_1m_1 + m_3\circ_2m_1 + m_3\circ_3m_1 = 0 
+            (\text{rel}_3)\qquad & m_1\circ m_3 - m_2\circ_1 m_2 + m_2\circ_2m_2 + m_3\circ_1m_1 + m_3\circ_2m_1 + m_3\circ_3m_1 = 0 
         \end{align*}
 
         We see that $(\text{rel}_1)$ states that $m_1$ should be a differential, we may thus think of $(A, m_1)$ as a chain complex. Furthermore, $(\text{rel}_2)$ says that $m_2 : (A^{\otimes 2}, m_1\otimes id_A + id_A\otimes m_1) \rightarrow (A, m_1)$ is a morphism of chain complexes. Lastly, $(\text{rel}_3)$ gives us a homotopy for the associator of $m_2$, namely $m_3$. Thus we may regard $(A, m_1, m_2)$ as an algebra which is associative up to homotopy. Regarding $A$ as a chain complex instead we obtain our final definition of an $A_\infty$-algebra.
 
         \begin{proposition}
-            Suppose that $(A, d)$ is a chain complex, and that there exists morphisms $m_n: A^{\otimes n} \rightarrow A$ for any $n\geq 2$. A is an $A_\infty$-algebra if and only it satisfies the following relations:
+            Suppose that $(A, d)$ is a chain complex, and that there exists morphisms $m_n: A^{\otimes n} \rightarrow A$ of degree $2-n$ for any $n\geq 2$. A is an $A_\infty$-algebra if and only it satisfies the following relations:
             \begin{align*}
-                (\text{rel'}_n)\qquad & \partial(m_n) = -\sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{p + qr}m_k\circ_p+1m_q
+                (\text{rel'}_n)\qquad & \partial(m_n) = -\sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq + r}m_k\circ_p+1m_q
             \end{align*}
         \end{proposition}
 
@@ -1643,10 +1654,10 @@
         Next we want to understand the category of $A_\infty$-algebras. A morphism between $A_\infty$-algebras is called an $\infty$-morphism. We define such an $\infty$-morphism $f:A\rightsquigarrow B$ between $A_\infty$-algebras as associated dg-coalgebra homomorphism $Bf:(\bar{T}^c(A[1]), m^A)\rightarrow (\bar{T}^c(B[1]), m^B)$. Here $Bf$ is purely formal, we will make sense of this soon.
 
         \begin{proposition}
-            Let $A,B$ be two $A_\infty$-algebras. A collection of morphisms $f_n : A^\otimes n \rightarrow B$ of degree $n-1$ for any $n \geq 1$ defines an $\infty$-morphism $f : A \rightsquigarrow B$ if and only if $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
+            Let $A,B$ be two $A_\infty$-algebras. A collection of morphisms $f_n : A^{\otimes n} \rightarrow B$ of degree $1-n$ for any $n \geq 1$ defines an $\infty$-morphism $f : A \rightsquigarrow B$ if and only if $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
             \begin{align*}
                 & (\text{rel}_n)\qquad \partial(f_n) = \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ_{p+1}m^A_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^B_k \circ (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k}) \\
-                & \text{where } e \text{ is given as: } e = (k-1)(i_1-1) + (k-2)(i_2-1) + ... + 2(i_{k-2}-1) + (i_{k-1} - 1)
+                & \text{where } e \text{ is given as: } e = (k-1)(1-i_1) + (k-2)(1-i_2) + ... + 2(1-i_{k-2}) + (1-i_{k-1})
             \end{align*}
         \end{proposition}
         
@@ -1700,7 +1711,7 @@
         Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.
 
         \begin{definition}
-            A graded vector space $C$ is called a conilpotent $A_\infty$-coalgebra if it is a dg-algebra of the form $(\bar{T}(C[-1]), d)$ where $d$ is a derivation of degree $-1$.
+            A graded vector space $C$ is called a conilpotent $A_\infty$-coalgebra if it is a dg-algebra of the form $(\bar{T}(C[-1]), d)$ where $d$ is a derivation of degree $11$.
         \end{definition}
 
         \begin{remark}
@@ -1714,10 +1725,10 @@
             \end{align*}
         \end{corollary}
 
-        A morphism of $A_\infty$-coalgebras would be defined in the same manner, but opposite. So an $\infty$-comorphism $f: C \rightsquigarrow D$ is either a morphism $\widetilde{f}: (T(C[-1]), m^C) \rightarrow (T(D[-1]),m^D)$ of dg-algebras. Equivalently such an $\infty$-comorphism is a collection of morphisms $f_n : C \rightarrow D^{\otimes n}$ of degree $n-2$ such that $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
+        A morphism of $A_\infty$-coalgebras would be defined in the same manner, but opposite. So an $\infty$-comorphism $f: C \rightsquigarrow D$ is either a morphism $\widetilde{f}: (T(C[-1]), m^C) \rightarrow (T(D[-1]),m^D)$ of dg-algebras. Equivalently such an $\infty$-comorphism is a collection of morphisms $f_n : C \rightarrow D^{\otimes n}$ of degree $1-n$ such that $f_1$ is a morphism of chain complexes and for any $n\geq 2$ the following relations are satisfied:
         \begin{align*}
             & (\text{rel}_n)\qquad \partial(f_n) = \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ^{op}_{p+1}m^D_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^C_k \circ^{op} (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k}) \\
-            & \text{where } e \text{ is given as: } e = (k-1)(i_1-1) + (k-2)(i_2-1) + ... + 2(i_{k-2}-1) + (i_{k-1} - 1)
+            & \text{where } e \text{ is given as: } e = (k-1)(1-i_1) + (k-2)(1-i_2) + ... + 2(1-i_{k-2}) + (1-i_{k-1})
         \end{align*}
 
         We denote $Coalg_\infty$ as the category of $A_\infty$-coalgebras. In the same manner, the cobar construction extends to this category and gives us an identification of $A_\infty$-coalgebras and a subcategory of dg-algebras. This subcategory consists of every dg-algebra that is isomorphic, as an algebra, to a free tensor algebra. Lastly, every dg-coalgebra is an $A_\infty$-coalgebra by letting every morphism $m^i = 0$ where $i>2$. This gives a non full inclusion. 
