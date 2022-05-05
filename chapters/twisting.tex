@@ -1349,7 +1349,11 @@
                 \end{tikzcd}
             \end{center}
 
+<<<<<<< HEAD
             As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. $\nabla_{A[1]}$ is a morphism of degree $1$. Repeating Koszul sign rule, associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
+=======
+            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Since each element $a\in A[1]$ has degree $|a|+1$, we get that $|a_1a_2| = |a_1|+|a_2|+1$ in $A[1]$. Thus $\nabla_{A[1]}$ is a morphism of degree $-1$. For our convenience, we may decorate each $a\in A[1]$ as $sa$, where $|s| = 1$. We may then treat this $s$ as an element to better understand Koszul sign rule. This works as $A[1] \simeq \mathbb{K}s \otimes A$, where $|s| = 1$. By Koszul sign rule, associativity does not longer hold as applying the multiplication on the right side first introduces a sign, contrary to first multiplying on the left side.
+>>>>>>> 8ca8e935ed0e2025211e253ac7ddb3e4a0d0b4af
 
             \begin{proposition}
                 The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
@@ -1401,7 +1405,7 @@
             \end{proposition}
 
             \begin{proof}
-                    It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$.
+                    It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$. In the following calculation we will not decorate each $a$ with an $s$, and it should be understood that these elements are shifted.
 
                 \begin{multline*}
                     d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_A^\bullet[1](a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
