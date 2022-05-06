@@ -1349,11 +1349,7 @@
                 \end{tikzcd}
             \end{center}
 
-<<<<<<< HEAD
-            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. $\nabla_{A[1]}$ is a morphism of degree $1$. Repeating Koszul sign rule, associativity does not longer hold, as multiplying the multiplication on the right first introduces a sign, contrary to first multiplying on the left side.
-=======
             As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Since each element $a\in A[1]$ has degree $|a|+1$, we get that $|a_1a_2| = |a_1|+|a_2|+1$ in $A[1]$. Thus $\nabla_{A[1]}$ is a morphism of degree $-1$. For our convenience, we may decorate each $a\in A[1]$ as $sa$, where $|s| = 1$. We may then treat this $s$ as an element to better understand Koszul sign rule. This works as $A[1] \simeq \mathbb{K}s \otimes A$, where $|s| = 1$. By Koszul sign rule, associativity does not longer hold as applying the multiplication on the right side first introduces a sign, contrary to first multiplying on the left side.
->>>>>>> 8ca8e935ed0e2025211e253ac7ddb3e4a0d0b4af
 
             \begin{proposition}
                 The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
@@ -1443,7 +1439,7 @@
 
             We will now see that the bar and cobar construction defines an adjoint pair of functors. Note that since for any conilpotent dg-coalgebra $C$, the object $\Omega C$ represents the functor in the category of augmented algebras. By Yoneda's lemma, the data of morphisms are then defined, so $\Omega$ does truly define a functor.
 
-            \begin{thm}
+            \begin{thm}\label{thm: cobar-bar-adj}
                 Let $C$ be a conilpotent dg-coalgebra and $A$ an augmented dg-algebra. The functor $Tw(C,A)$ is represented in both arguments, i.e.
                 \begin{align*}
                     Alg_{\mathbb{K},+}^\bullet(\Omega C, A)\simeq Tw(C, A) \simeq CoAlg_{\mathbb{K},Conil}^\bullet(C, BA)\text{.}

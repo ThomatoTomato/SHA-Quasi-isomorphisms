@@ -14,7 +14,7 @@
 
         \subsection{Twisted Tensor Products}
 
-            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\alpha : C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product was the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. The perturbation was defined as
+            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\alpha : C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product is the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. The perturbation is defined as
             \begin{align*}
                 d_\alpha^r = (\nabla_A\otimes id_C) \circ (id_A \otimes \alpha \otimes id_C) \circ (id_A \otimes \Delta_C).
             \end{align*}
@@ -24,14 +24,27 @@
                 d_\alpha^r = (\mu_M\otimes id_N) \circ (id_M \otimes \alpha \otimes id_N) \circ (id_M \otimes \nu_N).
             \end{align*}
             By using the same line of thought as proposition \ref{prop: twisted-differential}, there is a twisted tensor product $M\otimes_\alpha N$ with differential $d_\alpha^\bullet = d_{M\otimes N} + d_\alpha^r$.
+
+            \begin{remark}
+                Koszuls sign rule forces us to define the differential of the left twisted tensor product as $d_\alpha^\bullet = d_{N\otimes M} - d_\alpha^l$. 
+            \end{remark}
             
             \begin{definition}
                 Suppose that $M\in Mod^A$ ($M\in Mod_A$) and $N\in CoMod_C$ ($N\in CoMod^C$), then the right (left) twisted tensor product is the $\mathbb{K}$-module $M\otimes_\alpha N$ ($N\otimes_\alpha M$).
             \end{definition}
 
-            Notice that right handedness and left handedness for the twisted tensor product is even more apparent than when defined for algebras and coalgebras.
+            In this setting right handedness and left handedness for the twisted tensor product is more clear in this setting, as we only have an action or coaction from one of the chosen sides. Trying to force the other handedness on the twisted tensors would just be ill-defined.
 
-            Since $C$ is a left $C$-comodule we may define the functor $L_\alpha = \otimes_\alpha C$. Notice that $L_\alpha : Mod^A \rightarrow CoMod^C$ by using the cofree $C$-comodule structure on the right twisted tensor product. Likewise, since $A$ is a left $A$-module there is a functor $R_\alpha = \otimes_\alpha A$ where $R_\alpha : CoMod^C \rightarrow Mod^A$. Here we use the free module structure on the left twisted tensor product.
+            \begin{definition}
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebgra, such that there is a twisting morphism $\alpha: C\rightarrow A$. Given a linear map $f: N \rightarrow M$ between a right $C$-comodule $N$ and a right $A$-module $M$ we say that it is an $\alpha$ right twisted linear homomorphism, or just an  $\alpha$ twisted morphism, if it satisfies the following equation:
+                \begin{align*}
+                    \partial f - f\star \alpha = 0
+                \end{align*} 
+            \end{definition}
+
+            This definitions gives us a functor $Tw_\alpha : CoMod^C \times Mod^A \rightarrow Ab$ which is the collection of right twisting linear homomorphisms between a comodule and module.
+
+            Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. We define the functor $L_\alpha = \otimes_\alpha A : CoMod^C \rightarrow Mod^A$ as an arbitrary right twisted tensor product with $A$. This functor does indeed hit $Mod^A$ by using the free right $A$-module structure on $A$. Likewise, we define a functor $R_\alpha = \otimes_\alpha C : Mod^A \rightarrow CoMod^C$ as an arbitrary left twisted tensor product with $C$. This does also hit right $C$-comodules by using the free right $C$-comodule structure on $C$.
 
             \begin{proposition}
                 Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. The functor $L_\alpha$ and $R_\alpha$ form an adjoint pair of categories.
@@ -41,6 +54,42 @@
                     \end{tikzcd}
                 \end{center}
             \end{proposition}
+
+            \begin{proof}
+                This proof breaks down to showing $CoMod^C(N, L_\alpha(M))\simeq Tw_\alpha(N,M) \simeq Mod^A(R_\alpha(N),M)$. This is a rutine calculation, much like the proof for \ref{thm: cobar-bar-adj}.
+            \end{proof}
+
+            Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the Cobar-Bar adjunction \ref{thm: cobar-bar-adj} there exists a universal twisting morphism $\pi_A : BA \rightarrow A$. We define the bar-construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar-construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
+
+            Let $A$ and $B$ be two algebras and $f : A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^* : Mod^B \rightarrow Mod^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is bicomplete, both the left and right Kan extension (induction/co-induction) along this functor exists.
+            \begin{center}
+                \begin{tikzcd}
+                    Mod^B \ar[]{r}[]{f^*} & Mod^A \ar[bend right]{l}[above]{f_!} \ar[bend left]{l}[]{}
+                \end{tikzcd}
+            \end{center}
+
+            Dually, if $C$ and $D$ are two coalgebras and $g : C \rightarrow D$ is an coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $f_* : CoMod^C \rightarrow CoMod^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is bicomplete, both the left and right Kan extension (induction/co-induction) along this functor exists.
+            \begin{center}
+                \begin{tikzcd}
+                    CoMod^C \ar[]{r}[]{f_*} & CoMod^D \ar[bend right]{l}[]{} \ar[bend left]{l}[above]{f^!}
+                \end{tikzcd}
+            \end{center}
+
+            \begin{lemma}
+                Let $\tau : C \rightarrow A$ be a twisting morphism. The adjunction $(L_\tau, R_\tau)$ factors as $(f_{\tau !}, f_tau^*)\circ (L_{\iota_C},R_{\iota_C})$ or $(L_{\pi_A},R_{\pi_A})\circ (g_{\tau *}, g_\tau^!)$.
+            \end{lemma}
+
+            \begin{proof}
+                This follows from corollary \ref{cor: universal-twisting}, that is $\tau = f_\tau \circ \iota_C = \pi_A\circ g_\tau$.
+            \end{proof}
+
+            \begin{definition}
+                A twisting morphism $f: C \rightarrow A$ is called acyclic if the counit of the adjunction $L_\alpha \dashv R_\alpha$ is a pointwise quasi-isomorphism.
+            \end{definition}
+
+            \begin{lemma}
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The universal twisting morphisms $\pi_A$ and $\iota_C$ are acyclic.
+            \end{lemma}
 
             \begin{proof}
                 
