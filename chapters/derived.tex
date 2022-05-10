@@ -61,22 +61,22 @@
 
             Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the Cobar-Bar adjunction \ref{thm: cobar-bar-adj} there exists a universal twisting morphism $\pi_A : BA \rightarrow A$. We define the bar-construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar-construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
 
-            Let $A$ and $B$ be two algebras and $f : A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^* : Mod^B \rightarrow Mod^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is bicomplete, both the left and right Kan extension (induction/co-induction) along this functor exists.
+            Let $A$ and $B$ be two algebras and $f : A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^* : Mod^B \rightarrow Mod^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, so the left Kan extension (induction) along this functor exists.
             \begin{center}
                 \begin{tikzcd}
-                    Mod^B \ar[]{r}[]{f^*} & Mod^A \ar[bend right]{l}[above]{f_!} \ar[bend left]{l}[]{}
+                    Mod^B \ar[]{r}[]{f^*} & Mod^A \ar[bend right]{l}[above]{f_!}
                 \end{tikzcd}
             \end{center}
 
-            Dually, if $C$ and $D$ are two coalgebras and $g : C \rightarrow D$ is an coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $f_* : CoMod^C \rightarrow CoMod^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is bicomplete, both the left and right Kan extension (induction/co-induction) along this functor exists.
+            Dually, if $C$ and $D$ are two coalgebras and $g : C \rightarrow D$ is an coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $g* : CoMod^C \rightarrow CoMod^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is complete, so the right Kan extension (co-induction) along this functor exists.
             \begin{center}
                 \begin{tikzcd}
-                    CoMod^C \ar[]{r}[]{f_*} & CoMod^D \ar[bend right]{l}[]{} \ar[bend left]{l}[above]{f^!}
+                    CoMod^C \ar[]{r}[]{g_*} & CoMod^D \ar[bend left]{l}[above]{g^!}
                 \end{tikzcd}
             \end{center}
 
             \begin{lemma}
-                Let $\tau : C \rightarrow A$ be a twisting morphism. The adjunction $(L_\tau, R_\tau)$ factors as $(f_{\tau !}, f_tau^*)\circ (L_{\iota_C},R_{\iota_C})$ or $(L_{\pi_A},R_{\pi_A})\circ (g_{\tau *}, g_\tau^!)$.
+                Let $\tau : C \rightarrow A$ be a twisting morphism. The adjunction $(L_\tau, R_\tau)$ factors as $(f_{\tau !}, f_\tau^*)\circ (L_{\iota_C},R_{\iota_C})$ or $(L_{\pi_A},R_{\pi_A})\circ (g_{\tau *}, g_\tau^!)$.
             \end{lemma}
 
             \begin{proof}
@@ -95,9 +95,33 @@
                 
             \end{proof}
 
-        \subsection{The Bar and Cobar Construction}
+        \subsection{Model Structure on Module Categories}
 
-        \subsection{Fundamental Theorem of Twisting Morphisms}
+            Let $A$ be an augmented dg-algebra, then we know that $Mod^A$ is a model category. By corollary \ref{cor: Model-Mod} we have a model structure where the fibrations, cofibrations and weak equivalences are given as follows:
+            \begin{itemize}
+                \item[Weak equivalences] $f: M \rightarrow N$ is a weak equivalence if $f$ is a quasi-isomorphism.
+                \item[Fibration] $f : M\rightarrow N$ is a fibration if $f^\#$ is an epimorphism.
+                \item[Cofibration] $f : M\rightarrow N$ is a cofibration if it has LLP to acyclic fibrations. 
+            \end{itemize}
 
-    \section{Model Structure on Module Categories}
+        \subsection{Model Structure on Comodule Categories}
+
+            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
+            \begin{itemize}
+                \item[Weak equivalences] $f : M \rightarrow N$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
+                \item[Cofibration] $f : M \rightarrow N$ is a cofibration if $f^\#$ is a monomorphism.
+                \item[Fibration] $f : M \rightarrow N$ is a fibration if it har RLP to acyclic cofibrations.
+            \end{itemize}
+
+            \begin{thm}
+              The category $CoMod^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in Mod^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence. Finally, the model structure of $CoMod^C_{conil}$ is independent of the choice of $\tau$.
+            \end{thm}
+
+            We will call this model structure for the canonical model structure on $CoMod^C_{conil}$.
+
+        \subsection{Triangulation of HoCoMod}
+
+        \subsection{The Fundamental Theorem of Twisting Morphisms}
+
+    \section{Polydules}
 \end{document}

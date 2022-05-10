@@ -1381,8 +1381,8 @@
             \begin{center}
                 \begin{tikzcd}
                     ... \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & \mathbb{K} \ar[]{r}[below]{0} & 0 \ar[]{r}[below]{0} & ... \\
-                    ... \ar[]{r}[below]{d_A^\bullet} & A^{-1} \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & A^0 \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & A^{1} \ar[]{r}[below]{d_A^\bullet} \ar[]{u}[]{\varepsilon_A} & ... \\
-                    ... \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} & (A^{\otimes 2})^{-1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^0 \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^{1} \ar[]{r}[below]{d_{A^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & ... \\
+                    ... \ar[]{r}[below]{d_{A[1]}^\bullet} & A^{-1} \ar[]{r}[below]{d_{A[1]}^\bullet} \ar[]{u}[]{\varepsilon_A} & A^0 \ar[]{r}[below]{d_{A[1]}^\bullet} \ar[]{u}[]{\varepsilon_A} & A^{1} \ar[]{r}[below]{d_{A[1]}^\bullet} \ar[]{u}[]{\varepsilon_A} & ... \\
+                    ... \ar[]{r}[below]{d_{A[1]^{\otimes 2}}^\bullet} & (A^{\otimes 2})^{-1} \ar[]{r}[below]{d_{A[1]^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^0 \ar[]{r}[below]{d_{A[1]^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & (A^{\otimes 2})^{1} \ar[]{r}[below]{d_{A[1]^{\otimes 2}}^\bullet} \ar[xshift = -0.5ex]{u}[left]{\nabla_A} \ar[xshift = 0.5ex]{u}[right]{A\otimes\varepsilon_A} & ... \\
                     & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & \vdots \ar[xshift = -1ex]{u}[left]{\nabla_A} \ar[]{u}[]{} \ar[xshift = 1ex]{u}[right]{A^{\otimes 2}\otimes\varepsilon_A} & 
                 \end{tikzcd}
                 $=$
@@ -1394,20 +1394,20 @@
                 \end{tikzcd}
             \end{center}
         
-            For simplicity we write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. The total associated chain complex is the total complex for $Tot(A^\bullet)$, denoted $A^\bullet$ if there are no confusion. In the case of the suspended algebra, the signs mess up commutativity of the squares, thus we should change the sign of the horizontal differential to $(-1)^n$. In this manner the total differential is simply the sum of $d_1$ and $d_2$.
+            For simplicity we write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. The total associated chain complex is the total complex for $Tot(A^\bullet)$, denoted $A^\bullet$ if there are no confusion. Whenever we go down to the total complex we should switch out the multiplication with the suspended multiplication. The following proposition shows that this is well-defined, among other things. This total complex is then isomorphic, as graded modules, to $T^c(\bar{A}[1])$
 
             \begin{proposition}
-                Let $A$ an augmented dg-algebra. The bar complex $BA$ is the total associated chain complex $\bar{A}[1]^\bullet$ of the suspended augmentation ideal $\bar{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
+                Let $A$ an augmented dg-algebra. The bar complex $BA$ is the total associated chain complex of the augmentation ideal $\bar{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
             \end{proposition}
 
             \begin{proof}
                     It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$. In the following calculation we will not decorate each $a$ with an $s$, and it should be understood that these elements are shifted.
 
                 \begin{multline*}
-                    d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_A^\bullet[1](a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
+                    d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_{A[1]}^\bullet(a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
                 \end{multline*}
                 \begin{multline*}
-                    d_2\circ d_1 (a_1\otimes a_2) = d_2\circ (d_A^\bullet[1]\otimes id_{A[1]} + id_{A[1]}\otimes d_A^\bullet[1]) (a_1\otimes a_2) \\ = -d_2 \circ (d_A^\bullet(a_1)\otimes a_2 + (-1)^{|a_1|+1}a_1\otimes d_A^\bullet(a_2)) \\ = (-1)^{|d_A^\bullet(a_1)|+1}d_A^\bullet(a_1)a_2 + (-1)^{2|a_1|+2}a_1d_A^\bullet d_A^\bullet(a_2) \\ = (-1)^{|a_1|}d_A^\bullet(a_1)a_2 + a_1d_A^\bullet (a_2) = -d_1\circ d_2 (a_1\otimes a_2)
+                    d_2\circ d_1 (a_1\otimes a_2) = d_2\circ (d_{A[1]}^\bullet\otimes id_{A[1]} + id_{A[1]}\otimes d_{A[1]}^\bullet[1]) (a_1\otimes a_2) \\ = -d_2 \circ (d_A^\bullet(a_1)\otimes a_2 + (-1)^{|a_1|+1}a_1\otimes d_A^\bullet(a_2)) \\ = (-1)^{|d_A^\bullet(a_1)|+1}d_A^\bullet(a_1)a_2 + (-1)^{2|a_1|+2}a_1d_A^\bullet d_A^\bullet(a_2) \\ = (-1)^{|a_1|}d_A^\bullet(a_1)a_2 + a_1d_A^\bullet (a_2) = -d_1\circ d_2 (a_1\otimes a_2)
                 \end{multline*}
             \end{proof}
 
@@ -1434,8 +1434,17 @@
             \end{remark}
 
             \begin{proposition}
-                Let $C$ be a coaugmented dg-coalgebra. The cobar complex $\Omega C$ is the total associated chain complex $\bar{C}[-1]^\bullet$ of the desuspended coaugmentation quotient $\bar{C}$. $(\Omega C, D_{\Omega C}^\bullet)$ is the free algebra equipped with $d_{\Omega C}^\bullet = d_1 + d_2$ as derivation.
+                Let $C$ be a coaugmented dg-coalgebra. The cobar complex $\Omega C$ is the total associated chain complex of the coaugmentation quotient $\bar{C}$. $(\Omega C, D_{\Omega C}^\bullet)$ is the free algebra equipped with $d_{\Omega C}^\bullet = d_1 + d_2$ as derivation.
             \end{proposition}
+
+            \begin{center}
+                \begin{tikzcd}
+                    & \vdots & \vdots & \vdots \\
+                    ... \ar[]{r}[]{d_{\bar{C}[-1]^{\otimes 2}}} & (\bar{C}^{\otimes 2})^{-1} \ar[]{r}[]{d_{\bar{C}[-1]^{\otimes 2}}} \ar[xshift = -0.5ex]{u}[]{\Delta_C\otimes \bar{C}} \ar[xshift = 0.5ex]{u}[]{} & (\bar{C}^{\otimes 2})^{0} \ar[]{r}[]{d_{\bar{C}[-1]^{\otimes 2}}} \ar[xshift = -0.5ex]{u}[]{\Delta_C\otimes\bar{C}}  \ar[xshift = 0.5ex]{u}[]{} & (\bar{C}^{\otimes 2})^1 \ar[]{r}[]{d_{\bar{C}[-1]^{\otimes 2}}} \ar[xshift=-0.5ex]{u}[]{\Delta_C\otimes \bar{C}} \ar[xshift=0.5ex]{u}[]{} & ... \\
+                    ... \ar[]{r}[]{d_{\bar{C}[-1]}} & \bar{C}^{-1} \ar[]{r}[]{d_{\bar{C}[-1]}} \ar[]{u}[]{\Delta_C} & \bar{C}^0 \ar[]{r}[]{d_{\bar{C}[-1]}} \ar[]{u}[]{\Delta_C} & \bar{C}^1 \ar[]{r}[]{d_{\bar{C}[-1]}} \ar[]{u}[]{\Delta_C} & ... \\
+                    ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} \ar[]{u}[]{} & \mathbb{K} \ar[]{u}[]{0} \ar[]{r}[]{} & 0 \ar[]{r}[]{} \ar[]{u}[]{} & ...
+                \end{tikzcd}
+            \end{center}
 
             We will now see that the bar and cobar construction defines an adjoint pair of functors. Note that since for any conilpotent dg-coalgebra $C$, the object $\Omega C$ represents the functor in the category of augmented algebras. By Yoneda's lemma, the data of morphisms are then defined, so $\Omega$ does truly define a functor.
 
@@ -1456,7 +1465,7 @@
                     f\circ d_{\Omega C}^\bullet = d_A^\bullet\circ f \\
                     f\circ (d_1 + d_2) = d_A^\bullet\circ f 
                 \end{align*}
-                This is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism.
+                By free-forget, this is equivalent to say that $-f'\circ d_C^\bullet - f'\star f' = d_A^\bullet\circ f'$. Thus $f'$ is a twisting morphism as desired.
             \end{proof}
 
             For our convenience, we will give these isomorphisms some names. Whenever $\tau : C \rightarrow A$ is a twisting morphism, the induced morphism of algebras is denoted $f_\tau : \Omega C \rightarrow A$ and the induced morphism of coalgebras is denoted $g_\tau : C \rightarrow BA$.
