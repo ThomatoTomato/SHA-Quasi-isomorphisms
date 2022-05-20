@@ -30,7 +30,7 @@
             \end{remark}
             
             \begin{definition}
-                Suppose that $M\in Mod^A$ ($M\in Mod_A$) and $N\in CoMod_C$ ($N\in CoMod^C$), then the right (left) twisted tensor product is the $\mathbb{K}$-module $M\otimes_\alpha N$ ($N\otimes_\alpha M$).
+                Suppose that $M\in Mod^A$ ($M\in Mod_A$) and $N\in CoMod_C$ ($N\in CoMod^C$), then the left (right) twisted tensor product is the $\mathbb{K}$-module $M\otimes_\alpha N$ ($N\otimes_\alpha M$).
             \end{definition}
 
             In this setting right handedness and left handedness for the twisted tensor product is more clear in this setting, as we only have an action or coaction from one of the chosen sides. Trying to force the other handedness on the twisted tensors would just be ill-defined.
@@ -92,7 +92,27 @@
             \end{lemma}
 
             \begin{proof}
-                
+                We start with $\pi_A$. Recall that $\pi_A$ is constructed as the twisting morphism corresponding to $id_{BA}$. This morphism is thus given as the projection onto the first dimension of $BA$, that is:
+                \begin{align*}
+                    & \pi_A{sa} = a \\
+                    & \pi_A(sa\otimes ...) = 0
+                \end{align*}
+
+                We say that $\pi_A$ is acyclic if the counit $\varepsilon : L_{\pi_A}R_{\pi_A} \Rightarrow Id_{Mod^A}$ at each object $M$ is a quasi-isomorphism.
+
+                Given such an $M$ in $Mod^A$, we can calculate $L_{\pi_A}R_{\pi_A}M$ as $M\otimes_{\pi_A}BA\otimes_{\pi_A}A$. We can write out the differential given by $d^r_{\pi_A}$ to obtain the following double complex:
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance = 2em]{}[above]{d_{M\otimes BA_{(i)}\otimes A}} & ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance=2em]{}[above]{d_{M\otimes BA_{(1)}\otimes A}} & M \otimes A \ar[]{r}[]{0} \ar[loop, distance=2em]{}[above]{d_{M\otimes A}} & 0
+                    \end{tikzcd}
+                \end{center}
+                It is clear that the total complex of this doube complex is in fact $L_{\pi_A}R_{\pi_A}M$. Moreover, the counit induces an augmentation to this complex resolution of $M$:
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance = 2em]{}[above]{d_{M\otimes BA_{(i)}\otimes A}} & ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance=2em]{}[above]{d_{M\otimes BA_{(1)}\otimes A}} & M \otimes A \ar[]{r}[]{\varepsilon_M} \ar[loop, distance=2em]{}[above]{d_{M\otimes A}} & M \ar[loop, distance = 2em]{}[above]{d_M} \ar[]{r}[]{0} & 0
+                    \end{tikzcd}
+                \end{center}
+
             \end{proof}
 
         \subsection{Model Structure on Module Categories}
@@ -100,8 +120,8 @@
             Let $A$ be an augmented dg-algebra, then we know that $Mod^A$ is a model category. By corollary \ref{cor: Model-Mod} we have a model structure where the fibrations, cofibrations and weak equivalences are given as follows:
             \begin{itemize}
                 \item[Weak equivalences] $f: M \rightarrow N$ is a weak equivalence if $f$ is a quasi-isomorphism.
-                \item[Fibration] $f : M\rightarrow N$ is a fibration if $f^\#$ is an epimorphism.
-                \item[Cofibration] $f : M\rightarrow N$ is a cofibration if it has LLP to acyclic fibrations. 
+                \item[Fibrations] $f : M\rightarrow N$ is a fibration if $f^\#$ is an epimorphism.
+                \item[Cofibrations] $f : M\rightarrow N$ is a cofibration if it has LLP to acyclic fibrations. 
             \end{itemize}
 
         \subsection{Model Structure on Comodule Categories}
@@ -109,8 +129,8 @@
             Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
             \begin{itemize}
                 \item[Weak equivalences] $f : M \rightarrow N$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
-                \item[Cofibration] $f : M \rightarrow N$ is a cofibration if $f^\#$ is a monomorphism.
-                \item[Fibration] $f : M \rightarrow N$ is a fibration if it har RLP to acyclic cofibrations.
+                \item[Cofibrations] $f : M \rightarrow N$ is a cofibration if $f^\#$ is a monomorphism.
+                \item[Fibrations] $f : M \rightarrow N$ is a fibration if it har RLP to acyclic cofibrations.
             \end{itemize}
 
             \begin{thm}
