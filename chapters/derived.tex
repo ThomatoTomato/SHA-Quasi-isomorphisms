@@ -119,25 +119,85 @@
 
             Let $A$ be an augmented dg-algebra, then we know that $Mod^A$ is a model category. By corollary \ref{cor: Model-Mod} we have a model structure where the fibrations, cofibrations and weak equivalences are given as follows:
             \begin{itemize}
-                \item[Weak equivalences] $f: M \rightarrow N$ is a weak equivalence if $f$ is a quasi-isomorphism.
-                \item[Fibrations] $f : M\rightarrow N$ is a fibration if $f^\#$ is an epimorphism.
-                \item[Cofibrations] $f : M\rightarrow N$ is a cofibration if it has LLP to acyclic fibrations. 
+                \item $f\in Ac$ is a weak equivalence if $f$ is a quasi-isomorphism.
+                \item $f\in Fib$ is a fibration if $f^\#$ is an epimorphism.
+                \item $f\in Cof$ is a cofibration if it has LLP to acyclic fibrations. 
             \end{itemize}
 
         \subsection{Model Structure on Comodule Categories}
 
-            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
+            Unless stated otherwise, for this section let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
             \begin{itemize}
-                \item[Weak equivalences] $f : M \rightarrow N$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
-                \item[Cofibrations] $f : M \rightarrow N$ is a cofibration if $f^\#$ is a monomorphism.
-                \item[Fibrations] $f : M \rightarrow N$ is a fibration if it har RLP to acyclic cofibrations.
+                \item $f\in Ac$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
+                \item $f\in Fib$ is a cofibration if $f^\#$ is a monomorphism.
+                \item $f\in Cof$ is a fibration if it har RLP to acyclic cofibrations.
             \end{itemize}
 
-            \begin{thm}
+            \begin{thm}\label{thm: model-comod}
               The category $CoMod^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in Mod^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence. Finally, the model structure of $CoMod^C_{conil}$ is independent of the choice of $\tau$.
             \end{thm}
 
             We will call this model structure for the canonical model structure on $CoMod^C_{conil}$.
+
+            To be able to prove this we will need some lemmata. This proof is essentially the same as the case for dg-coalgebras. The main difference is to show independence of the choice of a twisting morphism $\tau$. To this end we must establish the relationship between graded quasi-isomorphisms and weak equivalences, as well as a technical lemma.
+
+            Recall that given a coaugmented coalgebra $C$ we have a filtration called the coradical filtration, defined as $Fr_iC = Ker(\bar{\Delta_C})^i$. If $N$ is a right $C$-comodule we may define the coradical filtration of $N$ as $Fr_iN = Ker(\bar{\omega_N}^i)$. This filtration is admissable, meaning it is exhaustive and $Fr_0N=0$.
+
+            \begin{lemma}
+                Let $C$ be a conilpotent dg-coalgebra, $M$ and $N$ be right $C$-comodules. Then any graded quasi-isomorphism $f: M \rightarrow N$ is a weak equivalence.
+            \end{lemma}
+
+            \begin{proof}
+                This proof is identical to \ref{lem: graded-qif-are-w}.   
+            \end{proof}
+
+            \begin{lemma}
+                Let $M$ and $N$ be two objects of $Mod^A$. The functor $R_\tau$ sends a quasi-isomorphism $f: M \rightarrow N$ to a weak equivalence $R_\tau f: R_\tau M \rightarrow r_\tau N$.
+
+                The unit of the adjunction $\eta : Id \rightarrow R_\tau L_\tau$ is a pointwise weak equivalence.
+            \end{lemma}
+
+            \begin{proof}
+                $R_\tau f$ is a weak equivalence if $L_\tau R_\tau f$ is a quasi-isomorphism. By naturality of the counit we have the following commutative diagram.
+                \begin{center}
+                    \begin{tikzcd}
+                        M \ar[]{r}[]{\epsilon_M} \ar[]{d}[]{f} & L_\tau R_\tau M \ar[]{d}[]{L_\tau R_\tau f} \\
+                        N \ar[]{r}[]{\epsilon_N} & L_\tau R_\tau N
+                    \end{tikzcd}
+                \end{center}
+
+                By assumption we know that all three of $f$, $\varepsilon_M$ and $\varepsilon_N$ are quasi-isomorphisms. It follows by the $2$-out-of-$3$ property that $L_\tau R_\tau f$ is a quasi-isomorphism as well.
+
+                To show that $\eta : Id \rightarrow L_\tau R_\tau$ is a pointwise weak-equivalence, we must show that $L\eta$ is a pointwise quasi-isomorphism. Since $L_\tau$ is left adjoint to $R_\tau$ we know that $\eta$ is split on the image of $L_\tau$, i.e.
+                \begin{align*}
+                    \varepsilon_{L_\tau}\circ L_\tau\eta = id_{L_\tau}
+                \end{align*}
+                Since we know that the natural isomorphisms $\varepsilon$ and $id$ are pointwise quasi-isomorphisms, we get by the $2$-out-of-$3$ property that $L\eta$ is a pointwise quasi-isomorphism as well.
+            \end{proof}
+
+            \begin{lemma}
+                The functor $L_\tau$ preserves cofibrations and sends weak-equivalences to quasi-isomorphisms.
+            \end{lemma}
+
+            \begin{proof}
+                This proof is essentially the same as \ref{lem: bar-cobar-Quill-adj}.
+            \end{proof}
+
+            With the above lemmata we have now established that the adjunction $(L_\tau, R_\tau)$ forms a Quillen equivalence if $CoMod^C$ is a model category.
+
+            The next lemma is a technical lemma which we need. There will not be given a proof for it, but this is lemma 2.2.2.9 in \cite{LefevreHasegawa03}.
+
+            \begin{lemma}
+                Let $M$ be a right $A$-module and $N$ a right $C$-comodule. Let $p : M \rightarrow L_\tau N$ be a fibration of modules. The projection $j : R_\tau M \prod_{R_\tau L_\tau N} N \rightarrow R_\tau M$ is an acyclic cofibration of comodules.
+            \end{lemma}
+
+            \begin{proof}
+                This proof is omitted.
+            \end{proof}
+
+            \begin{proof}[proof of \ref{thm: model-comod}]
+                With the above lemmata established, this proof is identical to the proof of \ref{thm: model-coalg}.
+            \end{proof}
 
         \subsection{Triangulation of HoCoMod}
 

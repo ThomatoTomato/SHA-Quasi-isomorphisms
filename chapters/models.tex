@@ -875,7 +875,7 @@
                 \item $f\in Cof$ if $f$ has LLP wrt. to every acyclic fibration.
             \end{itemize}
             
-            The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\bar{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective. Every dg-algebra which is isomorphic to a tensor algebra when considered as a graded algebra is cofibrant.
+            The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\bar{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective. Every dg-algebra which is isomorphic to a tensor algebra when considered as a graded algebra is cofibrant. \todo{This is wrong}
             
     \subsection{A Model Structure on DG-Coalgebras}
 
@@ -904,7 +904,7 @@
 
                 Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, theorem 5.5.1 \cite{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
 
-                By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega grC)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n| = p}$.
+                By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega C)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n| = p}$.
 
                 Evaluating $f$ at the $0$'th page would the look like $E^0\Omega f \simeq \Omega grf$. By the mapping lemma, exercise 5.2.3 \cite{Weibel94}, it is enough to check that $\Omega grf$ is a quasi-isomorphism, to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega grf$ is a quasi-isomorphism by inspecting every $E^0_{p,\bullet}\Omega C$.
 
@@ -912,9 +912,9 @@
                 \begin{align*}
                     G_k = \startset{c_1[-1]\otimes ... \otimes c_n[-1] \mid n \geq -k}.
                 \end{align*}
-                We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the augmentation ideal $\bar{C}$. Again, by the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
+                We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\bar{C}$. Again, by the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
 
-                To see that $\Omega grf$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (grC[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a graded quasi-isomorphisms and by the Kunneth-formual, theorem 3.6.3 \cite{Weibel94}, it follows that $E^Gf$ is a quasi-isomorphism.
+                To see that $\Omega grf$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (grC[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a graded quasi-isomorphisms and by the Kunneth-formual, theorem 3.6.3 \cite{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
             \end{proof}
 
             For completeness we include the following statement.
@@ -933,6 +933,8 @@
                 Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
             \end{proposition}
 
+            The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a proof given earlier.
+
             \begin{proof}
                 We will show that the counit is quasi-invertible. The proof technique for quasi-invertability of the unit is analogous.
 
@@ -950,7 +952,7 @@
 
                 The differential of $\Omega BA$ is generated by three actions: the differential on $A$, the multiplication on $A$ and the comultiplication on $BA$. With the induced filtration on $\Omega BA$, we see that the multiplication on $A$ is the only action which maps $F_p\Omega BA \rightarrow F_{p-1}\Omega BA$. Thus this action is $0$ in the associated graded and the spectral sequence. 
 
-                There is a homotopy of the identity given as $h : gr_i \Omega BA \rightarrow gr_i \Omega BA$ as $0$, unless there is an element on the form $s^{-1}(sa)\otimes s^{-1}(...) \otimes ...$, then 
+                There is a homotopy of the identity given as $h : gr_i \Omega BA \rightarrow gr_i \Omega BA$, which is $0$ unless if there is an element on the form $s^{-1}(sa)\otimes s^{-1}(...) \otimes ...$. In this case $h$ is 
                 \begin{align*}                    
                     r(s^{-1}(sa)\otimes s^{-1}(...)\otimes ...) = (-1)^{|a|+1}s^{-1}(sa \otimes ...) \otimes ...
                 \end{align*}
@@ -969,9 +971,23 @@
                 \end{multline*}
                 We see that this is in fact a homotopy, which makes $id_{gr_2 \Omega BA}$ a null-homotopy.
 
-                To extend this argument by induction, we will hypothesize that the terms where the differential is applied will have opposite signs, such that they cancell. Then the result follows for any $i$, by observing that the tensors far enough out to the right is not affected by $r$.
+                To extend this argument by induction, we will hypothesize that the terms where the differential is applied will have opposite signs, such that they cancel. Then the result follows for any $i$, by observing that the tensors far enough out to the right is not affected by $r$.
 
-                If $C$ is a dg-coalgebra, we use the same technique. Here we use the coradical filtration of $C$ and a double induced filtration on $B\Omega C$. The unit is a filtered morphism, and we use the same technique to show that it is a quasi-isomorphism on the associated graded.
+                If $C$ is a dg-coalgebra, we use the same technique as in \ref{lem: graded-qif-are-w}. Consider the filtration on $B\Omega C$ given as
+                \begin{align*}
+                    F_pB\Omega C = \startset{(c_{1,1}[-1]\otimes ... c_{1,n_1}[-1])) \otimes ... \otimes (c_{m, 1}[-1]\otimes ... \otimes c_{m,n_m}[-1])\mid |c_{1,1}| + ... + |c_{m,n_m}|\leq p}\text{.}
+                \end{align*}
+                
+                This filtration is both bounded below and exhaustive, so the classical convergence theorem says that the associated spectral sequence converges. If we denote this sequence as $EF$, then $EF \implies H^*B\Omega C$. Let $EC$ denote the spectral sequence associated to $C$. Since $C$ is conilpotent $EC \implies H^*C$. The unit $\eta_C : C \rightarrow B\Omega C$ is now a map acting on $EC^0$ as the identity, sending each element in $EC^0_{p,q}$ to itself in $EF^0_{p,q}$.
+                
+                On each row $EF^0_{p,\bullet}$ we make another filtration called $G$.
+                \begin{align*}
+                    G_kEF^0_{p,\bullet} = \startset{(...)_1 \otimes ... \otimes (...)_n \mid n \geq -k}
+                \end{align*}
+
+                Similarly as in \ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $gr_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that every string of length $\geq 2$ is not hit by this morphism. However, by employing $r$ as above we may show that these summands are contractible.
+
+                To show that this map is a quasi-isomorphism it is sufficient to show that $E_pG^0_{k, \bullet}$ is contractible for $k \neq 1$. This looks like the same situation as for algebras. We use the same homotopy $r$ as in the first part to get a null-homotopy of the identity.
             \end{proof}
 
             \begin{lemma}\label{lem: bar-cobar-Quill-adj}
@@ -989,7 +1005,7 @@
             \end{lemma}
 
             \begin{proof}
-                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on D: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and that $\Omega$ commutes with colimits, there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
+                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on $D$: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and that $\Omega$ commutes with colimits, there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
 
                 If $f$ is a weak equivalence, then $\Omega f$ is a quasi-isomorphism by definition.
 
@@ -1021,7 +1037,7 @@
                 $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. To see that $\pi$ is a quasi-isomorphism it is enough to understand that it is a quasi-isomorphism as chain complexes. This is checked by Lefevre-Hasegawa \cite{LefevreHasegawa03}.
             \end{proof}
 
-            \begin{thm}
+            \begin{thm}\label{thm: model-coalg}
                 The category $ConilCoalg^\bullet_{\mathbb{K}}$ is a model category with the classes $Ac$, $Fib$ and $Cof$ as defined above.
             \end{thm}
 
