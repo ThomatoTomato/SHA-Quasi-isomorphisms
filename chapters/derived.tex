@@ -100,18 +100,29 @@
 
                 We say that $\pi_A$ is acyclic if the counit $\varepsilon : L_{\pi_A}R_{\pi_A} \Rightarrow Id_{Mod^A}$ at each object $M$ is a quasi-isomorphism.
 
-                Given such an $M$ in $Mod^A$, we can calculate $L_{\pi_A}R_{\pi_A}M$ as $M\otimes_{\pi_A}BA\otimes_{\pi_A}A$. We can write out the differential given by $d^r_{\pi_A}$ to obtain the following double complex:
+                For each $M$ in $Mod^A$, $L_{\pi_A}R_{\pi_A}M = M\otimes_{\pi_A}BA\otimes_{\pi_A}A$. We may split up the differential into two summands, $d_v$ and $d_h$. $d_v$ is the ordinary differential on the tensor product, while $d_h = (-d^l_{\pi_A}\otimes A) + M\otimes d_2 \otimes A + d^r_{\pi_A}$. Since $(d_v + d_h)^2 = 0$ and $d_v^2 = 0$ we can observe that $d_vd_h = -d_hd_v$ and $d_h^2 = 0$. This is evident as $d_v$ changes the homological degree while $d_h$ does not, so in order for both of the first equations to hold, the last two must hold as well. We almost obtain a double complex.
                 \begin{center}
                     \begin{tikzcd}
-                        ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance = 2em]{}[above]{d_{M\otimes BA_{(i)}\otimes A}} & ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance=2em]{}[above]{d_{M\otimes BA_{(1)}\otimes A}} & M \otimes A \ar[]{r}[]{0} \ar[loop, distance=2em]{}[above]{d_{M\otimes A}} & 0
+                        ... \ar[]{r}[]{d_h} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d_h} \ar[loop, distance = 2em]{}[above]{d_v} & ... \ar[]{r}[]{d_h} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d_h} \ar[loop, distance=2em]{}[above]{d_v} & M \otimes A \ar[]{r}[]{0} \ar[loop, distance=2em]{}[above]{d_v} & 0
                     \end{tikzcd}
                 \end{center}
-                It is clear that the total complex of this doube complex is in fact $L_{\pi_A}R_{\pi_A}M$. Moreover, the counit induces an augmentation to this complex resolution of $M$:
+                It is clear that the total complex of this "double complex" is in fact $L_{\pi_A}R_{\pi_A}M$. Moreover, the counit induces an augmentation to this complex resolution of $M$, denoted as $cone(\varepsilon_M)$. 
                 \begin{center}
                     \begin{tikzcd}
-                        ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance = 2em]{}[above]{d_{M\otimes BA_{(i)}\otimes A}} & ... \ar[]{r}[]{d^r_{\pi_A}} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d^r_{\pi_A}} \ar[loop, distance=2em]{}[above]{d_{M\otimes BA_{(1)}\otimes A}} & M \otimes A \ar[]{r}[]{\varepsilon_M} \ar[loop, distance=2em]{}[above]{d_{M\otimes A}} & M \ar[loop, distance = 2em]{}[above]{d_M} \ar[]{r}[]{0} & 0
+                        ... \ar[]{r}[]{d_h} & M\otimes BA_{(i)}\otimes A \ar[]{r}[]{d_h} \ar[loop, distance = 2em]{}[above]{d_{M\otimes BA_{(i)}\otimes A}} & ... \ar[]{r}[]{d_h} & M\otimes BA_{(1)}\otimes A \ar[]{r}[]{d_h} \ar[loop, distance=2em]{}[above]{d_{M\otimes BA_{(1)}\otimes A}} & M \otimes A \ar[]{r}[]{\varepsilon_M} \ar[loop, distance=2em]{}[above]{d_{M\otimes A}} & M \ar[loop, distance = 2em]{}[above]{d_M} \ar[]{r}[]{0} & 0
                     \end{tikzcd}
                 \end{center}
+                
+                To see that this is in fact a resolution we define a morphism $h : cone(\varepsilon_M) \rightarrow cone(\varepsilon_M)$ of degree $-1$. It works by the following formula:
+                \begin{align*}
+                    h(m \otimes (sa_1 \otimes ... \otimes sa_n) \otimes a) = m \otimes (sa_1 \otimes ... \otimes sa_n \otimes sa) \otimes 1
+                \end{align*}
+                It is clear that $id_{cone(\varepsilon_M)} = d_hh - hd_h$ and $d_vh = hd_v$. Thus to see that the cone is acyclic we let $c\in cone(\varepsilon_M)$ be a cycle, that is $(d_v + d_h)(c) = 0$. Our goal is to show that $h(c)$ is a preimage of $c$ along $d_v + d_h$.
+                \begin{multline*}
+                    (d_v + d_h)\circ h(c) = d_v\circ h(c) + d_h\circ h(c) = h\circ d_v(c) + c + h\circ d_h(c) = h\circ (d_v + d_h)(c) + c = c
+                \end{multline*}
+
+                We will now treat $\iota_C$. By construction $\iota_C (c) = s^{-1}c$ if $c\notin \mathbb{K}$, as it is the restriction to $\bar{C}$ of the identity on $\Omega C$. 
 
             \end{proof}
 
@@ -124,9 +135,11 @@
                 \item $f\in Cof$ is a cofibration if it has LLP to acyclic fibrations. 
             \end{itemize}
 
+            Every object in this category is fibrant as the morphism $0 : M \rightarrow 0$ is always an epimorphism.
+
         \subsection{Model Structure on Comodule Categories}
 
-            Unless stated otherwise, for this section let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
+            Unless stated otherwise, for this section we fix $A$ to be an augmented dg-algebra, $C$ as a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ as an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
             \begin{itemize}
                 \item $f\in Ac$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
                 \item $f\in Fib$ is a cofibration if $f^\#$ is a monomorphism.
@@ -134,7 +147,7 @@
             \end{itemize}
 
             \begin{thm}\label{thm: model-comod}
-              The category $CoMod^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in Mod^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence. Finally, the model structure of $CoMod^C_{conil}$ is independent of the choice of $\tau$.
+              The category $CoMod^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in Mod^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence.
             \end{thm}
 
             We will call this model structure for the canonical model structure on $CoMod^C_{conil}$.
@@ -161,8 +174,8 @@
                 $R_\tau f$ is a weak equivalence if $L_\tau R_\tau f$ is a quasi-isomorphism. By naturality of the counit we have the following commutative diagram.
                 \begin{center}
                     \begin{tikzcd}
-                        M \ar[]{r}[]{\epsilon_M} \ar[]{d}[]{f} & L_\tau R_\tau M \ar[]{d}[]{L_\tau R_\tau f} \\
-                        N \ar[]{r}[]{\epsilon_N} & L_\tau R_\tau N
+                        M \ar[]{d}[]{f} & L_\tau R_\tau M \ar[]{d}[]{L_\tau R_\tau f} \ar[]{l}[]{\varepsilon_M} \\
+                        N & L_\tau R_\tau N \ar[]{l}[]{\varepsilon_N}
                     \end{tikzcd}
                 \end{center}
 
@@ -195,11 +208,16 @@
                 This proof is omitted.
             \end{proof}
 
-            \begin{proof}[proof of \ref{thm: model-comod}]
+            \begin{proof}[Proof of \ref{thm: model-comod}]
                 With the above lemmata established, this proof is identical to the proof of \ref{thm: model-coalg}.
             \end{proof}
 
-        \subsection{Triangulation of HoCoMod}
+        \subsection{Triangulation of Homotopy Categories}
+            In this section we will show that the homotopy categories are triangulated. If we look at the category $Mod^A$ we will observe that the category $HoMod^A$ is our beloved derived category $\mathcal{D}(A)$. It is not quite the same for the cateogry $CoMod^C$. Here we want $HoCoMod^C$ to be equivalent to the derived category of a ring, so we will see that the derived category is a further localization of $HoCoMod^C$.
+
+            We will use the theory of triangulated categories to show that the model structure on $CoMod^C$ is independent on the choice of acyclic twisting morphism. This breaks down to show that every acyclic twisting morphism induce an equivalence between derived categories.
+
+            
 
         \subsection{The Fundamental Theorem of Twisting Morphisms}
 
