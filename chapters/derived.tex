@@ -42,7 +42,7 @@
                 \end{align*} 
             \end{definition}
 
-            This definitions gives us a functor $Tw_\alpha : CoMod^C \times Mod^A \rightarrow Ab$ which is the collection of right twisting linear homomorphisms between a comodule and module.
+            This definition gives us a functor $Tw_\alpha : CoMod^C \times Mod^A \rightarrow Ab$ which is the collection of right twisting linear homomorphisms between a comodule and module.
 
             Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. We define the functor $L_\alpha = \otimes_\alpha A : CoMod^C \rightarrow Mod^A$ as an arbitrary right twisted tensor product with $A$. This functor does indeed hit $Mod^A$ by using the free right $A$-module structure on $A$. Likewise, we define a functor $R_\alpha = \otimes_\alpha C : Mod^A \rightarrow CoMod^C$ as an arbitrary left twisted tensor product with $C$. This does also hit right $C$-comodules by using the free right $C$-comodule structure on $C$.
 
@@ -75,7 +75,7 @@
                 \end{tikzcd}
             \end{center}
 
-            \begin{lemma}
+            \begin{lemma}\label{lem: twist-fac}
                 Let $\tau : C \rightarrow A$ be a twisting morphism. The adjunction $(L_\tau, R_\tau)$ factors as $(f_{\tau !}, f_\tau^*)\circ (L_{\iota_C},R_{\iota_C})$ or $(L_{\pi_A},R_{\pi_A})\circ (g_{\tau *}, g_\tau^!)$.
             \end{lemma}
 
@@ -87,7 +87,7 @@
                 A twisting morphism $f: C \rightarrow A$ is called acyclic if the counit of the adjunction $L_\alpha \dashv R_\alpha$ is a pointwise quasi-isomorphism.
             \end{definition}
 
-            \begin{lemma}
+            \begin{lemma}\label{lem: uni-twist-ac}
                 Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The universal twisting morphisms $\pi_A$ and $\iota_C$ are acyclic.
             \end{lemma}
 
@@ -122,7 +122,7 @@
                     (d_v + d_h)\circ h(c) = d_v\circ h(c) + d_h\circ h(c) = h\circ d_v(c) + c + h\circ d_h(c) = h\circ (d_v + d_h)(c) + c = c
                 \end{multline*}
 
-                We will now treat $\iota_C$. By construction $\iota_C (c) = s^{-1}c$ if $c\notin \mathbb{K}$, as it is the restriction to $\bar{C}$ of the identity on $\Omega C$. 
+                To treat the case of $\iota_C$ we will use a double spectral sequence argument. This proof does not use any new techniques and looks like things we have already done before. A full proof may be found in Lefevre-Hasegawa \cite{LefevreHasegawa03}.z
 
             \end{proof}
 
@@ -154,7 +154,7 @@
 
             To be able to prove this we will need some lemmata. This proof is essentially the same as the case for dg-coalgebras. The main difference is to show independence of the choice of a twisting morphism $\tau$. To this end we must establish the relationship between graded quasi-isomorphisms and weak equivalences, as well as a technical lemma.
 
-            Recall that given a coaugmented coalgebra $C$ we have a filtration called the coradical filtration, defined as $Fr_iC = Ker(\bar{\Delta_C})^i$. If $N$ is a right $C$-comodule we may define the coradical filtration of $N$ as $Fr_iN = Ker(\bar{\omega_N}^i)$. This filtration is admissable, meaning it is exhaustive and $Fr_0N=0$.
+            Recall that given a coaugmented coalgebra $C$ we have a filtration called the coradical filtration, defined as $Fr_iC = Ker(\bar{\Delta}_C)^i$. If $N$ is a right $C$-comodule we may define the coradical filtration of $N$ as $Fr_iN = Ker(\bar{\omega}_N^i)$. This filtration is admissable, meaning it is exhaustive and $Fr_0N=0$.
 
             \begin{lemma}
                 Let $C$ be a conilpotent dg-coalgebra, $M$ and $N$ be right $C$-comodules. Then any graded quasi-isomorphism $f: M \rightarrow N$ is a weak equivalence.
@@ -215,11 +215,494 @@
         \subsection{Triangulation of Homotopy Categories}
             In this section we will show that the homotopy categories are triangulated. If we look at the category $Mod^A$ we will observe that the category $HoMod^A$ is our beloved derived category $\mathcal{D}(A)$. It is not quite the same for the cateogry $CoMod^C$. Here we want $HoCoMod^C$ to be equivalent to the derived category of a ring, so we will see that the derived category is a further localization of $HoCoMod^C$.
 
-            We will use the theory of triangulated categories to show that the model structure on $CoMod^C$ is independent on the choice of acyclic twisting morphism. This breaks down to show that every acyclic twisting morphism induce an equivalence between derived categories.
+            Furthermore, by employing the theory of triangulated categories we will show that the model structure on $CoMod^C$ is independent on the choice of acyclic twisting morphism. This breaks down to show that every acyclic twisting morphism induce an equivalence between derived categories, as done by Bernhard Keller in \cite{Keller94}.
 
+            $Mod^A$ is a an abelian category, where we employ the maximal exact structure $\mathcal{E}'$ consisting of short exact sequences in $Mod^A$. This translates to short exact sequences which is short exact in each degree. However, this category also has an exact structure $\mathcal{E}$ which makes $Mod^A$ into a Frobenius category, which we will now describe.
+
+            Let $f : M \rightarrow N$, be a chain map from $M$ to $N$. Then $\mathcal{E}$ contains a conflation on the form:
+            \begin{center}
+                \begin{tikzcd}
+                    N \ar[tail]{r}[]{} & cone(f) \ar[two heads]{r}[]{} & M[1]
+                \end{tikzcd}
+            \end{center}
+            We define $\mathcal{E}$ to be the smallest exact structure on $Mod^A$ which contains every conflation arising from a chain map $f$. Observe that these conflations are exactly the short exact sequences of $Mod^A$ such that they are split when regarded as graded modules, i.e. forgetting the differential. Thus the smallest such $\mathcal{E}$ is exactly the collection of every conflation arising from a chain map $f$.
+
+            Recall that an object $M$ is projective (injective) if the represented functor $Mod^A(M,\_)$ ($Mod^A(\_,M)$) is exact. For the category $(Mod^A, \mathcal{E})$
+
+            \begin{proposition}
+                Let $M$ be an object of $Mod^A$. The following are equivalent:
+                \begin{itemize}
+                    \item $M$ is projective
+                    \item $M$ is injective
+                    \item $M$ is contractible
+                \end{itemize}
+            \end{proposition}
+
+            \begin{proof}
+                This is a well known statement from literature. See Krause \cite{Krause21}, Happel \cite{Happel88}, Buehler \cite{Buhler10} or Thorbjørnsen \cite{Thorbjornsen21} for an account of this result.
+            \end{proof}
+
+            To see that $(Mod^A, \mathcal{E})$ has both enough projectives and injectives we consider the following conflation:
+
+            \begin{center}
+                \begin{tikzcd}
+                    M \ar[tail]{r}[]{} & cone(id_M) \ar[two heads]{r}[]{} & M[1]
+                \end{tikzcd}
+            \end{center}
+
+            It is known that the complex $cone(id_M)$ is contractible for any complex $M$ (and it is also universal with this property). In this way by letting $M$ vary we can find an inflation or deflation from the identity cone from or to any complex. This concludes that $(Mod^A, \mathcal{E})$ is a Frobenius category.
             
+            Let \underline{$Mod^A$} denote the injectively stable module category. Let $I(M,N)$ denote the set of chain maps from $M$ to $N$ which factors through an injective object. We define the injectively stable category as the quotient of abelian groups \underline{$Mod^A$}$(M,N)=\sfrac{Mod^A(M,N)}{I(M,N)}$.
+
+            \begin{thm}
+                Suppose that $(\mathcal{C},\mathcal{E})$ is a Frobenius category, then the injectively stable category \underline{$\mathcal{C}$} is triangulated. The additive auto-equivalence is given by cozyzygy, and the standard triangles is the image of the conflations into the quotient.
+            \end{thm}
+
+            \begin{proof}
+                This is also well known in literature. An account for it may also be found in Krause \cite{Krause21}, Happel \cite{Happel88}, Buehler \cite{Buhler10} or Thorbjørnsen \cite{Thorbjornsen21}.
+            \end{proof}
+
+            We thus obtain a triangulated category \underline{$Mod^A$} associated to the Frobenius pair $(Mod^A, \mathcal{E})$. This category is commonly denoted as $K(A)$, and we will do this as well. Notice that with the structure given by $\mathcal{E}$, the cozyzygy is defined by the shift functor $[1]$. Every standard triangle is also on the form:
+
+            \begin{center}
+                \begin{tikzcd}
+                    M \ar[]{r}[]{f} & N \ar[]{r}[]{} & cone(f) \ar[]{r}[]{} & M[1]
+                \end{tikzcd}
+            \end{center}
+
+            To define the derived category $D(A)$ of $A$ we will consider the localization of $K(A)$ at the quasi-isomorphisms, $D(A) = K(A)[Qiso^{-1}]$. To see that the derived category is still triangulated we may realize it as a Verdier quotient of $K(A)$.
+
+            \begin{proposition}
+                The derived category of $A$ is equivalent to the Verdier quotient $\sfrac{K(A)}{Ac}$, where $Ac$ denotes the image of acyclic objects in $K(A)$.
+            \end{proposition}
+
+            \begin{proof}
+                A proof may be found in Buehler \cite{Buhler10} or Thorbjørnsen \cite{Thorbjornsen21}.
+            \end{proof}
+
+            There is another way of telling the story of the derived category $D(A)$. That is to directly localize it at the quasi-isomorphisms. We may directly see that $D(A) \simeq Mod^A[Qiso^{-1}]$ which we know is $HoMod^A$ by definition. This gives us our first important identification.
+
+            \begin{thm}
+                The homotopy category of $Mod^A$ is triangulated, and moreover it is the derived category $D(A)$.
+            \end{thm}
+
+            \begin{proof}
+                Follows from discussion above.
+            \end{proof}
+
+            The triangulated construction for the category $hoCoMod^C$ closely resembles that of $HoMod^A$. We start by studying the Frobenius pair $(CoMod^C, \mathcal{E})$, where $\mathcal{E}$ is the same exact structure. Notice that this exact structure only takes the underlying category of chain complexes into account, so this follows from the above description.
+
+            We define the injectively stable category \underline{$CoMod^C$}$=K(C)$ in the same manner. The standard triangles and the additive auto-equivalence stays the same.
+
+            At this point things start to differ. The definition for the homotopy category $HoCoMod^C$ is $CoMod^C[Ac^{-1}]$, here $Ac$ denotes the class of weak equivalences in $CoMod^C$. By abuse of notation we also let $Ac\subset K(C)$ be the collection of objects which are cones of weak equivalences. This subcategory can be characterized by being the preimage of acyclic objects $Ac\subset K(A)$ along $L_\tau : CoMod^C \rightarrow Mod^A$. This identification suffices to show that $Ac\subset K(C)$ is a triangulated subcategory. In this manner $HoCoMod^C$ is the category $\sfrac{K(C)}{Ac}$, which is a triangulated category.
+
+            \begin{remark}
+                We may show that $Ac\subset K(C)$ is a subcategory of acyclic objects. In this manner we get that $D(C) \simeq HoCoMod^C[Qiso^{-1}]$. This is done in Lefevre-Hasegawa \cite{LefevreHasegawa03} as proposition 1.3.5.1 or lemma 2.2.2.11. This follows from the fact that we have an equivalence of categories $CoMod^C[fQiso^{-1}]\simeq HoCoMod^C$, here $fQiso$ means the collection of filtered quasi-isomorphisms. Since every filtered quasi-isomorphism is in fact a quasi-isomorphism by a spectral sequence argument we get the inclusion of triangulated subcategories $\langle cone(fQiso)\rangle \subseteq \langle cone(Qiso)\rangle \subseteq K(C)$.
+            \end{remark}
+
+            Let $\tau: C \rightarrow A$ and $\upsilon : C \rightarrow A'$ be two acyclic twisting morphisms. These defines independently two different model structures on $CoMod^C$ by the adjunctions $(L_\tau, R_\tau)$ and $(L_\upsilon, R_\upsilon)$. By lemma \ref{lem: twist-fac} we have the identification $(L_\tau, R_\tau) = (f_{\tau !},f_\tau^*)(L_{\iota_C},R_{\iota_C}) = (f_{\tau !}L_{\iota_C},R_{\iota_C}f_\tau^*)$, and a likewise for $\upsilon$. In order to show that $\tau$ and $\upsilon$ defines equivalent module structures on $CoMod^C$ it is enough that both define the same structure as $\iota_C$. By symmetry it is enough to assume that $\upsilon = \iota_C$. From lemma \ref{lem: uni-twist-ac} we know that $\iota_C$ is acyclic, so this technique is well-founded.
+
+            Since we already know that $(L_\tau, R_\tau)$ and $(L_{\iota_C}, r_{\iota_C})$ are Quillen equivalences it remains to show that $(F_{\tau !},f_\tau^*)$ is a Quillen equivalence. This is shown if $f_\tau^*$ is a right Quillen functor, and that it induces a triangle equivalence between $D(A)$ and $D(\Omega C)$.
+
+            We know that $f_\tau^*$ preserves fibrations (epimorphisms). This is because on morphisms this functor acts as the identity, it only changes the ring action, so epimorphisms stay epimorphisms. It remains to see that quasi-isomorphisms are preserved. We will show this by identifying the derived categories. This follows the methods given by Keller in \cite{Keller94}. We will however simplify this discussion by restricting our attention solely to dg-algebras.
+
+            Let $A$ be a dg-algebra. We denote $A$ as a free $A$-module as $\hat{A} = Hom_A(\_,A)$. $\hat{A}$ is free in the enriched sense, i.e. ${Hom}^*_A(\hat{A},M) \simeq M$. \todo{Utdyp dette} Recall that $P$ is projective if it is a direct summand of $\hat{A}^n$ for some $n\in \mathbb{N}$. Given a right bounded complex $M$, we know how to construct a projective resolution $p: pM \rightarrow M$. Associated to this resoultion there is a triangle in $K(A)$ consisting of the complexes $M$, $pM$ and $aM$, where $aM$ is an acyclic complex.
+
+            \begin{center}
+                \begin{tikzcd}
+                    M \ar[]{r}[]{p} & pM \ar[]{r}[]{} & aM \ar[]{r}[]{} & M[1]
+                \end{tikzcd}
+            \end{center}
+
+            In this sense we obtain an identification $M \simeq pM$ in $D(A)^-$. By following Kellers construction we are able to weaken this identification to all of $D(A)$ by weakening the projective resolution. In Kellers paper he calls these complexes of property (P). We will however refer to them as homotopy projective complexes, since these complexes are built up from projective complexes in a manner respecting homotopy colimits.
+
+            \begin{definition}
+                Let $P$ be a complex of $Mod^A$. We say that $P$ is homotopy projective if there exists a complex $P'$, a homotopy equivalence $P \simeq P'$ and a filtration of $P'$.
+                \begin{align*}
+                    0 = F_0 \subseteq F_1 \subseteq ... \subseteq F_n \subseteq ... \subseteq P'
+                \end{align*}
+                The filtration should satisfy these properties:
+                \begin{itemize}
+                    \item[F1] $P'$ is the colimit of the filtration.
+                    \item[F2] Each inclusion $i_n : F_n \subseteq F_{n+1}$ is split as graded modules.
+                    \item[F3] The quotient $\sfrac{F_{n+1}}{F_n}$ is projective.
+                \end{itemize}
+            \end{definition}
+
+            \begin{remark}
+                The properties $F1$ and $F2$ may be reformulated to that $P$ should be the homotopy colimit of the filtration. Thus there is a canonical triangle in $K(A)$:
+                \begin{center}
+                    \begin{tikzcd}
+                        \bigoplus F_n \ar[]{r}[]{\Phi} & \bigoplus F_n \ar[]{r}[]{} & P \ar[]{r}[]{} & \bigoplus F_p[1] 
+                    \end{tikzcd}
+                \end{center}
+                $\Phi$ is given as the unique morphism which acts as the identity and the inclusion on each summand of $\bigoplus F_p$:
+                \begin{align*}
+                    \Phi_n = \begin{pmatrix}
+                        id_{F_n} \\ -i_n
+                    \end{pmatrix}
+                \end{align*}
+            \end{remark}
+
+            In the definition of a homotopy projective complex we have required that each quotient is strictly projective. If this was true, then these objects would be ill-behaved in the homotopy category. We can weaken this assumption to (F3') the quotient $\sfrac{F_{n+1}}{F_n}$ is homotopy equivalent to a projective complex.
+
+            \begin{lemma}\label{lem: homo-proj-homo-well-def}
+                If $P$ is the colimit of a filtration admitting (F2) and (F3'), then $P$ is homotopy projective.
+            \end{lemma}
+
+            \begin{proof}
+                Let $\startset{F_n}$ denote the filtration on $P$. To show that $P$ is homotopy projective is to find a homotopy equivalence $P'$ such that $P'$ is the homotopy colimit of a filtration admitting (F3).
+
+                Suppose that $\sfrac{F_{n+1}}{F_n}\simeq Q_{n+1}$, where each $Q_{n+1}$ is projective. We wish to inductively define a filtration $\startset{F_n'}$ which has (F2) and (F3) and a pointwise homotopy equivalence of filtrations $f : \startset{F_n} \rightarrow \startset{F_n'}$. The object $P'$ is the the (homotopy) colimit of the new filtration.
+                
+                Define $F_0' = Q_0$, and let $f_0 : F_0 \rightarrow F_0'$ be the projection onto $Q_0$. By assumption $f_0$ is a homotopy equivalence and we have a commutative square where the vertical arrows are homotopy equivalences. Moreover, each horizontal arrow splits as a graded arrow.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        0 \ar[]{r}[]{0} \ar[]{d}[]{0} & F_0 \ar[]{d}[]{f_0} \\
+                        0 \ar[]{r}[]{0} & Q_0
+                    \end{tikzcd}
+                \end{center}
+
+                Suppose that we have been able to constructed this filtration up to $F_p'$. By using our known homotopy equivalences there is an isomorphism of Ext groups:
+                \begin{align*}
+                    Ext_A(\sfrac{F_{p}}{F_{p-1}}, F_{p-1})\simeq Ext_A(Q_p, F_{p-1}')
+                \end{align*}
+
+                Given the triangle consisting of $F_{p-1}$, $F_p$ and $\sfrac{F_p}{F_{p-1}}$ there is an assosiated triangle with the morphisms as follows:
+                \begin{center}
+                    \begin{tikzcd}
+                        F_{p-1} \ar[]{d}[]{f_{p-1}} \ar[]{r}[]{} & F_p \ar[]{r}[]{} \ar[dashed]{d}[]{}& \sfrac{F_p}{F_{p-1}} \ar[]{d}[]{\sim} 1
+                        1
+                        1
+                        1\ar[]{r}[]{} & F_{p-1}[1] \ar[]{d}[]{f_{p-1}[1]} \\
+                        F_{p-1}' \ar[]{r}[]{} & F_p' \ar[]{r}[]{} & Q_p \ar[]{r}[]{} & F_{p-1}' 
+                    \end{tikzcd}
+                \end{center}
+
+                By the morphism axiom there is a morphism $f_p : F_p \rightarrow F_{p}'$ which is also a homotopy equivalence by the 2-out-of-3 property.
+
+                This defines a filtration $\startset{F_p'}$, with (F3) and $P'$ as its homotopy colimit. To see that $P$ is homotopy equivalent to $P'$ we use the maps $f_p$ constructed to obtain a homotopy equivalence by the morphism axiom and the 2-out-of-3 property.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        \bigoplus F_p \ar[]{d}[]{\oplus f_p} \ar[]{r}[]{\Phi} & \bigoplus F_p \ar[]{d}[]{\oplus f_p} \ar[]{r}[]{} & P \ar[dashed]{d}[]{\sim} \ar[]{r}[]{} & \bigoplus F_p[1] \ar[]{d}[]{\oplus f_p[1]} \\
+                        \bigoplus F_p' \ar[]{r}[]{\Phi '} & \bigoplus F_p' \ar[]{r}[]{} & P' \ar[]{r}[]{} & \bigoplus F_p'[1]
+                    \end{tikzcd}
+                \end{center}
+            \end{proof}
+
+            The projective complexes are the complexes which are generated by the free module $\hat{A}$ in the sense that they are all in the smallest thick triangulated subcategory of $K(A)$ containing $\hat{A}$. By definition, we may see that the homotopy projective complexes are the complexes in the smallest thick triangulated subcategory of $K(A)$ which is closed under well-ordered homotopy colimits and contains $K(A)$. By devissage we may extend fully-fatihfullness of functors on the set $\startset{\hat{A}}$ to the class of homotopy projective objects.
+
+            \begin{lemma}[Devissage]
+                Let $F: \mathcal{T} \rightarrow \mathcal{U}$ be a triangulated functor between triangulated categories. Suppose $S\subseteq \mathcal{T}$ is a class of objects closed under shift, and denote $\hat{S}$ for the smallest thick triangulated subcategory (closed under well-ordered homotopy colimits). If $F|_S$ is fully faithful, then $F|_{\hat{S}}$ is fully faithful as well.
+            \end{lemma}
+
+            \begin{proof}
+                This is straightforward by using the Yoneda embeddings and 5-lemma. More details may be found in \cite{Krause21}. To get closed under homotopy colimits we also need that $F$ commutes with infinite direct sums, and that the set $\startset{S}$ only contains small objects.
+            \end{proof}
+
+            \begin{lemma}
+                Supppose we have $F$ and $S$ as above. If $F|_S = 0$, then it is $0$ on all of $\hat{S}$.
+            \end{lemma}
+
+            \begin{proof}
+                The same argument as above, except we have to squeeze out zeros from exact sequences.
+            \end{proof}
+
+            The final ingredient to construct a homotopy projective resolution for our complexes is the acyclic assembly lemma \cite{Weibel94}.
+
+            \begin{lemma}[acyclic assembly]
+                Suppose that $C$ is a double complex of $R$-modules. Then $Tot^\oplus C$ is acyclic if either:
+                \begin{itemize}
+                    \item $C$ is a lower half-plane complex with exact rows.
+                    \item $C$ is a left half-plane complex with exact columns.
+                \end{itemize}
+            \end{lemma}
+
+            \begin{proof}
+                This is proposition 2.7.3 in \cite{Weibel94}. We omit the proof as the next proof is in some sense very similar.
+            \end{proof}
+
+            \begin{corollary}\label{cor: ac-as-2}
+                Suppose that $C$ is a double complex of $R$-modules such that every column is exact and that the kernels along the rows give rise to exact columns, then $Tot^\oplus C$ is acyclic.
+            \end{corollary}
+
+            \begin{proof}
+                We want to realize the images along the rows as the coimage along the horizontal differential. Write $Z^n(C)$ for the n-th horizontal kernel and $B^n(C)$ for the n-th horizontal image. We have a short exact sequence of complexes:
+
+                \begin{center}
+                    \begin{tikzcd}
+                        Z^n(C)^* \ar{r} & C^{n,*} \ar{r} & B^n(C)^*
+                    \end{tikzcd}
+                \end{center}
+
+                Given that $C^{n,*}$ is acyclic we get that $Z^n(C)^*$ is acyclic if and only if $B^n(C)^*$ is acyclic.
+
+                Assuming that all of these three constructions are acyclic we make a filtration on $C$. Let $F_nC^{p,*} = C$ if $p \in [-n, n-1]$, $F_nC^{n,*} = Z^nC$ and $F_nC^{p,*} = 0$ otherwise.
+
+                This filtration is bounded below and exhaustive as colimits commute with colimits.
+                \begin{align*}
+                    Tot^\oplus C = Tot^\oplus \varinjlim F_nC \simeq \varinjlim Tot^\oplus F_nC
+                \end{align*}
+                We should be a bit careful here as the total complex is not really a coproduct, but since coproducts and cokernels are calculated pointwise we obtain the commutativity.
+
+                Now we apply the classical convergence theorem to the filtration to obtain a converging spectral sequence $EF_2C \implies H^*(Tot^\oplus C)$. But since we assume each column to be exact in the filtration, the second page is $0$, so $H^*(Tot^\oplus C) \simeq 0$ as desired. 
+            \end{proof}
+
+            \begin{thm}
+                Suppose that $P$ is homotopy projective, $N$ is acyclic. Then $K(A)(P, N)\simeq 0$.
+
+                Given any module $M$, there is a homotopy projective object $pM$ and an acyclic object $aM$ giving rise to a triangle in $K(A)$.
+                \begin{center}
+                    \begin{tikzcd}
+                        pM \ar{r} & M \ar{r} & aM \ar{r} & pM[1]
+                    \end{tikzcd}
+                \end{center}
+            \end{thm}
+
+            \begin{proof}
+                We assume that $P \simeq \hat{A}$. By a devissage argument we may extend the isomorphism to all homotopy projective $P$. 
+
+                \begin{align*}
+                    K(A)(\hat{A}, N) \simeq H^0 {Hom}^*_A (\hat{A}, N) \simeq H^0 N \simeq 0
+                \end{align*}
+
+                We want to construct two complexes $pM$ and $aM$ by taking total complexes. We show that $aM$ is acyclic by using \ref{cor: ac-as-2}. To use it we will construct an exact sequence of complexes satisfying the assumptions. Described by MacLane \cite{MacLane94} there is an exact structure $\mathcal{E}$ on $Mod^R$ such that the collections on conflations are the short exact sequences such that the kernel functor is exact.
+                \begin{center}
+                    \begin{tikzcd}
+                        L \ar[tail]{r}[]{f} & M \ar[two heads]{r}[]{g} & N \\
+                        Z^*L \ar[tail]{r}[]{Z^*f} & Z^*M \ar[two heads]{r}[]{Z^*g} & Z^*N
+                    \end{tikzcd}
+                \end{center}
+
+                Since limits commute with limits, the kernel functor preserves any limit. Thus the kernel is left exact, and its only obstruction for exactness is to preserve cokernels. We may thus characterize the conflations by inflations and deflations, which are monomorphisms and epimorphisms which are preserved by the kernel functor. Mac Lane calls these deflations for proper epimorphisms instead.
+
+                Mac Lane also shows that there are enough $\mathcal{E}$-projectives with this exact structure. We want to construct $\mathcal{E}$-projectives be on the form of homotopy projective complexes. $\hat{A}[-n]$ is $\mathcal{E}$-projective by the following isomorphism.
+                \begin{align*}
+                    Hom_A^\bullet (\hat{A}[-n], M) \simeq Z^0 Hom_A^* (\hat{A}, M[n]) \simeq M^n
+                \end{align*}
+
+                Define the trivialization $trivM$ of $M$ be the underlying graded module $M$ endowed with a trivial differential. This trivial differential is in some sense the inclusion of graded modules into chain complexes. Thus we have the following isomorphism on hom-sets:
+                \begin{align*}
+                    Hom_A^\bullet(trivM, trivN) \simeq Hom_A^*(M, N)
+                \end{align*}
+                $triv$ is then well-defined as a functor as every morphism between chain complexes uniquely defines a morphism between their trivializations. By using the isomorphisms from Keller \cite{Keller94} 2.2. we get that:
+
+                \begin{multline*}
+                    Hom_A^\bullet (cone(id_{triv\hat{A}}), M) \simeq Hom_A^\bullet (cone(id_{triv\hat{A}[-1]})[1], M) \\ \simeq Hom_A^*(triv\hat{A}, trivM[-1])^0 \simeq Hom_A^*(\hat{A}, M)^{-1} \simeq M^{-1}
+                \end{multline*}
+
+                This shows that if $P$ is homotopy projective, then $P$ and $cone(id_{trivP})$ are $\mathcal{E}$-projective. To see that there are enough $\mathcal{E}$-projectives pick an arbitrary module $M$. Since we know that there are enough projectives, let $P$ be a projective such that there is an epimorphism $p : P \rightarrow M$. We don't know if this morphism is a deflation, so pick another projective $Q$ such that there is an epimorphism $q : Q \rightarrow Z^*M$. Since $Z^*M$ has a trivial differential we know that $d_Qq = 0$. Thus this morphism extends to $q' = \begin{bmatrix}
+                    q & 0
+                \end{bmatrix} : cone(id_{trivQ}) \rightarrow M$ such that $Z^*q'$ is an epimorphism. The morphism $\begin{bmatrix}
+                    p & q'
+                \end{bmatrix} : P \oplus cone(id_{trivQ}) \rightarrow M$ is thus a deflation. $P' = P \oplus cone(id_{trivQ})$ shows that we have enough projectives. Moreover every $cone(id_{trivQ})$ has homotopy type $0$, so $P' \simeq P$ in $K(A)$.
+
+                Since we have enough $\mathcal{E}$-projective, we may construct a $\mathcal{E}$-projective resolution $P'^{*,*}$ of $M$ in the standard way. See Keller \cite{Keller90} for details. Such resolutions are then double complexes, and the augmented resolution below is $\mathcal{E}$-acyclic.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar{r} & P'_1 \ar[]{r}[]{} & P'_0 \ar[two heads]{r}[]{} & M \ar[]{r}[]{0} & 0
+                    \end{tikzcd}
+                \end{center} 
+                
+                Having an $\mathcal{E}$-acyclic resolution means that each row is exact, and taking kernels along the columns preserve exactness of the rows.
+                
+                Denote the augmentation of $P'^{*,*}$ by $m : P'^{',*} \rightarrow M$. We define the complexes $pM = Tot^\oplus(P'^{*,*})$ and $aM = Tot^\oplus(cone(m))$.
+                
+                $pM$ carries a natural filtration $F_npM$ from the double complex structure. Let $F_npM$ be the truncated complex:
+                \begin{center}
+                    \begin{tikzcd}
+                        ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} & P'^{n, *} \ar[]{r}[]{} & ... \ar[]{r}[]{} & P'^{1,*} \ar[]{r}[]{} & P'^{0,*} \ar[]{r}[]{} & 0 \ar[]{r}[]{} &  ...
+                    \end{tikzcd}
+                \end{center}
+                
+                The filtration $F_npM$ satisfies F1 and F2 by construction. The quotients $\sfrac{F_{n+1}pM}{f_npM} \simeq P'_n$ which is homotopy equivalent to a projective. By lemma \ref{lem: homo-proj-homo-well-def} $pM$ is homotopy projective.
+                
+                The complex $cone(m)$ satisfies the conditions for \ref{cor: ac-as-2}, thus $aM$ is acyclic. Thus we have a triangle in $K(A)$ as desired.
+            \end{proof}
+
+            \begin{corollary}
+                Let $M$ be an erbitrary module. If $P$ is homotopy projective, then $K(A)(P,M) \simeq K(A)(P, pM)$. If $N$ is acyclic, then $K(A)(M, N) \simeq (aM, N)$.
+
+                $a$ and $p$ are well-defined functors which commutes with infinite direct sums. 
+            \end{corollary}
+
+            \begin{corollary}
+                Let ${\startset{\hat{A}}}$ denote the smallest thick triangulated subcategory of $D(A)$ which is closed under homotopy colimits. Then $D(A) \simeq {\startset{\hat{A}}}$.
+            \end{corollary}
+
+            \begin{corollary}\label{cor: ring-qiso-is-eq}
+                Suppose that $f : A \rightarrow B$ is a dg-ring homomorphism  and a quasi-isomorphism between dg-algebras, then $D(A) \simeq D(B)$.
+            \end{corollary}
+
+            \begin{proof}
+                $f$ endows $B$ with both a left and right $A$-module structure. We will think of $\hat{B}$ as a left $A$-module and right $B$ module. There is then a natural hom-tensor adjunction between the differential graded enriched categories.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        Diff(B) \ar[bend left]{r}[]{H} \ar[phantom]{r}[]{\top} & Diff(A) \ar[bend left]{l}[]{T}
+                    \end{tikzcd}
+                \end{center}
+
+                We define $T = \_ \otimes_A \hat{B}$ and $H = Diff(B)(B,\_)$. We see that $Diff(B)(T\hat{A}, M)\simeq Diff(A)(\hat{A}, HM)\simeq HM \simeq Diff(B)(\hat{B}, M)$. Thus $T\hat{A}\simeq \hat{B}$, and the morphism $T : Diff(A)(\hat{A}, \hat{A}) \rightarrow Diff(B)(\hat{B}, \hat{B})$ is given by $f$. Since we assume $f$ to be a quasi-isomorphism, it follows that $\mathbb{L}T : D(A) \rightarrow D(B)$ is fully faithful on the set $\startset{\hat{A}}$.
+
+                By devissage the functor $\mathbb{L}T$ is fully-faithful on all of $D(A)$, since $D(A)$ is generated by $\hat{A}$. Since $T$ hits all of $D(B)$s generators, $\mathbb{L}T$ is essentially surjective as well.
+            \end{proof}
+
+            \begin{remark}
+                We have ignored smallness conditions for objects. This technique does not always work, since it depends on some unstated isomorphisms which we have used. We have these since the objects $\hat{A}$ and $\hat{B}$ are small. This detail is given more care in Keller \cite{Keller94}.
+            \end{remark}
+                
+            With this result we are able to show that $HoMod^A$ and $HoMod^{\Omega C}$ are equivalent. Since we assumed the morphism $\tau: C \rightarrow A$ to be acyclic, we would expect the morphism $f_\tau^* : \Omega C \rightarrow A$ to be a quasi-isomorphism. If this is the case, we know that $D(\Omega C)\simeq D(A)$. 
 
         \subsection{The Fundamental Theorem of Twisting Morphisms}
 
+            In this section we aim to finish what we started the previous section. We will prove a characterization for the acyclic twisting morphisms.
+
+            \begin{thm}[Fundamental Theorem of Twisting Morphisms]\label{thm: thm-twist}
+                Let $\tau : C \rightarrow A$ be a twisting morphism between augmented objects. The following are equivalent:
+                \begin{enumerate}
+                    \item $\tau$ is acyclic, i.e. the natural transformation $\varepsilon : L_\tau R_\tau \implies Id_{Mod^A}$ is a pointwise quasi-isomorphism.
+                    \item The unit transformation $\eta : Id_{CoMod^C} \implies R_\tau L_\tau$ is a pointwise weak equivalence.
+                    \item The counit at $A$ is a quasi-isomorphism, i.e. $\varepsilon_A : L_\tau R_\tau A \rightarrow A$ is a quasi-isomorphism.
+                    \item The unit at $\mathbb{K}$ is a weak-equivalence, i.e. the algebra unit $\upsilon_A$ and coaugmentation $\upsilon_C$ assembles into a weak-equivalence: $\upsilon_A \otimes \upsilon_C : \mathbb{K} \rightarrow A \otimes_\tau C$.
+                    \item The morphism of algebras $f_\tau : \Omega C \rightarrow A$ is a quasi-isomorphism.
+                    \item The morphism of coalgebras $g_\tau : C \rightarrow BA$ is a weak-equivalence.
+                \end{enumerate}
+            \end{thm}
+
+            \begin{proof}
+                Notice that 1. is equivalent to 2. since $\mathbb{L}L$ and $\mathbb{R}R$ are quasi-inverse. 3. is a special case of 1. and 4. is a special case of 2. Observe that 5. and 6. are equivalent since the cobar-bar-adjunction is a Quillen equivalence, \ref{cor: cobar-bar-quill-eq}.
+
+                We show 3. $\implies$ 1. Let $\mathcal{T}\subseteq D(A)$ be the full subcategory consisting of objects M where $\varepsilon_M$ is a quasi-isomorphism. This subcategory is by assumption non-empty and contains $A$. By the $5$-lemma, making triangles (and smallness of $A$), this subcategory contains the smallest thick triangulated subcategory closed under homotopy colimits which contains $A$. We know this to be all of $D(A)$.
+
+                To show 4. implies 5. we consider the twisting morphism $\iota_C$. Since $\iota_C$ is acyclic we know that the counit at $A$ is a quasi-isomorphism. 
+                \begin{align*}
+                    L_{\iota_C}R_{\iota_C}f_{\tau}^*A \rightarrow f_\tau^*A
+                \end{align*}
+                By assumption the unit morphism $\eta_\mathbb{K} : \mathbb{K} \rightarrow A \otimes_\tau C$ is a weak equivalence, so the morphism $L_{\iota_C}\eta_\mathbb{K} : \Omega C \rightarrow L_{\iota_C}R_\tau A = L_{\iota_C}R_{\iota_C}f_\tau^* A$ is a quasi-isomorphism. Let $\varepsilon'$ denote the counit of $L_{\iota_C} \dashv R_{\iota_C}$, then we see that $f_\tau = \varepsilon'_A \circ L_{\iota_C}\eta_\mathbb{K}$, so $f_\tau$ is a quasi-isomorphism by the 2-out-of-3 property.
+
+                It remains to show that 5. implies 1. Let the counit of $f_{\tau *} \dashv f_\tau^*$ be denoted as $\tilde{\varepsilon}$. Since $f_\tau$ is a quasi-isomorphism, $f_\tau^*$ descends to an equivalence between the derived categories \ref{cor: ring-qiso-is-eq}. Thus $\tilde{\varepsilon} : f_{\tau !}f_\tau^* \implies Id$ is a pointwise quasi-isomorphism. Observe that the counit factors as
+                \begin{align*}
+                    \varepsilon = \tilde{\varepsilon} \circ f_{\tau !}\varepsilon'_{f_\tau^*}
+                \end{align*}
+                By the 2-out-of-3 property it follows that $\varepsilon$ is a quasi-isomorphism.
+            \end{proof}
+
+            \begin{corollary}
+                There is one canonical model structure on $CoMod^C$ defined by the acyclic twisting morphisms $\tau : C \rightarrow A$, for any algebra $A$. I.e. each acyclic twisting morphism defines the same model structure for $CoMod^C$. 
+            \end{corollary}
+
+            \begin{proof}
+                Apply the fundamental theorem of twisting morphisms to the discussion of the last section.
+            \end{proof}
+
     \section{Polydules}
+        \subsection{The Bar Construction}
+            In section \ref{sec: 1.3} we saw that we could extend the domain of the bar construction to obtain an equivalence of categories. This converse led us to the definition of an $A_\infty$-algebra, as well as recognizing them as almost free dg-coalgebras. By employing the adjunction $(L_\tau, R_\tau) : CoMod^C \rightleftharpoons Mod^A$ we will do something similar for modules.
+
+            Let $A$ be an augmented algebra. The bar construction of $A$ gives us a universal adjunction $(L_{\pi_A}, R_{\pi_A}) : CoMod^{BA} \rightleftharpoons Mod^A$. We will call $R_{\pi_A}(\_ [1]) = \_ [1]\otimes_{\pi_A}BA$ for $B_A$, the bar construction on $Mod^A$. In this manner every $A$-module $M$ gives rise to an almost free $BA$-comodule $B_AM$, but does the converse of this construction works?
+
+            Let us first look at what $B_A$ does to a module $M$. $B_AM$ is the dg-comodule which as a graded comodule is the free comodule $M[1] \otimes BA$. The differential of $B_AM$ is given by the $A$-module structure of $M$. That is, every elementary element $m'$ of $B_AM$ is an element of $M$ together with a finite string of elements of $A$.
+            \begin{align*}
+                m' = \omega m \otimes (\omega a_1 \otimes ... \otimes \omega a_n)
+            \end{align*}
+            The differential acts on $m'$ by using the differential of $d_{M[1]\otimes BA}$ and multiplication from the right.
+            \begin{align*}
+                d_{B_AM}(m') = d_{M[1]\otimes BA}(m') + (-1)^{|m|+|a|} \omega (m\cdot a_1) \otimes (\omega a_2 \otimes ... \otimes \omega a_n)
+            \end{align*}
+            By using delooping, we see that in turn that $d_{B_AM}$ defines an $A$-module structure for $M$. We may decompose $B_AM$ as:
+            \begin{align*}
+                B_AM = M[1] \oplus M[1] \otimes \bar{A} \oplus M[1] \otimes \bar{A}^{\otimes 2} \oplus ...
+            \end{align*}
+            Let $\pi_M : R_{\pi_A}M \rightarrow M$ be the map which kills anything not on the form $m$. We denote $(d_{B_AM})_i$ by $d_{B_AM} \circ \iota_i$, where $\iota_i : M[-1] \otimes \bar{A}^{\otimes i-1} \hookrightarrow B_AM$. Proposition \ref{prop: free-derivation} tells us that we may recover the structure of $M$ from the differential $d_{B_AM}$. This is done by conjugating the components of $d_{B_AM}$ with desuspension and applying projections appropriately. We recover the maps as:
+            \begin{enumerate}
+                \item The differential of $M$ is $d_M = s \circ \pi_{M[1]} \circ (d_{B_AM})_1 \omega$
+                \item The right multiplication from $A$ is $\mu_M = s\circ \pi_{M[-1]} \circ (d_{B_AM})_2 \circ \omega^{\otimes 2}$
+                \item For $i \geq 3$ we have $0 = s \circ \pi_{M[1]} \circ (d_{B_AM})_i \circ \omega^{\otimes i}$
+            \end{enumerate}
+
+            Now, let $\widetilde{N}$ be an almost free $BA$-comodule. That is, $\widetilde{N} = N[1] \otimes BA$ as a graded comodule. We would now wish for that $N$ carries an $A$-module structure. Unfortunately we are not that lucky, however, this defines a notion of $A_\infty$-module to the algebra $A$. If we try to recover the same structure we obtain the following structure morphisms for $N$:
+            \begin{align*}
+                \text{A differential of degree }1\text{: }& m_1 = d_{N} = s\circ \pi_N (d_{\widetilde{N}})_1 \circ \omega\\
+                \text{A 2-ary operation of degree }0\text{: }& m_2 = s\circ \pi_N (d_{\widetilde{N}})_2 \circ \omega^{\otimes 2}\\
+                \text{A 3-ary operation of degree }-1\text{: }& m_3 = s\circ \pi_N (d_{\widetilde{N}})_3 \circ \omega^{\otimes 3}\\
+                \text{A 4-ary operation of degree }-2\text{: }& \text{...}
+            \end{align*}
+            Let $\widetilde{m}_i$ be the looped versions of the $m_i$s. Then the sum $\sum \widetilde{m}_i : \widetilde{N} \rightarrow N$ extends to $d_{B_AM}$. Since $d_{B_AM}^2 = 0$ we get the relations $(rel_n)$ defined in section \ref{sec: 1.3} imposed on the morphisms $m_i$. 
+
+            To summarize the datum of $M[1] \otimes BA$ as a  $BA$-comodule is equivalent to a chain complex $M$ having maps 
+            \begin{align*}
+                m_i : M \otimes \bar{A}^{\otimes i-1} \rightarrow M
+            \end{align*}
+            of degree $2-i$ for any $i \geq 2$. The maps should satisfy the relations:
+            \begin{align*}
+                (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q  
+            \end{align*}
+            This gives $M$ the structure of an $A$-module, where associativity is only well-defined up to strong homotopy. In other words, $m_3$ is a homotopy for the associator for $m_2$, $m_4$ is a homotopy for $m_3$s associator and so on. Following Lefevre-Hasegawa \cite{LefevreHasegawa03}, we call the chain-complex $M$ an $A$-polydule, given it has maps $m_i$ as above.
+
+            We have defined the objects of a category $Mod_\infty^A$. Our goal is to have that the converse bar construction defines an equivalence of categories, i.e. $B_A$ extends to a functor $B_A : Mod_\infty^A \rightarrow CoMod^{BA}$ is fully-faithful. This makes sense as every $A$-module $M$ is a non-full $A$-polydule by letting $m_1 = d_M$, $m_2 = \mu_M$ and $m_i = 0$ for any $i\geq 3$.
+
+            Since we say that $B_A$ is fully-faithful any $\infty$- morphisms between polydules is determined by a morphism of almost free $BA$-comodules. Let $f : M \rightsquigarrow N$ be an $\infty$-morphism, then $B_Af : B_AM \rightarrow B_AN$ is the associated morphism of dg-comodules. By cofreeness, proposition \ref{prop: cofree-comod}, we see that $Bf$ is uniquely determined by morphisms $f_i : M \otimes \bar{A}^{\otimes i-1} \rightarrow N$ of degree $1-i$. Since we know that $\partial Bf = 0$, we obtain the relations:
+            \begin{align*}
+                (rel_n)\qquad \sum_{p+q+r = n} (-1)^{pq+r}f_{p+1+r} \circ_{p+1} m^M_{q} = \sum_{p+q = n} m^N_{p+1} \circ_1 f_q
+            \end{align*}
+            If $f : M \rightsquigarrow N$ and $g : N \rightsquigarrow P$, then their composition is:
+            \begin{align*}
+                (gf)_n = \sum_{p+q=n}g_{p+1}\circ_1 f_q
+            \end{align*}
+
+            This defines the morphisms of $Mod_\infty^A$. By definition $B_A: Mod_\infty^A \rightarrow CoMod^{BA}$ is fully-faithful. An $\infty$-morphism $f$ is called strict if $f_i = 0$ for any $i\geq 2$. We denote the restriction of $Mod_\infty^A$ to strict $\infty$-morphisms as $Mod_{\infty, strict}^A$. Observe that we obtain an equivalence of categories $Mod^A \simeq Mod_{\infty, strict}^A$. 
+            
+            We will give some examples of $A$-polydules given an augmented algebra $A$.
+
+        \subsection{Polydules of SHA-algebras}
+            In the last section we developed the notion of a polydule to an augmented/unital algebra. By applying the converse of the bar construction, we are able to extend this notion to $A_\infty$-algebras.
+
+            Suppose that $A$ is an $A_\infty$-algebra. By the bar construction, $BA$ is an almost free coalgebra. In the same manner, we may consider the almost free dg-coalgebras of $CoMod^{BA}$. This is again the collections of comodules of the form $M' = M[1] \otimes BA$. Since there is no obstruction to the above arguments the differential $d_{M'}$ is determined by a collection of morphisms $m^M_n : M \otimes A^{\otimes n-1} \rightarrow M$ satisfying $(rel_n)$. Moreover, an $\infty$-morphism $f: M \rightsquigarrow N$ is a collection of morphisms $f_n : M \otimes A^{\otimes n-1} \rightarrow N$ satisfying $(rel_n)$.
+
+            \begin{definition}
+                Let $A$ be an $A_\infty$-algebra. The category $Mod_\infty^A$ has $A$-polydules as objects and $\infty$-morphisms as morphisms.
+
+                The quasi-isomorphisms in $Mod_\infty^A$ are the $\infty$-morphisms $f$ such that $f_1$ is a quasi-isomorphism.
+            \end{definition}
+
+            \begin{remark}
+                The isomorphisms of $Mod_\infty^A$ are the $\infty$-morphisms $f$ where $f_1$ is an isomorphism.
+            \end{remark}
+
+            We say that an $\infty$-morphism is strict if $f_i = 0$ for any $i\geq 2$. The category $Mod_{\infty, strict}^A$ is the non-full subcategory of $Mod_\infty^A$ restricted to strict $\infty$-morphisms.
+
+            We may also lift homotopies between almost free $BA$-comodules and $A$-polydules. A homotopy $B_Ah : B_AM \rightarrow B_AM$ is a morphism of degree $-1$. Thus the collection $h_n : M \otimes A^{\otimes n-1} \rightarrow N$ has morphisms of degree $-i$. Moreover, $h : M \rightsquigarrow N$ defines a homotopy of $f, g : M \rightsquigarrow N$ if we have
+            \begin{align*}
+                f_n - g_n = \sum_{p+q}(-1)^{p}m^N_{p+1}\circ_1 h_q - \sum_{p+q+r = n}(-1)^{pq+r}h_{p+1}\circ_{p+1} m^M_q
+            \end{align*}
+
+            Suppose now that $A$ is instead a strictly unital $A_\infty$-algebra (\ref{def: strict-unit}). We may define strictly unital $A$-polydules as an $A$-polydule $M$ such that
+            \begin{align*}
+                & m^M_2\circ (id_M \otimes \upsilon_A) = id_M \\
+                \forall i\geq 3\quad & m^M_i\circ (id_M \otimes ... \otimes \upsilon_A \otimes ... \otimes id_A) = 0
+            \end{align*}
+            An $\infty$-morphism $f : M \rightsquigarrow N$ is strictly unital if
+            \begin{align*}
+                \forall i\geq 2 \quad & f_i(id_M \otimes ... \otimes \upsilon_A \otimes ... \otimes id_A) = 0 
+            \end{align*}
+            This definition also extends to homotopies. We may then define the categories of strictly unital polydules $iMod_\infty^A$ and $iMod_{\infty, strict}^A$.
+
+            Given an augmented $A_\infty$-algebra $A$ (\ref{def: augmented-sha}) we obtain an equivalence of categories. Recall that the categories $Alg_\infty$ and $Alg_{\infty,+}$ were equivalent by taking the kernel of augmentation and applying the free augmentation as its quasi-inverse. In the same manner, given a strictly unital $A$-polydule $M$, then it defines a strictly unital $\bar{A}$-polydule $\bar{M}$ by restricting the structure maps to $\bar{A}^{\otimes n}$. This defines an equivalence of categories.
+            \begin{center}
+                \begin{tikzcd}
+                    iMod_{\infty}^A \ar[bend left]{r}[]{\bar{\_}}& Mod_{\infty}^{\bar{A}} \ar[bend left]{l}[]{\_^+}
+                \end{tikzcd}
+            \end{center}
+            We may call its quasi-inverse for the free strict unitization. This takes an $\bar{A}$-polydule $M$ and turns it into a strictly unital $A$-polydule by defining the structure morphism as $0$ on the unit.
+
+            We will for now restrict our attention to augmented $A_\infty$-algebras. The reason for this is that if $A$ is an arbitrary $A_\infty$-algebra, then studying $Mod_\infty^A$ would be the same as studying $iMod_\infty^{A^+}$. We extend the bar construction along this equivalence to a fully faithful functor $B_A : iMod_\infty^A \rightarrow CoMod^{BA}$.
+
+        \subsection{Universal Enveloping Algebra}
+
+
+
 \end{document}

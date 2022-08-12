@@ -2,7 +2,7 @@
 
 \begin{document}
 
-        In Stasheffs papers \todo{Se over disse kildene igjen, slik at jeg ikke dummer meg ut}\cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
+        In Stasheffs papers \cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \bar{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
 
 
         In order to understand the bar construction we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
@@ -231,9 +231,64 @@
 
             The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\_,\_)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. One may check that there is a free functor from $Mod_\mathbb{K}$ to $Mod_A$.
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: free-mod}
                 Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
+
+            \begin{proof}
+                Define the isomorphism $\phi$ as
+                \begin{align*}
+                    \phi & : Hom_\mathbb{K}(M,N) \rightarrow Hom_A(A\otimes_\mathbb{K}M, N) \\
+                    \phi (f) & = \mu_N \circ (A \otimes f)\text{.}
+                \end{align*}
+                Its inverse $\sigma$ is then
+                \begin{align*}
+                    \sigma & : Hom_A(A\otimes_\mathbb{K}M, N) \rightarrow Hom_\mathbb{K}(M,N) \\
+                    \sigma (f) & = f \circ (\upsilon_A \otimes M). 
+                \end{align*}
+                We check that this does indeed define an isomorphism by electric diagrams.
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+                    
+                    \node at (-1, 0) {$\sigma \circ \phi (f)$};
+                    \node[anchor = west] at (0,0) {$=$};
+
+                    \node[op, scale=0.75] (u1) at (1, 0.55) {};
+                    \node[op, scale=0.75] (f1) at (2, 0.5) {$f$};
+
+                    \draw [line width = 1pt] (2, 1) -- (f1) -- (2, 0) -- (1.5, -0.25) -- (1.5 , -1);
+                    \draw [line width = 1pt] (u1) -- (1, 0) -- (1.5, -0.25);
+
+                    \node at (3, 0) {$= f$};
+                    \end{tikzpicture}
+                \end{center}
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (-1, 0) {$\phi \circ \sigma (f)$};
+                        \node[anchor = west] at (0, 0) {$=$}; 
+                        
+                        \draw [line width = 1pt] (1, 1) -- (1, -0.25) -- (1.5, -0.5) -- (1.5, -1);
+
+                        \node[op, scale = 0.75] (u1) at (1.5, 1) {};
+                        \node[op, scale = 0.75] (f1) at (2, 0.25) {$f$};
+
+                        \draw [line width = 1pt] (u1) -- (1.5, 0.5) -- (f1) -- (2, -0.25) -- (1.5, -0.5);
+                        \draw [line width = 1pt] (2.5, 1) -- (2.5, 0.5) -- (f1);
+
+                        \node at (3.5, 0) {$=$};
+
+                        \node[op, scale = 0.75] (f2) at (5.5, -0.25) {$f$};
+                        \node[op, scale = 0.75] (u2) at (5, 1) {}; 
+
+                        \draw [line width = 1pt] (4.5, 1) -- (4.5, 0.5) -- (5, 0.25) -- (5, 0) -- (f2) -- (5.5, -1);
+                        \draw [line width = 1pt] (u2) -- (5, 0.25);
+                        \draw [line width = 1pt] (6, 1) -- (6, 0) -- (f2);
+
+                        \node at (7, 0) {$= f$};
+                    \end{tikzpicture}
+                \end{center}
+            \end{proof}
             
     \subsection{Coalgebras}
             This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the coalgebras. Thus we will see that the proper dual concept will be thath of conilpotent coalgebras.
@@ -472,9 +527,13 @@
 
             The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\_,\_)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: cofree-comod}
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq Hom_C(N,C\otimes_{\mathbb{K}}M)$. 
             \end{proposition}
+
+            \begin{proof}
+                This is dual to \ref{prop: free-mod}.
+            \end{proof}
 
     \subsection{Derivations and DG-Algebras}
             In this section we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
@@ -1349,28 +1408,28 @@
                 \end{tikzcd}
             \end{center}
 
-            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the suspended non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. With Koszul sign rule, we may define the suspended multiplication as $\nabla_{A[1]}(a_1 \otimes a_2) = (-1)^{|a_1|}a_1a_2$. Since each element $a\in A[1]$ has degree $|a|+1$, we get that $|a_1a_2| = |a_1|+|a_2|+1$ in $A[1]$. Thus $\nabla_{A[1]}$ is a morphism of degree $-1$. For our convenience, we may decorate each $a\in A[1]$ as $sa$, where $|s| = 1$. We may then treat this $s$ as an element to better understand Koszul sign rule. This works as $A[1] \simeq \mathbb{K}s \otimes A$, where $|s| = 1$. By Koszul sign rule, associativity does not longer hold as applying the multiplication on the right side first introduces a sign, contrary to first multiplying on the left side.
+            As graded modules, the chain complex $\bar{A}^\bullet$ is isomorphic to $T^c(\bar{A})$. Here we think of the grading $T^c(\bar{A})$ as starting at $0$ and going down to negative degrees. Consider instead the looped, or shifted, non-unital algebra $\bar{A}[1]$. Every algebra may be considered as a graded algebra concentrated in degree $0$, the shift functor then recontextualize the degree the algebra is concentrated in. Since the tensor product respects shifting, we see that shifting may be regarded as a tensor.
+            \begin{align*}
+                M[n] \simeq \mathbb{K} \otimes M[n] \simeq \mathbb{K}[n] \otimes M \simeq \mathbb{K}\startset{\sigma} \otimes M
+            \end{align*}
+            Here $\sigma$ is a formal generator of $\mathbb{K}$ such that $|\sigma| = -n$. If we let $\omega$ be a formal generator s.t. $|\omega| = -1$, then $\bar{A}[1] \simeq \mathbb{K}\startset{\omega} \otimes \bar{A}$. Every element of $\bar{A}[1]$ may then be written on the form $\omega a$, where $a \in \bar{A}$. Using MacLanes and Eilenbergs notation \cite{Eilenberg53}, we would write $[a]$ instead.
 
-            \begin{proposition}
-                The suspended augmentation ideal $\bar{A}[1]$ is a semi-simplical set with face maps:
-                \begin{align*}
-                    \bar{d}^i = (-1)^{i-1}d^i = (-1)^{i-1}(\nabla_{A[1]})_{(i-1)}^{(n-1)}\text{.}
-                \end{align*}
+            The looped algebra $\bar{A}[1]$ is no longer associative. For $\mathbb{K}\startset{\omega}$ we define a map $(\cdot)$. 
+            \begin{align*}
+                (\cdot) & : \mathbb{K}\startset{\omega}^{\otimes 2} \rightarrow \mathbb{K}\startset{\omega} \\
+                \omega \cdot \omega = \omega
+            \end{align*}
+            The looped multiplication may then be defined as the composite $\nabla_{\bar{A}[1]} = ((\cdot) \otimes \nabla_A) \circ (\mathbb{K}\startset{\omega} \otimes \beta \otimes \bar{A})$. Multiplying elements like $\omega a_1$ and $\omega a_2$ would then look like:
+            \begin{align*}
+                \nabla_{\bar{A}[1]}(\omega a_1 \otimes \omega a_2) = (-1)^{|a_1||\omega|}((\cdot) \otimes \nabla_{\bar{A}})(\omega^{\otimes 2} \otimes a_1 \otimes a_2) = (-1)^{|a_1|}\omega a_1 a_2
+            \end{align*}
+            It is now also evident that the new map $\nabla_{\bar{A}[1]}$ is no longer a morphism of degree $0$, but of degree $1$.
+
+            \begin{proposition}\label{prop: a-to-dgc}
+                The differential $d_{\bar{A}[1]}^\bullet$ is a coderivation for the cofree coalgebra $T^c(\bar{A}[1])$. Thus $(\bar{A}[1]^\bullet, d_{\bar{A}[1]}^\bullet)$ is a dg-coalgebra.
             \end{proposition}
 
             \begin{proof}
-                This is evident from the above discussion.
-            \end{proof}
-
-            \begin{corollary}\label{cor: a-to-dgc}
-                The differential $d_{\bar{A}[1]}^\bullet$ is a coderivation for the cofree coalgebra $T^c(\bar{A}[1])$. Thus $(\bar{A}[1]^\bullet, d_{\bar{A}[1]}^\bullet)$ is a dg-coalgebra.
-            \end{corollary}
-
-            \begin{proof}
-                The differential is given by the alternating sum of face maps.
-                \begin{align*}
-                    d_{\bar{A}[1]}^n = \sum_{i=1}^n (-1)^{i-1}\bar{d}^i = \sum_{i=1}^n (-1)^{2(i-1)}d^i = \sum_{i=1}^n (\nabla_{A[1]})_{(i-1)}^{(n-1)}
-                \end{align*}
                 By injecting $\bar{A}[1]$ into $T^c(\bar{A}[1])$ we may think of $\nabla_{\bar{A}[1]} : \bar{A}[1]^{\otimes 2} \rightarrow T^c(\bar{A}[1])$ as a morphism into the tensor coalgebra. By using proposition \ref{prop: tensor-derivation}, $\nabla_{\bar{A}[1]}$ extends uniquely into a coderivation:
                 \begin{align*}
                     d_{\bar{A}[1]}^c = \sum_{n=0}^{\infty}\sum_{i=0}^n(\nabla_{\bar{A}[1]})_{(i)}^{(n)} = d_{\bar{A}[1]}^\bullet\text{.}
@@ -1401,7 +1460,7 @@
             \end{proposition}
 
             \begin{proof}
-                    It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. We will show this for each element in $A^{\otimes 2}$, then the result may be extended to all of $BA$. In the following calculation we will not decorate each $a$ with an $s$, and it should be understood that these elements are shifted.
+                    It is apparent that $d_1$ and $d_2$ are coderivations with respect to deconcatenation. Since the multiplication $\nabla_A$ is a chain map, we should have ${d_{BA}^\bullet}^2 = d_1 \circ d_2 + d_2 \circ d_1= 0$. This will be shown for each element in $A^{\otimes 2}$, the result may then be extended to all of $BA$. In the following calculation we will not decorate each $a$ with an $\omega$, and it should be understood that these elements are looped.
 
                 \begin{multline*}
                     d_1 \circ d_2 (a_1\otimes a_2) = (-1)^{|a_1|}d_1 (a_1a_2) = (-1)^{|a_1|}d_{A[1]}^\bullet(a_1a_2) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1a_2) = (-1)^{|a_1|+1}(d_A^\bullet(a_1)a_2 + (-1)^{|a_1|}a_1d_A^\bullet(a_2)) \\ = (-1)^{|a_1|+1}d_A^\bullet(a_1)a_2 - a_1d_A^\bullet(a_2)
@@ -1427,10 +1486,10 @@
                 \end{tikzcd}
             \end{center}
             
-            The cobar construction is made from the inverse shifted, or desuspended coalgebra $C[-1]$. We realize it as the free tensor algebra $T(\bar{C}[-1])$, where the comultiplication $\Delta_{\bar{C}[-1]}$ induces a derivation $d_{\bar{C}[-1]}$ by proposition \ref{prop: tensor-derivation}.
+            The cobar construction is made from the inverse shifted, or suspended coalgebra $C[-1]$. We may also denote suspension by tensoring with the formal generator $s$, where $|s| = 1$. That is we have the isomorphism $C[-1] \simeq \mathbb{K}\startset{s}\otimes C$. The cobar construction is realized as the free tensor algebra $T(\bar{C}[-1])$, where the comultiplication $\Delta_{\bar{C}[-1]}$ induces a derivation $d_{\bar{C}[-1]}$ by proposition \ref{prop: tensor-derivation}.
 
             \begin{remark}
-                As we have chosen to define $\nabla_{A[1]}(a_1\otimes a_2)=(-1)^{|a_1|}a_1a_2$, we are forced by the linear dual to define $\Delta_{C[-1]}(c)=-(-1)^{|c_{(1)}|}c_{(1)}\otimes c_{(2)}$.
+                As we have chosen to define $\nabla_{A[1]}(a_1\otimes a_2)=(-1)^{|a_1|}a_1a_2$, we are forced by the linear dual to define $\Delta_{C[-1]}(c)=-(-1)^{|c_{(1)}|}c_{(1)}\otimes c_{(2)}$. Here we use the Sweedlers notation without sums to denote the comultiplication. Note that this really should be a sum of many different elementary tensors Lastly, observe that this definition also agrees with Koszuls sign rule.
             \end{remark}
 
             \begin{proposition}
@@ -1509,7 +1568,7 @@
             \end{proposition}
 
             \begin{proof}
-                calculate kernel of the augmentation map, and find a homotopy of the identity.
+                We will postpone this proof until chapter 3. This is a part of the fundamental theorem of twisting morphisms, and will not be relevant until then.
             \end{proof}
 
     % \subsection{Comparison Lemma}
@@ -1558,19 +1617,19 @@
 
         % We now know some cases where the unit and the counit are quasi-isomorphisms. However, we would like to promote this result to every (conilpotent) augmented dg-(co)algebra. To this end we will find suitable filtrations to realize the associated graded as a connected wdg-(co)algebra and then get isomorphisms on the associated graded. The problem would then be to lift such quasi-isomorphisms back to our original objects.
 
-    \section{Strongly Homotopy Associative Algebras and Coalgebras}
+    \section{Strongly Homotopy Associative Algebras and Coalgebras}\label{sec: 1.3}
     \subsection{SHA-Algebras}
-        We have seen from corollary \ref{cor: a-to-dgc} that any dg-algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that the coalgebra $T^c(A[1])$ together with a coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra? The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
+        We have seen from corollary \ref{prop: a-to-dgc} that any dg-algebra $A$ defines a dg-coalgebra $T^c(A[1])$, the bar construction, with a coderivation $m^c$ of degree $-1$. Does this however work in reverse? I.e. if $A$ is a vector space such that the coalgebra $T^c(A[1])$ together with a coderivation $m^c$ is a dg-coalgebra, is then $A$ an algebra? The answer to this is no, but it leads to the definition of a strongly homotopy associative algebra.
 
         \begin{definition}
             An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $1$.
         \end{definition}
 
-        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s^{-1}\widetilde{m}_ns^{\otimes n}$. Since $s^{\otimes n}$ is of degree $-n$, $\widetilde{m}_n$ and $s^{-1}$ is of degree $1$, we get that $m_n$ is of degree $2-n$.
+        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $Hom_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s\widetilde{m}_n \omega^{\otimes n}$. Since $\omega^{\otimes n}$ is of degree $-n$, $\widetilde{m}_n$ and $s$ is of degree $1$, we get that $m_n$ is of degree $2-n$.
         \begin{center}
             \begin{tikzcd}
-                A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{s^{\otimes n}} & A \\
-                A[1]^{\otimes n} \ar[]{r}[]{\widetilde{m}_n} & A[1] \ar[]{u}[right]{\simeq}[]{s^{-1}}
+                A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{\omega^{\otimes n}} & A \\
+                A[1]^{\otimes n} \ar[]{r}[]{\widetilde{m}_n} & A[1] \ar[]{u}[right]{\simeq}[]{s}
             \end{tikzcd}
         \end{center}
 
@@ -1616,12 +1675,12 @@
         \end{proof}
 
         \begin{proof}[Proof of proposition \ref{prop: A-infinity def}]
-            Let $(A,m)$ be an $A_\infty$-algebra. We denote the n'th component of $m$ as $\widetilde{m}_n$. The n'th components thus define maps $m_n:A^{\otimes n}\rightarrow A$ as $m_n = s^{-1}\widetilde{m}_ns^{\otimes n}$.
+            Let $(A,m)$ be an $A_\infty$-algebra. We denote the n'th component of $m$ as $\widetilde{m}_n$. The n'th components thus define maps $m_n:A^{\otimes n}\rightarrow A$ as $m_n = s\widetilde{m}_n \omega^{\otimes n}$.
 
             By the above lemma we know that the n'th component of $m^2$ is:
             \begin{multline*}
                 \sum_{p + q + r = n}\widetilde{m}_{p+1+r}\circ_{p+1}\widetilde{m}_q \\
-                = \sum_{p + q + r = n}sm_{p+1+r}s^{-\otimes (p+1+r)}\circ_{p+1}sm_qs^{-\otimes q} = \sum_{p + q + r = n}(-1)^{pq+r}sm_{p+1+r}\circ_{p+1}m_q s^{-\otimes n}
+                = \sum_{p + q + r = n}\omega m_{p+1+r}s^{\otimes (p+1+r)}\circ_{p+1}\omega m_qs^{\otimes q} = \sum_{p + q + r = n}(-1)^{pq+r}\omega m_{p+1+r}\circ_{p+1}m_q s^{\otimes n}
             \end{multline*}
 
             Since suspension and desuspension are isomorphism we get that $m^2 = 0$ if and only if $(\text{rel}_n)$ are $0$ for every $n\geq 1$, i.e.
@@ -1642,7 +1701,7 @@
         \begin{proposition}
             Suppose that $(A, d)$ is a chain complex, and that there exists morphisms $m_n: A^{\otimes n} \rightarrow A$ of degree $2-n$ for any $n\geq 2$. A is an $A_\infty$-algebra if and only it satisfies the following relations:
             \begin{align*}
-                (\text{rel'}_n)\qquad & \partial(m_n) = -\sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq + r}m_k\circ_p+1m_q
+                (\text{rel'}_n)\qquad & \partial(m_n) = -\sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq + r}m_k\circ_{p+1}m_q
             \end{align*}
         \end{proposition}
 
@@ -1671,7 +1730,7 @@
         \end{proposition}
         
         \begin{proof}
-            This is immediate by the universal property of cofree coalgebras.
+            This is immediate by the universa l property of cofree coalgebras. To see how we get the exponent $e$ we explain the first term. The factor $(1 - i_1)$ is precisely the degree of $f_{i_1}$, and $k-1$ is exactly how many tensors which appear after $f_{i_1}$. We get the first term as we have to move $k-1$ $\omega$s over $f_{i_1}$. The same applies to every other tensor after $f_{i_1}$, but for $f_{i_2}$ there are only $k-2$ tensors which comes after, and so on.
         \end{proof}
 
         Since the composition of two dg-coalgebra homomorphism is again a dg-algebra homomorphism, we get that the composition of two $\infty$-morphisms is again an $\infty$-morphism. More explicitly if $f:A\rightsquigarrow B$ and $g: B\rightsquigarrow C$ are two $\infty$-morphisms, then their composition is defined as:
@@ -1699,18 +1758,18 @@
 
         As in the same case for algebras, there is also a notion of unital $A_\infty$-algebras and augmented $A_\infty$-algebras. For this discussion it is important to note that the field $\mathbb{K}$ is also an $A_\infty$-algebra. This algebra will serve as the initial algebra, in the same way as it did for ordinary algebras.
 
-        \begin{definition}
+        \begin{definition}\label{def: strict-unit}
             A strictly unital $A_\infty$-algebra is an $A_\infty$-algebra $A$ together with a unit morphism $\upsilon_A : \mathbb{K} \rightarrow A$ of degree $0$ such that the following are satisfied:
             \begin{itemize}
                 \item $m_1\circ \upsilon_A = 0$.
                 \item $m_2(id_A \otimes \upsilon_A) = id_A = m_2(\upsilon_A\otimes id_A)$.
-                \item $m_i \circ_k \upsilon_A = 0$ for any $i\geq 3$ and $0 \leq k < i$.
+                \item $m_i \circ_k \upsilon_A = 0$ for any $i\geq 3$ and $1 \leq k < i$.
             \end{itemize}
         \end{definition}
 
-        A strictly unital $\infty$-morphism $f: A \rightsquigarrow B$ between strictly unital $A_\infty$-algebras is a morphism which preserves the unit. This means that $f_1\upsilon_A = \upsilon_B$ and $f_i \circ_k \upsilon_A = 0$ for any $i \geq 2$ and $0 \leq k < i$. The collection of strictly unital $A_\infty$-algebras and strictly unital $\infty$-morphisms form a non-full subcategory of $A_\infty$-algbras. A strict $\infty$-morphism which is unital at the level of chain complexes is automatically stricly unital. Strict unital will then mean strict and strictly unital. Note that $\mathbb{K}$ is strictly unital where the unit is $id_\mathbb{K}$.
+        A strictly unital $\infty$-morphism $f: A \rightsquigarrow B$ between strictly unital $A_\infty$-algebras is a morphism which preserves the unit. This means that $f_1\upsilon_A = \upsilon_B$ and $f_i \circ_k \upsilon_A = 0$ for any $i \geq 2$ and $1 \leq k < i$. The collection of strictly unital $A_\infty$-algebras and strictly unital $\infty$-morphisms form a non-full subcategory of $A_\infty$-algbras. A strict $\infty$-morphism which is unital at the level of chain complexes is automatically stricly unital. Strict unital will then mean strict and strictly unital. Note that $\mathbb{K}$ is strictly unital where the unit is $id_\mathbb{K}$.
 
-        \begin{definition}
+        \begin{definition}\label{def: augmented-sha}
             An augmented $A_\infty$-algebra is a strictly unital $A_\infty$-algebra $A$ together with a strict unital morphism $\varepsilon_A : A \rightarrow \mathbb{K}$. The $\infty$-morphism $\varepsilon_A$ is called the augmentation of $A$.
         \end{definition}
 

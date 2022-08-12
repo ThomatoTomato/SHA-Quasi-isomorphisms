@@ -2,7 +2,7 @@
 
 \begin{document}
 
-        Quillen envisioned a more general approach to homotopy theory, which he dubbed homotopical algebra. A homotopy theory was then enclosed by the structure of a model category, then a closed model category. Many of the results from classical homotopy theory was then recovered in this new setting of model categories. The theorem which we are concerned about is Whiteheads theorem:
+        Quillen envisioned a more general approach to homotopy theory, which he dubbed homotopical algebra. A homotopy theory was first enclosed by the structure of a model category, and now we mostly consider closed model category. Many of the results from classical homotopy theory was recovered in this new setting of model categories. The theorem which we are most concerned about is Whiteheads theorem:
 
         \begin{thm}[Whiteheads Theorem]
             Let $X$ and $Y$ be two CW-complexes. If $f:X\rightarrow Y$ is a weak equivalence, then it is also a homotopy equivalence. I.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
@@ -14,7 +14,7 @@
             Let $\mathcal{C}$ be a model category. Suppose that $X$ and $Y$ are bifibrant objects of $\mathcal{C}$, and that there is a weak-equivalence $f:X\rightarrow Y$. Then $f$ is also a homotopy equivalence, i.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
         \end{thm}
 
-        The category of differential graded (co)algebras employs such a model category. Here we let the weak-equivalences be quasi-isomorphisms. Moreover, in this case the bar and cobar construction is a Quillen equivalence between the model structures. As we will see, a dg-coalgebra will be bifibrant exactly when it is an $A_\infty$-algebra. Thus, by Whiteheads theorem, quasi-isomorphisms lift to homotopy equivalences. In this case the derived category of $A_\infty$-algebras is equivalent to the homotopy category of $A_\infty$-algebras.
+        The category of differential graded algebras employs such a model category, and here we let the weak-equivalences be quasi-isomorphisms. On the other hand the category of differential graded coalgebras has a model structure where the weak equivalences are the maps which are sent to quasi.-isomorphism by the cobar construction. Moreover, in this case the bar and cobar construction defines a Quillen equivalence between these model structures. As we will see, a dg-coalgebra will be bifibrant exactly when it is an $A_\infty$-algebra. Thus, by Whiteheads theorem, quasi-isomorphisms lift to homotopy equivalences. In this case the derived category of $A_\infty$-algebras is equivalent to the homotopy category of $A_\infty$-algebras.
 
         We will conclude this section by looking at the category of algebras as a subcategory of $A_\infty$-algebras. The derived category may then be expressed as the homotopy category $A_\infty$-algebras, restricted to algebras.
 
@@ -63,7 +63,7 @@
             \begin{definition}[Model category]
                 Let $\mathcal{C}$ be a category with all finite limits and colimits. $\mathcal{C}$ admits a model structure if there are three wide subcategories each defining a class of morphisms:
                 \begin{itemize}
-                    \item $Ac\subset Mor(\mathcal{C})$ are called weak equivalences
+                    \item $Ac \subset Mor(\mathcal{C})$ are called weak equivalences
                     \item $Cof\subset Mor(\mathcal{C})$ are called cofibrations
                     \item $Fib\subset Mor(\mathcal{C})$ are called fibrations
                 \end{itemize}
@@ -339,15 +339,14 @@
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C}_c \ar[]{r}[]{i} \ar[]{d}[]{} & \mathcal{C} \ar[]{d}[]{} \\
-                        Ho\mathcal{C}_c \ar[dashed, bend right]{r}[below]{Ho\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{Q}
+                        Ho\mathcal{C}_c \ar[dashed, bend right]{r}[below]{Ho\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{Ho\ Q}
                     \end{tikzcd}
                 \end{center}
 
-                It is clear that $Q$ is the quasi-inverse of $i$.
-
+                It is clear that $Ho\ Q$ is the quasi-inverse of $Ho\ i$.
             \end{proof}
 
-            As of now we still don't see how model categories will fix the size issues. To do this we will develop homotopy equivalence $\sim$. We will see that on the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will in fact be a congruence relation. Moreover, there is an equivalence of categories $Ho\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+            As of now we still don't see how model categories will fix the size issues. To do this we will develop the notion of homotopy equivalence, $\sim$. On the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will be a congruence relation. This, together with the fact that there is an equivalence of categories $Ho\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$, is enough to solve the size issues.
 
             \begin{definition}[Cylinder and path objects]
                 Let $\mathcal{C}$ be a model category. Given an object $X$, a cylinder object $X\wedge I$ is a factorization of the fold map $i:X\coprod X \rightarrow X$, such that $p_0$ is a cofibration and that $p_1$ is a weak equivalence. 
@@ -814,7 +813,7 @@
 
             \end{proof}
 
-            In light of the above proposition we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and cycle to kill itself".
+            In light of the above proposition we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and a cycle to kill itself".
 
             \begin{center}
                 \begin{tikzcd}
@@ -899,18 +898,18 @@
             \begin{proof}
                 We do this by considering a spectral sequence. Endow $C$ with a grading (as a vector space) induced by the coradical filtration, i.e. $c\in C$ has degree $|c|=n$ if $n$ is the smallest number such that $\bar{\Delta}^nc = 0$. We define a filtration on $\Omega C$ by
                 \begin{align*}
-                    F_p\Omega C = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n|\leq p}
+                    F_p\Omega C = \startset{sc_1\otimes ... \otimes sc_n\mid |c_1|+...+|c_n|\leq p}
                 \end{align*}
 
                 Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, theorem 5.5.1 \cite{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
 
-                By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega C)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{c_1[-1]\otimes ... \otimes c_n[-1]\mid |c_1|+...+|c_n| = p}$.
+                By definition, the $0$'th page is defined as $E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega C)_{p+q}}$. Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega grC)^{(p)}_{p+q}$, where $(\Omega grC)^{(p)} = \startset{sc_1\otimes ... \otimes sc_n\mid |c_1|+...+|c_n| = p}$.
 
                 Evaluating $f$ at the $0$'th page would the look like $E^0\Omega f \simeq \Omega grf$. By the mapping lemma, exercise 5.2.3 \cite{Weibel94}, it is enough to check that $\Omega grf$ is a quasi-isomorphism, to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega grf$ is a quasi-isomorphism by inspecting every $E^0_{p,\bullet}\Omega C$.
 
                 We define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
                 \begin{align*}
-                    G_k = \startset{c_1[-1]\otimes ... \otimes c_n[-1] \mid n \geq -k}.
+                    G_k = \startset{sc_1\otimes ... \otimes sc_n \mid n \geq -k}.
                 \end{align*}
                 We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\bar{C}$. Again, by the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
 
@@ -927,7 +926,7 @@
                 Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunneth formula, theorem 3.6.3 \cite{Weibel94}.            
             \end{proof}
 
-            Let $A$ ($C$) be a filtered dg-algebra (coalgebra). Given an element $a\in A$ ($c\in C$) we say that its filtered degree $fdeg(a)$ ($fdeg(c)$) is the number such that $a\in F_{fdeg(a)}A$ ($c\in F_{fdeg(c)}C$) but not $a\in F_{fdeg(a)+1}A$ ($c\in F_{fdeg(c)+1}C$). There is then an associated filtration on the bar (cobar) construction of this complex, defined as $F_pBA = \startset{a_1 \otimes ... \otimes a_n \mid \sum fdeg(a_i)\leq p}$ ($F_p\Omega C = \startset{ c_1 \otimes ... c_n \mid \sum fdeg(c_i) \leq p}$).
+            Let $A$ ($C$) be a filtered dg-algebra (coalgebra). Given an element $a\in A$ ($c\in C$) we say that its filtered degree $fdeg(a)$ ($fdeg(c)$) is the number such that $a\in F_{fdeg(a)}A$ ($c\in F_{fdeg(c)}C$) but not $a\in F_{fdeg(a)+1}A$ ($c\in F_{fdeg(c)+1}C$). There is then an associated filtration on the bar (cobar) construction of this complex, defined as $F_pBA = \startset{\omega a_1 \otimes ... \otimes \omega a_n \mid \sum fdeg(a_i)\leq p}$ ($F_p\Omega C = \startset{s c_1 \otimes ... sc_n \mid \sum fdeg(c_i) \leq p}$).
 
             \begin{proposition}\label{prop: unit-counit-qif}
                 Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
@@ -954,20 +953,20 @@
 
                 There is a homotopy of the identity given as $h : gr_i \Omega BA \rightarrow gr_i \Omega BA$, which is $0$ unless if there is an element on the form $s^{-1}(sa)\otimes s^{-1}(...) \otimes ...$. In this case $h$ is 
                 \begin{align*}                    
-                    r(s^{-1}(sa)\otimes s^{-1}(...)\otimes ...) = (-1)^{|a|+1}s^{-1}(sa \otimes ...) \otimes ...
+                    r(s(\omega a)\otimes s(...)\otimes ...) = (-1)^{|a|+1}s(\omega a \otimes ...) \otimes ...
                 \end{align*}
                 We will show that this is a homotopy by induction on $i$.
 
-                Let $i=2$. Then there are two cases we must handle, either an element is on the form $s^{-1}(sa_1)\otimes s^{-1}(sa_2)$ or $s^{-1}(sa_1 \otimes sa_2)$. We consider the latter case first. If we apply $r$ to this element we are returned $0$. 
+                Let $i=2$. Then there are two cases we must handle, either an element is on the form $s(\omega a_1)\otimes s(\omega a_2)$ or $s(\omega a_1 \otimes \omega a_2)$. We consider the latter case first. If we apply $r$ to this element we are returned $0$. 
                 \begin{align*}
-                    (r\circ d_{\Omega BA}+d_{\Omega BA}\circ r)(s^{-1}(sa_1\otimes sa_2)) = r ((-1)^{|a_1|+1}s^{-1}(sa_1)\otimes s^{-1}(sa_2)) = s^{-1}(sa_1 \otimes sa_2)
+                    (r\circ d_{\Omega BA}+d_{\Omega BA}\circ r)(s(\omega a_1\otimes \omega a_2)) = r ((-1)^{|a_1|+1}s(\omega a_1)\otimes s(\omega a_2)) = s(\omega a_1 \otimes \omega a_2)
                 \end{align*}
                 The we treat the former case
                 \begin{multline*}
-                    (r\circ d_{\Omega BA}+d_{\Omega BA}\circ r)(s^{-1}(sa_1)\otimes s^{-1}(sa_2)) \\ 
-                    = r(s^{-1}(sd_Aa_1)\otimes s^{-1}(sa) + (-1)^{|a_1|}s^{-1}(sa_1)\otimes s^{-1}(sd_Aa_2)) + d_{\Omega BA}((-1)^{|a_1|+1}s^{-1}(sa_1 \otimes sa_2)) \\
-                    = (-1)^{|a_1|}s^{-1}(sd_Aa_1 \otimes sa_2) - s^{-1}(sa_1 \otimes sd_Aa_2) + s^{-1}(sa_1) \otimes s^{-1}(sa_2) \\
-                    + (-1)^{|a|+1}s^{-1}(sd_Aa_1 \otimes sa_2) + s^{-1}(sa_1 \otimes sd_Aa_2) = s^{-1}(sa_1) \otimes s^{-1}(sa_2)
+                    (r\circ d_{\Omega BA}+d_{\Omega BA}\circ r)(s(\omega a_1)\otimes s(\omega a_2)) \\ 
+                    = r(s(\omega d_Aa_1)\otimes s(\omega a) + (-1)^{|a_1|}s(\omega a_1)\otimes s(\omega d_Aa_2)) + d_{\Omega BA}((-1)^{|a_1|+1}s(\omega a_1 \otimes \omega a_2)) \\
+                    = (-1)^{|a_1|}s(\omega d_Aa_1 \otimes \omega a_2) - s(\omega a_1 \otimes \omega d_Aa_2) + s(\omega a_1) \otimes s(\omega a_2) \\
+                    + (-1)^{|a|+1}s(\omega d_Aa_1 \otimes \omega a_2) + s(\omega a_1 \otimes \omega d_Aa_2) = s(\omega a_1) \otimes s(\omega a_2)
                 \end{multline*}
                 We see that this is in fact a homotopy, which makes $id_{gr_2 \Omega BA}$ a null-homotopy.
 
@@ -975,14 +974,14 @@
 
                 If $C$ is a dg-coalgebra, we use the same technique as in \ref{lem: graded-qif-are-w}. Consider the filtration on $B\Omega C$ given as
                 \begin{align*}
-                    F_pB\Omega C = \startset{(c_{1,1}[-1]\otimes ... c_{1,n_1}[-1])) \otimes ... \otimes (c_{m, 1}[-1]\otimes ... \otimes c_{m,n_m}[-1])\mid |c_{1,1}| + ... + |c_{m,n_m}|\leq p}\text{.}
+                    F_pB\Omega C = \startset{\omega(sc_{1,1}\otimes ... \otimes sc_{1,n_1}) \otimes ... \otimes \omega(sc_{m, 1}\otimes ... \otimes sc_{m,n_m})\mid |c_{1,1}| + ... + |c_{m,n_m}|\leq p}\text{.}
                 \end{align*}
                 
                 This filtration is both bounded below and exhaustive, so the classical convergence theorem says that the associated spectral sequence converges. If we denote this sequence as $EF$, then $EF \implies H^*B\Omega C$. Let $EC$ denote the spectral sequence associated to $C$. Since $C$ is conilpotent $EC \implies H^*C$. The unit $\eta_C : C \rightarrow B\Omega C$ is now a map acting on $EC^0$ as the identity, sending each element in $EC^0_{p,q}$ to itself in $EF^0_{p,q}$.
                 
                 On each row $EF^0_{p,\bullet}$ we make another filtration called $G$.
                 \begin{align*}
-                    G_kEF^0_{p,\bullet} = \startset{(...)_1 \otimes ... \otimes (...)_n \mid n \geq -k}
+                    G_kEF^0_{p,\bullet} = \startset{\omega (...)_1 \otimes ... \otimes \omega (...)_n \mid n \geq -k}
                 \end{align*}
 
                 Similarly as in \ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $gr_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that every string of length $\geq 2$ is not hit by this morphism. However, by employing $r$ as above we may show that these summands are contractible.
@@ -1034,7 +1033,7 @@
             \end{lemma}
 
             \begin{proof}
-                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. To see that $\pi$ is a quasi-isomorphism it is enough to understand that it is a quasi-isomorphism as chain complexes. This is checked by Lefevre-Hasegawa \cite{LefevreHasegawa03}.
+                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. To see that $\pi$ is a quasi-isomorphism it is enough to understand that it is a quasi-isomorphism as chain complexes. This is checked by Lefevre-Hasegawa \cite{LefevreHasegawa03}. Keller has pointed out a slight mistake in this proof which he has proposed a fix to \cite{Keller06}.
             \end{proof}
 
             \begin{thm}\label{thm: model-coalg}
