@@ -521,7 +521,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                Moreover, if we assume both $X$ and $Y$ to be fibrant, the functor $\sfrac{\mathcal{C}(C,\_)}{\overset{l}{\sim}}$ sends acyclic fibrations to isomorphisms, i.e. to weak equivalences. By Ken Brown's lemma, lemma \ref{lem: Ken-Brown}, the afformentioned functor sends weak equivalences between fibrant objects to isomorphisms.
+                Moreover, if we assume both $X$ and $Y$ to be fibrant, the functor $\sfrac{\mathcal{C}(C,\argument)}{\overset{l}{\sim}}$ sends acyclic fibrations to isomorphisms, i.e. to weak equivalences. By Ken Brown's lemma, lemma \ref{lem: Ken-Brown}, the afformentioned functor sends weak equivalences between fibrant objects to isomorphisms.
             \end{proof}
 
             \begin{thm}[Generalized Whiteheads theorem]\label{thm: Whitehead}
@@ -751,7 +751,7 @@
             Let $i: M[1] \rightarrow cone(\alpha)$ be a homogenous morphism which is the injection when considered as graded modules. Notice that we have a pair of morphisms $(a, e^Ti)\in h_{A,\alpha}(A\langle M,\alpha\rangle)$.
                 
             \begin{proposition}\label{prop: universal-h}
-                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\_)$ is a natural isomorphism. Moreover, the pair $(a,e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e. the natural isomorphism is induced by this element under Yoneda's lemma.
+                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\argument)$ is a natural isomorphism. Moreover, the pair $(a,e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e. the natural isomorphism is induced by this element under Yoneda's lemma.
             \end{proposition}
 
             \begin{proof}
@@ -854,7 +854,7 @@
             \end{corollary}
 
             \begin{proof}[sketch of proof]
-                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\_$. H0 is satisfied as this category is bicomplete, and filtered colimits may be thought of as unions of sets. Moreover, since $mod_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
+                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\argument$. H0 is satisfied as this category is bicomplete, and filtered colimits may be thought of as unions of sets. Moreover, since $mod_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
             \end{proof}
 
             \begin{corollary}
@@ -1259,7 +1259,7 @@
 
         The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $Alg_\infty$ as a subcategory of $ConilCoalg_\mathbb{K}$ to essentially obtain 2 different model structure on this category. The following proposition tells us that these structures do not differ.
 
-        \begin{proposition}
+        \begin{proposition}\label{prop: coherent-model-structure}
             Let $f : A \rightsquigarrow B$ be an $\infty$-morphism. Then we have the following:
             \begin{itemize}
                 \item $f$ is an $\infty$-quasi-isomorphism if and only if $Bf$ is a weak equivalence.
@@ -1276,7 +1276,7 @@
 
     With the results we have establish, we are now ready to talk about homotopies in $Alg_\infty$.
 
-    \begin{thm}
+    \begin{thm}\label{thm: model-Alg-inf}
         In the category $Alg_\infty$ we have the following:
         \begin{itemize}
             \item Homotopy equivalence is an equivalence relation.

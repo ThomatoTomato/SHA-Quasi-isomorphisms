@@ -229,7 +229,7 @@
                 Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, i.e. $f(am) = af(m)$.
             \end{definition}
 
-            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\_,\_)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. One may check that there is a free functor from $Mod_\mathbb{K}$ to $Mod_A$.
+            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. One may check that there is a free functor from $Mod_\mathbb{K}$ to $Mod_A$.
 
             \begin{proposition}\label{prop: free-mod}
                 Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
@@ -525,7 +525,7 @@
                 Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$.
             \end{definition}
 
-            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\_,\_)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
+            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\argument,\argument)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
             \begin{proposition}\label{prop: cofree-comod}
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq Hom_C(N,C\otimes_{\mathbb{K}}M)$. 
@@ -619,7 +619,7 @@
                 
                 Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose that $g: M \rightarrow N$ is a morphism between $T(V)$-bimodules, then naturality follows from bilinearity.
 
-                In the dual case, $d_g^c$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. We define the reduced coactions as $\bar{\omega}^l_N = \omega^l_N - \_\otimes 1$ and $\bar{\omega}^r_N = \omega^r_N - 1\otimes\_\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k, k'>0$ such that ${\bar{\omega}^{l^k}_N}(n) = 0$ and ${\bar{\omega}^{r^{k'}}_N}(n)=0$.
+                In the dual case, $d_g^c$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. We define the reduced coactions as $\bar{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\bar{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k, k'>0$ such that ${\bar{\omega}^{l^k}_N}(n) = 0$ and ${\bar{\omega}^{r^{k'}}_N}(n)=0$.
 
                 Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. $n_{(k)}^{(i)} = \bar{\omega}^{r^i}_N\bar{\omega}^{l^{k-i}}_N(n)$. The extension of $n$ by $k$ coactions is then the sum over every position $i$, $n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}$. Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
 
@@ -711,7 +711,7 @@
             $M^{\bullet}$ is called a cochain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $Hom_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
 
 
-            The functor $\_[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\_[0] \simeq \bar{\mathbb{K}}\otimes\_$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\_[n] \simeq \bar{\mathbb{K}}[n]\otimes\_$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
+            The functor $\argument[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\argument[0] \simeq \bar{\mathbb{K}}\otimes\argument$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\argument[n] \simeq \bar{\mathbb{K}}[n]\otimes\argument$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
 
 
             In electric diagrams we will write triangles for the differential if there are no ambiguity.
@@ -922,7 +922,7 @@
             \end{center} 
 
             \begin{proposition}\label{prop: convolution to endomorphism}
-                $d_{(\_)}:Hom_\mathbb{K}(C,A)\rightarrow End(C\otimes_\mathbb{K}A)$ is a morphism of algebras. Moreover, if $\alpha\star \alpha = 0$, then $d_\alpha^2 = 0$.
+                $d_{(\argument)}:Hom_\mathbb{K}(C,A)\rightarrow End(C\otimes_\mathbb{K}A)$ is a morphism of algebras. Moreover, if $\alpha\star \alpha = 0$, then $d_\alpha^2 = 0$.
             \end{proposition}
 
             \begin{proof}
@@ -1321,7 +1321,7 @@
                 [m]+[n] = [m+n+1] \\
                 (f+g)(k) = \biggl\{\substack{f(k)\text{, if }k\leq m \\ g(k)+m\text{, otherwise}}
             \end{align*}
-            Notice that $[-1]+\_\simeq Id_\Delta$, so $(\Delta, +, [-1])$ is a monoidal category. Since $[0]$ is terminal in $\Delta$ it becomes a monoid with $\delta_{-1}: [-1]\rightarrow [0]$ as unit and $\sigma_0:[1]\rightarrow [0]$ as multiplication. Associativity and unitality is satisfied by uniqueness of morphisms $f:[n]\rightarrow [0]$.
+            Notice that $[-1]+\argument\simeq Id_\Delta$, so $(\Delta, +, [-1])$ is a monoidal category. Since $[0]$ is terminal in $\Delta$ it becomes a monoid with $\delta_{-1}: [-1]\rightarrow [0]$ as unit and $\sigma_0:[1]\rightarrow [0]$ as multiplication. Associativity and unitality is satisfied by uniqueness of morphisms $f:[n]\rightarrow [0]$.
             \begin{proposition}\label{prop: universal-monoid}
                 Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta_+\rightarrow \mathcal{C}$, such that $F[0] \simeq C$, $F\delta_{-1} \simeq \eta$ and $F\sigma_0 \simeq \mu$.
             \end{proposition} 
@@ -1369,12 +1369,12 @@
             % We will use this lemma to construct the canonical resolution for algebras. One may observe that this is the same as the Hochschild complex.
 
             % \begin{example}
-            %     Let $A$ be an algebra over the ring $\mathbb{K}$. The functor $A\otimes_\mathbb{K}\_:Mod_\mathbb{K}\rightarrow Mod_A$ is the free $A$-module over a $\mathbb{K}$-module. Let $U:Mod_A\rightarrow Mod_\mathbb{K}$ denote the forgetfull functor. 
+            %     Let $A$ be an algebra over the ring $\mathbb{K}$. The functor $A\otimes_\mathbb{K}\argument:Mod_\mathbb{K}\rightarrow Mod_A$ is the free $A$-module over a $\mathbb{K}$-module. Let $U:Mod_A\rightarrow Mod_\mathbb{K}$ denote the forgetfull functor. 
 
             %     \begin{minipage}[c]{0.3\textwidth}
             %         \begin{center}
             %             \begin{tikzcd}
-            %                 Mod_\mathbb{K} \ar[phantom]{r}{\top} \ar[bend right]{r}[below]{A\otimes_\mathbb{K}\_} & Mod_A \ar[bend right]{l}[above]{U}
+            %                 Mod_\mathbb{K} \ar[phantom]{r}{\top} \ar[bend right]{r}[below]{A\otimes_\mathbb{K}\argument} & Mod_A \ar[bend right]{l}[above]{U}
             %             \end{tikzcd}
             %         \end{center}
             %     \end{minipage}
@@ -1471,7 +1471,7 @@
             \end{proof}
 
             \begin{remark}
-                For now we don't need to show that $BA$ is a functor. This property follows from $BA$ being the representing object of $Tw(\_,A)$.
+                For now we don't need to show that $BA$ is a functor. This property follows from $BA$ being the representing object of $Tw(\argument,A)$.
             \end{remark}
 
             On the other hand, a coalgebra $C$ is a comonoid in $Mod_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid} we may think of it as an augmented simplical object $C:(\Delta_+)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplical identities follows from coassociativity and counitality. A coaugmented coalgebra $C$ may be given an augmented cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\bar{C}$ is a semi-cosimplical object of $Mod_\mathbb{K}$. Observe that $\bar{C}$ has an associated chain complex like $\bar{A}$, but every arrow goes in the opposite direction.
@@ -1773,7 +1773,7 @@
             An augmented $A_\infty$-algebra is a strictly unital $A_\infty$-algebra $A$ together with a strict unital morphism $\varepsilon_A : A \rightarrow \mathbb{K}$. The $\infty$-morphism $\varepsilon_A$ is called the augmentation of $A$.
         \end{definition}
 
-        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $Alg_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $Alg_\infty \simeq Alg_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra is the kernel of the augmentation $\varepsilon_A$. A priori, it does not make sense to talk about this limit as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms does in fact have a kernel. This defines a functor, $\bar{\_} : Alg_{\infty ,+} \rightarrow Alg_\infty$, where $Ker\varepsilon_A = \bar{A}$. The quasi-inverse to this functor is free augmentations. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \circ_k 1 = 0$ in the same manner. We obtain a functor $\_^+ : Alg_\infty \rightarrow Alg_{\infty, +}$, where $A\oplus \mathbb{K} = A^+$.
+        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $Alg_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $Alg_\infty \simeq Alg_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra is the kernel of the augmentation $\varepsilon_A$. A priori, it does not make sense to talk about this limit as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms does in fact have a kernel. This defines a functor, $\bar{\argument} : Alg_{\infty ,+} \rightarrow Alg_\infty$, where $Ker\varepsilon_A = \bar{A}$. The quasi-inverse to this functor is free augmentations. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \circ_k 1 = 0$ in the same manner. We obtain a functor $\argument^+ : Alg_\infty \rightarrow Alg_{\infty, +}$, where $A\oplus \mathbb{K} = A^+$.
 
     \subsection{$A_\infty$-Coalgebras}    
         Dual to $A_\infty$-algebras we got conilpotent $A_\infty$-coalgebras. Here we instead ask ourselves if the cobar construction has some converse. I.e. if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we do obtain a definition for conilpotent $A_\infty$-coalgebras.

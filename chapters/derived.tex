@@ -122,7 +122,7 @@
                     (d_v + d_h)\circ h(c) = d_v\circ h(c) + d_h\circ h(c) = h\circ d_v(c) + c + h\circ d_h(c) = h\circ (d_v + d_h)(c) + c = c
                 \end{multline*}
 
-                To treat the case of $\iota_C$ we will use a double spectral sequence argument. This proof does not use any new techniques and looks like things we have already done before. A full proof may be found in Lefevre-Hasegawa \cite{LefevreHasegawa03}.z
+                To treat the case of $\iota_C$ we will use a double spectral sequence argument. \todo{Fix this proof}
 
             \end{proof}
 
@@ -142,15 +142,15 @@
             Unless stated otherwise, for this section we fix $A$ to be an augmented dg-algebra, $C$ as a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ as an acyclic twisting morphism. We endow $CoMod^C_{conil}$ with three classes of morphisms:
             \begin{itemize}
                 \item $f\in Ac$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
-                \item $f\in Fib$ is a cofibration if $f^\#$ is a monomorphism.
-                \item $f\in Cof$ is a fibration if it har RLP to acyclic cofibrations.
+                \item $f\in Cof$ is a cofibration if $f^\#$ is a monomorphism.
+                \item $f\in Fib$ is a fibration if it har RLP to acyclic cofibrations.
             \end{itemize}
 
             \begin{thm}\label{thm: model-comod}
               The category $CoMod^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in Mod^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence.
             \end{thm}
 
-            We will call this model structure for the canonical model structure on $CoMod^C_{conil}$.
+            We will call this model structure for the canonical model structure on $CoMod^C_{conil}$. Under the hypthesis of this theorem, we may observe that every object of $CoMod^C_{conil}$ are cofibrant. Since every $M\in Mod^A$ is fibrant, and $R_\tau$ preserves fibrant objects we known that $R_tau M$ is fibrant as well. Clearly every direct summand of $R_\tau M$ is fibrant. If $N\in CoMod^C_{conil}$ is fibrant, then it is a direct summand of $R_\tau L_\tau N$. This shows that the bifibrant objects of $CoMod^C_{conil}$ are exactly the thick image of $R_\tau$.
 
             To be able to prove this we will need some lemmata. This proof is essentially the same as the case for dg-coalgebras. The main difference is to show independence of the choice of a twisting morphism $\tau$. To this end we must establish the relationship between graded quasi-isomorphisms and weak equivalences, as well as a technical lemma.
 
@@ -227,7 +227,7 @@
             \end{center}
             We define $\mathcal{E}$ to be the smallest exact structure on $Mod^A$ which contains every conflation arising from a chain map $f$. Observe that these conflations are exactly the short exact sequences of $Mod^A$ such that they are split when regarded as graded modules, i.e. forgetting the differential. Thus the smallest such $\mathcal{E}$ is exactly the collection of every conflation arising from a chain map $f$.
 
-            Recall that an object $M$ is projective (injective) if the represented functor $Mod^A(M,\_)$ ($Mod^A(\_,M)$) is exact. For the category $(Mod^A, \mathcal{E})$
+            Recall that an object $M$ is projective (injective) if the represented functor $Mod^A(M,\argument)$ ($Mod^A(\argument,M)$) is exact. For the category $(Mod^A, \mathcal{E})$
 
             \begin{proposition}
                 Let $M$ be an object of $Mod^A$. The following are equivalent:
@@ -306,7 +306,7 @@
 
             We know that $f_\tau^*$ preserves fibrations (epimorphisms). This is because on morphisms this functor acts as the identity, it only changes the ring action, so epimorphisms stay epimorphisms. It remains to see that quasi-isomorphisms are preserved. We will show this by identifying the derived categories. This follows the methods given by Keller in \cite{Keller94}. We will however simplify this discussion by restricting our attention solely to dg-algebras.
 
-            Let $A$ be a dg-algebra. We denote $A$ as a free $A$-module as $\hat{A} = Hom_A(\_,A)$. $\hat{A}$ is free in the enriched sense, i.e. ${Hom}^*_A(\hat{A},M) \simeq M$. \todo{Utdyp dette} Recall that $P$ is projective if it is a direct summand of $\hat{A}^n$ for some $n\in \mathbb{N}$. Given a right bounded complex $M$, we know how to construct a projective resolution $p: pM \rightarrow M$. Associated to this resoultion there is a triangle in $K(A)$ consisting of the complexes $M$, $pM$ and $aM$, where $aM$ is an acyclic complex.
+            Let $A$ be a dg-algebra. We denote $A$ as a free $A$-module as $\hat{A} = Hom_A(\argument,A)$. $\hat{A}$ is free in the enriched sense, i.e. ${Hom}^*_A(\hat{A},M) \simeq M$. \todo{Utdyp dette} Recall that $P$ is projective if it is a direct summand of $\hat{A}^n$ for some $n\in \mathbb{N}$. Given a right bounded complex $M$, we know how to construct a projective resolution $p: pM \rightarrow M$. Associated to this resoultion there is a triangle in $K(A)$ consisting of the complexes $M$, $pM$ and $aM$, where $aM$ is an acyclic complex.
 
             \begin{center}
                 \begin{tikzcd}
@@ -546,7 +546,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                We define $T = \_ \otimes_A \hat{B}$ and $H = Diff(B)(B,\_)$. We see that $Diff(B)(T\hat{A}, M)\simeq Diff(A)(\hat{A}, HM)\simeq HM \simeq Diff(B)(\hat{B}, M)$. Thus $T\hat{A}\simeq \hat{B}$, and the morphism $T : Diff(A)(\hat{A}, \hat{A}) \rightarrow Diff(B)(\hat{B}, \hat{B})$ is given by $f$. Since we assume $f$ to be a quasi-isomorphism, it follows that $\mathbb{L}T : D(A) \rightarrow D(B)$ is fully faithful on the set $\startset{\hat{A}}$.
+                We define $T = \argument \otimes_A \hat{B}$ and $H = Diff(B)(B,\argument)$. We see that $Diff(B)(T\hat{A}, M)\simeq Diff(A)(\hat{A}, HM)\simeq HM \simeq Diff(B)(\hat{B}, M)$. Thus $T\hat{A}\simeq \hat{B}$, and the morphism $T : Diff(A)(\hat{A}, \hat{A}) \rightarrow Diff(B)(\hat{B}, \hat{B})$ is given by $f$. Since we assume $f$ to be a quasi-isomorphism, it follows that $\mathbb{L}T : D(A) \rightarrow D(B)$ is fully faithful on the set $\startset{\hat{A}}$.
 
                 By devissage the functor $\mathbb{L}T$ is fully-faithful on all of $D(A)$, since $D(A)$ is generated by $\hat{A}$. Since $T$ hits all of $D(B)$s generators, $\mathbb{L}T$ is essentially surjective as well.
             \end{proof}
@@ -603,7 +603,7 @@
         \subsection{The Bar Construction}
             In section \ref{sec: 1.3} we saw that we could extend the domain of the bar construction to obtain an equivalence of categories. This converse led us to the definition of an $A_\infty$-algebra, as well as recognizing them as almost free dg-coalgebras. By employing the adjunction $(L_\tau, R_\tau) : CoMod^C \rightleftharpoons Mod^A$ we will do something similar for modules.
 
-            Let $A$ be an augmented algebra. The bar construction of $A$ gives us a universal adjunction $(L_{\pi_A}, R_{\pi_A}) : CoMod^{BA} \rightleftharpoons Mod^A$. We will call $R_{\pi_A}(\_ [1]) = \_ [1]\otimes_{\pi_A}BA$ for $B_A$, the bar construction on $Mod^A$. In this manner every $A$-module $M$ gives rise to an almost free $BA$-comodule $B_AM$, but does the converse of this construction works?
+            Let $A$ be an augmented algebra. The bar construction of $A$ gives us a universal adjunction $(L_{\pi_A}, R_{\pi_A}) : CoMod^{BA} \rightleftharpoons Mod^A$. We will call $R_{\pi_A}(\argument [1]) = \argument [1]\otimes_{\pi_A}BA$ for $B_A$, the bar construction on $Mod^A$. In this manner every $A$-module $M$ gives rise to an almost free $BA$-comodule $B_AM$, but does the converse of this construction works?
 
             Let us first look at what $B_A$ does to a module $M$. $B_AM$ is the dg-comodule which as a graded comodule is the free comodule $M[1] \otimes BA$. The differential of $B_AM$ is given by the $A$-module structure of $M$. That is, every elementary element $m'$ of $B_AM$ is an element of $M$ together with a finite string of elements of $A$.
             \begin{align*}
@@ -694,7 +694,7 @@
             Given an augmented $A_\infty$-algebra $A$ (\ref{def: augmented-sha}) we obtain an equivalence of categories. Recall that the categories $Alg_\infty$ and $Alg_{\infty,+}$ were equivalent by taking the kernel of augmentation and applying the free augmentation as its quasi-inverse. In the same manner, given a strictly unital $A$-polydule $M$, then it defines a strictly unital $\bar{A}$-polydule $\bar{M}$ by restricting the structure maps to $\bar{A}^{\otimes n}$. This defines an equivalence of categories.
             \begin{center}
                 \begin{tikzcd}
-                    iMod_{\infty}^A \ar[bend left]{r}[]{\bar{\_}}& Mod_{\infty}^{\bar{A}} \ar[bend left]{l}[]{\_^+}
+                    iMod_{\infty}^A \ar[bend left]{r}[]{\bar{\argument}}& Mod_{\infty}^{\bar{A}} \ar[bend left]{l}[]{\argument^+}
                 \end{tikzcd}
             \end{center}
             We may call its quasi-inverse for the free strict unitization. This takes an $\bar{A}$-polydule $M$ and turns it into a strictly unital $A$-polydule by defining the structure morphism as $0$ on the unit.
@@ -703,6 +703,141 @@
 
         \subsection{Universal Enveloping Algebra}
 
+            Given any augmented $A_\infty$-algebra $A$, there is a universal enveloping algebra $UA$. This algebra is universal in the sense that given any algebra $A'$ and an $\infty$-morphism  $B \rightarrow A$, then this factors through $UA$ by an algebra map $B \rightarrow UA$. By the cobar-bar adjunction there is really only one way to define this algebra.
 
+            \begin{definition}
+                Let $A$ be an $A_\infty$-algebra. The universal enveloping algebra is the algebra defined by $\Omega BA$.
+            \end{definition}
+            \begin{remark}
+                In this definition we have used the extended bar construction to $A_\infty$-algebras and the cobar construction on dg-coalgebras.
+            \end{remark}
 
+            \begin{lemma}
+                There is an \textit{isomorphism} of categories $i : Mod^{UA} \rightarrow iMod_{\infty, strict}^{BA}$ given by delooping.
+            \end{lemma}
+            \begin{proof}
+                This is immediate by the definition of a $UA$-module. To have a $UA$-module $SM$ we must have structure maps $m_i^M : M \otimes A^{\otimes i-1} \rightarrow M$ of degree $2-i$ for any $i \geq 2$. Unwinding this definition and using the adjunction data establishes this isomorphism.
+            \end{proof}
+
+        \subsection{The Derived Category $D_\infty A$ of Augmented $A_\infty$ Algebras} 
+
+            In this section we wish to define the derived category of strictly unitary polydules to an augmented $A_\infty$-algebra. If $[Qis]$ denote the class of $\infty$-quasi-isomorphisms, we want the derived category to be the localization at $\infty$-quasi-isomorphisms, e.g.
+            \begin{align*}
+                \mathcal{D}_\infty A = iMod_\infty^A[Qis^{-1}].
+            \end{align*}
+
+            Like in the case of algebras, we may understand the quasi-isomorphisms better. The category $iMod_\infty^A$ is not complete, but we may in the same sense give it a model structure without limits. Within this structure we already know that every object is cofibrant, and the goal is to show that every object is fibrant as well. This will allow us to lift every $\infty$-quasi-isomorphism to a homotopy equivalence. With this we may see that the localization from $K_\infty A \to D_\infty A$ is given by the identity.
+
+            Within the category $iMod_\infty^A$ we define three classes of morphisms:
+            \begin{itemize}
+                \item $f\in Ac$ is a weak equivalence if $f_1$ is a quasi-isomorphism.
+                \item $f\in Cof$ is a cofibration if $f_1$ is a monomorphism.
+                \item $f\in Fib$ is a fibration if $f_1$ is an epimorphism.
+            \end{itemize}
+
+            \begin{thm}
+                The category $iMod_\infty^A$ is a model category without enough limits. Moreover, every object are bifibrant.
+            \end{thm}
+
+            \begin{proof}
+                This is more or less identical to the proof of \ref{thm: model-Alg-inf}.
+            \end{proof}
+
+            \begin{corollary}
+                Homotopy equivalence defined in $iMod_\infty^A$ is an equivalence relation, and every $\infty$-quasi-isomorphism is a homotopy equivalence.
+
+                If $A$ is an ordinary associative algebra, then $Mod^A$ fully-faithfully embeds into $iMod_\infty^A$. This inclusion defines an equivalence:
+                \begin{align*}
+                    DA \simeq \sfrac{Mod^A}{\sim_\infty}
+                \end{align*}
+            \end{corollary}
+
+            $iMod_\infty^A$ admits a "model" structure, but we want this model structure to respect the model structure of the category $CoMod_{conil}^{BA}$. In other words we want the functor $B_A : iMod_\infty^A \to CoMod_{conil}^{BA}$ to preserve and reflect the model structure of both categories.
+
+            \begin{lemma}
+                Let $M$ be an object of $iMod_\infty^A$. The unit $BM \to RLBM$ induces a quasi-isomorphism on the primitives.
+            \end{lemma}
+
+            \begin{proof}
+                Fix this proof by using a double spectral sequence argument.
+            \end{proof}
+
+            \begin{proposition}
+                Let $M$ and $M'$ be objects of $iMod_\infty^A$, together with an $\infty$-morphism $f : M \to M'$.
+                \begin{itemize}
+                    \item $f$ is an $\infty$-quasi-isomorphism if and only if $Bf$ is a weak equivalence.
+                    \item $f$ is a fibration if and only if $Bf$ is a fibration.
+                    \item $f$ is a cofibration if and only if $Bf$ is a cofibration.
+                \end{itemize}
+            \end{proposition}
+
+            \begin{proof}
+                Recall from theorem \ref{thm: model-comod} that the morphism $\iota_{BA} : BA \to UA$ is an acyclic twisting morphism. Thus the adjoint pair $(L_{\iota_{BA}}, R_{\iota_{BA}})$ defines a Quillen equivalence.
+
+                We show only the first bullet point. The last two are identical to the proof of \ref{prop: coherent-model-structure}.
+
+                If $f_1$ is a quasi-isomorphism, then $Bf$ is a filtered quasi-isomorphism by definition. So suppose that $Bf$ is a weak equivalence instead. The unit transformation gives us a natural square.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        BM \ar[]{r}[]{} \ar[]{d}[]{Bf} & RLBM \ar[]{d}[]{RLBf} \\
+                        BM' \ar[]{r}[]{} & RLBM'    
+                    \end{tikzcd}
+                \end{center}
+
+                In this case $R = Bi$, so this diagram is in the image of $B$. We pull it back by functoriality.
+
+                \begin{center}
+                    \begin{tikzcd}
+                        M \ar[]{r}[]{} \ar[]{d}[]{f} & iLBM \ar[]{d}[]{iLBf} \\
+                        M' \ar[]{r}[]{} & iLBM'
+                    \end{tikzcd}
+                \end{center}
+
+                Since $Bf$ is a weak equivalence, we know that $iLBf$ is an $\infty$-quasi-isomorphism.
+
+                By the above proposition the horizontal maps are $\infty$-quasi-isomorphisms as well.
+            \end{proof}
+
+            Associated to each augmented $A_\infty$-algebra there is also a homotopy category. Since homotopy equivalence $\sim_\infty$ in $iMod_\infty^A$ defines a congruence relation we may construct the homotopy category $K_\infty A$.
+
+            \begin{corollary}
+                The localization $K_\infty A \to D_\infty A$ is given by the identity. Moreover, $K_\infty A = D_\infty A$.
+            \end{corollary}
+
+            \begin{remark}
+                The name homotopy category comes from homological algebra and has a priori nothing to do with the homotopy categor $Ho(iMod_\infty^A)$. However, in this particular case these naming conventions coincide.
+            \end{remark}
+
+            \begin{lemma}
+                The composition $J : Mod^{UA} \to iMod_{\infty, strict}^A \to iMod_\infty^A$ given by $J = \iota \circ i$, the equivalence then non-full inclusion is induces an equivalence of categories:
+                \begin{align*}
+                    DUA \simeq D_\infty A.
+                \end{align*}
+            \end{lemma}
+
+            \begin{proof}
+                Consider the commutative square:
+                \begin{center}
+                    \begin{tikzcd}
+                        Mod^{UA} \ar[]{d}[]{R_{\iota_{BA}}} \ar[]{r}[]{i} & iMod_{\infty, strict}^A \ar[]{d}[]{\iota} \\
+                        CoMod^{BA} & iMod_\infty^A \ar[]{l}[]{B}
+                    \end{tikzcd}
+                \end{center}
+
+                Since the three functors $R_{\iota_{BA}}$, $i$ and $B$ all induces equivalences on the derived categories, then $\iota$ has to as well.
+            \end{proof}
+
+            To summarize, we have established an equivalence between 4 different categories:
+            \begin{itemize}
+                \item $D_\infty A$, derived category of $A$
+                \item $iMod_{\infty, strict}^A[Qis^{-1}]$, derived category of $A$ with only strict morphisms
+                \item $DBA$, derived category of $BA$ as a dg-coalgebra
+                \item $DUA$, derived category of universal enveloping algebra
+            \end{itemize}
+
+            In this sense, we may also see that in the derived category, all of the higher homotopic data of each morphism have been collapsed by the homotopy.
+
+            The triangulated structure on $D_\infty A$ may be lifted along these equivalences making them triangulated as well. Note that $R_{\iota_{BA}}$ is already triangulated, and forcing there is only one way of forcing the triangulated structure on $iMod_\infty^A$. Since $iMod_{\infty}^A$ isn't complete it isn't easy to obtain a description of the triangles along any $\infty$-morphism $f$. However, this problem does not appear in $iMod_{\infty, strict}^A$, so one should think of only strict morphisms instead, but in this case we are already working in the category $Mod^{UA}$. 
+    \section{The Derived Category $D_\infty A$}
 \end{document}
