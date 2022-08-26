@@ -22,125 +22,171 @@
     \section{Prelimaries}    
     \subsection{Algebras}
 
-            This section is a review of associative algebras. We will define unital associative algebras and possibly non-unital associative algebras, which we will call algebras and non-unital algebras respectively. The collection of algebras together with homomorphisms between them form the category $Alg_{\mathbb{K}}$ of algebras. Other types of algebras such as augmented and tensor algebras will be defined as well.
+            This section is a review of associative algebras over a field $\mathbb{K}$. The main goal for this section is to establish some conventions and see how they may be dualized to coalgebras. This collection of algebras together with ring homomorphisms form the category $Alg_{\mathbb{K}}$ of associative algebras over $\mathbb{K}$.
 
-            \begin{definition}[Algebra]
-                Let $\mathbb{K}$ be a field with unit $1$. An algebra $A$ over $\mathbb{K}$ is a vector space with structure morphisms called multiplication and unit,
+            \begin{definition}[$\mathbb{K}$-Algebra]
+                Let $\mathbb{K}$ be a field with unit $1$. A $\mathbb{K}$-algebra $A$, or an algebra $A$ over $\mathbb{K}$ is a vector space with structure morphisms called multiplication and unit,
                 \begin{align*}
-                    (\nabla_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
-                    \upsilon_A & : \mathbb{K} \rightarrow A,
+                    (\cdot_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
+                    1_A & : \mathbb{K} \rightarrow A,
                 \end{align*}
                 satisfying the associativity and identity laws. 
                 \begin{align*}
-                    \text{(associativity)}\quad & (a \nabla_A b) \nabla_A c = a \nabla_A (b \nabla_A c) \\
-                    \text{(unitality)}\quad & \upsilon_A(1) \nabla_A a = a = a \nabla_A \upsilon_A(1)
+                    \text{(associativity)}\quad & (a \cdot_A b) \cdot_A c = a \cdot_A (b \cdot_A c) \\
+                    \text{(unitality)}\quad & 1_A(1) \cdot_A a = a = a \cdot_A 1_A(1)
                 \end{align*}
-                Whenever $A$ does not posess a unit morphism, we will call $A$ a non-unital algebra. Only the associativity law must hold.
+                Whenever $A$ does not posess a unit morphism, we will call $A$ a non-unital algebra. In this case only the associativity law must hold.
             \end{definition}
+
+            By abuse of notation we will confuse the unit of $\mathbb{K}$ by the unit of $A$. Since $1_A$ is a ring homomorphism, this should not be a cause of confusion. However, when we want to use the unit as a morphism, we will stick to the $1_A$ notation. When there are no confusion, we will also exchange $(\cdot_A)$ concatenation of variables as strings. 
 
             \begin{definition}[Algebra homomorphisms]
                 Let $A$ and $B$ be algebras. Then $f: A\rightarrow B$ is an algebra homomorphism if
                 \begin{enumerate}
                     \item $f$ is $\mathbb{K}$-linear
                     \item $f(ab)=f(a)f(b)$
-                    \item $f\circ\upsilon_A = \upsilon_B$
+                    \item $f\circ 1_A = 1_B$
                 \end{enumerate}
-                Whenever $A$ and $B$ are non-unital, we only require 1 and 2 for a homomorphism of non-unital algebras.
+                Whenever $A$ and $B$ are non-unital, we must drop the condition for $f$ to preserve units.
             \end{definition}
 
             \begin{definition}[Category of algebras]
-                \begin{itemize}
-                    \item Let $Alg_{\mathbb{K}}$ denote the category of algebras. It's objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $Alg_{\mathbb{K}}(A,B)$.
-                    \item Let $\widehat{}{Alg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{Alg}_{\mathbb{K}}(A,B)$.
-                \end{itemize}
+                We let $Alg_{\mathbb{K}}$ denote the category of algebras. Its objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $Alg_{\mathbb{K}}(A,B)$.
+                
+                Let $\widehat{Alg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{Alg}_{\mathbb{K}}(A,B)$.
             \end{definition}
 
-            Observe that for an algebra $A$, the triple $(A,\nabla_A,\upsilon_A)$ is a monoid in $mod_{\mathbb{K}}$. Thus, we may say that an algebra is a triple where the following diagrams commute. 
+            Observe that for an algebra $A$, the triple $(A,(\cdot_A),1_A)$ is a monoid in $Mod_{\mathbb{K}}$. Thus the category of algebras corresponds to the category of monoids in $Mod_\mathbb{K}$. We reformulate the algebra axioms as the following commutative diagrams: 
             \begin{center}
                 \begin{tikzcd}
-                    A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\nabla_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\nabla_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\nabla_A)} \\
-                    A \otimes_{\mathbb{K}} A \ar[]{r}[]{(\nabla_A)} & A
+                    A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\cdot_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\cdot_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\cdot_A)} \\
+                    A \otimes_{\mathbb{K}} A \ar[]{r}[]{(\cdot_A)} & A
                 \end{tikzcd} \quad
                 \begin{tikzcd}
-                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes \upsilon_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\nabla_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{\upsilon_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
+                    A \otimes_{\mathbb{K}} \mathbb{K} \ar[]{r}[]{id_A \otimes 1_A} \ar[]{rd}[below]{\simeq} & A \otimes_{\mathbb{K}} A \ar[]{d}[]{(\cdot_A)} & \mathbb{K} \otimes_{\mathbb{K}} A \ar[]{l}[above]{1_A \otimes id_A} \ar[]{ld}[]{\simeq}\\
                     & A
                 \end{tikzcd}
             \end{center}
-            The final method we will use to represent an algebra are electric circuits. An electric circuit is a diagram read from top to bottom, where each column represent a different vector space in a tensor. Morphisms in such diagrams are figures, conjunctions, twistings and etc. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-3, 0) {(Multiplication)};
+
+            We will soon give a third and equivalent of defining a diagram. By using electric circuits \cite{Loday12}, we get a diagram calculus to manipulate morphisms of diagrams.
+            % The final method we will use to represent an algebra are electric circuits. An electric circuit is a diagram read from top to bottom, where each column represent a different vector space in a tensor. Morphisms in such diagrams are figures, conjunctions, twistings and etc. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-3, 0) {(Multiplication)};
                     
-                    \node[op, scale = 0.75] (1) at (0,0) {$\nabla_A$};
+            %         \node[op, scale = 0.75] (1) at (0,0) {$\nabla_A$};
 
-                    \draw [line width=1pt] (-0.5, 1) -- (-0.5, 0.5) -- (1) -- (0, -1);
-                    \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (1);
+            %         \draw [line width=1pt] (-0.5, 1) -- (-0.5, 0.5) -- (1) -- (0, -1);
+            %         \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (1);
 
 
-                    \node at (1.5,0) {$=$};
+            %         \node at (1.5,0) {$=$};
 
-                    \draw [line width=1pt] (2.5,1) -- (2.5, 0.5) -- (3,0) -- (3,-1);
-                    \draw [line width=1pt] (3.5,1) -- (3.5, 0.5) -- (3,0);
-                \end{tikzpicture} \qquad
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-1.5,0.25) {(Unit)};
+            %         \draw [line width=1pt] (2.5,1) -- (2.5, 0.5) -- (3,0) -- (3,-1);
+            %         \draw [line width=1pt] (3.5,1) -- (3.5, 0.5) -- (3,0);
+            %     \end{tikzpicture} \qquad
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-1.5,0.25) {(Unit)};
                     
-                    \node[op, scale = 0.75] (1) at (0,1) {$\upsilon_A$};
-                    \draw [line width=1pt] (1) -- (0,-0.75);
+            %         \node[op, scale = 0.75] (1) at (0,1) {$\upsilon_A$};
+            %         \draw [line width=1pt] (1) -- (0,-0.75);
 
-                    \node at (1, 0.25) {$=$};
+            %         \node at (1, 0.25) {$=$};
 
-                    \node[op, scale=1] (2) at (1.75,1) {};
-                    \draw [line width=1pt] (2) -- (1.75,-0.75);
+            %         \node[op, scale=1] (2) at (1.75,1) {};
+            %         \draw [line width=1pt] (2) -- (1.75,-0.75);
 
-                    \node at (0,-0.5) {};
-                \end{tikzpicture}
-            \end{center}
-            Using these operations we can now reformulate the algebra laws. These are the electric laws for an algebra:
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-3,0.5) {(Associativity)};
+            %         \node at (0,-0.5) {};
+            %     \end{tikzpicture}
+            % \end{center}
+            % Using these operations we can now reformulate the algebra laws. These are the electric laws for an algebra:
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-3,0.5) {(Associativity)};
 
-                    \draw [line width=1pt] (-0.75, 1.25) -- (-0.75, 1) -- (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
-                    \draw [line width=1pt] (-0.25, 1.25) -- (-0.25, 1) -- (-0.5, 0.75);
-                    \draw (0.5, 1.25) -- (0.5, 0.5) -- (0,0);
+            %         \draw [line width=1pt] (-0.75, 1.25) -- (-0.75, 1) -- (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
+            %         \draw [line width=1pt] (-0.25, 1.25) -- (-0.25, 1) -- (-0.5, 0.75);
+            %         \draw (0.5, 1.25) -- (0.5, 0.5) -- (0,0);
 
-                    \node at (1.25,0.5) {$=$};
+            %         \node at (1.25,0.5) {$=$};
 
-                    \draw [line width=1pt] (2,1.25) -- (2, 0.5) -- (2.5, 0) -- (2.5, -0.5);
-                    \draw [line width=1pt] (2.75, 1.25) -- (2.75, 1) -- (3, 0.75) -- (3, 0.5) -- (2.5, 0);
-                    \draw [line width=1pt] (3.25, 1.25) -- (3.25, 1) -- (3, 0.75);
-                \end{tikzpicture}
-            \end{center}
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2,0) {(unitality)};
+            %         \draw [line width=1pt] (2,1.25) -- (2, 0.5) -- (2.5, 0) -- (2.5, -0.5);
+            %         \draw [line width=1pt] (2.75, 1.25) -- (2.75, 1) -- (3, 0.75) -- (3, 0.5) -- (2.5, 0);
+            %         \draw [line width=1pt] (3.25, 1.25) -- (3.25, 1) -- (3, 0.75);
+            %     \end{tikzpicture}
+            % \end{center}
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-2,0) {(unitality)};
 
-                    \node[op, scale=0.75] (1) at (-0.5, 1) {};
+            %         \node[op, scale=0.75] (1) at (-0.5, 1) {};
 
-                    \draw [line width=1pt] (1) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
-                    \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (0,0);
+            %         \draw [line width=1pt] (1) -- (-0.5, 0.5) -- (0,0) -- (0, -0.5);
+            %         \draw [line width=1pt] (0.5, 1) -- (0.5, 0.5) -- (0,0);
 
-                    \node at (1.25,0.) {$=$};
+            %         \node at (1.25,0.) {$=$};
 
-                    \draw [line width=1pt] (2, 1) -- (2, -0.5);
+            %         \draw [line width=1pt] (2, 1) -- (2, -0.5);
 
-                    \node at (2.75,0) {$=$};
+            %         \node at (2.75,0) {$=$};
 
-                    \node[op, scale=0.75] (2) at (4.5, 1) {};
-                    \draw [line width=1pt] (3.5, 1) -- (3.5, 0.5) -- (4, 0) -- (4, -0.5);
-                    \draw [line width=1pt] (2) -- (4.5, 0.5) -- (4, 0);
+            %         \node[op, scale=0.75] (2) at (4.5, 1) {};
+            %         \draw [line width=1pt] (3.5, 1) -- (3.5, 0.5) -- (4, 0) -- (4, -0.5);
+            %         \draw [line width=1pt] (2) -- (4.5, 0.5) -- (4, 0);
 
-                \end{tikzpicture}
-            \end{center}
+            %     \end{tikzpicture}
+            % \end{center}
+
+            We supply some examples of algebras one may encounter in nature.
+
+            \begin{example}
+                Let $\mathbb{K}$ be any field. The field is trivially an algebra over itself.
+            \end{example}
+
+            \begin{example}
+                The complex numbers $\mathbb{C}$ is an algebra over $\mathbb{R}$. This is true since it is a vector space over $\mathbb{R}$, and complex multiplication respects scalar multiplication.
+            \end{example}
+
+            \begin{example}
+                Let $\mathbb{K}$ be any field. The ring of n-dimensional matrices $M_n(\mathbb{K})$ is an algebra over $\mathbb{K}$. The multiplication is taken to be the matrix multiplication and the unit is the n-dimensional identity matrix.
+            \end{example}
+
+            Augmented algebras will be central to our discussion. An algebra $A$ is augmented if it is equipped with an algebra homomorphism which splits the algebra into an ideal component and a unit component. We make this precise with the following definition
 
             \begin{definition}[Augmented algebras]
-                Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon : A \rightarrow \mathbb{K}$.
+                Let $A$ be an algebra. It is called augmented if there is an algebra homomorphism $\varepsilon_A : A \rightarrow \mathbb{K}$.
             \end{definition}
 
-            If $A$ is an augmented algebra, then it decomposes into $\mathbb{K}\oplus Ker\varepsilon$ as a module. The splitting is given by unitality of the morphism $\varepsilon: A \rightarrow \mathbb{K}$, as we know that $\varepsilon(\upsilon_A) = id_{\mathbb{K}}$. The kernel of $\varepsilon$ is called the augmentation ideal or redecued algebra and we will denote it as $\bar{A}$. Taking kernels gives an equivalence of categories between augmented algebras and non-unital algebras, with unitization as the quasi-inverse. The category of augmented algebras is denoted as $Alg_{\mathbb{K},+}$ or $Alg_{\mathbb{K},+}$.
+            Given this algebra homomorphism we know that it has to preserve the unit. Thus the kernel $\tt{Ker}\varepsilon_A \subseteq A$ is almost $A$, but without its unit. In the module category $Mod_\mathbb{K}$ the morphism $\varepsilon_A$ is automatically a split-epimorphism, where the splitting is given by the unit $1_A$. Thus as a module we have $A \simeq \bar{A}\oplus\mathbb{K}$, where $\bar{A} = \tt{Ker}\varepsilon_A$. $\bar{A}$ is called the augmentation ideal, or the reduced algebra of $A$.
 
-            \begin{definition}[Tensor algebra]
+            A morphism $f : A \rightarrow B$ of augmented algebras is an algebra homomorphism, but with the added condition that it must preserve the augmentation; i.e. $\varepsilon_B \circ f = \varepsilon_A$. The collection of all augmented algebras over $\mathbb{K}$ together with the morphisms describes constitutes the category of augmented algebras over $\mathbb{K}$: $Alg_{\mathbb{K},+}$.
+
+            Given an augmented algebra $A$, taking kernels of $\varepsilon_A$ gives a functor $\bar{\argument} : Alg_{\mathbb{K},+} \rightarrow \widehat{Alg}_\mathbb{K}$. This functor is well defined on morphisms of augmented algebras, as each morphism is required to preserve the splitting. This functor employs a quasi-inverse, given by the free augmentation $\argument^+ : \widehat{Alg}_\mathbb{K} \rightarrow Alg_{\mathbb{K},+}$. Given a non-unital algebra $A$, the free augmentation is defined as $A^+ = A\oplus\mathbb{K}$, where the multiplication is given by:
+            \begin{align*}
+                (a,k)(a',k') = (aa' + ak' + a'k, kk')\tt{.}
+            \end{align*}
+            The unit is given by the element $(0,1)$. We summarize this statement.
+            
+            \begin{proposition}
+                The functors $\bar{\argument}$ and $\argument^+$ are quasi-inverse to each other.
+            \end{proposition}
+
+            \begin{proof}
+                Supply proof? \todo{Skal jeg la dette være?}
+            \end{proof}
+
+            There are many augmented algebras to encounter in nature. We will note some examples.
+
+            \begin{example}[Group algebra]
+                Pick any group $G$ and any field $\mathbb{K}$. The group ring $K[G]$ is an augmented algebra where the augmentation is given by the sum
+                \begin{align*}
+                    \sum_{g\in G}k_gg = \sum_{g\in G}k_g
+                \end{align*} 
+            \end{example}
+
+            Among our most important example of algebras is the tensor algebra. This is also the free algebra over $\mathbb{K}$.
+
+            \begin{example}[Tensor algebra]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor algebra $T(V)$ of $V$ as the module
                 \begin{align*}
                     T(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2} \oplus V^{\otimes 3} \oplus ...
@@ -155,88 +201,100 @@
                     \upsilon_{T(V)} : \mathbb{K} & \rightarrow T(V) \\
                     1 & \mapsto 1
                 \end{align*}
-            \end{definition}
+            \end{example}
 
             Observe that the tensor algebra is augmented. The projection from $T(V)$ into $\mathbb{K}$ is an algebra homomorphism, so we may split the tensor algebra into its unit and its augmentation ideal $T(V) \simeq \mathbb{K}\oplus\bar{T}(V)$. We call $\bar{T}(V)$ the reduced tensor algebra.
 
-            \begin{proposition}[Tensor algebra is free]
-                The tensor algebra is the free algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq Alg_{\mathbb{K}}(T(V),A)$.
+            \begin{proposition}[Tensor algebras are free]
+                The tensor algebras are the free algebras over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq Alg_{\mathbb{K}}(T(V),A)$.
 
-                The reduced tensor algebra is the fre non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq \widehat{Alg}_{\mathbb{K}}(\bar{T}(V),A)$.
+                The reduced tensor algebra is the free non-unital algebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ there is a natural isomorphism $Hom_{\mathbb{K}}(V,A)\simeq \widehat{Alg}_{\mathbb{K}}(\bar{T}(V),A)$.
             \end{proposition}
 
             \begin{proof}
                 This proposition should be evident from the description of an algebra homomorphism from a tensor algebra. If $f: T(V) \rightarrow A$ is an algebra homomorphism, then $f$ must satisfy the following conditions:
                 \begin{itemize}
                     \item Unitality:\quad $f(1) = 1$
-                    \item Homomorphism property:\quad Given $v,w\in V$, then $f(vw) = f(v)\nabla_Af(w)$
+                    \item Homomorphism property:\quad Given $v,w\in V$, then $f(vw) = f(v)\cdot_Af(w)$
                 \end{itemize}
                 By induction, we see that $f$ is completely determined by where it sends the elements of $V$. Thus restriction by the inclusion of $V$ into $T(V)$ induces a bijection.
             \end{proof}
 
+            Just as for rings, every algebra $A$ has a module category of its own. The definition is very much like that for rings.
+
             \begin{definition}[Modules]
-                Let $A$ be an algebra. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow A$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow A$) called multiplication. We require that $\mu_M$ is associative with respect to the multiplication, and it preserves the unit of $A$. In other words, the electric laws below are satisfied.
+                Let $A$ be an algebra over $\mathbb{K}$. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow M$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow M$) called multiplication. We require that $\mu_M$ is associative and preserves the unit of $A$. I.e. we have the commutative diagrams in $Mod_\mathbb{K}$.
                 \begin{center}
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-2.4,0) {(Associativity)};
-                        
-                        \node at (0,1.75) {A};
-                        \node at (1,1.75) {A};
-                        \node at (2,1.75) {M};
-
-                        \node[op, scale = 0.5] (a) at (1,-0.25) {$\mu_M$};
-
-                        \draw [line width=1pt] (0,1.25) -- (0, 1) -- ((0.5, 0.5) -- (0.5, 0.25) -- (a);
-                        \draw [line width=1pt] (a) -- (2,0.5) -- (2,1.25);
-                        \draw [line width=1pt] (0.5,0.5) -- (1,1) -- (1, 1.25);
-                        \draw [line width=1pt] (a) -- (1,-1);
-                        
-                        \node at (2.5,0) {$=$};
-                        
-                        \node at (3,1.75) {A};
-                        \node at (4,1.75) {A};
-                        \node at (5,1.75) {M};
-
-                        \node[op, scale = 0.5] (b) at (4.5,0.5) {$\mu_M$};
-                        \node[op, scale = 0.5] (c) at (4,-0.25) {$\mu_M$};
-
-                        \draw [line width=1pt] (3,1.25) -- (3, 0.5) -- (c);
-                        \draw [line width=1pt] (c) -- (b) -- (5,1) -- (5,1.25);
-                        \draw [line width=1pt] (4, 1.25) -- (4,1) -- (b);
-                        \draw [line width=1pt] (c) -- (4,-1);
-                    \end{tikzpicture}\\
-
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-2,0) {(unitality)};
-    
-                        \node at (1.75,1.5) {M};
-
-                        \node[op, scale=0.75] (1) at (0.25, 1) {};
-                        \draw [line width=1pt] (1) -- (0.25, 0.75) -- (1,0);
-                        \draw [line width=1pt] (1,0) -- (1.75,0.75) -- (1.75, 1);
-                        \draw [line width=1pt] (1,0) -- (1,-0.75);
-    
-                        \node at (2.25,0) {$=$};
-    
-                        \node at (3,1.5) {M};
-
-                        \draw [line width=1pt] (3,1) -- (3,-0.75);
-                    \end{tikzpicture}
+                    \begin{tikzcd}
+                        A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{d}[]{\cdot_A\otimes M} \ar[]{r}[]{A\otimes\mu_M} & A\otimes_\mathbb{K}M \ar[]{d}[]{\mu_M}\\
+                        A\otimes_\mathbb{K}M \ar[]{r}[]{\mu_M} & M
+                    \end{tikzcd}
+                    \begin{tikzcd}
+                        \mathbb{K} \otimes_\mathbb{K} M \ar[]{r}[]{1_A\otimes M} \ar[]{rd}[]{\simeq} & A \otimes_\mathbb{K} M \ar[]{d}[]{\mu_M} \\
+                        & M
+                    \end{tikzcd}
                 \end{center}
+                % \begin{center}
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                %         \node at (-2.4,0) {(Associativity)};
+                        
+                %         \node at (0,1.75) {A};
+                %         \node at (1,1.75) {A};
+                %         \node at (2,1.75) {M};
+
+                %         \node[op, scale = 0.5] (a) at (1,-0.25) {$\mu_M$};
+
+                %         \draw [line width=1pt] (0,1.25) -- (0, 1) -- ((0.5, 0.5) -- (0.5, 0.25) -- (a);
+                %         \draw [line width=1pt] (a) -- (2,0.5) -- (2,1.25);
+                %         \draw [line width=1pt] (0.5,0.5) -- (1,1) -- (1, 1.25);
+                %         \draw [line width=1pt] (a) -- (1,-1);
+                        
+                %         \node at (2.5,0) {$=$};
+                        
+                %         \node at (3,1.75) {A};
+                %         \node at (4,1.75) {A};
+                %         \node at (5,1.75) {M};
+
+                %         \node[op, scale = 0.5] (b) at (4.5,0.5) {$\mu_M$};
+                %         \node[op, scale = 0.5] (c) at (4,-0.25) {$\mu_M$};
+
+                %         \draw [line width=1pt] (3,1.25) -- (3, 0.5) -- (c);
+                %         \draw [line width=1pt] (c) -- (b) -- (5,1) -- (5,1.25);
+                %         \draw [line width=1pt] (4, 1.25) -- (4,1) -- (b);
+                %         \draw [line width=1pt] (c) -- (4,-1);
+                %     \end{tikzpicture}\\
+
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                %         \node at (-2,0) {(unitality)};
+    
+                %         \node at (1.75,1.5) {M};
+
+                %         \node[op, scale=0.75] (1) at (0.25, 1) {};
+                %         \draw [line width=1pt] (1) -- (0.25, 0.75) -- (1,0);
+                %         \draw [line width=1pt] (1,0) -- (1.75,0.75) -- (1.75, 1);
+                %         \draw [line width=1pt] (1,0) -- (1,-0.75);
+    
+                %         \node at (2.25,0) {$=$};
+    
+                %         \node at (3,1.5) {M};
+
+                %         \draw [line width=1pt] (3,1) -- (3,-0.75);
+                %     \end{tikzpicture}
+                % \end{center}
             \end{definition}
 
             \begin{definition}[A-linear homomorphisms]
                 Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, i.e. $f(am) = af(m)$.
             \end{definition}
 
-            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. One may check that there is a free functor from $Mod_\mathbb{K}$ to $Mod_A$.
+            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $Hom_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. There is a free functor from the category of $\mathbb{K}$-modules to left $A$-modules.
 
             \begin{proposition}\label{prop: free-mod}
-                Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
+                Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is a natural isomorphism $Hom_{\mathbb{K}}(M,N)\simeq Hom_{A}(A\otimes_{\mathbb{K}}M,N)$.
             \end{proposition}
 
             \begin{proof}
-                Define the isomorphism $\phi$ as
+                Define the natural isomorphism $\phi$ as
                 \begin{align*}
                     \phi & : Hom_\mathbb{K}(M,N) \rightarrow Hom_A(A\otimes_\mathbb{K}M, N) \\
                     \phi (f) & = \mu_N \circ (A \otimes f)\text{.}
@@ -246,54 +304,63 @@
                     \sigma & : Hom_A(A\otimes_\mathbb{K}M, N) \rightarrow Hom_\mathbb{K}(M,N) \\
                     \sigma (f) & = f \circ (\upsilon_A \otimes M). 
                 \end{align*}
-                We check that this does indeed define an isomorphism by electric diagrams.
-                \begin{center}
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                We check that these morphisms are inverses to each other:
+                \begin{align*}
+                    \sigma \circ \phi(f) = \sigma(\mu_N\circ (A\otimes f)) = \mu_N \circ (A\otimes f) \circ (1_A \otimes M) = \mu_N (1_A \circ N) \circ f = f
+                \end{align*}
+
+                \begin{align*}
+                    \phi \circ \sigma(f) = \phi(f \circ (1_A \otimes M)) = \mu_N \circ (A\otimes (f \circ (1_A \otimes M))) = f \otimes (A \otimes M) = f
+                \end{align*}
+                % We check that this does indeed define an isomorphism by electric diagrams.
+                % \begin{center}
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
                     
-                    \node at (-1, 0) {$\sigma \circ \phi (f)$};
-                    \node[anchor = west] at (0,0) {$=$};
+                %     \node at (-1, 0) {$\sigma \circ \phi (f)$};
+                %     \node[anchor = west] at (0,0) {$=$};
 
-                    \node[op, scale=0.75] (u1) at (1, 0.55) {};
-                    \node[op, scale=0.75] (f1) at (2, 0.5) {$f$};
+                %     \node[op, scale=0.75] (u1) at (1, 0.55) {};
+                %     \node[op, scale=0.75] (f1) at (2, 0.5) {$f$};
 
-                    \draw [line width = 1pt] (2, 1) -- (f1) -- (2, 0) -- (1.5, -0.25) -- (1.5 , -1);
-                    \draw [line width = 1pt] (u1) -- (1, 0) -- (1.5, -0.25);
+                %     \draw [line width = 1pt] (2, 1) -- (f1) -- (2, 0) -- (1.5, -0.25) -- (1.5 , -1);
+                %     \draw [line width = 1pt] (u1) -- (1, 0) -- (1.5, -0.25);
 
-                    \node at (3, 0) {$= f$};
-                    \end{tikzpicture}
-                \end{center}
-                \begin{center}
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+                %     \node at (3, 0) {$= f$};
+                %     \end{tikzpicture}
+                % \end{center}
+                % \begin{center}
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
 
-                        \node at (-1, 0) {$\phi \circ \sigma (f)$};
-                        \node[anchor = west] at (0, 0) {$=$}; 
+                %         \node at (-1, 0) {$\phi \circ \sigma (f)$};
+                %         \node[anchor = west] at (0, 0) {$=$}; 
                         
-                        \draw [line width = 1pt] (1, 1) -- (1, -0.25) -- (1.5, -0.5) -- (1.5, -1);
+                %         \draw [line width = 1pt] (1, 1) -- (1, -0.25) -- (1.5, -0.5) -- (1.5, -1);
 
-                        \node[op, scale = 0.75] (u1) at (1.5, 1) {};
-                        \node[op, scale = 0.75] (f1) at (2, 0.25) {$f$};
+                %         \node[op, scale = 0.75] (u1) at (1.5, 1) {};
+                %         \node[op, scale = 0.75] (f1) at (2, 0.25) {$f$};
 
-                        \draw [line width = 1pt] (u1) -- (1.5, 0.5) -- (f1) -- (2, -0.25) -- (1.5, -0.5);
-                        \draw [line width = 1pt] (2.5, 1) -- (2.5, 0.5) -- (f1);
+                %         \draw [line width = 1pt] (u1) -- (1.5, 0.5) -- (f1) -- (2, -0.25) -- (1.5, -0.5);
+                %         \draw [line width = 1pt] (2.5, 1) -- (2.5, 0.5) -- (f1);
 
-                        \node at (3.5, 0) {$=$};
+                %         \node at (3.5, 0) {$=$};
 
-                        \node[op, scale = 0.75] (f2) at (5.5, -0.25) {$f$};
-                        \node[op, scale = 0.75] (u2) at (5, 1) {}; 
+                %         \node[op, scale = 0.75] (f2) at (5.5, -0.25) {$f$};
+                %         \node[op, scale = 0.75] (u2) at (5, 1) {}; 
 
-                        \draw [line width = 1pt] (4.5, 1) -- (4.5, 0.5) -- (5, 0.25) -- (5, 0) -- (f2) -- (5.5, -1);
-                        \draw [line width = 1pt] (u2) -- (5, 0.25);
-                        \draw [line width = 1pt] (6, 1) -- (6, 0) -- (f2);
+                %         \draw [line width = 1pt] (4.5, 1) -- (4.5, 0.5) -- (5, 0.25) -- (5, 0) -- (f2) -- (5.5, -1);
+                %         \draw [line width = 1pt] (u2) -- (5, 0.25);
+                %         \draw [line width = 1pt] (6, 1) -- (6, 0) -- (f2);
 
-                        \node at (7, 0) {$= f$};
-                    \end{tikzpicture}
-                \end{center}
+                %         \node at (7, 0) {$= f$};
+                %     \end{tikzpicture}
+                % \end{center}
             \end{proof}
             
     \subsection{Coalgebras}
-            This section aims to dualize the definitions from last section. To this end we will define counital coassociative coalgebras and non-counital coassociative coalgebras, which will be called coalgebras and non-counital coalgebras respectively. The collection of coalgebras together with coalgebra homomorphisms is the category $CoAlg_{\mathbb{K}}$. Due to some ill-behavior, this dualization is only a true dualization under some finiteness conditions for the coalgebras. Thus we will see that the proper dual concept will be thath of conilpotent coalgebras.
+            In this section we want to dualize the definitions given in the last section. As we will see, some strange artifacts from the structure of algebras appears in the dualization process. We would like to define a coalgebra as an algebra, but all of the diagrams are reversed. For many purposes this dualization is good, but as we will encounter some finiteness conditions are necessary. The category of "ill-behaved" coalgebras will be denoted $CoAlg_\mathbb{K}$, and we will look at this first.
 
-            \begin{definition}[Coalgebra]
+            \begin{definition}[$\mathbb{K}$-Coalgebra]
                 Let $\mathbb{K}$ be a field. A coalgebra $C$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called comultiplication and counit,
                 \begin{align*}
                     (\Delta_C) & : C \rightarrow C\otimes_{\mathbb{K}}C \\
@@ -306,94 +373,105 @@
                 \end{align*}
             \end{definition}
 
-            We define repeated application of comultiplication as $\Delta_C^n = (\Delta_C\otimes id_C\otimes ...)\circ\Delta_C^{n-1}$. Notice that the choice of where we put comultiplication in the tensor does not matter, as coassociativity require all of the choices to be equal.
+            In the same way as for algebras, we say that a coalgebra is non-counital if it is without a counit.
+
+            Unlike algebras, coalgebras does not admit a single intuitive method for writing repeated application of the comulitplication. For instance, given an element $c\in C$ we may apply the comultiplication twice on $c$ in two different ways:
+            \begin{align*}
+                \Delta_{C,(1)}^2(c) & = (\Delta_C \otimes C)\Delta_C(c)\tt{,} \\
+                \Delta_{C,(2)}^2(c) & = (C \otimes \Delta_C)\Delta_C(c)\tt{.}
+            \end{align*}
+            One should immediately note that $\Delta_{C,(1)}^2(c) = \Delta_{C,(2)}^2(c)$ is coassociativity. So there is in fact a unique way to do repeated application of $\Delta_C$ on $c$. We denote the n-fold repeated application of $\Delta_C$ by $\Delta_C^n$. Since the element $\Delta_C^n(c)$ represents a finite sum in $C^{\otimes n}$, one may use Sweedlers notation \cite{Loday12} as it is well-defined.
+            \begin{align*}
+                \Delta_C^n(c) = \sum c_{(1)}\otimes ... \otimes c_{(n)}
+            \end{align*}
             
-            We may dualize the electric circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit becomes a sink. 
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
-                    \node at (-3.5, 0) {(Comultiplication)};
+            % We may dualize the electric circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit becomes a sink. 
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale = 0.75}, scale = 0.7]
+            %         \node at (-3.5, 0) {(Comultiplication)};
                     
-                    \node[op, scale=0.75] (1) at (0,0) {$\Delta_C$};
+            %         \node[op, scale=0.75] (1) at (0,0) {$\Delta_C$};
 
-                    \draw [line width=1pt] (0,1) -- (1) -- (-0.5, -0.5) -- (-0.5, -1);
-                    \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1);
+            %         \draw [line width=1pt] (0,1) -- (1) -- (-0.5, -0.5) -- (-0.5, -1);
+            %         \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1);
 
-                    \node at (1.5,0) {$=$};
+            %         \node at (1.5,0) {$=$};
 
-                    \draw [line width=1pt] (3, 1) -- (3, 0) -- (2.5, -0.5) -- (2.5, -1);
-                    \draw [line width=1pt] (3, 0) -- (3.5, -0.5) -- (3.5, -1);
+            %         \draw [line width=1pt] (3, 1) -- (3, 0) -- (2.5, -0.5) -- (2.5, -1);
+            %         \draw [line width=1pt] (3, 0) -- (3.5, -0.5) -- (3.5, -1);
 
-                \end{tikzpicture} \qquad
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-2.5, 0) {(Counit)};
+            %     \end{tikzpicture} \qquad
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-2.5, 0) {(Counit)};
                     
-                    \node[op, scale=0.75] (1) at (0,-1) {$\varepsilon_C$};
-                    \draw [line width=1pt] (0, 1) -- (1);
+            %         \node[op, scale=0.75] (1) at (0,-1) {$\varepsilon_C$};
+            %         \draw [line width=1pt] (0, 1) -- (1);
 
-                    \node at (1, 0) {$=$};
+            %         \node at (1, 0) {$=$};
 
-                    \node[op, scale=1] (2) at (2, -1) {};
-                    \draw [line width=1pt] (2, 1) -- (2);
+            %         \node[op, scale=1] (2) at (2, -1) {};
+            %         \draw [line width=1pt] (2, 1) -- (2);
 
-                    \node at (0,0.5) {};
-                \end{tikzpicture}
-            \end{center}
-            We then obtain the electric laws for a coalgebra by flipping the circuits around.
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-3.5,0) {(Coassociativity)};
+            %         \node at (0,0.5) {};
+            %     \end{tikzpicture}
+            % \end{center}
+            % We then obtain the electric laws for a coalgebra by flipping the circuits around.
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-3.5,0) {(Coassociativity)};
 
-                    \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
-                    \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
-                    \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1.25);
+            %         \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
+            %         \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
+            %         \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1.25);
 
-                    \node at (1.5,0) {$=$};
+            %         \node at (1.5,0) {$=$};
 
-                    \draw [line width=1pt] (3, 1) -- (3, 0) -- (3.5, -0.5) -- (3.5, -0.75) -- (3.25, -1) -- (3.25, -1.25);
-                    \draw [line width=1pt] (3.5, -0.75) -- (3.75, -1) -- (3.75, -1.25);
-                    \draw [line width=1pt] (3, 0) -- (2.5, -0.5) -- (2.5, -1.25);
-                \end{tikzpicture}
-            \end{center}
-            \begin{center}
-                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node at (-3,0) {(Counitality)};
+            %         \draw [line width=1pt] (3, 1) -- (3, 0) -- (3.5, -0.5) -- (3.5, -0.75) -- (3.25, -1) -- (3.25, -1.25);
+            %         \draw [line width=1pt] (3.5, -0.75) -- (3.75, -1) -- (3.75, -1.25);
+            %         \draw [line width=1pt] (3, 0) -- (2.5, -0.5) -- (2.5, -1.25);
+            %     \end{tikzpicture}
+            % \end{center}
+            % \begin{center}
+            %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+            %         \node at (-3,0) {(Counitality)};
 
-                    \node[op, scale=0.75] (1) at (-0.5, -1) {};
+            %         \node[op, scale=0.75] (1) at (-0.5, -1) {};
 
-                    \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
-                    \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
+            %         \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
+            %         \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
 
-                    \node at (1,0) {$=$};
+            %         \node at (1,0) {$=$};
 
-                    \draw [line width=1pt] (2,1) -- (2,-1);
+            %         \draw [line width=1pt] (2,1) -- (2,-1);
 
-                    \node at (3,0) {$=$};
+            %         \node at (3,0) {$=$};
                     
-                    \node[op, scale=0.75] (2) at (4.5,-1) {};
+            %         \node[op, scale=0.75] (2) at (4.5,-1) {};
 
-                    \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
-                    \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
-                \end{tikzpicture}
-            \end{center}
+            %         \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
+            %         \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
+            %     \end{tikzpicture}
+            % \end{center}
 
             \begin{definition}[Coalgebra homomorphism]
                 Let $C$ and $D$ be coalgebras. Then $f:C\rightarrow D$ is a coalgebra morphism if
                 \begin{enumerate}
                     \item $f$ is $\mathbb{K}$-linear
                     \item $(f\otimes f)\circ\Delta_C(c) = \Delta_D(f(c))$
-                    \item $\varepsilon_D(f) = \varepsilon_C$
+                    \item $\varepsilon_D \circ f = \varepsilon_C$
                 \end{enumerate}
                 Whenever $C$ and $D$ are non-counital, we only require 1 and 2 for a homomorphism of non-counital coalgebras.
             \end{definition}
 
             \begin{definition}[Category of Coalgebras]
-                \begin{itemize}
-                    \item Let $CoAlg_{\mathbb{K}}$ denote the category of coalgebras. It's objects consists of every coalgebra $C$, and the morphisms are coalgebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $CoAlg_{\mathbb{K}}(C,D)$.
-                    \item Let $\widehat{CoAlg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $C$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $\widehat{CoAlg}_{\mathbb{K}}(C,D)$.
-                \end{itemize}
+                Let $CoAlg_{\mathbb{K}}$ denote the category of coalgebras. Its objects consists of every coalgebra $C$, and the morphisms are coalgebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $CoAlg_{\mathbb{K}}(C,D)$.
+                
+                Let $\widehat{CoAlg}_{\mathbb{K}}$ denote the category of non-unital algebras. Its objects consists of every non-unital algebra $C$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $\widehat{CoAlg}_{\mathbb{K}}(C,D)$.
             \end{definition}
 
-            \begin{example}[The coalgebra $\mathbb{K}$]
+            At a first glance, coalgebras may seem weird and unnatural, but they appear many places in nature.
+
+            \begin{example}[$\mathbb{K}$ as a coalgebra]
                 The field $\mathbb{K}$ can be given a coalgebra structure over itself. Since $\{1\}$ is a basis for $\mathbb{K}$ we define the structure morphisms as
                 \begin{align*}
                     \Delta_{\mathbb{K}}(1) & = 1\otimes 1 \\
@@ -402,16 +480,30 @@
                 One may check that these morphisms are indeed coassociative and counital. Thus we may regard our field as either an algebra or coalgebra over itself.
             \end{example}
 
+            \begin{example}[$\mathbb{K}{[G]}$ as a coalgebra]
+                The group algebra has a natural coalgebra structure. We may take duplication of group elements as the comulitplication, i.e.
+                \begin{align*}
+                    \Delta_{\mathbb{K}[G]}(kg) = kg\otimes g\tt{.}
+                \end{align*}
+                Coincidentally we have already defined the counit, this is the augmentation $\varepsilon_C$ for the group algebra $\mathbb{K}[G]$. Recall that this was
+                \begin{align*}
+                    \varepsilon_C(\sum k_gg) = \sum k_g\tt{.}
+                \end{align*}
+                One may see that these morphisms satisfy coassociativity and counitality.
+            \end{example}
+
+            Before we state our main example, we will first introduce part of its essential structure.
+
             \begin{definition}[Coaugmented coalgebras]
-                Let $C$ be a coalgebra. $C$ is coagumented if there is a coalgebra homomorphism $\upsilon:\mathbb{K}\rightarrow C$.
+                Let $C$ be a coalgebra. $C$ is coagumented if there is a coalgebra homomorphism $\eta_C:\mathbb{K}\rightarrow C$.
             \end{definition}
 
-            If $C$ is a coaugmented coalgebra, then it splits as $C\simeq \mathbb{K}\oplus Cok\upsilon$. The splitting is given by counitality of $\upsilon$, as $\varepsilon_C(\upsilon) = id_{\mathbb{K}}$. We call the cokernel $Cok\upsilon = \bar{C}$ for the coaugmentation quotient or reduced coalgebra, and its reduced coproduct may be explicitly given as
+            Similar to augmented algebras, each coaugmented coalgebra splits in the category $Mod_\mathbb{K}$. We first notice that given a coalgebra homomorphism $f$, the cokernel $\tt{Cok}f$ is also a coalgebra. This is some induced quotient structure. Given a coaugmentation $\eta_C : \mathbb{K} \rightarrow C$, we call $\tt{Cok}\eta_C = \bar{C}$ for the coaugmentation quotient or reduced coalgebra of $C$. Then we obtain the splitting $C \simeq \bar{C}\oplus\mathbb{K}$. The reduced coproduct, denoted $\bar{\Delta}_C$ may explicitly be given as
             \begin{align*}
-                \bar{\Delta}_C(c) = \Delta_C(c) - 1\otimes c - c\otimes 1. 
+                \bar{\Delta}_C(c) = \Delta_C(c) - 1\otimes c - c\otimes 1\tt{.}
             \end{align*}
 
-            \begin{definition}[Tensor Coalgebras]
+            \begin{example}[Tensor Coalgebras]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor coalgebra $T^c(V)$ of $V$ as the module
                 \begin{align*}
                     T^c(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2}\oplus V^{\otimes 3}\oplus ...
@@ -427,18 +519,26 @@
                     1 & \mapsto 1 \\
                     v^1...v^i & \mapsto 0
                 \end{align*}
-            \end{definition}
+            \end{example}
 
-            Notice that the tensor coalgebra is coaugmented. Its coaugmentation is given by the inclusion of $\mathbb{K}$ into $T^c(V)$. We may split $T^c(V) \simeq \mathbb{K}\oplus \bar{T^c}(V)$, where $\bar{T^c}(V)$ is the reduced tensor coalgebra.
+            We observe that the tensor coalgebra is coaugmented. Its coaugmentation is given by the inclusion of $\mathbb{K}$ into $T^c(V)$. We can split $T^c(V) \simeq \mathbb{K}\oplus \bar{T}^c(V)$, where $\bar{T}^c(V)$ denotes the reduced tensor coalgebra.
 
-            In order to get cofreeness for the tensor coalgebra we need some finiteness conditions. This is one of the properties which is ill-behaved when we are dualizing the tensor algebra. The extra assumption which we will need is to assume that the coalgebras are conilpotent. Let $C \simeq \mathbb{K} \oplus \bar{C}$ be a coaugmented coalgebra, we define the coradical filtration of $C$ as a filtration $Fr_0C \subseteq Fr_1C \subseteq ... \subseteq Fr_rC \subseteq ...$ by the submodules:
+            Cofreeness does not come for free for the tensor coalgebra. Our problem is a mismatch in the behavior of algebras and coalgebras. The problem arises when we try to do evaluation. Suppose that $A$ is an algebra and that we have n elements of $A$, i.e. an element of $A^{\otimes n}$. On this element we may apply the multiplication of $A$ a maximum of n-times, we cannot multiply an element with nothing non-trivially. However, given an element in a coalgebra $C$, we may use the comultiplication on this element n times, n+1 times and so on ad infinitum. In the coalgebra we may comultiply an element possibly an infinite amount of times. This is a property which is sometimes ill-behaved with our dualization of algebras to coalgebras. 
+            
+            However, when we dualized the tensor algebra to the tensor coalgebra we did not lose this property, that an element may only be comultiplied a finite number of times. This is due to the composition of $T^c(V)$ as a direct sum of $V^{\otimes n}$; i.e. any element is a finite sum of finite tensors.
+            
+            This extra assumption we need for coalgebras will be called conilpotent. Let $C \simeq \mathbb{K} \oplus \bar{C}$ be a coaugmented coalgebra, we define the coradical filtration of $C$ as a filtration $Fr_0C \subseteq Fr_1C \subseteq ... \subseteq Fr_rC \subseteq ...$ by the submodules:
             \begin{align*}
                 Fr_0C & = \mathbb{K} \\
                 Fr_rC & = \mathbb{K} \oplus \{c\in\bar{C}\mid \forall n\geq r \bar{\Delta}_C(c) = 0\}.
             \end{align*}
 
             \begin{definition}[Conilpotent coalgebras]
-                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e. $\substack{\varinjlim \\ r}Fr_rC \simeq C$. The subcategory of conilpotent coalgebras will be denoted as $CoAlg_{\mathbb{K},conil}$.
+                Let $C$ be a coaugmented coalgebra. We say that $C$ is conilpotent if its coradical filtration is exhaustive, i.e.
+                \begin{align*}
+                    \varinjlim_rFr_rC \simeq C\tt{.}
+                \end{align*}
+                The subcategory of conilpotent coalgebras will be denoted as $CoAlg_{\mathbb{K},conil}$.
             \end{definition}
             
             \begin{proposition}[Conilpotent tensor coalgebra]\label{prop: conilpotent-tensor}
@@ -456,7 +556,7 @@
             \end{proof}
 
             \begin{proposition}[Cofree tensor coalgebra]\label{prop: cofree-tensor}
-                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(\bar{C}, V)\simeq CoAlg_{\mathbb{K}, conil}(C, T^c(V))$.
+                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules\todo{Fiks dette?}, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $Hom_{\mathbb{K}}(C, V)\simeq CoAlg_{\mathbb{K}, conil}(C, T^c(V))$.
             \end{proposition}
 
             \begin{proof}
@@ -474,58 +574,75 @@
                 Observe that $g$ is well defined, since convergence of the sum follows from conilpotency of $C$. One may then check that $g$ is a coalgebra homomorphism, which yields the result.
             \end{proof}
 
+            Integral to our dualization are comodules. We quickly give a definition of them.
+
             \begin{definition}[Comodules]
-                Let $C$ be a coalgebra. A $\mathbb{K}$-module $M$ is said to ba left (right) $C$-comodule if there exist a structure morphism $\omega_M: M \rightarrow C\otimes_{\mathbb{K}}M$ ($\omega_M: M \rightarrow M\otimes_{\mathbb{K}}C$) called comultiplication. We require that $\omega_M$ is coassociative with respect to the comultiplication of $C$ and preserves the counit of $C$, i.e. the electric laws are satisfied.
+                Let $C$ be a coalgebra. A $\mathbb{K}$-module $M$ is said to ba left (right) $C$-comodule if there exist a structure morphism $\omega_M: M \rightarrow C\otimes_{\mathbb{K}}M$ ($\omega_M: M \rightarrow M\otimes_{\mathbb{K}}C$) called comultiplication. We require that $\omega_M$ is coassociative with respect to the comultiplication of $C$ and preserves the counit of $C$. I.e. we have the following commutative diagrams in $Mod_\mathbb{K}$.
                 \begin{center}
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-3.5,0) {(Coassociativity)};
-
-                        \node at (0, 1.5) {M};
-                        \node[op, scale=0.5] (1) at (0, 0) {$\omega_M$};
-    
-                        \draw [line width=1pt] (0, 1) -- (1) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
-                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
-                        \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1.25);
-    
-                        \node at (1.5,0) {$=$};
-
-                        \node at (3, 1.5) {M};
-                        \node[op, scale=0.5] (2) at (3, 0) {$\omega_M$};
-                        \node[op, scale=0.5] (3) at (3.5, -0.75) {$\omega_M$};
-    
-                        \draw [line width=1pt] (3, 1) -- (2) -- (3) -- (3.25, -1) -- (3.25, -1.25);
-                        \draw [line width=1pt] (3) -- (3.75, -1) -- (3.75, -1.25);
-                        \draw [line width=1pt] (2) -- (2.5, -0.5) -- (2.5, -1.25);
-                    \end{tikzpicture}
+                    \begin{tikzcd}
+                        C \otimes_\mathbb{K}C\otimes_\mathbb{K}M & C\otimes_\mathbb{K}M \ar[]{l}[]{C\otimes\omega_M} \\
+                        C\otimes_\mathbb{K}M \ar[]{u}[]{\Delta_C\otimes M} & M \ar[]{l}[]{\omega_M} \ar[]{u}[]{\omega_M}
+                    \end{tikzcd}
+                    \begin{tikzcd}
+                        \mathbb{K}\otimes_\mathbb{K}M & C\otimes_\mathbb{K}M \ar[]{l}[]{\varepsilon_C\otimes M} \\
+                        & M \ar[]{lu}[]{\simeq} \ar[]{u}[]{\omega_M}
+                    \end{tikzcd}
                 \end{center}
-                \begin{center}
-                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                        \node at (-3,0) {(Counitality)};
+                
+                % i.e. the electric laws are satisfied.
+                % \begin{center}
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                %         \node at (-3.5,0) {(Coassociativity)};
+
+                %         \node at (0, 1.5) {M};
+                %         \node[op, scale=0.5] (1) at (0, 0) {$\omega_M$};
     
-                        \node[op, scale=0.75] (1) at (-0.5, -1) {};
+                %         \draw [line width=1pt] (0, 1) -- (1) -- (-0.5, -0.5) -- (-0.5, -0.75) -- (-0.75, -1) -- (-0.75, -1.25);
+                %         \draw [line width=1pt] (-0.5, -0.75) -- (-0.25, -1) -- (-0.25, -1.25);
+                %         \draw [line width=1pt] (1) -- (0.5, -0.5) -- (0.5, -1.25);
     
-                        \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
-                        \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
+                %         \node at (1.5,0) {$=$};
+
+                %         \node at (3, 1.5) {M};
+                %         \node[op, scale=0.5] (2) at (3, 0) {$\omega_M$};
+                %         \node[op, scale=0.5] (3) at (3.5, -0.75) {$\omega_M$};
     
-                        \node at (1,0) {$=$};
+                %         \draw [line width=1pt] (3, 1) -- (2) -- (3) -- (3.25, -1) -- (3.25, -1.25);
+                %         \draw [line width=1pt] (3) -- (3.75, -1) -- (3.75, -1.25);
+                %         \draw [line width=1pt] (2) -- (2.5, -0.5) -- (2.5, -1.25);
+                %     \end{tikzpicture}
+                % \end{center}
+                % \begin{center}
+                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                %         \node at (-3,0) {(Counitality)};
     
-                        \draw [line width=1pt] (2,1) -- (2,-1);
+                %         \node[op, scale=0.75] (1) at (-0.5, -1) {};
     
-                        \node at (3,0) {$=$};
+                %         \draw [line width=1pt] (0, 1) -- (0, 0) -- (-0.5, -0.5) -- (1);
+                %         \draw [line width=1pt] (0, 0) -- (0.5, -0.5) -- (0.5, -1);
+    
+                %         \node at (1,0) {$=$};
+    
+                %         \draw [line width=1pt] (2,1) -- (2,-1);
+    
+                %         \node at (3,0) {$=$};
                         
-                        \node[op, scale=0.75] (2) at (4.5,-1) {};
+                %         \node[op, scale=0.75] (2) at (4.5,-1) {};
     
-                        \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
-                        \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
-                    \end{tikzpicture}
-                \end{center}
+                %         \draw [line width=1pt] (4, 1) -- (4, 0) -- (3.5, -0.5) -- (3.5, -1);
+                %         \draw [line width=1pt] (4, 0) -- (4.5, -0.5) -- (2);
+                %     \end{tikzpicture}
+                % \end{center}
             \end{definition}
 
             \begin{definition}[C-colinear homomorphism]
-                Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$.
+                Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$. In Sweedlers notation this looks like:
+                \begin{align*}
+                    \sum g(c)_{(1)}\otimes g(c)_{(2)} = \sum c_{(1)}\otimes g(c_{(2)})\tt{.}
+                \end{align*}
             \end{definition}
 
-            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\argument,\argument)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
+            The category of left $C$-comodules is denoted as $CoMod_C$, where the morphisms $Hom_C(\argument,\argument)$ are $C$-colinear. We would also like to restrict our attention to those $C$-comodules which are conilpotent, i.e. those comodules which have an exhaustive coradical filtration. The coradical filtration is defined analogously, as we only care for the $\mathbb{K}$-module structure. Notice that for conilpotent coalgebras this requirement is automatic. Likewise, the category of right $C$-comodules is denoted as $CoMod^C$.
 
             \begin{proposition}\label{prop: cofree-comod}
                 Let $M$ be a $\mathbb{K}$-module. The module $C\otimes_{\mathbb{K}}M$ is a left $C$-comodule. Moreover, it is the cofree left comodule over $\mathbb{K}$-modules, i.e. there is an isomorphism $Hom_{\mathbb{K}}(N,M)\simeq Hom_C(N,C\otimes_{\mathbb{K}}M)$. 
@@ -534,6 +651,9 @@
             \begin{proof}
                 This is dual to \ref{prop: free-mod}.
             \end{proof}
+
+    \subsection{Electric Circuits}
+            Calculations involving both algebras and coalgebras tends to become convoluted and unmanagable. Since we want to study the interplay between algebras and coalgebras using other tools to write down equations can be handy. We will develop the graphical calculus briefly mentioned in \cite{Loday12}. This graphical calculus will consists of string diagrams, refered to as electric circuits, which describes function compositions of tensors. The axioms for algebras and coalgebras may be written down with electric circuits, and we will call these for electric laws. In this section we will redefine the previous structures electrically, as well as develop some techniques to manipulate electric circuits.
 
     \subsection{Derivations and DG-Algebras}
             In this section we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
