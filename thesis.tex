@@ -3,7 +3,7 @@
 % --- Macros --- %
     \newcommand{\startset}[1]{\{#1\}}
     \newcommand{\argument}{\hspace{0.05cm}\underline{\hspace{0.2cm}}\hspace{0.05cm}}
-    % \newcommand{\tt}[1]{\text{#1}}
+    \renewcommand{\tt}[1]{\text{#1}}
 
 % --- Front page --- %
     \title{On the Derived Category of Strongly Homotopy Associative Algebras}
@@ -26,6 +26,9 @@
     % Allows compilation of each subfile, rather to compile everything at once
     % Subfiles must have this file as option while using the documentclass subfile
     % Loading a subfile is done with \subfile{"path-to-file"}
+
+% --- Styles --- %
+    \everymath{\displaystyle}
 
 \begin{document}
 
