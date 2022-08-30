@@ -864,7 +864,7 @@
             
 
     \subsection{Derivations and DG-Algebras}
-            In this section we will look at differential graded objects and convolution products. We will define derivations and coderivations to obtain differential graded algebras and coalgebras. Moreover we will see that the set of homogenous homomorphisms between differential graded objects is itself differential graded. Moreover, whenever we look at morphisms between dg coalgebras and dg algebras, we can give this object the convolution operator, making the set a dg algebra.
+            This section aims to define differential graded algebras and their modules. Given an algebra $A$, we may define a derivation as a map satisfying the Leibniz rule. In the dual case for a coalgebra we may define a coderivation as a map satisfying the Zinbiel rule, but for brevity we will refer to these maps as derivations. Once we get a grasp on how to make derivations we introduce graded algebras and modules, to equip these with derivations. This will give us the categories of differential graded algebras and chain complexes. Throughout this section we will also develop electric circuits for these notions.
 
             \begin{definition}[Derivations and Coderivations]
                 Let $M$ be an $A$-bimodule. A $\mathbb{K}$-linear morphism $d:A\rightarrow M$ is called a derivation if $d(ab)=d(a)b+ad(b)$, i.e. electrically:
@@ -872,36 +872,36 @@
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         
-                        \node at (-0.5, 1) {a};
-                        \node at (0.5, 1) {b};
+                        % \node at (-0.5, 1) {a};
+                        % \node at (0.5, 1) {b};
                         \node[op, scale = 0.75] (d) at (0,-0.5) {d};
                         
-                        \draw [line width=1pt] (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0.5,0.5) -- (0.5, 0.75);
-                        \draw [line width=1pt] (0,0) -- (d) -- (0,-1);
+                        \draw [line width=1pt] (-0.5, 1) -- (-0.5, 0.5) -- (0,0.25) -- (0.5,0.5) -- (0.5, 1);
+                        \draw [line width=1pt] (0,0.25) -- (d) -- (0,-1);
                         
                         \node at (1,0) {$=$};
 
-                        \node at (1.5, 1) {a};
-                        \node at (2.5, 1) {b};
+                        % \node at (2, 1) {a};
+                        % \node at (3, 1) {b};
 
-                        \node[op, scale = 0.75] (e) at (1.5, 0.25) {d};
-                        \node[op, scale = 0.5] (r) at (2,-0.5) {$\mu_M^r$};
-
-                        
-                        \draw [line width=1pt] (1.5, 0.75) -- (e) -- (1.5, 0) -- (r) -- (2.5,0) -- (2.5,0.75);
-                        \draw [line width=1pt] (r) -- (2,-1);
-
-                        \node at (3,0) {$+$};
-
-                        \node at (3.5, 1) {a};
-                        \node at (4.5, 1) {b};
-
-                        \node[op, scale = 0.75] (f) at (4.5, 0.25) {d};
-                        \node[op, scale = 0.5] (l) at (4,-0.5) {$\mu_M^l$};
+                        \node[op, scale = 0.75] (e) at (2, 0.5) {d};
+                        \node[op, scale = 0.5] (r) at (2.5,-0.25) {$\mu_M^r$};
 
                         
-                        \draw [line width=1pt] (3.5, 0.75) --  (3.5, 0) -- (l) -- (4.5,0) -- (f) -- (4.5,0.75);
-                        \draw [line width=1pt] (l) -- (4,-1);
+                        \draw [line width=1pt] (2, 1) -- (e) -- (2, 0) -- (r) -- (3,0) -- (3,1);
+                        \draw [line width=1pt] (r) -- (2.5,-1);
+
+                        \node at (3.5,0) {$+$};
+
+                        % \node at (4, 1) {a};
+                        % \node at (5, 1) {b};
+
+                        \node[op, scale = 0.75] (f) at (5, 0.5) {d};
+                        \node[op, scale = 0.5] (l) at (4.5,-0.25) {$\mu_M^l$};
+
+                        
+                        \draw [line width=1pt] (4, 1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,1);
+                        \draw [line width=1pt] (l) -- (4.5,-1);
                     \end{tikzpicture}
                 \end{center}
 
@@ -911,29 +911,33 @@
                         
                         \node[op, scale = 0.75] (d) at (0,0.5) {d};
                         
-                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.5, -0.5) -- (0,0) -- (0.5,-0.5) -- (0.5, -0.75);
-                        \draw [line width=1pt] (0,0) -- (d) -- (0,1);
+                        \draw [line width=1pt] (-0.5, -1) -- (-0.5, -0.5) -- (0,-0.25) -- (0.5,-0.5) -- (0.5, -1);
+                        \draw [line width=1pt] (0,-0.25) -- (d) -- (0,1);
                         
                         \node at (1,0) {$=$};
 
-                        \node[op, scale = 0.75] (e) at (1.5, -0.25) {d};
-                        \node[op, scale = 0.5] (r) at (2,0.5) {$\omega_N^r$};
+                        \node[op, scale = 0.75] (e) at (2, -0.5) {d};
+                        \node[op, scale = 0.5] (r) at (2.5,0.25) {$\omega_N^r$};
 
                         
-                        \draw [line width=1pt] (1.5, -0.75) -- (e) -- (1.5, 0) -- (r) -- (2.5,0) -- (2.5,-0.75);
-                        \draw [line width=1pt] (r) -- (2,1);
+                        \draw [line width=1pt] (2, -1) -- (e) -- (2, 0) -- (r) -- (3,0) -- (3,-1);
+                        \draw [line width=1pt] (r) -- (2.5,1);
 
-                        \node at (3,0) {$+$};
+                        \node at (3.5,0) {$+$};
 
-                        \node[op, scale = 0.75] (f) at (4.5, -0.25) {d};
-                        \node[op, scale = 0.5] (l) at (4,0.5) {$\omega_N^l$};
+                        \node[op, scale = 0.75] (f) at (5, -0.5) {d};
+                        \node[op, scale = 0.5] (l) at (4.5,0.25) {$\omega_N^l$};
 
                         
-                        \draw [line width=1pt] (3.5, -0.75) --  (3.5, 0) -- (l) -- (4.5,0) -- (f) -- (4.5,-0.75);
-                        \draw [line width=1pt] (l) -- (4,1);
+                        \draw [line width=1pt] (4, -1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,-1);
+                        \draw [line width=1pt] (l) -- (4.5,1);
                     \end{tikzpicture}
                 \end{center}
             \end{definition}
+
+            We remark that this translation between equations and electric circuits is not at the same level of generalization. Due to this, the electric circuit description has more advantages as it allows us to think with elements when we are really only dealing with morphisms. This will later be abused, to derive results which is e.g. independent of the given braiding on the category.
+
+            A useful fact about derivations is that they will always map the identity to $0$. We obtain this from Leibniz rule as one would get $d(1) = 2d(1)$, and thus $d(1) = 0$.
 
             \begin{proposition}\label{prop: tensor-derivation}
                 Let $V$ be a $\mathbb{K}$-module and $M$ be a $T(V)$-bimodule. A $\mathbb{K}$-linear morphism $f:V\rightarrow M$ uniquely determines a derivation $d_f:T(V)\rightarrow M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(V,M)\simeq Der(T(V),M)$.
@@ -943,15 +947,28 @@
             \end{proposition}
 
             \begin{proof}
-                Let $a_1\otimes ... \otimes a_n$ be an elementary tensor of $T(V)$. We define $d_f(a_1\otimes ... \otimes a_n) = \sum_{i=1}^n a_1...f(a_i)...a_n$ and $d_f(1) = 0$. Notice that $d_f$ is by definition a derivation.
+                Let $a_1\otimes ... \otimes a_n$ be an elementary tensor of $T(V)$. We define a map $d_f : T(V) \rightarrow M$ as
+                \begin{align*}
+                    d_f(a_1\otimes ... \otimes a_n) & = \sum_{i=1}^n a_1...f(a_i)...a_n \\
+                    d_f(1) & = 0\tt{.} 
+                \end{align*}
+                $d_f$ is a derivation by defintion.
                 
                 Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose that $g: M \rightarrow N$ is a morphism between $T(V)$-bimodules, then naturality follows from bilinearity.
 
-                In the dual case, $d_g^c$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. We define the reduced coactions as $\bar{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\bar{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k, k'>0$ such that ${\bar{\omega}^{l^k}_N}(n) = 0$ and ${\bar{\omega}^{r^{k'}}_N}(n)=0$.
+                In the dual case, $d_g^c : N \rightarrow T^c(V)$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. Define the reduced coactions as $\bar{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\bar{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k$ and $k'>0$ such that ${\bar{\omega}^{l^k}_N}(n) = 0$ and ${\bar{\omega}^{r^{k'}}_N}(n)=0$.
 
-                Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. $n_{(k)}^{(i)} = \bar{\omega}^{r^i}_N\bar{\omega}^{l^{k-i}}_N(n)$. The extension of $n$ by $k$ coactions is then the sum over every position $i$, $n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}$. Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
+                Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. 
+                \begin{align*}
+                    n_{(k)}^{(i)} = \bar{\omega}^{r^i}_N\bar{\omega}^{l^{k-i}}_N(n)\tt{.} 
+                \end{align*}
+                The extension of $n$ by $k$ coactions is then the sum over every position $i$,
+                \begin{align*}
+                    n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}\tt{.}
+                \end{align*} 
+                Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
 
-                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes \pi \circ g \otimes \pi$ as a morphism which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
+                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes g \otimes \pi$ as a morphism which of $k$ tensors which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
                 \begin{align*}
                     d_g^c(n) = \sum_{k=0}^\infty \sum_{i=0}^k g_{(k)}^{(i)}(n_{(k)}^{(i)})
                 \end{align*}
@@ -959,8 +976,10 @@
                 Upon closer inspection we may observe that this is the dual construction of the derivation morphism. It is well-defined as the sum is finite by the finiteness restrictions. The map is a coderivation by duality, and the natural isomorphism is given by composition with the projection map $\pi$.
             \end{proof}
 
+            We now wish to get into the territory of derivations as we know them from homological algebra. We get this by choosing an algebra and equipping it with a derivation. This will give us a universal derivation to work with when we want to define a differential on a graded module.
+
             \begin{definition}[Differential algebra]
-                Let $A$ be an algebra. We say that $A$ is a differential algebra if it is equipped with at least one derivation $d:A\rightarrow A$. Dually, a coalgebra $C$ is called differential if it is equipped with at least one coderivation $d:C\rightarrow C$.
+                Let $A$ be an algebra. We say that $A$ is a differential algebra if it is equipped with a derivation $d:A\rightarrow A$. Dually, a coalgebra $C$ is called a differential coalgebra if it is equipped with at least one coderivation $d:C\rightarrow C$.
             \end{definition}
 
             \begin{definition}[A-derivation]
@@ -968,33 +987,33 @@
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         
-                        \node at (-0.5, 1) {a};
-                        \node at (0.5, 1) {m};
+                        % \node at (-0.5, 1) {a};
+                        % \node at (0.5, 1) {m};
                         \node[op, scale = 0.5] (d) at (0,-0.5) {$d_M$};
                         
-                        \draw [line width=1pt] (-0.5, 0.75) -- (-0.5, 0.5) -- (0,0) -- (0.5,0.5) -- (0.5, 0.75);
-                        \draw [line width=1pt] (0,0) -- (d) -- (0,-1);
+                        \draw [line width=1pt] (-0.5, 1) -- (-0.5, 0.5) -- (0,0.25) -- (0.5,0.5) -- (0.5, 1);
+                        \draw [line width=1pt] (0,0.25) -- (d) -- (0,-1);
                         
                         \node at (1,0) {$=$};
 
-                        \node at (1.5, 1) {a};
-                        \node at (2.5, 1) {m};
+                        % \node at (2, 1) {a};
+                        % \node at (3, 1) {m};
 
-                        \node[op, scale = 0.5] (e) at (1.5, 0.25) {$d_A$};
+                        \node[op, scale = 0.5] (e) at (2, 0.5) {$d_A$};
 
                         
-                        \draw [line width=1pt] (1.5, 0.75) -- (e) -- (1.5, 0) -- (2,-0.5) -- (2.5,0) -- (2.5,0.75);
-                        \draw [line width=1pt] (2,-0.5) -- (2,-1);
+                        \draw [line width=1pt] (2, 1) -- (e) -- (2, 0) -- (2.5,-0.25) -- (3,0) -- (3,1);
+                        \draw [line width=1pt] (2.5,-0.25) -- (2.5,-1);
 
-                        \node at (3,0) {$+$};
+                        \node at (3.5,0) {$+$};
 
-                        \node at (3.5, 1) {a};
-                        \node at (4.5, 1) {m};
+                        % \node at (4, 1) {a};
+                        % \node at (5, 1) {m};
 
-                        \node[op, scale = 0.5] (f) at (4.5, 0.25) {$d_M$};
+                        \node[op, scale = 0.5] (f) at (5, 0.5) {$d_M$};
                         
-                        \draw [line width=1pt] (3.5, 0.75) --  (3.5, 0) -- (4,-0.5) -- (4.5,0) -- (f) -- (4.5,0.75);
-                        \draw [line width=1pt] (4,-0.5) -- (4,-1);
+                        \draw [line width=1pt] (4, 1) -- (4, 0) -- (4.5,-0.25) -- (5,0) -- (f) -- (5,1);
+                        \draw [line width=1pt] (4.5,-0.25) -- (4.5,-1);
                     \end{tikzpicture}
                 \end{center}
                 Dually, given a differential coalgebra $(C,d_C)$ and $N$ a left $C$-comodule, a $\mathbb{K}$-linear morphism $d_N:N\rightarrow N$ is a coderivation if $\omega_N\circ d_N = (d_C\otimes id_N + id_C\otimes d_N)\circ \omega_N$, or electrically:
@@ -1003,46 +1022,27 @@
                         
                         \node[op, scale = 0.5] (d) at (0,0.5) {$d_N$};
                         
-                        \draw [line width=1pt] (-0.5, -0.75) -- (-0.5, -0.5) -- (0,0) -- (0.5,-0.5) -- (0.5, -0.75);
-                        \draw [line width=1pt] (0,0) -- (d) -- (0,1);
+                        \draw [line width=1pt] (-0.5, -1) -- (-0.5, -0.5) -- (0,-0.25) -- (0.5,-0.5) -- (0.5, -1);
+                        \draw [line width=1pt] (0,-0.25) -- (d) -- (0,1);
                         
                         \node at (1,0) {$=$};
 
-                        \node[op, scale = 0.5] (e) at (1.5, -0.25) {$d_C$};
+                        \node[op, scale = 0.5] (e) at (2, -0.5) {$d_C$};
                         
-                        \draw [line width=1pt] (1.5, -0.75) -- (e) -- (1.5, 0) -- (2,0.5) -- (2.5,0) -- (2.5,-0.75);
-                        \draw [line width=1pt] (2,0.5) -- (2,1);
+                        \draw [line width=1pt] (2, -1) -- (e) -- (2, 0) -- (2.5,0.25) -- (3,0) -- (3,-1);
+                        \draw [line width=1pt] (2.5,0.25) -- (2.5,1);
 
-                        \node at (3,0) {$+$};
+                        \node at (3.5,0) {$+$};
 
-                        \node[op, scale = 0.5] (f) at (4.5, -0.25) {$d_N$};
+                        \node[op, scale = 0.5] (f) at (5, -0.5) {$d_N$};
                         
-                        \draw [line width=1pt] (3.5, -0.75) --  (3.5, 0) -- (4,0.5) -- (4.5,0) -- (f) -- (4.5,-0.75);
-                        \draw [line width=1pt] (4,0.5) -- (4,1);
+                        \draw [line width=1pt] (4, -1) -- (4, 0) -- (4.5,0.25) -- (5,0) -- (f) -- (5,-1);
+                        \draw [line width=1pt] (4.5,0.25) -- (4.5,1);
                     \end{tikzpicture}
                 \end{center}
             \end{definition}
 
-            \begin{proposition}\label{prop: free-derivation}
-                Let $A$ be a differential algebra and $M$ a $\mathbb{K}$-module. A $\mathbb{K}$-linear morphism $f:M\rightarrow A\otimes_{\mathbb{K}} M$ uniquely determines a derivation $d_f:A\otimes M\rightarrow A\otimes M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(M,A\otimes_{\mathbb{K}}M)\simeq Der(A\otimes_{\mathbb{K}}M)$. Moreover, $d_f$ is given as $(\nabla_A\otimes id_M)\circ (id_A\otimes f) + d_A\otimes id_M$.
-
-                Dually, if $C$ is a differential coalgebra and $N$ is a $\mathbb{K}$-module, then a $\mathbb{K}$-linear morphism $g:C\otimes N\rightarrow N$ uniquely determines a coderivation $d_g:C\otimes_{\mathbb{K}}N\rightarrow C\otimes_{\mathbb{K}}N$. There is an isomorphism $\tt{Hom}_{\mathbb{K}}(C\otimes_{\mathbb{K}}N,N)\simeq Coder(C\otimes_{\mathbb{K}}N)$, and $d_g$ is given as $(id_C\otimes g)\circ (\Delta_C\otimes id_N) + d_C\otimes id_N$.
-            \end{proposition}
-
-            \begin{proof}
-                We must check that the given $d$ in facts defines an isomorphism. This is checked by calculation. 
-            \end{proof}
-
-            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \substack{\bigoplus \\ z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^*$. Generally $\mathcal{C}^*$ is the category of graded objects whenever it makes sense, and the graded $\mathbb{K}$-module of morphisms between two graded objects is denoted as $\tt{Hom}_{\mathbb{K}}^*(M^*,N^*)$.
-            
-
-            $M^{\bullet}$ is called a cochain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $\tt{Hom}_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
-
-
-            The functor $\argument[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\argument[0] \simeq \bar{\mathbb{K}}\otimes\argument$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\argument[n] \simeq \bar{\mathbb{K}}[n]\otimes\argument$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
-
-
-            In electric diagrams we will write triangles for the differential if there are no ambiguity.
+            When there is no ambiguity, we will start to adopt writing the differential in electric circuits as a triangle.
 
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
@@ -1059,6 +1059,133 @@
                     
                 \end{tikzpicture}
             \end{center}
+
+            \begin{proposition}\label{prop: free-derivation}
+                Let $A$ be a differential algebra and $M$ a $\mathbb{K}$-module. A $\mathbb{K}$-linear morphism $f:M\rightarrow A\otimes_{\mathbb{K}} M$ uniquely determines a derivation $d_f:A\otimes M\rightarrow A\otimes M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(M,A\otimes_{\mathbb{K}}M)\simeq Der(A\otimes_{\mathbb{K}}M)$. Moreover, $d_f$ is given as $(\nabla_A\otimes id_M)\circ (id_A\otimes f) + d_A\otimes id_M$.
+
+                Dually, if $C$ is a differential coalgebra and $N$ is a $\mathbb{K}$-module, then a $\mathbb{K}$-linear morphism $g:C\otimes N\rightarrow N$ uniquely determines a coderivation $d_g:C\otimes_{\mathbb{K}}N\rightarrow C\otimes_{\mathbb{K}}N$. There is an isomorphism $\tt{Hom}_{\mathbb{K}}(C\otimes_{\mathbb{K}}N,N)\simeq Coder(C\otimes_{\mathbb{K}}N)$, and $d_g$ is given as $(id_C\otimes g)\circ (\Delta_C\otimes id_N) + d_C\otimes id_N$.
+            \end{proposition}
+
+            \begin{proof}
+                This is only proved in the case of an algebra. The case of a coalgebra is dual.
+                
+                We first got to prove that the morphism $d_{\argument} : \tt{Hom}_\mathbb{K}(M, A\otimes_\mathbb{K}M) \rightarrow Der(A \otimes_\mathbb{K}M)$ is well-defined. This means to check that for any morphism $f : M \rightarrow A \otimes_\mathbb{K} M$ the morphism $d_f$ satisfies the Leibniz rule.
+
+                Assume that we have elements $a, b \in A$ and $m\in M$. Then $d_f(ab\otimes m) = d_f(a(b\otimes m))$. We now make an abuse of notation to write an equality between an element and a circuit. Recall that this really means that we have to think of $a$, $b$ and $m$ as generalized elements.
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (-2, 0) {$d_f(ab\otimes m)$};
+
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (f1) at (3, 0.5) {$f$};
+
+                        \draw [line width = 1pt] (1,1) -- (1, 0.5) -- (1.5, 0.25);
+                        \draw [line width = 1pt] (2,1) -- (2, 0.5) -- (1.5, 0.25) -- (1.5, 0) -- (2, -0.25);
+                        \draw [line width = 1pt] (3, 1) -- (f1) -- (2.5, 0.25) -- (2.5, 0) -- (2, -0.25) -- (2, -1);
+                        \draw [line width = 1pt] (f1) -- (3.5, 0.25) -- (3.5, -1);
+
+                        \node at (4, 0) {$+$};
+                        \node[diff, scale = 0.75] (d1) at (5, 0) {};
+
+                        \draw [line width = 1pt] (4.5, 1) -- (4.5, 0.75) -- (5, 0.5);
+                        \draw [line width = 1pt] (5.5, 1) -- (5.5, 0.75) -- (5, 0.5) -- (d1) -- (5, -1);
+                        \draw [line width = 1pt] (6, 1) -- (6, -1);
+
+                        \node at (7, 0) {$=$};
+
+                        \node[op, scale = 0.75] (f2) at (10, 0.5) {$f$};
+
+                        \draw [line width = 1pt] (8, 1) -- (8, -0.5) -- (8.5, -0.75);
+                        \draw [line width = 1pt] (8.5, 1) -- (8.5, 0) -- (9, -0.25);
+                        \draw [line width = 1pt] (10, 1) -- (f2) -- (9.5, 0.25) -- (9.5, 0) -- (9, -0.25) -- (9, -0.5) -- (8.5, -0.75) -- (8.5, -1);
+                        \draw [line width = 1pt] (f2) -- (10.5, 0.25) -- (10.5, -1);
+
+                        \node at (11, 0) {$+$};
+
+                        \node[diff, scale = 0.75] (d2) at (11.5, 0.5) {};
+
+                        \draw [line width = 1pt] (11.5, 1) -- (d2) -- (11.5, 0) -- (12, -0.25) -- (12, -1);
+                        \draw [line width = 1pt] (12.5, 1) -- (12.5, 0) -- (12, -0.25);
+                        \draw [line width = 1pt] (13, 1) -- (13, -1);
+                        
+                        \node at (13.5, 0) {$+$};
+
+                        \node[diff, scale = 0.75] (d3) at (15, 0.5) {};
+
+                        \draw [line width = 1pt] (14, 1) -- (14, 0) -- (14.5, -0.25) -- (14.5, -1);
+                        \draw [line width = 1pt] (15, 1) -- (d3) -- (15, 0) -- (14.5, -0.25);
+                        \draw [line width = 1pt] (15.5, 1) -- (15.5, -1);
+
+                        \node[anchor = west] at (-4, -2) {$= d_A(a)b\otimes m + ad_f(b\otimes m)$.};
+                    \end{tikzpicture}
+                \end{center}
+
+                Next we show that $d_{\argument}$ has an inverse. This is given by "restriction to $M$", also known as $(1_A\otimes M)^* : \tt{Hom}_\mathbb{K}(A\otimes_\mathbb{K}M, N) \rightarrow \tt{Hom}_\mathbb{K}(M, N)$. Let $f : M \rightarrow A\otimes_\mathbb{K} M$ be a linear map and $D : A\otimes_\mathbb{K} M \rightarrow A\otimes_\mathbb{K} M$ be a derivation.
+
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                        \node at (-2,0) {$d_f\circ(1_A \otimes M)$};
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (s1) at (1, 0.75) {};
+                        \node[op, scale = 0.75] (f1) at (2.5, 0.5) {$f$};
+
+                        \draw [line width = 1pt] (s1) -- (1, 0) -- (1.5, -0.25) -- (1.5, -1);
+                        \draw [line width = 1pt] (2.5, 1) -- (f1) -- (2, 0.25) -- (2, 0) -- (1.5, -0.25);
+                        \draw [line width = 1pt] (f1) -- (3, 0.25) -- (3, -1);
+
+                        \node at (3.5, 0) {$+$};
+
+                        \node[op, scale = 0.75] (s2) at (4, 0.75) {};
+                        \node[diff, scale = 0.75] (d1) at (4, 0.25) {};
+
+                        \draw [line width = 1pt] (s2) -- (d1) -- (4, -1);
+                        \draw [line width = 1pt] (4.5, 1) -- (4.5, -1);
+
+                        \node at (5.5, 0) {$=$};
+                        \node at (6, 0) {$f$};
+                        
+                    \end{tikzpicture}
+                \end{center}
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+                        
+                        \node at (-2, 0) {$d_{D \circ (1_A\otimes M)}$};
+                        \node at (0,0) {$=$};
+
+                        \node[op, scale = 0.75] (s1) at (2,0.75) {};
+                        \node[op, scale=0.75] (D1) at (2.5, 0.25) {$D$};
+
+                        \draw [line width = 1pt] (1, 1) -- (1, -0.25) -- (1.5, -0.5) -- (1.5, -1);
+                        \draw [line width = 1pt] (s1) -- (2, 0.5) -- (D1) -- (2, 0) -- (2, -0.25) -- (1.5, -0.5);
+                        \draw [line width = 1pt] (3, 1) -- (3, 0.5) -- (D1) -- (3, 0) -- (3, -1);
+
+                        \node at (3.5, 0) {$+$};
+
+                        \node[diff, scale=0.75] (d1) at (4, 0) {};
+
+                        \draw [line width = 1pt] (4, 1) -- (d1) -- (4, -1);
+                        \draw [line width = 1pt] (4.5, 1) -- (4.5, -1);
+
+                        \node at (5.5, 0) {$=$};
+                        \node at (6, 0) {$D$};
+                    \end{tikzpicture}
+                \end{center}
+
+                Notice that in the last equation we use the Leibniz rule to get the equality to $D$. 
+
+            \end{proof}
+
+            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \bigoplus_{z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^*$. Generally $\mathcal{C}^*$ is the category of graded objects whenever it makes sense, and the graded $\mathbb{K}$-module of morphisms between two graded objects is denoted as $\tt{Hom}_{\mathbb{K}}^*(M^*,N^*)$.
+            
+
+            $M^{\bullet}$ is called a cochain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $\tt{Hom}_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
+
+
+            The functor $\argument[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\argument[0] \simeq \bar{\mathbb{K}}\otimes\argument$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\argument[n] \simeq \bar{\mathbb{K}}[n]\otimes\argument$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
 
             \begin{proposition}
                 Let $M^{\bullet}$ and $N^{\bullet}$ be two chain complexes. The graded module of morphisms $\tt{Hom}_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a chain complex, given by the differential $\partial(f) = d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}$.
