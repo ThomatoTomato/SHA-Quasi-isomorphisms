@@ -294,67 +294,11 @@
             \end{proposition}
 
             \begin{proof}
-                Define the natural isomorphism $\phi$ as
-                \begin{align*}
-                    \phi & : \tt{Hom}_\mathbb{K}(M,N) \rightarrow \tt{Hom}_A(A\otimes_\mathbb{K}M, N) \\
-                    \phi (f) & = \mu_N \circ (A \otimes f)\text{.}
-                \end{align*}
-                Its inverse $\sigma$ is then
-                \begin{align*}
-                    \sigma & : \tt{Hom}_A(A\otimes_\mathbb{K}M, N) \rightarrow \tt{Hom}_\mathbb{K}(M,N) \\
-                    \sigma (f) & = f \circ (\upsilon_A \otimes M). 
-                \end{align*}
-
-                We check that these morphisms are inverses to each other:
-                \begin{align*}
-                    \sigma \circ \phi(f) = \sigma(\mu_N\circ (A\otimes f)) = \mu_N \circ (A\otimes f) \circ (1_A \otimes M) = \mu_N (1_A \circ N) \circ f = f
-                \end{align*}
+                We use the tensor-hom adjuntion to arrive at the conclusion.
 
                 \begin{align*}
-                    \phi \circ \sigma(f) = \phi(f \circ (1_A \otimes M)) = \mu_N \circ (A\otimes (f \circ (1_A \otimes M))) = f \otimes (A \otimes M) = f
+                    \tt{Hom}_A(A\otimes_\mathbb{K}M, N)\simeq \tt{Hom}_A(A,\tt{Hom}_\mathbb{K}(M,N)) \simeq \tt{Hom}_\mathbb{K}(M,N)
                 \end{align*}
-                % We check that this does indeed define an isomorphism by electric diagrams.
-                % \begin{center}
-                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
-                    
-                %     \node at (-1, 0) {$\sigma \circ \phi (f)$};
-                %     \node[anchor = west] at (0,0) {$=$};
-
-                %     \node[op, scale=0.75] (u1) at (1, 0.55) {};
-                %     \node[op, scale=0.75] (f1) at (2, 0.5) {$f$};
-
-                %     \draw [line width = 1pt] (2, 1) -- (f1) -- (2, 0) -- (1.5, -0.25) -- (1.5 , -1);
-                %     \draw [line width = 1pt] (u1) -- (1, 0) -- (1.5, -0.25);
-
-                %     \node at (3, 0) {$= f$};
-                %     \end{tikzpicture}
-                % \end{center}
-                % \begin{center}
-                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
-
-                %         \node at (-1, 0) {$\phi \circ \sigma (f)$};
-                %         \node[anchor = west] at (0, 0) {$=$}; 
-                        
-                %         \draw [line width = 1pt] (1, 1) -- (1, -0.25) -- (1.5, -0.5) -- (1.5, -1);
-
-                %         \node[op, scale = 0.75] (u1) at (1.5, 1) {};
-                %         \node[op, scale = 0.75] (f1) at (2, 0.25) {$f$};
-
-                %         \draw [line width = 1pt] (u1) -- (1.5, 0.5) -- (f1) -- (2, -0.25) -- (1.5, -0.5);
-                %         \draw [line width = 1pt] (2.5, 1) -- (2.5, 0.5) -- (f1);
-
-                %         \node at (3.5, 0) {$=$};
-
-                %         \node[op, scale = 0.75] (f2) at (5.5, -0.25) {$f$};
-                %         \node[op, scale = 0.75] (u2) at (5, 1) {}; 
-
-                %         \draw [line width = 1pt] (4.5, 1) -- (4.5, 0.5) -- (5, 0.25) -- (5, 0) -- (f2) -- (5.5, -1);
-                %         \draw [line width = 1pt] (u2) -- (5, 0.25);
-                %         \draw [line width = 1pt] (6, 1) -- (6, 0) -- (f2);
-
-                %         \node at (7, 0) {$= f$};
-                %     \end{tikzpicture}
-                % \end{center}
             \end{proof}
             
     \subsection{Coalgebras}
@@ -704,7 +648,7 @@
                 \end{tikzpicture}
             \end{center}
 
-            The final operation we have is braiding. Whenever we apply the braiding morphism on the tensors, we may simply denote this as interchanging the strings. E.g. $\beta_{A,B} : A \otimes B \rightarrow B \otimes A$ is the circuit below.
+            The final operation we have is braiding. Whenever we apply the braiding morphism on the tensors, we may simply denote this as interchanging the strings. E.g. $\beta_{A,B} : A \otimes B \rightarrow B \otimes A$ is the circuit below. Notice that by naturality of $\beta$ we may move a braiding along the circuit. In this manner, if we have two braids, they may undo each other. A braid may also be moved to an end, in this manner they may be ignored during calculations.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \draw [line width = 1pt] (0, 1.25) -- (0, 0.75) -- (1, 0.25) -- (1, -0.25);
@@ -1179,8 +1123,111 @@
 
             \end{proof}
 
-            Recall that a module $M^*$ is $\mathbb{Z}$ graded if it decomposes as a sum $M^* = \bigoplus_{z:\mathbb{Z}}M^z$. Let $M^*,N^*$ be graded modules and $f:M^*\rightarrow N^*$ is a homogenous $\mathbb{K}$-linear morphism of degree $n$ if it preserves the grading, that is $f(M^i) \subseteq N^{n+i}$. We denote the degree of $f$ as $|f|$. The category of graded modules will be denoted as $GrMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^*$. Generally $\mathcal{C}^*$ is the category of graded objects whenever it makes sense, and the graded $\mathbb{K}$-module of morphisms between two graded objects is denoted as $\tt{Hom}_{\mathbb{K}}^*(M^*,N^*)$.
+            We are now going to slowly work our way towards the context of homological algebra. We say that a $\mathbb{K}$-module $M^*$ admits a $\mathbb{Z}$-grading if it decomposes into either summands or factors
+            \todo{Gir dette mening å definere?}
+            \begin{align*}
+                M^* = \bigoplus_{z:\mathbb{Z}}M^z\tt{ or } M^* = \prod_{z:\mathbb{Z}}M^z\tt{.}
+            \end{align*}
+            An element of $m\in M$ is said to be homogenous if it is properly contained in a single summand, $m$ is then given the degree of the summand. We say that a morphism of graded modules $f:M^*\rightarrow N^*$ is homogenous of degree $n$ if it preserves the grading, i.e.  $f(M^i) \subseteq N^{n+i}$. The degree of a homogenous element $m$ or morphism $f$ is denoted as $|m|$ or $|f|$.
             
+            There is a distinction between the ordinary and self-enriched category of graded modules. We are going to work with this category as it is both the ordinary and self-enriched \todo{Kan jeg skrive dette?} category. Its hom objects is the graded module of homogenous morphism. We denote a factor in the grading as $\tt{Hom}_\mathbb{K}^w(M^*,N^*)=\startset{f : M^* \rightarrow N^* \mid f\tt{ is homogenous and }|f|=w}$, so the graded hom is
+            \begin{align*}
+                \tt{Hom}_\mathbb{K}^* = \prod_{w\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w\tt{.}
+            \end{align*}
+            The ordinary hom objects are the hom objects of the underlying modules, $\tt{Hom}_\mathbb{K}(M,N)$. This category is denoted as $Mod_\mathbb{K}^*$. In general and whenever it makes sense, we denote $\mathcal{C}^*$ as the category of $\mathbb{Z}$-graded objects from $\mathcal{C}$.
+
+            The category $Mod_\mathbb{K}^*$ is a closed symmetric monoidal category. The tensor is given by the following formula, using the underlying tensor of $Mod_\mathbb{K}$
+            \begin{align*}
+                M^*\otimes N^* = \bigoplus_{n\in \mathbb{Z}}\bigoplus_{p\in\mathbb{Z}}M^p\otimes_\mathbb{K} N^q\tt{, where }q = n - p\tt{.}
+            \end{align*}
+            The associator of $Mod_\mathbb{K}$ may be lifted to this tensor. The unit is the module $\mathbb{K}^* \simeq \mathbb{K}$ concentrated in degree $0$. The right and left unit transformation may also be lifted from $\mathbb{K}$. 
+            
+            The category $Mod_\mathbb{K}^*$ is closed. This means that our graded tensor fixed in one variable is left adjoint to the graded hom. We may obtain the graded hom as a right adjoint for the other variable as well by using the braiding which we will define later. Showing closedness is a routine calculation by using the tensor-hom adjunction from $Mod_\mathbb{K}$.
+            \begin{multline*}
+                \tt{Hom}_\mathbb{K}^*(A^*\otimes B^*, C^*) = \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w(\bigoplus_{p\in\mathbb{Z}}A^p\otimes_\mathbb{K}B^{n-p},C^n) \\
+                = \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p\otimes B^{n-(p+w)},C^n) \simeq \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p,\tt{Hom}_\mathbb{K}(B^{n-(p+w),C^n})) \\
+                \simeq \prod_{w\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p, \prod_{n\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(B^{n-(p+w),C^n})) = \prod_{w\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p,\tt{Hom}_\mathbb{K}^{p+w}(B^*,C^*)) \\
+                = \prod_{w\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w(A^*,\tt{Hom}_\mathbb{K}^*(B^*,C^*)) = \tt{Hom}_\mathbb{K}^*(A^*,\tt{Hom}_\mathbb{K}^*(B^*,C^*))
+            \end{multline*}
+            
+            We give a braiding on homogenous elementary tensors as
+            \begin{align*}
+                \beta(a\otimes b) = (-1)^{|a||b|}b\otimes a\tt{.}
+            \end{align*}
+            It is immediate that $\beta_{A,b}$ is inverse to $\beta_{B,A}$. Observe that this category also admits a braiding where we don't introduce a sign. This does however not work when we want to add differentials to our graded modules, so this is why we stick with this sign. This braiding is also commonly known as Koszul sign convention. 
+
+            Since $Mod_\mathbb{K}^*$ is a closed symmetric monoidal category it admits electric circuits. Thus the previous results which we have proved by electric circuits also apply to this category, as the proof is identical in this language. One should note that the specific implementation may be different as vertical braiding may work different. We will now study the vertical braiding in more detail. By definition \cite{Kelly05} the application of two homogenous morphisms $f : A \rightarrow A'$ and $g : B \rightarrow B'$ on elements $a \in A$ and $b\in B$ on tensors is
+            \begin{align*}
+                (f\otimes g)(a\otimes b) = (-1)^{|g||a|}f(a)\otimes g(b)\tt{.}
+            \end{align*}
+            Viewing $a$ and $b$ as generalized elements again, we get Koszul sign rule on morphisms, i.e. given homogenous composable morphisms $f,f',g,g'$ we get that
+            \begin{align*}
+                (f' \otimes g')\circ(f\otimes g) = (-1)^{|g'||f|}(f'\circ f)\otimes (g'\circ g)\tt{.}
+            \end{align*}
+            Electrically we may represent this as a 2 string circuit where a morphism on the left wants to downwards pass a morphism on its right,
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+
+                    \node[op, scale = 0.75] (f1) at (0, 0.25) {$f$};
+                    \node[op, scale = 0.75] (g1) at (0.5, -0.25) {$g$};
+
+                    \draw[line width = 1pt] (0,1) -- (f1) -- (0,-1);
+                    \draw[line width = 1pt] (0.5,1) -- (g1) -- (0.5,-1);
+
+                    \node at (1.5, 0) {$=$};
+
+                    \node at (3, 0) {$(-1)^{|g||f|}$};
+
+                    \node[op, scale  = 0.75] (f2) at (4.5, -0.25) {$f$};
+                    \node[op, scale = 0.75] (g2) at (5, 0.25) {$g$};
+
+                    \draw[line width = 1pt] (4.5, 1) -- (f2) -- (4.5, -1);
+                    \draw[line width = 1pt] (5, 1) -- (g2) -- (5, -1);
+                    
+                \end{tikzpicture}
+            \end{center} 
+
+            Unlike the other electric equations in which we may substitute parts of an electric circuit with other equal parts this does not however work a priori in this context. This is because how we defined levels. If we are given a 3 string circuit, then the formula changes, this is because we want to manipulate every element on a level simultanously. In the case of moving a left-most component downwards pass many components, we may regard them as a component on a single string. We will use this to prove a interchange of components on an $n$-string circuit formula.
+            
+            \begin{proposition}
+                Let $n \geq 1$ and suppose that we have $a_i\in A_i \rightarrow B_i$ and $b_i: B_i \rightarrow C_i$ for any $0 < i \leq n $. Then we get that
+                \begin{align*}
+                    (b_i\circ a_i) \otimes ... \otimes (b_n \circ a_n) & = (-1)^s(b_1 \otimes ... \otimes b_n)\circ (a_1 \otimes ... \otimes a_n)\tt{,} \\
+                    \tt{where } s & = \sum_{i=1}^n|b_i|(\sum_{1\leq j < 1}|a_i|)
+                \end{align*}
+            \end{proposition}
+
+            \begin{proof}
+                We prove this by induction. If $n=1$ this is true. $s = 0$ since the sum is empty, so $b_1 \circ a_1  =(-1)^s b_1 \circ a_1$.
+                
+                Assume that the conclusion holds for $n-1$. Assume that we have $a_i$ and $b_i$ as in the hypothesis. Let $s' = \sum_{i=1}^{n-1}|b_i|(\sum_{1\leq j < 1}|a_i|)$, then
+                \begin{align*}
+                    s = s' + |b_n|(\sum_{i = 1}^{n-1}|a_i|)\tt{.}
+                \end{align*}
+                The conclusion follows from this calculation.
+                \begin{multline*}
+                    (b_1 \circ a_1) \otimes ... \otimes (b_n \circ a_n) = (-1)^{s'}((b_1 \otimes ... \otimes b_{n-1}) \circ (a_1 \otimes ... \otimes a_{n-1})) \otimes (b_n \circ a_n) \\ = (-1)^{s' + |b_n|(\sum_{i = 1}^{n-1}|a_i|)}(b_1 \otimes ... \otimes b_n) \circ (a_1 \otimes ... a_n)
+                \end{multline*}
+            \end{proof}
+
+            Now that we have developed a graphical calculus for $Mod_\mathbb{K}^*$ we are finally ready to scout for some algebras. We are only concerned with algebras which comes equipped with a derivation.
+
+            \begin{definition}[Differential graded algebra]
+                $(A^\bullet,d_A)$ is a differential graded algebra if:
+                \begin{itemize}
+                    \item $A^\bullet$ is a differential algebra in $Mod_\mathbb{K}^*$
+                    \item The structure morphisms $(\cdot_A)$ and $1_A$ are homogenous of degree $0$
+                    \item The differential $d_A$ is homogenous and of degree $1$
+                    \item $d_A^2 = 0$ 
+                \end{itemize}
+            \end{definition}
+
+            \begin{example}[The unit]
+                $\mathbb{K}^\bullet = (\mathbb{K},0)$ is a differential graded algebra in the trivial way. It is concentrated in degree $0$ and the differential is the trivial derivation.
+            \end{example}
+            \begin{example}[De Rham complex]
+                Given a manifold $M$, the exterior algebra $\Lambda M$ is a differential graded algebra. See Tu \cite{Tu07} for a deeper explanation.
+            \end{example}
 
             $M^{\bullet}$ is called a cochain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $\tt{Hom}_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
 
