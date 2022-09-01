@@ -658,7 +658,7 @@
 
             With the language of electric circuits, we may now write down the axioms of an algebra or coalgebra by circuits. The axioms states the existence of morphisms, as well as commutativity of some diagrams. We may do this electrically. The structure maps of algebras and coalgebras will be given special notation, since we will use these often.
 
-            For convenience we will let $\mathcal{C} = Mod_\mathbb{K}$. This is a closed symmetric monoidal category, with $\otimes_\mathbb{K}$ as $\otimes$. Recall that an algebra is a $\mathbb{K}$-module $A$ together with maps $(\cdot_A) : A \otimes A \rightarrow A$ and $1_A : \mathbb{K} \rightarrow A$. These morphisms will be denoted electrically as the diagrams below.
+            For convenience we will let $\mathcal{C} = \tt{Mod}_\mathbb{K}$. This is a closed symmetric monoidal category, with $\otimes_\mathbb{K}$ as $\otimes$. Recall that an algebra is a $\mathbb{K}$-module $A$ together with maps $(\cdot_A) : A \otimes A \rightarrow A$ and $1_A : \mathbb{K} \rightarrow A$. These morphisms will be denoted electrically as the diagrams below.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
 
@@ -884,10 +884,10 @@
             A useful fact about derivations is that they will always map the identity to $0$. We obtain this from Leibniz rule as one would get $d(1) = 2d(1)$, and thus $d(1) = 0$.
 
             \begin{proposition}\label{prop: tensor-derivation}
-                Let $V$ be a $\mathbb{K}$-module and $M$ be a $T(V)$-bimodule. A $\mathbb{K}$-linear morphism $f:V\rightarrow M$ uniquely determines a derivation $d_f:T(V)\rightarrow M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(V,M)\simeq Der(T(V),M)$.
+                Let $V$ be a $\mathbb{K}$-module and $M$ be a $T(V)$-bimodule. A $\mathbb{K}$-linear morphism $f:V\rightarrow M$ uniquely determines a derivation $d_f:T(V)\rightarrow M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(V,M)\simeq \tt{Der}(T(V),M)$.
 
 
-                Let $N$ be a $T^c(V)$-cobimodule. A $\mathbb{K}$-linear morphism $g:M\rightarrow V$ uniquely determines a coderivation $d_g^c:N\rightarrow T^c(V)$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(N,V)\simeq Coder(N,T^c(V))$.
+                Let $N$ be a $T^c(V)$-cobimodule. A $\mathbb{K}$-linear morphism $g:M\rightarrow V$ uniquely determines a coderivation $d_g^c:N\rightarrow T^c(V)$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(N,V)\simeq \tt{Coder}(N,T^c(V))$.
             \end{proposition}
 
             \begin{proof}
@@ -1005,15 +1005,15 @@
             \end{center}
 
             \begin{proposition}\label{prop: free-derivation}
-                Let $A$ be a differential algebra and $M$ a $\mathbb{K}$-module. A $\mathbb{K}$-linear morphism $f:M\rightarrow A\otimes_{\mathbb{K}} M$ uniquely determines a derivation $d_f:A\otimes M\rightarrow A\otimes M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(M,A\otimes_{\mathbb{K}}M)\simeq Der(A\otimes_{\mathbb{K}}M)$. Moreover, $d_f$ is given as $(\nabla_A\otimes id_M)\circ (id_A\otimes f) + d_A\otimes id_M$.
+                Let $A$ be a differential algebra and $M$ a $\mathbb{K}$-module. A $\mathbb{K}$-linear morphism $f:M\rightarrow A\otimes_{\mathbb{K}} M$ uniquely determines a derivation $d_f:A\otimes M\rightarrow A\otimes M$, i.e. there is an isomorphism $\tt{Hom}_{\mathbb{K}}(M,A\otimes_{\mathbb{K}}M)\simeq \tt{Der}(A\otimes_{\mathbb{K}}M)$. Moreover, $d_f$ is given as $(\nabla_A\otimes id_M)\circ (id_A\otimes f) + d_A\otimes id_M$.
 
-                Dually, if $C$ is a differential coalgebra and $N$ is a $\mathbb{K}$-module, then a $\mathbb{K}$-linear morphism $g:C\otimes N\rightarrow N$ uniquely determines a coderivation $d_g:C\otimes_{\mathbb{K}}N\rightarrow C\otimes_{\mathbb{K}}N$. There is an isomorphism $\tt{Hom}_{\mathbb{K}}(C\otimes_{\mathbb{K}}N,N)\simeq Coder(C\otimes_{\mathbb{K}}N)$, and $d_g$ is given as $(id_C\otimes g)\circ (\Delta_C\otimes id_N) + d_C\otimes id_N$.
+                Dually, if $C$ is a differential coalgebra and $N$ is a $\mathbb{K}$-module, then a $\mathbb{K}$-linear morphism $g:C\otimes N\rightarrow N$ uniquely determines a coderivation $d_g:C\otimes_{\mathbb{K}}N\rightarrow C\otimes_{\mathbb{K}}N$. There is an isomorphism $\tt{Hom}_{\mathbb{K}}(C\otimes_{\mathbb{K}}N,N)\simeq \tt{Coder}(C\otimes_{\mathbb{K}}N)$, and $d_g$ is given as $(id_C\otimes g)\circ (\Delta_C\otimes id_N) + d_C\otimes id_N$.
             \end{proposition}
 
             \begin{proof}
                 This is only proved in the case of an algebra. The case of a coalgebra is dual.
                 
-                We first got to prove that the morphism $d_{\argument} : \tt{Hom}_\mathbb{K}(M, A\otimes_\mathbb{K}M) \rightarrow Der(A \otimes_\mathbb{K}M)$ is well-defined. This means to check that for any morphism $f : M \rightarrow A \otimes_\mathbb{K} M$ the morphism $d_f$ satisfies the Leibniz rule.
+                We first got to prove that the morphism $d_{\argument} : \tt{Hom}_\mathbb{K}(M, A\otimes_\mathbb{K}M) \rightarrow \tt{Der}(A \otimes_\mathbb{K}M)$ is well-defined. This means to check that for any morphism $f : M \rightarrow A \otimes_\mathbb{K} M$ the morphism $d_f$ satisfies the Leibniz rule.
 
                 Assume that we have elements $a, b \in A$ and $m\in M$. Then $d_f(ab\otimes m) = d_f(a(b\otimes m))$. We now make an abuse of notation to write an equality between an element and a circuit. Recall that this really means that we have to think of $a$, $b$ and $m$ as generalized elements.
                 \begin{center}
@@ -1130,19 +1130,19 @@
             \end{align*}
             An element of $m\in M$ is said to be homogenous if it is properly contained in a single summand, $m$ is then given the degree of the summand. We say that a morphism of graded modules $f:M^*\rightarrow N^*$ is homogenous of degree $n$ if it preserves the grading, i.e.  $f(M^i) \subseteq N^{n+i}$. The degree of a homogenous element $m$ or morphism $f$ is denoted as $|m|$ or $|f|$.
             
-            There is a distinction between the ordinary and self-enriched category of graded modules. We are going to work with this category as it is both the ordinary and self-enriched \todo{Kan jeg skrive dette?} category. Its hom objects is the graded module of homogenous morphism. We denote a factor in the grading as $\tt{Hom}_\mathbb{K}^w(M^*,N^*)=\startset{f : M^* \rightarrow N^* \mid f\tt{ is homogenous and }|f|=w}$, so the graded hom is
+            There is a distinction between the ordinary and self-enriched category of graded modules. We are going to work with this category as it is both the ordinary and self-enriched \todo{Kan jeg skrive dette?} category. Its hom-objects is the graded module of homogenous morphism. We denote a factor in the grading as $\tt{Hom}_\mathbb{K}^w(M^*,N^*)=\startset{f : M^* \rightarrow N^* \mid f\tt{ is homogenous and }|f|=w}$, so the graded hom is
             \begin{align*}
                 \tt{Hom}_\mathbb{K}^* = \prod_{w\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w\tt{.}
             \end{align*}
-            The ordinary hom objects are the hom objects of the underlying modules, $\tt{Hom}_\mathbb{K}(M,N)$. This category is denoted as $Mod_\mathbb{K}^*$. In general and whenever it makes sense, we denote $\mathcal{C}^*$ as the category of $\mathbb{Z}$-graded objects from $\mathcal{C}$.
+            The ordinary hom-objects are the hom-objects of the underlying modules, $\tt{Hom}_\mathbb{K}(M,N)$. This category is denoted as $\tt{Mod}_\mathbb{K}^*$. In general and whenever it makes sense, we denote $\mathcal{C}^*$ as the category of $\mathbb{Z}$-graded objects from $\mathcal{C}$.
 
-            The category $Mod_\mathbb{K}^*$ is a closed symmetric monoidal category. The tensor is given by the following formula, using the underlying tensor of $Mod_\mathbb{K}$
+            The category $\tt{Mod}_\mathbb{K}^*$ is a closed symmetric monoidal category. The tensor is given by the following formula, using the underlying tensor of $\tt{Mod}_\mathbb{K}$
             \begin{align*}
                 M^*\otimes N^* = \bigoplus_{n\in \mathbb{Z}}\bigoplus_{p\in\mathbb{Z}}M^p\otimes_\mathbb{K} N^q\tt{, where }q = n - p\tt{.}
             \end{align*}
-            The associator of $Mod_\mathbb{K}$ may be lifted to this tensor. The unit is the module $\mathbb{K}^* \simeq \mathbb{K}$ concentrated in degree $0$. The right and left unit transformation may also be lifted from $\mathbb{K}$. 
+            The associator of $\tt{Mod}_\mathbb{K}$ may be lifted to this tensor. The unit is the module $\mathbb{K}^* \simeq \mathbb{K}$ concentrated in degree $0$. The right and left unit transformation may also be lifted from $\mathbb{K}$. 
             
-            The category $Mod_\mathbb{K}^*$ is closed. This means that our graded tensor fixed in one variable is left adjoint to the graded hom. We may obtain the graded hom as a right adjoint for the other variable as well by using the braiding which we will define later. Showing closedness is a routine calculation by using the tensor-hom adjunction from $Mod_\mathbb{K}$.
+            The category $\tt{Mod}_\mathbb{K}^*$ is closed. This means that our graded tensor fixed in one variable is left adjoint to the graded hom. We may obtain the graded hom as a right adjoint for the other variable as well by using the braiding which we will define later. Showing closedness is a routine calculation by using the tensor-hom adjunction from $\tt{Mod}_\mathbb{K}$.
             \begin{multline*}
                 \tt{Hom}_\mathbb{K}^*(A^*\otimes B^*, C^*) = \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w(\bigoplus_{p\in\mathbb{Z}}A^p\otimes_\mathbb{K}B^{n-p},C^n) \\
                 = \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p\otimes B^{n-(p+w)},C^n) \simeq \prod_{w\in\mathbb{Z}}\prod_{n\in\mathbb{Z}}\prod_{p\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p,\tt{Hom}_\mathbb{K}(B^{n-(p+w),C^n})) \\
@@ -1156,7 +1156,7 @@
             \end{align*}
             It is immediate that $\beta_{A,b}$ is inverse to $\beta_{B,A}$. Observe that this category also admits a braiding where we don't introduce a sign. This does however not work when we want to add differentials to our graded modules, so this is why we stick with this sign. This braiding is also commonly known as Koszul sign convention. 
 
-            Since $Mod_\mathbb{K}^*$ is a closed symmetric monoidal category it admits electric circuits. Thus the previous results which we have proved by electric circuits also apply to this category, as the proof is identical in this language. One should note that the specific implementation may be different as vertical braiding may work different. We will now study the vertical braiding in more detail. By definition \cite{Kelly05} the application of two homogenous morphisms $f : A \rightarrow A'$ and $g : B \rightarrow B'$ on elements $a \in A$ and $b\in B$ on tensors is
+            Since $\tt{Mod}_\mathbb{K}^*$ is a closed symmetric monoidal category it admits electric circuits. Thus the previous results which we have proved by electric circuits also apply to this category, as the proof is identical in this language. One should note that the specific implementation may be different as vertical braiding may work different. We will now study the vertical braiding in more detail. By definition \cite{Kelly05} the application of two homogenous morphisms $f : A \rightarrow A'$ and $g : B \rightarrow B'$ on elements $a \in A$ and $b\in B$ on tensors is
             \begin{align*}
                 (f\otimes g)(a\otimes b) = (-1)^{|g||a|}f(a)\otimes g(b)\tt{.}
             \end{align*}
@@ -1192,7 +1192,7 @@
             \begin{proposition}
                 Let $n \geq 1$ and suppose that we have $a_i\in A_i \rightarrow B_i$ and $b_i: B_i \rightarrow C_i$ for any $0 < i \leq n $. Then we get that
                 \begin{align*}
-                    (b_i\circ a_i) \otimes ... \otimes (b_n \circ a_n) & = (-1)^s(b_1 \otimes ... \otimes b_n)\circ (a_1 \otimes ... \otimes a_n)\tt{,} \\
+                    (b_i\circ a_i) \otimes \cdots \otimes (b_n \circ a_n) & = (-1)^s(b_1 \otimes \cdots \otimes b_n)\circ (a_1 \otimes \cdots \otimes a_n)\tt{,} \\
                     \tt{where } s & = \sum_{i=1}^n|b_i|(\sum_{1\leq j < 1}|a_i|)
                 \end{align*}
             \end{proposition}
@@ -1206,46 +1206,70 @@
                 \end{align*}
                 The conclusion follows from this calculation.
                 \begin{multline*}
-                    (b_1 \circ a_1) \otimes ... \otimes (b_n \circ a_n) = (-1)^{s'}((b_1 \otimes ... \otimes b_{n-1}) \circ (a_1 \otimes ... \otimes a_{n-1})) \otimes (b_n \circ a_n) \\ = (-1)^{s' + |b_n|(\sum_{i = 1}^{n-1}|a_i|)}(b_1 \otimes ... \otimes b_n) \circ (a_1 \otimes ... a_n)
+                    (b_1 \circ a_1) \otimes \cdots \otimes (b_n \circ a_n) = (-1)^{s'}((b_1 \otimes \cdots \otimes b_{n-1}) \circ (a_1 \otimes \cdots \otimes a_{n-1})) \otimes (b_n \circ a_n) \\ = (-1)^{s' + |b_n|(\sum_{i = 1}^{n-1}|a_i|)}(b_1 \otimes \cdots \otimes b_n) \circ (a_1 \otimes \cdots a_n)
                 \end{multline*}
             \end{proof}
 
-            Now that we have developed a graphical calculus for $Mod_\mathbb{K}^*$ we are finally ready to scout for some algebras. We are only concerned with algebras which comes equipped with a derivation.
+            A final remark on this braiding is that it affects any scenario where we compose functions and they move past each other. Since function composition factors through this tensor, moving functions around is actually a braiding. An important example of this is the pre-composition functor. If $f$ and $g$ are homogenous and composable then
+            \begin{align*}
+                f^*(g) = (-1)^{|f||g|}g\circ f\tt{.}
+            \end{align*}
 
-            \begin{definition}[Differential graded algebra]
-                $(A^\bullet,d_A)$ is a differential graded algebra if:
-                \begin{itemize}
-                    \item $A^\bullet$ is a differential algebra in $Mod_\mathbb{K}^*$
-                    \item The structure morphisms $(\cdot_A)$ and $1_A$ are homogenous of degree $0$
-                    \item The differential $d_A$ is homogenous and of degree $1$
-                    \item $d_A^2 = 0$ 
-                \end{itemize}
-            \end{definition}
+            The graphical calculus which we have developed will be the same for any symmetric monoidal category where the braiding is similar. What this means will soon be evident when we add extra structure to the objects of $\tt{Mod}_\mathbb{K}^*$.
 
-            \begin{example}[The unit]
-                $\mathbb{K}^\bullet = (\mathbb{K},0)$ is a differential graded algebra in the trivial way. It is concentrated in degree $0$ and the differential is the trivial derivation.
+            A graded $\mathbb{K}$-module $M^\bullet$ is called a cochain complex if it comes equipped with a differential $d_M : M^\bullet \rightarrow M^\bullet$. By a differential we mean a homogenous morphism of degree $1$ such that $d_M^2 = 0$. Be cautios of bad notation, as $d^2_M$ might mean $d^2_M = d_M \circ d_M$ and $d^2_M : M^2 \rightarrow M^3$.
+
+            Given a cochain complex $M^\bullet$, we know by definition that the image of the differential lies inside the kernel of the differential. We denote this at the $i$'th coordinate as $B^iM \subseteq Z^iM$. $B^*M$ is the graded submodule of images, also called boundaries. $Z^*M$ is the graded submodule of kernels, also called cycles. The graded cohomology module $H^*M$ is defined as the quotient $\sfrac{Z^*M}{B^*M}$. A cochain complex is said to be exact if $H^*M \simeq 0$.
+
+            Cochain complexes are plentyfull in nature.
+            \begin{example}[$\mathbb{K}$ as a cochain complex]
+                Let $\mathbb{K}^\bullet = (\mathbb{K}, 0)$ be the graded $\mathbb{K}$-module concentrated in degree $0$ together with a $0$ differential. This is trivially a cochain complex.
             \end{example}
-            \begin{example}[De Rham complex]
-                Given a manifold $M$, the exterior algebra $\Lambda M$ is a differential graded algebra. See Tu \cite{Tu07} for a deeper explanation.
+            \begin{example}[Trivial cochain complexes]
+                Let $M^*$ be a graded $\mathbb{K}$-module. Let $M^\bullet = (M^*, 0)$ be the same graded module with the $0$ differential, this is also a cochain complex.
+            \end{example}
+            \begin{example}
+                We can create a chain complex as the following diagram.
+                \begin{center}
+                    \begin{tikzcd}
+                        \cdots \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \mathbb{K} \ar[]{r}[]{id_\mathbb{K}} & \mathbb{K} \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \cdots
+                    \end{tikzcd}
+                \end{center}
+            \end{example}
+            \begin{example}[Cone of a chain map]
+                Suppose that $f : A^\bullet \rightarrow B^\bullet$ is a homogenous morphism of degree $0$ such that $f\circ d_A = d_B\circ f$. There is a cochain complex associated to $f$, yielding a short-exact sequence of cochain complexes. We define $\tt{cone}(f)$ at each degree
+                \begin{align*}
+                    \tt{cone}(f)^n = A^{n+1} \oplus B^{n} \\
+                    d_{\tt{cone}(f)}^n = \begin{pmatrix}
+                        d_A^{n+1} & 0 \\ f^{n+1} & d_B^n
+                    \end{pmatrix}
+                \end{align*}
+                This gives us a short exact as follows
+                \begin{center}
+                    \begin{tikzcd}
+                        B^\bullet \ar[tail]{r}[]{} & \tt{cone}(f) \ar[two heads]{r}[]{} & A^\bullet[1]
+                    \end{tikzcd}
+                \end{center}
+            \end{example}
+            \begin{example}[Simplical cochain complexes]
+                Let $A : \Delta^{op} \rightarrow \tt{Mod}_\mathbb{K}$ be a simplical $\mathbb{K}$-module. Taking the alternating sum of the face maps of the same degrees gives us a differential on the graded $\mathbb{K}$-module $A^*$. 
+            \end{example}
+            \begin{example}[Singular chain complex with $\mathbb{K}$-coefficents]
+                Let $M$ be a topological space. There is a simplical set defined as $Sing(M) = \tt{Top}(\Delta^{\argument},M) : \Delta^{op} \rightarrow \tt{Set}$. Here $\Delta^{[n]}$ in Top refers to the topological standard $n$-simplex. We get a simplical $\mathbb{K}$-module by creating the free one, $\mathbb{K}Sing(M)$. By the above example this in turns defines a chain complex in $\tt{Mod}_\mathbb{K}$.
             \end{example}
 
-            $M^{\bullet}$ is called a cochain complex if it comes equipped with a homogenous morphism of degree $1$, like $d_M^{\bullet}:M^{\bullet}\rightarrow M^{\bullet}$, such that ${d_M^{\bullet}}^2=0$. This morphism is called differential. A chain morphism $f: M^{\bullet}\rightarrow N^{\bullet}$ is a homogenous $\mathbb{K}$-linear morphism of degree $0$, such that $f\circ d_M^{\bullet} = d_N^{\bullet}\circ f$. The category of chain complexes will be denoted as $ChMod_{\mathbb{K}}$ or $Mod_\mathbb{K}^\bullet$. Generally $\mathcal{C}^\bullet$ is the category of chain complexes whenever it makes sense, and the $\mathbb{K}$-module of morphisms between two chain complexes is denoted as $\tt{Hom}_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})$.
+            The category of cochain complexes will be denoted as $\tt{Mod}_\mathbb{K}^\bullet$. Note that this category is built upon $\tt{Mod}_\mathbb{K}^*$, we will for now inherit the braiding $\beta$. For this category we would like to entertain different collections of morphisms. This is because the morphisms which respects all of the structure and the morphisms which makes this category self-enriched are different. We will usually denote both of these categories as $\tt{Mod}_\mathbb{K}^\bullet$, but when we want to emphesize the structure preserving maps we will rather denote this as $\tt{Ch}(\mathbb{K})$.
 
-
-            The functor $\argument[n]:Mod_\mathbb{K}^\bullet\rightarrow Mod_\mathbb{K}^\bullet$ shifts the degree on each object by adding $n$ to each grade, it is called the shift functor. Let $\otimes$ denote the total tensor product in $Mod_\mathbb{K}^\bullet$. There is an isomorphism between the identity shift functor and total tensor of the stalk of $\mathbb{K}$, $\argument[0] \simeq \bar{\mathbb{K}}\otimes\argument$. In the same manner, shifting $n$-fold becomes isomorphic to tensoring with the shifted stalk of $\mathbb{K}$, $\argument[n] \simeq \bar{\mathbb{K}}[n]\otimes\argument$. For our purposes we will let $(A^\bullet, d_A^\bullet)[n] = (A^{\bullet + n}, -d_A^{\bullet + n})$. The koszul sign rule gives us a switching map for the tensor product. Thus, if $f^*:A^\bullet\rightarrow B^\bullet$ is a morphism of degree $k$, then $f^*[n] = (-1)^{k\cdot n}f^{*+n}$.
-
-            \begin{proposition}
-                Let $M^{\bullet}$ and $N^{\bullet}$ be two chain complexes. The graded module of morphisms $\tt{Hom}_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a chain complex, given by the differential $\partial(f) = d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}$.
-            \end{proposition}
-
-            \begin{proof}
-                We observe that $\partial : \tt{Hom}_{\mathbb{K}}^*(M^{\bullet},N^{\bullet}) \rightarrow \tt{Hom}_{\mathbb{K}}^*(M^{\bullet},N^{\bullet})$ is a morphism of degree $1$. It remains to check that $\partial^2 = 0$. Pick any homogenous morphism $f : M^{\bullet}\rightarrow N^{\bullet}$.
-                \begin{multline*}
-                    \partial^2(f) = \partial(d_N^{\bullet}\circ f - (-1)^{|f|}f\circ d_M^{\bullet}) = \partial(d_N^{\bullet}\circ f) - (-1)^{|f|}\partial(f\circ d_M^{\bullet}) \\ = - (-1)^{|d_N^{\bullet}\circ f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} - (-1)^{|f|}d_N^{\bullet}\circ f\circ d_M^{\bullet} = 0
-                \end{multline*}
-            \end{proof}
-
-            In an electric diagram we write $\partial f$ as a sum of circuits.
+            When $A^\bullet$ and $B^\bullet$ are cochain complexes the graded $\mathbb{K}$-module $\tt{Hom}_\mathbb{K}^*(A^\bullet, B^\bullet)$ admits a derivative. Let $f : A^\bullet \rightarrow B^\bullet$ be any homogenous morphism, the derivative- or boundary of $f$ is given by
+            \begin{align*}
+                \partial f = [d, f] = (d_{B*} + d_A^*)(f) = d_B \circ f - (-1)^{|f|}f\circ d_A\tt{.}
+            \end{align*}
+            We see that $|\partial| = |d_{B*} + d_A^*| = 1$, and
+            \begin{align*}
+                \partial^2f = (d_{B*} + d_A^*)(d_B \circ f - (-1)^{|f|}f\circ d_A) = d_B^2f + (-1)^{|f|}d_Bfd_A - (-1)^{|f|}d_Bfd_A - fd_A^2 = 0\tt{.}
+            \end{align*}
+            Thus $\tt{Hom}_\mathbb{K}^\bullet(A^\bullet, B^\bullet) = (\tt{Hom}_\mathbb{K}^*(A^\bullet, B^\bullet), \partial)$ is a cochain complex. We endow $Mod_\mathbb{K}^\bullet$ with these hom-objects. In an electric diagram we write $\partial f$ as a sum of circuits.
+            
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
 
@@ -1266,24 +1290,87 @@
                 \end{tikzpicture}
             \end{center}
 
-            Observe that $f:M^{\bullet}\rightarrow N^{\bullet}$ of degree $0$ is a chain morphism if and only if $\partial(f) = 0$. We then observe that $\tt{Hom}_{\mathbb{K}}^{\bullet}(M^{\bullet},N^{\bullet})\simeq Z^0\tt{Hom}_{\mathbb{K}}^*(M^{\bullet})$. Moreover, if $f$ is a boundary, i.e. there is some $h$ such that $f = \partial h$, then $f$ null-homotopic. Thus the $0$'th homology $H^0\tt{Hom}^*_\mathbb{K}(M^\bullet, N^\bullet)$ is the set of every chain map which is not null-homotopic up to null homotopy. We obtain this lemma immediate from this discussion.
+            Notice how this construction of $\tt{Hom}_\mathbb{K}^\bullet$ is the same as the (product) total complex of an anti-commutative double complex. An anti commutative double complex is a graded module of cochain complexes, together with a differential between the cochain complexes. These different differentials are supposed to anti-commute. An anti-commutative double complex may be illustrated in this manner.
+            \begin{center}
+                \begin{tikzcd}
+                    & \vdots & \vdots & \vdots \\
+                    \cdots \ar[]{r}[]{d_C^h} & C^{-1, 1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{0, 1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{1, 1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & \cdots \\
+                    \cdots \ar[]{r}[]{d_C^h} & C^{-1, 0} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{0,0} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{1, 0} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & \cdots \\
+                    \cdots \ar[]{r}[]{d_C^h} & C^{-1, -1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{0, -1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & C^{1, -1} \ar[]{u}[]{d_C^v} \ar[]{r}[]{d_C^h} & \cdots \\
+                    & \vdots \ar[]{u}[]{d_C^v} & \vdots \ar[]{u}[]{d_C^v} & \vdots \ar[]{u}[]{d_C^v}
+                \end{tikzcd}
+            \end{center}
+            Another way of thinking of an anti-commutative double complex $C^{\bullet, \bullet}$ is that it is a bigraded $\mathbb{K}$-module with a vertical and horizontal differential such that $d^v_C\circ d^h_C = -d^h_C \circ d^v_C$.
 
-            \begin{lemma}
-                Suppose that $N^\bullet$ is a contractible chain complex. Then for any chain complex $M^\bullet$, the $0$'th homology of $\tt{Hom}^*_\mathbb{K}(M^\bullet, N^\bullet)$ is $H^0\tt{Hom}^*_\mathbb{K}(M^\bullet, N^\bullet)\simeq 0$
-            \end{lemma}
-
-            To complete the definitions of graded modules and chain complexes to algebras we would like the structure morphisms to respect the given structure. E.g. if $a$ and $b$ are homogenous elements, we would like that the degree of $ab$ is the sum of its parts, i.e. $|ab| = |a| + |b|$. Since multiplication by identity doesn't do anything, we want that the identity lives in the $0$'th degree, and so forth.
-
-            \begin{definition}[Graded algebra]
-                Let $A^*$ be a graded $\mathbb{K}$-module. We say that $A^*$ is a graded algebra if $A^*$ is an algebra such that $\nabla_A$ and $\upsilon_A$ are homogenous and of degree $0$.
-                Dually, $C^*$ is a graded coalgebra if $\Delta_C$ and $\varepsilon_C$ are homogenous and of degree $0$.
+            \begin{definition}
+                Let $C^{\bullet, \bullet}$ be an anti-commutative double complex. We define the sum and product total complex. The differential at each $C^{p,q}$ is defined as $d_{\tt{Tot}C} = d^v_C + d^h_C$.
+                \begin{align*}
+                    \tt{Tot}^{\oplus}(C^{\bullet, \bullet}) & = \bigoplus_{n\in\mathbb{Z}}\bigoplus_{p+q=n}C^{p,q} \\
+                    \tt{Tot}^{\prod}(C^{\bullet, \bullet}) & = \prod_{n\in \mathbb{Z}}\prod_{p+q=n}C^{p,q}
+                \end{align*}
             \end{definition}
+            
+            If $C^{\bullet, \bullet}$ is bounded, then $\tt{Tot}^\oplus(C^{\bullet, \bullet}) \simeq \tt{Tot}^{\prod}(C^{\bullet, \bullet})$.
+
+            If we let $\tt{Hom}_\mathbb{K}(A^\bullet, B^\bullet)^{\bullet, \bullet} = (\prod_{p,q\in\mathbb{Z}}\tt{Hom}_\mathbb{K}(A^p,B^q), d_A^*, d_{B*})$, then it is clear that
+            \begin{align*}
+                \tt{Hom}_\mathbb{K}^\bullet(A^\bullet,B^\bullet) = \tt{Tot}^{\prod}(\tt{Hom}_\mathbb{K}(A^\bullet, B^\bullet)^{\bullet, \bullet})\tt{.}
+            \end{align*}
+
+            From this we are able to deduce that $\tt{Mod}_\mathbb{K}^\bullet$ is a closed symmetric monoidal category. The tensor may be deduced from the adjunction. Define an anti-commutative double complex $(A^\bullet \otimes_\mathbb{K} B^\bullet)^{\bullet, \bullet} = (\bigoplus_{n\in\mathbb{Z}}\bigoplus_{p+q=n}A^p\otimes B^q, d_A\otimes B,A\otimes d_B)$, then the tensor is defined as
+            \begin{align*}
+                A^\bullet \otimes B^\bullet = \tt{Tot}^\oplus((A^\bullet \otimes B^\bullet)^{\bullet, \bullet})\tt{.}
+            \end{align*}
+            All of the structure morphisms for a closed symmetric monoidal category are inherited from $\tt{Mod}_\mathbb{K}^*$. This also means that $\tt{Mod}_\mathbb{K}^\bullet$ employs the same electric circuits as $\tt{Mod}_\mathbb{K}^*$.
+
+            The category of cochain complexes with chain maps $\tt{Ch}(\mathbb{K})$ is defined to have its hom-objects as $Z^0\tt{Hom}_\mathbb{K}^\bullet(A^\bullet, B^\bullet)$. By abuse of notation we may write $\tt{Ch}(\mathbb{K}) = Z^0\tt{Mod}_\mathbb{K}^\bullet$. Notice that this condition means that for any $f : A^\bullet \rightarrow B^\bullet$ in $\tt{Ch}(\mathbb{K})$ has a $0$ derivative, i.e. $f\circ d_A = d_B \circ f$. We will call these morphisms for chain maps.
+
+            We may also observe that the homotopy category $\tt{K}(\mathbb{K}) = H^0\tt{Mod}_\mathbb{K}^\bullet$. This is because the chain maps $f, g : A^\bullet \rightarrow B^\bullet$ are homotopic if there is a homogenous morphism $h : A^\bullet \rightarrow B^\bullet$ of degree $-1$ such that $\partial h = f - g$.
+
+            A chain map $f : A^\bullet \rightarrow B^\bullet$ induces homogenous morphisms of degree $0$.
+            \begin{align*}
+                B^*f & : B^*A \rightarrow B^*B \\
+                Z^*f & : Z^*A \rightarrow Z^*B \\
+                H^*f & : H^*A \rightarrow H^*B
+            \end{align*}
+            We say that $f$ is a quasi-isomorphism if $H^*f$ is an isomorphism. This is equivalent to say that $\tt{cone}(f)$ is exact.
+
+            A cochain complex $N^\bullet$ is said to be contractible if $id_N$ is null-homotopic. Then it follows for any other cochain complexes $M^\bullet$ that $H^0\tt{Hom}_\mathbb{K}^\bullet(M^\bullet, N^\bullet) \simeq 0$.
+
+            We define the shift functor $\argument [n] : \tt{Mod}_\mathbb{K}^\bullet \rightarrow \tt{Mod}_\mathbb{K}^\bullet$ is defined on cochains $M^\bullet$ as
+            \begin{align*}
+                (M^\bullet, d_M)[n] = (M^\bullet[n], (-1)^nd_M)\tt{.}
+            \end{align*}
+            With this definition shifting is naturally isomorphic to tensoring. That is if $\mathbb{K}^\bullet[n]$ denotes the field concentrated in dimension $-n$, then
+            \begin{align*}
+                \mathbb{K}^\bullet[n]\otimes_\mathbb{K} M^\bullet \simeq M^\bullet[n]\tt{.}
+            \end{align*}
+            By writing out the total tensor product, one may see how the differential gets its sign. We usually call $\argument[1]$ desuspension and $\argument[-1]$ for suspension.
+
+            We are now ready to talk about algebras in $Mod_\mathbb{K}^\bullet$.
 
             \begin{definition}[Differential graded algebra]
-                Let $A^{\bullet}$ be a chain complex over $\mathbb{K}$. We say that $A^{\bullet}$ is a differential graded algebra, or dg algebra, if it is a graded algebra and the differential is a graded derivation, i.e. $d_A(ab) = d_A(a)b + (-1)^{|a|}ad_A(b)$.
-
-                Dually, $C^{\bullet}$ is a differential graded coalgebra if $C^{\bullet}$ is a graded coalgebra and the differential is a graded coderivation.
+                $(A^\bullet,d_A)$ is a differential graded algebra if:
+                \begin{itemize}
+                    \item $A^\bullet$ is a differential algebra in $\tt{Mod}_\mathbb{K}^\bullet$.
+                    \item The structure morphisms $(\cdot_A)$ and $1_A$ are chain maps.
+                    \item The derivation and differential coincides.
+                \end{itemize}
             \end{definition}
+
+            \begin{example}[The unit]
+                $\mathbb{K}^\bullet = (\mathbb{K},0)$ is a differential graded algebra in the trivial way. It is concentrated in degree $0$ and the differential is the trivial derivation.
+            \end{example}
+            \begin{example}[De Rham complex]
+                Given a manifold $M$, the exterior algebra $\Lambda M$ is a differential graded algebra. See Tu \cite{Tu07} for a deeper explanation.
+            \end{example}
+
+            Dually, $C^{\bullet}$ is a differential graded coalgebra if
+            \begin{itemize}
+                \item $C^\bullet$ is a differential coalgebra in $\tt{Mod}_\mathbb{K}^\bullet$.
+                \item The structure morphisms $\Delta_C$ and $\varepsilon_C$ are chain maps.
+                \item The coderivation and differential coincides
+            \end{itemize}
     \section{Cobar-Bar Adjunction}
     \subsection{Convolution Algebras}
 
@@ -2127,7 +2214,7 @@
             An $A_\infty$-algebra is a graded vector space $A$ together with a differential $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ that is a coderivation of degree $1$.
         \end{definition}
 
-        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $\tt{Hom}_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq Coder(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s\widetilde{m}_n \omega^{\otimes n}$. Since $\omega^{\otimes n}$ is of degree $-n$, $\widetilde{m}_n$ and $s$ is of degree $1$, we get that $m_n$ is of degree $2-n$.
+        The differential $m$ induces structure morphisms on $A[1]$. By proposition \ref{prop: tensor-derivation} there is a natural bijection $\tt{Hom}_\mathbb{K}(\bar{T}^c(A[1]),A[1])\simeq \tt{Coder}(\bar{T}^c(A[1]),\bar{T}^c(A[1]))$ given by the projection onto $A[1]$. Thus $m:\bar{T}^c(A[1])\rightarrow\bar{T}^c(A[1])$ corresponds to maps $\widetilde{m}_n:A[1]^{\otimes n}\rightarrow A[1]$ of degree $1$ for any $n\geq 1$. We define maps $m_n : A^{\otimes n}\rightarrow A$ by the composite $s\widetilde{m}_n \omega^{\otimes n}$. Since $\omega^{\otimes n}$ is of degree $-n$, $\widetilde{m}_n$ and $s$ is of degree $1$, we get that $m_n$ is of degree $2-n$.
         \begin{center}
             \begin{tikzcd}
                 A^{\otimes n} \ar[]{r}[]{m_n} \ar[]{d}[]{\simeq}[left]{\omega^{\otimes n}} & A \\
