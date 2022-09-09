@@ -2,14 +2,14 @@
 
 \begin{document}
 
-        In Stasheffs papers \cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations. This will be made precise later. We may regard $m_2$ to be a multiplication of $A$, it is however not a priori associative. The associator of $m_2$ is taken to be the homotopical relation of $m_3$. Thus, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \overline{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. So we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$.
+        In Stasheffs papers \cite{Stasheff63I} and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n:A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations. This will be made precise later. We will regard $m_2$ to be a multiplication of $A$, but it is however not a priori associative. We choose $m_3$ to be a homotopy of $m_2$'s associator. In this manner, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \overline{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. By this relation we could instead define an $A_\infty$-algebra to be a coalgebra on the form $BA$, and we will prefer to do so in this thesis.
 
 
-        In order to understand the bar construction we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation:
+        In order to understand the bar construction, we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation;
             \begin{equation*}
                 \partial\alpha + \alpha\star\alpha = 0.
             \end{equation*}
-        Let $\tt{Tw}(C,A)$ be the set of twisting morphisms, then considering it as a functor $\tt{Tw} : \tt{coAlg}_{\mathbb{K}}^{op}\times \tt{Alg}_{\mathbb{K}} \rightarrow Ab$ we want to show that it is represented in both arguments. Moreover, these representations give rise to an adjoint pair of functors, called the bar and cobar construction.
+        Let $\tt{Tw}(C,A)$ be the set of twisting morphisms. By considering it as a functor $\tt{Tw} : \tt{coAlg}_{\mathbb{K}}^{op}\times \tt{Alg}_{\mathbb{K}} \rightarrow Ab$ we want to show that it is represented in both arguments. Moreover, these representations give rise to an adjoint pair of functors, called the bar and cobar construction.
 
         \begin{center}
             \begin{tikzcd}
@@ -17,15 +17,15 @@
             \end{tikzcd}
         \end{center}
 
-        The bar and cobar construction will be the basis for our discussion of $A_\infty$-algebras. As the bar construction can be used to define $A_\infty$-algebras, we may easily dualize this to define $A_\infty$-coalgebras in terms of the cobar construction. This chapter will follow the notations and progression presented in Loday and Vallete \cite{Loday12} to develop the theory for the bar-cobar adjunction.
+        The bar and cobar construction will be the basis for our discussion of $A_\infty$-algebras. As the bar construction can be used to define $A_\infty$-algebras, we may easily dualize this to define $A_\infty$-coalgebras in terms of the cobar construction. This chapter will follow the notions and progression presented in Loday and Vallete \cite{Loday12} to develop the theory for the bar-cobar adjunction.
 
-    \section{Prelimaries}    
+    \section{Preliminaries}    
     \subsection{Algebras}
 
-            This section is a review of associative algebras over a field $\mathbb{K}$. The main goal for this section is to establish some conventions and see how they may be dualized to coalgebras. This collection of algebras together with ring homomorphisms form the category $\tt{Alg}_{\mathbb{K}}$ of associative algebras over $\mathbb{K}$.
+            This section presents a review of associative algebras over a field $\mathbb{K}$. The main goal of this section is to establish some conventions before we look at how they are dualized to coalgebras. This collection of algebras, together with ring homomorphisms, form the category $\tt{Alg}_{\mathbb{K}}$ of associative algebras over $\mathbb{K}$.
 
             \begin{definition}[$\mathbb{K}$-Algebra]
-                Let $\mathbb{K}$ be a field with unit $1$. A $\mathbb{K}$-algebra $A$, or an algebra $A$ over $\mathbb{K}$ is a vector space with structure morphisms called multiplication and unit,
+                Let $\mathbb{K}$ be a field with unit $1$. A $\mathbb{K}$-algebra $A$, or an algebra $A$ over $\mathbb{K}$, is a vector space with structure morphisms called multiplication and unit,
                 \begin{align*}
                     (\cdot_A) & : A\otimes_{\mathbb{K}}A \rightarrow A \\
                     1_A & : \mathbb{K} \rightarrow A,
@@ -38,7 +38,7 @@
                 Whenever $A$ does not posess a unit morphism, we will call $A$ a non-unital algebra. In this case only the associativity law must hold.
             \end{definition}
 
-            By abuse of notation we will confuse the unit of $\mathbb{K}$ by the unit of $A$. Since $1_A$ is a ring homomorphism, this should not be a cause of confusion. However, when we want to use the unit as a morphism, we will stick to the $1_A$ notation. When there are no confusion, we will also exchange $(\cdot_A)$ concatenation of variables as strings. 
+            By abuse of notation we will confuse the unit of $\mathbb{K}$ by the unit of $A$. Since $1_A$ is a ring homomorphism, this should not be a cause of confusion. However, when we want to use the unit as a morphism, we will stick to the $1_A$ notation. When there are no confusion, we will exchange the symbol $(\cdot_A)$ with words in $A$. $(\cdot_A)$ is then concatenation of variables. 
 
             \begin{definition}[Algebra homomorphisms]
                 Let $A$ and $B$ be algebras. Then $f: A\rightarrow B$ is an algebra homomorphism if
@@ -47,16 +47,16 @@
                     \item $f(ab)=f(a)f(b)$
                     \item $f\circ 1_A = 1_B$
                 \end{enumerate}
-                Whenever $A$ and $B$ are non-unital, we must drop the condition for $f$ to preserve units.
+                Whenever $A$ and $B$ are non-unital, we must drop the condition that $f$ preserves units.
             \end{definition}
 
             \begin{definition}[Category of algebras]
-                We let $\tt{Alg}_{\mathbb{K}}$ denote the category of algebras. Its objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\tt{Alg}_{\mathbb{K}}(A,B)$.
+                We let $\tt{Alg}_{\mathbb{K}}$ denote the category of $\mathbb{K}$-algebras. Its objects consists of every algebra $A$, and the morphisms are algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\tt{Alg}_{\mathbb{K}}(A,B)$.
                 
-                Let $\widehat{Alg}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{\tt{Alg}}_{\mathbb{K}}(A,B)$.
+                Let $\widehat{\tt{Alg}}_{\mathbb{K}}$ denote the category of non-unital algebras. It's objects consists of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{\tt{Alg}}_{\mathbb{K}}(A,B)$.
             \end{definition}
 
-            Observe that for an algebra $A$, the triple $(A,(\cdot_A),1_A)$ is a monoid in $Mod_{\mathbb{K}}$. Thus the category of algebras corresponds to the category of monoids in $Mod_\mathbb{K}$. We reformulate the algebra axioms as the following commutative diagrams: 
+            The cagtegory $(\tt{Mod}_\mathbb{K},\otimes_\mathbb{K},\mathbb{Z})$ is symmetric monoidal. Observe that given any algebra $A$ in $\tt{Mod}_\mathbb{K}$, the triple $(A,(\cdot_A),1_A)$ is a monoid. This gives us an isomorphism of categories, namely that $\tt{Alg}_\mathbb{K}$ is the category of monoids in $\tt{Mod}_\mathbb{K}$. Therefore, the algebra axioms are the following commutative diagrams:
             \begin{center}
                 \begin{tikzcd}
                     A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\cdot_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\cdot_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\cdot_A)} \\
@@ -68,7 +68,7 @@
                 \end{tikzcd}
             \end{center}
 
-            We will soon give a third and equivalent of defining a diagram. By using electronic circuits \cite{Loday12}, we get a diagram calculus to manipulate morphisms of diagrams.
+            In any symmetric monoidal category $\mathcal{C}$ we may reformulate these defintions by using the monoidal structure more heavily. In section 3 we will introduce electronic circuits, which are inspired by some of the proofs found in \cite{Loday12}. These conventions will give us a graphical calculus of morphisms in $\mathcal{C}$.
             % The final method we will use to represent an algebra are electronic circuits. An electronic circuit is a diagram read from top to bottom, where each column represent a different vector space in a tensor. Morphisms in such diagrams are figures, conjunctions, twistings and etc. E.g. The multiplication operator may be represented as a converging fork, and the unit as a source.
             % \begin{center}
             %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
@@ -159,29 +159,33 @@
 
             Given this algebra homomorphism we know that it has to preserve the unit. Thus the kernel $\tt{Ker}\varepsilon_A \subseteq A$ is almost $A$, but without its unit. In the module category $Mod_\mathbb{K}$ the morphism $\varepsilon_A$ is automatically a split-epimorphism, where the splitting is given by the unit $1_A$. Thus as a module we have $A \simeq \overline{A}\oplus\mathbb{K}$, where $\overline{A} = \tt{Ker}\varepsilon_A$. $\overline{A}$ is called the augmentation ideal, or the reduced algebra of $A$.
 
-            A morphism $f : A \rightarrow B$ of augmented algebras is an algebra homomorphism, but with the added condition that it must preserve the augmentation; i.e. $\varepsilon_B \circ f = \varepsilon_A$. The collection of all augmented algebras over $\mathbb{K}$ together with the morphisms describes constitutes the category of augmented algebras over $\mathbb{K}$: $\tt{Alg}_{\mathbb{K},+}$.
+            A morphism $f : A \rightarrow B$ of augmented algebras is an algebra homomorphism, but with the added condition that it must preserve the augmentation; i.e. $\varepsilon_B \circ f = \varepsilon_A$. The collection of all augmented algebras over $\mathbb{K}$ together with the morphisms defines the category of augmented algebras over $\mathbb{K}$, $\tt{Alg}_{\mathbb{K},+}$.
 
-            Given an augmented algebra $A$, taking kernels of $\varepsilon_A$ gives a functor $\overline{\argument} : \tt{Alg}_{\mathbb{K},+} \rightarrow \widehat{\tt{Alg}}_\mathbb{K}$. This functor is well defined on morphisms of augmented algebras, as each morphism is required to preserve the splitting. This functor employs a quasi-inverse, given by the free augmentation $\argument^+ : \widehat{\tt{Alg}}_\mathbb{K} \rightarrow \tt{Alg}_{\mathbb{K},+}$. Given a non-unital algebra $A$, the free augmentation is defined as $A^+ = A\oplus\mathbb{K}$, where the multiplication is given by:
+            Given an augmented algebra $A$, taking kernels of $\varepsilon_A$ gives a functor $\overline{\underline{\phantom{A}}} : \tt{Alg}_{\mathbb{K},+} \rightarrow \widehat{\tt{Alg}}_\mathbb{K}$. This functor is well defined on morphisms of augmented algebras, as each morphism is required to preserve the splitting. This functor has a quasi-inverse, given by the free augmentation $\argument^+ : \widehat{\tt{Alg}}_\mathbb{K} \rightarrow \tt{Alg}_{\mathbb{K},+}$. Given a non-unital algebra $A$, the free augmentation is defined as $A^+ = A\oplus\mathbb{K}$, where the multiplication is given by:
             \begin{align*}
                 (a,k)(a',k') = (aa' + ak' + a'k, kk')\tt{.}
             \end{align*}
-            The unit is given by the element $(0,1)$. We summarize this statement.
+            The unit is given by the element $(0,1)$. We summarize this in the statement below.
             
             \begin{proposition}
-                The functors $\overline{\argument}$ and $\argument^+$ are quasi-inverse to each other.
+                The functors $\overline{\underline{\phantom{A}}}$ and $\argument^+$ are quasi-inverse to each other.
             \end{proposition}
 
             \begin{proof}
-                Supply proof? \todo{Skal jeg la dette være?}
+                We show that the free augmentation functor is fully-faithfull and essentially surjective. 
+
+                Let $A$ and $B$ be non-unital $\mathbb{K}$-algebras, and let $f,g : A \rightarrow B$ morphisms in $\widehat{\tt{Alg}}_\mathbb{K}$. Suppose that $f^+ = g^+$, then $f = \overline{f^+} = \overline{g^+} = g$. Now suppose that $h : A^+ \rightarrow B^+$, then $h = \overline{h}^+$.
+
+                Suppose that $A\in \tt{Alg}_{\mathbb{K},+}$. We want to show that $A \simeq \overline{A}^+$. As $\mathbb{K}$-modules, $A = \overline{A}^+$, so we propose that $id_A : A \rightarrow \overline{A}^+$ induces an isomorphism. To see that $id_A$ is an algebra homomorphism is to see that the multiplication in $A$ decomposes as $(a_1 + k)(a_2 + l) = (a_1a_2 + a_1l + ka_2) + kl$, where $a_1,a_2\in \overline{A}$ and $k,l \in \mathbb{K}$. The second condition is equivalent to the existence of $\varepsilon_A$. $id_A$ also preserves the augmentation as $\overline{A} \simeq \overline{\overline{A}^+}$.
             \end{proof}
 
             There are many augmented algebras to encounter in nature. We will note some examples.
 
             \begin{example}[Group algebra]
-                Pick any group $G$ and any field $\mathbb{K}$. The group ring $K[G]$ is an augmented algebra where the augmentation is given by the sum
+                Pick any group $G$ and any field $\mathbb{K}$. The group ring $K[G]$ is an augmented algebra where the augmentation $\varepsilon_{\mathbb{K}[G]} : \mathbb{K}[G] \rightarrow \mathbb{K}$ is given as
                 \begin{align*}
-                    \sum_{g\in G}k_gg = \sum_{g\in G}k_g
-                \end{align*} 
+                    \varepsilon_{\mathbb{K}[G]}(\sum_{g\in G}k_gg) = \sum_{g\in G}k_g\tt{.}
+                \end{align*}
             \end{example}
 
             Among our most important example of algebras is the tensor algebra. This is also the free algebra over $\mathbb{K}$.
@@ -189,17 +193,17 @@
             \begin{example}[Tensor algebra]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor algebra $T(V)$ of $V$ as the module
                 \begin{align*}
-                    T(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2} \oplus V^{\otimes 3} \oplus ...
+                    T(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2} \oplus V^{\otimes 3} \oplus \cdots\tt{.}
                 \end{align*}
-                Given two strings $v^1..v^i$ and $w^1...w^j$ in $T(V)$ we define the multiplication by the concatenation operation.
+                The tensor algebra is then the algebra consisting of words in $V$. Given two words $v^1..v^i$ and $w^1...w^j$ in $T(V)$ we define the multiplication by the concatenation operation,
                 \begin{align*}
-                    \nabla_{T(V)} : T(V)\otimes_{\mathbb{K}} T(V) & \rightarrow T(V) \\
-                    (v^1...v^i)\otimes(w^1...w^j) & \mapsto v^1...v^iw^1...w^j
+                    \nabla_{T(V)} : T(V)\otimes_{\mathbb{K}} T(V) & \rightarrow T(V)\tt{,} \\
+                    (v^1...v^i)\otimes(w^1...w^j) & \mapsto v^1...v^iw^1...w^j\tt{.}
                 \end{align*}
-                The unit is given by including $\mathbb{K}$ into $T(V)$.
+                The unit is given by including $\mathbb{K}$ into $T(V)$,
                 \begin{align*}
-                    \upsilon_{T(V)} : \mathbb{K} & \rightarrow T(V) \\
-                    1 & \mapsto 1
+                    \upsilon_{T(V)} : \mathbb{K} & \rightarrow T(V)\tt{,} \\
+                    1 & \mapsto 1\tt{.}
                 \end{align*}
             \end{example}
 
@@ -223,7 +227,7 @@
             Just as for rings, every algebra $A$ has a module category of its own. The definition is very much like that for rings.
 
             \begin{definition}[Modules]
-                Let $A$ be an algebra over $\mathbb{K}$. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow M$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow M$) called multiplication. We require that $\mu_M$ is associative and preserves the unit of $A$. I.e. we have the commutative diagrams in $Mod_\mathbb{K}$.
+                Let $A$ be an algebra over $\mathbb{K}$. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow M$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow M$) called multiplication. We require that $\mu_M$ is associative and preserves the unit of $A$; i.e. we have the commutative diagrams in $Mod_\mathbb{K}$,
                 \begin{center}
                     \begin{tikzcd}
                         A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{d}[]{\cdot_A\otimes M} \ar[]{r}[]{A\otimes\mu_M} & A\otimes_\mathbb{K}M \ar[]{d}[]{\mu_M}\\
@@ -232,7 +236,7 @@
                     \begin{tikzcd}
                         \mathbb{K} \otimes_\mathbb{K} M \ar[]{r}[]{1_A\otimes M} \ar[]{rd}[]{\simeq} & A \otimes_\mathbb{K} M \ar[]{d}[]{\mu_M} \\
                         & M
-                    \end{tikzcd}
+                    \end{tikzcd}\todo{Hvordan punktum???}
                 \end{center}
                 % \begin{center}
                 %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
@@ -284,7 +288,7 @@
             \end{definition}
 
             \begin{definition}[A-linear homomorphisms]
-                Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$, i.e. $f(am) = af(m)$.
+                Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$ $f(am) = af(m)$.
             \end{definition}
 
             The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $\tt{Hom}_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. There is a free functor from the category of $\mathbb{K}$-modules to left $A$-modules.
@@ -294,15 +298,32 @@
             \end{proposition}
 
             \begin{proof}
-                We use the tensor-hom adjuntion to arrive at the conclusion.
+                We define natural transformations in each direction and then show that they are inverses.
 
+                We define morphisms $\phi$ and $\psi$ as
                 \begin{align*}
-                    \tt{Hom}_A(A\otimes_\mathbb{K}M, N)\simeq \tt{Hom}_A(A,\tt{Hom}_\mathbb{K}(M,N)) \simeq \tt{Hom}_\mathbb{K}(M,N)
+                    \phi : \tt{Hom}_A(A\otimes_\mathbb{K}M, N) & \rightarrow \tt{Hom}_\mathbb{K}(M,N) \\
+                    f & \mapsto f \circ (1_A \otimes M)\tt{,} \\
+                    \psi : \tt{Hom}_\mathbb{K}(M, N) & \rightarrow \tt{Hom}_A(A\otimes_\mathbb{K}M, N) \\
+                    g & \mapsto \mu_N \circ (A \otimes g)\tt{.}
+                \end{align*}
+
+                Pick an $f \in \tt{Hom}_A(A\otimes_\mathbb{K}M, N)$, then
+                \begin{align*}
+                        \psi\circ\phi (f) = \mu_N \circ (A \otimes \phi (f)) = \mu_N \circ (A \otimes f (1_A \otimes M)) = f (A \otimes M) = f\tt{.}
+                \end{align*}
+                Pick a $g \in \tt{Hom}_\mathbb{K}(M,N)$, then
+                \begin{align*}
+                    \phi\circ\psi (g) = \phi (\mu_N \circ (A \otimes g)) = \mu_N \circ (1_A \otimes g) = g\tt{.}
                 \end{align*}
             \end{proof}
+
+            \begin{corollary}
+                $A$ as a left $A$-module is the free left $A$-module over $\mathbb{K}$; i.e. for any left $A$-module $M$, $M \simeq \tt{Hom}_\mathbb{K}(\mathbb{K}, M) \simeq \tt{Hom}_A(A,M)$
+            \end{corollary}
             
     \subsection{Coalgebras}
-            In this section we want to dualize the definitions given in the last section. As we will see, some strange artifacts from the structure of algebras appears in the dualization process. We would like to define a coalgebra as an algebra, but all of the diagrams are reversed. For many purposes this dualization is good, but as we will encounter some finiteness conditions are necessary. The category of "ill-behaved" coalgebras will be denoted $\tt{coAlg}_\mathbb{K}$, and we will look at this first.
+            In this section we want to dualize the definitions given in the last section. As we will see, some strange artifacts from the structure of algebras appears in the dualization process. We would like to define a coalgebra as an algebra, but where all of the diagrams are reversed. For many purposes this dualization is good, but as we will observe, some finiteness conditions are necessary. The category of "ill-behaved" coalgebras will be denoted $\tt{coAlg}_\mathbb{K}$, and we will look at this first.
 
             \begin{definition}[$\mathbb{K}$-Coalgebra]
                 Let $\mathbb{K}$ be a field. A coalgebra $C$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called comultiplication and counit,
@@ -319,14 +340,14 @@
 
             In the same way as for algebras, we say that a coalgebra is non-counital if it is without a counit.
 
-            Unlike algebras, coalgebras does not admit a single intuitive method for writing repeated application of the comulitplication. For instance, given an element $c\in C$ we may apply the comultiplication twice on $c$ in two different ways:
+            Unlike algebras, coalgebras does not admit a single intuitive method for writing repeated application of the comulitplication. For instance, given an element $c\in C$, we may apply the comultiplication twice on $c$ in two different ways:
             \begin{align*}
                 \Delta_{C,(1)}^2(c) & = (\Delta_C \otimes C)\Delta_C(c)\tt{,} \\
                 \Delta_{C,(2)}^2(c) & = (C \otimes \Delta_C)\Delta_C(c)\tt{.}
             \end{align*}
-            One should immediately note that $\Delta_{C,(1)}^2(c) = \Delta_{C,(2)}^2(c)$ is coassociativity. So there is in fact a unique way to do repeated application of $\Delta_C$ on $c$. We denote the n-fold repeated application of $\Delta_C$ by $\Delta_C^n$. Since the element $\Delta_C^n(c)$ represents a finite sum in $C^{\otimes n}$, one may use Sweedlers notation \cite{Loday12} as it is well-defined.
+            One should immediately note that $\Delta_{C,(1)}^2(c) = \Delta_{C,(2)}^2(c)$ is coassociativity. Hence there is in fact a unique way to do repeated application of $\Delta_C$ on $c$. We denote the $n$-fold repeated application of $\Delta_C$ by $\Delta_C^n$. Since the element $\Delta_C^n(c)$ represents a finite sum in $C^{\otimes n}$, one may use Sweedlers notation \cite{Loday12}, as it is well-defined,
             \begin{align*}
-                \Delta_C^n(c) = \sum c_{(1)}\otimes ... \otimes c_{(n)}
+                \Delta_C^n(c) = \sum c_{(1)}\otimes ... \otimes c_{(n)}\tt{.}
             \end{align*}
             
             % We may dualize the electronic circuits of an algebra to coalgebras. In this manner our structure morphisms would be upside down relative to the algebra morphisms. Thus comultiplication becomes a diverging fork and counit becomes a sink. 
@@ -404,13 +425,13 @@
                     \item $(f\otimes f)\circ\Delta_C(c) = \Delta_D(f(c))$
                     \item $\varepsilon_D \circ f = \varepsilon_C$
                 \end{enumerate}
-                Whenever $C$ and $D$ are non-counital, we only require 1 and 2 for a homomorphism of non-counital coalgebras.
+                Whenever $C$ and $D$ are non-counital, we only require 1. and 2. for a homomorphism of non-counital coalgebras.
             \end{definition}
 
-            \begin{definition}[Category of Coalgebras]
-                Let $\tt{coAlg}_{\mathbb{K}}$ denote the category of coalgebras. Its objects consists of every coalgebra $C$, and the morphisms are coalgebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $\tt{coAlg}_{\mathbb{K}}(C,D)$.
+            \begin{definition}[Category of coalgebras]
+                Let $\tt{coAlg}_{\mathbb{K}}$ denote the category of coalgebras. Its objects consists of coalgebras $C$, and the morphisms are coalgebra homomorphisms. The set of morphisms between $C$ and $D$ are denoted as $\tt{coAlg}_{\mathbb{K}}(C,D)$.
                 
-                Let $\widehat{\tt{coAlg}}_{\mathbb{K}}$ denote the category of non-unital algebras. Its objects consists of every non-unital algebra $C$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $C$ and $D$ are denoted as $\widehat{\tt{coAlg}}_{\mathbb{K}}(C,D)$.
+                Let $\widehat{\tt{coAlg}}_{\mathbb{K}}$ denote the category of non-counital algebras. Its objects consists of non-counital algebras $C$, and the morphisms are non-uconital coalgebra homomorphisms. The set of morphisms between $C$ and $D$ are denoted as $\widehat{\tt{coAlg}}_{\mathbb{K}}(C,D)$.
             \end{definition}
 
             At a first glance, coalgebras may seem weird and unnatural, but they appear many places in nature.
@@ -421,22 +442,36 @@
                     \Delta_{\mathbb{K}}(1) & = 1\otimes 1 \\
                     \varepsilon(1) & = 1.
                 \end{align*}
-                One may check that these morphisms are indeed coassociative and counital. Thus we may regard our field as either an algebra or coalgebra over itself.
+                One may check that these morphisms are indeed coassociative and counital. Thus we may regard our field as either an algebra or a coalgebra over itself.
             \end{example}
 
             \begin{example}[$\mathbb{K}{[G]}$ as a coalgebra]
-                The group algebra has a natural coalgebra structure. We may take duplication of group elements as the comulitplication, i.e.
+                The group algebra has a natural coalgebra structure. We may take duplication of group elements as the comultiplication, i.e.
                 \begin{align*}
                     \Delta_{\mathbb{K}[G]}(kg) = kg\otimes g\tt{.}
                 \end{align*}
-                Coincidentally we have already defined the counit, this is the augmentation $\varepsilon_C$ for the group algebra $\mathbb{K}[G]$. Recall that this was
+                Coincidentally we have already defined the counit, this is the augmentation $\varepsilon_{\mathbb{K}[G]}$ for the group algebra $\mathbb{K}[G]$. Recall that this was
                 \begin{align*}
                     \varepsilon_C(\sum k_gg) = \sum k_g\tt{.}
                 \end{align*}
                 One may see that these morphisms satisfy coassociativity and counitality.
             \end{example}
+            \begin{example}[The linear dual coalgebra]
+                Let $M$ be any finite dimensional $\mathbb{K}$-module. There is a natural isomorphism $\xi : M^* \otimes_\mathbb{K} M^* \rightarrow (M \otimes_\mathbb{K} M)^*$, given on elementary tensors as
+                \begin{align*}
+                    \xi(f \otimes g)(m \otimes n) = f(m)g(n)\tt{.}
+                \end{align*}
 
-            Before we state our main example, we will first introduce part of its essential structure.
+                Let $A$ be a finite dimensional algebra, then its linear dual $A^*$ is a coalgebra. The linear dual of the multiplication $(\cdot_A)$ is defined as 
+                \begin{align*}
+                    (\cdot_A)^* : A^* \rightarrow (A\otimes_\mathbb{K}A)^*\tt{.}
+                \end{align*}
+                We define the comulitplication of $A^*$ as $\xi^{-1}(\cdot_A)^*$.
+
+                The counit of $A^*$ is the morphism $1_A^*$.
+            \end{example}
+
+            Before we state our main example, we will first introduce its essential structure.
 
             \begin{definition}[Coaugmented coalgebras]
                 Let $C$ be a coalgebra. $C$ is coagumented if there is a coalgebra homomorphism $\eta_C:\mathbb{K}\rightarrow C$.
@@ -450,31 +485,31 @@
             \begin{example}[Tensor Coalgebras]
                 Let $V$ be a $\mathbb{K}$-module. We define the tensor coalgebra $T^c(V)$ of $V$ as the module
                 \begin{align*}
-                    T^c(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2}\oplus V^{\otimes 3}\oplus ...
+                    T^c(V) = \mathbb{K}\oplus V\oplus V^{\otimes 2}\oplus V^{\otimes 3}\oplus \cdots\tt{.}
                 \end{align*}
-                Given a string $v^1...v^i$ in $T(V)$ we define the comultiplication by the deconcatenation operation.
+                Given a string $v^1...v^i$ in $T(V)$ we define the comultiplication by the deconcatenation operation,
                 \begin{align*}
                     \Delta_{T^c(V)}:T^c(V) & \rightarrow T^c(V)\otimes_{\mathbb{K}}T^c(V) \\
-                    v^1...v^i & \mapsto 1\otimes(v^1...v^i) + (\sum_{j=1}^{n-1} (v^1...v^{j})\otimes(v^{j+1}...v^i)) + (v^1...v^i)\otimes 1
+                    v^1...v^i & \mapsto 1\otimes(v^1...v^i) + (\sum_{j=1}^{i-1} (v^1...v^{j})\otimes(v^{j+1}...v^i)) + (v^1...v^i)\otimes 1\tt{.}
                 \end{align*}
-                The counit is given by projecting $T^c(V)$ onto $\mathbb{K}$.
+                The counit is given by projecting $T^c(V)$ onto $\mathbb{K}$,
                 \begin{align*}
                     \varepsilon_{T^c(V)} : T^c(V) & \rightarrow \mathbb{K} \\
                     1 & \mapsto 1 \\
-                    v^1...v^i & \mapsto 0
+                    v^1...v^i & \mapsto \tt{.}
                 \end{align*}
             \end{example}
 
             We observe that the tensor coalgebra is coaugmented. Its coaugmentation is given by the inclusion of $\mathbb{K}$ into $T^c(V)$. We can split $T^c(V) \simeq \mathbb{K}\oplus \overline{T}^c(V)$, where $\overline{T}^c(V)$ denotes the reduced tensor coalgebra.
 
-            Cofreeness does not come for free for the tensor coalgebra. Our problem is a mismatch in the behavior of algebras and coalgebras. The problem arises when we try to do evaluation. Suppose that $A$ is an algebra and that we have n elements of $A$, i.e. an element of $A^{\otimes n}$. On this element we may apply the multiplication of $A$ a maximum of n-times, we cannot multiply an element with nothing non-trivially. However, given an element in a coalgebra $C$, we may use the comultiplication on this element n times, n+1 times and so on ad infinitum. In the coalgebra we may comultiply an element possibly an infinite amount of times. This is a property which is sometimes ill-behaved with our dualization of algebras to coalgebras. 
+            Cofreeness does not come for free for the tensor coalgebra. Our problem is a mismatch in the behavior of algebras and coalgebras. The problem arises when we try to do evaluation. Suppose that $A$ is an algebra and that we have $n$ elements of $A$, i.e. an element of $A^{\otimes n}$. On this element we may apply the multiplication of $A$ a maximum of $n$-times, we cannot multiply an element with nothing non-trivially. However, given an element in a coalgebra $C$, we may use the comultiplication on this element $n$ times, $n+1$ times and so on ad infinitum. In the coalgebra we may comultiply an element possibly an infinite amount of times. This is a property which is sometimes ill-behaved with our dualization of algebras to coalgebras. 
             
-            However, when we dualized the tensor algebra to the tensor coalgebra we did not lose this property, that an element may only be comultiplied a finite number of times. This is due to the composition of $T^c(V)$ as a direct sum of $V^{\otimes n}$; i.e. any element is a finite sum of finite tensors.
+            However, when we dualized the tensor algebra to the tensor coalgebra we did not lose this property, that an element may only be comultiplied a finite number of times. This is due to the composition of $T^c(V)$ as a direct sum of $V^{\otimes n}$, i.e. any element is a finite sum of finite tensors.
             
             This extra assumption we need for coalgebras will be called conilpotent. Let $C \simeq \mathbb{K} \oplus \overline{C}$ be a coaugmented coalgebra, we define the coradical filtration of $C$ as a filtration $Fr_0C \subseteq Fr_1C \subseteq ... \subseteq Fr_rC \subseteq ...$ by the submodules:
             \begin{align*}
                 Fr_0C & = \mathbb{K} \\
-                Fr_rC & = \mathbb{K} \oplus \{c\in\overline{C}\mid \forall n\geq r \overline{\Delta}_C(c) = 0\}.
+                Fr_rC & = \mathbb{K} \oplus \{c\in\overline{C}\mid \forall n\geq r, \overline{\Delta}_C(c) = 0\}.
             \end{align*}
 
             \begin{definition}[Conilpotent coalgebras]
@@ -482,7 +517,7 @@
                 \begin{align*}
                     \varinjlim_rFr_rC \simeq C\tt{.}
                 \end{align*}
-                The subcategory of conilpotent coalgebras will be denoted as $\tt{coAlg}_{\mathbb{K},conil}$.
+                The full subcategory of conilpotent coalgebras will be denoted as $\tt{coAlg}_{\mathbb{K},conil}$.
             \end{definition}
             
             \begin{proposition}[Conilpotent tensor coalgebra]\label{prop: conilpotent-tensor}
@@ -492,23 +527,23 @@
             \begin{proof}
                 Let $v\in V$, then $\Delta_{T^c(V)}(v)=1\otimes v + v\otimes 1$ and $\overline{\Delta}_{T^c(V)}(v)=0$. We then observe the following:
                 \begin{align*}
-                    Fr_0T^c(V) & = \mathbb{K} \\
-                    Fr_1T^c(V) & = \mathbb{K} \oplus V \\
-                    Fr_rT^c(V) & = \bigoplus_{i\leq r} V^{\otimes i}
+                    Fr_0T^c(V) & = \mathbb{K}\tt{,} \\
+                    Fr_1T^c(V) & = \mathbb{K} \oplus V\tt{,} \\
+                    Fr_rT^c(V) & = \bigoplus_{i\leq r} V^{\otimes i}\tt{.}
                 \end{align*}
                 This shows that the coradical filtration is exhaustive.
             \end{proof}
 
             \begin{proposition}[Cofree tensor coalgebra]\label{prop: cofree-tensor}
-                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules\todo{Fiks dette?}, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $\tt{Hom}_{\mathbb{K}}(\overline{C}, V)\simeq \tt{coAlg}_{\mathbb{K}, conil}(C, T^c(V))$.
+                The tensor coalgebra is the cofree conilpotent coalgebra over the category of $\mathbb{K}$-modules, i.e. for any $\mathbb{K}$-module $V$ and any conilpotent coalgebra $C$ there is a natural isomorphism $\tt{Hom}_{\mathbb{K}}(\overline{C}, V)\simeq \tt{coAlg}_{\mathbb{K}, conil}(C, T^c(V))$.
             \end{proposition}
 
             \begin{proof}
                 This proposition should be evident from the description of a coalgebra homomorphism into the a tensor coalgebra. If $g:C\rightarrow T^c(V)$ is a coalgebra homomorphism, then $g$ must satisfy the following conditions:
                 \begin{enumerate}
-                    \item (Coaugmentation)\quad $g(1)=1$
-                    \item (Counitality)\quad Given $c\in \overline{C}$ then $\varepsilon_{T^c(V)}\circ g(c)=0$
-                    \item (Homomorphism property)\quad Given $c\in C$ then $\Delta_{T^c(V)}(g(c))=(g\otimes g)\circ\Delta_C(c)$
+                    \item (Coaugmentation)\quad $g(1)=1$,
+                    \item (Counitality)\quad Given $c\in \overline{C}$ then $\varepsilon_{T^c(V)}\circ g(c)=0$,
+                    \item (Homomorphism property)\quad Given $c\in C$ then $\Delta_{T^c(V)}(g(c))=(g\otimes g)\circ\Delta_C(c)$.
                 \end{enumerate}
 
                 We will construct the maps for the isomorphism explicitly. If $g:C\rightarrow T^c(V)$ is a coalgebra homomorphism, then composing with projection gives a map $\pi\circ g:C\rightarrow V$. Note that $\pi\circ g(1)=0$, so this is essentially a map $\pi\circ g:\overline{C}\rightarrow V$. For the other direction, let $\overline{g}:\overline{C}\rightarrow V$. We will then define $g$ as
@@ -518,10 +553,10 @@
                 Observe that $g$ is well defined, since convergence of the sum follows from conilpotency of $C$. One may then check that $g$ is a coalgebra homomorphism, which yields the result.
             \end{proof}
 
-            Integral to our dualization are comodules. We quickly give a definition of them.
+            Essential to our dualization are comodules. We quickly give a definition of them.
 
             \begin{definition}[Comodules]
-                Let $C$ be a coalgebra. A $\mathbb{K}$-module $M$ is said to ba left (right) $C$-comodule if there exist a structure morphism $\omega_M: M \rightarrow C\otimes_{\mathbb{K}}M$ ($\omega_M: M \rightarrow M\otimes_{\mathbb{K}}C$) called comultiplication. We require that $\omega_M$ is coassociative with respect to the comultiplication of $C$ and preserves the counit of $C$. I.e. we have the following commutative diagrams in $Mod_\mathbb{K}$.
+                Let $C$ be a coalgebra. A $\mathbb{K}$-module $M$ is said to ba left (right) $C$-comodule if there exist a structure morphism $\omega_M: M \rightarrow C\otimes_{\mathbb{K}}M$ ($\omega_M: M \rightarrow M\otimes_{\mathbb{K}}C$) called comultiplication. We require that $\omega_M$ is coassociative with respect to the comultiplication of $C$ and preserves the counit of $C$; i.e. we have the following commutative diagrams in $Mod_\mathbb{K}$,
                 \begin{center}
                     \begin{tikzcd}
                         C \otimes_\mathbb{K}C\otimes_\mathbb{K}M & C\otimes_\mathbb{K}M \ar[]{l}[]{C\otimes\omega_M} \\
@@ -530,7 +565,7 @@
                     \begin{tikzcd}
                         \mathbb{K}\otimes_\mathbb{K}M & C\otimes_\mathbb{K}M \ar[]{l}[]{\varepsilon_C\otimes M} \\
                         & M \ar[]{lu}[]{\simeq} \ar[]{u}[]{\omega_M}
-                    \end{tikzcd}
+                    \end{tikzcd}\todo{punktum?}
                 \end{center}
                 
                 % i.e. the electronic laws are satisfied.
@@ -580,7 +615,7 @@
             \end{definition}
 
             \begin{definition}[C-colinear homomorphism]
-                Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$. In Sweedlers notation this looks like:
+                Let $M,N$ be two left $C$-comodules. A morphism $g:M\rightarrow N$ is called $C$-colinear if it is $\mathbb{K}$-linear and for any $m$ in $M$, $\omega_N(g(m)) = (id_C\otimes g)\omega_M(m)$. In Sweedlers notation this looks like
                 \begin{align*}
                     \sum g(c)_{(1)}\otimes g(c)_{(2)} = \sum c_{(1)}\otimes g(c_{(2)})\tt{.}
                 \end{align*}
@@ -593,8 +628,19 @@
             \end{proposition}
 
             \begin{proof}
-                This is dual to \ref{prop: free-mod}.
+                This is dual to proposition \ref{prop: free-mod}. We only give the isomorphism, its validity is clear.
+
+                \begin{align*}
+                    \phi' : \tt{Hom}_C(N,C\otimes_\mathbb{K}M) & \rightarrow \tt{Hom}_\mathbb{K}(N,M) \\
+                    f & \mapsto (\varepsilon_C \otimes M) \circ f\tt{,} \\
+                    \psi' : \tt{Hom}_\mathbb{K}(N,M) & \rightarrow \tt{Hom}_C(N,C\otimes_\mathbb{K}M) \\
+                    g & \mapsto (C \otimes g) \circ \omega_N\tt{.}
+                \end{align*}
             \end{proof}
+
+            \begin{corollary}
+                $C$ as a left $C$-comodule is the cofree $C$-comodule over $\mathbb{K}$; i.e. for any left $C$-comodule $N$, $N^* \simeq \tt{Hom}_\mathbb{K}(N,\mathbb{K}) \simeq \tt{Hom}_C(N, C)$.
+            \end{corollary}
 
     \subsection{Electronic Circuits}
             Calculations involving both algebras and coalgebras tends to become convoluted and unmanagable. Since we want to study the interplay between algebras and coalgebras using other tools to write down equations can be handy. We will develop the graphical calculus briefly mentioned in \cite{Loday12}. This graphical calculus will consists of string diagrams, refered to as electronic circuits, which describes function compositions of tensors. Since we only care about the interplay of tensors, we may develop this graphical calculus in any closed symmetric monoidal category. Why do we want to introduce this abstraction? A closed symmetric monoidal category is a good category to model functions, or morphisms, which may take several variables in its argument. Moreover, in the next section we are going to switch categories. Thus the same notions may be applied and the differences are only seen in the implementations.
@@ -608,11 +654,11 @@
             \end{align*}
             These natural isomorphisms are supposed to satisfy some laws as well. See the appendix for the full definition.
 
-            In an electronic circuit we want to rewrite equations possibly involving tensors into a string diagram. To illustrate with some simple examples, let $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : D \rightarrow E$. We may consider the composition
+            In an electronic circuit we want to rewrite equations, possibly involving tensors, into string diagrams. To illustrate with some simple examples, let $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : D \rightarrow E$. We may consider the composition
             \begin{align*}
                 (g \otimes E) \circ (f \otimes h) : A \otimes D \rightarrow C \otimes E \tt{.}
             \end{align*}
-            An electronic circuit is written from top to bottom and is composed of levels. This means that the first morphisms which we apply will be at the top, descending downwards with each function composition. We write each argument in the composition as its own string. Thus this example above will look like the circuit below. Notice how $f$ and $h$ are at the same levele, indicating that they should be thought of as $f \otimes h$. Thus an $\otimes$ indicates a change of string, while a $\circ$ indicates a change of level.
+            An electronic circuit is written from top to bottom and is composed of levels. This means that the first morphisms which we apply will be at the top, descending downwards with each function composition. We write each argument in the composition as its own string. Thus this example above will look like the circuit below. Notice how $f$ and $h$ are at the same level, indicating that they should be thought of as $f \otimes h$. Thus an $\otimes$ indicates a change of string, while a $\circ$ indicates a change of level.
             
             Beware that when many tensors are used, we should really remember how each string is tensored. We may call adding tensors for horizontal composition and composition of morphism for vertical composition. Both of these have a choice in how we associate them, but both have unique choices up to isomorphism given by the associator. 
             \begin{center}
@@ -626,7 +672,7 @@
                 \end{tikzpicture}
             \end{center}
 
-            The true power of electronic circuit comes to light when we consider morphisms that in some sense "creates" or "destroys" strings. E.g. a morphism of 2 variables "destroys" a string by in some sense applying them to each other. Consider now a morphism $f : A \otimes B \rightarrow C$, we represent this morphism in an electronic circuit by using a converging fork. Likewise, "creation" of strings is seen as a diverging fork.
+            The true power of electronic circuit comes to light when we consider morphisms that in some sense "creates" or "destroys" strings. For example a morphism of 2 variables in some sense "destroys" a string by applying them to each other. Consider now a morphism $f : A \otimes B \rightarrow C$, we represent this morphism in an electronic circuit by using a converging fork. Likewise, "creation" of strings is seen as a diverging fork.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \node[op, scale = 0.75] (f1) at (0,0) {f};
@@ -636,7 +682,7 @@
                 \end{tikzpicture}
             \end{center}
 
-            We may write the unit object $Z$ without any strings in a circuit. By the right and left unit, an object is isomorphic to itself tensored with the unit. In this manner whenever we have a morphism entering or exiting the unit $Z$ we start a new string by using a sink or a source. E.g. consider $f$ as before and a morphism $g : Z \rightarrow A$, then we may write $f \circ (g \otimes B)$ as the circuit below. Notice that again this is only well-defined up to isomorphism by the right and left unit.
+            We may write the unit object $Z$ without any strings in a circuit. By the right and left unit, an object is isomorphic to itself tensored with the unit. In this manner, whenever we have a morphism entering or exiting the unit $Z$ we start a new string by using a sink or a source. For example, consider $f$ as before and a morphism $g : Z \rightarrow A$, then we may write $f \circ (g \otimes B)$ as the circuit below. Notice that again this is only well-defined up to isomorphism by the right and left unit.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \node[op, scale = 0.75] (f1) at (0,0) {f};
@@ -648,7 +694,7 @@
                 \end{tikzpicture}
             \end{center}
 
-            The final operation we have is braiding. Whenever we apply the braiding morphism on the tensors, we may simply denote this as interchanging the strings. E.g. $\beta_{A,B} : A \otimes B \rightarrow B \otimes A$ is the circuit below. Notice that by naturality of $\beta$ we may move a braiding along the circuit. In this manner, if we have two braids, they may undo each other. A braid may also be moved to an end, in this manner they may be ignored during calculations.
+            The final operation we have is braiding. Whenever we apply the braiding morphism on the tensors, we may simply denote this as interchanging the strings. For example, $\beta_{A,B} : A \otimes B \rightarrow B \otimes A$ is the circuit below. Notice that by naturality of $\beta$, we may move a braiding along the circuit. In this manner, if we have two braids, they may undo each other. A braid may also be moved to either end, and in this manner they may be ignored during calculations.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \draw [line width = 1pt] (0, 1.25) -- (0, 0.75) -- (1, 0.25) -- (1, -0.25);
@@ -781,9 +827,9 @@
                 \end{tikzpicture}
             \end{center}
 
-            This notation will be adopted for our algebras and coalgebras when convenient. This will compactify the notation for comultiplication and make tensors more readable. Moreover, the intuiton for algebras are easier to dualize to coalgebras with this notation. One simply has to work out an algebra statement and then turn the diagram upside down to make it into a coalgebra statement.
+            This notation will be adopted for our algebras and coalgebras when convenient. This will compactify the notation for comultiplication and make tensors more readable. Moreover, the intuiton for algebras is easier to dualize to coalgebras with this notation. One simply has to work out an algebra statement and then turn the diagram upside down to make it into a coalgebra statement.
 
-            Previously we talked about braiding and how that relates to interchanging strings. In the same manner that we have a horizontal and vertical associator, we also have a vertical and horizontal braiding. The braiding first encountered is the horizontal braiding. The vertical braiding refers then to function composition of tensors. This manifests in electronic circuits as sliding a morphism along a string. Whenever the given braiding of $\mathcal{C}$ is nice enough we can get away by ignoring it whenever we move a morphism along a string. For instance, look at the category of $\mathbb{K}$-modules where we may define the braiding on elementary tensors as $\beta (a\otimes b) = b\otimes a$. In this case the braiding is agnostic to how we move our morphisms along a string. This means that we have the following equality of circuits.
+            Previously we talked about braiding and how that relates to interchanging strings. In the same manner that we have a horizontal and vertical associator, we also have a vertical and horizontal braiding. The braiding we first encountered is the horizontal braiding. The vertical braiding refers then to function composition of tensors. This manifests in electronic circuits as sliding a morphism along a string. Whenever the given braiding of $\mathcal{C}$ is nice enough we can get away by ignoring it whenever we move a morphism along a string. For instance, look at the category of $\mathbb{K}$-modules where we may define the braiding on elementary tensors as $\beta (a\otimes b) = b\otimes a$. In this case the braiding is agnostic to how we move our morphisms along a string. This means that we have the following equality of circuits.
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                     \node[op, scale = 0.75] (f1) at (0,0) {f};
@@ -811,7 +857,7 @@
             This section aims to define differential graded algebras and their modules. Given an algebra $A$, we may define a derivation as a map satisfying the Leibniz rule. In the dual case for a coalgebra we may define a coderivation as a map satisfying the Zinbiel rule, but for brevity we will refer to these maps as derivations. Once we get a grasp on how to make derivations we introduce graded algebras and modules, to equip these with derivations. This will give us the categories of differential graded algebras and chain complexes. Throughout this section we will also develop electronic circuits for these notions.
 
             \begin{definition}[Derivations and Coderivations]
-                Let $M$ be an $A$-bimodule. A $\mathbb{K}$-linear morphism $d:A\rightarrow M$ is called a derivation if $d(ab)=d(a)b+ad(b)$, i.e. electronically:
+                Let $M$ be an $A$-bimodule. A $\mathbb{K}$-linear morphism $d:A\rightarrow M$ is called a derivation if $d(ab)=d(a)b+ad(b)$, i.e. electronically,
 
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
@@ -847,9 +893,10 @@
                         \draw [line width=1pt] (4, 1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,1);
                         \draw [line width=1pt] (l) -- (4.5,-1);
                     \end{tikzpicture}
+                    \todo{punktum?}
                 \end{center}
 
-                Let $N$ be a $C$-bicomodule. A $\mathbb{K}$-linear morphism $d:N\rightarrow C$ is called a coderivation if $\Delta_C\circ d = (d\otimes id_C)\circ\omega_N^r + (id_C\otimes d)\circ\omega_N^l$, i.e. electronically:
+                Let $N$ be a $C$-bicomodule. A $\mathbb{K}$-linear morphism $d:N\rightarrow C$ is called a coderivation if $\Delta_C\circ d = (d\otimes id_C)\circ\omega_N^r + (id_C\otimes d)\circ\omega_N^l$, i.e. electronically,
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         
@@ -876,6 +923,7 @@
                         \draw [line width=1pt] (4, -1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,-1);
                         \draw [line width=1pt] (l) -- (4.5,1);
                     \end{tikzpicture}
+                    \todo{punktum?}
                 \end{center}
             \end{definition}
 
@@ -900,7 +948,7 @@
                 
                 Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose that $g: M \rightarrow N$ is a morphism between $T(V)$-bimodules, then naturality follows from bilinearity.
 
-                In the dual case, $d_g^c : N \rightarrow T^c(V)$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent we get the same kind of finiteness restrictions on $N$. Define the reduced coactions as $\overline{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\overline{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k$ and $k'>0$ such that ${\overline{\omega}^{l^k}_N}(n) = 0$ and ${\overline{\omega}^{r^{k'}}_N}(n)=0$.
+                In the dual case, $d_g^c : N \rightarrow T^c(V)$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent, we get the same kind of finiteness restrictions on $N$. Define the reduced coactions as $\overline{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\overline{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k$ and $k'>0$ such that ${\overline{\omega}^{l^k}_N}(n) = 0$ and ${\overline{\omega}^{r^{k'}}_N}(n)=0$.
 
                 Let $n_{(k)}^{(i)}$ denote the extension of $n$ by $k$ coactions at position $i$, i.e. 
                 \begin{align*}
@@ -910,24 +958,24 @@
                 \begin{align*}
                     n_{(k)} = \sum_{i=0}^kn_{(k)}^{(i)}\tt{.}
                 \end{align*} 
-                Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. So every element of $N$ may be given a finite grade.
+                Observe that $n_{(0)} = n$. The grade of $n$ may be thought of as the smallest $k$ such that $n_{(k)}$ is zero. This grading gives us the coradical filtration of $N$, and it is exhaustive by the finiteness restrictions given above. With this notion, every element of $N$ may be given a finite grade.
 
-                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes g \otimes \pi$ as a morphism which of $k$ tensors which is $g$ at the i-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate.
+                If $g: N \rightarrow V$ is a linear map, we may think of it as a map sending every element of $N$ to an element of $T^c(V)$ of grade $1$. To get a map which sends element of grade $k$ to grade $k$, we must extend the morphism. Let $\pi : T^c(V) \rightarrow V$ be the linear projection and define $g_{(k)}^{(i)} = \pi\otimes ... \otimes g \otimes \pi$ as a morphism which of $k$ tensors which is $g$ at the $i$-th argument, but the projection otherwise. $d_g^c$ is then defined as the sum over each coaction and coordinate,
                 \begin{align*}
-                    d_g^c(n) = \sum_{k=0}^\infty \sum_{i=0}^k g_{(k)}^{(i)}(n_{(k)}^{(i)})
+                    d_g^c(n) = \sum_{k=0}^\infty \sum_{i=0}^k g_{(k)}^{(i)}(n_{(k)}^{(i)})\tt{.}
                 \end{align*}
                 
                 Upon closer inspection we may observe that this is the dual construction of the derivation morphism. It is well-defined as the sum is finite by the finiteness restrictions. The map is a coderivation by duality, and the natural isomorphism is given by composition with the projection map $\pi$.
             \end{proof}
 
-            We now wish to get into the territory of derivations as we know them from homological algebra. We get this by choosing an algebra and equipping it with a derivation. This will give us a universal derivation to work with when we want to define a differential on a graded module.
+            We now wish to get into the territory of derivations as we know them from homological algebra. This is obtained by choosing an algebra and equipping it with a derivation. This will give us a universal derivation to work with when we want to define a differential on a graded module.
 
             \begin{definition}[Differential algebra]
                 Let $A$ be an algebra. We say that $A$ is a differential algebra if it is equipped with a derivation $d:A\rightarrow A$. Dually, a coalgebra $C$ is called a differential coalgebra if it is equipped with at least one coderivation $d:C\rightarrow C$.
             \end{definition}
 
             \begin{definition}[A-derivation]
-                Let $(A,d_A)$ be a differential algebra and $M$ a left $A$-module. A $\mathbb{K}$-linear morphism $d_M:M\rightarrow M$ is called an $A$-derivation if $d_M(am)=d_A(a)m + ad_M(m)$, or electronically:
+                Let $(A,d_A)$ be a differential algebra and $M$ a left $A$-module. A $\mathbb{K}$-linear morphism $d_M:M\rightarrow M$ is called an $A$-derivation if $d_M(am)=d_A(a)m + ad_M(m)$, or electronically,
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         
@@ -959,8 +1007,9 @@
                         \draw [line width=1pt] (4, 1) -- (4, 0) -- (4.5,-0.25) -- (5,0) -- (f) -- (5,1);
                         \draw [line width=1pt] (4.5,-0.25) -- (4.5,-1);
                     \end{tikzpicture}
+                    \todo{punktum?}
                 \end{center}
-                Dually, given a differential coalgebra $(C,d_C)$ and $N$ a left $C$-comodule, a $\mathbb{K}$-linear morphism $d_N:N\rightarrow N$ is a coderivation if $\omega_N\circ d_N = (d_C\otimes id_N + id_C\otimes d_N)\circ \omega_N$, or electronically:
+                Dually, given a differential coalgebra $(C,d_C)$ and $N$ a left $C$-comodule, a $\mathbb{K}$-linear morphism $d_N:N\rightarrow N$ is a coderivation if $\omega_N\circ d_N = (d_C\otimes id_N + id_C\otimes d_N)\circ \omega_N$, or electronically,
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
                         
@@ -983,10 +1032,11 @@
                         \draw [line width=1pt] (4, -1) -- (4, 0) -- (4.5,0.25) -- (5,0) -- (f) -- (5,-1);
                         \draw [line width=1pt] (4.5,0.25) -- (4.5,1);
                     \end{tikzpicture}
+                    \todo{punktum?}
                 \end{center}
             \end{definition}
 
-            When there is no ambiguity, we will start to adopt writing the differential in electronic circuits as a triangle.
+            When there is no ambiguity, we will start to adopt writing the differential in electronic circuits as a triangle,
 
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
@@ -1002,6 +1052,7 @@
                     \draw [line width = 1pt] (2, 1) -- (2) -- (2, -1);
                     
                 \end{tikzpicture}
+                \todo{punktum}
             \end{center}
 
             \begin{proposition}\label{prop: free-derivation}
@@ -1066,7 +1117,11 @@
                     \end{tikzpicture}
                 \end{center}
 
-                Next we show that $d_{\argument}$ has an inverse. This is given by "restriction to $M$", also known as $(1_A\otimes M)^* : \tt{Hom}_\mathbb{K}(A\otimes_\mathbb{K}M, N) \rightarrow \tt{Hom}_\mathbb{K}(M, N)$. Let $f : M \rightarrow A\otimes_\mathbb{K} M$ be a linear map and $D : A\otimes_\mathbb{K} M \rightarrow A\otimes_\mathbb{K} M$ be a derivation.
+                Next we show that $d_{\argument}$ has an inverse. This is given by "restriction to $M$", also known as 
+                \begin{align*}
+                    (1_A\otimes M)^* : \tt{Hom}_\mathbb{K}(A\otimes_\mathbb{K}M, N) \rightarrow \tt{Hom}_\mathbb{K}(M, N)\tt{.}
+                \end{align*}
+                Let $f : M \rightarrow A\otimes_\mathbb{K} M$ be a linear map and $D : A\otimes_\mathbb{K} M \rightarrow A\otimes_\mathbb{K} M$ be a derivation, then a quick calculation verifies that $d_{\argument}$ is inverse to restriction.
 
                 \begin{center}
                     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
