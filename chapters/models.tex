@@ -8,7 +8,7 @@
             Let $X$ and $Y$ be two CW-complexes. If $f:X\rightarrow Y$ is a weak equivalence, then it is also a homotopy equivalence. I.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
         \end{thm}
 
-        If we employ a Quillen model category onto the category Top, we get that a space $X$ is bifibrant if and only if it is a CW-complex. The natural generalization is then to not ask of $X$ to be a CW-complex, but a bifibrant object.
+        If we endow a Quillen model category onto the category Top, we get that a space $X$ is bifibrant if and only if it is a CW-complex. The natural generalization is then to not ask of $X$ to be a CW-complex, but a bifibrant object.
 
         \begin{thm}[Generalized Whiteheads Theorem]
             Let $\mathcal{C}$ be a model category. Suppose that $X$ and $Y$ are bifibrant objects of $\mathcal{C}$, and that there is a weak-equivalence $f:X\rightarrow Y$. Then $f$ is also a homotopy equivalence, i.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
@@ -205,18 +205,18 @@
             Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This construction is developed in Gabriel and Zisman \cite{Zisman67} called calculus of fractions. This method essentially tries to mimic localization for commutative rings in a category theoretic fashion. We will not give an account of existence or construction of localizations, however the reader is encouraged to read in Gabriel-Zisman.
 
             \begin{definition}
-                Let $\mathcal{C}$ be a homotopical category. It's homotopy category $Ho\mathcal{C} = \mathcal{C}[\tt{Ac}^{-1}]$, together with a localization functor $q:\mathcal{C}\rightarrow Ho\mathcal{C}$. Recall that the localization are determined by the following universal property: If $F:\mathcal{C}\rightarrow \mathcal{D}$ is a functor sending weak equivalences to isomorphisms, then it uniquely factors through the homotopy category up to a unique natural isomorphism $\eta$.
+                Let $\mathcal{C}$ be a homotopical category. It's homotopy category $\tt{Ho}\mathcal{C} = \mathcal{C}[\tt{Ac}^{-1}]$, together with a localization functor $q:\mathcal{C}\rightarrow \tt{Ho}\mathcal{C}$. Recall that the localization are determined by the following universal property: If $F:\mathcal{C}\rightarrow \mathcal{D}$ is a functor sending weak equivalences to isomorphisms, then it uniquely factors through the homotopy category up to a unique natural isomorphism $\eta$.
 
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[""{name = U, below}]{rr}[]{F} \ar[]{rd}[]{q} & & \mathcal{D} \\
-                        & Ho\mathcal{C} \ar[]{ru}[]{F'} \ar[Rightarrow, from=U]{}[]{\eta}
+                        & \tt{Ho}\mathcal{C} \ar[]{ru}[]{F'} \ar[Rightarrow, from=U]{}[]{\eta}
                     \end{tikzcd}
                 \end{center}
             \end{definition}
 
             \begin{definition}
-                Suppose that $\mathcal{C}$ is a homotopical category. Two objects of $\mathcal{C}$ are said to be weakly equivalent if they are isomorphic in $Ho\mathcal{C}$. I.e. there is some zig-zag relation between the objects, consisting only of weak equivalences.
+                Suppose that $\mathcal{C}$ is a homotopical category. Two objects of $\mathcal{C}$ are said to be weakly equivalent if they are isomorphic in $\tt{Ho}\mathcal{C}$. I.e. there is some zig-zag relation between the objects, consisting only of weak equivalences.
             \end{definition}
 
             \begin{remark}
@@ -231,7 +231,7 @@
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[""{name=U, below}]{r}[]{F} \ar[]{d}[]{q_\mathcal{C}} & \mathcal{D} \ar[]{d}[]{q_\mathcal{D}} \ar[Rightarrow]{dl}[]{\eta} \\
-                        Ho\mathcal{C} \ar[dashed, ""{name=V, above}]{r}[]{F'} & Ho\mathcal{D}
+                        \tt{Ho}\mathcal{C} \ar[dashed, ""{name=V, above}]{r}[]{F'} & \tt{Ho}\mathcal{D}
                     \end{tikzcd}
                 \end{center}
             \end{definition}
@@ -325,32 +325,32 @@
                 Since the diagram is commutative, we get that $i = j$, and that $g$ is both split mono and split epi, with $i$ as its splitting.
             \end{proof}
 
-            Since every model category is homotopical, it also has an associated homotopy category $Ho\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$ and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects respectively.
+            Since every model category is homotopical, it also has an associated homotopy category $\tt{Ho}\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$ and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects respectively.
 
             \begin{proposition}
                 Let $\mathcal{C}$ be a model category. The following categories are equivalent:
                 \begin{itemize}
-                    \item $Ho\mathcal{C}$
-                    \item $Ho\mathcal{C}_c$
-                    \item $Ho\mathcal{C}_f$
-                    \item $Ho\mathcal{C}_{cf}$
+                    \item $\tt{Ho}\mathcal{C}$
+                    \item $\tt{Ho}\mathcal{C}_c$
+                    \item $\tt{Ho}\mathcal{C}_f$
+                    \item $\tt{Ho}\mathcal{C}_{cf}$
                 \end{itemize}
             \end{proposition}
 
             \begin{proof}
-                We show that $Ho\mathcal{C} \simeq Ho\mathcal{C}_c$. The inclusion $i:\mathcal{C}_c\rightarrow \mathcal{C}$ clearly preserves weak equivalences, thus $i$ is homotopical and admits a lift. Moreover, since the cofibrant replacement is also homotopical, it also has a lift.
+                We show that $\tt{Ho}\mathcal{C} \simeq \tt{Ho}\mathcal{C}_c$. The inclusion $i:\mathcal{C}_c\rightarrow \mathcal{C}$ clearly preserves weak equivalences, thus $i$ is homotopical and admits a lift. Moreover, since the cofibrant replacement is also homotopical, it also has a lift.
 
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C}_c \ar[]{r}[]{i} \ar[]{d}[]{} & \mathcal{C} \ar[]{d}[]{} \\
-                        Ho\mathcal{C}_c \ar[dashed, bend right]{r}[below]{Ho\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{Ho\ Q}
+                        \tt{Ho}\mathcal{C}_c \ar[dashed, bend right]{r}[below]{\tt{Ho}\ i} & \mathcal{C} \ar[dashed, bend right]{l}[above]{\tt{Ho}\ Q}
                     \end{tikzcd}
                 \end{center}
 
-                It is clear that $Ho\ Q$ is the quasi-inverse of $Ho\ i$.
+                It is clear that $\tt{Ho}\ Q$ is the quasi-inverse of $\tt{Ho}\ i$.
             \end{proof}
 
-            As of now we still don't see how model categories will fix the size issues. To do this we will develop the notion of homotopy equivalence, $\sim$. On the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will be a congruence relation. This, together with the fact that there is an equivalence of categories $Ho\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$, is enough to solve the size issues.
+            As of now we still don't see how model categories will fix the size issues. To do this we will develop the notion of homotopy equivalence, $\sim$. On the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will be a congruence relation. This, together with the fact that there is an equivalence of categories $\tt{Ho}\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$, is enough to solve the size issues.
 
             \begin{definition}[Cylinder and path objects]
                 Let $\mathcal{C}$ be a model category. Given an object $X$, a cylinder object $X\wedge I$ is a factorization of the fold map $i:X\coprod X \rightarrow X$, such that $p_0$ is a cofibration and that $p_1$ is a weak equivalence. 
@@ -548,7 +548,7 @@
             \end{proof}
 
             \begin{corollary}
-                The category $\sfrac{\mathcal{C}_{cf}}{\sim}$ satisfy the universal property of the localization of $\mathcal{C}_{cf}$ by the weak equivalences. I.e. there is a categorical equivalence $Ho\mathcal{C}_{cf} \simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+                The category $\sfrac{\mathcal{C}_{cf}}{\sim}$ satisfy the universal property of the localization of $\mathcal{C}_{cf}$ by the weak equivalences. I.e. there is a categorical equivalence $\tt{Ho}\mathcal{C}_{cf} \simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
             \end{corollary}
 
             \begin{proof}
@@ -558,10 +558,10 @@
             We collect the results from above in the following theorem.
 
             \begin{thm}[Fundamental theorem of model categories]\label{thm: Fundamental-thm-model}
-                Let $\mathcal{C}$ be a model category and denote $q: \mathcal{C} \rightarrow Ho\mathcal{C}$ the localization functor. Let $X$ and $Y$ be objects of $\mathcal{C}$.
+                Let $\mathcal{C}$ be a model category and denote $q: \mathcal{C} \rightarrow \tt{Ho}\mathcal{C}$ the localization functor. Let $X$ and $Y$ be objects of $\mathcal{C}$.
                 \begin{enumerate}
-                    \item There is an equivalence of categories $Ho\mathcal{C}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
-                    \item There are natural isomorphisms $\sfrac{\mathcal{C}_{cf}}{\sim}(QRX,QRY)\simeq Ho\mathcal{C}(X, Y) \simeq \sfrac{\mathcal{C}_{cf}}{\sim}(RQX, RQY)$. Additionally, $Ho\mathcal{C}(X, Y)\simeq \sfrac{\mathcal{C}_{cf}}{\sim}(QX, RY)$.
+                    \item There is an equivalence of categories $\tt{Ho}\mathcal{C}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
+                    \item There are natural isomorphisms $\sfrac{\mathcal{C}_{cf}}{\sim}(QRX,QRY)\simeq \tt{Ho}\mathcal{C}(X, Y) \simeq \sfrac{\mathcal{C}_{cf}}{\sim}(RQX, RQY)$. Additionally, $\tt{Ho}\mathcal{C}(X, Y)\simeq \sfrac{\mathcal{C}_{cf}}{\sim}(QX, RY)$.
                     \item The localization $q$ identifies left or right homotopic morphisms.
                     \item A morphism $f: X \rightarrow Y$ is a weak equivalence if and only if $qf$ is an isomorphism.
                 \end{enumerate}
@@ -576,27 +576,27 @@
             We now want to study morphisms, or certain functors, between model categories. Like in the case of homotopical functors we want these morphisms to induce a functor between the homotopy categories. However, we also want them to respect the cofibration and fibration structure, not just weak equivalences. In this way we will instead look towards derived functors to be able to define this extension to the homotopy category. We recall the definition of a total (left/right) derived functor. In the case of model categories, we get a simple description for some of these derived functors which are of special interest.
 
             \begin{definition}[Total derived functors]
-                Let $\mathcal{C}$ and $\mathcal{D}$ be homotopical categories, and $F:\mathcal{C}\rightarrow\mathcal{D}$ a functor. Whenever it exists, a total left derived functor of $F$, is a functor $\mathbb{L}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ with a natural transformation $\varepsilon :\mathbb{L}F\circ q \Rightarrow q\circ F$ satisfying the universal property: If $G:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ is a functor and there is a natural transformation $\alpha :G\circ q \Rightarrow q\circ F$, then it factors uniquely up to unique isomorphism through $\varepsilon$.
+                Let $\mathcal{C}$ and $\mathcal{D}$ be homotopical categories, and $F:\mathcal{C}\rightarrow\mathcal{D}$ a functor. Whenever it exists, a total left derived functor of $F$, is a functor $\mathbb{L}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\varepsilon :\mathbb{L}F\circ q \Rightarrow q\circ F$ satisfying the universal property: If $G:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ is a functor and there is a natural transformation $\alpha :G\circ q \Rightarrow q\circ F$, then it factors uniquely up to unique isomorphism through $\varepsilon$.
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \\
-                        Ho\mathcal{C} \ar[dashed]{r}[]{\mathbb{L}F} \ar[Rightarrow]{ru}[]{\varepsilon} & Ho\mathcal{D}
+                        \tt{Ho}\mathcal{C} \ar[dashed]{r}[]{\mathbb{L}F} \ar[Rightarrow]{ru}[]{\varepsilon} & \tt{Ho}\mathcal{D}
                     \end{tikzcd}\qquad
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[phantom, ""{name = Y}]{}[]{} \ar[]{d}[]{q} \\
-                        Ho\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{L}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = U, to = V]{}[]{\exists !} \ar[Rightarrow, from = X, to = Y, end anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[]{\varepsilon} & Ho\mathcal{D}
+                        \tt{Ho}\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{L}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = U, to = V]{}[]{\exists !} \ar[Rightarrow, from = X, to = Y, end anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[]{\varepsilon} & \tt{Ho}\mathcal{D}
                     \end{tikzcd}
                 \end{center}
 
-                Dually, whenever it exists, a total right derived functor of $F$, is a functor $\mathbb{R}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ with a natural transformation $\eta :q\circ F \Rightarrow \mathbb{R}F \circ q$ having the opposite universal property.
+                Dually, whenever it exists, a total right derived functor of $F$, is a functor $\mathbb{R}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\eta :q\circ F \Rightarrow \mathbb{R}F \circ q$ having the opposite universal property.
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \ar[Rightarrow]{ld}[]{\eta} \\
-                        Ho\mathcal{C} \ar[dashed]{r}[]{\mathbb{R}F} & Ho\mathcal{D}
+                        \tt{Ho}\mathcal{C} \ar[dashed]{r}[]{\mathbb{R}F} & \tt{Ho}\mathcal{D}
                     \end{tikzcd}\qquad
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[phantom, ""{name = Y}]{}[]{} \ar[]{d}[]{q} \\
-                        Ho\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{R}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = V, to = U]{}[left]{\exists !} \ar[Rightarrow, from = Y, to = X, start anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[left, yshift = 0.5ex]{\eta} & Ho\mathcal{D}
+                        \tt{Ho}\mathcal{C} \ar[bend left, ""{name = V, below}, ""{name=X, above}]{r}[description]{\mathbb{R}F} \ar[bend right, ""{name = U, above}]{r}[description]{G} \ar[Rightarrow, from = V, to = U]{}[left]{\exists !} \ar[Rightarrow, from = Y, to = X, start anchor = {[yshift = -0.5ex, xshift = -1ex]south west}]{}[left, yshift = 0.5ex]{\eta} & \tt{Ho}\mathcal{D}
                     \end{tikzcd}
                 \end{center}
             \end{definition}
@@ -634,7 +634,7 @@
             \end{definition}
 
             \begin{remark}
-                By Ken Browns lemma, lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = Ho FQ$.
+                By Ken Browns lemma, lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = \tt{Ho} FQ$.
             \end{remark}
 
             In order to eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. The direction of the arrow can be chosen to be along either the left or right adjoints, we make the convention of following the left adjoint functors. We summarize the following properties.
@@ -663,11 +663,11 @@
             \end{proof}
 
             \begin{proposition}
-                Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The functors $\mathbb{L}F:Ho\mathcal{C}\rightarrow Ho\mathcal{D}$ and $\mathbb{R}U: Ho\mathcal{D}\rightarrow Ho\mathcal{C}$ forms an adjoint pair.
+                Suppose that $(F,U):\mathcal{C}\rightarrow\mathcal{D}$ is a Quillen adjunction. The functors $\mathbb{L}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ and $\mathbb{R}U: \tt{Ho}\mathcal{D}\rightarrow \tt{Ho}\mathcal{C}$ forms an adjoint pair.
             \end{proposition}
 
             \begin{proof}
-                We must show that $Ho\mathcal{D}(\mathbb{L}FX, Y) \simeq Ho\mathcal{D}(X, \mathbb{R}UY)$. By using the fundamental theorem of model categories, theorem \ref{thm: Fundamental-thm-model}, we have the following isomorphisms: $Ho\mathcal{D}(\mathbb{L}FX,Y)\simeq \sfrac{\mathcal{C}(FQX,RY)}{\sim}$ and $Ho\mathcal{D}(X,\mathbb{R}UY)\simeq\sfrac{\mathcal{D}(QX,URY)}{\sim}$. In other words, if we assume $X$ to be cofibrant, and $Y$ to be fibrant, we must show that the adjunction preserves homotopy equivalences.
+                We must show that $\tt{Ho}\mathcal{D}(\mathbb{L}FX, Y) \simeq \tt{Ho}\mathcal{D}(X, \mathbb{R}UY)$. By using the fundamental theorem of model categories, theorem \ref{thm: Fundamental-thm-model}, we have the following isomorphisms: $\tt{Ho}\mathcal{D}(\mathbb{L}FX,Y)\simeq \sfrac{\mathcal{C}(FQX,RY)}{\sim}$ and $\tt{Ho}\mathcal{D}(X,\mathbb{R}UY)\simeq\sfrac{\mathcal{D}(QX,URY)}{\sim}$. In other words, if we assume $X$ to be cofibrant, and $Y$ to be fibrant, we must show that the adjunction preserves homotopy equivalences.
 
                 We show it for one direction. Suppose that the morphisms $f,g:FA\rightarrow B$ are homotopic, witnessed by a right homotopy $H:FA\rightarrow B^I$. Since we assume $U$ to preserve products, fibrations and weak equivalences between fibrant objects, $U(B^I)$ is a path object for $UB$. Thus the transpose $H^T:A\rightarrow U(B^I)$ is the desired homotopy witnessing $f^T \sim g^T$
             \end{proof}
@@ -787,7 +787,7 @@
             \end{definition}
 
             \begin{proposition}
-                Every standard cofibration is a cofibration, and every standard acyclic cofibration has LLP with respect to fibrations. We will see that these morphisms in some sense generate every (acyclic) cofibration.
+                Every standard cofibration is a cofibration, and every standard acyclic cofibration is an acyclic cofibration. We will see that these morphisms in some sense generate every (acyclic) cofibrations.
             \end{proposition}
 
             \begin{proof}
@@ -902,19 +902,18 @@
             \begin{itemize}
                 \item $f\in \tt{Ac}$ if $f^\#$ is a quasi-isomorphism.
                 \item $f\in \tt{Fib}$ if $f^\#$ is an epimorphism (surjective onto every component).
-                \item $f\in \tt{Cof}$ if $f$ has LLP wrt. to every acyclic fibration.
+                \item $f\in \tt{Cof}$ if $f$ has LLP with respect to to every acyclic fibration.
             \end{itemize}
             
             The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\overline{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective. Every dg-algebra which is isomorphic to a tensor algebra when considered as a graded algebra is cofibrant. \todo{This is wrong}
             
     \subsection{A Model Structure on DG-Coalgebras}
 
-            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinichs paper \cite{Hinich01} which describes a model structure on dg-coalgebras, but in relation to dg-lie algebras.
-
+            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinichs paper \cite{Hinich01}.
             Let $f: C \rightarrow D$, the category of dg-coalgerbas will be equipped with the three following classes of morphisms:
             \begin{itemize}
                 \item $f\in \tt{Ac}$ if $\Omega f$ is a quasi-isomorphism.
-                \item $f\in \tt{Fib}$ if $f$ has RLP wrt. to every acyclic cofibration.
+                \item $f\in \tt{Fib}$ if $f$ has RLP with respect to every acyclic cofibration.
                 \item $f\in \tt{Cof}$ if $f^\#$ is a monomorphism (injective in every component).
             \end{itemize}
 
@@ -922,7 +921,7 @@
 
             % Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Observe that $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
 
-            To see that these classes of morphisms does define a model structure it is crucial to figure out what these weak equivalences are. This can only be done by calculating homologies, since $f$ is a weak equivalence if and only if $H^*\Omega f \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to formalize the basic idea of our most important tool.
+            To see that these classes of morphisms does define a model structure it is crucial to figure out what these weak equivalences are. This can only be done by calculating homologies, since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to formalize the basic idea of our most important tool.
 
             \begin{definition}
                 A filtered chain map $f : M \rightarrow N$ of filtered complexes $M$ and $N$ is a filtered quasi-isomorphism if $\tt{gr}f : \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
@@ -1088,7 +1087,7 @@
             \end{thm}
 
             \begin{proof}
-                The axioms \textbf{MC1} and \textbf{MC2} are immediet. Also, fibrations having RLP wrt. acyclic cofibrations is by definition.
+                The axioms \textbf{MC1} and \textbf{MC2} are immediet. Also, fibrations having RLP with respect to acyclic cofibrations is by definition.
 
                 We show \textbf{MC4} first. Let $f : C\rightarrow D$ be a morphism of coalgebras. There is a factorization $\Omega f = pi$ of morphisms between algebras, where $i$ is a cofibration, $p$ is a fibration and at least one of $i$ and $p$ are quasi-isomorphisms. Applying bar we get a factorization $B\Omega f = BiBp$, where $Bp$ is a fibration and at least one of $Bi$ and $Bp$ are weak equivalences.
                 \begin{center}
@@ -1207,7 +1206,7 @@
         \end{proof}
 
         \begin{proof}[proof of \ref{thm: model-A-inf}]
-            We start by showing b. Suppose that we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
+            We start by showing (b). Suppose that we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
             \begin{center}
                 \begin{tikzcd}
                     & A \ar[two heads]{d}[]{g} \\
@@ -1218,7 +1217,7 @@
 
             Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = Kerg_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \overline{T}^c(K)\prod \overline{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products and we get, $\overline{T}^c(A'[1])\prod \overline{T}^c(K) \simeq \overline{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e. it is an $A_\infty$-algebra.
 
-            We now prove a. MC1 and MC2 are immediate, so we will not prove them.
+            We now prove (a). MC1 and MC2 are immediate, so we will not prove them.
 
             We start by proving MC3. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration and $q$ is a fibration.
             \begin{center}
@@ -1244,9 +1243,9 @@
                     C \ar[]{r}[]{g_1} \ar[dashed]{ru}[]{a_1} & D
                 \end{tikzcd}
             \end{center}
-            The lift exists since the category $Ch\mathbb{K}$ is a model category. Here $j_1$ is a cofibration, while $q_1$ is an acyclic fibration, so the lift $a_1$ exists.
+            The lift exists since the category $\tt{Ch}(\mathbb{K})$ is a model category. Here $j_1$ is a cofibration, while $q_1$ is an acyclic fibration, so the lift $a_1$ exists.
 
-            We now wish to extend this. Suppose that we have been able to create morphisms $a_1$ up to $a_n$, all satisfying the above points. A naive solution to make $a_{n+1}$ is $b = f_{n+1}r^{\otimes n+1} + sg_{n+1} - s q_1f_{n+1}r^{\otimes n+1}$. Notice that this satisfy the two last points by definition. We will augment $b$ to get an $a_{n+1}$ which also satisfies $(rel_{n+1})$.
+            We now wish to extend this. Suppose that we have been able to create morphisms $a_1$ up to $a_n$, all satisfying the above points. A naive solution to make $a_{n+1}$ is \\ $b = f_{n+1}r^{\otimes n+1} + sg_{n+1} - s q_1f_{n+1}r^{\otimes n+1}$. Notice that this satisfy the two last points by definition. We will augment $b$ to get an $a_{n+1}$ which also satisfies $(rel_{n+1})$.
 
             For our own convenience, let $-c(f_1, ..., f_n)$ denote the right hand side of $(rel_{n+1})$ formula. Since both $j$ and $q$ are strict $\infty$-morphisms we get the following identites:
             \begin{align*}
@@ -1257,11 +1256,11 @@
             We thus obtain that the cycle $\partial b + c(a_1, ..., a_n)$ factors thorugh the cokernel of $j$ and the kernel of $q$. Let us say that it factors like the diagram below:
             \begin{center}
                 \begin{tikzcd}
-                    C \ar[]{r}[]{p} & Cok j_1 \ar[]{r}[]{c'} & \tt{Ker} q_1 \ar[]{r}[]{i} & D
+                    C \ar[]{r}[]{p} & \tt{Cok} j_1 \ar[]{r}[]{c'} & \tt{Ker} q_1 \ar[]{r}[]{i} & D
                 \end{tikzcd}
             \end{center}
 
-            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $Kerq$ is a acyclic. Since $c'$ is a cycle, it necesserilly have to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
+            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is a acyclic. Since $c'$ is a cycle, it necesserilly have to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
 
             We will now show MC4. Since the two properties have a similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j : A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1 : A\oplus C \rightarrow B$ gives a lift of the following diagram.
 
@@ -1304,7 +1303,7 @@
             We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow 0$ is epi. By lemma \ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
         \end{proof}
 
-        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $ConilCoalg_\mathbb{K}$ to essentially obtain 2 different model structure on this category. The following proposition tells us that these structures do not differ.
+        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to essentially obtain 2 different model structure on this category. The following proposition tells us that these structures do not differ.
 
         \begin{proposition}\label{prop: coherent-model-structure}
             Let $f : A \rightsquigarrow B$ be an $\infty$-morphism. Then we have the following:
@@ -1328,14 +1327,14 @@
         \begin{itemize}
             \item Homotopy equivalence is an equivalence relation.
             \item A morphism is an $\infty$-quasi-isomorphism if and only if it is a homotopy equivalence.
-            \item Let $dash \subseteq \tt{Alg}_\infty$ be the full subcategory consisting of dg-algebras considered as $A_\infty$-algebras. $\tt{dash}$ has an induced homotopy equivalence from $\tt{Alg}_\infty$, and the inclusion $\tt{Alg} \rightarrow \tt{dash}$ induces an equivalence in homotopy $\tt{Alg}[Qis^{-1}] \simeq \sfrac{\tt{dash}}{\sim}$.
+            \item Let $\tt{dash} \subseteq \tt{Alg}_\infty$ be the full subcategory consisting of dg-algebras considered as $A_\infty$-algebras. $\tt{dash}$ has an induced homotopy equivalence from $\tt{Alg}_\infty$, and the inclusion $\tt{Alg} \rightarrow \tt{dash}$ induces an equivalence in homotopy $\tt{Alg}[Qis^{-1}] \simeq \sfrac{\tt{dash}}{\sim}$.
         \end{itemize}
     \end{thm}
 
     \begin{proof}
         The first point is obsreved from corollary \ref{cor: homotopy-is-eq-rel}, and the second point is Whiteheads theorem, theorem \ref{thm: Whitehead}.
 
-        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By corollary \ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $Ho\tt{Alg} \simeq HoCoalg$. Moreover, we know that by theorem \ref{thm: Fundamental-thm-model} that $HoCoalg \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{dash}$, so in homotopy, we get that the image $\sfrac{\tt{dash}}{\sim}$ is equivalent to the essentiall image $Ho\tt{Alg}_\infty$.
+        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By corollary \ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by theorem \ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{dash}$, so in homotopy, we get that the image $\sfrac{\tt{dash}}{\sim}$ is equivalent to the essentiall image $\tt{Ho}\tt{Alg}_\infty$.
     \end{proof}
 
     Homotopy equivalence in the algebraic sense and the model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e. $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras.
