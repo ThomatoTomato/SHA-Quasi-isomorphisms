@@ -1068,18 +1068,86 @@
 
             We will need one more technical lemma.
 
-            \begin{lemma}\label{lem: tech-fac}
+            \begin{center}
+                \begin{tikzcd}[column sep = tiny]
+                    & BA \ast_{B\Omega D}D \ar[hook]{dr}[]{\pi} \ar[two heads]{dl}[]{} \\ 
+                    D \ar[hook]{dr}[]{\eta_D} & & BA \ar[two heads]{dl}[]{Bp} \ar[equal]{rr}[]{} & & BA \ar[equal]{rr}[]{} & & BA \ar[two heads]{d}[]{} \\
+                    & B\Omega D & & & BK \ar[hook]{u}[]{} & & B\Omega D
+                \end{tikzcd}
+            \end{center}
+
+            \begin{lemma}[Key lemma]\label{lem: tech-fac}
                 Let $A$ be a dg-algebra, $D$ a dg-coalgebra and $p: A \rightarrow \Omega D$ a fibration of algebras. The projection morphism $\pi : BA\prod_{B\Omega D}D \rightarrow BA$ is an acyclic cofibration.
                 \begin{center}
                     \begin{tikzcd}
-                        BA\prod_{B\Omega D}D \ar[]{d}[]{\pi} \ar[]{r}[]{} & D \ar[]{d}[]{\eta_D} \\
-                        BA \ar[]{r}[]{Bp} & B\Omega D
+                        BA\prod_{B\Omega D}D \ar[]{d}[]{\pi} \ar[]{r}[]{} \ar[phantom]{rd}[near start]{\ulcorner} & D \ar[]{d}[]{\eta_D} \\
+                        BA \ar[two heads]{r}[]{Bp} & B\Omega D
                     \end{tikzcd}
                 \end{center}
             \end{lemma}
 
+            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may work in some cases, but fails in its full generality \cite{Keller06}. The proof presented here will be a simplification of Vallette's proof of "A technical lemma" \cite{Vallette20}.
+
             \begin{proof}
-                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. To see that $\pi$ is a quasi-isomorphism it is enough to understand that it is a quasi-isomorphism as chain complexes. This is checked by Lefevre-Hasegawa \cite{LefevreHasegawa03}. Keller has pointed out a slight mistake in this proof which he has proposed a fix to \cite{Keller06}.
+                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. 
+                
+                To see that $\pi$ is a weak equivalence it is enough to show that it is a filtered quasi-isomorphism by \ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra we may realize the algebra $A$ as the following extension.
+                \begin{center}
+                    \begin{tikzcd}
+                        \cdots \ar[hook]{r} & \tt{cone}(d') \ar[two heads]{r}[]{p} & \Omega D \ar[dashed, out = -10, in = 170, looseness = 1.5]{dll}[]{d'} \\
+                        \tt{Ker}(p)[1] \ar[hook]{r} & \tt{cone}(d')[1] \ar[two heads]{r}[]{} & \cdots
+                    \end{tikzcd}
+                \end{center}
+                As graded modules, $A \simeq \tt{cone}(d') \simeq \tt{Ker}(p) \oplus \Omega D$. We denote $K = \tt{Ker}(p)$, so that the differential of $A$ is then the differential coming from 
+                \begin{align*}
+                    d_K & : K \rightarrow K, \\
+                    d_{\Omega D} & : \Omega D \rightarrow \Omega D \tt{ and} \\
+                    d' & : \Omega D \rightarrow K\tt{.}
+                \end{align*}
+
+                In the category $\tt{Alg}_{\mathbb{K},+}^\bullet$, $\oplus$ is the product. Since $B : \tt{Alg}_{\mathbb{K},+}^\bullet \rightarrow \tt{coAlg}_{\mathbb{K}, conil}^\bullet$ is right adjoint, it necesserilly preserves products. Thus
+                \begin{align*}
+                    & BA\simeq B(K\oplus \Omega D) \simeq BK \ast B\Omega D \tt{ and} \\
+                    & BA \ast_{B\Omega D} D \simeq BK \ast D\tt{.}
+                \end{align*}
+                
+                Using this identification of the underlying graded modules we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbated by $d'$, then we could have appealed to the morphism $\pi$ being a filtered quasi-isomorphism to arrive at the conclusion. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
+
+                Since $BK$ is quasi-free, by the comonadic representation of $D$, we are able to obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
+
+                With this description we define filtrations as
+                \begin{align*}
+                    & F_n(BA\ast_{B\Omega D}D) = F_n(T^c(\overline{K}[1]\oplus \overline{D})) = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots+n_k \\ \leq n}}\,\,\bigotimes_{i = 1}^k\,(\overline{K}[1]\oplus Fr_{n_i}\overline{D})\tt{ and} \\
+                    & F_n(BA) = F_n(T^c(\overline{K}[1]\oplus(\overline{\Omega}D)[1])) = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots+n_k \\ \leq n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus\widetilde{Fr}_{n_i}(\overline{\Omega}D)[1])\tt{.}
+                \end{align*}
+                Here $Fr$ and $\widetilde{Fr}$ respectively refers to the coradical and induced coradical filtration. This filtration is made to be agnostic towards $K$, in other words morphisms into $K$ are a priori filtered. Likewise, the coradical filtration preserves the differential as well. It is clear that $\eta_{\overline{D}}$ preserves this filtration as it acts like the identity.
+
+                The associated graded component reduces to the associated graded of $D$ and $B\Omega D$. This can be seen as if we lower a $n_i$ by $1$, then this component lands in the lower degree of the filtration. By cocontnouity of the tensor, we may then move the associated graded into each variable. The sum handles then every other component.
+                \begin{align*}
+                    \tt{gr}_n(BA\ast_{B\Omega D}D) & \simeq BK \ast \tt{gr}_nD \\
+                    \tt{gr}_n(BA) & \simeq BK\ast B\Omega \tt{gr}_nD
+                \end{align*}
+                In the same manner, the morphism $\pi$ then acts on each element as $id_{BK}\ast \tt{gr}(\eta_D)$.
+
+                These filtrations are clearly bounded below. Since $D$ and $B\Omega D$ are both conilpotent dg-coalgebras, the filtrations are then exhaustive as well. By the classical convergence of filtered spectral sequences we obtain spectral seqences $E(BA\ast_{B\Omega D}D) \implies \tt{H}^*(BA\ast_{B\Omega D}D)$ and \\ $E(BA) \implies \tt{H}^*(BA)$. We want to show that the morphism of spectral sequences $id_{BK}\ast_{B\Omega D}\tt{gr}\eta_D : E(BA\ast_{B\Omega D}D) \rightarrow E(BA)$ eventually becomes a quasi-isomorphism. This will in fact happen on the first page.
+
+                To obtain this at the first page we will define another spectral sequence $\widetilde{E}$ such that $\widetilde{E} \implies E_1$. We start by defining new filtrations
+                \begin{align*}
+                    \widetilde{F}_n(BK\ast\tt{gr}D) & = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k + k \\ \leq n}}\,\,\bigotimes_{i=1}^k(\overline{K}[1]\oplus \tt{gr}_{n_i}\overline{D})\tt{ and} \\
+                    \widetilde{F}_n(BK\ast B\Omega\tt{gr}D) & = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k \\ \leq n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots +m_t + t \\ \leq n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])\tt{.}
+                \end{align*}
+
+                Observe that $id_{BK}\ast\tt{gr}(\eta_D)$ preserves this filtration, as it acts like the identity and the first filtration is naturally a subobject of the second filtration by identifying the elements.
+
+                The $0$'th page of the double spectral sequence can be calculated as below.
+                \begin{multline*}
+                    \widetilde{E}_0^{-p}(BK\ast\tt{gr}D) = \tt{gr}_p(BK\ast\tt{gr}D)[p] \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k + k \\ = p}}\,\,\bigotimes_{j=1}^k\,(\overline{K}[1]\oplus\tt{gr}n_i\overline{D})[p] \\ \simeq \bigoplus_{k=0}^\infty\,(\overline{K}[1])^{\otimes k}\oplus\,\sum_{\substack{n_1+\cdots + n_k + k \\ = p}}\,\,\bigotimes_{j=1}^k\,(\tt{gr}n_i\overline{D})[p] \simeq BK[p] \oplus \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k + k \\ = p}}\,\,\bigotimes_{j=1}^k\,(\tt{gr}n_i\overline{D})[p]
+                \end{multline*}
+                \begin{multline*}
+                    \widetilde{E}_0^{-p}(BK\ast B\Omega\tt{gr}D) = \tt{gr}_p(BK\ast B\Omega\tt{gr}D)[p] \\ \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k \\ = n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots + m_t + t \\ = n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])[p] \\ \simeq \bigoplus_{k=0}^\infty\,((\overline{K}[1])^{\otimes k}\oplus\,\sum_{\substack{n_1+\cdots + n_k \\ = n}}\,\,\bigotimes_{i=1}^k\,\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots + m_t + t \\ = n_i}}\,\,\bigotimes_{j=1}^t\,(\tt{gr}_{m_j}\overline{D}[-1])[1])[p] \\ \simeq BK[p] \oplus (\bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k \\ = n}}\,\,\bigotimes_{i=1}^k\,\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots + m_t + t \\ = n_i}}\,\,\bigotimes_{j=1}^t\,(\tt{gr}_{m_j}\overline{D}[-1])[1])[p]
+                \end{multline*}
+
+                Here we have been able to split the $0$'th page into a $BK$ part and a $D$ part. This is in fact a splitting of the chain complexes, as the differential coming from $d'$ is of negative filtered degree. In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$ is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$. By the classical convergence theorem this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
             \end{proof}
 
             \begin{thm}\label{thm: model-coalg}
@@ -1087,7 +1155,7 @@
             \end{thm}
 
             \begin{proof}
-                The axioms \textbf{MC1} and \textbf{MC2} are immediet. Also, fibrations having RLP with respect to acyclic cofibrations is by definition.
+                The axioms \textbf{MC1} and \textbf{MC2} are immediate. Also, fibrations having RLP with respect to acyclic cofibrations is by definition.
 
                 We show \textbf{MC4} first. Let $f : C\rightarrow D$ be a morphism of coalgebras. There is a factorization $\Omega f = pi$ of morphisms between algebras, where $i$ is a cofibration, $p$ is a fibration and at least one of $i$ and $p$ are quasi-isomorphisms. Applying bar we get a factorization $B\Omega f = BiBp$, where $Bp$ is a fibration and at least one of $Bi$ and $Bp$ are weak equivalences.
                 \begin{center}
