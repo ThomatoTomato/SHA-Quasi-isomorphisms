@@ -19,7 +19,7 @@
 
         The bar and cobar construction will be the basis for our discussion of $A_\infty$-algebras. As the bar construction can be used to define $A_\infty$-algebras, we may easily dualize this to define $A_\infty$-coalgebras in terms of the cobar construction. This chapter will follow the notions and progression presented in Loday and Vallete \cite{Loday12} to develop the theory for the bar-cobar adjunction.
 
-    \section{Preliminaries}    
+    \section{Algebras and Coalgebras}    
     \subsection{Algebras}
 
             This section presents a review of associative algebras over a field $\mathbb{K}$. The main goal of this section is to establish some conventions before we look at how they are dualized to coalgebras. This collection of algebras, together with ring homomorphisms, form the category $\tt{Alg}_{\mathbb{K}}$ of associative algebras over $\mathbb{K}$.
@@ -224,104 +224,171 @@
                 By induction, we see that $f$ is completely determined by where it sends the elements of $V$. Thus restriction by the inclusion of $V$ into $T(V)$ induces a bijection.
             \end{proof}
 
-            Just as for rings, every algebra $A$ has a module category of its own. The definition is very much like that for rings.
+            \subsubsection*{Modules}
 
-            \begin{definition}[Modules]
-                Let $A$ be an algebra over $\mathbb{K}$. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow M$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow M$) called multiplication. We require that $\mu_M$ is associative and preserves the unit of $A$; i.e. we have the commutative diagrams in $Mod_\mathbb{K}$,
-                \begin{center}
-                    \begin{tikzcd}
-                        A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{d}[]{\cdot_A\otimes M} \ar[]{r}[]{A\otimes\mu_M} & A\otimes_\mathbb{K}M \ar[]{d}[]{\mu_M}\\
-                        A\otimes_\mathbb{K}M \ar[]{r}[]{\mu_M} & M
-                    \end{tikzcd}
-                    \begin{tikzcd}
-                        \mathbb{K} \otimes_\mathbb{K} M \ar[]{r}[]{1_A\otimes M} \ar[]{rd}[]{\simeq} & A \otimes_\mathbb{K} M \ar[]{d}[]{\mu_M} \\
-                        & M
-                    \end{tikzcd}\todo{Hvordan punktum???}
-                \end{center}
-                % \begin{center}
-                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                %         \node at (-2.4,0) {(Associativity)};
-                        
-                %         \node at (0,1.75) {A};
-                %         \node at (1,1.75) {A};
-                %         \node at (2,1.75) {M};
+                Just as for rings, every algebra $A$ has a module category of its own. The definition is very much like that for rings.
 
-                %         \node[op, scale = 0.5] (a) at (1,-0.25) {$\mu_M$};
+                \begin{definition}[Modules]
+                    Let $A$ be an algebra over $\mathbb{K}$. A $\mathbb{K}$-module $M$ is said to be a left (right) $A$-module if there exists a structure morphism $\mu_M : A\otimes_{\mathbb{K}}M \rightarrow M$ ($\mu_M : M\otimes_{\mathbb{K}}A \rightarrow M$) called multiplication. We require that $\mu_M$ is associative and preserves the unit of $A$; i.e. we have the commutative diagrams in $Mod_\mathbb{K}$,
+                    \begin{center}
+                        \begin{tikzcd}
+                            A\otimes_\mathbb{K}A\otimes_\mathbb{K}M \ar[]{d}[]{\cdot_A\otimes M} \ar[]{r}[]{A\otimes\mu_M} & A\otimes_\mathbb{K}M \ar[]{d}[]{\mu_M}\\
+                            A\otimes_\mathbb{K}M \ar[]{r}[]{\mu_M} & M
+                        \end{tikzcd}
+                        \begin{tikzcd}
+                            \mathbb{K} \otimes_\mathbb{K} M \ar[]{r}[]{1_A\otimes M} \ar[]{rd}[]{\simeq} & A \otimes_\mathbb{K} M \ar[]{d}[]{\mu_M} \\
+                            & M
+                        \end{tikzcd}\todo{Hvordan punktum???}
+                    \end{center}
+                    % \begin{center}
+                    %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    %         \node at (-2.4,0) {(Associativity)};
+                            
+                    %         \node at (0,1.75) {A};
+                    %         \node at (1,1.75) {A};
+                    %         \node at (2,1.75) {M};
 
-                %         \draw [line width=1pt] (0,1.25) -- (0, 1) -- ((0.5, 0.5) -- (0.5, 0.25) -- (a);
-                %         \draw [line width=1pt] (a) -- (2,0.5) -- (2,1.25);
-                %         \draw [line width=1pt] (0.5,0.5) -- (1,1) -- (1, 1.25);
-                %         \draw [line width=1pt] (a) -- (1,-1);
-                        
-                %         \node at (2.5,0) {$=$};
-                        
-                %         \node at (3,1.75) {A};
-                %         \node at (4,1.75) {A};
-                %         \node at (5,1.75) {M};
+                    %         \node[op, scale = 0.5] (a) at (1,-0.25) {$\mu_M$};
 
-                %         \node[op, scale = 0.5] (b) at (4.5,0.5) {$\mu_M$};
-                %         \node[op, scale = 0.5] (c) at (4,-0.25) {$\mu_M$};
+                    %         \draw [line width=1pt] (0,1.25) -- (0, 1) -- ((0.5, 0.5) -- (0.5, 0.25) -- (a);
+                    %         \draw [line width=1pt] (a) -- (2,0.5) -- (2,1.25);
+                    %         \draw [line width=1pt] (0.5,0.5) -- (1,1) -- (1, 1.25);
+                    %         \draw [line width=1pt] (a) -- (1,-1);
+                            
+                    %         \node at (2.5,0) {$=$};
+                            
+                    %         \node at (3,1.75) {A};
+                    %         \node at (4,1.75) {A};
+                    %         \node at (5,1.75) {M};
 
-                %         \draw [line width=1pt] (3,1.25) -- (3, 0.5) -- (c);
-                %         \draw [line width=1pt] (c) -- (b) -- (5,1) -- (5,1.25);
-                %         \draw [line width=1pt] (4, 1.25) -- (4,1) -- (b);
-                %         \draw [line width=1pt] (c) -- (4,-1);
-                %     \end{tikzpicture}\\
+                    %         \node[op, scale = 0.5] (b) at (4.5,0.5) {$\mu_M$};
+                    %         \node[op, scale = 0.5] (c) at (4,-0.25) {$\mu_M$};
 
-                %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                %         \node at (-2,0) {(unitality)};
-    
-                %         \node at (1.75,1.5) {M};
+                    %         \draw [line width=1pt] (3,1.25) -- (3, 0.5) -- (c);
+                    %         \draw [line width=1pt] (c) -- (b) -- (5,1) -- (5,1.25);
+                    %         \draw [line width=1pt] (4, 1.25) -- (4,1) -- (b);
+                    %         \draw [line width=1pt] (c) -- (4,-1);
+                    %     \end{tikzpicture}\\
 
-                %         \node[op, scale=0.75] (1) at (0.25, 1) {};
-                %         \draw [line width=1pt] (1) -- (0.25, 0.75) -- (1,0);
-                %         \draw [line width=1pt] (1,0) -- (1.75,0.75) -- (1.75, 1);
-                %         \draw [line width=1pt] (1,0) -- (1,-0.75);
-    
-                %         \node at (2.25,0) {$=$};
-    
-                %         \node at (3,1.5) {M};
+                    %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    %         \node at (-2,0) {(unitality)};
+        
+                    %         \node at (1.75,1.5) {M};
 
-                %         \draw [line width=1pt] (3,1) -- (3,-0.75);
-                %     \end{tikzpicture}
-                % \end{center}
-            \end{definition}
+                    %         \node[op, scale=0.75] (1) at (0.25, 1) {};
+                    %         \draw [line width=1pt] (1) -- (0.25, 0.75) -- (1,0);
+                    %         \draw [line width=1pt] (1,0) -- (1.75,0.75) -- (1.75, 1);
+                    %         \draw [line width=1pt] (1,0) -- (1,-0.75);
+        
+                    %         \node at (2.25,0) {$=$};
+        
+                    %         \node at (3,1.5) {M};
 
-            \begin{definition}[A-linear homomorphisms]
-                Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$ $f(am) = af(m)$.
-            \end{definition}
+                    %         \draw [line width=1pt] (3,1) -- (3,-0.75);
+                    %     \end{tikzpicture}
+                    % \end{center}
+                \end{definition}
 
-            The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $\tt{Hom}_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. There is a free functor from the category of $\mathbb{K}$-modules to left $A$-modules.
+                \begin{definition}[A-linear homomorphisms]
+                    Let $M,N$ be two left $A$-modules. A morphism $f:M\rightarrow N$ is called $A$-linear if it is $\mathbb{K}$-linear and for any $a$ in $A$ $f(am) = af(m)$.
+                \end{definition}
 
-            \begin{proposition}\label{prop: free-mod}
-                Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is a natural isomorphism $\tt{Hom}_{\mathbb{K}}(M,N)\simeq \tt{Hom}_{A}(A\otimes_{\mathbb{K}}M,N)$.
-            \end{proposition}
+                The category of left $A$-modules is denoted as $Mod_A$, where the morphisms $\tt{Hom}_A(\argument,\argument)$ are $A$-linear. Likewise, the category of right $A$-modules is denoted as $Mod^A$. There is a free functor from the category of $\mathbb{K}$-modules to left $A$-modules.
 
-            \begin{proof}
-                We define natural transformations in each direction and then show that they are inverses.
+                \begin{proposition}\label{prop: free-mod}
+                    Let $M$ be a $\mathbb{K}$-module. The module $A\otimes_{\mathbb{K}}M$ is a left $A$-module. Moreover, it is the free left module over $\mathbb{K}$-modules, i.e. there is a natural isomorphism $\tt{Hom}_{\mathbb{K}}(M,N)\simeq \tt{Hom}_{A}(A\otimes_{\mathbb{K}}M,N)$.
+                \end{proposition}
 
-                We define morphisms $\phi$ and $\psi$ as
-                \begin{align*}
-                    \phi : \tt{Hom}_A(A\otimes_\mathbb{K}M, N) & \rightarrow \tt{Hom}_\mathbb{K}(M,N) \\
-                    f & \mapsto f \circ (1_A \otimes M)\tt{,} \\
-                    \psi : \tt{Hom}_\mathbb{K}(M, N) & \rightarrow \tt{Hom}_A(A\otimes_\mathbb{K}M, N) \\
-                    g & \mapsto \mu_N \circ (A \otimes g)\tt{.}
-                \end{align*}
+                \begin{proof}
+                    We define natural transformations in each direction and then show that they are inverses.
 
-                Pick an $f \in \tt{Hom}_A(A\otimes_\mathbb{K}M, N)$, then
-                \begin{align*}
-                        \psi\circ\phi (f) = \mu_N \circ (A \otimes \phi (f)) = \mu_N \circ (A \otimes f (1_A \otimes M)) = f (A \otimes M) = f\tt{.}
-                \end{align*}
-                Pick a $g \in \tt{Hom}_\mathbb{K}(M,N)$, then
-                \begin{align*}
-                    \phi\circ\psi (g) = \phi (\mu_N \circ (A \otimes g)) = \mu_N \circ (1_A \otimes g) = g\tt{.}
-                \end{align*}
-            \end{proof}
+                    We define morphisms $\phi$ and $\psi$ as
+                    \begin{align*}
+                        \phi : \tt{Hom}_A(A\otimes_\mathbb{K}M, N) & \rightarrow \tt{Hom}_\mathbb{K}(M,N) \\
+                        f & \mapsto f \circ (1_A \otimes M)\tt{,} \\
+                        \psi : \tt{Hom}_\mathbb{K}(M, N) & \rightarrow \tt{Hom}_A(A\otimes_\mathbb{K}M, N) \\
+                        g & \mapsto \mu_N \circ (A \otimes g)\tt{.}
+                    \end{align*}
 
-            \begin{corollary}
-                $A$ as a left $A$-module is the free left $A$-module over $\mathbb{K}$; i.e. for any left $A$-module $M$, $M \simeq \tt{Hom}_\mathbb{K}(\mathbb{K}, M) \simeq \tt{Hom}_A(A,M)$
-            \end{corollary}
+                    Pick an $f \in \tt{Hom}_A(A\otimes_\mathbb{K}M, N)$, then
+                    \begin{align*}
+                            \psi\circ\phi (f) = \mu_N \circ (A \otimes \phi (f)) = \mu_N \circ (A \otimes f (1_A \otimes M)) = f (A \otimes M) = f\tt{.}
+                    \end{align*}
+                    Pick a $g \in \tt{Hom}_\mathbb{K}(M,N)$, then
+                    \begin{align*}
+                        \phi\circ\psi (g) = \phi (\mu_N \circ (A \otimes g)) = \mu_N \circ (1_A \otimes g) = g\tt{.}
+                    \end{align*}
+                \end{proof}
+
+                \begin{corollary}
+                    $A$ as a left $A$-module is the free left $A$-module over $\mathbb{K}$; i.e. for any left $A$-module $M$, $M \simeq \tt{Hom}_\mathbb{K}(\mathbb{K}, M) \simeq \tt{Hom}_A(A,M)$
+                \end{corollary}
             
+            \subsubsection*{Categorical structure}
+
+                In order to fully understand the category of algebras, it is convenient to understand what some of the most basic limits and colimits looks like. Unfortunately, the category of algebras, does not have nice kernels and cokernels, so we will restrict our attention to augmented algebras.
+
+                The category of augmented algebras is pointed. The algebra $\mathbb{K}$ is both initial and terminal since we are forced to preserve the unit and counit.
+
+                \begin{definition}
+                    Let $A$ and $B$ be augmented algebras. Their direct sum $A \oplus B$ is defined as the following limit:
+                    \begin{center}
+                        \begin{tikzcd}
+                            A \oplus B \ar[]{r}[]{} \ar[]{d}[]{} \ar[phantom]{rd}[near start]{\ulcorner} & B \ar[]{d}[]{\varepsilon_B} \\
+                            A \ar[]{r}[]{\varepsilon_A} & \mathbb{K}
+                        \end{tikzcd}
+                    \end{center}
+                \end{definition}
+
+                Since $\mathbb{K}$ is terminal, then $A \oplus B$ is the product in $\tt{Alg}_{\mathbb{K},+}$. Since we may calculate this limit as a kernel, this is in fact a subobject of $A \oplus B$ in the sense of modules. One may observe the following relation between the direc sum and the ordinary direct sum.
+
+                \begin{lemma}
+                    Given augmented algebras $A$ and $B$, then $A \oplus B \simeq (\overline{A} \oplus \overline{B})^+$, where on the right hand side we use the ordinary direct sum of the underlying modules.
+                \end{lemma}
+
+                \begin{proof}
+                    This is clear.
+                \end{proof}
+
+                One should also observe that the injections $A \hookrightarrow A \oplus B$ and $B \hookrightarrow A \oplus B$ does not satisfy the universal property of the coproduct. Thus, the direct sum is no longer the coproduct in this category.
+
+                \begin{definition}
+                    Given two augmented algebras $A$ and $B$, the free product $A\ast B$ is defined as the following colimit:
+                    \begin{center}
+                        \begin{tikzcd}
+                            \mathbb{K} \ar[]{r}[]{\upsilon_A} \ar[]{d}[]{\upsilon_B} \ar[phantom]{rd}[near end]{\lrcorner} & A \ar[]{d}[]{} \\
+                            B \ar[]{r}[]{} & A \ast B
+                        \end{tikzcd}
+                    \end{center}
+                \end{definition}
+                
+                Like before, the free product is defined to be the coproduct. We will see that this is in fact a free product of augmented algebras. For commutative algebras, this case is very simple, and the coproduct of $A$ and $B$ is $A \otimes_{\mathbb{K}}B$. \todo{citation needed?}. 
+
+                \begin{lemma}
+                    Given two augmented algebras $A$ and $B$, then $A\ast B \simeq \sfrac{T(\overline{A}\oplus \overline{B})}{I}$ which is the tensor algebra over the direct sum of the underlying non-unital algebras. $I$ is an ideal generated by elements $\langle a\otimes a' - a\cdot a',b\otimes b' - b\cdot b' \rangle$.
+                \end{lemma}
+
+                \begin{proof}
+                    We have naturally injective linear morphisms
+                    \begin{align*}
+                        \iota_A : A & \hookrightarrow T(\overline{A}\oplus \overline{B})\tt{,} \\ 
+                        a & \mapsto a\tt{,} \\
+                        1 & \mapsto 1\tt{.}
+                    \end{align*}
+                    This is in fact a ring homomorphism since $\iota_A(aa') = aa' = a\otimes a' = \iota_A(a)\iota_A(a')$.
+
+                    Suppose we have the following diagram.
+                    \begin{center}
+                        \begin{tikzcd}
+                            A \ar[bend right]{rd}[below]{f} \ar[hook]{r}[below]{\iota_A} & T(\overline{A}\oplus \overline{B}) \ar[dashed]{d}[]{h} \ar[hookleftarrow]{r}[below]{\iota_B} & B \ar[bend left]{ld}[]{g} \\
+                            & T
+                        \end{tikzcd}
+                    \end{center}
+                    By functoriality we obtain a morphism $h = T(\overline{f}\oplus \overline{g}) : T(\overline{A} \oplus \overline{B}) \rightarrow T$. By unitality and augmentation property forces this to act as the identity on the respective identities. Clearly $f = h \iota_A$ and $g = h \iota_B$.
+
+                    Assume there exists another $h' : T(\overline{A}\oplus \overline{B}) \rightarrow T$ such that $f = h' \iota_A$ and $g = h' \iota_B$. Then $h = h'$ on $A \oplus B$ part of $T(\overline{A}\oplus \overline{B})$. Since $h'$ is a ring morphism, $h = h'$ on all of $T(\overline{A}\oplus \overline{B})$.
+                \end{proof}
+
     \subsection{Coalgebras}
             In this section we want to dualize the definitions given in the last section. As we will see, some strange artifacts from the structure of algebras appears in the dualization process. We would like to define a coalgebra as an algebra, but where all of the diagrams are reversed. For many purposes this dualization is good, but as we will observe, some finiteness conditions are necessary. The category of "ill-behaved" coalgebras will be denoted $\tt{coAlg}_\mathbb{K}$, and we will look at this first.
 
