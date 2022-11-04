@@ -867,18 +867,6 @@
 
             \begin{proof}
                 We establish the adjunction by letting $F = T(M)$, the tensor algebra of a cochain complex. For the same reasons as above, H0 is trivially satisfied. 
-                
-                Given two algebras $A$ and $B$, their coproduct should be analogous to the free group. Following \cite{Aambø21}, we define
-                \begin{align*}
-                    A\ast B = T(A\otimes_\mathbb{K}B)/I
-                \end{align*}
-                where $I$ is an ideal representing the relations
-                \begin{align*}
-                    (a\otimes b)\otimes (1\otimes b') & = a\otimes (bb') \\ 
-                    (a\otimes 1)\otimes (a'\otimes b) & = (aa')\otimes b \\ 
-                    1\otimes 1 & = 1\tt{.}
-                \end{align*}
-                This looks like the formal words definition of groups, except that we allow each element coming from the field $\mathbb{K}$ commute. We see that this construction does indeed define the coproduct by having maps $f: A \rightarrow T$ and $g : B \rightarrow T$ to then define a map $f\ast g$ which acts as $f\otimes g$ everywhere.
 
                 Given a cochain complex $N^\bullet$, we may consider the free dg-algebra $T(N^\bullet)$. In this case the coproduct $A\ast T(N^\bullet)$ has an easier description. We define a complex
                 \begin{align*}
