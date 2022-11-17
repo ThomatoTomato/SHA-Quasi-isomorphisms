@@ -589,7 +589,7 @@
             \end{proof}
 
             \begin{remark}
-                We have ignored smallness conditions for objects. This technique does not always work, since it depends on some unstated isomorphisms which we have used. We have these since the objects $A$ and $B$ are small. This detail is given more care in Keller \cite{Keller94}.
+                We have ignored smallness conditions for objects. This technique does not always work, since it depends on some unstated isomorphisms which we have implicitly used. We have these since the objects $A$ and $B$ are small. This detail is given more care in Keller \cite{Keller94}.
             \end{remark}
                 
             With this result we are able to show that $Ho \tt{Mod}^A$ and $Ho \tt{Mod}^{\Omega C}$ are equivalent. Since we assumed the morphism $\tau: C \rightarrow A$ to be acyclic, we would expect the morphism $f_\tau : \Omega C \rightarrow A$ to be a quasi-isomorphism. If this is the case, we know that $D(\Omega C)\simeq D(A)$. 
@@ -640,9 +640,9 @@
         \subsection{The Bar Construction}
             In section \ref{sec: 1.3} we saw that we could extend the domain of the bar construction to obtain an equivalence of categories. This converse led us to the definition of an $A_\infty$-algebra, as well as recognizing them as almost free dg-coalgebras. By employing the adjunction $(L_\tau, R_\tau) : \tt{coMod}^C \rightleftharpoons \tt{Mod}^A$ we will do something similar for modules.
 
-            Let $A$ be an augmented algebra. The bar construction of $A$ gives us a universal adjunction $(L_{\pi_A}, R_{\pi_A}) : \tt{coMod}^{BA} \rightleftharpoons \tt{Mod}^A$. We will call $R_{\pi_A}(\argument [1]) = \argument [1]\otimes_{\pi_A}BA$ for $B_A$, the bar construction on $\tt{Mod}^A$. In this manner every $A$-module $M$ give rise to a semi-free $BA$-comodule $B_AM$, but does the converse of this construction work?
+            Let $A$ be an augmented dg-algebra. The bar construction of $A$ gives us a universal adjunction $(L_{\pi_A}, R_{\pi_A}) : \tt{coMod}^{BA} \rightleftharpoons \tt{Mod}^A$. We will call $R_{\pi_A}(\argument [1]) = \argument [1]\otimes_{\pi_A}BA$ for $B_A$, the bar construction on $\tt{Mod}^A$. In this manner every $A$-module $M$ give rise to a semi-free $BA$-comodule $B_AM$, but does the converse of this construction work?
 
-            Let us first look at what $B_A$ does to a module $M$. $B_AM$ is the dg-comodule which as a graded comodule is the free comodule $M[1] \otimes BA$. The differential of $B_AM$ is given by the $A$-module structure of $M$. That is, every elementary element $m'$ of $B_AM$ is an element of $M$ together with a finite string of elements of $A$.
+            Let us first look at what $B_A$ does to an $A$-module $M$. $B_AM$ is the dg-comodule which as a graded comodule is the free comodule $M[1] \otimes BA$. The differential of $B_AM$ is given by the $A$-module structure of $M$. That is, every elementary element $m'$ of $B_AM$ is an element of $M$ together with a finite string of elements of $A$.
             \begin{align*}
                 m' = [ m \mid\mid a_1 \mid ... \mid a_n]
             \end{align*}
@@ -654,68 +654,128 @@
             \begin{align*}
                 B_AM = M[1] \oplus M[1] \otimes \bar{A} \oplus M[1] \otimes \bar{A}^{\otimes 2} \oplus ...
             \end{align*}
-            Let $\pi_M : R_{\pi_A}M \rightarrow M$ be the map which kills anything not on the form $m$. We denote $(d_{B_AM})_i$ by $d_{B_AM} \circ \iota_i$, where $\iota_i : M[-1] \otimes \bar{A}^{\otimes i-1} \hookrightarrow B_AM$. Proposition \ref{prop: free-derivation} tells us that we may recover the structure of $M$ from the differential $d_{B_AM}$. This is done by conjugating the components of $d_{B_AM}$ with desuspension and applying projections appropriately. We recover the maps as:
+            Let $\pi_M : R_{\pi_A}M \rightarrow M$ be the map which kills anything not on the form $[m]$. We denote $(d_{B_AM})_i$ by $d_{B_AM} \circ \iota_i$, where $\iota_i : M[-1] \otimes \bar{A}^{\otimes i-1} \hookrightarrow B_AM$. Proposition \ref{prop: free-derivation} tells us that we may recover the structure of $M$ from the differential $d_{B_AM}$. This is done by conjugating the components of $d_{B_AM}$ with desuspension and applying projections appropriately. We recover the maps as:
             \begin{enumerate}
                 \item The differential of $M$ is $d_M = s \circ \pi_{M[1]} \circ (d_{B_AM})_1 \omega$
                 \item The right multiplication from $A$ is $\mu_M = s\circ \pi_{M[-1]} \circ (d_{B_AM})_2 \circ \omega^{\otimes 2}$
                 \item For $i \geq 3$ we have $0 = s \circ \pi_{M[1]} \circ (d_{B_AM})_i \circ \omega^{\otimes i}$
             \end{enumerate}
 
-            Now, let $\widetilde{N}$ be an almost free $BA$-comodule. That is, $\widetilde{N} = N[1] \otimes BA$ as a graded comodule. We would now wish for that $N$ carries an $A$-module structure. Unfortunately we are not that lucky, however, this defines a notion of $A_\infty$-module to the algebra $A$. If we try to recover the same structure we obtain the following structure morphisms for $N$:
+            Now, let $\widetilde{N}$ be a quasi-free $BA$-comodule. That is, $\widetilde{N} = N[1] \otimes BA$ as a graded comodule. We would now like that $N$ carries an $A$-module structure. Unfortunately, this does not happen in general. However, like in the case of algebras, this defines a notion of $A_\infty$-modules to the algebra $A$. If we try to recover the same structure we obtain the following structure morphisms for $N$:
             \begin{align*}
                 \text{A differential of degree }1\text{: }& m_1 = d_{N} = s\circ \pi_N (d_{\widetilde{N}})_1 \circ \omega\\
                 \text{A 2-ary operation of degree }0\text{: }& m_2 = s\circ \pi_N (d_{\widetilde{N}})_2 \circ \omega^{\otimes 2}\\
                 \text{A 3-ary operation of degree }-1\text{: }& m_3 = s\circ \pi_N (d_{\widetilde{N}})_3 \circ \omega^{\otimes 3}\\
                 \text{A 4-ary operation of degree }-2\text{: }& \text{...}
             \end{align*}
-            Let $\widetilde{m}_i$ be the looped versions of the $m_i$s. Then the sum $\sum \widetilde{m}_i : \widetilde{N} \rightarrow N$ extends to $d_{B_AM}$. Since $d_{B_AM}^2 = 0$ we get the relations $(rel_n)$ defined in section \ref{sec: 1.3} imposed on the morphisms $m_i$. 
+            Let $\widetilde{m}_i$ be the looped versions of the $m_i$. Then the sum $\sum \widetilde{m}_i : \widetilde{N} \rightarrow \widetilde{N}$ extends to $d_{B_AM}$. Since $d_{B_AM}^2 = 0$ we get the relations $(rel_n)$ defined in section \ref{sec: 1.3} imposed on the morphisms $m_i$. We summarize this in the next definition.
 
-            To summarize, the datum of $M[1] \otimes BA$ as a  $BA$-comodule is equivalent to a chain complex $M$ having maps 
-            \begin{align*}
-                m_i : M \otimes \bar{A}^{\otimes i-1} \rightarrow M
-            \end{align*}
-            of degree $2-i$ for any $i \geq 2$. The maps should satisfy the relations:
-            \begin{align*}
-                (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q  
-            \end{align*}
-            This gives $M$ the structure of an $A$-module, where associativity is only well-defined up to strong homotopy. In other words, $m_3$ is a homotopy for the associator for $m_2$, $m_4$ is a homotopy for $m_3$'s associator and so on. Following Lefevre-Hasegawa \cite{LefevreHasegawa03}, we call the chain-complex $M$ an $A$-polydule, given it has maps $m_i$ as above.
-
-            We have defined the objects of a category $Mod_\infty^A$. Our goal is to have that the converse bar construction defines an equivalence of categories, i.e. $B_A$ extends to a functor $B_A : Mod_\infty^A \rightarrow \tt{coMod}^{BA}$ is fully-faithful. This makes sense as every $A$-module $M$ is a non-full $A$-polydule by letting $m_1 = d_M$, $m_2 = \mu_M$ and $m_i = 0$ for any $i\geq 3$.
-
-            Since we say that $B_A$ is fully-faithful any $\infty$- morphisms between polydules is determined by a morphism of almost free $BA$-comodules. Let $f : M \rightsquigarrow N$ be an $\infty$-morphism, then $B_Af : B_AM \rightarrow B_AN$ is the associated morphism of dg-comodules. By cofreeness, proposition \ref{prop: cofree-comod}, we see that $Bf$ is uniquely determined by morphisms $f_i : M \otimes \bar{A}^{\otimes i-1} \rightarrow N$ of degree $1-i$. Since we know that $\partial Bf = 0$, we obtain the relations:
-            \begin{align*}
-                (rel_n)\qquad \sum_{p+q+r = n} (-1)^{pq+r}f_{p+1+r} \circ_{p+1} m^M_{q} = \sum_{p+q = n} m^N_{p+1} \circ_1 f_q
-            \end{align*}
-            If $f : M \rightsquigarrow N$ and $g : N \rightsquigarrow P$, then their composition is:
-            \begin{align*}
-                (gf)_n = \sum_{p+q=n}g_{p+1}\circ_1 f_q
-            \end{align*}
-
-            This defines the morphisms of $Mod_\infty^A$. By definition $B_A: Mod_\infty^A \rightarrow \tt{coMod}^{BA}$ is fully-faithful. An $\infty$-morphism $f$ is called strict if $f_i = 0$ for any $i\geq 2$. We denote the restriction of $Mod_\infty^A$ to strict $\infty$-morphisms as $Mod_{\infty, strict}^A$. Observe that we obtain an equivalence of categories $\tt{Mod}^A \simeq Mod_{\infty, strict}^A$. 
+            \begin{definition}[$A$-polydule]
+                Let $A$ be a dg-algebra and $M$ be a graded $\mathbb{K}$-module. We say that $M$ is a right $A$-polydule if there are morphisms
+                \begin{align}
+                    m_i : M \otimes A^{\otimes i - 1} \rightarrow M
+                \end{align}
+                of degree $|m_i| = 2 - i$ for any $i \geq 1$. Furthermore, the morphisms should satisfy the relations
+                \begin{align*}
+                    (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q\tt{.}
+                \end{align*}
+            \end{definition}
             
-            We will give some examples of $A$-polydules given an augmented algebra $A$.
+            A left $A$-polydule is defined analogously. If $M$ is an $A$-polydule, then it has the structure of an $A$-module where associativity is only well-defined up to strong homotopy. In other words, $m_3$ is a homotopy for the associator for $m_2$, $m_4$ is a homotopy for the associator of $m_3$ and so on. 
+            % Following Lefevre-Hasegawa \cite{LefevreHasegawa03}, we call the chain-complex $M$ an $A$-polydule, given it has maps $m_i$ as above.
+
+            We have defined the objects of a category $Mod_\infty^A$ in correspondance to the bar construction. Every object has been uniquely defined from a quasi-free $B(A^+)$-comodule, and likewise we will uniquely define every morphism from $B(A^+)$-comodule morphisms. In this manner $B_{A^+}$ defines a fully faithful functor $B_{A^+} : \tt{Mod}_\infty^A \rightarrow \tt{coMod}^{B(A^+)}$ which is an isomorphism on the full subcategory of quasi-free $B(A^+)$-comodules.
+            
+            \begin{definition}[$\infty$-morphisms]
+                Let $A$ be a dg-algebra, and let $M$ and $N$ be two right $A$-polydules. We say that $f : M \rightsquigarrow N$ is an $\infty$-morphism if there are morphisms
+                \begin{align*}
+                    f_i : M \otimes A^{\otimes i - 1} \rightarrow N
+                \end{align*}
+                of degree $|f_i| = 1 - i$ for any $i \geq 1$. Furthermore, the morphism should satisfy the relations
+                \begin{align*}
+                    (rel_n)\qquad \sum_{p+q+r = n} (-1)^{pq+r}f_{p+1+r} \circ_{p+1} m^M_{q} = \sum_{p+q = n} m^N_{p+1} \circ_1 f_q
+                \end{align*}
+            \end{definition}
+            
+            %Our goal is to have that the converse bar construction defines an equivalence of categories, i.e. $B_A$ extends to a functor $B_A : Mod_\infty^A \rightarrow \tt{coMod}^{BA}$ is fully-faithful. This makes sense as every $A$-module $M$ is a non-full $A$-polydule by letting $m_1 = d_M$, $m_2 = \mu_M$ and $m_i = 0$ for any $i\geq 3$.
+
+            Suppose that we have the $A$-polydules $M$, $N$ and $P$. If $f : M \rightsquigarrow N$ and $g : N \rightsquigarrow P$ are $\infty$-morphisms, then their composition is defined as
+            \begin{align*}
+                (gf)_n = \sum_{p+q=n}g_{p+1}\circ_1 f_q\tt{.}
+            \end{align*}
+
+            To illustrate what the bar construction does, suppose that $f : M \rightsquigarrow N$ is an $\infty$-morphism. The bar construction on $f$ is then defined as
+            \begin{center}
+                \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
+                    \node [op, scale = 0.75] (f1) at (0.5, -0.5) {$B_{A^+}'f$};
+
+                    \draw [line width = 1pt] (0,1) -- (0,0) -- (f1) -- (0.5 , -1.5);
+                    \draw [line width = 1pt] (1.5, 1) -- (1.5, 0.75) -- (1, 0.25) -- (1, 0) -- (f1);
+                    \draw [line width = 1pt] (1.5, 0.75) -- (2, 0.25) -- (2, -1.5);
+                \end{tikzpicture}
+            \end{center}
+            where $B_{A^+}'f = \sum s \circ f_i \circ \omega^{\otimes i}$.
+
+            There is a natural inclusion on objects $i : \tt{Mod}^A \rightarrow \tt{Mod}_\infty^A$. This functor acts as the identity on each object, letting every higher $m_i = 0$:
+            \begin{align*}
+                i : \tt{Mod}^A & \rightarrow \tt{Mod}_\infty^A\tt{,}
+                (M, d_M, \mu_M) & \mapsto (M, d_M, \mu_M, 0, 0, \cdots)\tt{.}
+            \end{align*}
+            Suppose that $f : M \rightarrow N$ is a morphism between the $A$-modules $M$ and $N$. Then this defines an $\infty$-morphism $if : M \rightsquigarrow N$, such that $if_1 = f$ and $if_n = 0$ for every $n \geq 2$. Thus $i : \tt{Mod}^A \rightarrow \tt{Mod}_\infty^A$ is a functor.
+            
+            \begin{definition}[strict $\infty$-morphisms]
+                Let $f : M \rightsquigarrow N$ be an $\infty$-morphism. We say that it is strict if $f_i = 0$ for every $i \geq 2$.
+            \end{definition}
+
+            The category $\tt{Mod}_{\infty, strict}^A$ is the non-full subcategory of $\tt{Mod}_{\infty}^A$ such that every $\infty$-morphism are strict. We see that the functor restricts $i : \tt{Mod}^A \rightarrow \tt{Mod}_{\infty, strict}^A$ and becomes an equivalence of categories as well.
+            
+            We will give some examples of $A$-polydules given an augmented algebra $A$.\todo{!!!}
 
         \subsection{Polydules of SHA-algebras}
-            In the last section we developed the notion of a polydule to an augmented/unital algebra. By applying the converse of the bar construction, we are able to extend this notion to $A_\infty$-algebras.
+            In the last section we developed the notion of a polydule to a augmented and ordinary algebras. We extend this notion to any $A_\infty$-algebra.
 
-            Suppose that $A$ is an $A_\infty$-algebra. By the bar construction, $BA$ is an almost free coalgebra. In the same manner, we may consider the almost free dg-coalgebras of $\tt{coMod}^{BA}$. This is again the collections of comodules of the form $M' = M[1] \otimes BA$. Since there is no obstruction to the above arguments the differential $d_{M'}$ is determined by a collection of morphisms $m^M_n : M \otimes A^{\otimes n-1} \rightarrow M$ satisfying $(rel_n)$. Moreover, an $\infty$-morphism $f: M \rightsquigarrow N$ is a collection of morphisms $f_n : M \otimes A^{\otimes n-1} \rightarrow N$ satisfying $(rel_n)$.
+            Suppose that $A$ is an $A_\infty$-algebra. Recall the bar construction $BA$, this is a quasi-free coalgebra on the form
+            \begin{align*}
+                BA = \bigoplus_{i=1}^\infty A^{\otimes i}\tt{,}
+            \end{align*}
+            where the differential comes from the $m_i : A^{\otimes i} \rightarrow A$. In order to define the $A$-polydules, we will consider the quasi-free comodules in $\tt{coMod}^{BA}$. This will be completely analogous to how it worked for ordinary dg-algbras.
+            
+            \begin{definition}[$A$-polydule]
+                Let $A$ be an $A_\infty$-algebra, and $M$ a graded $\mathbb{K}$-module. We say that $M$ is a right $A$-polydule if there exists morphisms
+                \begin{align*}
+                    m_i : M \otimes A^{\otimes i - 1} \rightarrow M\tt{,}
+                \end{align*}
+                where the degree $|m_i| = 2 - i$ for any $i \geq 1$. Furthermore, the morphisms should satisfy the relations
+                \begin{align*}
+                    (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q\tt{.}
+                \end{align*}
+            \end{definition}
+
+            \begin{definition}[$\infty$-morphisms]
+                Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be two right $A$-polydules. We say that $f : M \rightsquigarrow N$ is an $\infty$-morphism if there are morphisms
+                \begin{align*}
+                    f_i : M \otimes A^{\otimes i - 1} \rightarrow N
+                \end{align*}
+                of degree $|f_i| = 1 - i$ for any $i \geq 1$. Furthermore, the morphism should satisfy the relations
+                \begin{align*}
+                    (rel_n)\qquad \sum_{p+q+r = n} (-1)^{pq+r}f_{p+1+r} \circ_{p+1} m^M_{q} = \sum_{p+q = n} m^N_{p+1} \circ_1 f_q
+                \end{align*}
+            \end{definition}
+
+            %This is the collections of comodules of the form $M' = M[1] \otimes BA$. This will be an $A$-polydule. Since there is no obstruction to the above arguments, the differential $d_{M'}$ is determined by a collection of morphisms $m^M_n : M \otimes A^{\otimes n-1} \rightarrow M$ satisfying $(rel_n)$. Moreover, an $\infty$-morphism $f: M \rightsquigarrow N$ is a collection of morphisms $f_n : M \otimes A^{\otimes n-1} \rightarrow N$ satisfying $(rel_n)$.
 
             \begin{definition}
                 Let $A$ be an $A_\infty$-algebra. The category $\tt{Mod}_\infty^A$ has $A$-polydules as objects and $\infty$-morphisms as morphisms.
 
-                The quasi-isomorphisms in $\tt{Mod}_\infty^A$ are the $\infty$-morphisms $f$ such that $f_1$ is a quasi-isomorphism.
             \end{definition}
+
+            The quasi-isomorphisms in $\tt{Mod}_\infty^A$ are the $\infty$-morphisms $f$ such that $f_1$ is a quasi-isomorphism.
 
             \begin{remark}
                 The isomorphisms of $\tt{Mod}_\infty^A$ are the $\infty$-morphisms $f$ where $f_1$ is an isomorphism.
             \end{remark}
 
             We say that an $\infty$-morphism is strict if $f_i = 0$ for any $i\geq 2$. The category $\tt{Mod}_{\infty, strict}^A$ is the non-full subcategory of $\tt{Mod}_\infty^A$ restricted to strict $\infty$-morphisms.
-
-            We may also lift homotopies between almost free $BA$-comodules and $A$-polydules. A homotopy $B_Ah : B_AM \rightarrow B_AM$ is a morphism of degree $-1$. Thus the collection $h_n : M \otimes A^{\otimes n-1} \rightarrow N$ has morphisms of degree $-i$. Moreover, $h : M \rightsquigarrow N$ defines a homotopy of $f, g : M \rightsquigarrow N$ if we have
-            \begin{align*}
-                f_n - g_n = \sum_{p+q}(-1)^{p}m^N_{p+1}\circ_1 h_q - \sum_{p+q+r = n}(-1)^{pq+r}h_{p+1}\circ_{p+1} m^M_q
-            \end{align*}
 
             Suppose now that $A$ is instead a strictly unital $A_\infty$-algebra (\ref{def: strict-unit}). We may define strictly unital $A$-polydules as an $A$-polydule $M$ such that
             \begin{align*}
@@ -736,7 +796,12 @@
             \end{center}
             We may call its quasi-inverse for the free strict unitization. This takes an $\overline{A}$-polydule $M$ and turns it into a strictly unital $A$-polydule by defining the structure morphism as $0$ on the unit.
 
-            We will for now restrict our attention to augmented $A_\infty$-algebras. The reason for this is that if $A$ is an arbitrary $A_\infty$-algebra, then studying $\tt{Mod}_\infty^A$ would be the same as studying $\tt{suMod}_\infty^{A^+}$. We extend the bar construction along this equivalence to a fully faithful functor $B_A : \tt{suMod}_\infty^A \rightarrow \tt{coMod}^{BA}$.
+            We will mostly restrict our attention to augmented $A_\infty$-algebras. The reason for this is that if $A$ is an arbitrary $A_\infty$-algebra, then studying $\tt{Mod}_\infty^A$ would be the same as studying $\tt{suMod}_\infty^{A^+}$. We extend the bar construction along this equivalence to a fully faithful functor $B_A : \tt{suMod}_\infty^A \rightarrow \tt{coMod}^{B\overline{A}}$. By abuse of equivalence we may write $B_{A^+} : \tt{Mod}_\infty^A \rightarrow \tt{coMod}^{BA}$.
+
+            We may also lift homotopies between quasi-free $BA$-comodules and $A$-polydules. A homotopy $B_{A^+}h : B_{A^+}M \rightarrow B_{A^+}M$ is a morphism of degree $-1$. Thus the collection $h_n : M \otimes A^{\otimes n-1} \rightarrow N$ has morphisms of degree $-i$. Moreover, $h : M \rightsquigarrow N$ defines a homotopy of $f, g : M \rightsquigarrow N$ if we have
+            \begin{align*}
+                f_n - g_n = \sum_{p+q}(-1)^{p}m^N_{p+1}\circ_1 h_q - \sum_{p+q+r = n}(-1)^{pq+r}h_{p+1+r}\circ_{p+1} m^M_q
+            \end{align*}
 
         \subsection{Universal Enveloping Algebra}
 
@@ -756,7 +821,63 @@
                 This is immediate by the definition of a $UA$-module. To have a $UA$-module $M[1]$, we must have structure maps $m_i^M : M \otimes A^{\otimes i-1} \rightarrow M$ of degree $2-i$ for any $i \geq 2$. Unwinding this definition and using the adjunction data establishes this isomorphism.
             \end{proof}
 
-        \subsection{The Derived Category $D_\infty A$ of Augmented $A_\infty$ Algebras} 
+        \subsection{Bipolydules}
+
+            For ordinary algebras $A$ and $B$, an $A$-$B$-bimodule $M$ may serve as a kind of morphism from $\tt{Mod}^A$ to $\tt{Mod}^B$. This is used in conjunction with the tensor product to form the correct functors. We will now look at this idea for $A_\infty$-algebras.
+
+            \begin{definition}[$A$-$B$-Bipolydule]
+                Suppose that $A$ and $B$ are $A_\infty$-algebras, and that $M$ is a graded $\mathbb{K}$-module. $M$ is an $A$-$B$-bipolydule if there are morphisms
+                \begin{align*}
+                    m_{i,j} : A^{\otimes i} \otimes M \otimes B^{\otimes j} \rightarrow M\tt{,}
+                \end{align*}
+                such that the degree $|m_{i,j}| = 1 - i - j$ for any $i,j \geq 0$. Furthermore, the morphisms should satisfy the relations
+                \begin{align*}
+                    (rel_n)\qquad \sum_{\substack{n = p + q + r \\ p + 1 + r = s + t \\ q = u + v \\ s,t,u,v \geq 0}}(-1)^{pq + r}m_{s,t}\circ_{p+1}m_{u,v} = 0
+                \end{align*}
+            \end{definition}
+
+            \begin{definition}[Strictly Unitary $A$-$B$-Bipolydule]
+                Suppose that $A$ and $B$ are stricly unitary $A_\infty$-algebras, and that $M$ is an $A$-$B$-bipolydule. We say that $M$ is strictly unitary if
+                \begin{align*}
+                    m_{i,j}(id^{\otimes p} \otimes \upsilon_? \otimes id^{\otimes q}) = 0\tt{;}
+                \end{align*}
+                where $?$ is either $A$ or $B$, $p \neq i$ and $(i,j) \neq (0,1)$ nor $(i,j) \neq (1,0)$. Lastly,
+                \begin{align*}
+                    m_{1,0}(\upsilon_A \otimes id_M) = m_{0,1}(id_M \otimes \upsilon_B) = id_M\tt{.}
+                \end{align*}
+            \end{definition}
+
+            A morphism of bipolydules is a bit more complicated than for normal right polydules. This is because the left module structure induces some more signs.
+            
+            \begin{definition}[$\infty$-morphisms]
+                Let $A$ and $B$ be two $A_\infty$-algebras and let $M$ and $N$ be two $A$-$B$-bipolydules. An $\infty$-morphism $f : M \rightsquigarrow N$ is a collection of morphisms
+                \begin{align*}
+                    f_{i,j} : A^{\otimes i} \otimes M \otimes B^{\otimes j} \rightarrow N\tt{,}
+                \end{align*}
+                where the degree $|f_{i,j}| = -i-j$ for any $i,, \geq 0$. Furthermore, the morphisms should satisfy the following relations
+                \begin{align*}
+                    (rel_n)\qquad \sum_{\substack{n = p + q + r \\ q = s + t}}(-1)^{p(-s-t)}m_{p,q}\circ_{p+1}f_{s,t} = \sum_{n = p + q + r}(-1)^{pq + r}f_{p,r} \circ_{p+1} m^?_q\tt{,}
+                \end{align*}
+                where $m^?_q$ is meant to mean the appropriate structure morphism.
+            \end{definition}
+
+            This definition is well-defined. If $m^?_q$ is supposed to mean $m_{q_1,q_2} : A^{\otimes q_1} \otimes M \otimes B^{\otimes q_2} \rightarrow M$, then $q_1$ and $q_2$ are not uniquely determined. However, the sum will span every possibility of $q_1$ and $q_2$.
+
+            We say that an $\infty$-morphism is strict if $f_{0,0}$ is the only non-zero component.
+
+            The polydules assemble into categories $\tt{Mod}_{A,\infty}^B$, $\tt{Mod}_{A,\infty,strict}^B$, $\tt{suMod}_{A,\infty}^B$ and $\tt{suMod}_{A,\infty,strict}^B$ like in the usual sense. These definitions may seem somewhat more complicated. However, they almost reduce to the ordinary case by considering the category $\tt{coMod}^{BA^{op}\otimes BB}$. We may derive a $2$-sided bar-construction $B_{A^+-B^+} : \tt{Mod}_{A,\infty}^B \rightarrow \tt{coMod}^{BB}_{BA}$. However, we know that $\tt{coMod}_{BA}^{BB} \simeq \tt{coMod}^{BA^{op}\otimes BB}$. In this manner we may argue about bipolydules with the techniques we have developed for comodules.
+
+        \subsection{A Closed Symmetric Monoidal Structure on $\tt{Mod}_\infty^{\mathbb{K}}$}
+
+            For ordinary $\mathbb{K}$-algbras $A$, the category $\tt{Mod}^\mathbb{K}$ is the base of enrichment for the category $\tt{Mod}^A$. This structure is ultimately given by the tensor product of $\mathbb{K}$-modules. To this end we hope that the same holds for $\tt{Mod}_\infty^\mathbb{K}$.
+            
+            
+
+        \subsection{A Tensor on $\tt{Mod}_\infty^A$}
+
+    \section{The Derived Category $D_\infty A$}
+
+        \subsection{The Derived Category of Augmented SHA-Algebras} 
 
             In this section we wish to define the derived category of strictly unitary polydules to an augmented $A_\infty$-algebra. If $[Qis]$ denote the class of $\infty$-quasi-isomorphisms, we want the derived category to be the localization at $\infty$-quasi-isomorphisms, e.g.
             \begin{align*}
@@ -783,65 +904,63 @@
             \begin{corollary}
                 Homotopy equivalence defined in $\tt{suMod}_\infty^A$ is an equivalence relation, and every $\infty$-quasi-isomorphism is a homotopy equivalence.
 
-                If $A$ is an ordinary associative algebra, then $\tt{Mod}^A$ fully-faithfully embeds into $\tt{suMod}_\infty^A$. This inclusion defines an equivalence
+                If $A$ is an ordinary associative algebra, then $\tt{Mod}^A$ fully-faithfully embeds into $\tt{suMod}_{\infty,strict}^A$. This inclusion defines an equivalence
                 \begin{align*}
-                    DA \simeq \sfrac{\tt{suMod}^A}{\sim_\infty}\tt{.}
+                    DA \simeq \sfrac{\tt{suMod}^A_{\infty, strict}}{\sim_\infty}\tt{.}
                 \end{align*}
             \end{corollary}
 
-            We now want this model structure on $\tt{suMod}^A_\infty$ to respect the model structure on the category $\tt{coMod}_{conil}^{BA}$. In other words, we want the functor $B_A : \tt{suMod}_\infty^A \to \tt{coMod}_{conil}^{BA}$ to preserve and reflect the model structure of both categories.
+            We now want this model structure on $\tt{suMod}^A_\infty$ to respect the model structure on the category $\tt{coMod}_{conil}^{B\overline{A}}$. In other words, we want the functor $B_A : \tt{suMod}_\infty^A \to \tt{coMod}_{conil}^{B\overline{A}}$ to preserve and reflect the model structure of both categories.
 
             \begin{lemma}
-                Let $M$ be an object of $\tt{suMod}_\infty^A$. The unit $B_AM \to RLB_AM$ is a quasi-isomorphism on the primitive elements.
+                Let $M$ be an object of $\tt{suMod}_\infty^A$. The unit $B_AM \to R_{\iota_{B\overline{A}}}L_{\iota_{B\overline{A}}}B_AM$ is a quasi-isomorphism on the primitive elements.
             \end{lemma}
 
             \begin{proof}
-                This proof uses the same trick as lemma \ref{lem: uni-twist-ac}. Equip $M$, the trivial filtraton, $BA$ the coradical filtration and $\Omega BA = UA$ the induced filtration.
+                This proof uses the same trick as lemma \ref{lem: uni-twist-ac}. Equip $M$, the trivial filtraton, $B\overline{A}$ the coradical filtration and $\Omega B\overline{A} = UA$ the induced filtration.
                 \begin{align*}
                     F_pM & = M\tt{,} \\
-                    Fr_pBA & = \startset{[a_1 \mid \cdots \mid a_n] \mid n \leq p}\tt{,} \\
+                    Fr_pB\overline{A} & = \startset{[a_1 \mid \cdots \mid a_n] \mid n \leq p}\tt{,} \\
                     F_p UA & = \startset{\langle [a_{1_1} \mid \cdots \mid a_{n_1}] \mid \cdots \mid [a_{1_k} \mid \cdots \mid a_{n_k}] \rangle \mid n_1 + \cdots + n_k \leq p}\tt{.}
                 \end{align*} 
 
-                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes BA \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$, is a filtered quasi-isomorphism on the primitives.
+                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes B\overline{A} \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$, is a filtered quasi-isomorphism on the primitives.
 
             \end{proof}
 
             \begin{proposition}
                 Let $M$ and $M'$ be objects of $\tt{suMod}_\infty^A$, together with an $\infty$-morphism $f : M \to M'$.
                 \begin{itemize}
-                    \item $f$ is an $\infty$-quasi-isomorphism if and only if $Bf$ is a weak equivalence.
-                    \item $f$ is a fibration if and only if $Bf$ is a fibration.
-                    \item $f$ is a cofibration if and only if $Bf$ is a cofibration.
+                    \item $f$ is an $\infty$-quasi-isomorphism if and only if $B_Af$ is a weak equivalence.
+                    \item $f$ is a fibration if and only if $B_Af$ is a fibration.
+                    \item $f$ is a cofibration if and only if $B_Af$ is a cofibration.
                 \end{itemize}
             \end{proposition}
 
             \begin{proof}
-                Recall from theorem \ref{thm: model-comod} that the morphism $\iota_{BA} : BA \to UA$ is an acyclic twisting morphism. Thus the adjoint pair $(L_{\iota_{BA}}, R_{\iota_{BA}})$ defines a Quillen equivalence.
+                Recall from theorem \ref{thm: model-comod} that the morphism $\iota_{B\overline{A}} : B\overline{A} \to UA$ is an acyclic twisting morphism. Thus the adjoint pair $(L_{\iota_{BA}}, R_{\iota_{BA}})$ defines a Quillen equivalence.
 
-                We show only the first bullet point. The last two are identical to the proof of \ref{prop: coherent-model-structure}.
+                We show only the first bullet point. The last two are identical to the proof of proposition \ref{prop: coherent-model-structure}.
 
-                If $f_1$ is a quasi-isomorphism, then $Bf$ is a filtered quasi-isomorphism by definition. So suppose that $Bf$ is a weak equivalence instead. The unit transformation gives us a natural square.
-
-                \begin{center}
-                    \begin{tikzcd}
-                        BM \ar[]{r}[]{} \ar[]{d}[]{Bf} & RLBM \ar[]{d}[]{RLBf} \\
-                        BM' \ar[]{r}[]{} & RLBM'    
-                    \end{tikzcd}
-                \end{center}
-
-                In this case $R = Bi$, so this diagram is in the image of $B$. We pull it back by functoriality.
+                If $f_1$ is a quasi-isomorphism, then $B_Af$ is a filtered quasi-isomorphism by definition. So suppose that $B_Af$ is a weak equivalence instead. The unit transformation gives us a natural square.
 
                 \begin{center}
                     \begin{tikzcd}
-                        M \ar[]{r}[]{} \ar[]{d}[]{f} & iLBM \ar[]{d}[]{iLBf} \\
-                        M' \ar[]{r}[]{} & iLBM'
+                        B_AM \ar[]{r}[]{} \ar[]{d}[]{B_Af} & R_{\iota_{B\overline{A}}}L_{\iota_{B\overline{A}}}B_AM \ar[]{d}[]{R_{\iota_{B\overline{A}}}L_{\iota_{B\overline{A}}}B_Af} \\
+                        B_AM' \ar[]{r}[]{} & R_{\iota_{B\overline{A}}}L_{\iota_{B\overline{A}}}B_AM'    
                     \end{tikzcd}
                 \end{center}
 
-                Since $Bf$ is a weak equivalence, we know that $iLBf$ is an $\infty$-quasi-isomorphism.
+                In this case $R_{\iota_{B\overline{A}}} = B_Ai$, so this diagram is in the image of $B_A$. Since $B_A$ is fully-faithful, we consider this diagram in $\tt{suMod}_\infty^A$ instead.
 
-                By the above proposition the horizontal maps are $\infty$-quasi-isomorphisms as well.
+                \begin{center}
+                    \begin{tikzcd}
+                        M \ar[]{r}[]{} \ar[]{d}[]{f} & iL_{\iota_{B\overline{A}}}BM \ar[]{d}[]{iL_{\iota_{B\overline{A}}}Bf} \\
+                        M' \ar[]{r}[]{} & iL_{\iota_{B\overline{A}}}BM'
+                    \end{tikzcd}
+                \end{center}
+
+                Since $B_Af$ is a weak equivalence, $iL_{\iota_{B\overline{A}}}B_Af$ is an $\infty$-quasi-isomorphism by definition. By the above lemma, the horizontal maps are $\infty$-quasi-isomorphisms. Thus by the $2$-out-of-$3$ property, $f$ is an $\infty$-quasi-isomorphism as well.
             \end{proof}
 
             Associated to each augmented $A_\infty$-algebra there is also a homotopy category. Since homotopy equivalence $\sim_\infty$ in $\tt{suMod}_\infty^A$ defines a congruence relation we may construct the homotopy category $K_\infty A$.
@@ -851,7 +970,7 @@
             \end{corollary}
 
             \begin{remark}
-                The name homotopy category comes from homological algebra and has a priori nothing to do with the homotopy categor $Ho(\tt{suMod}_\infty^A)$. However, in this particular case these naming conventions coincide.
+                The name homotopy category comes from homological algebra and has a priori nothing to do with the homotopy category $\tt{Ho}(\tt{suMod}_\infty^A)$. However, in this particular case these naming conventions coincide.
             \end{remark}
 
             \begin{lemma}
@@ -865,24 +984,24 @@
                 Consider the commutative square:
                 \begin{center}
                     \begin{tikzcd}
-                        \tt{Mod}^{UA} \ar[]{d}[]{R_{\iota_{BA}}} \ar[]{r}[]{i} & \tt{suMod}_{\infty, strict}^A \ar[]{d}[]{\iota} \\
-                        \tt{coMod}^{BA} & \tt{suMod}_\infty^A \ar[]{l}[]{B}
+                        \tt{Mod}^{UA} \ar[]{d}[]{R_{\iota_{B\overline{A}}}} \ar[]{r}[]{i} & \tt{suMod}_{\infty, strict}^A \ar[]{d}[]{\iota} \\
+                        \tt{coMod}^{B\overline{A}} & \tt{suMod}_\infty^A \ar[]{l}[]{B_A}
                     \end{tikzcd}
                 \end{center}
 
-                Since the three functors $R_{\iota_{BA}}$, $i$ and $B$ all induces equivalences on the derived categories, then $\iota$ has to as well.
+                Since the three functors $R_{\iota_{B\overline{A}}}$, $i$ and $B_A$ all induces equivalences on the derived categories, then $\iota$ has to as well.
             \end{proof}
 
             To summarize, we have established an equivalence between 4 different categories:
             \begin{itemize}
-                \item $D_\infty A$, derived category of $A$
-                \item $\tt{suMod}_{\infty, strict}^A[Qis^{-1}]$, derived category of $A$ with only strict morphisms
-                \item $DBA$, derived category of $BA$ as a dg-coalgebra
-                \item $DUA$, derived category of universal enveloping algebra
+                \item $D_\infty A$, derived category of $A$,
+                \item $\tt{suMod}_{\infty, strict}^A[Qis^{-1}]$ derived category of $A$ with only strict morphisms,
+                \item $DB\overline{A}$, derived category of $B\overline{A}$ as a dg-coalgebra,
+                \item $DUA$, derived category of the universal enveloping algebra of $A$.
             \end{itemize}
 
             In this sense, we may also see that in the derived category, all of the higher homotopic data of each morphism have been collapsed by the homotopy.
 
-            The triangulated structure on $D_\infty A$ may be lifted along these equivalences making them triangulated as well. Note that $R_{\iota_{BA}}$ is already triangulated, and there is only one way of forcing the triangulated structure on $\tt{suMod}_\infty^A$. Since $\tt{suMod}_{\infty}^A$ isn't complete it isn't easy to obtain a description of the triangles along any $\infty$-morphism $f$. However, this problem does not appear in $\tt{suMod}_{\infty, strict}^A$, so one should think of only strict morphisms instead, but in this case we are already working in the category $\tt{Mod}^{UA}$. 
-    \section{The Derived Category $D_\infty A$}
+            The triangulated structure on $D_\infty A$ may be lifted along these equivalences making them triangulated as well. Note that $R_{\iota_{B\overline{A}}}$ is already triangulated, and there is only one way of forcing the triangulated structure on $\tt{suMod}_\infty^A$. Since $\tt{suMod}_{\infty}^A$ isn't complete it isn't easy to obtain a description of the triangles along any $\infty$-morphism $f$. However, this problem does not appear in $\tt{suMod}_{\infty, strict}^A$, so one should think of only strict morphisms instead, but in this case we are already working in the category $\tt{Mod}^{UA}$. 
+        \subsection{The Derived Category of Strictly Unital SHA-Algebras}
 \end{document}
