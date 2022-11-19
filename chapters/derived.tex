@@ -668,7 +668,11 @@
                 \text{A 3-ary operation of degree }-1\text{: }& m_3 = s\circ \pi_N (d_{\widetilde{N}})_3 \circ \omega^{\otimes 3}\\
                 \text{A 4-ary operation of degree }-2\text{: }& \text{...}
             \end{align*}
-            Let $\widetilde{m}_i$ be the looped versions of the $m_i$. Then the sum $\sum \widetilde{m}_i : \widetilde{N} \rightarrow \widetilde{N}$ extends to $d_{B_AM}$. Since $d_{B_AM}^2 = 0$ we get the relations $(rel_n)$ defined in section \ref{sec: 1.3} imposed on the morphisms $m_i$. We summarize this in the next definition.
+            Let $\widetilde{m}_i$ be the looped versions of the $m_i$. Then the sum $\sum \widetilde{m}_i : \widetilde{N} \rightarrow N[1]$ extends to $d_{B_AN}$ by proposition \ref{prop: free-derivation}, i.e. 
+            \begin{align*}
+                d_{B_AN} = (\sum \widetilde{m}_i \otimes id_{BA})(id_N \otimes \Delta_{BA}) + N[1]\otimes d_{BA}\tt{.}
+            \end{align*}
+            Since $d_{B_AN}^2 = 0$ we get the relations $(rel_n)$ defined in section \ref{sec: 1.3} imposed on the morphisms $m_i$. We summarize this in the next definition.
 
             \begin{definition}[$A$-polydule]
                 Let $A$ be a dg-algebra and $M$ be a graded $\mathbb{K}$-module. We say that $M$ is a right $A$-polydule if there are morphisms
@@ -677,8 +681,9 @@
                 \end{align}
                 of degree $|m_i| = 2 - i$ for any $i \geq 1$. Furthermore, the morphisms should satisfy the relations
                 \begin{align*}
-                    (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q\tt{.}
+                    (rel_n) \qquad \partial(m_n) = - \sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq+r}m_k\circ_{p+1}m_q^?\tt{,}
                 \end{align*}
+                where $m_q^?$ is meant as either $m_q$ or $m_q^A$, that which is appropriate.
             \end{definition}
             
             A left $A$-polydule is defined analogously. If $M$ is an $A$-polydule, then it has the structure of an $A$-module where associativity is only well-defined up to strong homotopy. In other words, $m_3$ is a homotopy for the associator for $m_2$, $m_4$ is a homotopy for the associator of $m_3$ and so on. 
@@ -707,18 +712,18 @@
             To illustrate what the bar construction does, suppose that $f : M \rightsquigarrow N$ is an $\infty$-morphism. The bar construction on $f$ is then defined as
             \begin{center}
                 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
-                    \node [op, scale = 0.75] (f1) at (0.5, -0.5) {$B_{A^+}'f$};
+                    \node [op, scale = 0.75] (f1) at (0.5, -0.5) {$b_{A^+}f$};
 
                     \draw [line width = 1pt] (0,1) -- (0,0) -- (f1) -- (0.5 , -1.5);
                     \draw [line width = 1pt] (1.5, 1) -- (1.5, 0.75) -- (1, 0.25) -- (1, 0) -- (f1);
                     \draw [line width = 1pt] (1.5, 0.75) -- (2, 0.25) -- (2, -1.5);
                 \end{tikzpicture}
             \end{center}
-            where $B_{A^+}'f = \sum s \circ f_i \circ \omega^{\otimes i}$.
+            where $b_{A^+}f = \sum s \circ f_i \circ \omega^{\otimes i}$.
 
             There is a natural inclusion on objects $i : \tt{Mod}^A \rightarrow \tt{Mod}_\infty^A$. This functor acts as the identity on each object, letting every higher $m_i = 0$:
             \begin{align*}
-                i : \tt{Mod}^A & \rightarrow \tt{Mod}_\infty^A\tt{,}
+                i : \tt{Mod}^A & \rightarrow \tt{Mod}_\infty^A\tt{,}\\
                 (M, d_M, \mu_M) & \mapsto (M, d_M, \mu_M, 0, 0, \cdots)\tt{.}
             \end{align*}
             Suppose that $f : M \rightarrow N$ is a morphism between the $A$-modules $M$ and $N$. Then this defines an $\infty$-morphism $if : M \rightsquigarrow N$, such that $if_1 = f$ and $if_n = 0$ for every $n \geq 2$. Thus $i : \tt{Mod}^A \rightarrow \tt{Mod}_\infty^A$ is a functor.
@@ -727,7 +732,8 @@
                 Let $f : M \rightsquigarrow N$ be an $\infty$-morphism. We say that it is strict if $f_i = 0$ for every $i \geq 2$.
             \end{definition}
 
-            The category $\tt{Mod}_{\infty, strict}^A$ is the non-full subcategory of $\tt{Mod}_{\infty}^A$ such that every $\infty$-morphism are strict. We see that the functor restricts $i : \tt{Mod}^A \rightarrow \tt{Mod}_{\infty, strict}^A$ and becomes an equivalence of categories as well.
+            The category $\tt{Mod}_{\infty, strict}^A$ is the non-full subcategory of $\tt{Mod}_{\infty}^A$ such that every $\infty$-morphism are strict. 
+            % We see that the functor restricts $i : \tt{Mod}^A \rightarrow \tt{Mod}_{\infty, strict}^A$ and becomes an equivalence of categories as well.
             
             We will give some examples of $A$-polydules given an augmented algebra $A$.\todo{!!!}
 
@@ -786,7 +792,7 @@
             \begin{align*}
                 \forall i\geq 2 \quad & f_i(id_M \otimes ... \otimes \upsilon_A \otimes ... \otimes id_A) = 0 
             \end{align*}
-            This definition also extends to homotopies. We may then define the categories of strictly unital polydules $\tt{suMod}_\infty^A$ and $\tt{suMod}_{\infty, strict}^A$.
+            We define the categories of strictly unital polydules with stricly unital morphisms $\tt{suMod}_\infty^A$ and $\tt{suMod}_{\infty, strict}^A$. These categories are non-full subcategories of $\tt{Mod}_\infty^A$.
 
             Given an augmented $A_\infty$-algebra $A$ (\ref{def: augmented-sha}) we obtain an equivalence of categories. Recall that the categories $\tt{Alg}_\infty$ and $\tt{Alg}_{\infty,+}$ were equivalent by taking the kernel of augmentation and applying the free augmentation as its quasi-inverse. In the same manner, given a strictly unital $A$-polydule $M$, then it defines a strictly unital $\bar{A}$-polydule $\bar{M}$ by restricting the structure maps to $\bar{A}^{\otimes n}$. This defines an equivalence of categories.
             \begin{center}
@@ -796,12 +802,20 @@
             \end{center}
             We may call its quasi-inverse for the free strict unitization. This takes an $\overline{A}$-polydule $M$ and turns it into a strictly unital $A$-polydule by defining the structure morphism as $0$ on the unit.
 
+            The reduced bar construction allows us to translate an $A$-polydule $M$ to a quasi-free $BA$-comodule. We let $\overline{B}_AM = M[1] \otimes BA$, together with the differential coming from each $m_n : M \otimes A^{\otimes n - 1} \rightarrow M$
+            \begin{align*}
+                d_{\overline{B}_AM} = (\sum \widetilde{m}_i \otimes id_{BA})(id_{M[1]}\otimes \Delta_{BA}) + id_{M[1]}\otimes d_{BA} = d_m + id_{M[1]}\otimes d_{BA}\tt{.}
+            \end{align*}
+            Likewise, we may take a quasi-free $BA$-comodule to obtain an $A$-polydule by doing the reverse bar construction, as it is done in proposition \ref{prop: free-derivation}.
+
             We will mostly restrict our attention to augmented $A_\infty$-algebras. The reason for this is that if $A$ is an arbitrary $A_\infty$-algebra, then studying $\tt{Mod}_\infty^A$ would be the same as studying $\tt{suMod}_\infty^{A^+}$. We extend the bar construction along this equivalence to a fully faithful functor $B_A : \tt{suMod}_\infty^A \rightarrow \tt{coMod}^{B\overline{A}}$. By abuse of equivalence we may write $B_{A^+} : \tt{Mod}_\infty^A \rightarrow \tt{coMod}^{BA}$.
 
             We may also lift homotopies between quasi-free $BA$-comodules and $A$-polydules. A homotopy $B_{A^+}h : B_{A^+}M \rightarrow B_{A^+}M$ is a morphism of degree $-1$. Thus the collection $h_n : M \otimes A^{\otimes n-1} \rightarrow N$ has morphisms of degree $-i$. Moreover, $h : M \rightsquigarrow N$ defines a homotopy of $f, g : M \rightsquigarrow N$ if we have
             \begin{align*}
                 f_n - g_n = \sum_{p+q}(-1)^{p}m^N_{p+1}\circ_1 h_q - \sum_{p+q+r = n}(-1)^{pq+r}h_{p+1+r}\circ_{p+1} m^M_q
             \end{align*}
+
+            We say that a homotopy is strictly unital if it is a strictly unital $\infty$-morphism.
 
         \subsection{Universal Enveloping Algebra}
 
@@ -823,12 +837,12 @@
 
         \subsection{Bipolydules}
 
-            For ordinary algebras $A$ and $B$, an $A$-$B$-bimodule $M$ may serve as a kind of morphism from $\tt{Mod}^A$ to $\tt{Mod}^B$. This is used in conjunction with the tensor product to form the correct functors. We will now look at this idea for $A_\infty$-algebras.
+            For ordinary algebras $A$ and $A'$, an $A$-$A'$-bimodule $M$ may serve as a kind of morphism from $\tt{Mod}^A$ to $\tt{Mod}^{A'}$. This is used in conjunction with the tensor product to form the correct functors. We will now look at this idea for $A_\infty$-algebras.
 
-            \begin{definition}[$A$-$B$-Bipolydule]
-                Suppose that $A$ and $B$ are $A_\infty$-algebras, and that $M$ is a graded $\mathbb{K}$-module. $M$ is an $A$-$B$-bipolydule if there are morphisms
+            \begin{definition}[$A$-$A'$-Bipolydule]
+                Suppose that $A$ and $A'$ are $A_\infty$-algebras, and that $M$ is a graded $\mathbb{K}$-module. $M$ is an $A$-$A'$-bipolydule if there are morphisms
                 \begin{align*}
-                    m_{i,j} : A^{\otimes i} \otimes M \otimes B^{\otimes j} \rightarrow M\tt{,}
+                    m_{i,j} : A^{\otimes i} \otimes M \otimes {A'}^{\otimes j} \rightarrow M\tt{,}
                 \end{align*}
                 such that the degree $|m_{i,j}| = 1 - i - j$ for any $i,j \geq 0$. Furthermore, the morphisms should satisfy the relations
                 \begin{align*}
@@ -836,23 +850,23 @@
                 \end{align*}
             \end{definition}
 
-            \begin{definition}[Strictly Unitary $A$-$B$-Bipolydule]
-                Suppose that $A$ and $B$ are stricly unitary $A_\infty$-algebras, and that $M$ is an $A$-$B$-bipolydule. We say that $M$ is strictly unitary if
+            \begin{definition}[Strictly Unitary $A$-$A'$-Bipolydule]
+                Suppose that $A$ and $A'$ are stricly unitary $A_\infty$-algebras, and that $M$ is an $A$-$A'$-bipolydule. We say that $M$ is strictly unitary if
                 \begin{align*}
                     m_{i,j}(id^{\otimes p} \otimes \upsilon_? \otimes id^{\otimes q}) = 0\tt{;}
                 \end{align*}
-                where $?$ is either $A$ or $B$, $p \neq i$ and $(i,j) \neq (0,1)$ nor $(i,j) \neq (1,0)$. Lastly,
+                where $?$ is either $A$ or $A'$, $p \neq i$ and $(i,j) \neq (0,1)$ nor $(i,j) \neq (1,0)$. Lastly,
                 \begin{align*}
-                    m_{1,0}(\upsilon_A \otimes id_M) = m_{0,1}(id_M \otimes \upsilon_B) = id_M\tt{.}
+                    m_{1,0}(\upsilon_A \otimes id_M) = m_{0,1}(id_M \otimes \upsilon_{A'}) = id_M\tt{.}
                 \end{align*}
             \end{definition}
 
             A morphism of bipolydules is a bit more complicated than for normal right polydules. This is because the left module structure induces some more signs.
             
             \begin{definition}[$\infty$-morphisms]
-                Let $A$ and $B$ be two $A_\infty$-algebras and let $M$ and $N$ be two $A$-$B$-bipolydules. An $\infty$-morphism $f : M \rightsquigarrow N$ is a collection of morphisms
+                Let $A$ and $A'$ be two $A_\infty$-algebras and let $M$ and $N$ be two $A$-$A'$-bipolydules. An $\infty$-morphism $f : M \rightsquigarrow N$ is a collection of morphisms
                 \begin{align*}
-                    f_{i,j} : A^{\otimes i} \otimes M \otimes B^{\otimes j} \rightarrow N\tt{,}
+                    f_{i,j} : A^{\otimes i} \otimes M \otimes {A'}^{\otimes j} \rightarrow N\tt{,}
                 \end{align*}
                 where the degree $|f_{i,j}| = -i-j$ for any $i,, \geq 0$. Furthermore, the morphisms should satisfy the following relations
                 \begin{align*}
@@ -865,15 +879,156 @@
 
             We say that an $\infty$-morphism is strict if $f_{0,0}$ is the only non-zero component.
 
-            The polydules assemble into categories $\tt{Mod}_{A,\infty}^B$, $\tt{Mod}_{A,\infty,strict}^B$, $\tt{suMod}_{A,\infty}^B$ and $\tt{suMod}_{A,\infty,strict}^B$ like in the usual sense. These definitions may seem somewhat more complicated. However, they almost reduce to the ordinary case by considering the category $\tt{coMod}^{BA^{op}\otimes BB}$. We may derive a $2$-sided bar-construction $B_{A^+-B^+} : \tt{Mod}_{A,\infty}^B \rightarrow \tt{coMod}^{BB}_{BA}$. However, we know that $\tt{coMod}_{BA}^{BB} \simeq \tt{coMod}^{BA^{op}\otimes BB}$. In this manner we may argue about bipolydules with the techniques we have developed for comodules.
+            The polydules assemble into categories $\tt{Mod}_{A,\infty}^{A'}$, $\tt{Mod}_{A,\infty,strict}^{A'}$, $\tt{suMod}_{A,\infty}^{A'}$ and $\tt{suMod}_{A,\infty,strict}^{A'}$ like in the usual sense. These definitions may seem somewhat more complicated. However, they almost reduce to the ordinary case by considering the category $\tt{coMod}^{BA^{op}\otimes BA'}$. We may derive a $2$-sided bar-construction $B_{A^+-{A'}^+} : \tt{Mod}_{A,\infty}^{A'} \rightarrow \tt{coMod}^{BA'}_{BA}$. However, we know that $\tt{coMod}_{BA}^{BA'} \simeq \tt{coMod}^{BA^{op}\otimes BA'}$. In this manner we may argue about bipolydules with the techniques we have developed for comodules.
 
-        \subsection{A Closed Symmetric Monoidal Structure on $\tt{Mod}_\infty^{\mathbb{K}}$}
+        \subsection{A Tensor and Hom on $\tt{Mod}_\infty^A$}
 
-            For ordinary $\mathbb{K}$-algbras $A$, the category $\tt{Mod}^\mathbb{K}$ is the base of enrichment for the category $\tt{Mod}^A$. This structure is ultimately given by the tensor product of $\mathbb{K}$-modules. To this end we hope that the same holds for $\tt{Mod}_\infty^\mathbb{K}$.
-            
-            
+            In order to understand the category $\tt{Mod}_\infty^A$ better we would like to construct a tensor product and a hom-functor on it. In its most generality, the tensor will be a bifunctor:
+            \begin{align*}
+                \argument \otimes^\infty_{A'} \argument : \tt{Mod}_{A,\infty}^{A'} \otimes \tt{Mod}_{A',\infty}^{A''} \rightarrow \tt{Mod}_{A,\infty}^{A''}\tt{.}
+            \end{align*}
+            In the usual sense, given a bipolydule $M \in \tt{Mod}_{A,\infty}^{A'}$, then it will act as a morphism
+            \begin{align*}
+                \argument \otimes_A^\infty M : \tt{Mod}_\infty^A \rightarrow \tt{Mod}_\infty^{A'}\tt{.}
+            \end{align*}
+            In particular, this functor will be a left adjoint to its correpsonding hom-functor. In its most general form, the hom functor will be a bifunctor:
+            \begin{align*}
+                \tt{Hom}^\infty_{A'} : \tt{Mod}_{A,\infty}^{A'}\otimes\tt{Mod}_{A',\infty}^{A''} \rightarrow \tt{Mod}_{A,\infty}^{A''}\tt{.}
+            \end{align*}
 
-        \subsection{A Tensor on $\tt{Mod}_\infty^A$}
+            We start by describing the tensor product in the simplest case. Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be a right and left $A$-polydule respectively. We define $M \otimes_A^\infty N$ as a cochain complex
+            \begin{align*}
+                M \otimes_A^\infty N = M \otimes T^c(A[1]) \otimes N\tt{.}
+            \end{align*}
+            Its structure comes from the cotensor product of quasi-free coalgebras. Consider instead the right and left $BA$ dg-comodules $B_{A^+}M = M[1] \otimes BA$ and $B_{A^+}N = BA \otimes N[1]$.
+            \begin{align*}
+                B_{A^+}M \square_{BA} B_{A^+}N = \tt{Ker}(\omega^r_{B_{A^+}M}\otimes B_{A^+}N - B_{A^+}M \otimes \omega^l_{B_{A^+}N})
+            \end{align*}
+            Then $B_{A^+}M \square_{BA} B_{A^+}N$ is a $\mathbb{K}$ dg-module. By taking the cotensor, we restrict our attention to solely those parts of this tensor in which comulitplication from the left is the same as comultiplication from the right. An element may then be seen to be of the form
+            \begin{align*}
+                & [m \mid\mid a_1 \mid \cdots \mid a_n] \otimes [n] \\ 
+                + & [m \mid\mid a_1 \mid \cdots \mid a_{n-1}]\otimes [a_n \mid\mid n] \\
+                + & \cdots \\
+                + & [m \mid\mid a_1] \otimes [a_2 \mid \cdots \mid a_n \mid\mid n] \\ 
+                + &
+                 [m]\otimes [a_1\mid\cdots \mid a_n \mid\mid n]\tt{.}
+            \end{align*}
+            There is an evident isomorphism to $M[1]\otimes BA \otimes N[1]$ by sending each of the elements above to the elements
+            \begin{align*}
+                [m \mid\mid a_1 \mid \cdots \mid a_n \mid\mid n]\tt{.}
+            \end{align*}
+            Its differential is induced by the restriction of the differential on the cochain-complex $B_{A^+}M \otimes B_{A^+}N$. Since $d_{B_{A^+}M\otimes B_{A^+}N}$ is well-defined on each element in $B_{A^+}M \otimes B_{A^+}N$, the restricted differential $d_{m^M} \otimes id_{N[1]} + id_{M[1]}\otimes d_{BA} \otimes id_{N[1]} + id_{M[1]}\otimes d_{m^N}$ on $M[1] \otimes BA \otimes N[1]$ is well defined as well.
+
+            \begin{definition}[The tensor product]
+                Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be respectively a right and a left $A$-polydule. The tensor $M \otimes^\infty_A N = M \otimes BA \otimes N$ is a cochain complex with differential
+                \todo{Fortegn???}\begin{align*}
+                    -(s\otimes id_{BA} \otimes s)(d_{m^M} \otimes id_{N[1]} + id_{M[1]}\otimes d_{BA} \otimes id_{N[1]} + id_{M[1]}\otimes d_{m^N})(\omega \otimes id_{BA} \otimes \omega)\tt{.}
+                \end{align*}
+                An element of $M \otimes^\infty_A N$ may be written on the form
+                \begin{align*}
+                    m[a_1 \mid \cdots \mid a_n]n\tt{.}
+                \end{align*}
+            \end{definition}
+
+            Given $A$-polydules $M$, $M'$, $N$ and $N'$ and $\infty$-morphisms $f : M \rightsquigarrow M'$ and $g : N \rightsquigarrow N'$, we define $f \otimes^\infty_A g$ as
+            \begin{align*}
+                f\otimes^\infty_Ag(m[a_1 \mid \cdots \mid a_n]n) = \sum_{p+q+r = n+2} (-1)^s f_p(m, a_1, \cdots)[\cdots]g_r(\cdots, a_n, n)\tt{,}
+            \end{align*}
+            where $s$ is the appropriate sign derived from Koszul sign rule. Note that as a $\mathbb{K}$-polydule, this morphism is a strict $\infty$-morphism. This fact will not change, even in the more general cases.
+
+            We will extend this tensor to bipolydules. Suppose that $N$ now has the structure of an $A$-$A'$-bipolydule. The cotensor $B_{A^+}M \square_{BA} B_{A^+-A'^+}N \simeq (B_{A^+}M \square_{BA} B_{A^+}N) \otimes T^c(A'[1])$ as graded comodules. Thus when we recover the structure morphisms, we may recover them at $T^c(A'[1])$. In other words, $m_{0,n} : N \otimes A'^{\otimes n-1} \rightarrow N$ induces morphisms $m_n : M \otimes^\infty_A N \otimes A'^{\otimes n-1} \rightarrow M \otimes^\infty_A N$. Thus, given a bipolydule such as $N$ we obtain a functor
+            \begin{align*}
+                \argument\otimes^\infty_AN : \tt{Mod}_\infty^A \rightarrow \tt{Mod}_\infty^{A'}\tt{.}
+            \end{align*}
+
+            We will now describe the hom functor in the simplest case. Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be right $A$-polydules. We define $\tt{Hom}^\infty_A(M, N)$ as a cochain complex
+            \begin{align*}
+                \tt{Hom}^\infty_A(M,N) = \tt{Hom}_{BA}^\bullet(B_{A^+}M, B_{A^+}N)\tt{.}
+            \end{align*}
+            Its differential is the usual hom differential, i.e. given $f \in \tt{Hom}_{BA}^\bullet(B_{A^+}M,B_{A^+}N)$ then
+            \begin{align*}
+                \partial f = d_{B_{A^+}N}\circ f - (-1)^{|f|}f\circ d_{B_{A^+}M}\tt{.}
+            \end{align*}
+
+            Functoriality is given by post- and pre-composition in the usual sense for dg-comodules. If we are given $\infty$-morphisms, we will rather consider the dg-comodule counterpart and define functoriality purely through that. Because of this, when we regard this as $\mathbb{K}$-polydule, post- and pre-composition is a strict $\infty$-morphism. This will also hold in the more general case which we will soon get to. 
+
+            In order to be able to get to a more complicated case, we first need a new way to encode the data of an $A$-polydule. The $\mathbb{K}$-module $\tt{Hom}_{BA}(B_{A^+}M,B_{A^+}N)$ carries a natural bimodule structure. There are actions on $\tt{Hom}_{BA}(B_{A^+}M,B_{A^+}N)$ on the right from the dg-endomorphism algebra $\tt{End}(B_{A^+}M)$, and on the left from $\tt{End}(B_{A^+}N)$ by composition. If we consider these dg-algebras as $A_\infty$-algebras, then we may give $\tt{Hom}_{BA}(B_{A^+}M,B_{A^+}N)$ the structure of a bipolydule.  The following lemma connects representations of $A_\infty$-algebras to $A$-polydules.
+
+            \begin{lemma}[Representation lemma, {\cite[Lemme 5.3.0.1][140]{LefevreHasegawa03}}]\label{lem: rep}
+                Let $A$ be an $A_\infty$-algebra, and let $M$ be a graded $\mathbb{K}$-module. The following are equivalent:
+                \begin{itemize}
+                    \item There is an $\infty$-morphism of $A_\infty$-algebras $\phi: A \rightsquigarrow \tt{End}(M)$,
+                    \item $M$ is a left $A$-polydule.
+                \end{itemize}
+            \end{lemma}
+
+            \begin{proof}
+                We will only establish the bijection map. A proof of well-definedness may be found in the original source.
+                
+                The bijection is given the transpose of tensor. Notice that as $\mathbb{K}$-linear morphisms we have the following bijections
+                \begin{align*}
+                    \tt{Hom}_\mathbb{K}(A^{\otimes n-1}, \tt{End}(M)) \simeq \tt{Hom}_{\mathbb{K}}(A^{\otimes n-1}\otimes M, M)\tt{.}
+                \end{align*}
+
+                Thus if $\phi : A \rightarrow \tt{End}(M)$ is an $\infty$-morphism, then we may define
+                \begin{align*}
+                    m_n : A^{\otimes n-1} \otimes M & \rightarrow M \\
+                    (a_1 \otimes \cdots \otimes a_{n-1})\otimes m & \mapsto \phi(a_1\otimes\cdots\otimes a_{n-1})(m)\tt{.}
+                \end{align*}
+
+                On the other hand, if we have structure morphisms $m_n : A^{\otimes n-1}\otimes M \rightarrow M$, then we may define $\phi$ by uncurrying:
+                \begin{align*}
+                    \phi_n : A^{\otimes n} & \rightarrow \tt{End}(M)\tt{,} \\
+                    a_1 \otimes \cdots \otimes a_n & \mapsto (m \mapsto m_{n+1}(a_1 \otimes \cdots \otimes a_n \otimes m))\tt{.}
+                \end{align*}
+            \end{proof}
+
+            \begin{remark}
+                This lemma is well-known and even holds in many other aspects. One may for example recognize this as in representation theory of finite groups. A more general account on this lemma may be found as \cite[proposition 5.2.2.][139]{Loday12}.
+            \end{remark}
+
+            \begin{corollary}
+                Let $A$ and $A'$ be two $A_\infty$-algebras, and let $M$ be an $A$-$A'$-bipolydule. Then there is an $A_\infty$-morphism $\phi : A \rightsquigarrow \tt{End}(B_{A'^+}M)$. In particular, any $\tt{End}(B_{A'^+}M)$-modules is an $A$-polydule.
+            \end{corollary}
+
+            \begin{proof}
+                By \ref{lem: rep} we obtain the $\infty$-morphism $\phi : A \rightsquigarrow \tt{End}(B_{A'^+}M)$ by transposing the structure morphisms
+                \begin{align*}
+                    m_{i,j} : A^{\otimes i} \otimes M \otimes A'^{\otimes j} \rightarrow M\tt{.}
+                \end{align*}
+                In other words,
+                \begin{align*}
+                    \phi_n : A^{\otimes n} & \rightarrow \tt{End}(B_{A'^+}M)\tt{,} \\
+                    a_1 \otimes \cdots \otimes a_n & \mapsto (\\
+                    [m \mid\mid a'_1 \mid \cdots \mid a'_l] & \mapsto d_{B_{A^+-A'^+}M}\circ (\omega^{\otimes n}\otimes id_{M[1]} \otimes id_{A'[1]}^{\otimes l}) (a_1 \otimes \cdots \otimes a_n \otimes [m \mid\mid a'_1 \mid \cdots \mid a'_l]))\tt{.}
+                \end{align*}
+            \end{proof}
+
+            We are now ready to describe the hom-functor. Suppose that $A$ and $A'$ are $A_\infty$-algebras, and that $M$ is an $A$-$A'$-polydule and $N$ a right $A'$-polydule. We define the $A$-polydule
+            \begin{align*}
+                \tt{Hom}^\infty_{A'}(M,N) = \tt{Hom}_{BA'}^\bullet(B_{A'^+}M,B_{A'^+}N)\tt{,}
+            \end{align*}
+            with structure map $\phi : A \rightsquigarrow \tt{End}(B_{A'^+}M)$ defined by the above corollary. In this way we obtain a functor
+            \begin{align*}
+                \tt{Hom}^\infty_{A'}(M,\argument) : \tt{Mod}_\infty^{A'} \rightarrow \tt{Mod}_\infty^A\tt{.}
+            \end{align*}
+
+            \begin{lemma}[Hom-Tensor adjunction, {\cite[Lemme 4.1.1.4][115]{LefevreHasegawa03}}]
+                Let $A$ and $A'$ be two $A_\infty$-algebras and $M$ an $A$-$A'$-bipolydule. There is an adjoint pair of functors
+                \begin{center}
+                    \begin{tikzcd}
+                        \tt{Mod}_\infty^A \ar[phantom]{r}[]{\bot} \ar[bend left]{r}[]{\argument\otimes^\infty_A M} & \tt{Mod}_\infty^{A'} \ar[bend left]{l}[]{\tt{Hom}_{A'}^\infty(M,\argument)}
+                    \end{tikzcd}
+                \end{center}
+            \end{lemma}
+
+            \begin{proof}
+                Uuuuuuugh... :(
+            \end{proof}
+
+        \subsection{Homological unitary SHA-Algebras and -Polydules}
+
+            Skriv noe bullshit her
 
     \section{The Derived Category $D_\infty A$}
 
@@ -1003,5 +1158,13 @@
             In this sense, we may also see that in the derived category, all of the higher homotopic data of each morphism have been collapsed by the homotopy.
 
             The triangulated structure on $D_\infty A$ may be lifted along these equivalences making them triangulated as well. Note that $R_{\iota_{B\overline{A}}}$ is already triangulated, and there is only one way of forcing the triangulated structure on $\tt{suMod}_\infty^A$. Since $\tt{suMod}_{\infty}^A$ isn't complete it isn't easy to obtain a description of the triangles along any $\infty$-morphism $f$. However, this problem does not appear in $\tt{suMod}_{\infty, strict}^A$, so one should think of only strict morphisms instead, but in this case we are already working in the category $\tt{Mod}^{UA}$. 
+
         \subsection{The Derived Category of Strictly Unital SHA-Algebras}
+
+            Hva er det jeg trenger?
+
+            - Tria A -tar mye tid, trenger homologisk unitære ting
+            - HA - Kort tid
+            - ModA[Qis] - Litt stress?
+            - DUA - Trenger operadisk universal enveloping algebra...
 \end{document}
