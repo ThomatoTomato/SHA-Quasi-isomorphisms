@@ -924,12 +924,13 @@
                 \item $f\in \tt{Cof}$ if $f$ has LLP with respect to to every acyclic fibration.
             \end{itemize}
             
-            The category of augmented dg-algebras has an initial and a terminal object. The initial object is the stalk $\overline{\mathbb{K}}$ and the terminal object is the $0$-ring. We see that every object is fibrant, as $0$ is preserved by the forgetful functor and every map into $0$ is surjective.
+            The category of augmented dg-algebras has a zero object. This is the stalk of $\mathbb{K}$. We see that every object is fibrant, as the augmentation map is preserved by the forgetful functor and it is by definition a split-epimorphism.
             
     \subsection{A Model Structure on DG-Coalgebras}
 
-            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinichs paper \cite{Hinich01}.
-            Let $f: C \rightarrow D$, the category of dg-coalgerbas will be equipped with the three following classes of morphisms:
+            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinich's paper \cite{Hinich01}.
+
+            Let $f: C \rightarrow D$ be a morphism of coalgebras, the category of dg-coalgebras will be equipped with the three following classes of morphisms:
             \begin{itemize}
                 \item $f\in \tt{Ac}$ if $\Omega f$ is a quasi-isomorphism.
                 \item $f\in \tt{Fib}$ if $f$ has RLP with respect to every acyclic cofibration.
@@ -940,7 +941,7 @@
 
             % Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Observe that $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
 
-            To see that these classes of morphisms does define a model structure it is crucial to figure out what these weak equivalences are. This can only be done by calculating homologies, since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to formalize the basic idea of our most important tool.
+            To see that these classes of morphisms does indeed define a model structure, we will get a better description for a subclass of the weak equivalences. This can only be done by calculating homologies, since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to tackle the kinds of problems which we will face.
 
             \begin{definition}
                 A filtered chain map $f : M \rightarrow N$ of filtered complexes $M$ and $N$ is a filtered quasi-isomorphism if $\tt{gr}f : \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
@@ -956,7 +957,7 @@
                     F_p\Omega C = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n|\leq p}
                 \end{align*}
 
-                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, theorem 5.5.1 \cite{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
+                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, \cite[Theorem 5.5.1][135]{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
 
                 By definition, the $0$'th page is defined as 
                 \begin{align*}
@@ -964,18 +965,18 @@
                 \end{align*}
                 Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega \tt{gr}C)^{(p)}_{p+q}$, where $(\Omega \tt{gr}C)^{(p)} = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n| = p}$.
 
-                Evaluating $f$ at the $0$'th page would look like $E^0\Omega f \simeq \Omega \tt{gr}f$. By the mapping lemma, exercise 5.2.3 \cite{Weibel94}, it is enough to check that $\Omega \tt{gr}f$ is a quasi-isomorphism to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega \tt{gr}f$ is a quasi-isomorphism by inspecting every $E^0_{p,\bullet}\Omega C$.
+                Evaluating $f$ at the $0$'th page would look like $E^0\Omega f \simeq \Omega \tt{gr}f$. By the mapping lemma, \cite[Exercise 5.2.3][125]{Weibel94}\todo{Flytt dette til appendix?}, it is enough to check that $\Omega \tt{gr}f$ is a quasi-isomorphism to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega \tt{gr}f$ is a quasi-isomorphism by inspecting every cochain complex $E^0_{p,\bullet}\Omega C$.
 
-                We define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
+                Define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
                 \begin{align*}
                     G_k = \startset{\langle c_1 | \cdots | c_n \rangle \mid n \geq -k}.
                 \end{align*}
                 We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\overline{C}$. By the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
 
-                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a filtered quasi-isomorphisms and by the Kunneth-formula, theorem 3.6.3 \cite{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
+                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a filtered quasi-isomorphisms and by the Kunneth-formula, theorem 3.6.3 \cite[Theorem 3.6.3][88]{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
             \end{proof}
 
-            This proof will serve as a template for how we want to approach many of the proofs we will encounter. The lemma says that to show that $f$ is a weak equivalence it is sufficient to show that $f$ is a filtered quasi-isomorphism. However, to show that $f$ is a filtered quasi-isomorphism we first need a good filtering, and once we have a filtering we look at its spectral sequence. If we still have a problem, we look at complexes within a page on a spectral sequence, the mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. We will call this technique for an iterated spectral sequence argument.
+            This proof will serve as a template for how we want to approach many of the proofs we will encounter. The lemma says that to show that $f$ is a weak equivalence it is sufficient to show that $f$ is a filtered quasi-isomorphism. However, to show that $f$ is a filtered quasi-isomorphism we first need a good filtering, and once we have a filtering we look at its spectral sequence. If we still have a problem, we look at complexes within a page on a spectral sequence, and the mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. On these complexes we may define new filtrations in order to calculate the next page. We will informally call this technique for an iterated spectral sequence argument.
 
             For completeness we include the following statement.
 
@@ -984,25 +985,24 @@
             \end{lemma}
 
             \begin{proof}
-                Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunneth formula, theorem 3.6.3 \cite{Weibel94}.            
+                Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page of the canonical spectral sequence we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunneth formula, \cite[Theorem 3.6.3][88]{Weibel94}.            
             \end{proof}
 
-            Let $A$ ($C$) be a filtered dg-algebra (coalgebra). Given an element $a\in A$ ($c\in C$) we say that its filtered degree $\tt{f-deg}(a)$ ($\tt{f-deg}(c)$) is the number such that $a\in F_{\tt{f-deg}(a)}A$ ($c\in F_{\tt{f-deg}(c)}C$) but not $a\in F_{\tt{f-deg}(a)+1}A$ ($c\in F_{\tt{f-deg}(c)+1}C$). There is then an associated filtration on the bar (cobar) construction of this complex, defined as 
+            Let $A$ ($C$) be a filtered dg-algebra (coalgebra). Given an element $a\in A$ ($c\in C$) we say that its filtered degree $\tt{f-deg}(a)$ ($\tt{f-deg}(c)$) is the smallest number such that $a\in F_{\tt{f-deg}(a)}A$ ($c\in F_{\tt{f-deg}(c)}C$) but not $a\in F_{\tt{f-deg}(a)-1}A$ ($c\in F_{\tt{f-deg}(c)-1}C$). There is then an associated filtration on the bar (cobar) construction of this complex, defined as 
             \begin{align*}
                 F_pBA & = \startset{[ a_1 \mid \cdots \mid a_n ] \mid \sum \tt{f-deg}(a_i)\leq p} \\
                 (F_p\Omega C & = \startset{\langle c_1 \mid \cdots \mid c_n \rangle \mid \sum \tt{f-deg}(c_i) \leq p})\tt{.}
             \end{align*}
+            We will call this the induced filtration on the bar or cobar construction.
 
             \begin{proposition}\label{prop: unit-counit-qif}
-                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $B\eta_C$ is a quasi-isomorphism.
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $\Omega \eta_C$ is a quasi-isomorphism.
             \end{proposition}
 
             The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a proof given earlier.
 
             \begin{proof}
-                We will show that the counit is quasi-invertible. The proof technique for quasi-invertability of the unit is analogous.
-
-                Define the following filtration for $A$.
+               We start by showing that the counit is a quasi-isomorphism. Define the following filtration for $A$.
                 \begin{align*}
                     F_0A & = \mathbb{K} \\
                     F_1A & = A \\
@@ -1016,7 +1016,7 @@
 
                 The differential of $\Omega BA$ is generated by three actions: the differential on $A$, the multiplication on $A$ and the comultiplication on $BA$. With the induced filtration on $\Omega BA$, we see that the multiplication on $A$ is the only action which maps $F_p\Omega BA \rightarrow F_{p-1}\Omega BA$. Thus this action is $0$ in the associated graded and the spectral sequence. 
 
-                There is a homotopy of the identity given as $r : \tt{gr}_i \Omega BA \rightarrow \tt{gr}_i \Omega BA$, which is $0$ unless if there is an element on the form $\langle [ a ] \mid [ \cdots ] \mid [ \cdots ] \rangle$. In this case $h$ is 
+                There is a homotopy of the identity given as $r : \tt{gr}_i \Omega BA \rightarrow \tt{gr}_i \Omega BA$, which is $0$ except if there is an element on the form $\langle [ a ] \mid [ \cdots ] \mid [ \cdots ] \rangle$. In this case $r$ is 
                 \begin{align*}                    
                     r\langle [a] \mid [\cdots] \mid \cdots \rangle = (-1)^{|a|+1} \langle [a \mid [\cdots] \mid \cdots \rangle
                 \end{align*}
@@ -1035,9 +1035,9 @@
                 \end{multline*}
                 We see that this is in fact a homotopy, which makes $id_{\tt{gr}_2 \Omega BA}$ null-homotopic.
 
-                To extend this argument by induction, we will hypothesize that the terms where the differential is applied will have opposite signs, such that they cancel. Then the result follows for any $i$, by observing that the tensors far enough out to the right is not affected by $r$.
+                To extend this argument by induction, we will observe that the terms where the differential is applied will have opposite signs, such that they cancel. Then the result follows for any $i$, by observing that the tensors far enough out to the right is not affected by $r$.
 
-                If $C$ is a dg-coalgebra, we use the same technique as in \ref{lem: graded-qif-are-w}. Consider the filtration on $B\Omega C$ given as
+                If $C$ is a dg-coalgebra, we use the same technique as in Lemma~\ref{lem: graded-qif-are-w}. Consider the filtration on $B\Omega C$ given as
                 \begin{align*}
                     F_pB\Omega C = \startset{[\langle sc_{1,1}\mid \cdots \mid sc_{1,n_1}\rangle \mid \cdots \mid \langle sc_{m, 1}\mid \cdots \mid sc_{m,n_m} \rangle] \mid |c_{1,1}| + \cdots + |c_{m,n_m}|\leq p}\text{.}
                 \end{align*}
@@ -1049,9 +1049,9 @@
                     G_kEF^0_{p,\bullet} = \startset{[\langle ... \rangle_1 \mid ... \mid \langle ... \rangle_n] \mid n \geq -k}
                 \end{align*}
 
-                Similarly as in \ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $\tt{gr}_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that every string of length $\geq 2$ is not hit by this morphism. However, by employing $r$ as above we may show that these summands are contractible.
+                Similarly as in Lemma~\ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $\tt{gr}_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that every string of length $\geq 2$ is not hit by this morphism. However, by employing $r$ as above we may show that these summands are contractible. This shows that the unit is an isomorphism in homology.
 
-                To show that this map is a quasi-isomorphism it is sufficient to show that $E_pG^0_{k, \bullet}$ is contractible for $k \neq 1$. This looks like the same situation as for algebras. We use the same homotopy $r$ as in the first part to get a null-homotopy of the identity.
+                % To show that this map is a quasi-isomorphism it is sufficient to show that $E_pG^0_{k, \bullet}$ is contractible for $k \neq 1$. This looks like the same situation as for algebras. We use the same homotopy $r$ as in the first part to get a null-homotopy of the identity.
             \end{proof}
 
             \begin{lemma}\label{lem: bar-cobar-Quill-adj}
@@ -1069,13 +1069,13 @@
             \end{lemma}
 
             \begin{proof}
-                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on $D$: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and that $\Omega$ commutes with colimits, there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
+                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on $D$: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and since $\Omega$ commutes with colimits there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
 
                 If $f$ is a weak equivalence, then $\Omega f$ is a quasi-isomorphism by definition.
 
-                By lemma \ref{lem: Quill-adj}, or adjointness more specifically, $B$ preserving fibrations is a consequence of $\Omega$ preserving cofibrations.
+                By Lemma~\ref[]{lem: Quill-adj}, or adjointness more specifically, $B$ preserving fibrations is a consequence of $\Omega$ preserving cofibrations.
 
-                It remains to show that if $f: A\rightarrow B$ is a quasi-isomorphism, then $Bf$ is a weak equivalence. Now, $Bf$ is a weak equivalence if and only if $\Omega Bf$ is a quasi-isomorphism. By \ref{prop: unit-counit-qif}, the counit $A \rightarrow \Omega BA$ is a quasi-isomorphism, so $Bf$ is a weak equivalence by 2-out-of-3 property.
+                It remains to show that if $f: A\rightarrow B$ is a quasi-isomorphism, then $Bf$ is a weak equivalence. Now, $Bf$ is a weak equivalence if and only if $\Omega Bf$ is a quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, the counit $A \rightarrow \Omega BA$ is a quasi-isomorphism, so $Bf$ is a weak equivalence by 2-out-of-3 property.
 
                 \begin{center}
                     \begin{tikzcd}
@@ -1087,13 +1087,13 @@
 
             We will need one more technical lemma.
 
-            \begin{center}
-                \begin{tikzcd}[column sep = tiny]
-                    & BA \ast_{B\Omega D}D \ar[hook]{dr}[]{\pi} \ar[two heads]{dl}[]{} \\ 
-                    D \ar[hook]{dr}[]{\eta_D} & & BA \ar[two heads]{dl}[]{Bp} \ar[equal]{rr}[]{} & & BA \ar[equal]{rr}[]{} & & BA \ar[two heads]{d}[]{} \\
-                    & B\Omega D & & & BK \ar[hook]{u}[]{} & & B\Omega D
-                \end{tikzcd}
-            \end{center}
+            % \begin{center}
+            %     \begin{tikzcd}[column sep = tiny]
+            %         & BA \ast_{B\Omega D}D \ar[hook]{dr}[]{\pi} \ar[two heads]{dl}[]{} \\ 
+            %         D \ar[hook]{dr}[]{\eta_D} & & BA \ar[two heads]{dl}[]{Bp} \ar[equal]{rr}[]{} & & BA \ar[equal]{rr}[]{} & & BA \ar[two heads]{d}[]{} \\
+            %         & B\Omega D & & & BK \ar[hook]{u}[]{} & & B\Omega D
+            %     \end{tikzcd}
+            % \end{center}
 
             \begin{lemma}[Key lemma]\label{lem: tech-fac}
                 Let $A$ be a dg-algebra, $D$ a dg-coalgebra and $p: A \rightarrow \Omega D$ a fibration of algebras. The projection morphism $\ast : BA\prod_{B\Omega D}D \rightarrow BA$ is an acyclic cofibration.
@@ -1105,12 +1105,12 @@
                 \end{center}
             \end{lemma}
 
-            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may work in some cases, but fails in its full generality \cite{Keller06}. The proof presented here will be a simplification of Vallette's proof of "A technical lemma" \cite{Vallette20}.
+            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may work in some cases, but fails in its full generality \cite{Keller06}. The proof presented here will be a modification of Vallette's proof of "A technical lemma" \cite[Appendix B]{Vallette20}.
 
             \begin{proof}
-                $\pi$ being a cofibration is immediate by corollary \ref{cor: stable-cofib-base-change}. 
+                $\pi$ being a cofibration is immediate by Corollary~\ref{cor: stable-cofib-base-change}. 
                 
-                To see that $\pi$ is a weak equivalence it is enough to show that it is a filtered quasi-isomorphism by \ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra we may realize the algebra $A$ as the following extension.
+                To see that $\pi$ is a weak equivalence it is enough to show that it is a filtered quasi-isomorphism by Lemma~\ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra we may realize the algebra $A$ as the following extension.
                 \begin{center}
                     \begin{tikzcd}
                         \cdots \ar[hook]{r} & \tt{cone}(d') \ar[two heads]{r}[]{p} & \Omega D \ar[dashed, out = -10, in = 170, looseness = 1.5]{dll}[]{d'} \\
@@ -1124,7 +1124,7 @@
                     d' & : \Omega D \rightarrow K\tt{.}
                 \end{align*}
 
-                In the category $\tt{Alg}_{\mathbb{K},+}^\bullet$, $\oplus$ is the product. Since $B : \tt{Alg}_{\mathbb{K},+}^\bullet \rightarrow \tt{coAlg}_{\mathbb{K}, conil}^\bullet$ is right adjoint, it necesserilly preserves products. Thus
+                In the category $\tt{Alg}_{\mathbb{K},+}^\bullet$, $\oplus$ is the product. Since $B : \tt{Alg}_{\mathbb{K},+}^\bullet \rightarrow \tt{coAlg}_{\mathbb{K}, conil}^\bullet$ is right adjoint, it necessarilly preserves products. Thus
                 \begin{align*}
                     & BA\simeq B(K\oplus \Omega D) \simeq BK \ast B\Omega D \tt{ and} \\
                     & BA \ast_{B\Omega D} D \simeq BK \ast D\tt{.}
@@ -1132,7 +1132,7 @@
                 
                 Using this identification of the underlying graded modules we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbated by $d'$, then we could have appealed to the morphism $\pi$ being a filtered quasi-isomorphism to arrive at the conclusion. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
 
-                Since $BK$ is quasi-free, by the comonadic representation of $D$, we are able to obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
+                Since $BK$ is quasi-free, by the comonadic presentation of $D$, we are able to obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
 
                 With this description we define filtrations as
                 \begin{align*}
@@ -1141,7 +1141,7 @@
                 \end{align*}
                 Here $Fr$ and $\widetilde{Fr}$ respectively refers to the coradical and induced coradical filtration. This filtration is made to be agnostic towards $K$, in other words morphisms into $K$ are a priori filtered. Thus the part of the differential coming from $d_K$ and $d'$ are filtered. Likewise, the coradical filtration preserves the part of the differential coming from $d_{\Omega D}$. The differential coming from the multiplication of $K$ and $\Omega D$ is seen to be of $-1$ filtered degree. It is clear that $\eta_{\overline{D}}$ preserves this filtration as it acts like the identity.
 
-                The associated graded component reduces to the associated graded of $D$ and $B\Omega D$. This can be seen as if we lower a $n_i$ by $1$, then this component lands in the lower degree of the filtration. By cocontinouity of the tensor, we may then move the associated graded into each variable. The sum handles then every other component.
+                The associated graded component reduces to the associated graded of $D$ and $B\Omega D$. This can be seen as if we lower the degree of a $n_i$ by $1$, then this component lands in the lower degree of the filtration. By cocontinouity of the tensor, we may then move the associated graded into each variable. The sum then handles every other component.
                 \begin{align*}
                     \tt{gr}_n(BA\ast_{B\Omega D}D) & \simeq BK \ast \tt{gr}_nD \\
                     \tt{gr}_n(BA) & \simeq BK\ast B\Omega \tt{gr}_nD
@@ -1150,32 +1150,32 @@
 
                 These filtrations are clearly bounded below. Since $D$ and $B\Omega D$ are both conilpotent dg-coalgebras, the filtrations are then exhaustive as well. By the classical convergence theorem of filtered spectral sequences we obtain spectral seqences $E(BA\ast_{B\Omega D}D) \implies \tt{H}^*(BA\ast_{B\Omega D}D)$ and \\ $E(BA) \implies \tt{H}^*(BA)$. We want to show that the morphism of spectral sequences $id_{BK}\ast_{B\Omega D}\tt{gr}\eta_D : E(BA\ast_{B\Omega D}D) \rightarrow E(BA)$ eventually becomes a quasi-isomorphism. This will in fact happen on the first page.
 
-                To obtain this at the first page we will define another spectral sequence $\widetilde{E}$ such that $\widetilde{E} \implies E_1$. We start by defining new filtrations
+                To obtain this at the first page we will define another spectral sequence $\widetilde{E}$ such that $\widetilde{E} \implies E_1$. We start by defining new filtrations,
                 \begin{align*}
                     \widetilde{F}_n(BK\ast\tt{gr}D) & \subseteq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k + k \\ \leq n}}\,\,\bigotimes_{i=1}^k(\overline{K}[1]\oplus \tt{gr}_{n_i}\overline{D})\tt{ and} \\
                     \widetilde{F}_n(BK\ast B\Omega\tt{gr}D) & = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k \\ \leq n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots +m_t + t \\ \leq n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])\tt{.}
                 \end{align*}
 
-                Again, these filtrations are agnostic towards $K$, so both parts of the differential which comes from $d_K$ and $d'$ are filtered. The part of the differential which comes from $d_D$ naturally goes from $\tt{gr}_{n_i}\overline{D}$ to itself. The differential coming from the multiplication has already been dealt with, so these filtrations respects our differential. $id_{BK}\ast\tt{gr}(\eta_D)$ also preserves this filtration, as it acts like the identity on elements. In other words, the first filtered object is naturally a subobject of the second filtered object by identifying the elements $d$ with $[\langle d \rangle ]$.
+                Again, these filtrations are agnostic towards $K$, so both parts of the differential which comes from $d_K$ and $d'$ are filtered. The part of the differential which comes from $d_D$ naturally goes from $\tt{gr}_{n_i}\overline{D}$ to itself. The differential coming from the multiplication has already been dealt with, so these filtrations respects our differential. The morphism $id_{BK}\ast\tt{gr}(\eta_D)$ also preserves this filtration, as it acts like the identity on elements. In other words, the first filtered object is naturally a subobject of the second filtered object by identifying the elements $d$ with $[\langle d \rangle ]$.
 
                 At the $0$'th page of $\widetilde{E}$ we want to show that the part of the differential coming from $d'$ acts like $0$. This is the same to say that $\tt{Im}d'\mid_{F_n} \subseteq F_{n-1}$. We calculate the $0$'th page of the double spectral sequence as below.
-                \begin{multline*}
+                \begin{align*}
                     \widetilde{E}_0^{-n}(BK\ast\tt{gr}D)[-n] \subseteq \tt{gr}_n(BK\ast\tt{gr}D) \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k + k \\ = n}}\,\,\bigotimes_{j=1}^k\,(\overline{K}[1]\oplus\tt{gr}_{n_i}\overline{D})
-                \end{multline*}
+                \end{align*}
                 \begin{multline*}
                     \widetilde{E}_0^{-n}(BK\ast B\Omega\tt{gr}D)[-n] = \tt{gr}_n(BK\ast B\Omega\tt{gr}D) \\ 
                     \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k \\ = n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots + m_t + t \\ = n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])
                 \end{multline*}
 
-                We now pick an element $(k_1 + d_1) \otimes \cdots \otimes (k_k + d_k) \in \tt{gr}_n(BK\ast \tt{gr}D)$. Then $|d_1| + \cdots + |d_k| + k = n$. The differential coming from $d'$ is the alternate sum of $d'$ at each tensor argument. We illustrate what happens at the $i$'th argument.
+                We now pick an element $([k_1] + d_1) \otimes \cdots \otimes ([k_k] + d_k) \in \tt{gr}_n(BK\ast \tt{gr}D)$. Then $|d_1| + \cdots + |d_k| + k = n$. The differential coming from $d'$ is the alternate sum of $d'$ at each tensor argument. We illustrate what happens at the $i$'th argument.
                 \begin{align*}                    
-                    & \widetilde{d'}((k_1 + d_1) \otimes \cdots \otimes (k_i + d_i) \otimes \cdots \otimes (k_k + d_k)) \\ 
-                    = & (k_1 + d_1) \otimes \cdots \otimes (k_i + d'(d_i)) \otimes \cdots \otimes (k_k + d_k) 
+                    & \widetilde{d'}(([k_1] + d_1) \otimes \cdots \otimes ([k_i] + d_i) \otimes \cdots \otimes ([k_k] + d_k)) \\ 
+                    = & ([k_1] + d_1) \otimes \cdots \otimes ([k_i] + d'(d_i)) \otimes \cdots \otimes ([k_k] + d_k) 
                 \end{align*}
 
-                Since $|k+d'(d_i)| = 0$, the total degree of this element goes down at least $1$ if $d_i \neq 0$. If $d_i = 0$, then $d'(d_i) = 0$ anyway. In this manner, this morphism does not survive at the $\widetilde{E}_0$ page. Likewise, given an element on the form $[k_1 + \langle d_{1,1} \mid \cdots \mid d_{1,t_1} \rangle \mid \cdots \mid k_k + \langle d_{k,1} \mid \cdots \mid d_{k,t_k} \rangle ]$, then $|d'(\langle d_{i,1} \mid \cdots \mid d_{i,t_i} \rangle)| = 0$. So the phenomenon occurs at the other spectra sequence as well.
+                Since $|[k]+d'(d_i)| = 0$, the total degree of this element goes down at least $1$ if $d_i \neq 0$. If $d_i = 0$, then $d'(d_i) = 0$ anyway. In this manner, this morphism does not survive at the $\widetilde{E}_0$ page. Likewise, given an element on the form $[k_1 + \langle d_{1,1} \mid \cdots \mid d_{1,t_1} \rangle \mid \cdots \mid k_k + \langle d_{k,1} \mid \cdots \mid d_{k,t_k} \rangle ]$, then $|d'(\langle d_{i,1} \mid \cdots \mid d_{i,t_i} \rangle)| = 0$. So the phenomenon occurs at the other spectra sequence as well.
                 
-                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as \ref{prop: unit-counit-qif}. By the classical convergence theorem this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
+                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as Lemma~\ref{prop: unit-counit-qif}. By the classical convergence theorem this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
             \end{proof}
 
             \begin{thm}\label{thm: model-coalg}
@@ -1197,7 +1197,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                We construct a pullback with $Bp$ and $\eta_D$. By \ref{lem: tech-fac} the morphism $\pi$ is an acyclic cofibration. We collect our morphisms in a big diagram. The dashed arrow exists since the rightmost square is a pullback.
+                We construct a pullback with $Bp$ and $\eta_D$. By Lemma~\ref{lem: tech-fac} the morphism $\pi$ is an acyclic cofibration. We collect our morphisms in a big diagram. The dashed arrow exists since the rightmost square is a pullback.
                 \begin{center}
                     \begin{tikzcd}
                         & BA\prod_{B\Omega D}D \ar[]{ddd}[]{} \ar[]{rd}[]{q} \ar[phantom]{ddddr}[very near start]{\ulcorner} \\
@@ -1208,9 +1208,9 @@
                     \end{tikzcd}
                 \end{center}
                 
-                First notice that $q$ is a fibration, since fibrations are stable under pullbacks. $j$ is a cofibration, or a monomorphism, as the composition $Bi\eta_C$ is a monomorphism. Thus it remains to see that if $Bi$ ($Bp$) is a weak equivalence, then $j$ ($q$) is as well. This is evident from the $2$-out-of-$3$ property, as $\eta$ is a natural weak equivalence, $\pi$ is a weak equivalence and $Bi$ ($Bp$) is a weak equivalence.
+                First notice that $q$ is a fibration, since fibrations are stable under pullbacks. $j$ is a cofibration, or a monomorphism, as the composition $Bi\circ \eta_C$ is a monomorphism. Thus it remains to see that if $Bi$ ($Bp$) is a weak equivalence, then $j$ ($q$) is as well. This is evident from the $2$-out-of-$3$ property, as $\eta$ is a natural weak equivalence, $\pi$ is a weak equivalence and $Bi$ ($Bp$) is a weak equivalence.
                 
-                We now show \textbf{CM3}. Suppose that there is a square as below, where $i$ is a cofibration and $t$ is an acyclic cofibration.
+                We now show \textbf{MC3}. Suppose that there is a square as below, where $i$ is a cofibration and $t$ is an acyclic cofibration.
                 \begin{center}
                     \begin{tikzcd}
                         E \ar[]{r}[]{} \ar[]{d}[]{i} & C \ar[]{d}[]{t} \\
@@ -1218,7 +1218,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                We can factor $t$ as $t = qj$ by \textbf{CM4}. Notice that $t$ is a retract of $q$, i.e. there is a commutative diagram as below.
+                We can factor $t$ as $t = qj$ by \textbf{MC4}. Notice that $t$ is a retract of $q$, i.e. there is a commutative diagram as below.
                 \begin{center}
                     \begin{tikzcd}
                         C \ar[equal]{r}[]{} \ar[]{d}[]{j} & C \ar[]{d}[]{t} \\
@@ -1226,7 +1226,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                So in order to find a lift to $C$, we may instead find a lift to $BA\prod_{B\Omega D}D$. Since $p$ is an acyclic fibration by construction and $\Omega i$ is a cofibration by \ref{lem: bar-cobar-Quill-adj}, there is a lift $h: \Omega E \rightarrow A$ of algebras. We obtain our desired lift from the bar-cobar adjunction and the universal property of the pullback.
+                So in order to find a lift to $C$, we may instead find a lift to $BA\prod_{B\Omega D}D$. Since $p$ is an acyclic fibration by construction and $\Omega i$ is a cofibration by Lemma~\ref{lem: bar-cobar-Quill-adj}, there is a lift $h: \Omega E \rightarrow A$ of algebras. We obtain our desired lift from the bar-cobar adjunction and the universal property of the pullback.
                 \begin{center}
                     \begin{tikzcd}
                         E \ar[]{d}[]{i} \ar[]{r}[]{} & BA\prod_{B\Omega D}D \ar[crossing over]{d}[]{q} \ar[]{r}[]{\pi} \ar[phantom]{rd}[very near start]{\ulcorner} & BA \ar[]{d}[]{Bp} \\
@@ -1245,12 +1245,12 @@
         \end{corollary}
 
         \begin{proof}
-            We first observe that $(B, \Omega)$ is a Quillen adjunction by lemma \ref{lem: bar-cobar-Quill-adj}. Moreover, since the unit and counit are weak equivalences by proposition \ref{prop: unit-counit-qif}, it follows by either proposition \ref{prop: Quill-Eq} or its corollary \ref{cor: Quill-Eq} that $(B, \Omega)$ is a Quillen equivalence.
+            We first observe that $(B, \Omega)$ is a Quillen adjunction by Lemma~\ref{lem: bar-cobar-Quill-adj}. Moreover, since the unit and counit are weak equivalences by Proposition~\ref{prop: unit-counit-qif}, it follows by either Proposition~\ref{prop: Quill-Eq} or its Corollary~\ref{cor: Quill-Eq} that $(B, \Omega)$ is a Quillen equivalence.
         \end{proof}
 
     \subsection{Homotopy theory of $A_{\infty}$-algebras}
 
-        This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertability of every strongly homotopy associative quasi-isomorphism, and the relation to associative algebras. This discussion will end with mentioning different results which gives a clearer description of fibrations, cofibrations and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $\tt{Alg}_\infty$.
+        This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertibility of every strongly homotopy associative quasi-isomorphism, and its relation to ordinary associative algebras. This discussion will end with mentioning different results which gives a clearer description of fibrations, cofibrations and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $\tt{Alg}_\infty$.
 
         Let $f: A \rightsquigarrow B$ be a morphism between $A_\infty$-algebras, the category of $A_\infty$-algebras will be equipped with the three following classes of morphisms:
         \begin{itemize}
@@ -1275,7 +1275,7 @@
             \end{itemize}
         \end{thm}
 
-        We will first prove one lemma which technique we will reuse. A seconde lemma used to simplify the theorem will be stated without proof.
+        We will first prove one lemma which technique we will reuse. A second lemma used to simplify the theorem will be stated without proof.
 
         \begin{lemma}\label{lem: inf-creator}
             let $A$ be an $A_\infty$-algebra, and $K$ a contractible complex considered as an $A_\infty$-algebra. If $g: (A,m_1^A) \rightarrow (K, m_1^K)$ is a cochain map, then it extends to an $\infty$-morphism $f: A \rightsquigarrow K$.
@@ -1298,10 +1298,10 @@
         \end{lemma}
 
         \begin{proof}
-            A proof is given as lemma 1.3.3.3 in \cite{LefevreHasegawa03}.
+            The proof may be found in \cite[Lemma 1.3.3.3][44]{LefevreHasegawa03}.
         \end{proof}
 
-        \begin{proof}[proof of \ref{thm: model-A-inf}]
+        \begin{proof}[Proof of Theorem~\ref{thm: model-A-inf}]
             We start by showing (b). Suppose that we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
             \begin{center}
                 \begin{tikzcd}
@@ -1311,11 +1311,11 @@
             \end{center}
             First notice that as dg-coalgebras, this pullback exists and defines a new dg-coalgebra $BA \prod_{BA''}BA'$.
 
-            Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = Kerg_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \overline{T}^c(K)\prod \overline{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products and we get, $\overline{T}^c(A'[1])\prod \overline{T}^c(K) \simeq \overline{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e. it is an $A_\infty$-algebra.
+            Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = \tt{Ker}g_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \overline{T}^c(K)\prod \overline{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products and we get, $\overline{T}^c(A'[1])\prod \overline{T}^c(K) \simeq \overline{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e. it is an $A_\infty$-algebra.
 
-            We now prove (a). MC1 and MC2 are immediate, so we will not prove them.
+            We now prove (a). \textbf{MC1} and \textbf{MC2} are immediate, so we will not prove them.
 
-            We start by proving MC3. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration and $q$ is a fibration.
+            We start by proving \textbf{MC3}. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration and $q$ is a fibration.
             \begin{center}
                 \begin{tikzcd}
                     A \ar[]{r}[]{f} \ar[]{d}[]{j} & B \ar[]{d}[]{q} \\
@@ -1323,7 +1323,7 @@
                 \end{tikzcd}
             \end{center}
 
-            By lemma \ref{lem: strict-replacement}, we may assume assume that both $j$ and $q$ are strict morphisms. We now assume that $q$ is an $\infty$-quasi-isomorphism, the proof will be analogous if $j$ is an $\infty$-quasi-isomorphism instead.
+            By Lemma~\ref{lem: strict-replacement}, we may assume assume that both $j$ and $q$ are strict morphisms. We now assume that $q$ is an $\infty$-quasi-isomorphism, the proof will be analogous if $j$ is an $\infty$-quasi-isomorphism instead.
 
             Our goal is to construct a lifting in this diagram inductively. Having a lift means finding an $\infty$-morphism $a : C \rightsquigarrow B$, such that the following hold for any $n\geq 1$:
             \begin{itemize}
@@ -1341,7 +1341,7 @@
             \end{center}
             The lift exists since the category $\tt{Ch}(\mathbb{K})$ is a model category. Here $j_1$ is a cofibration, while $q_1$ is an acyclic fibration, so the lift $a_1$ exists.
 
-            We now wish to extend this. Suppose that we have been able to create morphisms $a_1$ up to $a_n$, all satisfying the above points. A naive solution to make $a_{n+1}$ is \\ $b = f_{n+1}r^{\otimes n+1} + sg_{n+1} - s q_1f_{n+1}r^{\otimes n+1}$. Notice that this satisfy the two last points by definition. We will augment $b$ to get an $a_{n+1}$ which also satisfies $(rel_{n+1})$.
+            We now wish to extend this. Suppose that we have been able to create morphisms $a_1$ up to $a_n$, all satisfying the above points. A naive solution to make $a_{n+1}$ is \\ $b = f_{n+1}r^{\otimes n+1} + sg_{n+1} - s q_1f_{n+1}r^{\otimes n+1}$, where $r : C \rightarrow A$ is a splitting of $j_1$ and $s : D \rightarrow B$ is a splitting of $q_1$. Notice that this morphism satisfies the two last points by definition. We will augment $b$ to get an $a_{n+1}$ which also satisfies $(rel_{n+1})$.
 
             For our own convenience, let $-c(f_1, ..., f_n)$ denote the right hand side of $(rel_{n+1})$ formula. Since both $j$ and $q$ are strict $\infty$-morphisms we get the following identites:
             \begin{align*}
@@ -1356,9 +1356,9 @@
                 \end{tikzcd}
             \end{center}
 
-            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is a acyclic. Since $c'$ is a cycle, it necesserilly have to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
+            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is acyclic. Since $c'$ is a cycle, it necessarilly have to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
 
-            We will now show MC4. Since the two properties have a similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j : A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1 : A\oplus C \rightarrow B$ gives a lift of the following diagram.
+            We will now show \textbf{MC4}. Since the two properties have a similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j : A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1 : A\oplus C \rightarrow B$ gives a lift of the following diagram.
 
             \begin{center}
                 \begin{tikzcd}
@@ -1386,7 +1386,7 @@
                     B\Omega C \ar[]{r}[]{\varepsilon_{B\Omega C}} \ar[dashed]{ru}[]{r} & \mathbb{K}
                 \end{tikzcd}
             \end{center}
-            Consider the morphism $p_1^C : C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1 : B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. Clearly, $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(Fr_1C)$.
+            Consider the morphism $p_1^C : C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1 : B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. Clearly, $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(\overline{Fr_1C})$.
 
             Now, assume that $C$ is isomorphic to $T^c(V)$ as coalgebras for some cochain complex $V$. Note that, by definition, $C$ is an $A_\infty$-algebra. By definition, we have a commutative square of $A_\infty$-algebras. Since every $A_\infty$-algebra is bifibrant, we know that this diagram has a lift, exhibiting $C$ as a retract of $B\Omega C$.
             \begin{center}
@@ -1396,10 +1396,10 @@
                 \end{tikzcd}
             \end{center}
 
-            We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow 0$ is epi. By lemma \ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
+            We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow \mathbb{K}$ is epi. By Lemma~\ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
         \end{proof}
 
-        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to essentially obtain 2 different model structure on this category. The following proposition tells us that these structures do not differ.
+        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to essentially obtain two different model structure on this category. The following proposition tells us that these structures do not differ.
 
         \begin{lemma}\label{lem: qif-infty-qi}
             Let $A$ and $B$ be $A_\infty$-algebras. Suppose that $f : A \rightsquigarrow B$ is an $\infty$-morphism and $Bf : BA \rightarrow BB$ is a filtered quasi-isomorphism, then $f$ is an $\infty$-quasi-isomorphism. 
@@ -1408,11 +1408,11 @@
         \begin{proof}
             Given $Bf : BA \rightarrow BB$, we may reconstruct $f_i = s \circ \pi_{B[1]} Bf \circ (\omega \circ \iota_A)^{\otimes i}$.
 
-            We know that the unit $\eta_{BA}$ is a filtered quasi-isomorphism from proposition \ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA} : A \rightarrow \Omega BA$. This is then again a quasi-isomorphism by assumption.
+            We know that the unit $\eta_{BA}$ is a filtered quasi-isomorphism from Proposition~\ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA} : A \rightarrow \Omega BA$. This is then again a quasi-isomorphism by assumption.
         \end{proof}
 
         \begin{proposition}\label{prop: coherent-model-structure}
-            Let $f : A \rightsquigarrow B$ be an $\infty$-morphism. Then we have the following:
+            Let $f : A \rightsquigarrow A'$ be an $\infty$-morphism. Then we have the following:
             \begin{itemize}
                 \item $f$ is an $\infty$-quasi-isomorphism if and only if $Bf$ is a weak equivalence.
                 \item $f_1$ is a monomorphism if and only if $Bf$ is a cofibration.
@@ -1421,11 +1421,11 @@
         \end{proposition}
 
         \begin{proof}
-            Suppose that $f: A \rightarrow B$ is an $\infty$-quasi-isomorphism. By the Kunneth theorem, $Bf : BA \rightarrow BB$ is a filtered quasi-isomorphism.
+            Suppose that $f: A \rightarrow A'$ is an $\infty$-quasi-isomorphism. By the Kunneth theorem, $Bf : BA \rightarrow BA'$ is a filtered quasi-isomorphism.
 
-            Suppose that $Bf : BA \rightarrow BB$ is a weak equivalence. Then $B\Omega Bf : B\Omega BA \rightarrow B\Omega BB$ is a filtered quasi-isomorphism. By proposition \ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BB}$ are both filtered quasi-isomorphism. By \ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BB}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property we get that $f$ has to be as well.
+            Suppose that $Bf : BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf : B\Omega BA \rightarrow B\Omega BA'$ is a filtered quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both filtered quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property we get that $f$ has to be as well.
 
-            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories it necesserilly have to preserve and reflect monomorphisms. \todo{Er virkelig monomorfier av A-uendelig-algebraer morfier hvor $f_1$ er mono?}
+            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories it necessarilly have to preserve and reflect monomorphisms. \todo{Er virkelig monomorfier av A-uendelig-algebraer morfier hvor $f_1$ er mono?}
 
             Suppose that $Bf$ is a fibration. Then it has RLP to acyclic cofibrations $Bg$. By the previous points we know that $g_1$ is a quasi-isomorphism and a monomorphism, in particular $f$ has RLP to $g$.
 
@@ -1436,7 +1436,7 @@
                     BD \ar[]{r}[]{Bi} & BB
                 \end{tikzcd}
             \end{center}
-            Assume that $Bg$ is an acyclic cofibration. We want to show that $Bf$ has RLP to $Bg$, then $Bf$ has to be a fibration. Notice that $BA$ and $BB$ are fibrant, so the terminal morphism is a fibration. We find the lifting by considering the following diagram.
+            Assume that $Bg$ is an acyclic cofibration. We want to show that $Bf$ has RLP to $Bg$, then $Bf$ has to be a fibration. Notice that $BA$ and $BA'$ are fibrant, so the terminal morphism is a fibration. We find the lifting by considering the following diagram.
             \begin{center}
                 \begin{tikzcd}
                     BC \ar[]{rr}[near start]{Bh} \ar[]{ddd}[]{Bg} \ar[]{rd}[]{B\eta_{BA}} & & BA \ar[]{ddd}[]{Bf} \\
@@ -1458,17 +1458,17 @@
         \begin{itemize}
             \item Homotopy equivalence is an equivalence relation.
             \item A morphism is an $\infty$-quasi-isomorphism if and only if it is a homotopy equivalence.
-            \item Let $\tt{dash} \subseteq \tt{Alg}_\infty$ be the full subcategory consisting of dg-algebras considered as $A_\infty$-algebras. $\tt{dash}$ has an induced homotopy equivalence from $\tt{Alg}_\infty$, and the inclusion $\tt{Alg} \rightarrow \tt{dash}$ induces an equivalence in homotopy $\tt{Alg}[Qis^{-1}] \simeq \sfrac{\tt{dash}}{\sim}$.
+            \item By abuse of notation, let $\tt{Alg}_\mathbb{K} \subseteq \tt{Alg}_\infty$ be the full subcategory consisting of dg-algebras considered as $A_\infty$-algebras. $\tt{Alg}_\mathbb{K}$ has an induced homotopy equivalence from $\tt{Alg}_\infty$, and the inclusion $\tt{Alg}_\mathbb{K} \rightarrow \tt{Alg}_\mathbb{K} \subset \tt{Alg}_\infty$ induces an equivalence in homotopy $\tt{Alg}[Qis^{-1}] \simeq \sfrac{\tt{Alg}_\mathbb{K}}{\sim}$.
         \end{itemize}
     \end{thm}
 
     \begin{proof}
-        The first point is obsreved from corollary \ref{cor: homotopy-is-eq-rel}, and the second point is Whiteheads theorem, theorem \ref{thm: Whitehead}.
+        The first point is observed from Corollary~\ref{cor: homotopy-is-eq-rel}, and the second point is Whitehead's theorem, Theorem~\ref{thm: Whitehead}.
 
-        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By corollary \ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by theorem \ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{dash}$, so in homotopy, we get that the image $\sfrac{\tt{dash}}{\sim}$ is equivalent to the essentiall image $\tt{Ho}\tt{Alg}_\infty$.
+        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By Corollary~\ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by Theorem~\ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{Alg}_\mathbb{K}$, so in homotopy, we get that the image $\sfrac{\tt{Alg}_\mathbb{K}}{\sim}$ is equivalent to the essentiall image $\tt{Ho}\tt{Alg}_\infty$.
     \end{proof}
 
-    Homotopy equivalence in the algebraic sense and the model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e. $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras.
+    Homotopy equivalence in the algebraic sense and the model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e. $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras. \todo{Må fikses!}
 
     \begin{proposition}
         Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g : C \rightarrow D$ are two morphisms. Then:

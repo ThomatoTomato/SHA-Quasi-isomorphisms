@@ -6,7 +6,7 @@
 
     From twisting morphisms we obtain functors $L_\alpha : \tt{coMod}^C \rightarrow \tt{Mod}^A$ and $R_\alpha : \tt{Mod}^A \rightarrow \tt{coMod}^C$, which creates an adjoint pair of functors. Whenever the twisting morphism $\alpha$ is acyclic, this adjoint pair will in fact become a Quillen Equivalence.
 
-    We wish to reuse all of the methods we have gained and acquired thorughout this thesis. This chapter will mostly be reformulations and recontextualizations of previous definitions, concepts and techniques. 
+    We wish to reuse all of the methods we have gained and acquired thorughout this thesis. The first part of this chapter will mostly be reformulations and recontextualizations of previous definitions, concepts and techniques. 
 
     \section{Twisting Morphisms}
 
@@ -23,10 +23,10 @@
             \begin{align*}
                 d_\alpha^r = (\mu_M\otimes id_N) \circ (id_M \otimes \alpha \otimes id_N) \circ (id_M \otimes \nu_N).
             \end{align*}
-            By using the same line of thought as proposition \ref{prop: twisted-differential}, there is a twisted tensor product $M\otimes_\alpha N$ with differential $d_\alpha^\bullet = d_{M\otimes N} + d_\alpha^r$.
+            By using the same line of thought as in Proposition~\ref{prop: twisted-differential}, there is a twisted tensor product $M\otimes_\alpha N$ with differential $d_\alpha^\bullet = d_{M\otimes N} + d_\alpha^r$.
 
             \begin{remark}
-                Koszuls sign rule forces us to define the differential of the left twisted tensor product as $d_\alpha^\bullet = d_{N\otimes M} - d_\alpha^l$. This is due to the skewness of left twisted tensor products.
+                Koszul's sign rule forces us to define the differential of the left twisted tensor product as $d_\alpha^\bullet = d_{N\otimes M} - d_\alpha^l$. This is due to the skewness of left twisted tensor products.
             \end{remark}
             
             \begin{definition}
@@ -44,7 +44,7 @@
 
             This definition essentially describes a functor $\tt{Tw}_\alpha^r : \tt{coMod}^C \times \tt{Mod}^A \rightarrow \tt{Mod}_\mathbb{K}$, which is the collection of right twisted linear homomorphisms between a comodule and module.
 
-            Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. Define the functor $L_\alpha = \otimes_\alpha A : \tt{coMod}^C \rightarrow \tt{Mod}^A$ as an arbitrary right twisted tensor product with $A$. This functor does indeed hit $\tt{Mod}^A$ by using the free right $A$-module structure on $A$. Likewise, we define a functor $R_\alpha = \otimes_\alpha C : \tt{Mod}^A \rightarrow \tt{coMod}^C$ as an arbitrary left twisted tensor product with $C$. This does also hit right $C$-comodules by using the free right $C$-comodule structure on $C$.
+            Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. Define the functor $L_\alpha = \otimes_\alpha A : \tt{coMod}^C \rightarrow \tt{Mod}^A$ as an arbitrary right twisted tensor product with $A$. This functor does indeed hit $\tt{Mod}^A$ by using the free right $A$-module structure on $A$. Likewise, we define a functor $R_\alpha = \otimes_\alpha C : \tt{Mod}^A \rightarrow \tt{coMod}^C$ as an arbitrary left twisted tensor product with $C$. This does also hit right $C$-comodules by using the cofree right $C$-comodule structure on $C$.
 
             \begin{proposition}
                 Suppose that $\alpha : C \rightarrow A$ is a twisting morphism. The functor $L_\alpha$ and $R_\alpha$ form an adjoint pair of categories.
@@ -59,16 +59,16 @@
                 This proof breaks down to showing $\tt{coMod}^C(N, L_\alpha(M))\simeq \tt{Tw}_\alpha(N,M) \simeq \tt{Mod}^A(R_\alpha(N),M)$. This is a rutine calculation, much like the proof for \ref{thm: cobar-bar-adj}.
             \end{proof}
 
-            Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the Cobar-Bar adjunction \ref{thm: cobar-bar-adj} there exists a universal twisting morphism $\pi_A : BA \rightarrow A$. We define the bar-construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar-construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
+            Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the Cobar-Bar adjunction, Theorem~\ref{thm: cobar-bar-adj}, there exists a universal twisting morphism $\pi_A : BA \rightarrow A$. We define the bar construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
 
-            Let $A$ and $B$ be two algebras and $f : A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^* : \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, so the left Kan extension (induction) along this functor exists.
+            Let $A$ and $B$ be two algebras and $f : A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^* : \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, the left Kan extension (induction) along this functor exists.
             \begin{center}
                 \begin{tikzcd}
                     \tt{Mod}^B \ar[]{r}[]{f^*} & \tt{Mod}^A \ar[bend right]{l}[above]{f_!}
                 \end{tikzcd}
             \end{center}
 
-            Dually, if $C$ and $D$ are two coalgebras and $g : C \rightarrow D$ is an coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $g* : \tt{coMod}^C \rightarrow \tt{coMod}^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is complete, so the right Kan extension (co-induction) along this functor exists.
+            Dually, if $C$ and $D$ are two coalgebras and $g : C \rightarrow D$ is an coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $g* : \tt{coMod}^C \rightarrow \tt{coMod}^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is complete, the right Kan extension (co-induction) along this functor exists.
             \begin{center}
                 \begin{tikzcd}
                     \tt{coMod}^C \ar[]{r}[]{g_*} & \tt{coMod}^D \ar[bend left]{l}[above]{g^!}
@@ -80,7 +80,7 @@
             \end{lemma}
 
             \begin{proof}
-                This follows from corollary \ref{cor: universal-twisting}, that is $\tau = f_\tau \circ \iota_C = \pi_A\circ g_\tau$.
+                This follows from Corollary~\ref{cor: universal-twisting}, that is $\tau = f_\tau \circ \iota_C = \pi_A\circ g_\tau$.
             \end{proof}
 
             \begin{definition}
@@ -122,21 +122,21 @@
                     (d_v + d_h)\circ h(c) = d_v\circ h(c) + d_h\circ h(c) = h\circ d_v(c) + c + h\circ d_h(c) = h\circ (d_v + d_h)(c) + c = c
                 \end{multline*}
 
-                Next up we show that $\iota_C$ is acyclic. Equip $C$ with its coradical filtration, then this induces a filtration $F_p\Omega C$. We will freely use $|\argument |$ to denote the filtered degree of every element. This may lead to ambiguity, but we wish to use this notation for clearity.
+                Next up we show that $\iota_C$ is acyclic. Equip $C$ with its coradical filtration, then this induces a filtration $F_p\Omega C$. We will freely use $|\argument |$ to denote the filtered degree of every element. This may lead to ambiguity, but we wish to use this notation for clarity.
                 \begin{align*}
                     Fr_pC & = \startset{c \mid |c| \leq p} \\
                     f_p\Omega C & = \startset{\langle c_1 \mid \cdots \mid c_n \rangle \mid |c_1| + \cdots + |c_n| \leq p }
                 \end{align*}
-                Let $M \in \tt{Mod}^{\Omega C}$, we equip this module with a trivial filtration.
+                Let $M \in \tt{Mod}^{\Omega C}$, we equip this module with a trivial filtration,
                 \begin{align*}
-                    F_pM = M
+                    F_pM = M\tt{.}
                 \end{align*}
 
-                $M$'s associated graded is then quite trivial. $\tt{gr}_0M \simeq M$ and every other $\simeq 0$.
+                $M$'s associated graded is then quite trivial, $\tt{gr}_0M \simeq M$ and every other $\simeq 0$.
 
-                All of these three filtrations together induces a filtration on $L_{\iota_C}R_{\iota_C}M$.
+                All of these three filtrations together induces a filtration on $L_{\iota_C}R_{\iota_C}M$,
                 \begin{align*}
-                    F_pL_{\iota_C}R_{\iota_C}M = \startset{m \otimes c \otimes \langle c_1 \mid \cdots \mid c_n \rangle \mid |m| + |c| + |c_1| + \cdots + |c_n| \leq p}
+                    F_pL_{\iota_C}R_{\iota_C}M = \startset{m \otimes c \otimes \langle c_1 \mid \cdots \mid c_n \rangle \mid |m| + |c| + |c_1| + \cdots + |c_n| \leq p}\tt{.}
                 \end{align*}
 
                 We calculate the associated graded of this module.
@@ -163,46 +163,46 @@
 
         \subsection{Model Structure on Module Categories}
 
-            Let $A$ be an augmented dg-algebra, then we know that $\tt{Mod}^A$ is a model category. By corollary \ref{cor: Model-Mod} we have a model structure where the fibrations, cofibrations and weak equivalences are given as follows:
+            Let $A$ be an augmented dg-algebra, then we know that $\tt{Mod}^A$ is a model category. By Corollary~\ref{cor: Model-Mod} we have a model structure where the fibrations, cofibrations and weak equivalences are given as follows:
             \begin{itemize}
-                \item $f\in Ac$ is a weak equivalence if $f$ is a quasi-isomorphism.
-                \item $f\in Fib$ is a fibration if $f^\#$ is an epimorphism.
-                \item $f\in Cof$ is a cofibration if it has LLP to acyclic fibrations. 
+                \item $f\in \tt{Ac}$ is a weak equivalence if $f$ is a quasi-isomorphism,
+                \item $f\in \tt{Fib}$ is a fibration if $f^\#$ is an epimorphism,
+                \item $f\in \tt{Cof}$ is a cofibration if it has LLP to acyclic fibrations. 
             \end{itemize}
 
             Every object in this category is fibrant as the morphism $0 : M \rightarrow 0$ is always an epimorphism.
 
         \subsection{Model Structure on Comodule Categories}
 
-            Unless stated otherwise, for this section we fix $A$ to be an augmented dg-algebra, $C$ as a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ as an acyclic twisting morphism. We endow $\tt{coMod}^C_{conil}$ with three classes of morphisms:
+            Unless stated otherwise, for this section we fix $A$ to be an augmented dg-algebra, $C$ as a conilpotent dg-coalgebra and $\tau : C \rightarrow A$ as an acyclic twisting morphism. We endow $\tt{coMod}^C_{\tt{conil}}$ with three classes of morphisms:
             \begin{itemize}
-                \item $f\in Ac$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
-                \item $f\in Cof$ is a cofibration if $f^\#$ is a monomorphism.
-                \item $f\in Fib$ is a fibration if it har RLP to acyclic cofibrations.
+                \item $f\in \tt{Ac}$ is a weak equivalence if $L_\tau f$ is a quasi-isomorphism.
+                \item $f\in \tt{Cof}$ is a cofibration if $f^\#$ is a monomorphism.
+                \item $f\in \tt{Fib}$ is a fibration if it har RLP to acyclic cofibrations.
             \end{itemize}
 
             \begin{thm}\label{thm: model-comod}
-              The category $\tt{coMod}^C_{conil}$ with the three classes as above forms a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in \tt{Mod}^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence.
+              The category $\tt{coMod}^C_{\tt{conil}}$ with the three classes as above form a model category. Every object is cofibrant, and those objects which is a direct summand of $R_\tau M$ for some $M\in \tt{Mod}^A$ are fibrant. The adjoint pair $(L_\tau, R_\tau)$ is a Quilllen equivalence.
             \end{thm}
 
-            We will call this model structure for the canonical model structure on $\tt{coMod}^C_{conil}$. Under the hypthesis of this theorem, we may observe that every object of $\tt{coMod}^C_{conil}$ are cofibrant. Since every $M\in \tt{Mod}^A$ is fibrant, and $R_\tau$ preserves fibrant objects we known that $R_\tau M$ is fibrant as well. Clearly every direct summand of $R_\tau M$ is fibrant. If $N\in \tt{coMod}^C_{conil}$ is fibrant, then it is a direct summand of $R_\tau L_\tau N$. This shows that the bifibrant objects of $\tt{coMod}^C_{conil}$ are exactly the thick image of $R_\tau$.
+            We will call this model structure for the canonical model structure on $\tt{coMod}^C_{\tt{conil}}$. Under the hypothesis of this theorem, we may observe that every object of $\tt{coMod}^C_{\tt{conil}}$ is cofibrant. Since every $M\in \tt{Mod}^A$ is fibrant, and $R_\tau$ preserves fibrant objects we known that $R_\tau M$ is fibrant as well. Clearly every direct summand of $R_\tau M$ is fibrant. If $N\in \tt{coMod}^C_{\tt{conil}}$ is fibrant, then it is a direct summand of $R_\tau L_\tau N$. This shows that the bifibrant objects of $\tt{coMod}^C_{\tt{conil}}$ is exactly the thick image of $R_\tau$.
 
-            To be able to prove this we will need some lemmata. This proof is essentially the same as the case for dg-coalgebras. The main difference is to show independence of the choice of a twisting morphism $\tau$. To this end we must establish the relationship between graded quasi-isomorphisms and weak equivalences, as well as a technical lemma.
+            To be able to prove this we will need some lemmata. This proof is essentially the same as the case for dg-coalgebras. The main difference is to show independence of the choice of twisting morphisms $\tau$. To this end we must establish the relationship between graded quasi-isomorphisms and weak equivalences, as well as a technical lemma.
 
-            Recall that given a coaugmented coalgebra $C$ we have a filtration called the coradical filtration, defined as $Fr_iC = Ker(\bar{\Delta}_C)^i$. If $N$ is a right $C$-comodule we may define the coradical filtration of $N$ as $Fr_iN = Ker(\bar{\omega}_N^i)$. This filtration is admissable, meaning it is exhaustive and $Fr_0N=0$.
+            Recall that given a coaugmented coalgebra $C$ we have a filtration called the coradical filtration, defined as $Fr_iC = \tt{Ker}(\bar{\Delta}_C)^i$. If $N$ is a right $C$-comodule we may define the coradical filtration of $N$ as $Fr_iN = \tt{Ker}(\bar{\omega}_N^i)$. This filtration is admissable, meaning it is exhaustive and $Fr_0N=0$.
 
             \begin{lemma}
                 Let $C$ be a conilpotent dg-coalgebra, $M$ and $N$ be right $C$-comodules. Then any graded quasi-isomorphism $f: M \rightarrow N$ is a weak equivalence.
             \end{lemma}
 
             \begin{proof}
-                This proof is identical to \ref{lem: graded-qif-are-w}.   
+                This proof is identical to Lemma~\ref{lem: graded-qif-are-w}.   
             \end{proof}
 
             \begin{lemma}
                 Let $M$ and $N$ be two objects of $\tt{Mod}^A$. The functor $R_\tau$ sends a quasi-isomorphism $f: M \rightarrow N$ to a weak equivalence $R_\tau f: R_\tau M \rightarrow r_\tau N$.
 
-                The unit of the adjunction $\eta : Id \rightarrow R_\tau L_\tau$ is a pointwise weak equivalence.
+                The unit of the adjunction $\eta : \tt{Id}_{\tt{coMod}^C} \rightarrow R_\tau L_\tau$ is a pointwise weak equivalence.
             \end{lemma}
 
             \begin{proof}
@@ -216,7 +216,7 @@
 
                 By assumption we know that all three of $f$, $\varepsilon_M$ and $\varepsilon_N$ are quasi-isomorphisms. It follows by the $2$-out-of-$3$ property that $L_\tau R_\tau f$ is a quasi-isomorphism as well.
 
-                To show that $\eta : Id \rightarrow L_\tau R_\tau$ is a pointwise weak-equivalence, we must show that $L\eta$ is a pointwise quasi-isomorphism. Since $L_\tau$ is left adjoint to $R_\tau$ we know that $\eta$ is split on the image of $L_\tau$, i.e.
+                To show that $\eta : \tt{Id}_{\tt{coMod}} \rightarrow L_\tau R_\tau$ is a pointwise weak equivalence, we must show that $L\eta$ is a pointwise quasi-isomorphism. Since $L_\tau$ is left adjoint to $R_\tau$ we know that $\eta$ is split on the image of $L_\tau$, i.e.
                 \begin{align*}
                     \varepsilon_{L_\tau}\circ L_\tau\eta = id_{L_\tau}
                 \end{align*}
@@ -228,27 +228,39 @@
             \end{lemma}
 
             \begin{proof}
-                This proof is essentially the same as \ref{lem: bar-cobar-Quill-adj}.
+                This proof is essentially the same as Lemma~\ref{lem: bar-cobar-Quill-adj}.
             \end{proof}
 
-            With the above lemmata we have now established that the adjunction $(L_\tau, R_\tau)$ forms a Quillen equivalence if $\tt{coMod}^C$ is a model category.
+            With the above lemmata, we have now established that the adjunction $(L_\tau, R_\tau)$ form a Quillen equivalence if $\tt{coMod}^C$ is a model category.
 
-            The next lemma is a technical lemma which we need. There will not be given a proof for it, but this is lemma 2.2.2.9 in \cite{LefevreHasegawa03}.
-
-            \begin{lemma}
+            \begin{lemma}[{\cite[Lemma 2.2.2.9][74]{LefevreHasegawa03}}]
                 Let $M$ be a right $A$-module and $N$ a right $C$-comodule. Let $p : M \rightarrow L_\tau N$ be a fibration of modules. The projection $j : R_\tau M \prod_{R_\tau L_\tau N} N \rightarrow R_\tau M$ is an acyclic cofibration of comodules.
             \end{lemma}
 
             \begin{proof}
-                This proof is omitted.
+                Let $K = \tt{Ker}p$. Then since $R_\tau$ is a right adjoint, it preserves kernels, so $R_\tau K \simeq \tt{Ker}R_\tau p$. Consider the pullback-square with the horizontal kernels
+                \begin{center}
+                    \begin{tikzcd}
+                        R_\tau K \ar[tail]{r}[]{} \ar[]{d}[]{\simeq} & RM \prod_{R_\tau L_\tau N}N \ar[two heads]{r}[]{} \ar[]{d}[]{j} & N \ar[]{d}[]{\eta_N} \\
+                        R_\tau K \ar[tail]{r}[]{} & R_\tau M \ar[]{r}[]{} & R_\tau L_\tau N 
+                    \end{tikzcd}
+                \end{center}
+
+                Since $L_\tau N$ is a quasi-free module, we get that $M \simeq K \oplus L_\tau N$ as a graded module. In other words, the short exact sequences above are split when considered as graded sequences. If we apply $L_\tau$ this sequence, then $L_\tau$ has to preserve exactness at the graded level, since it is additive. Thus we obtain a morphism of exact sequences, and $L_\tau j$ is a quasi-isomorphism by $5$-Lemma.
+                \begin{center}
+                    \begin{tikzcd}
+                        L_\tau R_\tau K \ar[tail]{r}[]{} \ar[]{d}[]{\simeq} & L_\tau (RM \prod_{R_\tau L_\tau N}N) \ar[two heads]{r}[]{} \ar[]{d}[]{j} & L_\tau N \ar[]{d}[]{\eta_N} \\
+                        L_\tau R_\tau K \ar[tail]{r}[]{} & L_\tau R_\tau M \ar[]{r}[]{} & L_\tau R_\tau L_\tau N 
+                    \end{tikzcd}
+                \end{center}
             \end{proof}
 
-            \begin{proof}[Proof of \ref{thm: model-comod}]
-                With the above lemmata established, this proof is identical to the proof of \ref{thm: model-coalg}.
+            \begin{proof}[Proof of Theorem~\ref{thm: model-comod}]
+                With the above lemmata established, this proof is identical to the proof of Theorem~\ref{thm: model-coalg}.
             \end{proof}
 
         \subsection{Triangulation of Homotopy Categories}
-            In this section we will show that the homotopy categories are triangulated. If we look at the category $\tt{Mod}^A$ we will observe that the category $Ho \tt{Mod}^A$ is our beloved derived category $\mathcal{D}(A)$. It is not quite the same for the cateogry $\tt{coMod}^C$. Here we want $Ho \tt{coMod}^C$ to be equivalent to the derived category of a ring, so we will see that the derived category is a further localization of $Ho \tt{coMod}^C$.
+            In this section we will show that the homotopy categories are triangulated. If we look at the category $\tt{Mod}^A$ we will observe that the category $\tt{Ho} \tt{Mod}^A$ is our beloved derived category $\mathcal{D}(A)$. It is not quite the same for the cateogry $\tt{coMod}^C$. Here we want $\tt{Ho} \tt{coMod}^C$ to be equivalent to the derived category of a ring, so we will see that the derived category is a further localization of $\tt{Ho} \tt{coMod}^C$.
 
             Furthermore, by employing the theory of triangulated categories we will show that the model structure on $\tt{coMod}^C$ is independent on the choice of acyclic twisting morphism. This breaks down to show that every acyclic twisting morphism induce an equivalence between derived categories, as done by Bernhard Keller in \cite{Keller94}.
 
@@ -285,7 +297,7 @@
                 \end{tikzcd}
             \end{center}
 
-            It is known that the complex $\tt{cone}(id_M)$ is contractible for any complex $M$ (and it is also universal with this property). In this way by letting $M$ vary we can find an inflation or deflation from the identity cone from or to any complex. This concludes that $(\tt{Mod}^A, \mathcal{E})$ is a Frobenius category.
+            The complex $\tt{cone}(id_M)$ is contractible for any complex $M$. By letting $M$ vary we can find an inflation or deflation from the identity cone to or from any complex. This concludes that $(\tt{Mod}^A, \mathcal{E})$ is a Frobenius category.
             
             Let \underline{$\tt{Mod}^A$} denote the injectively stable module category. Let $I(M,N)$ denote the set of chain maps from $M$ to $N$ which factors through an injective object. We define the injectively stable category as the quotient of abelian groups \underline{$\tt{Mod}^A$}$(M,N)=\sfrac{\tt{Mod}^A(M,N)}{I(M,N)}$.
 
@@ -294,7 +306,7 @@
             \end{thm}
 
             \begin{proof}
-                This is also well known in literature. An account for it may also be found in Krause \cite{Krause21}, Happel \cite{Happel88} or Buehler \cite{Buhler10}.
+                This is well known in literature. An account for it may also be found in Krause \cite{Krause21}, Happel \cite{Happel88} or Buehler \cite{Buhler10}.
             \end{proof}
 
             We thus obtain a triangulated category \underline{$\tt{Mod}^A$} associated to the Frobenius pair $(\tt{Mod}^A, \mathcal{E})$. This category is commonly denoted as $K(A)$, and we will do this as well. Notice that with the structure given by $\mathcal{E}$, the cozyzygy is defined by the shift functor $[1]$. Every standard triangle is also on the form:
@@ -305,17 +317,17 @@
                 \end{tikzcd}
             \end{center}
 
-            To define the derived category $D(A)$ of $A$ we will consider the localization of $K(A)$ at the quasi-isomorphisms, $D(A) = K(A)[Qiso^{-1}]$. To see that the derived category is still triangulated we may realize it as a Verdier quotient of $K(A)$.
+            To define the derived category $D(A)$ of $A$ we will consider the localization of $K(A)$ at the quasi-isomorphisms, $D(A) = K(A)[\tt{Qis}^{-1}]$. To see that the derived category is still triangulated we may realize it as a Verdier quotient of $K(A)$.
 
             \begin{proposition}
-                The derived category of $A$ is equivalent to the Verdier quotient $\sfrac{K(A)}{Ac}$, where $Ac$ denotes the image of acyclic objects in $K(A)$.
+                The derived category of $A$ is equivalent to the Verdier quotient $\sfrac{K(A)}{\tt{Ac}}$, where $\tt{Ac}$ denotes the image of acyclic objects in $K(A)$.
             \end{proposition}
 
             \begin{proof}
                 A proof may be found in Buehler \cite{Buhler10}.
             \end{proof}
 
-            There is another way of telling the story of the derived category $D(A)$. That is to directly localize it at the quasi-isomorphisms. We may directly see that $D(A) \simeq \tt{Mod}^A[Qiso^{-1}]$ which we know is $Ho \tt{Mod}^A$ by definition. This gives us our first important identification.
+            There is another way of telling the story of the derived category $D(A)$. That is to directly localize it at the quasi-isomorphisms. We may directly see that $D(A) \simeq \tt{Mod}^A[\tt{Qis}^{-1}]$ which we know is $\tt{Ho} \tt{Mod}^A$ by definition. This gives us our first important identification.
 
             \begin{thm}
                 The homotopy category of $\tt{Mod}^A$ is triangulated, and moreover it is the derived category $D(A)$.
@@ -325,23 +337,23 @@
                 Follows from discussion above.
             \end{proof}
 
-            The triangulated construction for the category $Ho \tt{coMod}^C$ closely resembles that of $Ho \tt{Mod}^A$. We start by studying the Frobenius pair $(\tt{coMod}^C, \mathcal{E})$, where $\mathcal{E}$ is the same exact structure. Notice that this exact structure only takes the underlying category of chain complexes into account, so this follows from the above description.
+            The triangulated construction for the category $\tt{Ho} \tt{coMod}^C$ closely resembles that of $\tt{Ho} \tt{Mod}^A$. We start by studying the Frobenius pair $(\tt{coMod}^C, \mathcal{E})$, where $\mathcal{E}$ is the same exact structure. Notice that this exact structure only takes the underlying category of chain complexes into account, so this follows from the above description.
 
             We define the injectively stable category \underline{$\tt{coMod}^C$}$=K(C)$ in the same manner. The standard triangles and the additive auto-equivalence stays the same.
 
-            At this point things start to differ. The definition for the homotopy category $Ho \tt{coMod}^C$ is $\tt{coMod}^C[Ac^{-1}]$, here $Ac$ denotes the class of weak equivalences in $\tt{coMod}^C$. By abuse of notation we also let $Ac\subset K(C)$ be the collection of objects which are cones of weak equivalences. This subcategory can be characterized by being the preimage of acyclic objects $Ac\subset K(A)$ along $L_\tau : \tt{coMod}^C \rightarrow \tt{Mod}^A$. This identification suffices to show that $Ac\subset K(C)$ is a triangulated subcategory. In this manner $Ho \tt{coMod}^C$ is the category $\sfrac{K(C)}{Ac}$, which is a triangulated category.
+            At this point things start to differ. The definition for the homotopy category $\tt{Ho} \tt{coMod}^C$ is $\tt{coMod}^C[\tt{Ac}^{-1}]$, here $\tt{Ac}$ denotes the class of weak equivalences in $\tt{coMod}^C$. By abuse of notation we also let $\tt{Ac}\subset K(C)$ be the collection of objects which are cones of weak equivalences. This subcategory can be characterized by being the preimage of acyclic objects $\tt{Ac}\subset K(A)$ along $L_\tau : \tt{coMod}^C \rightarrow \tt{Mod}^A$. To see this look at the image of the triangle where the cone is in $\tt{Ac}$. This identification suffices to show that $\tt{Ac}\subset K(C)$ is a triangulated subcategory. In this manner $\tt{Ho} \tt{coMod}^C$ is the category $\sfrac{K(C)}{Ac}$, which is a triangulated category.
 
             \begin{remark}
-                We may show that $Ac\subset K(C)$ is a subcategory of acyclic objects. In this manner we get that $D(C) \simeq Ho \tt{coMod}^C[Qiso^{-1}]$. This is done in Lefevre-Hasegawa \cite{LefevreHasegawa03} as proposition 1.3.5.1 or lemma 2.2.2.11. This follows from the fact that we have an equivalence of categories $\tt{coMod}^C[fQiso^{-1}]\simeq Ho \tt{coMod}^C$, here $fQiso$ means the collection of filtered quasi-isomorphisms. Since every filtered quasi-isomorphism is in fact a quasi-isomorphism by a spectral sequence argument we get the inclusion of triangulated subcategories $\langle \tt{cone}(fQiso)\rangle \subseteq \langle \tt{cone}(Qiso)\rangle \subseteq K(C)$.
+                We may show that $\tt{Ac}\subset K(C)$ is a subcategory of acyclic objects. In this manner we get that $D(C) \simeq \tt{Ho} \tt{coMod}^C[\tt{Qis}^{-1}]$. This is done in Lefevre-Hasegawa as \cite[Proposition 1.3.5.1][51]{LefevreHasegawa03} \cite[Lemma 2.2.2.11][75]{LefevreHasegawa03}. This follows from the fact that we have an equivalence of categories $\tt{coMod}^C[\tt{fQis}^{-1}]\simeq \tt{Ho} \tt{coMod}^C$, here fQis means the collection of filtered quasi-isomorphisms. Since every filtered quasi-isomorphism is in fact a quasi-isomorphism by a spectral sequence argument we get the inclusion of triangulated subcategories $\langle \tt{cone}(\tt{fQis})\rangle \subseteq \langle \tt{cone}(\tt{Qis})\rangle \subseteq K(C)$.
             \end{remark}
 
-            Let $\tau: C \rightarrow A$ and $\upsilon : C \rightarrow A'$ be two acyclic twisting morphisms. These defines independently two different model structures on $\tt{coMod}^C$ by the adjunctions $(L_\tau, R_\tau)$ and $(L_\upsilon, R_\upsilon)$. By lemma \ref{lem: twist-fac} we have the identification $(L_\tau, R_\tau) = (f_{\tau !},f_\tau^*)(L_{\iota_C},R_{\iota_C}) = (f_{\tau !}L_{\iota_C},R_{\iota_C}f_\tau^*)$, and likewise for $\upsilon$. In order to show that $\tau$ and $\upsilon$ defines equivalent module structures on $\tt{coMod}^C$ it is enough that both define the same structure as $\iota_C$. By symmetry, we may assume that $\upsilon = \iota_C$. From lemma \ref{lem: uni-twist-ac} we know that $\iota_C$ is acyclic, so this assumption is well-founded.
+            Let $\tau: C \rightarrow A$ and $\upsilon : C \rightarrow A'$ be two acyclic twisting morphisms. These independently defines two different model structures on $\tt{coMod}^C$ by the adjunctions $(L_\tau, R_\tau)$ and $(L_\upsilon, R_\upsilon)$. By Lemma~\ref{lem: twist-fac} we have the identification $(L_\tau, R_\tau) = (f_{\tau !},f_\tau^*)(L_{\iota_C},R_{\iota_C}) = (f_{\tau !}L_{\iota_C},R_{\iota_C}f_\tau^*)$, and likewise for $\upsilon$. In order to show that $\tau$ and $\upsilon$ defines equivalent model structures on $\tt{coMod}^C$, it is enough that both define the same structure as $\iota_C$. By symmetry, we may assume that $\upsilon = \iota_C$. From Lemma~\ref{lem: uni-twist-ac}, we know that $\iota_C$ is acyclic, so this assumption is well-founded.
 
-            Since we already know that $(L_\tau, R_\tau)$ and $(L_{\iota_C}, R_{\iota_C})$ are Quillen equivalences it remains to show that $(f_{\tau !},f_\tau^*)$ is a Quillen equivalence. This is shown if $f_\tau^*$ is a right Quillen functor, and that it induces a triangle equivalence between $D(A)$ and $D(\Omega C)$.
+            Since we already know that $(L_\tau, R_\tau)$ and $(L_{\iota_C}, R_{\iota_C})$ are Quillen equivalences, it remains to show that $(f_{\tau !},f_\tau^*)$ is a Quillen equivalence. This is shown if $f_\tau^*$ is a right Quillen functor, and that it induces a triangle equivalence between $D(A)$ and $D(\Omega C)$.
 
             We know that $f_\tau^*$ preserves fibrations (epimorphisms). This is because on morphisms, this functor acts as the identity. It only changes the ring action, so epimorphisms stay as epimorphisms. It remains to see that quasi-isomorphisms are preserved. We will show this by identifying the derived categories. This follows the methods given by Keller in \cite{Keller94}. We will however simplify this discussion by restricting our attention solely to dg-algebras.
 
-            Let $A$ be a dg-algebra. $A$ is then free in the enriched sense; i.e. for any right $A$-module $M$, ${\tt{Hom}}^\bullet_A(\hat{A},M) \simeq M$. Recall that $P$ is projective if it is a direct summand of $A^n$ for some $n\in \mathbb{N}$. 
+            Let $A$ be a dg-algebra. $A$ is then free in the enriched sense; i.e. for any right $A$-module $M$, ${\tt{Hom}}^\bullet_A(A,M) \simeq M$. Recall that $P$ is projective if it is a direct summand of $A^n$ for some $n\in \mathbb{N}$. 
             
             Given a right bounded complex $M$, we know how to construct a projective resolution $p: pM \rightarrow M$. Associated to this resoultion there is a triangle in $K(\mathbb{K})$ consisting of the complexes $M$, $pM$ and $aM$, where $aM$ is an acyclic complex.
 
@@ -388,9 +400,9 @@
             \end{lemma}
 
             \begin{proof}
-                Let $\startset{F_n}$ denote the filtration on $P$. To show that $P$ is homotopy projective is to find a homotopy equivalence $P'$ such that $P'$ is the homotopy colimit of a filtration admitting (F3).
+                Let $\startset{F_n}$ denote the filtration on $P$. Showing that $P$ is homotopy projective is the same as finding a homotopy equivalence to a complex $P'$, such that $P'$ is the homotopy colimit of a filtration admitting (F3).
 
-                Suppose that $\sfrac{F_{n+1}}{F_n}\simeq Q_{n+1}$, where each $Q_{n+1}$ is projective. We wish to inductively define a filtration $\startset{F_n'}$ which has (F2) and (F3) and a pointwise homotopy equivalence of filtrations $f : \startset{F_n} \rightarrow \startset{F_n'}$. The object $P'$ is then defined to be the (homotopy) colimit of this new filtration.
+                Suppose that $\sfrac{F_{n+1}}{F_n}\simeq Q_{n+1}$, where each $Q_{n+1}$ is projective. We wish to inductively define a filtration $\startset{F_n'}$ which has (F2) and (F3) and a pointwise homotopy equivalence of filtrations $f : \startset{F_n} \rightarrow \startset{F_n'}$. The object $P'$ is then defined to be the (homotopy)\todo{Merkelig formulert} colimit of this new filtration.
                 
                 Define $F_0' = Q_0$, and let $f_0 : F_0 \rightarrow F_0'$ be the projection onto $Q_0$. By assumption $f_0$ is a homotopy equivalence and we have a commutative square where the vertical arrows are homotopy equivalences. Moreover, each horizontal arrow splits as a graded arrow.
 
@@ -432,7 +444,7 @@
             The projective complexes are the complexes which are generated by the free module $A$ in the sense that they are all in the smallest thick triangulated subcategory of $K(A)$ containing $A$. By definition, we may see that the homotopy projective complexes are the complexes in the smallest thick triangulated subcategory of $K(A)$ which is closed under well-ordered homotopy colimits and contains $K(A)$. By devissage we may extend fully-fatihfullness of functors on the set $\startset{A}$ to the class of homotopy projective objects.
 
             \begin{lemma}[Devissage]
-                Let $F: \mathcal{T} \rightarrow \mathcal{U}$ be a triangulated functor between triangulated categories. Suppose $S\subseteq \mathcal{T}$ is a class of objects closed under shift, and denote $\widehat{S}$ for the smallest thick triangulated subcategory (closed under well-ordered homotopy colimits). If $F|_S$ is fully faithful, then $F|_{\widehat{S}}$ is fully faithful as well.
+                Let $F: \mathcal{T} \rightarrow \mathcal{U}$ be a triangulated functor between triangulated categories. Suppose $S\subseteq \mathcal{T}$ is a class of objects closed under shift, and denote $\langle S \rangle$ for the smallest thick triangulated subcategory (closed under well-ordered homotopy colimits). If $F|_S$ is fully faithful, then $F|_{\widehat{S}}$ is fully faithful as well.
             \end{lemma}
 
             \begin{proof}
@@ -440,7 +452,7 @@
             \end{proof}
 
             \begin{lemma}
-                Supppose we have $F$ and $S$ as above. If $F|_S = 0$, then it is $0$ on all of $\widehat{S}$.
+                Supppose we have $F$ and $S$ as above. If $F|_S = 0$, then it is $0$ on all of $\langle S \rangle$.
             \end{lemma}
 
             \begin{proof}
@@ -499,13 +511,13 @@
             \end{thm}
 
             \begin{proof}
-                We assume that $P \simeq \hat{A}$. By a devissage argument we may extend the isomorphism to all homotopy projective $P$. 
+                We assume that $P \simeq A$. By a devissage argument we may extend the isomorphism to all homotopy projective $P$. 
 
                 \begin{align*}
                     K(A)(A, N) \simeq H^0 {\tt{Hom}}^\bullet_A (A, N) \simeq H^0 N \simeq 0
                 \end{align*}
 
-                We want to construct two complexes $pM$ and $aM$ by taking total complexes. We show that $aM$ is acyclic by using \ref{cor: ac-as-2}. To use it we will construct an exact sequence of complexes satisfying the assumptions. Described by MacLane \cite{MacLane94} there is an exact structure $\mathcal{E}$ on $\tt{Mod}^R$ such that the collections on conflations are the short exact sequences such that the kernel functor is exact.
+                We want to construct two complexes $pM$ and $aM$ by taking total complexes. We show that $aM$ is acyclic by using Corollary~\ref{cor: ac-as-2}. To use it we will construct an exact sequence of complexes satisfying the assumptions. As described by MacLane \cite{MacLane94}, there is an exact structure $\mathcal{E}$ on $\tt{Mod}^R$ such that the collections on conflations are the short exact sequences such that the kernel functor is exact.
                 \begin{center}
                     \begin{tikzcd}
                         L \ar[tail]{r}[]{f} & M \ar[two heads]{r}[]{g} & N \\
@@ -515,7 +527,7 @@
 
                 Since limits commute with limits, the kernel functor preserves any limit. Thus the kernel is left exact, and its only obstruction for exactness is to preserve cokernels. We may thus characterize the conflations by inflations and deflations, which are monomorphisms and epimorphisms which are preserved by the kernel functor. Mac Lane calls these deflations for proper epimorphisms instead.
 
-                Mac Lane also shows that there are enough $\mathcal{E}$-projectives with this exact structure. We want to construct $\mathcal{E}$-projectives be on the form of homotopy projective complexes. $A[-n]$ is $\mathcal{E}$-projective by the following isomorphism.
+                We want to construct $\mathcal{E}$-projectives be on the form of homotopy projective complexes. $A[-n]$ is $\mathcal{E}$-projective by the following isomorphism.
                 \begin{align*}
                     Z^0\tt{Hom}_A^\bullet (A[-n], M) \simeq M^n
                 \end{align*}
@@ -555,9 +567,9 @@
                     \end{tikzcd}
                 \end{center}
                 
-                The filtration $F_npM$ satisfies F1 and F2 by construction. The quotients $\sfrac{F_{n+1}pM}{f_npM} \simeq P'_n$ which is homotopy equivalent to a projective. By lemma \ref{lem: homo-proj-homo-well-def} $pM$ is homotopy projective.
+                The filtration $F_npM$ satisfies F1 and F2 by construction. The quotients $\sfrac{F_{n+1}pM}{f_npM} \simeq P'_n$ which is homotopy equivalent to a projective. By Lemma~\ref{lem: homo-proj-homo-well-def} $pM$ is homotopy projective.
                 
-                The complex $\tt{cone}(m)$ satisfies the conditions for \ref{cor: ac-as-2}, thus $aM$ is acyclic. Thus we have a triangle in $K(A)$ as desired.
+                The complex $\tt{cone}(m)$ satisfies the conditions for Corollary~\ref{cor: ac-as-2}, thus $aM$ is acyclic and we have a triangle in $K(A)$ as desired.
             \end{proof}
 
             \begin{corollary}
@@ -583,7 +595,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                The restriction functor $f^*$ can naturally be identified with the hom functor $\tt{Hom}_A^\bullet(B,\argument)$. It should then be evident to realize $f_!$ as $\argument \otimes_A B$. In this way, $f_!(A) \simeq B$, so $f_! : \tt{Hom}_A^\bullet (A,A) \rightarrow \tt{Hom}_B^\bullet (B,B)$ is given by $f$. Since we assume $f$ to be a quasi-isomorphism, it follows that $\mathbb{L}f_! : D(A) \rightarrow D(B)$ is fully faithful on $\startset{A}$.
+                The restriction functor $f^*$ can naturally be identified with the hom functor $\tt{Hom}_A^\bullet(B,\argument)$, and then it is evident to realize $f_!$ as $\argument \otimes_A B$. In this way, $f_!(A) \simeq B$, so $f_! : \tt{Hom}_A^\bullet (A,A) \rightarrow \tt{Hom}_B^\bullet (B,B)$ is given by $f$. Since we assume $f$ to be a quasi-isomorphism, it follows that $\mathbb{L}f_! : D(A) \rightarrow D(B)$ is fully faithful on $\startset{A}$.
 
                 By devissage the functor $\mathbb{L}f_!$ is fully-faithful on all of $D(A)$, since $D(A) \simeq \langle A \rangle$. As $f_!$ hits all of $D(B)$'s generators, $\mathbb{L}f_!$ is essentially surjective as well.
             \end{proof}
@@ -592,7 +604,7 @@
                 We have ignored smallness conditions for objects. This technique does not always work, since it depends on some unstated isomorphisms which we have implicitly used. We have these since the objects $A$ and $B$ are small. This detail is given more care in Keller \cite{Keller94}.
             \end{remark}
                 
-            With this result we are able to show that $Ho \tt{Mod}^A$ and $Ho \tt{Mod}^{\Omega C}$ are equivalent. Since we assumed the morphism $\tau: C \rightarrow A$ to be acyclic, we would expect the morphism $f_\tau : \Omega C \rightarrow A$ to be a quasi-isomorphism. If this is the case, we know that $D(\Omega C)\simeq D(A)$. 
+            With this result we are able to show that $\tt{Ho} \tt{Mod}^A$ and $\tt{Ho} \tt{Mod}^{\Omega C}$ are equivalent. Since we assumed the morphism $\tau: C \rightarrow A$ to be acyclic, we would expect the morphism $f_\tau : \Omega C \rightarrow A$ to be a quasi-isomorphism. If this is the case, we know that $D(\Omega C)\simeq D(A)$. 
 
         \subsection{The Fundamental Theorem of Twisting Morphisms}
 
@@ -611,7 +623,7 @@
             \end{thm}
 
             \begin{proof}
-                Notice that 1. is equivalent to 2. since $\mathbb{L}L$ and $\mathbb{R}R$ are quasi-inverse. 3. is a special case of 1. and 4. is a special case of 2. Observe that 5. and 6. are equivalent since the cobar-bar-adjunction is a Quillen equivalence, \ref{cor: cobar-bar-quill-eq}.
+                Notice that 1. is equivalent to 2. since $\mathbb{L}L$ and $\mathbb{R}R$ are quasi-inverse. 3. is a special case of 1. and 4. is a special case of 2. Observe that 5. and 6. are equivalent since the cobar-bar-adjunction is a Quillen equivalence, which is Corollary~\ref{cor: cobar-bar-quill-eq}.
 
                 We show 3. $\implies$ 1. Let $\mathcal{T}\subseteq D(A)$ be the full subcategory consisting of objects M where $\varepsilon_M$ is a quasi-isomorphism. This subcategory is by assumption non-empty and contains $A$. By the $5$-lemma, making triangles (and smallness of $A$), this subcategory contains the smallest thick triangulated subcategory closed under homotopy colimits which contains $A$. We know this to be all of $D(A)$.
 
@@ -621,7 +633,7 @@
                 \end{align*}
                 By assumption the unit morphism $\eta_\mathbb{K} : \mathbb{K} \rightarrow A \otimes_\tau C$ is a weak equivalence, so the morphism $L_{\iota_C}\eta_\mathbb{K} : \Omega C \rightarrow L_{\iota_C}R_\tau A = L_{\iota_C}R_{\iota_C}f_\tau^* A$ is a quasi-isomorphism. Let $\varepsilon'$ denote the counit of $L_{\iota_C} \dashv R_{\iota_C}$, then we see that $f_\tau = \varepsilon'_A \circ L_{\iota_C}\eta_\mathbb{K}$, so $f_\tau$ is a quasi-isomorphism by the 2-out-of-3 property.
 
-                It remains to show that 5. implies 1. Let the counit of $f_{\tau *} \dashv f_\tau^*$ be denoted as $\tilde{\varepsilon}$. Since $f_\tau$ is a quasi-isomorphism, $f_\tau^*$ descends to an equivalence between the derived categories \ref{cor: ring-qiso-is-eq}. Thus $\tilde{\varepsilon} : f_{\tau !}f_\tau^* \implies Id$ is a pointwise quasi-isomorphism. Observe that the counit factors as
+                It remains to show that 5. implies 1. Let the counit of $f_{\tau *} \dashv f_\tau^*$ be denoted as $\tilde{\varepsilon}$. Since $f_\tau$ is a quasi-isomorphism, $f_\tau^*$ descends to an equivalence between the derived categories, which is Corollary~\ref{cor: ring-qiso-is-eq}. Thus $\tilde{\varepsilon} : f_{\tau !}f_\tau^* \implies \tt{Id}$ is a pointwise quasi-isomorphism. Observe that the counit factors as
                 \begin{align*}
                     \varepsilon = \tilde{\varepsilon} \circ f_{\tau !}\varepsilon'_{f_\tau^*}
                 \end{align*}
