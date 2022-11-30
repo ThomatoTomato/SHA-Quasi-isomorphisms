@@ -1048,7 +1048,9 @@
             \end{lemma}
 
             \begin{proof}
-                Uuuuuuugh... :(\todo{Legg inn i det minste bijeksjonen}
+                We establish the natural bijection. We refer to \cite[Lemme 4.1.1.4]{LefevreHasegawa03} to see that it is well-defined.
+
+                Consider an $\infty$-morphism $f : L \otimes^\infty_A M \rightsquigarrow R$ of right $A'$-polydules. By consider the bar construction of $A'$, this morphism is in correspondance with $B_{A'^+}f : L \otimes^\infty_A B_{A'^+}M \rightarrow B_{A'^+}R$. Through the ordinary tensor-hom adjunction we get a correspondance $f^T_i : L \otimes A^{\otimes i} \rightarrow \tt{Hom}_{BA'}(B_{A'^+}M,B_{A'^+}R)$.
             \end{proof}
 
         \subsection{Homologically Unital SHA-Algebras and Polydules}
@@ -1400,15 +1402,15 @@
                 \argument\otimes_{A^+}^\infty\mathbb{K} : \tt{uMod}_\infty^{A^+} \rightarrow \tt{uMod}_\mathbb{K}^\infty\tt{.}
             \end{align*}
 
-            The derived category $D_\infty A^+$ is equivalent to $\sfrac{\tt{uMod}_\infty^{A^+}}{\sim}$. The functor above then induces a functor between the derived categories
+            The derived category $D_\infty A^+$ is equivalent to $\sfrac{\tt{uMod}_\infty^{A^+}}{\sim}$. Since the functor above preserves $\infty$-quasi-isomorphisms, it induces a functor between the derived categories
             \begin{align*}
-                \argument\mathbb{L}\otimes_{A^+}^\infty\mathbb{K} : D_\infty A^+ \rightarrow D_\infty \mathbb{K}\tt{.}
+                \argument\otimes_{A^+}^\infty\mathbb{K} : D_\infty A^+ \rightarrow D_\infty \mathbb{K}\tt{.}
             \end{align*}
 
             \begin{definition}
                 Let $A$ be an $A_\infty$-algebra. We define the derived category as the kernel
                 \begin{align*}
-                    D_\infty A = \tt{Ker}(\argument\mathbb{L}\otimes_{A^+}^\infty\mathbb{K} : D_\infty A^+ \rightarrow D_\infty\mathbb{K})\tt{.}
+                    D_\infty A = \tt{Ker}(\argument\otimes_{A^+}^\infty\mathbb{K} : D_\infty A^+ \rightarrow D_\infty\mathbb{K})\tt{.}
                 \end{align*}
             \end{definition}
 
@@ -1419,7 +1421,7 @@
                 \end{align*}
                 induces an equivalence on the derived categories
                 \begin{align*}
-                    \mathbb{L}f^* : D_\infty A' \rightarrow D_\infty A\tt{.}
+                    f^* : D_\infty A' \rightarrow D_\infty A\tt{.}
                 \end{align*}
             \end{thm}
 
@@ -1427,7 +1429,7 @@
                 We have already seen a variant of this. Consider the diagram
                 \begin{center}
                     \begin{tikzcd} 
-                        D_\infty^{A'} \ar[tail]{r} \ar[]{d}[]{\mathbb{L}f^*} & D_\infty A'^+ \ar[]{r} \ar[]{d}[]{\mathbb{L}(f^+)^*} & D_\infty \mathbb{K} \ar[]{d}[]{\simeq} \\
+                        D_\infty^{A'} \ar[tail]{r} \ar[]{d}[]{f^*} & D_\infty A'^+ \ar[]{r} \ar[]{d}[]{(f^+)^*} & D_\infty \mathbb{K} \ar[]{d}[]{\simeq} \\
                         D_\infty A \ar[tail]{r} & D_\infty A^+ \ar[]{r} & D_\infty \mathbb{K}
                     \end{tikzcd}
                 \end{center}
@@ -1435,12 +1437,12 @@
                 By Lemma~\ref{lem: universal-enveloping-is-derived}, we have a commutative square
                 \begin{center}
                     \begin{tikzcd}
-                        DU(A'^+) \ar[]{r}[]{\simeq} \ar[]{d}[]{\mathbb{L}U((f^+)^*)}[left]{\simeq} & D_\infty A'^+ \ar[]{d}[]{\mathbb{L}(f^+)^*} \\
+                        DU(A'^+) \ar[]{r}[]{\simeq} \ar[]{d}[]{U((f^+)^*)}[left]{\simeq} & D_\infty A'^+ \ar[]{d}[]{(f^+)^*} \\
                         DU(A^+) \ar[]{r}[]{\simeq} & D_\infty A^+
                     \end{tikzcd}
                 \end{center}
 
-                Since $\mathbb{L}U((f^+)^*)$ is an equivalence by Corollary~\ref{cor: ring-qiso-is-eq}, then $\mathbb{L}((f^+)^*)$ is an equivalence as well. By the first diagram, $\mathbb{L}f^*$ has to be an equivalence by the kernel property.
+                Since $U((f^+)^*)$ is an equivalence by Corollary~\ref{cor: ring-qiso-is-eq}, then $((f^+)^*)$ is an equivalence as well. By the first diagram, $f^*$ has to be an equivalence by the kernel property.
             \end{proof}
 
             A usefull property of the $\infty$-tensor is that it behaves like the ordinary tensor up to homotopy.
@@ -1509,7 +1511,7 @@
                     \item $\langle A \rangle$
                     \item $K_\infty A$
                     \item $\tt{suMod}_\infty^A[Qis^{-1}]$
-                    \item $\tt{Ho}(\tt{suMod}_\infty^{\tt{strict}}A)$
+                    \item $\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^A)$
                 \end{itemize}
             \end{thm}
 
@@ -1523,25 +1525,25 @@
                 By \cite[Proposition 3.2.8][81]{Krause21} it suffices to show that for any $A^+$-polydule $M$, in the triangle
                 \begin{center}
                     \begin{tikzcd}
-                        M \mathbb{L}\otimes_{A^+}^\infty A \ar[]{r} & M \ar[]{r} & M \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & (M \mathbb{L}\otimes_{A^+}^\infty A)[1]
+                        M \otimes_{A^+}^\infty A \ar[]{r} & M \ar[]{r} & M \otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & (M \otimes_{A^+}^\infty A)[1]
                     \end{tikzcd}
                 \end{center}
-                the objects $M \mathbb{L}\otimes_{A^+}^\infty A \in \langle A \rangle$ and $M \mathbb{L}\otimes_{A^+}^\infty \mathbb{K}$ are $\langle A \rangle$-local. An object of $M \in D_\infty A^+$ is said to be $\langle A \rangle$-local if for any $L \in \langle A \rangle$
+                the objects $M \otimes_{A^+}^\infty A \in \langle A \rangle$ and $M \otimes_{A^+}^\infty \mathbb{K}$ are $\langle A \rangle$-local. An object of $M \in D_\infty A^+$ is said to be $\langle A \rangle$-local if for any $L \in \langle A \rangle$
                 \begin{align*}
                     D_\infty A^+(L, M) = 0 \tt{.}
                 \end{align*}
 
-                We start by observing that $M \otimes_{A^+} A = M \otimes BA^+ \otimes A$, so $M \mathbb{L}\otimes_{A^+}^\infty A$ is in fact contained in $\langle A \rangle$.
+                We start by observing that $M \otimes_{A^+} A = M \otimes BA^+ \otimes A$, so $M \otimes_{A^+}^\infty A$ is in fact contained in $\langle A \rangle$.
 
-                To see that $M \mathbb{L}\otimes_{A^+} \mathbb{K}$ is $\langle A \rangle$-local, we start by considering the following triangle
+                To see that $M \otimes_{A^+} \mathbb{K}$ is $\langle A \rangle$-local, we start by considering the following triangle
                 \begin{center}
                     \begin{tikzcd}
-                        A \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & A^+ \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & \mathbb{K} \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & (A \mathbb{L}\otimes_{A^+}^\infty \mathbb{K})[1]
+                        A \otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & A^+ \otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & \mathbb{K} \otimes_{A^+}^\infty \mathbb{K} \ar[]{r} & (A \otimes_{A^+}^\infty \mathbb{K})[1]
                     \end{tikzcd}
                 \end{center}
                 By assumption $A$ is strictly unital, so it is homologically unital as well, even considered as an $A$-polydule. By Lemma~\ref{lem: H-u-is-hu}, $A$ is $H$-unitary as an $A^+$-polydule. Notice that $A \otimes_{A^+} \mathbb{K} = A \otimes BA^+ \otimes \mathbb{K} \simeq B_{A^+}A$. Since $A$ is $H$-unitary, we get that $A \otimes_{A^+}^\infty \mathbb{K}$ is acyclic. Moreover, by thickness, any $L\in \langle A \rangle$ has the property that
                 \begin{align*}
-                    L \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \simeq 0\tt{.}
+                    L \otimes_{A^+}^\infty \mathbb{K} \simeq 0\tt{.}
                 \end{align*}
                 By acyclicity of $A \otimes_{A^+}^\infty \mathbb{K}$, we obtain an $\infty$-quasi-isomorphism
                 \begin{align}
@@ -1559,26 +1561,27 @@
                     \mathbb{K} \rightarrow \mathbb{K} \otimes_{A^+}^\infty \mathbb{K}\tt{.}
                 \end{align}
 
-                Now, pick an arbitrary morphism $f : L \rightarrow M \mathbb{L}\otimes_{A^+}^\infty \mathbb{K}$. We have the following commutative diagram
+                Now, pick an arbitrary morphism $f : L \rightarrow M \otimes_{A^+}^\infty \mathbb{K}$. We have the following commutative diagram
                 \begin{center}
                     \begin{tikzcd}
-                        L \ar[]{r}[]{f} \ar[]{d} & M \mathbb{L}\otimes_{A^+}^\infty \ar[]{d}[]{\simeq} \\
-                        L \mathbb{L}\otimes_{A+}^\infty \ar[]{r} & M \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \mathbb{L}\otimes_{A^+}^\infty
+                        L \ar[]{r}[]{f} \ar[]{d} & M \otimes_{A^+}^\infty \mathbb{K} \ar[]{d}[]{\simeq} \\
+                        L \otimes_{A+}^\infty \mathbb{K} \ar[]{r} & M \otimes_{A^+}^\infty \mathbb{K} \otimes_{A^+}^\infty \mathbb{K}
                     \end{tikzcd}
                 \end{center}
 
-                As $L \mathbb{L}\otimes_{A^+}^\infty \mathbb{K} \simeq 0$, the morphism $f$ factors $0$. Thus $f = 0$.
+                As $L \otimes_{A^+}^\infty \mathbb{K} \simeq 0$, the morphism $f$ factors $0$. Thus $f = 0$.
             \end{proof}
 
             \begin{proof}[Proof of $D_\infty A \simeq K_\infty A$]
                 Let $M$ be an $A^+$-polydule. We evaluate $M \otimes_{A^+}^\infty \mathbb{K} = M \otimes BA^+ = B_{A^+}M$. In other words, $M$ is H-unitary if and only if $M \otimes_{A^+}^\infty \mathbb{K}$ is acyclic. By definition, $D_\infty A$ is thus made up of every H-unitary $A^+$-polydules. By Lemma~\ref{lem: H-u-is-hu}, we know that $D_\infty A$ is then formed by the homologically unital $A$-polydules. By Corollary~\ref{cor: unit-strict-poly}, every such $A$-polydule is $\infty$-quasi-isomorphic to a strictly unital $A$-polydule.
 
-                For the augmented $A_\infty$-algebra $A^+$ we know that $K_\infty A^+ \simeq D_\infty A^+$. Thus we may see that $K_\infty A$ is exactly the kernel in the following diagram
+                For the augmented $A_\infty$-algebra $A^+$ we know already that $K_\infty A^+ \simeq D_\infty A^+$. Thus $K_\infty A$ is exactly the kernel in the following diagram
                 \begin{center}
                     \begin{tikzcd}
                         K_\infty A \ar[tail]{r} & K_\infty A^+ \ar[two heads]{r} & D_\infty \mathbb{K}
                     \end{tikzcd}
                 \end{center}
+                as the inclusion sends strictly unital polydules to H-unitary polydules.
             \end{proof}
 
             \begin{proof}[Proof of $K_\infty A \simeq \tt{suMod}_\infty^A{[\tt{Qis}^{-1}]}$]
@@ -1636,7 +1639,7 @@
                 \end{align*}
             \end{lemma}
 
-            \begin{proof}[Proof of $\tt{suMod}_\infty^A{[\tt{Qis}^{-1}]} \simeq \tt{Ho}(\tt{suMod}_\infty^A)$]
+            \begin{proof}[Proof of $\tt{suMod}_\infty^A{[\tt{Qis}^{-1}]} \simeq \tt{Ho}(\tt{suMod}_{\infty, \tt{strict}}^A)$]
                Assume first that $A$ is a differential graded associative algebra. We have the following chain of faithfull inclusions
                 \begin{center}
                     \begin{tikzcd}
@@ -1662,7 +1665,7 @@
                     \tt{Ho}(p^*)\tt{Ho}(q^*) \simeq \tt{Id}_{\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^A)}\tt{ and} \\
                     \tt{Ho}(q^*)\tt{Ho}(p^*) \simeq \tt{Id}_{\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^{A'})}\tt{,}
                  \end{align*}
-                 then we would be done. This is because $\mathbb{L}p^* : D_\infty A' \rightarrow D_\infty A$ induces an equivalence by Theorem~\ref{thm: derived-is-well-defined}. Thus we may consider the following commutative diagram
+                 then we would be done. This is because $p^* : D_\infty A' \rightarrow D_\infty A$ induces an equivalence by Theorem~\ref{thm: derived-is-well-defined}. Thus we may consider the following commutative diagram
                  \begin{center}
                     \begin{tikzcd}
                         \tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^A) \ar[]{r}[]{\simeq} \ar[dashed]{d} & \tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^{A'}) \ar[]{d}[]{\simeq} \\
@@ -1673,7 +1676,7 @@
                  
                  To see that we have the equivalences as claimed, we first note that the first one is automatic by the equation $q\circ p = id_A$. We must show that $p\circ q$ is isomorphic to the identity on $\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^{A'})$. By the earlier argument, proving this will be the same as proving that $p\circ q$ induces an equivalence on $DA'$. Since $p\circ q$ is homotopic to $id_{A'}$ we get by Lemma~\ref{lem: homotopic-mor-is-same} that they induce the same functor
                  \begin{align*}
-                    \mathbb{L}(p\circ q)^* \simeq \tt{Id}_{DA'} : DA' \rightarrow DA'\tt{.}
-                \end{align*}\todo{Se over dette igjen, her kan det være noe sirkelargument.}
+                    (p\circ q)^* \simeq \tt{Id}_{DA'} : DA' \rightarrow DA'\tt{.}
+                \end{align*}
             \end{proof}
 \end{document}
