@@ -2,27 +2,27 @@
 
 \begin{document}
 
-        Quillen envisioned a more general approach to homotopy theory, which he dubbed homotopical algebra. A homotopy theory was first enclosed by the structure of a model category, and now we mostly consider closed model categories. Many of the results from classical homotopy theory was recovered in this new setting of model categories. The theorem which we are most concerned about is Whitehead's theorem:
+        Quillen envisioned a more general approach to homotopy theory, which he dubbed homotopical algebra. A homotopy theory was first enclosed by the structure of a model category, and now we mainly consider closed model categories. Many of the results from classical homotopy theory were recovered in the theory of model categories. The theorem which we are most concerned about is Whitehead's theorem:
 
         \begin{thm}[Whitehead's Theorem]
-            Let $X$ and $Y$ be two CW-complexes. If $f:X\rightarrow Y$ is a weak equivalence, then it is also a homotopy equivalence. I.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
+            Let $X$ and $Y$ be two CW-complexes. If $f:X \rightarrow Y$ is a weak equivalence, it is also a homotopy equivalence. I.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
         \end{thm}
 
-        If we endow a Quillen model category onto the category Top, we get that a space $X$ is bifibrant if and only if it is a CW-complex. The natural generalization is then to not ask of $X$ to be a CW-complex, but a bifibrant object.
+        If we endow a Quillen model category onto the category Top, we get that a space $X$ is bifibrant if and only if it is a CW-complex. The natural generalization is not to ask $X$ to be a CW-complex but a bifibrant object.
 
         \begin{thm}[Generalized Whiteheads Theorem, {\cite[Proposition 1.2.8][11]{Hovey99}}]
-            Let $\mathcal{C}$ be a model category. Suppose that $X$ and $Y$ are bifibrant objects of $\mathcal{C}$, and that there is a weak-equivalence $f:X\rightarrow Y$. Then $f$ is also a homotopy equivalence, i.e. there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
+            Let $\mathcal{C}$ be a model category. Suppose that $X$ and $Y$ are bifibrant objects of $\mathcal{C}$ and that there is a weak equivalence $f: X\rightarrow Y$. Then $f$ is also a homotopy equivalence, i.e., there exists a morphism $g: Y\rightarrow X$ such that $gf\sim id_X$ and $fg\sim id_Y$.
         \end{thm}
 
-        The category of differential graded algebras employs such a model category, and here we let the weak equivalences be quasi-isomorphisms. On the other hand the category of differential graded coalgebras has a model structure where the weak equivalences are the maps which are sent to quasi-isomorphism by the cobar construction. Moreover, in this case the bar and cobar construction defines a Quillen equivalence between these model structures. As we will see, a dg-coalgebra will be bifibrant exactly when it is an $A_\infty$-algebra. Thus, by Whiteheads theorem, quasi-isomorphisms lift to homotopy equivalences. In this case the derived category of $A_\infty$-algebras is equivalent to the homotopy category of $A_\infty$-algebras.
+        The category of differential graded algebras employs such a model category, and here we let the weak equivalences be quasi-isomorphisms. On the other hand, the category of differential graded coalgebras has a model structure where the weak equivalences are the maps sent to quasi-isomorphism by the cobar construction. Moreover, the bar and cobar construction defines a Quillen equivalence between these model structures. As we will see, a dg-coalgebra will be bifibrant exactly when it is an $A_\infty$-algebra. Thus, by Whitehead's theorem, quasi-isomorphisms lift to homotopy equivalences. In this case, the derived category of $A_\infty$-algebras is equivalent to the homotopy category of $A_\infty$-algebras.
 
         We will conclude this chapter by looking at the category of algebras as a subcategory of $A_\infty$-algebras. The derived category may then be expressed as the homotopy category of $A_\infty$-algebras, restricted to algebras.
 
     \section{Model categories}
 
-        In this section we will define Quillens model category. As one may see, there is a plethora of semantically different definitions of model categories, however they are all made to be equivalent under good enough conditions. The difference mostly comes down to preference. In this thesis we will use the definitions from Mark Hoveys book "Model Categories" \cite{Hovey99}. We will then go on to prove the basic results known about model categories, its associated homotopy category and Quillen functors between model categories.
+        As one may see, many semantically different definitions of model categories exist, but they are all made to be equivalent under good conditions. The difference mainly comes down to preference. This thesis will use the definitions from Mark Hovey's book "Model Categories" \cite{Hovey99}. In this section, we will define Quillen's model category. We will then prove the basic results about model categories, their associated homotopy category, and Quillen functors between model categories.
 
-        Before we state the definition of a model category we need some preliminary definitions. For this section, let $\mathcal{C}$ be a category.
+        Before we state the definition of a model category, we need some preliminary definitions. For this section, let $\mathcal{C}$ be a category.
 
         \begin{definition}[Retract]
             A morphism $f:A\rightarrow B$ in $\mathcal{C}$ is a retract of a morphism $g: C\rightarrow D$ if it fits in a commutative diagram on the form
@@ -35,7 +35,7 @@
         \end{definition}
 
         \begin{definition}[Functorial factorization]
-            A pair of functors $\alpha, \beta: \mathcal{C}^\rightarrow\rightarrow\mathcal{C}^\rightarrow$ is called a functorial factorization if for any morphism $f\in \tt{Mor}(\mathcal{C})$, there is a factorization $f = \beta(f)\circ\alpha(f)$. We will use the notation $f_\alpha = \alpha(f)$ and $f_\beta = \beta(f)$. The functorial factorization may be depicted by the following commutative diagram:
+            A pair of functors $\alpha, \beta: \mathcal{C}^\rightarrow\rightarrow\mathcal{C}^\rightarrow$ is called a functorial factorization if for any morphism $f\in \tt{Mor}(\mathcal{C})$, there is a factorization $f = \beta(f)\circ\alpha(f)$. We will use the notation $f_\alpha = \alpha(f)$ and $f_\beta = \beta(f)$. The following commutative diagram depict the functorial factorization:
             \begin{center}
                 \begin{tikzcd}
                     A \ar[]{rr}[]{f} \ar[]{rd}[below]{f_\alpha} & & B \\
@@ -45,7 +45,7 @@
         \end{definition}
 
         \begin{definition}[Lifting properties]
-            Suppose that the morphisms $i: A \rightarrow B$ and $p: C \rightarrow D$ fits inside a commutative square. $i$ is said to have the left lifting property with resptect to $p$, or $p$ has the right lifting property with respect to $i$, if there is an $h : B \rightarrow C$ such that the two triangles commute.
+            Suppose that the morphisms $i: A \rightarrow B$ and $p: C \rightarrow D$ fit inside a commutative square. $i$ is said to have the left lifting property with respect to $p$, or $p$ has the right lifting property with respect to $i$ if there is an $h: B \rightarrow C$ such that the two triangles commute.
             \begin{center}
                 \begin{tikzcd}
                     A \ar[]{r}[]{} \ar[]{d}[]{i} & C \ar[]{d}[]{p} \\
@@ -65,39 +65,39 @@
         \subsection{Model categories}
 
             \begin{definition}[Model category]
-                Let $\mathcal{C}$ be a category with all finite limits and colimits. $\mathcal{C}$ admits a model structure if there are three wide subcategories each defining a class of morphisms:
+                Let $\mathcal{C}$ be a category with all finite limits and colimits. $\mathcal{C}$ admits a model structure if there are three wide subcategories, each defining a class of morphisms:
                 \begin{itemize}
                     \item $\tt{Ac} \subset \tt{Mor}(\mathcal{C})$ are called weak equivalences
                     \item $\tt{Cof}\subset \tt{Mor}(\mathcal{C})$ are called cofibrations
                     \item $\tt{Fib}\subset \tt{Mor}(\mathcal{C})$ are called fibrations
                 \end{itemize}
-                In addition we call morphisms in $\tt{Cof}\cap \tt{Ac}$ for acyclic cofibrations and $\tt{Fib}\cap \tt{Ac}$ for acyclic fibrations. Moreover, $\mathcal{C}$ has two functorial factorizations $(\alpha, \beta)$ and $(\gamma, \delta)$. The following axioms should be satisfied:
+                In addition, we call morphisms in $\tt{Cof}\cap \tt{Ac}$ for acyclic cofibrations and $\tt{Fib}\cap \tt{Ac}$ for acyclic fibrations. Moreover, $\mathcal{C}$ has two functorial factorizations $(\alpha, \beta)$ and $(\gamma, \delta)$. The following axioms should be satisfied:
                 \begin{itemize}
                     \item[\textbf{MC1}] The class of weak equivalences satisfy the $2$-out-of-$3$ property, i.e. if $f$ and $g$ are composable morphisms such that $2$ out of $f$, $g$ and $gf$ are weak equivalences, then so is the third.
-                    \item[\textbf{MC2}] The three classes $\tt{Ac}$, $\tt{Cof}$ and $\tt{Fib}$ are retraction closed, i.e. if $f$ is a retraction of $g$, and $g$ is either a weak-equivalence, cofibration or fibration, then so is $f$.
+                    \item[\textbf{MC2}] The three classes $\tt{Ac}$, $\tt{Cof}$ and $\tt{Fib}$ are retraction closed, i.e., if $f$ is a retraction of $g$, and $g$ is either a weak equivalence, cofibration or fibration, then so is $f$.
                     \item[\textbf{MC3}] The class of cofibrations have the left lifting property with respect to acyclic fibrations, and fibrations have the right lifting property with respect to acyclic cofibrations.
                     \item[\textbf{MC4}] Given any morphism $f$, $f_\alpha$ is a cofibration, $f_\beta$ is an acyclic fibration, $f_\gamma$ is an acyclic cofibration and $f_\delta$ is a fibration.      
                 \end{itemize}
             \end{definition}
 
             \begin{remark}
-                The class $\tt{Ac}$ has every isomorphism. This is because every isomorphism is a retract of some identity morphism.
+                The class $\tt{Ac}$ has every isomorphism, and this is because every isomorphism is a retract of some identity morphism.
             \end{remark}
 
             \begin{remark}
-                The type of category which has been introduced above was first called a closed model category by Quillen \cite{Quillen67}. In his sense, a model category does not require to have neither finite limits nor finite colimits. In our case, we will explicitly state whenever a model category is non-closed, i.e. does not have every finite limit or colimit.
+                The type of category which has been introduced above was first called a closed model category by Quillen \cite{Quillen67}. In his sense, a model category does not require finite limits or finite colimits. In our case, we will explicitly state whenever a model category is non-closed, i.e., it does not have every finite limit or colimit.
             \end{remark}
 
-            A model category $\mathcal{C}$ is now defined to be a category equipped with a particular model structure. Notice that a category may admit several model structures. We will postpone examples until sufficient theory have been developed. For more topological examples, we refer to Dwayer--Spalinski \cite{Dwyer95} and Hovey \cite{Hovey99}.
+            A model category $\mathcal{C}$ is now defined to be a category equipped with a particular model structure. Notice that a category may admit several model structures. For more topological examples, we refer to Dwyer--Spalinski \cite{Dwyer95} and Hovey \cite{Hovey99}.
 
-            An interesting and a not so non-trivial property of model categories is that giving all three classes $\tt{Ac}$, $\tt{Cof}$ and $\tt{Fib}$ is redundant. Given the class of weak equivalences and either cofibrations or fibrations, the model structure is determined. Thus the classes of fibrations are determined by acyclic cofibrations and cofibrations are determined by fibrations. The next two results will show this.
+            An interesting and a not so non-trivial property of model categories is that giving all three classes $\tt{Ac}$, $\tt{Cof}$, and $\tt{Fib}$ is redundant. Given the class of weak equivalences and either cofibrations or fibrations, the model structure is determined. Thus the classes of fibrations are determined by acyclic cofibrations, and fibrations determine cofibrations. The following two results will show this.
 
             \begin{lemma}[The retract argument]\label{lem: retract-argument}
-                Let $\mathcal{C}$ be a category. Suppose there is a factorization $f = pi$ and that $f$ has LLP with respect to $p$, then $f$ is a retract of $i$. Dually, if $f$ has RLP to $i$, then it is a retract of $p$.
+                Let $\mathcal{C}$ be a category. Suppose there is a factorization $f = pi$ and that $f$ has LLP with respect to $p$; then $f$ is a retract of $i$. Dually, if $f$ has RLP to $i$, then it is a retract of $p$.
             \end{lemma}
 
             \begin{proof}
-                We assume that $f : A \rightarrow C$ has LLP with respect to $p : B \rightarrow C$. Then we may find a lift $r : C \rightarrow B$, which realize $f$ as a retract of $i$.
+                We assume that $f: A \rightarrow C$ has LLP with respect to $p: B \rightarrow C$. Then we may find a lift $r: C \rightarrow B$, which realizes $f$ as a retract of $i$.
                 
                 \begin{center}
                     \begin{tikzcd}
@@ -112,15 +112,15 @@
             \end{proof}
 
             \begin{proposition}\label{prop: sat-class}
-                Let $\mathcal{C}$ be a model category. A morphism $f$ is a cofibration (acyclic cofibration) if and only if $f$ has LLP with respect acyclic fibrations (fibrations). Dually, $f$ is a fibration (acyclic fibration) if and only if it has RLP with respect to acyclic cofibrations (cofibrations).
+                Let $\mathcal{C}$ be a model category. A morphism $f$ is a cofibration (acyclic cofibration) if and only if $f$ has LLP with respect to acyclic fibrations (fibrations). Dually, $f$ is a fibration (acyclic fibration) if and only if it has RLP with respect to acyclic cofibrations (cofibrations).
             \end{proposition}
 
             \begin{proof}
-            Assume that $f$ is a cofibration. By MC3, we know that $f$ has LLP with respect to acyclic fibrations. Assume instead that $f$ has LLP with respect to every acyclic fibration. By MC4 we factor $f = f_\alpha\circ f_\beta$, where $f_\alpha$ is a cofibration and $f_\beta$ is an acyclic fibration. Since we assume $f$ to have LLP with respect to $f_\beta$, by Lemma \ref{lem: retract-argument} we know that $f$ is a retract of $f_\alpha$. Thus by MC2, we know that $f$ is a cofibration. 
+            Assume that $f$ is a cofibration. By MC3, we know that $f$ has LLP with respect to acyclic fibrations. Assume instead that $f$ has LLP with respect to every acyclic fibration. By \textbf{MC4}, we factor $f = f_\alpha\circ f_\beta$, where $f_\alpha$ is a cofibration, and $f_\beta$ is an acyclic fibration. Since we assume $f$ to have LLP with respect to $f_\beta$, by Lemma \ref{lem: retract-argument}, we know that $f$ is a retract of $f_\alpha$. Thus by \textbf{MC2}, we know that $f$ is a cofibration. 
             \end{proof}
 
             \begin{corollary}\label{cor: stable-cofib-base-change}
-                Let $\mathcal{C}$ be a model category. (Acyclic) Cofibrations are stable under pushouts, i.e. if $f$ is an (acyclic) cofibration, then $f'$ is an (acyclic) cofibration.
+                Let $\mathcal{C}$ be a model category. (Acyclic) Cofibrations are stable under pushouts, i.e., if $f$ is an (acyclic) cofibration, then $f'$ is an (acyclic) cofibration.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{} \ar[]{d}[]{f} \ar[phantom]{rd}[near end]{\lrcorner} & C \ar[]{d}[]{f'} \\
@@ -138,21 +138,21 @@
                         B \ar[]{r} & D \ar[]{r} & F
                     \end{tikzcd}
                 \end{center}
-                where the left hand square is a pushout. Then $f$ has LLP to $g$ if and only if $f'$ has LLP to $g$ by the universal property of the pushout. It follows by Proposition~\ref{prop: sat-class} that $f'$ is a cofibration.
+                where the left-hand square is a pushout. Then $f$ has LLP to $g$ if and only if $f'$ has LLP to $g$ by the universal property of the pushout. It follows by Proposition~\ref{prop: sat-class} that $f'$ is a cofibration.
             \end{proof}
 
-            Since we assume that every model category $\mathcal{C}$ admits finite limits and colimits, we know that it has both an initial and a terminal object. We let $\emptyset$ denote the initial object and $*$ denote the terminal object. 
+            Since we assume that every model category $\mathcal{C}$ admits finite limits and colimits, we know that it has both an initial and a terminal object. We let $\emptyset$ denote the initial object, and $*$ denote the terminal object. 
 
             \begin{definition}[Cofibrant, fibrant and bifibrant objects]
                 Let $\mathcal{C}$ be a model category. An object $X$ is called cofibrant if the unique morphism $\emptyset \rightarrow X$ is a cofibration. Dually, $X$ is called fibrant if the unique morphism $X \rightarrow *$ is fibrant. If $X$ is both cofibrant and fibrant, we call it bifibrant.
             \end{definition}
 
-            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant. In this case we can think of $X$ and $Y$ being weakly equivalent if there is a weak equivalence $f : X \rightarrow Y$. We will make it precise what it means for two objects to be weakly equivalent later.
+            There is no reason for every object to be either cofibrant or fibrant. However, we may see that every object is weakly equivalent to an object which is either fibrant or cofibrant. In this case, we can think of $X$ and $Y$ being weakly equivalent if there is a weak equivalence $f: X \rightarrow Y$. We will make precise what it means for two objects to be weakly equivalent later.
 
             \begin{construction}
-                Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition $QX$ is cofibrant and weakly equivalent to $X$.
+                Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition, $QX$ is cofibrant and weakly equivalent to $X$.
 
-                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{tar} \circ \alpha$. \todo{Finn ut hva jeg skal gjøre med tar}
+                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this, we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{tar} \circ \alpha$. \todo{Finn ut hva jeg skal gjøre med tar}
 
                 Dually, we get a fibrant replacement $R$ by dualizing the above argument.
             \end{construction}
@@ -160,11 +160,11 @@
             We collect the following properties
 
             \begin{lemma}\label{lem: Q-preserves-weak}
-                The cofibrant replacement $Q$ and fibrant replacement $R$ preserves weak equivalences. 
+                The cofibrant replacement $Q$ and fibrant replacement $R$ preserve weak equivalences. 
             \end{lemma}
 
             \begin{proof}
-                Suppose there is a weak equivalence $f : X \rightarrow Y$. Then there is a commutative square
+                Suppose there is a weak equivalence $f: X \rightarrow Y$. Then there is a commutative square
                 \begin{center}
                     \begin{tikzcd}
                         QX \ar[]{r}[]{Qf} \ar[]{d}[]{\sim} & QY \ar[]{d}[]{\sim} \\
@@ -179,7 +179,7 @@
             \end{lemma}
 
             \begin{proof}
-                Suppose that $A$ and $B$ are cofibrant objects and that $f:A\rightarrow B$ is a weak equivalence. Using the universal property of the coproduct we define the map $(f, id_B) = p: A\coprod B \rightarrow B$. $p$ has a functorial factorization into a cofibration and acyclic fibration, $p = p_\beta\circ p_\alpha$. We recollect the maps in the following pushout diagram:
+                Suppose that $A$ and $B$ are cofibrant objects and that $f: A\rightarrow B$ is a weak equivalence. Using the universal property of the coproduct, we define the map $(f, id_B) = p: A\coprod B \rightarrow B$. $p$ has a functorial factorization into a cofibration and acyclic fibration, $p = p_\beta\circ p_\alpha$. We recollect the maps in the following pushout diagram:
                 \begin{center}
                     \begin{tikzcd}
                         \emptyset \ar[]{d}[]{} \ar[]{r}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & B \ar[]{d}[]{i_2} \ar[bend left]{rrddd}[]{id_B} \\
@@ -190,12 +190,12 @@
                 \end{center}
                 By Corollary \ref{cor: stable-cofib-base-change}, both $i_1$ and $i_2$ are cofibrations. Since $f$, $id_B$ and $p_\beta$ are weak equivalences, so are $p_\alpha\circ i_1$ and $p_\alpha\circ i_2$ by MC2. Moreover, they are acyclic cofibrations.
 
-                Assume that $F:\mathcal{C}\rightarrow\mathcal{D}$ is a functor as described above. Then by assumption, $F(p_\alpha\circ i_1)$ and $F(p_\alpha\circ i_2)$ are weak equivalences. Since a functor sends identity to identity, we also know that $F(id_B)$ is a weak equivelnce. Thus by the $2$-out-of-$3$ property $F(p_\beta)$ is a weak equivalence, as $F(p_\beta)\circ F(p_\alpha\circ i_2) = id_{F(B)}$. Again, by $2$-out-of-$3$ property $F(f)$ is a weak equivalence, as $F(f) = F(p_\beta)\circ F(p_\alpha\circ i_1)$.
+                Assume that $F:\mathcal{C}\rightarrow\mathcal{D}$ is a functor as described above. Then by assumption, $F(p_\alpha\circ i_1)$ and $F(p_\alpha\circ i_2)$ are weak equivalences. Since a functor sends identity to identity, we also know that $F(id_B)$ is a weak equivalence. Thus by the $2$-out-of-$3$ property $F(p_\beta)$ is a weak equivalence, as $F(p_\beta)\circ F(p_\alpha\circ i_2) = id_{F(B)}$. Again, by $2$-out-of-$3$ property $F(f)$ is a weak equivalence, as $F(f) = F(p_\beta)\circ F(p_\alpha\circ i_1)$.
             \end{proof}
 
         \subsection{Homotopy category}
 
-            Homotopy theory at its most abstract is the study of categories and functors up to weak equivalences. Here, a weak equivalence may be anything, but most commonly it is a weak equivalence in topological homotopy or a quasi-isomorphism in homological algebra. The biggest concern when dealing with such concepts is to make a functor well-defined when these chosen weak equivalences are inverted. To this end, there is a construction to amend these problems, known as derived functors. We define a homotopical category in the sense of Riehl \cite{Riehl16}.
+            Homotopy theory, at its most abstract, is the study of categories and functors up to weak equivalences. Here, a weak equivalence may be anything, but most commonly, it is a weak equivalence in topological homotopy or a quasi-isomorphism in homological algebra. The biggest concern when dealing with such concepts is to make a functor well-defined when these chosen weak equivalences are inverted. To this end, there is a construction to amend these problems, known as derived functors. We define a homotopical category in the sense of Riehl \cite{Riehl16}.
 
             \begin{definition}[Homotopical Category]
                 Let $\mathcal{C}$ be a category. $\mathcal{C}$ is homotopical if there is a wide subcategory constituting a class of morphisms known as weak equivalences, $\tt{Ac}\subset Mor\mathcal{C}$. The weak equivalences should satisfy the \textbf{$2$-out-of-$6$ property}, i.e. given three composable morphisms $f$, $g$ and $h$, if $gf$ and $hg$ are weak equivalences, then so are $f$, $g$, $h$ and $hgf$.
@@ -209,14 +209,14 @@
             \end{definition}
 
             \begin{remark}
-                Notice that the $2$-out-of-$6$ property is stronger than the $2$-out-of-$3$ property. To see this, let either $f$, $g$ or $h$ be the identity, and then conclude with the $2$-out-of-$3$ property.
+                Notice that the $2$-out-of-$6$ property is stronger than the $2$-out-of-$3$ property. To see this, let either $f$, $g$, or $h$ be the identity, and then conclude with the $2$-out-of-$3$ property.
             \end{remark}
 
             \begin{remark}
                 The collection of weak equivalences contains every isomorphism. To see this pick an isomorphism $f$ and $f^{-1}$, then the compositions are the identity on the domain and codomain, which are assumed to be in $\tt{Ac}$.
             \end{remark}
             
-            Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This construction is developed in Gabriel and Zisman \cite{Zisman67} called calculus of fractions. This method essentially tries to mimic localization for commutative rings in a category theoretic fashion. We will not give an account of existence or construction of localizations, however the reader is encouraged to read in Gabriel--Zisman.
+            Given such a homotopical category $\mathcal{C}$, we want to invert every weak equivalence and create the homotopy category of $\mathcal{C}$. This construction is developed in Gabriel, and Zisman \cite{Zisman67} called the calculus of fractions. This method tries to mimic localization for commutative rings in a category-theoretic fashion. We will not give an account of the existence or construction of localizations.
 
             \begin{definition}
                 Let $\mathcal{C}$ be a homotopical category. Its homotopy category is $\tt{Ho}\mathcal{C} = \mathcal{C}[\tt{Ac}^{-1}]$, together with a localization functor $q:\mathcal{C}\rightarrow \tt{Ho}\mathcal{C}$. The localization is determined by the following universal property: If $F:\mathcal{C}\rightarrow \mathcal{D}$ is a functor sending weak equivalences to isomorphisms, then it uniquely factors through the homotopy category up to a unique natural isomorphism $\eta$.
@@ -230,7 +230,7 @@
             \end{definition}
 
             \begin{definition}
-                Suppose that $\mathcal{C}$ is a homotopical category. Two objects of $\mathcal{C}$ are said to be weakly equivalent if they are isomorphic in $\tt{Ho}\mathcal{C}$. I.e. $X$ and $Y$ are weakly equivalent if there is some zig-zag relation between the objects, consisting only of weak equivalences.
+                Suppose that $\mathcal{C}$ is a homotopical category. Two objects of $\mathcal{C}$ are said to be weakly equivalent if they are isomorphic in $\tt{Ho}\mathcal{C}$. I.e., $X$ and $Y$ are weakly equivalent if there is some zig-zag relation between the objects, consisting only of weak equivalences.
                 \begin{center}
                     \begin{tikzcd}
                         X \ar[]{rd}[]{\sim} & & \ar[]{dl}[above]{\sim} \cdots \ar[]{rd}[]{\sim} & & Y \ar[]{ld}[above]{\sim} \\
@@ -240,13 +240,13 @@
             \end{definition}
 
             \begin{remark}
-                A renown problem with localizations is that even if $\mathcal{C}$ is a locally small category, any localization $\mathcal{C}[S^{-1}]$ does not need to be. Thus, without a good theory of classes or higher universes, we cannot in general ensure that the localization still exists as a locally small category.
+                A renowned problem with localizations is that even if $\mathcal{C}$ is a locally small category, any localization $\mathcal{C}[S^{-1}]$ does not need to be. Thus, without a good theory of classes or higher universes, we cannot, in general, ensure that localization still exists as a locally small category.
             \end{remark}
 
-            We see from the definition of the homotopy category that a functor $F$ admits a lift $F'$ from the homotopy category whenever weak equivalences are sent to isomorphisms. Moreover, if we have a functor $F$ between homotopical categories which preserves weak equivalences, it then induces a functor between the homotopy categories.
+            We see from the definition of the homotopy category that a functor $F$ admits a lift $F'$ from the homotopy category whenever weak equivalences are sent to isomorphisms. Moreover, if we have a functor $F$ between homotopical categories, which preserves weak equivalences, it then induces a functor between the homotopy categories.
             
             \begin{definition}[Homotopical functors]
-                A functor $F:\mathcal{C}\rightarrow \mathcal{D}$ between homotopical categories is homotopical if it preserves weak equivalences. Moreover, there is a lift of functors as in the following diagram where $\eta$ is a natural isomorphism.
+                A functor $F:\mathcal{C}\rightarrow \mathcal{D}$ between homotopical categories is homotopical if it preserves weak equivalences. Moreover, there is a lift of functors, as in the following diagram, where $\eta$ is a natural isomorphism.
 
                 \begin{center}
                     \begin{tikzcd}
@@ -256,14 +256,14 @@
                 \end{center}
             \end{definition}
 
-            Derived functors come into play whenever we want to make a lift of non-homotopical functors. These lifts will be the closest approximation which we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but an account of it may be found in \cite{Riehl16}. As we will see, model categories is a nice environment to work with these concepts. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of some important derived functors.
+            Derived functors come into play whenever we want to make a lift of non-homotopical functors. These lifts will be the closest approximation that we can make functorial. The general exposition of derived functors is beyond the scope of this thesis, but an account of it may be found in \cite{Riehl16}. As we will see, model categories are nice environments to work with these concepts. Firstly we will amend the problem with localizations, where the homotopy category may not exists. Secondly, we will obtain a simple description of some derived functors.
 
             \begin{proposition}
                 Any model category $\mathcal{C}$ is a homotopical category.
             \end{proposition}
 
             \begin{proof}
-                To show that a model category is homotopical it suffices to show that $\tt{Ac}$ satisfies the $2$-out-of-$6$ property. Assume there are $3$ composable morphisms $f,g,h$ such that $gf,hg\in \tt{Ac}$. By the $2$-out-of-$3$ property for $\tt{Ac}$ it is enough to show that at least one of $f,g,h,fgh$ is a weak equivalence to deduce that every other morphism is a weak equivalence.
+                To show that a model category is homotopical, it suffices to show that $\tt{Ac}$ satisfies the $2$-out-of-$6$ property. Assume there are $3$ composable morphisms $f,g,h$ such that $gf,hg\in \tt{Ac}$. By the $2$-out-of-$3$ property for $\tt{Ac}$, it is enough to show that at least one of $f,g,h,fgh$ is a weak equivalence to deduce that every other morphism is a weak equivalence.
                 \begin{center}
                     \begin{tikzcd}[row sep = large]
                         A \ar[]{r}[]{f} \ar[]{rd}[]{gf} \ar[dotted]{rrd}[]{} & B \ar[]{d}[]{g} \ar[]{rd}[]{hg} \\
@@ -271,7 +271,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                To be able to use the model structure, we will first show that we may assume $f,g$ to be cofibrant and $g,h$ to be fibrant. We know by MC4 that $f,g,gf$ may be factored into a cofibration composed with an acyclic fibration, e.g. $f = f_\beta f_\alpha$. Since $gf$ is a weak equivalence, so is $(gf)_\alpha$ by the $2$-out-of-$3$ property.
+                To use the model structure, we will first show that we may assume $f,g$ to be cofibrant and $g,h$ to be fibrant. We know by MC4 that $f,g,gf$ may be factored into a cofibration composed with an acyclic fibration, e.g., $f = f_\beta f_\alpha$. Since $gf$ is a weak equivalence, so is $(gf)_\alpha$ by the $2$-out-of-$3$ property.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{rr}[]{f} \ar[]{rd}[below]{f_\alpha} && B \\
@@ -296,7 +296,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                To replace $f$ with $f_\alpha$ we must lift the composition into our "new" $C$, which is $\widetilde{C}$. This is done by using MC3, as $f_\alpha$ is a cofibration and the pullback square above consists entirely of acyclic fibrations.
+                To replace $f$ with $f_\alpha$, we must lift the composition into our "new" $C$, which is $\widetilde{C}$. This is done using \textbf{MC3}, as $f_\alpha$ is a cofibration, and the pullback square above consists entirely of acyclic fibrations.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{} \ar[]{d}[]{f_\alpha} & \widetilde{C} \ar[]{d}[]{} \\
@@ -304,7 +304,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                To summarize we have the following diagram, where every squiggly arrow is a weak equivalence.
+                To summarize, we have the following diagram, where every squiggly arrow is a weak equivalence.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f_\alpha} \ar[]{rd}[]{t}[below]{\sim} & B' \ar[]{r}[below]{\sim} \ar[]{d}[]{s} & B \ar[]{d}[]{} \ar[]{rd}[below]{\sim} \\
@@ -312,7 +312,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                We now wish to promote the arrow $s:B'\rightarrow \widetilde{C}$ into a cofibration. We do this by factoring both $s$ and $t$ with $MC4$. Notice that $s_\beta$, $t_\beta$ and $t_\alpha$ are weak equivalences.
+                We now wish to promote the arrow $s: B'\rightarrow \widetilde{C}$ into a cofibration. We do this by factoring $s$ and $t$ with $MC4$. Notice that $s_\beta$, $t_\beta$ and $t_\alpha$ are weak equivalences.
                 \begin{center}
                     \begin{tikzcd}
                         B' \ar[]{rr}[]{s} \ar[]{rd}[]{s_\alpha} && \widetilde{C}\\
@@ -324,7 +324,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                To obtain our final factorization we use RLP of $s_\beta$ on $t_\alpha$.
+                To obtain our final factorization, we use RLP of $s_\beta$ on $t_\alpha$.
                 \begin{center}
                     \begin{tikzcd}
                         & B' \ar[]{d}[]{s_\alpha} \\
@@ -333,26 +333,26 @@
                     \end{tikzcd}
                 \end{center}
 
-                Since the bottom square only consists of weak equivalences, $u$ has to be a weak equivalence by the $2$-out-of-$3$ property. In this manner we may transform our diagram into the following diagram
+                Since the bottom square only consists of weak equivalences, $u$ has to be a weak equivalence by the $2$-out-of-$3$ property. In this manner, we may transform our diagram into the following diagram
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f_\alpha} \ar[]{rd}[]{ut_\alpha}[below]{\sim} & B' \ar[]{r}[below]{\sim} \ar[]{d}[]{s_\alpha} & B \ar[]{d}[]{} \ar[]{rd}[below]{\sim} \\
                         & \widetilde{C}' \ar[]{r}[below]{\sim} & C \ar[]{r}[]{} & D
                     \end{tikzcd}
                 \end{center}
-                We have now obtained a factorization of $gf$ which are two cofibrations followed by an acyclic fibration, in such a manner that it is compatible with the original diagram. The dual to this claim is that we may also factor $hg$ into two fibrations which is preceeded by an acyclic cofibration. In other words, we may assume without loss of generality that $f$ and $g$ are cofibrations, and that $g$ and $h$ are fibrations.
+                We have now obtained a factorization of $gf$, which are two cofibrations followed by an acyclic fibration, in such a manner that it is compatible with the original diagram. The dual to this claim is that we may also factor $hg$ into two fibrations preceded by an acyclic cofibration. In other words, we may assume without loss of generality that $f$ and $g$ are cofibrations and that $g$ and $h$ are fibrations.
                 
-                In this case, to show the $2$-out-of-$6$ property it is enough to show that $g$ is an isomorphism. Consider the diagram below with lifts $i$ and $j$, these exists since we assume $gf$ and $hg$ to be weak equivalences.
+                In this case, to show the $2$-out-of-$6$ property, it is enough to show that $g$ is an isomorphism. Consider the diagram below with lifts $i$ and $j$, and these exist since we assume $gf$ and $hg$ to be weak equivalences.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f} \ar[]{d}[]{gf} & B\ar[]{r}[]{id_B} \ar[]{d}[]{g} & B \ar[]{d}[]{hg} \\
                         C \ar[]{r}[]{id_C} \ar[dashed]{ru}[]{i} & C \ar[]{r}[]{h} \ar[dashed]{ru}[]{j} & D
                     \end{tikzcd}
                 \end{center}
-                Since the diagram is commutative, we get that $i = j$, and that $g$ is both split mono and split epi, with $i$ as its splitting.
+                Since the diagram is commutative, we get that $i = j$, and that $g$ is both split-mono and split-epi, with $i$ as its splitting.
             \end{proof}
 
-            Since every model category is homotopical, it also has an associated homotopy category $\tt{Ho}\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$ and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects respectively.
+            Since every model category is homotopical, it also has an associated homotopy category $\tt{Ho}\mathcal{C}$. Let $\mathcal{C}_c$, $\mathcal{C}_f$, and $\mathcal{C}_{cf}$ denote the full subcategories consisting of cofibrant, fibrant and bifibrant objects, respectively.
 
             \begin{proposition}
                 Let $\mathcal{C}$ be a model category. The following categories are equivalent:
@@ -365,7 +365,7 @@
             \end{proposition}
 
             \begin{proof}
-                We only show that $\tt{Ho}\mathcal{C} \simeq \tt{Ho}\mathcal{C}_c$, the other arguments are similar. The inclusion $i:\mathcal{C}_c\rightarrow \mathcal{C}$ clearly preserves weak equivalences, thus $i$ is homotopical and admits a lift. Moreover, since the cofibrant replacement is also homotopical, it also has a lift.
+                We only show that $\tt{Ho}\mathcal{C} \simeq \tt{Ho}\mathcal{C}_c$, the other arguments are similar. The inclusion $i:\mathcal{C}_c\rightarrow \mathcal{C}$ preserves weak equivalences; $i$ is homotopical and admits a lift. Moreover, since the cofibrant replacement is homotopical, it also has a lift.
 
                 \begin{center}
                     \begin{tikzcd}
@@ -377,10 +377,10 @@
                 It is clear that $\tt{Ho}\ Q$ is the quasi-inverse of $\tt{Ho}\ i$.
             \end{proof}
 
-            As of now we still don't see how model categories will fix the size issues. To do this we will develop the notion of homotopy equivalence, $\sim$. On the subcategory of bifibrant objects $\mathcal{C}_{cf}$, this homotopy equivalence will be a congruence relation. This, together with the fact that there is an equivalence of categories $\tt{Ho}\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$, is enough to solve the size issues.
+            We still don't see how model categories will fix the size issues. To do this, we will develop the notion of homotopy equivalence, $\sim$. This homotopy equivalence will be a congruence relation on the subcategory of bifibrant objects $\mathcal{C}_{cf}$. We solve the size issues with this, together with the fact that there is an equivalence of categories $\tt{Ho}\mathcal{C}_{cf}\simeq \sfrac{\mathcal{C}_{cf}}{\sim}$.
 
             \begin{definition}[Cylinder and path objects]
-                Let $\mathcal{C}$ be a model category. Given an object $X$, a cylinder object $X\wedge I$ is a factorization of the codiagonal map $i:X\coprod X \rightarrow X$, such that $p_0$ is a cofibration and that $p_1$ is a weak equivalence. 
+                Let $\mathcal{C}$ be a model category. Given an object $X$, a cylinder object $X\wedge I$ is a factorization of the codiagonal map $i: X\coprod X \rightarrow X$, such that $p_0$ is a cofibration and that $p_1$ is a weak equivalence. 
                 
                 \begin{center}
                     \begin{tikzcd}
@@ -400,15 +400,15 @@
             \end{definition}
 
             \begin{remark}
-                Even though we have written $X\wedge I$ suggestively to be a functor, it is not. There may be many choices for a cylinder object. However, by using the functorial factorization from MC4, we get a canonical choice of a cylinder object, as it factors every map into a cofibration and an acyclic fibration. By letting the cylinder object be this object, we do indeed obtain a functor.
+                Even though we have written $X\wedge I$ suggestively to be a functor, it is not. There may be many choices for a cylinder object. However, by using the functorial factorization from MC4, we get a canonical choice of a cylinder object, as it factors every map into a cofibration and an acyclic fibration. By letting the cylinder object be this object, we obtain a functor.
             \end{remark}
 
             \begin{proposition}
-                Let $\mathcal{C}$ be a model category and $X$ an object of $\mathcal{C}$. Given two cylinder objects $X\wedge I$ and $X\wedge I'$, then they are weakly equivalent. 
+                Let $\mathcal{C}$ be a model category and $X$ an object of $\mathcal{C}$. Given two cylinder objects $X\wedge I$ and $X\wedge I'$, they are weakly equivalent. 
             \end{proposition}
 
             \begin{proof}
-                It is enough to show that there is a weak equivalence from any cylinder object into one specified cylinder object. This is in fact true for the functorial cylinder object $X\wedge I$, as the morphism $p_1$ is an acyclic fibration, which enables a lift which is a weak equivalence by the $2$-out-of-$3$ property.
+                It is enough to show that there exists a weak equivalence from any cylinder object into one specified cylinder object. There is such a map for the functorial cylinder object $X\wedge I$, as the morphism $p_1$ is an acyclic fibration, which enables a lift that is a weak equivalence by the $2$-out-of-$3$ property.
 
                 \begin{center}
                     \begin{tikzcd}
@@ -439,32 +439,32 @@
                     \end{tikzcd}
                 \end{center}
 
-                $f$ and $g$ are said to be homotopic if they are both left and right homotopic, it is denoted $f \sim g$. $f$ is said to be a homotopy equivalence, if it has a homotopy inverse $h: Y \rightarrow X$, such that $hf \sim id_X$ and $fh \sim id_Y$. 
+                $f$ and $g$ are said to be homotopic if they are both left and right homotopic, denoted $f \sim g$. $f$ is a homotopy equivalence if it has a homotopy inverse $h: Y \rightarrow X$, such that $hf \sim id_X$ and $fh \sim id_Y$. 
             \end{definition}
 
-            It is important to note that homotopy equivalence is not a priori an equivalence relation. This is amended by taking both fibrant and cofibrant replacements. We see this in the following propositions.
+            It is important to note that homotopy equivalence is not a priori an equivalence relation. With the following two propositions, we can amend this by taking both fibrant and cofibrant replacements.
 
             \begin{proposition}\label{prop: basic-homotopy}
-                Let $\mathcal{C}$ be a model category, and $f,g:X\rightarrow Y$ be morphisms. We have the following:
+                Let $\mathcal{C}$ be a model category, and $f,g: X\rightarrow Y$ be morphisms. We have the following:
                 \begin{enumerate}
                     \item If $f \overset{l}{\sim}g$ and $h: Y \rightarrow Z$, then $hf \overset{l}{\sim} hg$.
                     \item If $Y$ is fibrant, $f \overset{l}{\sim} g$ and $h: W \rightarrow X$, then $fh \overset{l}{\sim} gh$.
-                    \item If $X$ is cofibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X,Y)$.
+                    \item If $X$ is cofibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X, Y)$.
                     \item If $X$ is cofibrant and $f \overset{l}{\sim} g$, then $f \overset{r}{\sim} g$.
                 \end{enumerate}
             \end{proposition}
 
             \begin{proof}
-                $(1.)$ Assume that $f \overset{l}{\sim} g$ and $h:Y\rightarrow Z$. Let $H:X\wedge I \rightarrow Y$ denote the left homotopy between $f$ and $g$. The left homotopy between $hf$ and $hg$ is given as $hH$.
+                $(1.)$ Assume that $f \overset{l}{\sim} g$ and $h:Y\rightarrow Z$. Let $H: X\wedge I \rightarrow Y$ denote the left homotopy between $f$ and $g$. The left homotopy between $hf$ and $hg$ is given as $hH$.
 
-                $(2.)$ Assume that $Y$ is fibrant, $f \overset{l}{\sim} g$ and that $h:W\rightarrow X$. Let $H:X\wedge I\rightarrow Y$ be a left homotopy. We construct a new cylinder object for the homotopy. Factor $p_1:X\wedge I \rightarrow X$ as $q_1\circ q_0$ where $q_0: X\wedge I \rightarrow X\wedge I'$ is an acyclic cofibration and $q_1:X\wedge I'\rightarrow X$ is a fibration. By the $2$-out-of-$3$ property $q_1$ is an acyclic fibration, as $p_1$ and $q_0$ are weak equivalences. $X\wedge I'$ is a cylinder object as $q_0\circ p_0$ is a cofibration and $q_1$ is a weak equivalence. Since we assume $Y$ to be fibrant we lift the left homotopy $H:X\wedge I\rightarrow Y$ to the left homotopy $H':X\wedge I'\rightarrow Y$ with the following diagram:
+                $(2.)$ Assume that $Y$ is fibrant, $f \overset{l}{\sim} g$ and that $h:W\rightarrow X$. Let $H: X\wedge I\rightarrow Y$ be a left homotopy. We construct a new cylinder object for the homotopy. Factor $p_1:X\wedge I \rightarrow X$ as $q_1\circ q_0$ where $q_0: X\wedge I \rightarrow X\wedge I'$ is an acyclic cofibration and $q_1:X\wedge I'\rightarrow X$ is a fibration. By the $2$-out-of-$3$ property, $q_1$ is an acyclic fibration, as $p_1$ and $q_0$ are weak equivalences. $X\wedge I'$ is a cylinder object as $q_0\circ p_0$ is a cofibration and $q_1$ is a weak equivalence. Since we assume $Y$ to be fibrant we lift the left homotopy $H:X\wedge I\rightarrow Y$ to the left homotopy $H':X\wedge I'\rightarrow Y$ with the following diagram:
                 \begin{center}
                     \begin{tikzcd}
                         X\wedge I \ar[]{r}[]{H} \ar[]{d}[]{q_0} & Y \ar[]{d}[]{} \\
                         X\wedge I' \ar[]{r}[]{} \ar[dashed]{ru}[]{H'} & *
                     \end{tikzcd}                    
                 \end{center}
-                We let $W \smash I$ be a cylinder object for $W$, where $p_0' : W \sqcup W \rightarrow Q \smash I$ is a cofibration. We can find an appropriate homotopy needed with LLP of $q_1$ against $p_0'$, as done in the diagram below.
+                We let $W \smash I$ be a cylinder object for $W$, where $p_0': W \sqcup W \rightarrow Q \smash I$ is a cofibration. We can find an appropriate homotopy needed with LLP of $q_1$ against $p_0'$, as done in the diagram below.
                 \begin{center}
                     \begin{tikzcd}[column sep = large]
                         W\coprod W \ar[]{r}[]{q_0p_0(h\coprod h)} \ar[]{d}[]{p_0'} & X\wedge I' \ar[]{d}[]{q_1} \\
@@ -473,7 +473,7 @@
                 \end{center}
                 The morphism $H'k$ is the desired left homotopy witnessing $fh \overset{l}{\sim} gh$.
 
-                $(3.)$ Assume that $X$ is cofibrant. First observe that a left homotopy is reflexive and symmetric. We must show that in this case it is also transitive. Thus, assume that $f,g,h:X\rightarrow Y$ and that $H:X\wedge I\rightarrow Y$ is a left homotopy witnessing $f \overset{l}{\sim} g$ and that $H':X\wedge I'\rightarrow Y$ is a left homotopy witnessing $g\overset{l}{\sim} h$. We first observe that $i_0: X\rightarrow X\wedge I$ is a weak equivalence, as $id_X = p_1i_0$ where $id_X$ and $p_1$ are weak equivalences. Since $X$ is assumed to be cofibrant, we see that $X\coprod X$ is cofibrant by the following pushout:
+                $(3.)$ Assume that $X$ is cofibrant. First, observe that a left homotopy is reflexive and symmetric. We must show that it is also transitive. Thus, assume that $f,g,h:X\rightarrow Y$ and that $H:X\wedge I\rightarrow Y$ is a left homotopy witnessing $f \overset{l}{\sim} g$ and that $H':X\wedge I'\rightarrow Y$ is a left homotopy witnessing $g\overset{l}{\sim} h$. We first observe that $i_0: X\rightarrow X\wedge I$ is a weak equivalence, as $id_X = p_1i_0$ where $id_X$ and $p_1$ are weak equivalences. Since $X$ is assumed to be cofibrant, we see that $X\coprod X$ is cofibrant by the following pushout:
                 \begin{center}
                     \begin{tikzcd}
                         \emptyset \ar[]{r}[]{} \ar[]{d}[]{} \ar[phantom]{rd}[near end]{\lrcorner} & X \ar[]{d}[]{inr}\\
@@ -495,28 +495,28 @@
                 \end{center}
                 Observe that there is a factorization of the codiagonal map $X\coprod X \overset{s}{\rightarrow} C \overset{t}{\rightarrow} X$. However, $s$ may not be a cofibration, so we replace $C$ with the cylinder object $X\wedge I''$ such that we have the factorization $X\coprod X \overset{s_\alpha}{\rightarrow} X\wedge I'' \overset{ts_\beta}{\rightarrow} X$. The morphism $H''s_\beta$ is then our required homotopy for $f\overset{l}{\sim}g$.
 
-                $(4.)$ Suppose that $X$ is cofibrant and that $H:X\wedge I\rightarrow Y$ is a left homotopy for $f \overset{l}{\sim} g$. Pick a path object for $Y$, such that we have the factorization $Y\overset{q_0}{\rightarrow}Y^I\overset{q_1}{\rightarrow}Y\prod Y$ where $q_0$ is a weak equivalence and $q_1$ is a fibration. Again, as $X$ is cofibrant we get that $i_0$ is an acyclic cofibration, so we have the following lift of the homotopy:
+                $(4.)$ Suppose that $X$ is cofibrant and that $H:X\wedge I\rightarrow Y$ is a left homotopy for $f \overset{l}{\sim} g$. Pick a path object for $Y$, such that we have the factorization $Y\overset{q_0}{\rightarrow}Y^I\overset{q_1}{\rightarrow}Y\prod Y$ where $q_0$ is a weak equivalence and $q_1$ is a fibration. Again, as $X$ is cofibrant, we get that $i_0$ is an acyclic cofibration, so we have the following lift of the homotopy:
                 \begin{center}
                     \begin{tikzcd}
                         X \ar[]{r}[]{q_0f} \ar[]{d}[]{i_0} & Y^I \ar[]{d}[]{q_1} \\
                         X\wedge I \ar[]{r}[]{(fp_1, H)} \ar[dashed]{ru}[]{J} & Y\prod Y
                     \end{tikzcd}
                 \end{center}
-                The right homotopy is given by injecting away from $f$, i.e. $H' = Ji_1$.
+                The right homotopy is given by injecting away from $f$, i.e., $H' = Ji_1$.
             \end{proof}
 
             \begin{corollary}\label{cor: basic-homotopy-op}
-                We collect the dual results of the above proposition, and thus have the following.
+                We collect the dual results of the above proposition and thus have the following.
                 \begin{enumerate}
                     \item If $f \overset{r}{\sim}g$ and $h: W \rightarrow X$, then $fh \overset{r}{\sim} gh$.
                     \item If $X$ is cofibrant, $f \overset{r}{\sim} g$ and $h: Y \rightarrow Z$, then $hf \overset{r}{\sim} hg$.
-                    \item If $Y$ is fibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X,Y)$.
+                    \item If $Y$ is fibrant, then left homotopy is an equivalence relation on $\mathcal{C}(X, Y)$.
                     \item If $Y$ is fibrant and $f \overset{r}{\sim} g$, then $f \overset{l}{\sim} g$.
                 \end{enumerate}
             \end{corollary}
 
             \begin{corollary}\label{cor: homotopy-is-eq-rel}
-                Homotopy is a congruence relation on $\mathcal{C}_{cf}$. Thus the category $\mathcal{C}_{cf}/\sim$ is well-defined, exists and inverts every homotopy equivalence.
+                Homotopy is a congruence relation on $\mathcal{C}_{cf}$. Thus the category $\mathcal{C}_{cf}/\sim$ is well-defined, exists, and inverts every homotopy equivalence.
             \end{corollary}
 
             \begin{lemma}[Weird Whitehead]\label{lem: Weird-Whitehead}
@@ -527,7 +527,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                Dually, if $X$ is fibrant and $h : C \rightarrow D$ is an acyclic cofibration or a weak equivalence between cofibrant objects, then $h$ induces an isomorphism:
+                Dually, if $X$ is fibrant and $h: C \rightarrow D$ is an acyclic cofibration or a weak equivalence between cofibrant objects, then $h$ induces an isomorphism:
                 \begin{center}
                     \begin{tikzcd}
                         \sfrac{\mathcal{C}(D, X)}{\overset{r}{\sim}} \ar[]{r}[]{\overset{h^*}{\simeq}} & \sfrac{\mathcal{C}(C, X)}{\overset{r}{\sim}}
@@ -536,7 +536,7 @@
             \end{lemma}
 
             \begin{proof}
-                We assume $\mathcal{C}$ to be cofibrant and $h:X\rightarrow Y$ to ba an acyclic fibration. We first prove that $h$ is surjective. Let $f:C\rightarrow Y$. By RLP of $h$ there is a morphism $f':C\rightarrow X$ such that $f = hf'$.
+                We assume $\mathcal{C}$ to be cofibrant and $h: X\rightarrow Y$ to be an acyclic fibration. We first prove that $h$ is surjective. Let $f:C\rightarrow Y$. By RLP of $h$, there is a morphism $f':C\rightarrow X$ such that $f = hf'$.
                 \begin{center}
                     \begin{tikzcd}
                         \emptyset \ar[]{r}[]{} \ar[]{d}[]{} & X \ar[]{d}[]{h} \\
@@ -544,7 +544,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                To show injectivity we assume $f,g:C\rightarrow X$ such that $hf\overset{l}{\sim} hg$, in particular there is a left homotopy $H:C\wedge I \rightarrow Y$. Remember that since $C$ is cofibrant, the map $p_0$ is a cofibration. We find a left homotopy $H:C\wedge I \rightarrow X$ witnessing $f\overset{l}{\sim} g$ by the following lift.
+                To show injectivity, we assume $f,g: C\rightarrow X$ such that $hf\overset{l}{\sim} hg$, in particular, there is a left homotopy $H: C\wedge I \rightarrow Y$. Remember that since $C$ is cofibrant, the map $p_0$ is a cofibration. We find a left homotopy $H: C\wedge I \rightarrow X$ witnessing $f\overset{l}{\sim} g$ by the following lift.
                 \begin{center}
                     \begin{tikzcd}
                         C\coprod C \ar[]{r}[]{f+g} \ar[]{d}[]{p_0} & X \ar[]{d}[]{h} \\
@@ -556,22 +556,22 @@
             \end{proof}
 
             \begin{thm}[Generalized Whitehead's theorem]\label{thm: Whitehead}
-                Let $\mathcal{C}$ be a model category. Suppose that $f : X \rightarrow Y$ is a morphism of bifibrant objects, then $f$ is a weak equivalence if and only if $f$ is a homotopy equivalence.
+                Let $\mathcal{C}$ be a model category. Suppose that $f: X \rightarrow Y$ is a morphism of bifibrant objects. Then $f$ is a weak equivalence if and only if $f$ is a homotopy equivalence.
             \end{thm}
 
             \begin{proof}
-                Suppose first that $f$ is a weak equivalence. Pick a bifibrant object $A$, then by Lemma~\ref{lem: Weird-Whitehead} $f_*:\sfrac{\mathcal{C}(A,X)}{\sim}\rightarrow \sfrac{\mathcal{C}(A,Y)}{\sim}$ is an isomorphism. Letting $A = Y$ we know that there is a morphism $g:Y\rightarrow X$, such that $f_*g = fg \sim id_Y$. Furthermore, by Proposition~\ref{prop: basic-homotopy}, since $X$ is bifibrant composing on the right preserves homotopy equivalence, e.g. $fgf \sim f$. By letting $A = X$, we get that $f_*gf = fgf \sim f = f_*id_X$, thus $gf \sim id_X$.
+                Suppose first that $f$ is a weak equivalence. Pick a bifibrant object $A$, then by Lemma~\ref{lem: Weird-Whitehead} $f_*:\sfrac{\mathcal{C}(A,X)}{\sim}\rightarrow \sfrac{\mathcal{C}(A,Y)}{\sim}$ is an isomorphism. Letting $A = Y$, we know that there is a morphism $g: Y\rightarrow X$, such that $f_*g = fg \sim id_Y$. Furthermore, by Proposition~\ref{prop: basic-homotopy}, since $X$ is bifibrant, composing on the right preserves homotopy equivalence, e.g., $fgf \sim f$. By letting $A = X$, we get that $f_*gf = fgf \sim f = f_*id_X$, thus $gf \sim id_X$.
 
                 For the opposite direction, assume that $f$ is a homotopy equivalence. We factor $f$ into an acyclic cofibration $f_\gamma$ and a fibration $f_\delta$, i.e. $X \overset{f_\gamma}{\rightarrow} Z \overset{f_\delta}{\rightarrow} Y$. Observe that $Z$ is bifibrant as $X$ and $Y$ is, in particular, $f_\gamma$ is a weak equivalence of bifibrant objects, so it is a homotopy equivalence. 
 
-                It is enough to show that $f_\delta$ is a weak equivalence. Let $g$ be the homotopy inverse of $f$, and $H:Y\wedge I \rightarrow Y$ is a left homotopy witnessing $fg \sim id_Y$. Since $Y$ is bifibrant, the following square has a lift.
+                It is enough to show that $f_\delta$ is a weak equivalence. Let $g$ be the homotopy inverse of $f$, and $H: Y\wedge I \rightarrow Y$ is a left homotopy witnessing $fg \sim id_Y$. Since $Y$ is bifibrant, the following square has a lift.
                 \begin{center}
                     \begin{tikzcd}
                         Y \ar[]{r}[]{f_\gamma g} \ar[]{d}[]{i_0} & Z \ar[]{d}[]{f_\delta} \\
                         Y\wedge I \ar[]{r}[]{H} \ar[dashed]{ru}[]{H'} & Y
                     \end{tikzcd}
                 \end{center}
-                Let $h = H'i_1$, then by definition we know that $f_\delta H'i_1 = id_Y$. Moreover, $H$ is a left homotopy witnessing $f_\gamma g \sim h$. Let $g': Z\rightarrow X$ be the homotopy inverse of $f_\gamma$. We have the following relations $f_\delta \sim f_\delta f_\gamma g' \sim fg'$, and $hf_\delta \sim (f_\gamma g)(fg') \sim f_\gamma g' \sim id_Z$. Let $H'':Z\wedge I\rightarrow Z$ be a left homotopy witnessing this homotopy. Since $Z$ is bifibrant, $i_0$ and $i_1$ are weak equivalences. By the $2$-out-of-$3$ property $H''$ and $hf_\delta$ are weak equivalences. Since $f_\delta h = id_Y$, it follows that $f_\delta$ is a retract of $f_\delta h$, and is thus a weak equivalence.
+                Let $h = H'i_1$, and then by definition, we know that $f_\delta H'i_1 = id_Y$. Moreover, $H$ is a left homotopy witnessing $f_\gamma g \sim h$. Let $g': Z\rightarrow X$ be the homotopy inverse of $f_\gamma$. We have the following relations $f_\delta \sim f_\delta f_\gamma g' \sim fg'$, and $hf_\delta \sim (f_\gamma g)(fg') \sim f_\gamma g' \sim id_Z$. Let $H'':Z\wedge I\rightarrow Z$ be a left homotopy witnessing this homotopy. Since $Z$ is bifibrant, $i_0$ and $i_1$ are weak equivalences. By the $2$-out-of-$3$ property, $H''$ and $hf_\delta$ are weak equivalences. Since $f_\delta h = id_Y$, it follows that $f_\delta$ is a retract of $h f_\delta$ and is thus a weak equivalence.
             \end{proof}
 
             \begin{corollary}
@@ -600,10 +600,10 @@
 
         \subsection{Quillen adjoints}
 
-            We now want to study morphisms, or certain functors, between model categories. Like in the case of homotopical functors we want these morphisms to induce a functor between the homotopy categories. However, we also want them to respect the cofibration and fibration structure, not just weak equivalences. In this way we will instead look towards derived functors to be able to define this extension to the homotopy category. We recall the definition of a total (left/right) derived functor. In the case of model categories, we get a simple description for some of these derived functors which are of special interest.
+            We now want to study morphisms, or certain functors, between model categories. Like in the case of homotopical functors, we want these morphisms to induce a functor between the homotopy categories. However, we also want them to respect the cofibration and fibration structure, not just weak equivalences. In this way, we will instead look toward derived functors to be able to define this extension to the homotopy category. We recall the definition of a total (left/right) derived functor. In the case of model categories, we get a simple description of some of these derived functors.
 
             \begin{definition}[Total derived functors]
-                Let $\mathcal{C}$ and $\mathcal{D}$ be homotopical categories, and $F:\mathcal{C}\rightarrow\mathcal{D}$ a functor. Whenever it exists, a total left derived functor of $F$, is a functor $\mathbb{L}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\varepsilon :\mathbb{L}F\circ q \Rightarrow q\circ F$ satisfying the universal property: If $G:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ is a functor and there is a natural transformation $\alpha :G\circ q \Rightarrow q\circ F$, then it factors uniquely up to unique isomorphism through $\varepsilon$.
+                Let $\mathcal{C}$ and $\mathcal{D}$ be homotopical categories, and $F:\mathcal{C}\rightarrow\mathcal{D}$ a functor. Whenever it exists, a total left derived functor of $F$ is a functor $\mathbb{L}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\varepsilon:\mathbb{L}F\circ q \Rightarrow q\circ F$ satisfying the universal property: If $G:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ is a functor. There is a natural transformation $\alpha: G\circ q \Rightarrow q\circ F$, then it factors uniquely up to unique isomorphism through $\varepsilon$.
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \\
@@ -615,7 +615,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                Dually, whenever it exists, a total right derived functor of $F$, is a functor $\mathbb{R}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\eta :q\circ F \Rightarrow \mathbb{R}F \circ q$ having the opposite universal property.
+                Dually, whenever it exists, a total right derived functor of $F$ is a functor $\mathbb{R}F:\tt{Ho}\mathcal{C}\rightarrow \tt{Ho}\mathcal{D}$ with a natural transformation $\eta: q\circ F \Rightarrow \mathbb{R}F \circ q$ having the opposite universal property.
                 \begin{center}
                     \begin{tikzcd}
                         \mathcal{C} \ar[]{r}[]{F} \ar[]{d}[]{q} & \mathcal{D} \ar[]{d}[]{q} \ar[Rightarrow]{ld}[]{\eta} \\
@@ -629,9 +629,9 @@
             \end{definition}
 
             \begin{definition}[Deformation]
-                A left (right) deformation on a homotopical category $\mathcal{C}$ is an endofunctor $Q$ together with a natural weak equivalence $q:Q \Rightarrow Id_\mathcal{C}$ ($q:Id_\mathcal{C}\Rightarrow Q$).
+                A left (right) deformation on a homotopical category $\mathcal{C}$ is an endofunctor $Q$ together with a natural weak equivalence $q: Q \Rightarrow Id_\mathcal{C}$ ($q: Id_\mathcal{C}\Rightarrow Q$).
 
-                A left (right) deformation on a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ between homotopical categories, is a left (right) deformation $Q$ on $\mathcal{C}$ such that weak equivalences in the image of $Q$ is preserved by $F$.
+                A left (right) deformation on a functor $F:\mathcal{C}\rightarrow\mathcal{D}$ between homotopical categories is a left (right) deformation $Q$ on $\mathcal{C}$ such that $F$ preserves weak equivalences in the image of $Q$.
             \end{definition}
 
             \begin{remark}[Cofibrant and fibrant replacement]
@@ -643,11 +643,11 @@
             \end{proposition}
 
             \begin{proof}
-                Since we already have a candidate for the derived functor, the proof must just check that it has the universal property. A proof may be found in Riehl \cite[Proposition 6.4.11]{207}{Riehl16}.
+                Since we already have a candidate for the derived functor, we must check that it has the universal property. This follows by \cite[Proposition 6.4.11][207]{Riehl16}.
             \end{proof}
 
             \begin{remark}
-                There is a somewhat weaker statement by Dwayer and Spalinski \cite[Proposition 9.3]{111}{Dwyer95}. If we instead ask for functors $F$ which have the cofibrant replacement $Q$ (fibrant replacement $R$) as a left (right) deformation we may make this proof more explicit.
+                There is a somewhat weaker statement by Dwyer and Spalinski \cite[Proposition 9.3][111]{Dwyer95}. If we instead ask for functors $F$, which have the cofibrant replacement $Q$ (fibrant replacement $R$) as a left (right) deformation, we may make this proof more explicit.
             \end{remark}
 
             Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
@@ -661,10 +661,10 @@
             \end{definition}
 
             \begin{remark}
-                By Ken Brown's lemma, Lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor exists and is given by $\mathbb{L}F = \tt{Ho} FQ$.
+                By Ken Brown's lemma, Lemma \ref{lem: Ken-Brown}, we see that a left Quillen functor $F$ is left deformable to the cofibrant replacement functor $Q$. Thus the total left derived functor is given by $\mathbb{L}F = \tt{Ho} FQ$.
             \end{remark}
 
-            In order to eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. The direction of the arrow can be chosen to be along either the left or right adjoints, we make the convention of following the left adjoint functors. We summarize the following properties.
+            To eliminate the choice of left or right derivedness, we will think of a morphism of model categories as a Quillen adjunction. We can choose the direction of the arrow to be along either the left or right adjoints, and we make the convention of following the left adjoint functors. We summarize the following properties.
 
             \begin{lemma}\label{lem: Quill-adj}
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories, and suppose there is an adjunction $F:\mathcal{C}\rightleftharpoons\mathcal{D}:U$. The following are equivalent:
@@ -676,7 +676,7 @@
             \end{lemma}
 
             \begin{proof}
-                This follows from naturality of the adjunction. I.e. any square in $\mathcal{C}$, with the right side from $\mathcal{D}$ is commutative if and only if any square in $\mathcal{D}$ with the left side from $\mathcal{C}$ is commutative. Now, $f$ has LLP with respect to $Ug$ if and only if $Ff$ has LLP with respect to $g$.
+                This lemma follows from naturality of the adjunction. I.e., any square in $\mathcal{C}$, with the right side from $\mathcal{D}$ is commutative if and only if any square in $\mathcal{D}$ with the left side from $\mathcal{C}$ is commutative. Now, $f$ has LLP with respect to $Ug$ if and only if $Ff$ has LLP with respect to $g$.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{k} \ar[]{d}[left]{f} & UX \ar[]{d}[]{Ug} \\
@@ -690,7 +690,7 @@
             \end{proof}
 
             \begin{remark}
-                In the proof above we say that $h^T$ is the transpose of $h$ along the unique natural isomorphism witnessing the adjunction between $F$ and $U$. With this notion, $(h^T)^T = h$.
+                We say that $h^T$ is the transpose of $h$ along the unique natural isomorphism witnessing the adjunction between $F$ and $U$. With this notion, $(h^T)^T = h$.
             \end{remark}
 
             \begin{proposition}
@@ -698,9 +698,9 @@
             \end{proposition}
 
             \begin{proof}
-                We must show that $\tt{Ho}\mathcal{D}(\mathbb{L}FX, Y) \simeq \tt{Ho}\mathcal{D}(X, \mathbb{R}UY)$. By using the fundamental theorem of model categories, Theorem \ref{thm: Fundamental-thm-model}, we have the following isomorphisms: $\tt{Ho}\mathcal{D}(\mathbb{L}FX,Y)\simeq \sfrac{\mathcal{C}(FQX,RY)}{\sim}$ and $\tt{Ho}\mathcal{D}(X,\mathbb{R}UY)\simeq\sfrac{\mathcal{D}(QX,URY)}{\sim}$. In other words, if we assume $X$ to be cofibrant, and $Y$ to be fibrant, we must show that the adjunction preserves homotopy equivalences.
+                We must show that $\tt{Ho}\mathcal{D}(\mathbb{L}FX, Y) \simeq \tt{Ho}\mathcal{D}(X, \mathbb{R}UY)$. By using the fundamental theorem of model categories, Theorem \ref{thm: Fundamental-thm-model}, we have the following isomorphisms: $\tt{Ho}\mathcal{D}(\mathbb{L}FX,Y)\simeq \sfrac{\mathcal{C}(FQX,RY)}{\sim}$ and $\tt{Ho}\mathcal{D}(X,\mathbb{R}UY)\simeq\sfrac{\mathcal{D}(QX,URY)}{\sim}$. In other words, if we assume $X$ to be cofibrant and $Y$ to be fibrant, we must show that the adjunction preserves homotopy equivalences.
 
-                We show it for one direction. Suppose that the morphisms $f,g:FA\rightarrow B$ are homotopic, witnessed by a right homotopy $H:FA\rightarrow B^I$. Since we assume $U$ to preserve products, fibrations and weak equivalences between fibrant objects, $U(B^I)$ is a path object for $UB$. Thus the transpose $H^T:A\rightarrow U(B^I)$ is the desired homotopy witnessing $f^T \sim g^T$
+                We show it in one direction. Suppose that the morphisms $f,g: FA\rightarrow B$ are homotopic, witnessed by a right homotopy $H: FA\rightarrow B^I$. Since we assume $U$ to preserve products, fibrations, and weak equivalences between fibrant objects, $U(B^I)$ is a path object for $UB$. Thus the transpose $H^T:A\rightarrow U(B^I)$ is the desired homotopy witnessing $f^T \sim g^T$
             \end{proof}
 
             \begin{definition}[Quillen equivalence]
@@ -717,7 +717,7 @@
             \end{proposition}
 
             \begin{proof}
-                Firstly observe that $2.\implies3.$ by definition. Secondly observe that equivalences both preserves and reflects isomorphisms, from this we get $3. \implies 1.$. We now show $1.\implies 2.$. Pick $X$ in $\mathcal{C}$ such that $X$ is cofibrant. Since $(F,U)$ is assumed to be a Quillen adjunction we know that $FX$ is still cofibrant. The fibrant replacement $r_{FX}:FX\rightarrow RFX$ gives us a weak equivalence. Furthermore, since $(F,U)$ is assumed to be a Quillen equivalence, its transpose $r_{FX}^T: X \rightarrow URFX$ is a weak equivalence. Unwinding the definition of the transpose we get that $r_{FX}^T = Ur_{rFX}\circ \eta_X$.
+                Firstly observe that $2.\implies3.$ by definition. Secondly, observe that equivalences both preserves and reflect isomorphisms. From this, we get $3. \implies 1.$. We now show $1.\implies 2.$. Pick $X$ in $\mathcal{C}$ such that $X$ is cofibrant. Since $(F, U)$ is assumed to be a Quillen adjunction, $FX$ is still cofibrant. The fibrant replacement $r_{FX}: FX\rightarrow RFX$ gives us a weak equivalence. Furthermore, since $(F, U)$ is assumed to be a Quillen equivalence, its transpose $r_{FX}^T: X \rightarrow URFX$ is a weak equivalence. Unwinding the definition of the transpose, we get that $r_{FX}^T = Ur_{rFX}\circ \eta_X$.
 
             \end{proof}
 
@@ -733,32 +733,32 @@
             \end{corollary}
 
             \begin{proof}
-                We start by showing $1. \implies 2.$ and $3.$. We already know that the derived unit and counit are isomorphism in homotopy, so we only need to show that $F$ ($U$) reflects weak equivalences between cofibrant (fibrant) objects. Suppose that $Ff:FX\rightarrow FY$ is a weak equivalence between cofibrant objects. Since $F$ preserves weak equivalences between cofibrant objects, we get that $FQf$ is a weak equivalence, or that $\mathbb{L}Ff$ is an isomorphism. By assumption, $\mathbb{L}F$ is an equivalence of categories, so $f$ is a weak equivalence as needed.
+                We start by showing $1. \implies 2.$ and $3.$. We already know that the derived unit and counit are isomorphisms in homotopy, so we only need to show that $F$ ($U$) reflects weak equivalences between cofibrant (fibrant) objects. Suppose that $Ff: FX\rightarrow FY$ is a weak equivalence between cofibrant objects. Since $F$ preserves weak equivalences between cofibrant objects, we get that $FQf$ is a weak equivalence; that $\mathbb{L}Ff$ is an isomorphism. By assumption, $\mathbb{L}F$ is an equivalence of categories, so $f$ is a weak equivalence as needed.
 
-                We will show $2.\implies 1.$, the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism, in particular the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, call it $\eta_X' : FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflects weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
+                We will show $2.\implies 1.$; the case $3.\implies 1.$ is dual. We assume that the counit map is an isomorphism in homotopy. By assumption, the derived unit $\mathbb{L}\eta$ is split-mono on the image of $\mathbb{L}F$. Moreover, the derived counit $\mathbb{R}\varepsilon$ is assumed to be an isomorphism. In particular, the derived unit $\mathbb{L}F\mathbb{L}\eta$ is an isomorphism. Unpacking this, we have a morphism, which we call $\eta_X': FQX \rightarrow FQURFQX$, which is a weak equivalence. Since $F$ and $Q$ reflect weak equivalences, we get that $\eta_X: X \rightarrow URFQX$ is a weak equivalence.
             \end{proof}
 
     \section{Model structures on Algebraic Categories}
 
-            In order to understand $\infty$-quasi-isomorphism of strongly homotopy associative algebras we will study different homotopy theories of various categories. Munkholm \cite{Munkholm78} successfully showed that the derived category of  augmented algebras is equivalent to the derived category of augmented algebras equipped with $\infty$-morphisms. To be more precise, he showed that certain subcategories of augmented algebras had this property. Lefevre-Hasagawas phd thesis \cite{LefevreHasegawa03} builds upon this identification, but with help of further devolpment within the field. We will follow the approach of Lefevre-Hasegawa, by comparing the model structure for algebras and coalgebras,
+            To understand $\infty$-quasi-isomorphism of strongly homotopy associative algebras, we will study different homotopy theories of various categories. Munkholm \cite{Munkholm78} successfully showed that the derived category of augmented algebras is equivalent to the derived category of augmented algebras equipped with $\infty$-morphisms. To be more precise, he showed that certain subcategories of augmented algebras had this property. Lefevre-Hasagawas Ph.D. thesis \cite{LefevreHasegawa03} builds upon this identification, but with the help of further development within the field. We will follow the approach of Lefevre-Hasegawa, by comparing the model structure for algebras and coalgebras,
 
         \subsection{DG-Algebras as a Model Category}
 
-            Bousefield and Gugenheim \cite{Bousfield76} proved that the category of commutative dg-algebras had a model structure whenever the base field was a field of characteristic $0$. In a joint project, Jardine's paper from 1997 \cite{Jardine97} shows that this construction may be extended to dg-algebras over any commutative ring. On the other hand, Munkholm expanded on the ideas from Bousfield and Gugenheim to get an identification of derived categories. Also, Hinich's paper from 1997 \cite{Hinich97} details another method to obtain the model category which we want. We will follow the approach of Hinich, as it will be usefull later on. Notice that where Hinich use theory of algebraic operads to show that the category of algebras is a model category, we will however give a more explicit formulation.
+            Bousfield and Guggenheim \cite{Bousfield76} proved that the category of commutative dg-algebras had a model structure whenever the base field was a field of characteristic $0$. In a joint project, Jardine's paper from 1997 \cite{Jardine97} shows that this construction may be extended to dg-algebras over any commutative ring. On the other hand, Munkholm expanded on the ideas from Bousfield and Guggenheim to get an identification of derived categories. Also, Hinich's paper from 1997 \cite{Hinich97} details another method to obtain the model category we want. We will follow the approach of Hinich, as it will be useful later on. Notice that where Hinich uses the theory of algebraic operads to show that the category of algebras is a model category, we will give a more explicit formulation.
 
-            Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F:\mathcal{C}\rightleftharpoons Ch(\mathbb{K}):\#$, where $F$ is left adjoint to $\#$. Furthermore, suppose that $\mathcal{C}$ satsifies the $2$ conditions:
+            Let $\mathbb{K}$ be a field, and $\mathcal{C}$ be a category such that there is an adjunction $F:\mathcal{C}\rightleftharpoons Ch(\mathbb{K}):\#$, where $F$ is left adjoint to $\#$. Furthermore, suppose that $\mathcal{C}$ satisfies the $2$ conditions:
             \begin{itemize}
-                \item[(H0)] $\mathcal{C}$ admits finite limits and every small colimit. The functor $\#$ commutes with filtered colimits.
-                \item[(H1)] Let $M$ be the complex below, concentrated in $0$ and $1$.
+                \item[(H0)] $\mathcal{C}$ admits finite limits and every small colimit, and the functor $\#$ commutes with filtered colimits;
+                \item[(H1)] For $M$ as the complex below, concentrated in $0$ and $1$,
                 \begin{center}
                     \begin{tikzcd}
                         ... \ar[]{r}[]{} & 0 \ar[]{r}[]{} & \mathbb{K} \ar[]{r}[]{id} & \mathbb{K} \ar[]{r}[]{} & 0 \ar[]{r}[]{} & ...
                     \end{tikzcd}
                 \end{center}
-                For any $d\in \mathbb{Z}$ and for any $A\in\mathcal{C}$ the injection $A \rightarrow A \coprod F(M[d])$ induces a quasi-isomorphism $A^\# \rightarrow (A\coprod F(M[d]))^\#$.
+                we have that for any $d\in \mathbb{Z}$ and for any $A\in\mathcal{C}$, the injection $A \rightarrow A \coprod F(M[d])$ induces a quasi-isomorphism $A^\# \rightarrow (A\coprod F(M[d]))^\#$.
             \end{itemize}
                 
-            With this adjunction in mind, we define weak equivalences, fibrations and cofibrations as follows:
+            With this adjunction in mind, we define weak equivalences, fibrations, and cofibrations as follows:
             Let $f\in \mathcal{C}$ be a morphism
             \begin{itemize}
                 \item $f\in \tt{Ac}$ if $f^\#$ is a quasi-isomorphism.
@@ -767,14 +767,14 @@
             \end{itemize}
 
             \begin{thm}\label{thm: model-str-alg}
-                The category $\mathcal{C}$ equipped with the weak equivalences, fibrations and cofibrations as defined above is a model category.
+                The category $\mathcal{C}$ equipped with the weak equivalences, fibrations, and cofibrations as defined above is a model category.
             \end{thm}
 
-            Before we show this theorem we need to understand the cofibrations better. Let $A\in\mathcal{C}$, $M\in Ch(\mathbb{K})$ and $\alpha : M \rightarrow A^\#$ a morphism in $Ch(\mathbb{K})$. We define a functor 
+            Before we show this theorem, we need to understand the cofibrations better. Let $A\in\mathcal{C}$, $M\in Ch(\mathbb{K})$ and $\alpha : M \rightarrow A^\#$ a morphism in $Ch(\mathbb{K})$. We define a functor 
             \begin{align*}
                 h_{A,\alpha}(B) = \startset{(f,t)\mid f\in \mathcal{C}(A,B), t\in \tt{Hom}^{-1}_\mathbb{K}(M, B^\#) \tt{ s.t. } \partial t = f^\#\circ\alpha}.
             \end{align*}
-            Note that $t$ is not a morphism of chain maps. This is a homogenous morphism of degree $-1$. The differential then promotes this morphism to a chain map, and $t$ is thus a homotopy for the comoposite $f^\#\circ\alpha$.
+            Note that $t$ is not a morphism of chain maps. This is a homogenous morphism of degree $-1$. The differential then promotes this morphism to a chain map, and $t$ is thus a homotopy for the composite $f^\#\circ\alpha$.
 
             This functor is represented by an object of $\mathcal{C}$. We define this representing object $A\langle M, \alpha\rangle$ as the pushout:
             \begin{center}
@@ -786,11 +786,11 @@
             Let $i: M[1] \rightarrow \tt{cone}(\alpha)$ be a homogenous morphism which is the injection when considered as graded modules. Notice that we have a pair of morphisms $(a, e^Ti)\in h_{A,\alpha}(A\langle M,\alpha\rangle)$.
                 
             \begin{proposition}\label{prop: universal-h}
-                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\argument)$ is a natural isomorphism. Moreover, the pair $(a,e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e. the natural isomorphism is induced by this element under Yoneda's lemma.
+                The functor $h_{A,\alpha}$ is represented by $A\langle M,\alpha\rangle$, i.e. $h_{A,\alpha}\simeq \mathcal{C}(A\langle M,\alpha\rangle,\argument)$ is a natural isomorphism. Moreover, the pair $(a, e^Ti)$ is the universal element of the functor $h_{A,\alpha}$, i.e., the natural isomorphism is induced by this element under Yoneda's lemma.
             \end{proposition}
 
             \begin{proof}
-                Let $(f,t)\in h_{A,\alpha}(B)$ for some $B\in\mathcal{C}$. The condition that $\partial t = f^\#\alpha$ is equivalent to say that $f^\#$ extends to a morphism $f' : \tt{cone}(\alpha) \rightarrow B^\#$ along $t$, i.e. $f' = \begin{pmatrix}f^\# & t\end{pmatrix}$. This concludes the isomorphism part, as being an element $(f,t)$ is equivalent to the existence of the diagram below, where $\widetilde{f}$ is uniquely determined.
+                Let $(f,t)\in h_{A,\alpha}(B)$ for some $B\in\mathcal{C}$. The condition that $\partial t = f^\#\alpha$ is equivalent to say that $f^\#$ extends to a morphism $f' : \tt{cone}(\alpha) \rightarrow B^\#$ along $t$, i.e. $f' = \begin{pmatrix}f^\# & t\end{pmatrix}$. This construction concludes the isomorphism part, as an element $(f,t)$ is equivalent to the diagram below, where $\widetilde{f}$ is uniquely determined.
                 \begin{center}
                     \begin{tikzcd}
                         F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} & A \ar[]{d}[]{a} \ar[bend left]{ddr}[]{f} \\
@@ -799,10 +799,10 @@
                     \end{tikzcd}
                 \end{center}
   
-                To obtain naturality, we use the adjunction to observe that the element $(a, e^Ti)$ is in fact universal.
+                We use the adjunction to observe that the element $(a, e^Ti)$ is universal to obtain naturality.
             \end{proof}
 
-            We are now in a position to explicitly find some important cofibrations. We collect these morphisms into the "standard" cofibrations.
+            We are now in a position to find some crucial cofibrations. We collect these morphisms into the "standard" cofibrations.
 
             \begin{definition}
                 Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Suppose that $f$ factors as a transfinite composition of morphisms on the form $A_i \rightarrow A_i\langle M,\alpha\rangle$, i.e. $f$ factors into the diagram below, where $A_{i+1} = A_i\langle M,\alpha\rangle$.
@@ -818,13 +818,17 @@
             \end{definition}
 
             \begin{proposition}
-                Every standard cofibration is a cofibration, and every standard acyclic cofibration is an acyclic cofibration. We will see that these morphisms in some sense generate every (acyclic) cofibrations.
+                Every standard cofibration is a cofibration, and every standard acyclic cofibration is an acyclic cofibration.
             \end{proposition}
 
-            \begin{proof}
-                First observe that every standard cofibration may be made iteratively from the chain complexes $\mathbb{K}[n]$, and likewise, every standard acyclic cofibration may be made iteratively from $M$ as in $H1$.
+            \begin{remark}
+                In some sense, we will see that these morphisms generate every (acyclic) cofibration.
+            \end{remark}
 
-                We first prove that if $M \simeq \mathbb{K}[n]$, and $\alpha : M \rightarrow A^\#$ is any map, then the map $A \rightarrow A\langle M,\alpha\rangle$ is a cofibration. This amounts to show that it has LLP to every acyclic fibration. Suppose that $h: B \rightarrow C$ is an acyclic fibration and that there is a commutative square as below.
+            \begin{proof}
+                Observe that every standard cofibration may be made iteratively from the chain complexes $\mathbb{K}[n]$, and likewise, every standard acyclic cofibration may be made iteratively from $M$ as in $H1$.
+
+                We first prove that if $M \simeq \mathbb{K}[n]$, and $\alpha: M \rightarrow A^\#$ is any map, then the map $A \rightarrow A\langle M,\alpha\rangle$ is a cofibration; this amounts to show that it has LLP to every acyclic fibration. Suppose that $h: B \rightarrow C$ is an acyclic fibration and that there is a commutative square as below.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f} \ar[]{d}[]{a} & B \ar[]{d}[]{h} \\
@@ -832,9 +836,9 @@
                     \end{tikzcd}
                 \end{center}
                 
-                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f',t')$ such that $f: A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, that $\partial t = f^\#\alpha$ and that $h$ induces a morphism $h : (f',t') \rightarrow g$. We see that we are forced to choose $f' = f$ as $hf = ga$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
+                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f',t')$ such that $f: A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, that $\partial t = f^\#\alpha$ and that $h$ induces a morphism $h : (f',t') \rightarrow g$. We are forced to choose $f' = f$ as $hf = ga$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity, there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
                 
-                Secondly we prove that if $M$ is as in $H1$ and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration. This amounts to show that it has LLP to every fibration.
+                Secondly, we prove that if $M$ is as in $H1$ and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration, and this amounts to show that it has LLP to every fibration.
                 
                 Suppose that $h: B \rightarrow C$ is a fibration and that there is a commutative square as below.
                 \begin{center}
@@ -848,7 +852,7 @@
 
             \end{proof}
 
-            In light of the above proposition we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle". If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$. This could be thought of "adding a variable and a cycle to kill itself".
+            Given the above proposition, we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle." If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$ for $A\langle M; dT = 0 \rangle$. This construction can be thought of as "adding a variable and a cycle to kill itself."
 
             \begin{center}
                 \begin{tikzcd}
@@ -857,17 +861,17 @@
             \end{center}
 
             \begin{proof}[proof of theorem]
-                \textbf{MC1} and \textbf{MC2} are satisfied. By definition we also have the first part of \textbf{MC3}. We start by checking \textbf{MC4}.
+                \textbf{MC1} and \textbf{MC2} are satisfied. By definition, we also have the first part of \textbf{MC3}. We start by checking \textbf{MC4}.
 
-                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Given any $b\in B^\#$, let $C_b = A\langle T_b,S_b; dT_b = S_b\rangle$. We define $g_b: C_b \rightarrow B$ by the conditions that it acts on $A$ as $f$, $g_b^\#(T_b) = b$ and $g_b^\#(S_b)=db$. Iterating this construction for every $b\in B$, we obtain an object $C$, such that the injection $A \rightarrow C$ is an acyclic standard cofibration, and the map $g : C \rightarrow B$ is a fibration. This gives us a factorization $f = f_\delta\circ f_\gamma$, where $f_\gamma$ is the injection and $f_\delta = g$.
+                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Given any $b\in B^\#$, let $C_b = A\langle T_b,S_b; dT_b = S_b\rangle$. We define $g_b: C_b \rightarrow B$ by the conditions that it acts on $A$ as $f$, $g_b^\#(T_b) = b$ and $g_b^\#(S_b)=db$. Iterating this construction for every $b\in B$, we obtain an object $C$, such that the injection $A \rightarrow C$ is an acyclic standard cofibration, and the map $g: C \rightarrow B$ is a fibration. We obtain a factorization $f = f_\delta\circ f_\gamma$, where $f_\gamma$ is the injection and $f_\delta = g$.
 
-                To obtain the other factorization we want to make a standard cofibration. We already know that the map $A\rightarrow C$ is a standard cofibration, so let $C_0 = C$. From here on, we will make each $C_i$ inductively, such that $\varinjlim C_i$ has the factorization property which we desire. Notice that from $C_0$ there is a morphism $g_0 : C_0 \rightarrow B$, which is surjective and surjective on every kernel. This morphism may fail to be a quasi-isomorphism, so it is not an acyclic fibration.
+                To obtain the other factorization, we want to make a standard cofibration. We already know that the map $A\rightarrow C$ is a standard cofibration, so let $C_0 = C$. From here on, we will make each $C_i$ inductively, such that $\varinjlim C_i$ has the factorization property we desire. Notice that from $C_0$, there is a morphism $g_0: C_0 \rightarrow B$, which is surjective and surjective on every kernel. This morphism may fail to be a quasi-isomorphism, so it is not an acyclic fibration.
                 
-                To construct $C_1$ we assign to every pair of elements $(c,b)$, such that $c\in ZC_0^\#$ and $g_0^\#(c) = db$, a variable to kill a cycle. If $(c,b)$ is such a pair, then we add a variable $T$ such that $dT = c$ and $g_1^\#(T)=b$. $C_1$ is then the complex where each cycle $c$ has been killed by adding a variable $T$. Now if we suppose that we have constructed $C_i$, then $C_{i+1}$ is constructed in the same manner, by adding a variable to kill each cycle which is a boundary in the image.
+                To construct $C_1$ we assign to every pair of elements $(c,b)$, such that $c\in ZC_0^\#$ and $g_0^\#(c) = db$, a variable to kill a cycle. If $(c,b)$ is such a pair, then we add a variable $T$ such that $dT = c$ and $g_1^\#(T)=b$. $C_1$ is then the complex where each cycle $c$ has been killed by adding a variable $T$. Now, if we suppose that we have constructed $C_i$, then $C_{i+1}$ is constructed similarly by adding a variable to kill each cycle which is a boundary in the image.
 
-                When adding a variable, we have also updated the morphism $g_i$ by letting $g_{i+1}^\#(T) = b$. Thus in each step we have also made a new morphism $g_{i+1}$. If $g$ denote the morphism at the colimit, then it is clear that this is still a fibration and it has also become a quasi-isomorphism. This is because every cycle which failed to be in the homology of $B$ have been killed. 
+                When adding a variable, we have also updated the morphism $g_i$ by letting $g_{i+1}^\#(T) = b$. Thus in each step, we have also made a new morphism $g_{i+1}$. If $g$ denotes the morphism at the colimit, it is clear that it is still a fibration and has also become a quasi-isomorphism. This is evident because every cycle which failed to be in the homology of $B$ has been killed. 
                 
-                It remains to check the last part of \textbf{MC3}. Suppose that $f:A\rightarrow B$ is an acyclic cofibration. By \textbf{MC4}, we know that it factors as $f = f_\delta \circ f_\gamma$, where $f_\delta$ is an acyclic fibration and $f_\gamma$ is a standard acyclic fibration. We thus obtain that $f$ is a retract of $f_\gamma$ by the commutative diagram below.
+                It remains to check the last part of \textbf{MC3}. Suppose that $f: A\rightarrow B$ is an acyclic cofibration. By \textbf{MC4}, we know that it factors as $f = f_\delta \circ f_\gamma$, where $f_\delta$ is an acyclic fibration, and $f_\gamma$ is a standard acyclic fibration. We thus obtain that $f$ is a retract of $f_\gamma$ by the commutative diagram below.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f_\gamma} \ar[]{d}[]{f} & C \ar[]{d}[]{f_\delta} \\
@@ -876,20 +880,20 @@
                 \end{center}
             \end{proof}
 
-            The following corollary will concretize what it means that the standard cofibrations generate every cofibration. This corollary is really a step used within in the proof.
+            The following corollary will concretize what it means that the standard cofibrations generate every cofibration. This corollary is a step used within the proof.
 
             \begin{corollary}
                 Any (acyclic) cofibration is a retract of a standard (acyclic) cofibration.
             \end{corollary}
 
-            We may immedietly apply this theorem to some familiar examples.
+            We may immediately apply this theorem to some familiar examples.
 
             \begin{corollary}\label{cor: Model-Mod}
                 Let $A$ be a dg-algebra over the field $\mathbb{K}$. The category $\tt{Mod}_A$ of left modules is a model category.
             \end{corollary}
 
             \begin{proof}[sketch of proof]
-                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\argument$. H0 is satisfied as this category is bicomplete, and filtered colimits may be thought of as unions of sets. Moreover, since $mod_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
+                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\argument$. H0 is satisfied as this category is bicomplete, and we can think of filtered colimits as unions of sets. Moreover, since $mod_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
             \end{proof}
 
             \begin{corollary}
@@ -899,7 +903,7 @@
             \begin{proof}
                 We establish the adjunction by letting $F = T(M)$, the tensor algebra of a cochain complex. For the same reasons as above, H0 is trivially satisfied. 
 
-                Given a cochain complex $N^\bullet$, we may consider the free dg-algebra $T(N^\bullet)$. In this case the coproduct $A\ast T(N^\bullet)$ has an easier description. We define a complex
+                Given a cochain complex $N^\bullet$, we may consider the free dg-algebra $T(N^\bullet)$. In this case, the coproduct $A\ast T(N^\bullet)$ has an easier description. We define a complex
                 \begin{align*}
                     A[N^\bullet] = A \oplus (A \otimes N^\bullet \otimes A) \oplus (A \otimes N^\bullet \otimes A \otimes N^\bullet \otimes A) \oplus \cdots\tt{.}
                 \end{align*}
@@ -910,25 +914,25 @@
 
                 Let $i : A \rightarrow A[N^\bullet]$ denote the inclusion, and $\iota : T(N^\bullet) \rightarrow A[N^\bullet]$ is defined by interspersing the $N^\bullet$ tensors with $1$s. I.e. $\iota(n_1\otimes\cdots\otimes n_j) = 1 \otimes n_1 \otimes 1 \otimes \cdots \otimes 1 \otimes n_j \otimes 1$.
 
-                To define a map $f : A[N^\bullet] \rightarrow T$ it is enough by the ring homomorphism property to define a map $g : A \rightarrow T$ and a map $h : T(N^\bullet) \rightarrow T$. We observe that this choice of $g$ and $h$ is unique for any $f$, establishing the universal property. I.e. $A[N^\bullet] \simeq A\ast T(N^\bullet)$.
+                To define a map $f: A[N^\bullet] \rightarrow T$ it is enough by the ring homomorphism property to define a map $g: A \rightarrow T$ and a map $h: T(N^\bullet) \rightarrow T$. This choice of $g$ and $h$ is unique for any $f$, establishing the universal property. I.e. $A[N^\bullet] \simeq A\ast T(N^\bullet)$.
                 
-                To see that the map $i^\# : A^\# \rightarrow A[M^\bullet]^\#$ is a quasi-isomorphism, it is enough to see that contractible complexes are stable under tensoring. Given a contractible complex $C^\bullet$, then there is a homotopy $h : C^\bullet \rightarrow C^\bullet$ such that $\partial h = id_C$. Observe that $id_N\otimes h : N^\bullet\otimes C^\bullet \rightarrow N^\bullet\otimes C^\bullet$ is a homotopy witnessing $id_{N^\bullet\otimes C^\bullet} \sim 0$. Since $M$ is contractible, we know that the homology of the inclusion is $H^*i = id_{H^*A}$. This shows H1.
+                To see that the map $i^\#: A^\# \rightarrow A[M^\bullet]^\#$ is a quasi-isomorphism, it is enough to see that contractible complexes are stable under tensoring. Given any contractible complex $C^\bullet$, there is a homotopy $h: C^\bullet \rightarrow C^\bullet$ such that $\partial h = id_C$. Observe that $id_N\otimes h : N^\bullet\otimes C^\bullet \rightarrow N^\bullet\otimes C^\bullet$ is a homotopy witnessing $id_{N^\bullet\otimes C^\bullet} \sim 0$. Since $M$ is contractible, we know that the homology of the inclusion is $H^*i = id_{H^*A}$, which shows H1.
             \end{proof}
 
             We summarize the last result:
 
-            The category of augmented dg-algebras $\tt{Alg}^\bullet_{\mathbb{K},+}$ is a model category. Let $f:X\rightarrow Y$ be a homomorphism of augmented algebras. 
+            The category of augmented dg-algebras $\tt{Alg}^\bullet_{\mathbb{K},+}$ is a model category. Let $f: X\rightarrow Y$ be a homomorphism of augmented algebras. 
             \begin{itemize}
                 \item $f\in \tt{Ac}$ if $f^\#$ is a quasi-isomorphism.
                 \item $f\in \tt{Fib}$ if $f^\#$ is an epimorphism (surjective onto every component).
                 \item $f\in \tt{Cof}$ if $f$ has LLP with respect to to every acyclic fibration.
             \end{itemize}
             
-            The category of augmented dg-algebras has a zero object. This is the stalk of $\mathbb{K}$. We see that every object is fibrant, as the augmentation map is preserved by the forgetful functor and it is by definition a split-epimorphism.
+            The category of augmented dg-algebras has a zero object, and this is the stalk of $\mathbb{K}$. We see that every object is fibrant, as the forgetful functor preserves the augmentation map and, by definition, is a split-epimorphism.
             
     \subsection{A Model Structure on DG-Coalgebras}
 
-            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that it give rise to the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is in fact a Quillen adjunction. To this end we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method is a modification of Hinich's paper \cite{Hinich01}.
+            We now want to equip the category of dg-coalgebras with a suitable model structure. This model structure should be suitable in the sense that conilpotent dg-coalgebras will have the same homotopy theory as dg-algebras. The bar-cobar construction will be crucial in this construction, as it is a Quillen adjunction. To this end, we will follow the setup as presented by Lefevre-Hasegawa \cite{LefevreHasegawa03}. His method modifies Hinich's paper \cite{Hinich01}.
 
             Let $f: C \rightarrow D$ be a morphism of coalgebras, the category of dg-coalgebras will be equipped with the three following classes of morphisms:
             \begin{itemize}
@@ -937,55 +941,51 @@
                 \item $f\in \tt{Cof}$ if $f^\#$ is a monomorphism (injective in every component).
             \end{itemize}
 
-            % Recall that a filtration on a chain complex $M$ is a sequence of inclusions $M_0 \subseteq M_1 \subseteq ...$. The filtration is called exhaustive if $\varinjlim M_i \simeq M$, and admissable if $Fr_0M \simeq \mathbb{K}$ as well. Since each inclusion respect the differential, we may find the cokernel of each inclusion. The associated graded $grM$ is then the graded complex given by $gr_0M = M_0$ and $gr_iM = M_i/M_{i-1}$. A dg-(co)algebra is filtered if the filtration respects the (co)multiplication. If $f : M \rightarrow N$ is a morphism of filtered cochain complexes, then it defines a morphism $grf : grM \rightarrow grN$ on the associated graded. We call $f$ a graded quasi-isomorphism if $grf$ is a quasi-isomorphism.
-
-            % Let $C$ be a conilpotent dg-coalgebra. The coradical filtration $Fr_0C \subseteq Fr_1C \subseteq ...$ is an exhaustive filtration by assumption and $Fr_0C\simeq \mathbb{K}$, so it is admissable. Observe that $\Delta Fr_{i+1}C \subseteq Fr_iC\otimes Fr_iC$. To obtain quasi-isomorphisms of chain complexes we do not need the extra structure of the coalgebra. If not specified otherwise, whenever $C$ is assumed to be a conilpotent dg-coalgebra then $grC$ should be the associated graded of the coradical filtration.
-
-            To see that these classes of morphisms does indeed define a model structure, we will get a better description for a subclass of the weak equivalences. This can only be done by calculating homologies, since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to tackle the kinds of problems which we will face.
+            To see that these classes of morphisms do indeed define a model structure, we will get a better description of a subclass of weak equivalences. We can only check if a morphism is a weak equivalence by calculating homologies since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to handle the problems we will face.
 
             \begin{definition}
-                A filtered chain map $f : M \rightarrow N$ of filtered complexes $M$ and $N$ is a filtered quasi-isomorphism if $\tt{gr}f : \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
+                A filtered chain map $f: M \rightarrow N$ of filtered complexes $M$ and $N$ is a filtered quasi-isomorphism if $\tt{gr}f: \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
             \end{definition}
 
             \begin{lemma}\label{lem: graded-qif-are-w}
-                Let $f : C\rightarrow C'$ be a graded quasi-isomorphism between conilpotent dg-coalgebras, then $\Omega f : \Omega C \rightarrow \Omega C'$ is a quasi-isomorphism. 
+                Let $f: C\rightarrow C'$ be a graded quasi-isomorphism between conilpotent dg-coalgebras, then $\Omega f: \Omega C \rightarrow \Omega C'$ is a quasi-isomorphism. 
             \end{lemma}
 
             \begin{proof}
-                We do this by considering a spectral sequence. Endow $C$ with a grading (as a vector space) induced by the coradical filtration, i.e. $c\in C$ has degree $|c|=n$ if $n$ is the smallest number such that $\overline{\Delta}^nc = 0$. We define a filtration on $\Omega C$ by
+                We do this by considering a spectral sequence. Endow $C$ with a grading (as a vector space) induced by the coradical filtration, i.e., $c\in C$ has degree $|c|=n$ if $n$ is the smallest number such that $\overline{\Delta}^nc = 0$. We define a filtration on $\Omega C$ by
                 \begin{align*}
                     F_p\Omega C = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n|\leq p}
                 \end{align*}
 
-                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, which is a subcomplex of $\Omega C$. This filtration is clearly bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, \cite[Theorem 5.5.1][135]{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
+                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, a subcomplex of $\Omega C$. This filtration is bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, \cite[Theorem 5.5.1][135]{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
 
-                By definition, the $0$'th page is defined as 
+                By definition, the $0$'th page is 
                 \begin{align*}
                     E^0_{p,q}\Omega C = \sfrac{(F_p\Omega C)_{p+q}}{(F_{p-1}\Omega C)_{p+q}}\tt{.}
                 \end{align*}
-                Furthermore, notice that at this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega \tt{gr}C)^{(p)}_{p+q}$, where $(\Omega \tt{gr}C)^{(p)} = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n| = p}$.
+                Furthermore, notice that on this page we have the following isomorphism $E^0_{p,q}\Omega C \simeq (\Omega \tt{gr}C)^{(p)}_{p+q}$, where $(\Omega \tt{gr}C)^{(p)} = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n| = p}$.
 
-                Evaluating $f$ at the $0$'th page would look like $E^0\Omega f \simeq \Omega \tt{gr}f$. By the mapping lemma, \cite[Exercise 5.2.3][125]{Weibel94}\todo{Flytt dette til appendix?}, it is enough to check that $\Omega \tt{gr}f$ is a quasi-isomorphism to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega \tt{gr}f$ is a quasi-isomorphism by inspecting every cochain complex $E^0_{p,\bullet}\Omega C$.
+                Evaluating $f$ at the $0$'th page would look like $E^0\Omega f \simeq \Omega \tt{gr}f$. By the comparison theorem, Theorem \ref{thm: comp-thm}, it is enough to check that $\Omega \tt{gr}f$ is a quasi-isomorphism to see that $\Omega f$ is a quasi-isomorphism. We show that $\Omega \tt{gr}f$ is a quasi-isomorphism by inspecting every cochain complex $E^0_{p,\bullet}\Omega C$.
 
                 Define a filtration $G_k$ on $E^0_{p,\bullet}\Omega C$ as
                 \begin{align*}
                     G_k = \startset{\langle c_1 | \cdots | c_n \rangle \mid n \geq -k}.
                 \end{align*}
-                We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\overline{C}$. By the classical convergence theorem of spectral sequences, this defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
+                We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\overline{C}$. The classical convergence theorem of spectral sequences defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
 
-                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, it is now enough to see that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a filtered quasi-isomorphisms and by the Kunneth-formula, theorem 3.6.3 \cite[Theorem 3.6.3][88]{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
+                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, we will show that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a filtered quasi-isomorphisms and by the K\"unneth-formula, Theorem 3.6.3 \cite[Theorem 3.6.3][88]{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
             \end{proof}
 
-            This proof will serve as a template for how we want to approach many of the proofs we will encounter. The lemma says that to show that $f$ is a weak equivalence it is sufficient to show that $f$ is a filtered quasi-isomorphism. However, to show that $f$ is a filtered quasi-isomorphism we first need a good filtering, and once we have a filtering we look at its spectral sequence. If we still have a problem, we look at complexes within a page on a spectral sequence, and the mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. On these complexes we may define new filtrations in order to calculate the next page. We will informally call this technique for an iterated spectral sequence argument.
+            This proof will serve as a template for how we approach many of the proofs we encounter. With the lemma, to show that $f$ is a weak equivalence, it suffices to show that $f$ is a filtered quasi-isomorphism. However, to show that $f$ is a filtered quasi-isomorphism, we first need a good filtering, and once we have a filtering, we look at its spectral sequence. The mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. We proceed then to calculate a page where we can assert that $f$ becomes a quasi-isomorphism. If there still are problems with calculations, we look at complexes within a page on a spectral sequence and define new filtrations on these complexes to calculate the next page. We will informally call this technique for an iterated spectral sequence argument.
 
-            For completeness we include the following statement.
+            For completeness, we include the following statement.
 
             \begin{lemma}
-                Let $f : A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf : BA \rightarrow BA'$ is both a filtered and unfiltered quasi-isomorphism.
+                Let $f: A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf: BA \rightarrow BA'$ is both a filtered and unfiltered quasi-isomorphism.
             \end{lemma}
 
             \begin{proof}
-                Notice that the homology of $BA$ may calculated from the double complex used to define $BA$. In fact, at the $0$'th page of the canonical spectral sequence we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the Kunneth formula, \cite[Theorem 3.6.3][88]{Weibel94}.            
+                Notice that the homology of $BA$ may be calculated from the double complex used to define $BA$. In fact, at the $0$'th page of the canonical spectral sequence, we have $E^0_{p, \bullet}f \simeq f^{\otimes p}$. It follows that $f$ is a quasi-isomorphism on the $0$'th page from the K\"unneth formula, \cite[Theorem 3.6.3][88]{Weibel94}.            
             \end{proof}
 
             Let $A$ ($C$) be a filtered dg-algebra (coalgebra). Given an element $a\in A$ ($c\in C$) we say that its filtered degree $\tt{f-deg}(a)$ ($\tt{f-deg}(c)$) is the smallest number such that $a\in F_{\tt{f-deg}(a)}A$ ($c\in F_{\tt{f-deg}(c)}C$) but not $a\in F_{\tt{f-deg}(a)-1}A$ ($c\in F_{\tt{f-deg}(c)-1}C$). There is then an associated filtration on the bar (cobar) construction of this complex, defined as 
@@ -996,10 +996,10 @@
             We will call this the induced filtration on the bar or cobar construction.
 
             \begin{proposition}\label{prop: unit-counit-qif}
-                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A : \Omega BA \rightarrow A$ a quasi-isomorphism. The unit $\eta_C : C \rightarrow B\Omega C$ is a filtered quasi-isomorphism, moreover $\Omega \eta_C$ is a quasi-isomorphism.
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A: \Omega BA \rightarrow A$ is a quasi-isomorphism. The unit $\eta_C: C \rightarrow B\Omega C$ is a filtered quasi-isomorphism. Moreover, $\Omega \eta_C$ is a quasi-isomorphism.
             \end{proposition}
 
-            The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a proof given earlier.
+            The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a previous proof.
 
             \begin{proof}
                We start by showing that the counit is a quasi-isomorphism. Define the following filtration for $A$.
@@ -1008,21 +1008,21 @@
                     F_1A & = A \\
                     F_pA & = F_1A 
                 \end{align*}
-                We clearly see that this filtration endows $A$ with the structure of a filtered dg-algebra. For $\Omega BA$ we will use the induced filtration from the coradical filtration of $BA$.
+                We see that this filtration endows $A$ with the structure of a filtered dg-algebra. For $\Omega BA$, we will use the induced filtration from the coradical filtration of $BA$.
 
-                The counit acts on $\Omega BA$ as tensorwise projection, followed by multiplication in $A$. This morphism respects the filtration, so it is a filtered morphism. Notice that both of these filtrations are bounded below, and exhaustive, so the classical convergence theorem of spectral sequences apply.
+                The counit acts on $\Omega BA$ as tensor-wise projection, followed by multiplication in $A$. This morphism respects the filtration, so it is a filtered morphism. Notice that both filtrations are bounded below and exhaustive, so the classical convergence theorem of spectral sequences applies.
 
-                Let $E_r\Omega BA$ and $E_rA$ be the spectral sequences given by these filtrations. We have that $E_1^{p}\Omega BA \simeq \tt{gr}_p \Omega BA$ and $E_1^{p}A \simeq \tt{gr}_pA$. For $p=1$ both complexes are isomorphic to the same complex, $\overline{A}$. Moreover, $E_1^{1}\varepsilon_A = id_{\overline{A}}$. Whenever $p\neq 1$ we get that $E_1^p A \simeq 0$, so it remains to show that $E_1^p \Omega BA \simeq \tt{gr}_p \Omega BA$ is contractible for any $p \geq 2$.
+                Let $E_r\Omega BA$ and $E_rA$ be the spectral sequences given by these filtrations. We have that $E_1^{p}\Omega BA \simeq \tt{gr}_p \Omega BA$ and $E_1^{p}A \simeq \tt{gr}_pA$. For $p=1$, both complexes are isomorphic to the same complex, $\overline{A}$. Moreover, $E_1^{1}\varepsilon_A = id_{\overline{A}}$. Whenever $p\neq 1$, we get that $E_1^p A \simeq 0$, so it remains to show that $E_1^p \Omega BA \simeq \tt{gr}_p \Omega BA$ is contractible for any $p \geq 2$.
 
-                The differential of $\Omega BA$ is generated by three actions: the differential on $A$, the multiplication on $A$ and the comultiplication on $BA$. With the induced filtration on $\Omega BA$, we see that the multiplication on $A$ is the only action which maps $F_p\Omega BA \rightarrow F_{p-1}\Omega BA$. Thus this action is $0$ in the associated graded and the spectral sequence. 
+                Three actions generate the differential of $\Omega BA$: the differential on $A$, the multiplication on $A$, and the comultiplication on $BA$. With the induced filtration on $\Omega BA$, we see that the multiplication on $A$ is the only action that maps $F_p\Omega BA \rightarrow F_{p-1}\Omega BA$. Thus this action is $0$ in the associated graded and the spectral sequence. 
 
-                There is a homotopy of the identity given as $r : \tt{gr}_i \Omega BA \rightarrow \tt{gr}_i \Omega BA$, which is $0$ except if there is an element on the form $\langle [ a ] \mid [ \cdots ] \mid [ \cdots ] \rangle$. In this case $r$ is 
+                There is a homotopy of the identity given as $r: \tt{gr}_i \Omega BA \rightarrow \tt{gr}_i \Omega BA$, which is $0$ except if there is an element on the form $\langle [ a ] \mid [ \cdots ] \mid [ \cdots ] \rangle$. In this case, $r$ is 
                 \begin{align*}                    
                     r\langle [a] \mid [\cdots] \mid \cdots \rangle = (-1)^{|a|+1} \langle [a \mid [\cdots] \mid \cdots \rangle
                 \end{align*}
                 We will show that this is a homotopy by induction on $i$.
 
-                Let $i=2$. Then there are two cases we must handle, either an element is on the form $\langle [a_1] \mid [a_2] \rangle$ or $\langle [a_1 \mid a_2] \rangle$. We consider the latter case first. If we apply $r$ to this element we are returned $0$. 
+                Let $i=2$. Then there are two cases we must handle, either an element is on the form $\langle [a_1] \mid [a_2] \rangle$ or $\langle [a_1 \mid a_2] \rangle$. We consider the latter case first. If we apply $r$ to this element, we are returned $0$. 
                 \begin{align*}
                     (r\circ d_{\Omega BA}+d_{\Omega BA}\circ r)\langle [a_1 \mid a_2] \rangle = r (-1)^{|a_1|+1}\langle [a_1] \mid [a_2] \rangle = \langle [a_1 \mid a_2] \rangle
                 \end{align*}
@@ -1033,25 +1033,25 @@
                     = (-1)^{|a_1|}\langle [ d_Aa_1 \mid a_2] \rangle - \langle [a_1 \mid d_Aa_2] \rangle + \langle [a_1] \mid [a_2] \rangle \\
                     + (-1)^{|a|+1}\langle [d_Aa_1 \mid a_2] \rangle  + \langle [a_1 \mid d_Aa_2] \rangle = \langle [a_1] \mid [a_2] \rangle\tt{.}
                 \end{multline*}
-                We see that this is in fact a homotopy, which makes $id_{\tt{gr}_2 \Omega BA}$ null-homotopic.
+                This homotopy makes $id_{\tt{gr}_2 \Omega BA}$ null-homotopic.
 
-                To extend this argument by induction, we will observe that the terms where the differential is applied will have opposite signs, such that they cancel. Then the result follows for any $i$, by observing that the tensors far enough out to the right is not affected by $r$.
+                To extend this argument by induction, we will observe that the terms where the differential is applied will have opposite signs, such that they cancel. The result follows for any $i$ since the tensors far enough out to the right are not affected by $r$.
 
                 If $C$ is a dg-coalgebra, we use the same technique as in Lemma~\ref{lem: graded-qif-are-w}. Consider the filtration on $B\Omega C$ given as
                 \begin{align*}
                     F_pB\Omega C = \startset{[\langle sc_{1,1}\mid \cdots \mid sc_{1,n_1}\rangle \mid \cdots \mid \langle sc_{m, 1}\mid \cdots \mid sc_{m,n_m} \rangle] \mid |c_{1,1}| + \cdots + |c_{m,n_m}|\leq p}\text{.}
                 \end{align*}
                 
-                This filtration is both bounded below and exhaustive, so the classical convergence theorem says that the associated spectral sequence converges. If we denote this sequence as $EF$, then $EF \implies H^*B\Omega C$. Let $EC$ denote the spectral sequence associated to $C$. Since $C$ is conilpotent $EC \implies H^*C$. The unit $\eta_C : C \rightarrow B\Omega C$ is now a map acting on $EC^0$ as the identity, sending each element in $EC^0_{p,q}$ to itself in $EF^0_{p,q}$.
+                This filtration is bounded below and exhaustive, so the classical convergence theorem says that the associated spectral sequence converges. We denote this sequence as $EF$, and then $EF \implies H^*B\Omega C$. Let $EC$ be the spectral sequence associated to $C$. Since $C$ is conilpotent, $EC \implies H^*C$. The unit $\eta_C: C \rightarrow B\Omega C$ is now a map acting on $EC^0$ as the identity, sending each element in $EC^0_{p,q}$ to itself in $EF^0_{p,q}$.
                 
-                On each row $EF^0_{p,\bullet}$ we make another filtration called $G$.
+                On each row $EF^0_{p,\bullet}$, we make another filtration called $G$.
                 \begin{align*}
                     G_kEF^0_{p,\bullet} = \startset{[\langle ... \rangle_1 \mid ... \mid \langle ... \rangle_n] \mid n \geq -k}
                 \end{align*}
 
-                Similarly as in Lemma~\ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $\tt{gr}_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that every string of length $\geq 2$ is not hit by this morphism. However, by employing $r$ as above we may show that these summands are contractible. This shows that the unit is an isomorphism in homology.
+                Similarly, as in Lemma~\ref{lem: graded-qif-are-w}, this filtration is bounded below and exhaustive, so we may again apply the classical convergence theorem to obtain a spectral sequence $E_pG$ such that $E_pG \implies H^*EF^0_{p,\bullet} \simeq EF^1_{p,\bullet}$. Since the unit acts as the identity on $EC^0$, it descends to a morphism $\tt{gr}_pC \rightarrow E_pG^0_{k,\bullet}$ which is the identity when $k = -1$ and $0$ otherwise. Notice that this morphism does not hit every string of length $\geq 2$. However, by employing $r$ as above, we may show that these summands are contractible. The unit is thus an isomorphism in homology.
 
-                % To show that this map is a quasi-isomorphism it is sufficient to show that $E_pG^0_{k, \bullet}$ is contractible for $k \neq 1$. This looks like the same situation as for algebras. We use the same homotopy $r$ as in the first part to get a null-homotopy of the identity.
+                % To show that this map is a quasi-isomorphism, it is sufficient to show that $E_pG^0_{k, \bullet}$ is contractible for $k \neq 1$; this looks like the same situation as for algebras. We use the same homotopy $r$ as in the first part to get a null homotopy of the identity.
             \end{proof}
 
             \begin{lemma}\label{lem: bar-cobar-Quill-adj}
@@ -1069,11 +1069,11 @@
             \end{lemma}
 
             \begin{proof}
-                First suppose that $f : C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on $D$: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent we know that $D \simeq \varinjlim D_i$, and since $\Omega$ commutes with colimits there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication, thus every element is primitive. This means that as a cochain complex $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$. We observe that this is exactly the condition for that the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
+                First, suppose that $f: C\rightarrow D$ is a cofibration. We define a filtration on $D$ as the sum of the image of $f$ and the coradical filtration on $D$: $D_i = Imf + Fr_iD$. $f$ being a cofibration ensures us that $D_0 \simeq C$. Since $D$ is conilpotent, we know that $D \simeq \varinjlim D_i$, and since $\Omega$ commutes with colimits there is a sequence of algebras $\Omega C \rightarrow \Omega D_1 \rightarrow ... \rightarrow \Omega D$. It is enough to show that each morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration. The quotient coalgebra $\sfrac{D_{i+1}}{D_i}$ only has a trivial comultiplication. Thus every element is primitive, and this means that as a cochain complex, $D_{i+1}$ is constructed from $D_i$ by attaching possibly very many copies of $\mathbb{K}$. We treat the case when there is only one such $\mathbb{K}$, here $D_{i+1} \simeq D_i \oplus \mathbb{K}\startset{x}$ where $dx = y$ for some $y\in D_i$, which is exactly the condition for the morphism $\Omega D_i \rightarrow \Omega D_{i+1}$ is a standard cofibration.
 
-                If $f$ is a weak equivalence, then $\Omega f$ is a quasi-isomorphism by definition.
+                If $f$ is a weak equivalence, then $\Omega f$ is a quasi-isomorphism.
 
-                By Lemma~\ref[]{lem: Quill-adj}, or adjointness more specifically, $B$ preserving fibrations is a consequence of $\Omega$ preserving cofibrations.
+                By Lemma~\ref[]{lem: Quill-adj}, or adjointness, more specifically, the property that $B$ preserves fibrations is a consequence of $\Omega$ preserving cofibrations.
 
                 It remains to show that if $f: A\rightarrow B$ is a quasi-isomorphism, then $Bf$ is a weak equivalence. Now, $Bf$ is a weak equivalence if and only if $\Omega Bf$ is a quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, the counit $A \rightarrow \Omega BA$ is a quasi-isomorphism, so $Bf$ is a weak equivalence by 2-out-of-3 property.
 
@@ -1096,7 +1096,7 @@
             % \end{center}
 
             \begin{lemma}[Key lemma]\label{lem: tech-fac}
-                Let $A$ be a dg-algebra, $D$ a dg-coalgebra and $p: A \rightarrow \Omega D$ a fibration of algebras. The projection morphism $\ast : BA\prod_{B\Omega D}D \rightarrow BA$ is an acyclic cofibration.
+                Let $A$ be a dg-algebra, $D$ a dg-coalgebra, and $p: A \rightarrow \Omega D$ a fibration of algebras. The projection morphism $\ast BA\prod_{B\Omega D}D \rightarrow BA$ is an acyclic cofibration.
                 \begin{center}
                     \begin{tikzcd}
                         BA\ast_{B\Omega D}D \ar[]{d}[]{\pi} \ar[]{r}[]{} \ar[phantom]{rd}[near start]{\ulcorner} & D \ar[]{d}[]{\eta_D} \\
@@ -1105,12 +1105,12 @@
                 \end{center}
             \end{lemma}
 
-            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may work in some cases, but fails in its full generality \cite{Keller06}. The proof presented here will be a modification of Vallette's proof of "A technical lemma" \cite[Appendix B]{Vallette20}.
+            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may sometimes work but fails in its full generality \cite{Keller06}. The proof presented here is a modification of Vallette's proof of "A technical lemma" \cite[Appendix B]{Vallette20}.
 
             \begin{proof}
                 $\pi$ being a cofibration is immediate by Corollary~\ref{cor: stable-cofib-base-change}. 
                 
-                To see that $\pi$ is a weak equivalence it is enough to show that it is a filtered quasi-isomorphism by Lemma~\ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra we may realize the algebra $A$ as the following extension.
+                To see that $\pi$ is a weak equivalence, We show that it is a filtered quasi-isomorphism by Lemma~\ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra, we may realize the algebra $A$ as the following extension.
                 \begin{center}
                     \begin{tikzcd}
                         \cdots \ar[hook]{r} & \tt{cone}(d') \ar[two heads]{r}[]{p} & \Omega D \ar[dashed, out = -10, in = 170, looseness = 1.5]{dll}[]{d'} \\
@@ -1124,41 +1124,41 @@
                     d' & : \Omega D \rightarrow K\tt{.}
                 \end{align*}
 
-                In the category $\tt{Alg}_{\mathbb{K},+}^\bullet$, $\oplus$ is the product. Since $B : \tt{Alg}_{\mathbb{K},+}^\bullet \rightarrow \tt{coAlg}_{\mathbb{K}, conil}^\bullet$ is right adjoint, it necessarilly preserves products. Thus
+                In the category $\tt{Alg}_{\mathbb{K},+}^\bullet$, $\oplus$ is the product. Since $B : \tt{Alg}_{\mathbb{K},+}^\bullet \rightarrow \tt{coAlg}_{\mathbb{K}, conil}^\bullet$ is right adjoint, it necessarily preserves products. Thus
                 \begin{align*}
                     & BA\simeq B(K\oplus \Omega D) \simeq BK \ast B\Omega D \tt{ and} \\
                     & BA \ast_{B\Omega D} D \simeq BK \ast D\tt{.}
                 \end{align*}
                 
-                Using this identification of the underlying graded modules we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbated by $d'$, then we could have appealed to the morphism $\pi$ being a filtered quasi-isomorphism to arrive at the conclusion. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
+                Using this identification of the underlying graded modules, we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbated by $d'$, then we could have appealed to the morphism $\pi$ being a filtered quasi-isomorphism to conclude that it is a quasi-isomorphism. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
 
-                Since $BK$ is quasi-free, by the comonadic presentation of $D$, we are able to obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
+                Since $BK$ is quasi-free, by the comonadic presentation of $D$, we can obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
 
-                With this description we define filtrations as
+                With this description, we define filtrations as
                 \begin{align*}
                     & F_n(BA\ast_{B\Omega D}D) \subseteq F_n(T^c(\overline{K}[1]\oplus \overline{D})) = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots+n_k \\ \leq n}}\,\,\bigotimes_{i = 1}^k\,(\overline{K}[1]\oplus Fr_{n_i}\overline{D})\tt{ and} \\
                     & F_n(BA) = F_n(T^c(\overline{K}[1]\oplus(\overline{\Omega}D)[1])) = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots+n_k \\ \leq n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus\widetilde{Fr}_{n_i}(\overline{\Omega}D)[1])\tt{.}
                 \end{align*}
-                Here $Fr$ and $\widetilde{Fr}$ respectively refers to the coradical and induced coradical filtration. This filtration is made to be agnostic towards $K$, in other words morphisms into $K$ are a priori filtered. Thus the part of the differential coming from $d_K$ and $d'$ are filtered. Likewise, the coradical filtration preserves the part of the differential coming from $d_{\Omega D}$. The differential coming from the multiplication of $K$ and $\Omega D$ is seen to be of $-1$ filtered degree. It is clear that $\eta_{\overline{D}}$ preserves this filtration as it acts like the identity.
+                Here $Fr$ and $\widetilde{Fr}$ refer to the coradical and induced coradical filtration. This filtration is made to be agnostic towards $K$. In other words, morphisms into $K$ are a priori filtered. Thus the part of the differential coming from $d_K$ and $d'$ are filtered. Likewise, the coradical filtration preserves the part of the differential coming from $d_{\Omega D}$. The differential coming from the multiplication of $K$ and $\Omega D$ is of $-1$ filtered degree. $\eta_{\overline{D}}$ preserves this filtration as it acts like the identity.
 
-                The associated graded component reduces to the associated graded of $D$ and $B\Omega D$. This can be seen as if we lower the degree of a $n_i$ by $1$, then this component lands in the lower degree of the filtration. By cocontinouity of the tensor, we may then move the associated graded into each variable. The sum then handles every other component.
+                The associated graded component reduces to the associated graded of $D$ and $B\Omega D$. If we lower the degree of a $n_i$ by $1$, this component lands in the lower degree of the filtration. By cocontinuity of the tensor, we may move the associated graded into each variable. The sum handles every other component.
                 \begin{align*}
                     \tt{gr}_n(BA\ast_{B\Omega D}D) & \simeq BK \ast \tt{gr}_nD \\
                     \tt{gr}_n(BA) & \simeq BK\ast B\Omega \tt{gr}_nD
                 \end{align*}
                 In the same manner, the morphism $\pi$ then acts on each element as $id_{BK}\ast \tt{gr}(\eta_D)$.
 
-                These filtrations are clearly bounded below. Since $D$ and $B\Omega D$ are both conilpotent dg-coalgebras, the filtrations are then exhaustive as well. By the classical convergence theorem of filtered spectral sequences we obtain spectral seqences $E(BA\ast_{B\Omega D}D) \implies \tt{H}^*(BA\ast_{B\Omega D}D)$ and \\ $E(BA) \implies \tt{H}^*(BA)$. We want to show that the morphism of spectral sequences $id_{BK}\ast_{B\Omega D}\tt{gr}\eta_D : E(BA\ast_{B\Omega D}D) \rightarrow E(BA)$ eventually becomes a quasi-isomorphism. This will in fact happen on the first page.
+                These filtrations are bounded below. Since $D$ and $B\Omega D$ are both conilpotent dg-coalgebras, the filtrations are then exhaustive as well. By the classical convergence theorem of filtered spectral sequences, we obtain spectral sequences $E(BA\ast_{B\Omega D}D) \implies \tt{H}^*(BA\ast_{B\Omega D}D)$ and \\ $E(BA) \implies \tt{H}^*(BA)$. We want to show that the morphism of spectral sequences $id_{BK}\ast_{B\Omega D}\tt{gr}\eta_D: E(BA\ast_{B\Omega D}D) \rightarrow E(BA)$ eventually becomes a quasi-isomorphism, and this will happen on the first page.
 
-                To obtain this at the first page we will define another spectral sequence $\widetilde{E}$ such that $\widetilde{E} \implies E_1$. We start by defining new filtrations,
+                To obtain this on the first page, we will define another spectral sequence $\widetilde{E}$ such that $\widetilde{E} \implies E_1$. We start by defining new filtrations,
                 \begin{align*}
                     \widetilde{F}_n(BK\ast\tt{gr}D) & \subseteq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k + k \\ \leq n}}\,\,\bigotimes_{i=1}^k(\overline{K}[1]\oplus \tt{gr}_{n_i}\overline{D})\tt{ and} \\
                     \widetilde{F}_n(BK\ast B\Omega\tt{gr}D) & = \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots +n_k \\ \leq n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots +m_t + t \\ \leq n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])\tt{.}
                 \end{align*}
 
-                Again, these filtrations are agnostic towards $K$, so both parts of the differential which comes from $d_K$ and $d'$ are filtered. The part of the differential which comes from $d_D$ naturally goes from $\tt{gr}_{n_i}\overline{D}$ to itself. The differential coming from the multiplication has already been dealt with, so these filtrations respects our differential. The morphism $id_{BK}\ast\tt{gr}(\eta_D)$ also preserves this filtration, as it acts like the identity on elements. In other words, the first filtered object is naturally a subobject of the second filtered object by identifying the elements $d$ with $[\langle d \rangle ]$.
+                Again, these filtrations are agnostic towards $K$, so both parts of the differential that comes from $d_K$ and $d'$ are filtered. The part of the differential which comes from $d_D$ naturally goes from $\tt{gr}_{n_i}\overline{D}$ to itself. The differential coming from the multiplication has already been dealt with, so these filtrations respect our differential. The morphism $id_{BK}\ast\tt{gr}(\eta_D)$ also preserves this filtration, as it acts like the identity on elements. In other words, the first filtered object is naturally a subobject of the second filtered object by identifying the elements $d$ with $[\langle d \rangle ]$.
 
-                At the $0$'th page of $\widetilde{E}$ we want to show that the part of the differential coming from $d'$ acts like $0$. This is the same to say that $\tt{Im}d'\mid_{F_n} \subseteq F_{n-1}$. We calculate the $0$'th page of the double spectral sequence as below.
+                At the $0$'th page of $\widetilde{E}$, we want to show that the part of the differential coming from $d'$ acts like $0$. This is the same to say that $\tt{Im}d'\mid_{F_n} \subseteq F_{n-1}$. We calculate the $0$'th page of the double spectral sequence as below.
                 \begin{align*}
                     \widetilde{E}_0^{-n}(BK\ast\tt{gr}D)[-n] \subseteq \tt{gr}_n(BK\ast\tt{gr}D) \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k + k \\ = n}}\,\,\bigotimes_{j=1}^k\,(\overline{K}[1]\oplus\tt{gr}_{n_i}\overline{D})
                 \end{align*}
@@ -1167,7 +1167,7 @@
                     \simeq \bigoplus_{k=0}^\infty\,\,\sum_{\substack{n_1+\cdots + n_k \\ = n}}\,\,\bigotimes_{i=1}^k\,(\overline{K}[1]\oplus(\bigoplus_{t=1}^\infty\,\,\sum_{\substack{m_1+\cdots + m_t + t \\ = n_i}}\,\,\bigotimes_{j=1}^t\,\tt{gr}_{m_j}\overline{D}[-1])[1])
                 \end{multline*}
 
-                We now pick an element $([k_1] + d_1) \otimes \cdots \otimes ([k_k] + d_k) \in \tt{gr}_n(BK\ast \tt{gr}D)$. Then $|d_1| + \cdots + |d_k| + k = n$. The differential coming from $d'$ is the alternate sum of $d'$ at each tensor argument. We illustrate what happens at the $i$'th argument.
+                We now pick an element $([k_1] + d_1) \otimes \cdots \otimes ([k_k] + d_k) \in \tt{gr}_n(BK\ast \tt{gr}D)$. Then $|d_1| + \cdots + |d_k| + k = n$. The differential from $d'$ is the alternate sum of $d'$ at each tensor argument. We illustrate what happens at the $i$'th argument.
                 \begin{align*}                    
                     & \widetilde{d'}(([k_1] + d_1) \otimes \cdots \otimes ([k_i] + d_i) \otimes \cdots \otimes ([k_k] + d_k)) \\ 
                     = & ([k_1] + d_1) \otimes \cdots \otimes ([k_i] + d'(d_i)) \otimes \cdots \otimes ([k_k] + d_k) 
@@ -1175,7 +1175,7 @@
 
                 Since $|[k]+d'(d_i)| = 0$, the total degree of this element goes down at least $1$ if $d_i \neq 0$. If $d_i = 0$, then $d'(d_i) = 0$ anyway. In this manner, this morphism does not survive at the $\widetilde{E}_0$ page. Likewise, given an element on the form $[k_1 + \langle d_{1,1} \mid \cdots \mid d_{1,t_1} \rangle \mid \cdots \mid k_k + \langle d_{k,1} \mid \cdots \mid d_{k,t_k} \rangle ]$, then $|d'(\langle d_{i,1} \mid \cdots \mid d_{i,t_i} \rangle)| = 0$. So the phenomenon occurs at the other spectra sequence as well.
                 
-                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as Lemma~\ref{prop: unit-counit-qif}. By the classical convergence theorem this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
+                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as Lemma~\ref{prop: unit-counit-qif}. By the classical convergence theorem, this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
             \end{proof}
 
             \begin{thm}\label{thm: model-coalg}
@@ -1185,7 +1185,7 @@
             \begin{proof}
                 The axioms \textbf{MC1} and \textbf{MC2} are immediate. Also, fibrations having RLP with respect to acyclic cofibrations is by definition.
 
-                We show \textbf{MC4} first. Let $f : C\rightarrow D$ be a morphism of coalgebras. There is a factorization $\Omega f = pi$ of morphisms between algebras, where $i$ is a cofibration, $p$ is a fibration and at least one of $i$ and $p$ are quasi-isomorphisms. Applying bar we get a factorization $B\Omega f = BiBp$, where $Bp$ is a fibration and at least one of $Bi$ and $Bp$ are weak equivalences.
+                We show \textbf{MC4} first. Let $f: C\rightarrow D$ be a morphism of coalgebras. There is a factorization $\Omega f = pi$ of morphisms between algebras, where $i$ is a cofibration, $p$ is a fibration, and at least one of $i$ and $p$ are quasi-isomorphisms. Applying the bar construction, we get a factorization $B\Omega f = BiBp$, where $Bp$ is a fibration, and at least one of $Bi$ and $Bp$ are weak equivalences.
                 \begin{center}
                     \begin{tikzcd}
                         \Omega C \ar[]{rr}[]{\Omega f} \ar[]{rd}[]{i} && \Omega D \\
@@ -1197,7 +1197,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                We construct a pullback with $Bp$ and $\eta_D$. By Lemma~\ref{lem: tech-fac} the morphism $\pi$ is an acyclic cofibration. We collect our morphisms in a big diagram. The dashed arrow exists since the rightmost square is a pullback.
+                We construct a pullback with $Bp$ and $\eta_D$. By Lemma~\ref{lem: tech-fac}, the morphism $\pi$ is an acyclic cofibration. We collect our morphisms in a big diagram. The dashed arrow exists since the rightmost square is a pullback.
                 \begin{center}
                     \begin{tikzcd}
                         & BA\prod_{B\Omega D}D \ar[]{ddd}[]{} \ar[]{rd}[]{q} \ar[phantom]{ddddr}[very near start]{\ulcorner} \\
@@ -1208,9 +1208,9 @@
                     \end{tikzcd}
                 \end{center}
                 
-                First notice that $q$ is a fibration, since fibrations are stable under pullbacks. $j$ is a cofibration, or a monomorphism, as the composition $Bi\circ \eta_C$ is a monomorphism. Thus it remains to see that if $Bi$ ($Bp$) is a weak equivalence, then $j$ ($q$) is as well. This is evident from the $2$-out-of-$3$ property, as $\eta$ is a natural weak equivalence, $\pi$ is a weak equivalence and $Bi$ ($Bp$) is a weak equivalence.
+                First, notice that $q$ is a fibration since fibrations are stable under pullbacks. $j$ is a cofibration, or a monomorphism, as the composition $Bi\circ \eta_C$ is a monomorphism. Thus it remains to see that if $Bi$ ($Bp$) is a weak equivalence, then $j$ ($q$) is as well. This is evident from the $2$-out-of-$3$ property, as $\eta$ is a natural weak equivalence, $\pi$ is a weak equivalence, and $Bi$ ($Bp$) is a weak equivalence.
                 
-                We now show \textbf{MC3}. Suppose that there is a square as below, where $i$ is a cofibration and $t$ is an acyclic cofibration.
+                We now show \textbf{MC3}. Suppose there are morphisms as in the square below, where $i$ is a cofibration, and $t$ is an acyclic cofibration.
                 \begin{center}
                     \begin{tikzcd}
                         E \ar[]{r}[]{} \ar[]{d}[]{i} & C \ar[]{d}[]{t} \\
@@ -1218,7 +1218,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                We can factor $t$ as $t = qj$ by \textbf{MC4}. Notice that $t$ is a retract of $q$, i.e. there is a commutative diagram as below.
+                We can factor $t$ as $t = qj$ by \textbf{MC4}. Notice that $t$ is a retract of $q$, i.e., there is a commutative diagram as below.
                 \begin{center}
                     \begin{tikzcd}
                         C \ar[equal]{r}[]{} \ar[]{d}[]{j} & C \ar[]{d}[]{t} \\
@@ -1226,7 +1226,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                So in order to find a lift to $C$, we may instead find a lift to $BA\prod_{B\Omega D}D$. Since $p$ is an acyclic fibration by construction and $\Omega i$ is a cofibration by Lemma~\ref{lem: bar-cobar-Quill-adj}, there is a lift $h: \Omega E \rightarrow A$ of algebras. We obtain our desired lift from the bar-cobar adjunction and the universal property of the pullback.
+                To find a lift to $C$, we may find a lift to $BA\prod_{B\Omega D}D$. Since $p$ is an acyclic fibration by construction and $\Omega i$ is a cofibration by Lemma~\ref{lem: bar-cobar-Quill-adj}, there is a lift $h: \Omega E \rightarrow A$ of algebras. We obtain our desired lift from the bar-cobar adjunction and the universal property of the pullback.
                 \begin{center}
                     \begin{tikzcd}
                         E \ar[]{d}[]{i} \ar[]{r}[]{} & BA\prod_{B\Omega D}D \ar[crossing over]{d}[]{q} \ar[]{r}[]{\pi} \ar[phantom]{rd}[very near start]{\ulcorner} & BA \ar[]{d}[]{Bp} \\
@@ -1250,7 +1250,7 @@
 
     \subsection{Homotopy theory of $A_{\infty}$-algebras}
 
-        This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertibility of every strongly homotopy associative quasi-isomorphism, and its relation to ordinary associative algebras. This discussion will end with mentioning different results which gives a clearer description of fibrations, cofibrations and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $\tt{Alg}_\infty$.
+        This section aims to finalize the discussion of the homotopy theory of $A_{\infty}$-algebras. We will look at the homotopy invertibility of every strongly homotopy associative quasi-isomorphism and its relation to ordinary associative algebras. This discussion will end with mentioning different results, which gives a more explicit description of fibrations, cofibrations, and homotopy equivalences. This section follows Lefevre-Hasegawa \cite{LefevreHasegawa03}. Before we get to the main theorem, we start by discussing a non-closed model structure on the category of $\tt{Alg}_\infty$.
 
         Let $f: A \rightsquigarrow B$ be a morphism between $A_\infty$-algebras, the category of $A_\infty$-algebras will be equipped with the three following classes of morphisms:
         \begin{itemize}
@@ -1259,7 +1259,7 @@
             \item $f\in \tt{Cof}$ if $f_1$ is a monomorphism.
         \end{itemize}
 
-        This category does not make a model category in the sense of a closed model category, as we are lacking many finite limits. It does however come quite close to be such a category.
+        This category does not make a model category in the sense of a closed model category, as we lack many finite limits. It does, however, come quite close to being such a category.
 
         \begin{thm}\label{thm: model-A-inf}
             The category $\tt{Alg}_\infty$ equipped with the three classes as defined above satisfies:
@@ -1275,7 +1275,7 @@
             \end{itemize}
         \end{thm}
 
-        We will first prove one lemma which technique we will reuse. A second lemma used to simplify the theorem will be stated without proof.
+        Before we are ready to prove this theorem, we will need some preliminary results. We will only prove the first lemma.
 
         \begin{lemma}\label{lem: inf-creator}
             let $A$ be an $A_\infty$-algebra, and $K$ a contractible complex considered as an $A_\infty$-algebra. If $g: (A,m_1^A) \rightarrow (K, m_1^K)$ is a cochain map, then it extends to an $\infty$-morphism $f: A \rightsquigarrow K$.
@@ -1284,38 +1284,34 @@
         \begin{proof}
             We construct each $f_i$ inductively. The case $i=1$ is degenerate as we have assumed $f_1 = g$.
 
-            Assume that we have already constructed $f_1$ through $f_n$. We observe that the sum below is a cycle of $\tt{Hom}^*_\mathbb{K}(A,K)$.
+            Assume that we have already constructed $f_1$ through $f_n$. We observe that the sum below is a cycle of $\tt{Hom}^*_\mathbb{K}(A, K)$.
             \begin{align*}
                 \sum_{\substack{p + 1 + r = k \\ p + q + r = n}}(-1)^{pq+r}f_k\circ_{p+1}m^A_q - \sum_{\substack{k\geq 2 \\ i_1 + ... + i_k = n}}(-1)^{e}m^B_k \circ (f_{i_1}\otimes f_{i_2}\otimes ... \otimes f_{i_k})
             \end{align*}
-            Thus since $K$ is contractible, $\tt{Hom}^*_\mathbb{K}(A,K)$ is acyclic and there exists some morphism $f_{n+1}$ such that $\partial (f{n+1})$ is the sum above. This says that this extension does in fact satisfy $(rel_{n+1})$.
+            Thus since $K$ is contractible, $\tt{Hom}^*_\mathbb{K}(A, K)$ is acyclic, and there exists some morphism $f_{n+1}$ such that $\partial (f{n+1})$ is the sum above, and this says that this extension does satisfy $(rel_{n+1})$.
         \end{proof}
 
-        \begin{lemma}\label{lem: strict-replacement}
-            Let $j: A \rightsquigarrow D$ be a cofibration of $A_\infty$-algberas, then there is an isomorphism $k: D\rightsquigarrow D'$ such that the composition $k\circ j : A \rightsquigarrow D'$ is a strict morphism of $A_\infty$-algebras.
+        \begin{lemma}[{\cite[Lemma 1.3.3.3][44]{LefevreHasegawa03}}]\label{lem: strict-replacement}
+            Let $j: A \rightsquigarrow D$ be a cofibration of $A_\infty$-algberas, and then there is an isomorphism $k: D\rightsquigarrow D'$ such that the composition $k\circ j: A \rightsquigarrow D'$ is a strict morphism of $A_\infty$-algebras.
 
-            Dually, if $j: A \rightsquigarrow D$ is a fibration, then there is an isomorphism $l : A' \rightsquigarrow A$ such that the composition $j\circ l : A' \rightsquigarrow D$ is a strict morphism of $A_\infty$-algebras.
+            Dually, if $j: A \rightsquigarrow D$ is a fibration, then there is an isomorphism $l: A' \rightsquigarrow A$ such that the composition $j\circ l: A' \rightsquigarrow D$ is a strict morphism of $A_\infty$-algebras.
         \end{lemma}
 
-        \begin{proof}
-            The proof may be found in \cite[Lemma 1.3.3.3][44]{LefevreHasegawa03}.
-        \end{proof}
-
         \begin{proof}[Proof of Theorem~\ref{thm: model-A-inf}]
-            We start by showing (b). Suppose that we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
+            We start by showing (b). Suppose we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
             \begin{center}
                 \begin{tikzcd}
                     & A \ar[two heads]{d}[]{g} \\
                     A' \ar[]{r}[]{f} & A''
                 \end{tikzcd}
             \end{center}
-            First notice that as dg-coalgebras, this pullback exists and defines a new dg-coalgebra $BA \prod_{BA''}BA'$.
+            First, notice that as dg-coalgebras, this pullback exists and defines a new dg-coalgebra $BA \prod_{BA''}BA'$.
 
-            Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = \tt{Ker}g_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \overline{T}^c(K)\prod \overline{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products and we get, $\overline{T}^c(A'[1])\prod \overline{T}^c(K) \simeq \overline{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e. it is an $A_\infty$-algebra.
+            Since $g_1$ is an epimorphism, $A[1]$ as a graded vector space splits into $A''[1] \oplus K$, where $K = \tt{Ker}g_1$. The pullback is then naturally identified with $BA \prod_{BA''}BA' \simeq \overline{T}^c(K)\prod \overline{T}^c(A'[1])$ as graded vector spaces. Since the cofree coalgebra is right adjoint to forget, it commutes with products, and we get $\overline{T}^c(A'[1])\prod \overline{T}^c(K) \simeq \overline{T}^c(A'[1]\oplus K)$. Thus the pullback is isomorphic to a cofree coalgebra as a graded coalgebra, i.e., an $A_\infty$-algebra.
 
             We now prove (a). \textbf{MC1} and \textbf{MC2} are immediate, so we will not prove them.
 
-            We start by proving \textbf{MC3}. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration and $q$ is a fibration.
+            We start by proving \textbf{MC3}. Suppose that there is a square of $A_\infty$-algebras as below, where $j$ is a cofibration, and $q$ is a fibration.
             \begin{center}
                 \begin{tikzcd}
                     A \ar[]{r}[]{f} \ar[]{d}[]{j} & B \ar[]{d}[]{q} \\
@@ -1323,7 +1319,7 @@
                 \end{tikzcd}
             \end{center}
 
-            By Lemma~\ref{lem: strict-replacement}, we may assume assume that both $j$ and $q$ are strict morphisms. We now assume that $q$ is an $\infty$-quasi-isomorphism, the proof will be analogous if $j$ is an $\infty$-quasi-isomorphism instead.
+            By Lemma~\ref{lem: strict-replacement}, we may assume that both $j$ and $q$ are strict morphisms. We can assume that $q$ is an $\infty$-quasi-isomorphism since the proof will be analogous if $j$ is an $\infty$-quasi-isomorphism instead.
 
             Our goal is to construct a lifting in this diagram inductively. Having a lift means finding an $\infty$-morphism $a : C \rightsquigarrow B$, such that the following hold for any $n\geq 1$:
             \begin{itemize}
@@ -1349,16 +1345,16 @@
                 & q_1 \circ (\partial b + c(a_1, ..., a_n)) = \partial (q_1\circ b) + c(q_1\circ a_1, ..., q_1\circ a_n) = \partial {g_{n+1}} + c(g_1, ..., g_n) = 0
             \end{align*}
 
-            We thus obtain that the cycle $\partial b + c(a_1, ..., a_n)$ factors thorugh the cokernel of $j$ and the kernel of $q$. Let us say that it factors like the diagram below:
+            We thus obtain that the cycle $\partial b + c(a_1, ..., a_n)$ factors through the cokernel of $j$ and the kernel of $q$. Let us say that it factors like the diagram below:
             \begin{center}
                 \begin{tikzcd}
                     C \ar[]{r}[]{p} & \tt{Cok} j_1 \ar[]{r}[]{c'} & \tt{Ker} q_1 \ar[]{r}[]{i} & D
                 \end{tikzcd}
             \end{center}
 
-            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is acyclic. Since $c'$ is a cycle, it necessarilly have to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
+            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is acyclic. Since $c'$ is a cycle, it necessarily has to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
 
-            We will now show \textbf{MC4}. Since the two properties have a similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j : A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1 : A\oplus C \rightarrow B$ gives a lift of the following diagram.
+            We will now show \textbf{MC4}. Since the two properties have similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j: A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1: A\oplus C \rightarrow B$ gives a lift of the following diagram.
 
             \begin{center}
                 \begin{tikzcd}
@@ -1367,10 +1363,10 @@
                 \end{tikzcd}
             \end{center}
 
-            Since we have a morphism of chain complexes, lodged between an acyclic cofibration and a fibration we use the same technique as above to construce an $\infty$-morphism $q : A\prod C \rightarrow B$. $q$ is a fibration by construction. The morphism $f$ may be factored as $f = q\circ j$, where $j$ is an acyclic cofibration and $q$ is a fibration.
+            Since we have a morphism of chain complexes lodged between an acyclic cofibration and a fibration, we use the same technique as above to construct an $\infty$-morphism $q: A\prod C \rightarrow B$. $q$ is a fibration by construction. The morphism $f$ may be factored as $f = q\circ j$, where $j$ is an acyclic cofibration, and $q$ is a fibration.
         \end{proof}
 
-        With this model structure we are finally able to characterize the fibrant and cofibrant conilpotent dg-coalgebras.
+        This model structure can characterize the fibrant and cofibrant conilpotent dg-coalgebras.
 
         \begin{proposition}
             Let $C$ be a conilpotent dg-coalgebra. Then $C$ is cofibrant, and $C$ is fibrant if and only if there is a cochain complex $V$, such that $C \simeq T^c(V)$ as complexes.
@@ -1386,9 +1382,9 @@
                     B\Omega C \ar[]{r}[]{\varepsilon_{B\Omega C}} \ar[dashed]{ru}[]{r} & \mathbb{K}
                 \end{tikzcd}
             \end{center}
-            Consider the morphism $p_1^C : C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1 : B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. Clearly, $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(\overline{Fr_1C})$.
+            Consider the morphism $p_1^C: C \rightarrow Fr_1C$ which is defined as $p_1^C = Fr_1r\circ p_1\circ \eta_C$, where $p_1: B\Omega C \rightarrow Fr_1 B\Omega C$ is the canonical projection on the filtration induced by the coradical filtration on $C$. The morphism $r$ makes $p_1$ into a universal arrow in the category of conilpotent coalgebras, so $C \simeq T^c(\overline{Fr_1C})$.
 
-            Now, assume that $C$ is isomorphic to $T^c(V)$ as coalgebras for some cochain complex $V$. Note that, by definition, $C$ is an $A_\infty$-algebra. By definition, we have a commutative square of $A_\infty$-algebras. Since every $A_\infty$-algebra is bifibrant, we know that this diagram has a lift, exhibiting $C$ as a retract of $B\Omega C$.
+            Assuming that $C$ is isomorphic to $T^c(V)$ as coalgebras for some cochain complex $V$. Note that, by definition, $C$ is an $A_\infty$-algebra. By definition, we have a commutative square of $A_\infty$-algebras. Since every $A_\infty$-algebra is bifibrant, we know that this diagram has a lift, exhibiting $C$ as a retract of $B\Omega C$.
             \begin{center}
                 \begin{tikzcd}
                     C \ar[equal]{r}[]{} \ar[]{d}[]{} & C \ar[]{d}[]{} \\
@@ -1396,19 +1392,19 @@
                 \end{tikzcd}
             \end{center}
 
-            We know that $\Omega C$ is fibrant, since the map $\Omega C \rightarrow \mathbb{K}$ is epi. By Lemma~\ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
+            We know that $\Omega C$ is fibrant since the map $\Omega C \rightarrow \mathbb{K}$ is epi. By Lemma~\ref{lem: bar-cobar-Quill-adj}, we know that the bar construction preserves fibrations, so $B\Omega C$ is fibrant. Thus $C$ is fibrant as well.
         \end{proof}
 
-        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f : A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf : BA \rightarrow BB$. Remember that the bar construction is extended such that it is an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to essentially obtain two different model structure on this category. The following proposition tells us that these structures do not differ.
+        The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f: A \rightsquigarrow B$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf: BA \rightarrow BB$. Remember that the bar construction is extended as an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to obtain two different model structures on this category. The following proposition tells us that these structures do not differ.
 
         \begin{lemma}\label{lem: qif-infty-qi}
-            Let $A$ and $B$ be $A_\infty$-algebras. Suppose that $f : A \rightsquigarrow B$ is an $\infty$-morphism and $Bf : BA \rightarrow BB$ is a filtered quasi-isomorphism, then $f$ is an $\infty$-quasi-isomorphism. 
+            Let $A$ and $B$ be $A_\infty$-algebras. Suppose that $f: A \rightsquigarrow B$ is an $\infty$-morphism and $Bf: BA \rightarrow BB$ is a filtered quasi-isomorphism, then $f$ is an $\infty$-quasi-isomorphism. 
         \end{lemma}
 
         \begin{proof}
             Given $Bf : BA \rightarrow BB$, we may reconstruct $f_i = s \circ \pi_{B[1]} Bf \circ (\omega \circ \iota_A)^{\otimes i}$.
 
-            We know that the unit $\eta_{BA}$ is a filtered quasi-isomorphism from Proposition~\ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA} : A \rightarrow \Omega BA$. This is then again a quasi-isomorphism by assumption.
+            We know that the unit $\eta_{BA}$ is a filtered quasi-isomorphism from Proposition~\ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA}: A \rightarrow \Omega BA$, which is is again a quasi-isomorphism by assumption.
         \end{proof}
 
         \begin{proposition}\label{prop: coherent-model-structure}
@@ -1421,15 +1417,15 @@
         \end{proposition}
 
         \begin{proof}
-            Suppose that $f: A \rightarrow A'$ is an $\infty$-quasi-isomorphism. By the Kunneth theorem, $Bf : BA \rightarrow BA'$ is a filtered quasi-isomorphism.
+            Suppose that $f: A \rightarrow A'$ is an $\infty$-quasi-isomorphism. The K\"unneth theorem shows that $Bf: BA \rightarrow BA'$ is a filtered quasi-isomorphism.
 
-            Suppose that $Bf : BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf : B\Omega BA \rightarrow B\Omega BA'$ is a filtered quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both filtered quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property we get that $f$ has to be as well.
+            Suppose that $Bf: BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf: B\Omega BA \rightarrow B\Omega BA'$ is a filtered quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both filtered quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property, we get that $f$ has to be as well.
 
-            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories it necessarilly have to preserve and reflect monomorphisms. \todo{Er virkelig monomorfier av A-uendelig-algebraer morfier hvor $f_1$ er mono?}
+            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories, it must preserve and reflect monomorphisms. \todo{Er virkelig monomorfier av A-uendelig-algebraer morfier hvor $f_1$ er mono?}
 
-            Suppose that $Bf$ is a fibration. Then it has RLP to acyclic cofibrations $Bg$. By the previous points we know that $g_1$ is a quasi-isomorphism and a monomorphism, in particular $f$ has RLP to $g$.
+            Suppose that $Bf$ is a fibration. Then it has RLP to acyclic cofibrations $Bg$. By the previous points, we know that $g_1$ is a quasi-isomorphism and a monomorphism; in particular, $f$ has RLP to $g$.
 
-            Suppose that $f_1$ is an epimorphism, and that there exists morphism fitting inside a commutative diagram as below.
+            Suppose that $f_1$ is an epimorphism and that there exists morphism fitting inside a commutative diagram as below.
             \begin{center}
                 \begin{tikzcd}
                     BC \ar[]{r}[]{Bh} \ar[tail]{d}[]{Bg} & BA \ar[two heads]{d}[]{Bf} \\
@@ -1463,21 +1459,21 @@
     \end{thm}
 
     \begin{proof}
-        The first point is observed from Corollary~\ref{cor: homotopy-is-eq-rel}, and the second point is Whitehead's theorem, Theorem~\ref{thm: Whitehead}.
+        We observe the first point from Corollary~\ref{cor: homotopy-is-eq-rel}, and the second point is Whitehead's theorem, Theorem~\ref{thm: Whitehead}.
 
-        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By Corollary~\ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e. $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by Theorem~\ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{Alg}_\mathbb{K}$, so in homotopy, we get that the image $\sfrac{\tt{Alg}_\mathbb{K}}{\sim}$ is equivalent to the essentiall image $\tt{Ho}\tt{Alg}_\infty$.
+        To see the final point, observe that the inclusion functor is given by the bar construction $B$. By Corollary~\ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e., $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by Theorem~\ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{Alg}_\mathbb{K}$, so in homotopy, we get that the image $\sfrac{\tt{Alg}_\mathbb{K}}{\sim}$ is equivalent to the essential image $\tt{Ho}\tt{Alg}_\infty$.
     \end{proof}
 
-    Homotopy equivalence in the algebraic sense and the model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e. $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras. \todo{Må fikses!}
+    Homotopy equivalence in the algebraic and model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e., $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras. \todo{Må fikses! aka. f-g-deriveringer}
 
     \begin{proposition}
-        Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g : C \rightarrow D$ are two morphisms. Then:
+        Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g: C \rightarrow D$ are two morphisms. Then:
         \begin{itemize}
             \item If $f-g$ is null homotopic, then they are left homotopic.
             \item If $D$ is fibrant, then $f-g$ is null homotopic if and only if $f$ and $g$ are left homotopic.
         \end{itemize}
     \end{proposition}
     
-    This tells us that in general, these concepts are usually not the same. However, we know that the subcategory of bifibrant objects in this category is exactly the subcategory $\tt{Alg}_\infty$. Thus for $A_\infty$-algebras homological homotopy is the same as model categorical homotopy. In this sense we obtain that the homotopy category in the homological sense is equivalent to the derived category.
+    This proposition tells us that these concepts are usually not the same. However, this category's subcategory of bifibrant objects is precisely the subcategory $\tt{Alg}_\infty$. Thus for $A_\infty$-algebras homological homotopy is the same as model categorical homotopy. In this sense, we obtain that the homotopy category in the homological sense is equivalent to the derived category.
 
 \end{document}
