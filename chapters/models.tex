@@ -152,7 +152,7 @@
             \begin{construction}
                 Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition, $QX$ is cofibrant and weakly equivalent to $X$.
 
-                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this, we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{tar} \circ \alpha$. \todo{Finn ut hva jeg skal gjøre med tar}
+                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this, we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{cod} \circ \alpha$.
 
                 Dually, we get a fibrant replacement $R$ by dualizing the above argument.
             \end{construction}
@@ -1423,7 +1423,7 @@
 
             Suppose that $Bf: BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf: B\Omega BA \rightarrow B\Omega BA'$ is a filtered quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both filtered quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property, we get that $f$ has to be as well.
 
-            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories, it must preserve and reflect monomorphisms. \todo{Er virkelig monomorfier av A-uendelig-algebraer morfier hvor $f_1$ er mono?}
+            The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories, it must preserve and reflect monomorphisms.
 
             Suppose that $Bf$ is a fibration. Then it has RLP to acyclic cofibrations $Bg$. By the previous points, we know that $g_1$ is a quasi-isomorphism and a monomorphism; in particular, $f$ has RLP to $g$.
 

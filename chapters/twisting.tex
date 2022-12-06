@@ -238,7 +238,7 @@
                         \begin{tikzcd}
                             \mathbb{K} \otimes_\mathbb{K} M \ar[]{r}[]{1_A\otimes M} \ar[]{rd}[]{\simeq} & A \otimes_\mathbb{K} M \ar[]{d}[]{\mu_M} \\
                             & M
-                        \end{tikzcd}\todo{Hvordan punktum???}
+                        \end{tikzcd}
                     \end{center}
                     % \begin{center}
                     %     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, scale=0.7]
@@ -666,7 +666,7 @@
                         \begin{tikzcd}
                             \mathbb{K}\otimes_\mathbb{K}M & C\otimes_\mathbb{K}M \ar[]{l}[]{\varepsilon_C\otimes M} \\
                             & M \ar[]{lu}[]{\simeq} \ar[]{u}[]{\omega_M}
-                        \end{tikzcd}\todo{punktum?}
+                        \end{tikzcd}
                     \end{center}
                     
                     %, i.e., the electronic laws are satisfied.
@@ -1091,7 +1091,6 @@
                         \draw [line width=1pt] (4, 1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,1);
                         \draw [line width=1pt] (l) -- (4.5,-1);
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
 
                 Let $N$ be a $C$-bicomodule. A $\mathbb{K}$-linear morphism $d:N\rightarrow C$ is called a coderivation if $\Delta_C\circ d = (d\otimes id_C)\circ\omega_N^r + (id_C\otimes d)\circ\omega_N^l$, i.e. electronically,
@@ -1121,7 +1120,6 @@
                         \draw [line width=1pt] (4, -1) --  (4, 0) -- (l) -- (5,0) -- (f) -- (5,-1);
                         \draw [line width=1pt] (l) -- (4.5,1);
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
             \end{definition}
 
@@ -1205,7 +1203,6 @@
                         \draw [line width=1pt] (4, 1) -- (4, 0) -- (4.5,-0.25) -- (5,0) -- (f) -- (5,1);
                         \draw [line width=1pt] (4.5,-0.25) -- (4.5,-1);
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
                 Dually, given a differential coalgebra $(C,d_C)$ and $N$ a left $C$-comodule, a $\mathbb{K}$-linear morphism $d_N:N\rightarrow N$ is a coderivation if $\omega_N\circ d_N = (d_C\otimes id_N + id_C\otimes d_N)\circ \omega_N$, or electronically,
                 \begin{center}
@@ -1230,7 +1227,6 @@
                         \draw [line width=1pt] (4, -1) -- (4, 0) -- (4.5,0.25) -- (5,0) -- (f) -- (5,-1);
                         \draw [line width=1pt] (4.5,0.25) -- (4.5,1);
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
             \end{definition}
 
@@ -1250,7 +1246,6 @@
                     \draw [line width = 1pt] (2, 1) -- (2) -- (2, -1);
                     
                 \end{tikzpicture}
-                \todo{punktum}
             \end{center}
 
             \begin{proposition}\label{prop: free-derivation}
@@ -1377,7 +1372,6 @@
             \end{proof}
 
             We say that a $\mathbb{K}$-module $M^*$ admits a $\mathbb{Z}$-grading if it decomposes into either summands or factors
-            \todo{Gir dette mening å definere?}
             \begin{align*}
                 M^* = \bigoplus_{z:\mathbb{Z}}M^z\tt{ or } M^* = \prod_{z:\mathbb{Z}}M^z\tt{.}
             \end{align*}
@@ -1438,7 +1432,6 @@
                     \draw[line width = 1pt] (5, 1) -- (g2) -- (5, -1);
                     
                 \end{tikzpicture}
-                \todo{punktum?}
             \end{center}
 
             A good way of thinking about moving components in a circuit is that whenever we move a component downwards, it has to pass over every component to the left on its current level and every component to the right of it on the level below. We introduce signs in a $2$-string circuit whenever a component is moved downwards to or completely past another component on its right. If we move a component upwards completely past another component to its left, we introduce a sign. In an $n$-string circuit, it gets more complicated as the component may have to move past several components on both the left and right.
@@ -1505,7 +1498,6 @@
                     \begin{tikzcd}
                         B^\bullet \ar[tail]{r}[]{} & \tt{cone}(f) \ar[two heads]{r}[]{} & A^\bullet[1]\tt{.}
                     \end{tikzcd}
-                    \todo{punktum?}
                 \end{center}
             \end{example}
             \begin{example}[Normalized cochain complex]
@@ -1578,7 +1570,6 @@
                     \draw [line width = 1pt] (4, 1) -- (d2) -- (f2) -- (4, -1);
 
                 \end{tikzpicture}
-                \todo{punktum?}
             \end{center}
 
             Notice how this construction of $\tt{Hom}_\mathbb{K}^\bullet$ is the same as the (product) total complex of an anticommutative double complex. An anticommutative double complex is a graded module of cochain complexes, together with a differential between the cochain complexes. These different differentials are supposed to be anticommuting. We draw an anticommutative double complex, as shown below.
@@ -1843,7 +1834,6 @@
                     \draw [line width=1pt] (1, 1.25) -- (1, -0.5) -- (0.5, -1);
                     
                 \end{tikzpicture}
-                \todo{punktum?}
             \end{center}
 
             One of our main tools will be this coderivation. The ungraded case determines a ring morphism with little to no complications.
@@ -2074,7 +2064,6 @@
                         \node at (10.5, 0) {$\partial (f) \star g + (-1) ^{|f|}f \star \partial (g)$};
 
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
             \end{proof}
 
@@ -2116,7 +2105,6 @@
                         \draw [line width = 1pt] (12, 1.75) -- (da2) -- (12, -1) -- (11.5, -1.5);
 
                     \end{tikzpicture}
-                    \todo{komma?}
                 \end{center}
 
                 \begin{center}
@@ -2150,7 +2138,6 @@
                         \draw [line width = 1pt] (10.25, 1.75) -- (da2) -- (10.25, -1) -- (9.75, -1.5);
 
                     \end{tikzpicture}
-                    \todo{punktum?}
                 \end{center}
 
                 When $\alpha$ is of even degree, $\partial d_\alpha^r = d_{C\otimes_\mathbb{K}A}\circ d^r_\alpha - d^r_\alpha\circ d_{C\otimes_\mathbb{K}A}$. The outer summands cancel, and we have
@@ -2238,7 +2225,6 @@
                     C\otimes_\alpha A \ar[]{d}[]{f\otimes g} \\
                     C'\otimes_{\alpha '} A'
                 \end{tikzcd}
-                \todo{punktum?}
             \end{center}
             The important property to obtain this is that $f$ and $g$ are morphisms in their respective categories, allowing us to collapse the different compositions to the same map up to sign.
 
@@ -2654,7 +2640,7 @@
             \end{align*}
         \end{proposition}
 
-        We define the homotopy of an $A_\infty$-algebra to be the homology of the chain complex $(A, m_1)$. Since $\partial(m_3) = m_2\circ_1m_2 - m_2\circ_2m_2$, we get that $m_2$ is associative in homology. Thus for any $A_\infty$-algebra $A$, the homotopy $HA$ is an associative algebra. The operadic homology of $A$ is defined as the homology of $(T^c(A[1]), m)$, which is the non-unital augmented Hochschild homology of $A$. \todo{Ta ut operadic homology?}
+        We define the homotopy of an $A_\infty$-algebra to be the homology of the chain complex $(A, m_1)$. Since $\partial(m_3) = m_2\circ_1m_2 - m_2\circ_2m_2$, we get that $m_2$ is associative in homology. Thus for any $A_\infty$-algebra $A$, the homotopy $HA$ is an associative algebra. The operadic homology of $A$ is defined as the homology of $(T^c(A[1]), m)$, which is the non-unital augmented Hochschild homology of $A$.
 
         \begin{example}
             Suppose that $V$ is a cochain complex with differential $d$. Then $V$ is an $A_\infty$-algebra with trivial multiplication. In other words $m^1 = d$ and $m^i = 0$ for any $i>1$.
