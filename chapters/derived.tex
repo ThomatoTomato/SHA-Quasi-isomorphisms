@@ -747,7 +747,7 @@
             The category $\tt{Mod}_{\infty, \tt{strict}}^A$ is the non-full subcategory of $\tt{Mod}_{\infty}^A$ such that every $\infty$-morphism are strict. 
             % We see that the functor restricts $i : \tt{Mod}^A \rightarrow \tt{Mod}_{\infty, strict}^A$ and becomes an equivalence of categories as well.
             
-            We will give some examples of $A$-polydules given an augmented algebra $A$.\todo{!!!}
+            % We will give some examples of $A$-polydules given an augmented algebra $A$.\todo{!!!}
 
         \subsection{Polydules of SHA-algebras}
             In the last section, we developed the notion of a polydule for augmented and ordinary algebras. We extend this notion to any $A_\infty$-algebra.
@@ -1286,6 +1286,8 @@
                 This result is more or less identical to the proof of Theorem~\ref{thm: model-Alg-inf}.
             \end{proof}
 
+            Like in the case of algebras, Proposition~\ref{prop: homotopy-is-homotopy}, we may consider ordinary homotopies of comodules as left homotopies. In this way, we can think of the model categorical homotopies as homological homotopies. And this is even more true for polydules.
+
             \begin{corollary}
                 Homotopy equivalence defined in $\tt{suMod}_\infty^A$ is an equivalence relation, and every $\infty$-quasi-isomorphism is a homotopy equivalence.
 
@@ -1295,21 +1297,21 @@
                 \end{align*}
             \end{corollary}
 
-            We now want this model structure on $\tt{suMod}^A_\infty$ to respect the model structure on the category $\tt{coMod}_{conil}^{B\overline{A}}$. In other words, we want the functor $B_A: \tt{suMod}_\infty^A \to \tt{coMod}_{conil}^{B\overline{A}}$ to preserve and reflect the model structure of both categories.
+            We now want this model structure on $\tt{suMod}^A_\infty$ to respect the model structure on the category $\tt{coMod}_{conil}^{BA}$. In other words, we want the functor $B_A: \tt{suMod}_\infty^A \to \tt{coMod}_{conil}^{BA}$ to preserve and reflect the model structure of both categories.
 
             \begin{lemma}
-                Let $M$ be an object of $\tt{suMod}_\infty^A$. The unit $B_AM \to R_{\iota_{B\overline{A}}}L_{\iota_{B\overline{A}}}B_AM$ is a quasi-isomorphism on the primitive elements.
+                Let $M$ be an object of $\tt{suMod}_\infty^A$. The unit $B_AM \to R_{\iota_{BA}}L_{\iota_{BA}}B_AM$ is a quasi-isomorphism on the primitive elements.
             \end{lemma}
 
             \begin{proof}
-                This proof uses the same trick as Lemma \ref{lem: uni-twist-ac}. Equip $M$, the trivial filtration, $B\overline{A}$ the coradical filtration and $\Omega B\overline{A} = UA$ the induced filtration.
+                This proof uses the same trick as Lemma \ref{lem: uni-twist-ac}. Equip $M$, the trivial filtration, $BA$ the coradical filtration and $\Omega BA = UA$ the induced filtration.
                 \begin{align*}
                     F_pM & = M\tt{,} \\
-                    Fr_pB\overline{A} & = \startset{[a_1 \mid \cdots \mid a_n] \mid n \leq p}\tt{,} \\
+                    Fr_pBA & = \startset{[a_1 \mid \cdots \mid a_n] \mid n \leq p}\tt{,} \\
                     F_p UA & = \startset{\langle [a_{1_1} \mid \cdots \mid a_{n_1}] \mid \cdots \mid [a_{1_k} \mid \cdots \mid a_{n_k}] \rangle \mid n_1 + \cdots + n_k \leq p}\tt{.}
                 \end{align*} 
 
-                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes B\overline{A} \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$ is a filtered quasi-isomorphism on the primitives.
+                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes BA \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$ is a filtered quasi-isomorphism on the primitives.
 
             \end{proof}
 
@@ -1672,9 +1674,17 @@
                  \end{center}
                  Here the equivalence on the right-hand side is given by the case for ordinary algebras treated earlier. Finally, by previous results we know that $D_\infty A \simeq \tt{suMod}_{\infty}^A[\tt{Qis}^{-1}]$\tt{.}
                  
-                 To see that we have the equivalences as claimed, we first note that the first one is automatic by the equation $q\circ p = id_A$. We must show that $p\circ q$ is isomorphic to the identity on $\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^{A'})$. By the earlier argument, proving this will be the same as proving that $p\circ q$ induces an equivalence on $DA'$. Since $p\circ q$ is homotopic to $id_{A'}$ we get by Lemma~\ref{lem: homotopic-mor-is-same} that they induce the same functor
+                 To see that we have the equivalences as claimed, we first note that the first one is automatic by the equation $q\circ p = id_A$. We must show that $p\circ q$ is isomorphic to the identity on $\tt{Ho}(\tt{suMod}_{\infty,\tt{strict}}^{A'})$. By the earlier argument, proving this will be the same as proving that $p\circ q$ induces an equivalence on $DA'$. Since $p\circ q$ is homotopic to $id_{A'}$, they induce isomorphic morphisms in the category $\tt{HocoAlg}_\mathbb{K}$ by the bar construction and Proposition~\ref{prop: homotopy-is-homotopy}. By Corollary~\ref{cor: cobar-bar-quill-eq}, there are isomorphisms of categories
                  \begin{align*}
-                    (p\circ q)^* \simeq \tt{Id}_{DA'} : DA' \rightarrow DA'\tt{.}
+                    \tt{HoAlg}_\mathbb{K} \simeq \tt{HocoAlg}_\mathbb{K}\tt{.}
+                 \end{align*}
+                 Thus $p\circ q$ is isomorphic to $id_{A'}$ in $\tt{HoAlg}_\mathbb{K}$. We replace this morphism by taking the universal enveloping algebra. Thus there is a morphism $r: U(A') \rightarrow U(A')$ which is isomorphic to $id_{U(A')}$ and $p\circ q$ in $\tt{HoAlg}_\mathbb{K}$. Since $U(A')$ is bifibrant $r$ lifts from a weak equivalence to a homotopy equivalence by Whitehead's theorem, Theorem~\ref{thm: Whitehead}. We get by Lemma~\ref{lem: homotopic-mor-is-same} that $r$ induces the identity functor
+                 \begin{align*}
+                    r^* \simeq \tt{Id}_{DU(A')} : DU(A') \rightarrow D(A')\tt{.}
+                \end{align*}
+                Moreover, $p\circ q$ has to induce the identity as well,
+                \begin{align*}
+                    (p\circ q)^* \simeq \tt{Id}_{A'} : DA' \rightarrow D(A')\tt{.}
                 \end{align*}
             \end{proof}
 \end{document}

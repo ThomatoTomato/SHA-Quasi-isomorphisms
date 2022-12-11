@@ -796,7 +796,7 @@
                 \begin{center}
                     \begin{tikzcd}
                         F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} & A \ar[]{d}[]{a} \ar[bend left]{ddr}[]{f} \\
-                        F(\tt{cone}(\alpha)) \ar[bend right]{rrd}[]{f'} \ar[]{r}[]{e} & A\langle M,\alpha\rangle \ar[dashed]{rd}[]{\widetilde{f}} \\
+                        F(\tt{cone}(\alpha)) \ar[bend right]{rrd}[]{f'^T} \ar[]{r}[]{e} & A\langle M,\alpha\rangle \ar[dashed]{rd}[]{\widetilde{f}} \\
                         & & B
                     \end{tikzcd}
                 \end{center}
@@ -838,11 +838,11 @@
                     \end{tikzcd}
                 \end{center}
                 
-                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f',t')$ such that $f: A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, that $\partial t = f^\#\alpha$ and that $h$ induces a morphism $h : (f',t') \rightarrow g$. We are forced to choose $f' = f$ as $hf = ga$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity, there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
+                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f',t')$ such that $f': A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, such that $\partial t' = f'^\#\alpha$ and $h$ induces a morphism $h : (f',t') \rightarrow g$. We are forced to choose $f' = f$ as $hf = ga$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration, $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity, there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
                 
-                Secondly, we prove that if $M$ is as in $H1$ and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration, and this amounts to show that it has LLP to every fibration.
+                Secondly, we see that it is enough to prove that if $M$ is as in (H1) and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration. By (H1), we know that the map is already a weak equivalence, so we show that it has LLP to every acyclic fibration.
                 
-                Suppose that $h: B \rightarrow C$ is a fibration and that there is a commutative square as below.
+                Suppose that $h: B \rightarrow C$ is an acyclic fibration and that there is a commutative square as below.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{f} \ar[]{d}[]{a} & B \ar[]{d}[]{h} \\
@@ -850,7 +850,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                We will again use \ref{prop: universal-h}, so it suffices to find a $t'$ such that $\partial t' = f^\#\alpha = 0$. By $g$, let $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\# f^\# \alpha = 0$. Since $h^\#$ is surjective $t$ admits a lift $t' : M \rightarrow B^\#$ such that $t' = h^\#t$. The result follows as $\partial t' = \partial h^\#t = h^\#\partial t = 0$.
+                We will again use \ref{prop: universal-h}, so it suffices to find a $t'$ such that $\partial t' = f^\#\alpha = 0$. By the existence of $g$, there is a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\# f^\# \alpha = 0$. Since $h^\#$ is surjective $t$ admits a linear homogenous lift $u : M \rightarrow B^\#$ such that $t = h^\#u$. We see that the map $\partial u$ factors through the kernel of $h^\#$ as $h^\# \partial u = \partial h^\# u = \partial t = 0$. As $\partial u = 0$ is a cycle of $\tt{Ker}h^\#$, there is a $u'$ such that $\partial u' = \partial u$. The result follows by picking $t' = u - u'$.
 
             \end{proof}
 
@@ -931,6 +931,10 @@
             \end{itemize}
             
             The category of augmented dg-algebras has a zero object, and this is the stalk of $\mathbb{K}$. We see that every object is fibrant, as the forgetful functor preserves the augmentation map and, by definition, is a split-epimorphism.
+
+            \begin{remark}
+                In the process of showing that $\tt{Alg}_{\mathbb{K},+}$ is a model category, we have not cared about functorial factorization. One may see that we get this from the constructions used to prove \textbf{MC4}. This is a technical detail which we do not need to care too much about.
+            \end{remark}
             
     \subsection{A Model Structure on DG-Coalgebras}
 
@@ -1449,7 +1453,52 @@
 
     \section{The Homotopy Category of $\tt{Alg}_\infty$}
 
-    With the results established, we are now ready to talk about homotopies in $\tt{Alg}_\infty$.
+    We now have many different notions of homotopy, coming from either homological algebra or the model categorical structure. In the case for $A_\infty$-algebras, these notions will luckily coincide.
+
+    \begin{proposition}\label{prop: homotopy-is-homotopy}
+        Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g: C \rightarrow D$ are two morphisms. Then:
+        \begin{itemize}
+            \item If $f-g$ is null homotopic by an $(f,g)$-coderivation $h$, then they are left homotopic.
+            \item If $D$ is fibrant, then $f-g$ is null homotopic by an $(f,g)$-coderivation if and only if $f$ and $g$ are left homotopic.
+        \end{itemize}
+    \end{proposition}
+
+    \begin{proof}[Sketch of proof]
+        We construct a cylinder object for $C$. Consider the cochain complex below, called $I$,
+        \begin{center}
+            \begin{tikzcd}
+                \cdots \ar[]{r}[]{} & \mathbb{K}\{e\} \ar[]{r}[]{\begin{pmatrix} 1 \\ -1 \end{pmatrix}} & \mathbb{K}\{e_1,e_2\} \ar[]{r}[]{} & \cdots
+            \end{tikzcd}
+        \end{center}
+        concentrated in degree $-1$ and $0$. Its comulitplication is given as
+        \begin{align*}
+            \Delta(e_0) = e_0 \otimes e_0, \quad \Delta(e_1) = e_1 \otimes e_1, \quad \Delta(e) = e \otimes e_1 + e_0 \otimes e
+        \end{align*}
+
+        The object $C \otimes I$ is now a cylinder object of $C$. To define a left homotopy from $f$ to $g$ is the same as finding a morphism $H$ making the diagram below commute.
+        \begin{center}
+            \begin{tikzcd}
+                C \ar[]{d}[]{} \ar[dotted]{rd}[]{i_0} \ar[bend left]{rrd}[]{f} \\
+                C\coprod C \ar[]{r}[]{p_0} & C\wedge I \ar[]{r}[]{H} & D \\
+                C \ar[]{u}[]{} \ar[dotted]{ru}[]{i_1} \ar[bend right]{rru}[]{g}
+            \end{tikzcd}
+        \end{center}
+
+        Since we assume that $f$ and $g$ are homotopic, there is then an $(f,g)$-coderivation $h : C \rightarrow D$. To define $H$, there are essentially three different components we have to consider. Let $H$ be defined as
+        \begin{align*}
+            H\mid_{C \otimes e_0} = f, \quad H\mid_{C \otimes e_1} = g,\tt{ and }H\mid_{C \otimes e} = h
+        \end{align*}
+
+        We see that this morphism respect the comulitplication, as $h$ is an $(f,g)$-coderivation. We see that it respects the differential since $\partial h = f - g$, and that $f$ and $g$ are morphism of cochain complexes. Moreover, any such morphism $H : C \otimes I \rightarrow D$ defines an $(f,g)$-coderivation. This concludes that null homotopic morphisms are left homotopic.
+
+        To see it the other way around if $D$ is fibrant, and the morphisms $f$ and $g$ are left homotopic, we may promote this homotopy to a homotopy $H : C \otimes I \rightarrow D$. The result follows by extracting the homotopy as $h = H\mid_{C \otimes e}$.
+    \end{proof}
+
+    \begin{remark}
+        In the category $\tt{Alg}_\infty$, we are now able to say that the homotopies as defined in Section 1.3 are exactly the model categorical homotopies. This follows from the fact that bifibrant objects may promote their left homotopies to right homotopies, and right homotopies to left homotopies. By the above proposition, we know as well that left homotopies, may be promoted to ordinary homotopies.
+    \end{remark}
+
+    Due to this result, we may know think of homotopies to actually belong to the model categorical structure. We will make little distinction between these notions going forward.
 
     \begin{thm}\label{thm: model-Alg-inf}
         In the category $\tt{Alg}_\infty$ we have the following:
@@ -1465,17 +1514,5 @@
 
         To see the final point, observe that the inclusion functor is given by the bar construction $B$. By Corollary~\ref{cor: cobar-bar-quill-eq}, we know that the bar construction induces an equivalence on the homotopy categories, i.e., $\tt{Ho}\tt{Alg} \simeq \tt{Ho}\tt{coAlg}$. Moreover, we know that by Theorem~\ref{thm: Fundamental-thm-model} that $\tt{Ho}\tt{coAlg} \simeq \sfrac{\tt{Alg}_\infty}{\sim}$. Notice that the image of $B$ is $\tt{Alg}_\mathbb{K}$, so in homotopy, we get that the image $\sfrac{\tt{Alg}_\mathbb{K}}{\sim}$ is equivalent to the essential image $\tt{Ho}\tt{Alg}_\infty$.
     \end{proof}
-
-    Homotopy equivalence in the algebraic and model categorical sense differ in how they are defined. In homological algebra, two morphisms are called homotopic if their difference is a boundary of some homotopy, i.e., $f-g = \partial h$. In the model categorical sense, a homotopy is a morphism through either a cylinder or a path object. The following proposition tells us how they differ in the category of conilpotent dg-coalgebras. \todo{Må fikses! aka. f-g-deriveringer}
-
-    \begin{proposition}
-        Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g: C \rightarrow D$ are two morphisms. Then:
-        \begin{itemize}
-            \item If $f-g$ is null homotopic, then they are left homotopic.
-            \item If $D$ is fibrant, then $f-g$ is null homotopic if and only if $f$ and $g$ are left homotopic.
-        \end{itemize}
-    \end{proposition}
-    
-    This proposition tells us that these concepts are usually not the same. However, this category's subcategory of bifibrant objects is precisely the subcategory $\tt{Alg}_\infty$. Thus for $A_\infty$-algebras homological homotopy is the same as model categorical homotopy. In this sense, we obtain that the homotopy category in the homological sense is equivalent to the derived category.
 
 \end{document}

@@ -1143,7 +1143,7 @@
                 \end{align*}
                 $d_f$ is a derivation by definition.
                 
-                Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$ be the inclusion, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose now that $g: M \rightarrow N$ is a morphism of $T(V)$-bimodules; then naturality follows from linearity. \todo{Er dette riktig}
+                Restriction to $V$ gives the natural isomorphism. Let $i : V\rightarrow T(V)$ be the inclusion, then $i^*d_f = f$. Let $d : T(V) \rightarrow M$ be a derivation, then $d_{i^*d}=d$. Suppose now that $g: M \rightarrow N$ is a morphism of $T(V)$-bimodules; then naturality follows from linearity.
 
                 In the dual case, $d_g^c: N \rightarrow T^c(V)$ is a bit tricky to define. Let $\omega^l_N:N\rightarrow N\otimes T^c(V)$ and $\omega^r_N : N\rightarrow T^c(V) \otimes N$ denote the coactions on $N$. Since $T^c(V)$ is conilpotent, we get the same finiteness restrictions on $N$. Define the reduced coactions as $\overline{\omega}^l_N = \omega^l_N - \argument\otimes 1$ and $\overline{\omega}^r_N = \omega^r_N - 1\otimes\argument\ $, this is well-defined by coassociativity. Observe that for any $n\in N$ there are $k$ and $k'>0$ such that ${\overline{\omega}^{l^k}_N}(n) = 0$ and ${\overline{\omega}^{r^{k'}}_N}(n)=0$.
 
@@ -1647,6 +1647,14 @@
                 Given a manifold $M$, the exterior algebra $\Omega M$ is a differential graded algebra. See Tu \cite{Tu07} for a thorough explanation.
             \end{example}
 
+            In the case of differential graded algebras, we can naively define homotopies like homotopies for cochain complexes. Given morphisms $f, g : A^\bullet \rightarrow B^\bullet$, a homotopy between $f$ and $g$ is a morphism $h : A^\bullet \rightarrow B^\bullet$ of degree $-1$ such that $\partial h = f - g$. We know that such morphisms allow us to say that these morphisms are isomorphic in homotopy on the underlying cochain complexes. However, the ring structure is no longer required to be preserved. We amend this problem by $(f,g)$-derivations.
+
+            \begin{definition}
+                Suppose there are morphisms $f,g: A^\bullet \rightarrow B^\bullet$. We say that $h : A \rightarrow B$ is an $(f,g)$-derivation if $|h| = -1$ and $h \circ (\cdot) = (\cdot)\circ (f \otimes h + g \otimes h)$.
+            \end{definition}
+
+            We will say that the morphisms $f$ and $g$ are homotopic whenever there is an $(f,g)$-derivation $h$ such that $\partial h = f - g$.
+
             Given a differential graded, or dg-algebra $A^\bullet$, we may form the category of left $A^\bullet$-modules, $\tt{Mod}_A$.
             \begin{definition}
                 $M^\bullet$ is a left $A^\bullet$-module if
@@ -1660,7 +1668,7 @@
 
             With this definition, the categories $\tt{Mod}_\mathbb{K}$ where $\mathbb{K}$ is considered as a cochain complex, and the category $\tt{Mod}_\mathbb{K}^\bullet$ is the same category because a chain complex already satisfies the first two bullet points by definition. Being a $\mathbb{K}^\bullet$-derivation is a trivial condition, so every map meets this.
 
-            We also have the dual definition to obtain dg-coalgebras and their comodules.
+            We also have the dual definition to obtain dg-coalgebras, $(f,g)$-coderivations and their comodules.
             
             \begin{definition}
                 $C^{\bullet}$ is a differential graded coalgebra if
@@ -1670,6 +1678,12 @@
                     \item the coderivation and differential coincides
                 \end{itemize}
             \end{definition}
+
+            \begin{definition}
+                Suppose that $f,g: C^\bullet \rightarrow D^\bullet$ are morphisms of dg-coalgebras. We say that $h$ is an $(f,g)$-coderivation if $\Delta h = (f \otimes h + g \otimes h) \Delta$.
+            \end{definition}
+
+            Two morphisms $f,g: C^\bullet \rightarrow D^\bullet$ are said to be homotopic if there is an $(f,g)$-coderivation such that $\partial h = f - g$.
 
             \begin{definition}
                 $N^\bullet$ is a left $C^\bullet$-comodule if
@@ -2700,11 +2714,11 @@
 
         A quasi-isomorphism between $A_\infty$-algebras is called an $\infty$-quasi-isomorphism. Given an $\infty$-morphism $f: A\rightsquigarrow B$, we say that it is an $\infty$-quasi-isomorphism if $f_1$ is a quasi-isomorphism. If we wanted to be more stringent with this definition, we would define an $\infty$-quasi-isomorphism to be an $\infty$-morphism which is a quasi-isomorphism of dg-coalgebras. We will later see that these definitions are equivalent.
 
-        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. \todo{Er dette i det hele tatt riktig?} Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied for any $n \geq 1$:
+        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied for any $n \geq 1$:
         \begin{multline*}
             f_n - g_n = \sum (-1)^s m^B_{r+1+t}\circ (f_{i_1}\otimes ... \otimes f_{i_r} \otimes h_k \otimes g_{j_1} \otimes ... \otimes g_{j_t}) +  \sum (-1)^{j+kl}h_i \circ_{j+1} m_k^A\tt{.}
         \end{multline*}
-        $s$ is some constant depending on $t,r$, and $k$, and more details may be found in \cite{LefevreHasegawa03}.
+        $s$ is some constant depending on $t,r$, and $k$, and more details may be found in \cite{LefevreHasegawa03}. One may observe that this definition of homotopy is exactly the same as requiring that the morphisms $Bf$ and $Bg$ are homotopic by a $(Bf, Bg)$-coderivation $Bh$.
 
         As in the same case for algebras, there is also a notion of unital $A_\infty$-algebras and augmented $A_\infty$-algebras. For this discussion, it is essential to observe that the field $\mathbb{K}$ is also an $A_\infty$-algebra. This algebra will be the initial algebra like it does for ordinary algebras.
 
