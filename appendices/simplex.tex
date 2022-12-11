@@ -101,7 +101,7 @@
         \begin{example}[Simplicial sets]
             A simplicial set $S$ is a collection of sets together with face and degeneracy maps. This is a functor $S : \Delta^{op} \rightarrow \tt{Set}$. The category of simplicial sets is usually denoted as $\tt{sSet}$ or $\tt{Set}_\Delta$.
 
-            Simplicial sets are important in $\infty$-category theory. Some special simplicial sets called quasicategories defines a model for $(\infty,1)$-categories. A level up, simplicially enriched categories gives us a model for $(\infty,2)$-categories.
+            % Simplicial sets are important in $\infty$-category theory. Some special simplicial sets called quasicategories defines a model for $(\infty,1)$-categories. A level up, simplicially enriched categories gives us a model for $(\infty,2)$-categories.
         \end{example}
 
         \begin{example}[The standard topological $n$-simplex]
@@ -112,20 +112,19 @@
             Any ring $R$ is by definition a monoid in the category of abelian groups. By the above proposition, this monoid is uniquely determined by a strong monoidal functor $R : \Delta_+ \rightarrow \tt{Ab}$. Thus any ring is a cosimplical object of $\tt{Ab}$.
         \end{example}
 
-        An important result by Dold and Kan classyfies which chain complexes are simplicial objects in the category $\tt{Mod}_\mathbb{K}$.
+        % An important result by Dold and Kan classyfies which chain complexes are simplicial objects in the category $\tt{Mod}_\mathbb{K}$.
 
-        \begin{thm}[Dold-Kan Correspondance]
-            For any abelian category $\mathcal{A}$ there is an equivalence of categories
-            \begin{center}
-                \begin{tikzcd}
-                    \tt{Fun}(\Delta^{op},\mathcal{A}) \ar[bend right]{r}[]{\Gamma} \ar[phantom]{r}[]{\bot}& \tt{Ch}^-(\mathcal{A}) \ar[bend right]{l}[]{\tt{N}}\tt{.}
-                \end{tikzcd}
-            \end{center}
-        \end{thm}
+        % \begin{thm}[Dold-Kan Correspondance]
+        %     For any abelian category $\mathcal{A}$ there is an equivalence of categories
+        %     \begin{center}
+        %         \begin{tikzcd}
+        %             \tt{Fun}(\Delta^{op},\mathcal{A}) \ar[bend right]{r}[]{\Gamma} \ar[phantom]{r}[]{\bot}& \tt{Ch}^-(\mathcal{A}) \ar[bend right]{l}[]{\tt{N}}\tt{.}
+        %         \end{tikzcd}
+        %     \end{center}
+        % \end{thm}
 
-        \begin{example}[Nerve of a chain complex]
-            The above result states that every non-positive cochain complex may be thought of as a simplical object of $\tt{Mod}_\mathbb{K}$. \todo{Lære seg dette?}
-        \end{example}
+        % \begin{example}[Nerve of a chain complex]
+        %     The above result states that every non-positive cochain complex may be thought of as a simplical object of $\tt{Mod}_\mathbb{K}$. \todo{Lære seg dette?}
+        % \end{example}
 
-    \section{Simplicial Homotopy Theory}
 \end{document}
