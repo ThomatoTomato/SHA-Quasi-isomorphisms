@@ -14,9 +14,9 @@
 
         \subsection{Twisted Tensor Products}
 
-            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra, and $\alpha: C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product is the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. The perturbation is defined as
+            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra, and $\alpha: C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product is the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. Confusing notation is impossible to avoid. Since we want the right twisted tensor to be associated to a right adjoint, we redefine the right perturbation as
             \begin{align*}
-                d_\alpha^r = (\nabla_A\otimes id_C) \circ (id_A \otimes \alpha \otimes id_C) \circ (id_A \otimes \Delta_C).
+                d_\alpha^r = (\nabla_A\otimes id_C) \circ (id_A \otimes \alpha \otimes id_C) \circ (id_A \otimes \Delta_C)\tt{.}
             \end{align*}
 
             If $M$ is a right $A$-module and $N$ is a left $C$-comodule then the tensor product $M\otimes_\mathbb{K} N$ exists and is a $\mathbb{K}$-module with differential $d_{M\otimes N}$. We may define a perturbation to this differential as 
@@ -26,7 +26,7 @@
             By using the same line of thought as in Proposition~\ref{prop: twisted-differential}, there is a twisted tensor product $M\otimes_\alpha N$ with differential $d_\alpha^\bullet = d_{M\otimes N} + d_\alpha^r$.
 
             \begin{remark}
-                Koszul's sign rule forces us to define the differential of the left twisted tensor product as $d_\alpha^\bullet = d_{N\otimes M} - d_\alpha^l$. We need this sign due to the skewness of left-twisted tensor products.
+                Adjointness forces us to define the differential of the left twisted tensor product as $d_\alpha^\bullet = d_{N\otimes M} - d_\alpha^l$. The necessity of this sign will be evident in the proof of Proposition~\ref{prop: L-R-adj}. 
             \end{remark}
             
             \begin{definition}
@@ -36,18 +36,18 @@
             In this setting, right-handedness and left-handedness for the twisted tensor product are distinct, as we only have an action or coaction from one of the chosen sides. Trying to force the other-handedness on the twisted tensors would be ill-defined.
 
             \begin{definition}
-                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra, such that there is a twisting morphism $\alpha: C\rightarrow A$. Given a linear map $f: N \rightarrow M$ between a right $C$-comodule $N$ and a right $A$-module $M$ we say that it is an $\alpha$ right twisted linear if it satisfies
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra, such that there is a twisting morphism $\alpha: C\rightarrow A$. Given a linear map $f: N \rightarrow M$ between a right $C$-comodule $N$ and a right $A$-module $M$ we say that it is an $\alpha$ right-twisted linear morphism if it satisfies
                 \begin{align*}
-                    \partial f - f\star \alpha = 0\tt{.}
+                    \partial f + f\star \alpha = 0\tt{.}
                 \end{align*}
-                If the handedness is unambiguous, we simply call it a twisted linear morphism.
+                If the handedness is unambiguous, we call it a twisted linear morphism.
             \end{definition}
 
             This definition essentially describes a functor $\tt{Tw}_\alpha^r: \tt{coMod}^C \times \tt{Mod}^A \rightarrow \tt{Mod}_\mathbb{K}$, which is the collection of right twisted linear homomorphisms between a comodule and module.
 
             Suppose that $\alpha: C \rightarrow A$ is a twisting morphism. Define the functor $L_\alpha = \argument \otimes_\alpha A: \tt{coMod}^C \rightarrow \tt{Mod}^A$ as an arbitrary right twisted tensor product with $A$. This functor hits $\tt{Mod}^A$ by using the free right $A$-module structure on $A$. Likewise, we define a functor $R_\alpha = \argument \otimes_\alpha C: \tt{Mod}^A \rightarrow \tt{coMod}^C$ as an arbitrary left twisted tensor product with $C$. This functor also hits right $C$-comodules by using the cofree right $C$-comodule structure on $C$.
 
-            \begin{proposition}
+            \begin{proposition}\label{prop: L-R-adj}
                 Suppose that $\alpha: C \rightarrow A$ is a twisting morphism. The functor $L_\alpha$ and $R_\alpha$ form an adjoint pair of categories.
                 \begin{center}
                     \begin{tikzcd}
@@ -57,12 +57,107 @@
             \end{proposition}
 
             \begin{proof}
-                This proof boils down to showing $\tt{coMod}^C(N, L_\alpha(M))\simeq \tt{Tw}_\alpha(N,M) \simeq \tt{Mod}^A(R_\alpha(N),M)$, which is a routine calculation, much like the proof for Theorem \ref{thm: cobar-bar-adj}.
+                This proof boils down to showing $\tt{coMod}^C(N, R_\alpha(M))\simeq \tt{Tw}_\alpha^r(N,M) \simeq \tt{Mod}^A(L_\alpha(N),M)$, which is a routine calculation, much like the proof for Theorem \ref{thm: cobar-bar-adj}.
+
+                By Corollary~\ref{cor: dg-free-derivation}, we have an isomorphism between $\mathbb{K}$-linear chain maps and $A$-linear chain maps,
+                \begin{align*}
+                    f: N \rightarrow M & \mapsto F = \mu_M(f \otimes A): L_\alpha N \rightarrow M\tt{, and} \\
+                    F: L_\alpha N \rightarrow M & \mapsto f=(N \otimes 1_A)^*F: N \rightarrow M\tt{.} 
+                \end{align*}
+
+                Consider first that we have an $A$-linear morphism $F: L_\alpha M \rightarrow M$. Then $\partial F = d_Mf - fd_{L_\alpha N} = 0$. We write this electronically as
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+                        
+                        \node at (0,0) {$\partial F = $};
+
+                        \node[op, scale = 0.75] (F1) at (1.5, 0.5) {$F$};
+                        \node[diff, scale = 0.75] (d1) at (1.5, -0.5) {};
+                        
+                        \draw [line width = 1pt] (1, 1.5) -- (1, 0.75) -- (F1) -- (d1) -- (1.5, -1.25);
+                        \draw [line width = 1pt] (2, 1.5) -- (2, 0.75) -- (F1);
+
+                        \node at (3, 0) {$-$};
+
+                        \node[diff, scale = 0.75] (d2) at (4,0.5) {};
+                        \node[op, scale = 0.75] (F2) at (4.5, -0.5) {$F$};
+
+                        \draw [line width = 1pt] (4,1.5) -- (d2) -- (4,-0.25) -- (F2) -- (4.5, -1.25);
+                        \draw [line width = 1pt] (5, 1.5) -- (5, -0.25) -- (F2);
+
+                        \node at (6,0) {$-$};
+
+                        \node[diff, scale = 0.75] (d3) at (8, 0.5) {};
+                        \node[op, scale = 0.75] (F3) at (7.5, -0.5) {$F$};
+
+                        \draw [line width = 1pt] (7,1.5) -- (7, -0.25) -- (F3) -- (7.5, -1.25);
+                        \draw [line width = 1pt] (8, 1.5) -- (d3) -- (8,-0.25) -- (F3);
+
+                        \node at (9,0) {$+$};
+
+                        \node[op, scale = 0.75] (a1) at (11, 0.5) {$\alpha$};
+                        \node[op, scale = 0.75] (F4) at (11, -0.75) {$F$};
+
+                        \draw [line width = 1pt] (10.5, 1.5) -- (10.5, 1.25) -- (11, 1) -- (a1) -- (11, 0) -- (11.5, -0.25) -- (11.5, -0.5) -- (F4) -- (11, -1.25);
+                        \draw [line width = 1pt] (10.5, 1.25) -- (10, 1) -- (10, -0.25) -- (F4);
+                        \draw [line width = 1pt] (12, 1.5) -- (12, 0) -- (11.5, -0.25);
+
+                        \node at (13, 0) {$= 0$};
+
+                    \end{tikzpicture}
+                \end{center}
+
+                The first three circuits will together make up the ordinary differential of $\tt{Mod}^A(N\otimes_\mathbb{K} A, M)$, so we will only need to consider the final circuit. Replacing $F$ with $\mu_M (f \otimes id_A)$ we get
+                \begin{center}
+                    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, thick, op/.style={circle, draw, scale=0.75}, diff/.style={regular polygon, draw, regular polygon sides = 3, scale=0.75, rotate = 180}, scale=0.7]
+                        
+                        \node[op, scale = 0.75] (a1) at (1, 0.5) {$\alpha$};
+                        \node[op, scale = 0.75] (F4) at (1, -0.75) {$F$};
+
+                        \draw [line width = 1pt] (0.5, 1.5) -- (0.5, 1.25) -- (1, 1) -- (a1) -- (1, 0) -- (1.5, -0.25) -- (1.5, -0.5) -- (F4) -- (1, -2);
+                        \draw [line width = 1pt] (0.5, 1.25) -- (0, 1) -- (0, -0.25) -- (F4);
+                        \draw [line width = 1pt] (2, 1.5) -- (2, 0) -- (1.5, -0.25);
+
+                        \node at (3, 0) {$=$};
+
+                        \node[op, scale = 0.75] (a2) at (5, 0.5) {$\alpha$};
+                        \node[op, scale = 0.75] (f1) at (4, -0.75) {$f$};
+
+                        \draw [line width = 1pt] (4.5, 1.5) -- (4.5, 1.25) -- (5, 1) -- (a2) -- (5, 0) -- (5.5, -0.25) -- (5.5, -1.5) -- (5, -1.75) -- (5, -2);
+                        \draw [line width = 1pt] (4.5, 1.25) -- (4, 1) -- (f1) -- (4, -1.25) -- (5, -1.75);
+                        \draw [line width = 1pt] (6, 1.5) -- (6, 0) -- (5.5, -0.25);
+
+                        \node at (7,0) {$=$};
+
+                        \node[op, scale = 0.75] (f2) at (8, 0.5) {$f$};
+                        \node[op, scale = 0.75] (a3) at (9, 0.5) {$\alpha$};
+
+                        \draw [line width = 1pt] (8.5, 1.5) -- (8.5, 1.25) -- (9, 1) -- (a3) -- (9, 0) -- (8.5, -0.25) -- (8.5, -0.5) -- (9, -0.75) -- (9, -2);
+                        \draw [line width = 1pt] (8.5, 1.25) -- (8, 1) -- (f2) -- (8, 0) -- (8.5, -0.25);
+                        \draw [line width = 1pt] (10, 1.5) -- (10, -0.25) -- (9, -0.75);
+
+                        \node at (13, 0) {$= \mu_M((f \star \alpha) \otimes A)$};
+                    \end{tikzpicture}
+                \end{center}
+
+                By sending in the identity of $A$ in the rightmost string at each summand, we get the condition that $f$ is $\alpha$ right-twisted,
+                \begin{align*}
+                    \partial f + f \star \alpha = 0\tt{.}
+                \end{align*}
+                This is because $d_A(1_A) = 0$, $\mu_M(m \cdot 1_?) = m$, and $f(m) = F(m, 1_A)$.
+
+                By the abovementioned isomorphism, we are now able to deduce that any $\alpha$ right-twisted morphism $f: N \rightarrow M$ defines an $A$-linear morphism $F = \mu_M(f \otimes A): L_\alpha N \rightarrow M$.
+
+                Notice that by turning every circuit upside-down, we get equations establishing the natural isomorphism
+                \begin{align*}
+                    Tw_\alpha^r(N,M) \simeq \tt{coMod}^C(N, R_\alpha M)\tt{.}
+                \end{align*}
+
             \end{proof}
 
             Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the cobar-bar adjunction, Theorem~\ref{thm: cobar-bar-adj}, there exists a universal twisting morphism $\pi_A: BA \rightarrow A$. We define the bar construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
 
-            Let $A$ and $B$ be two algebras, and $f: A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^*: \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, the left Kan extension (induction) along this functor exists.
+            Let $A$ and $B$ be two algebras, and $f: A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^*: \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, the left Kan extension (induction) along this functor exists. This result can, for instance, be found in Riehl \cite{Riehl14}.
             \begin{center}
                 \begin{tikzcd}
                     \tt{Mod}^B \ar[]{r}[]{f^*} & \tt{Mod}^A \ar[bend right]{l}[above]{f_!}
@@ -287,7 +382,7 @@
             \end{proposition}
 
             \begin{proof}
-                This proposition is a well-known statement from literature. See Krause \cite{Krause21}, Happel \cite{Happel88}, or Buehler \cite{Buhler10} for an account of this result.
+                This proposition is a well-known statement from literature. See Krause \cite{Krause21}, Happel \cite{Happel88}, or B\"uhler \cite{Buhler10} for an account of this result.
             \end{proof}
 
             To see that $(\tt{Mod}^A, \mathcal{E})$ has both enough projectives and injectives, we consider the following conflation:
@@ -307,7 +402,7 @@
             \end{thm}
 
             \begin{proof}
-                This theorem is well-known in the literature. An account for it may also be found in Krause \cite{Krause21}, Happel \cite{Happel88}, or Buehler \cite{Buhler10}.
+                This theorem is well-known in the literature. An account for it may also be found in Krause \cite{Krause21}, Happel \cite{Happel88}, or B\"uhler \cite{Buhler10}.
             \end{proof}
 
             We thus obtain a triangulated category $\overline{\tt{Mod}}^A$ associated to the Frobenius pair $(\tt{Mod}^A, \mathcal{E})$. This category is commonly denoted as $K(A)$, and we will do this as well. Notice that with the structure given by $\mathcal{E}$, the cosyzygy is defined by the shift functor $\argument [1]$. Every standard triangle is also on the form:
@@ -325,7 +420,7 @@
             \end{proposition}
 
             \begin{proof}
-                Proof may be found in Buehler \cite{Buhler10}.
+                Proof may be found in B\"uhler \cite{Buhler10}.
             \end{proof}
 
             There is another way of telling the story of the derived category $D(A)$. That is to localize it at the quasi-isomorphisms directly. We may directly see that $D(A) \simeq \tt{Mod}^A[\tt{Qis}^{-1}]$ which we know is $\tt{Ho} \tt{Mod}^A$ by definition.
@@ -519,7 +614,7 @@
                     K(A)(A, N) \simeq H^0 {\tt{Hom}}^\bullet_A (A, N) \simeq H^0 N \simeq 0
                 \end{align*}
 
-                We want to construct two complexes, $pM$ and $aM$, by taking the total complexes. We show that $aM$ is acyclic by using Corollary~\ref{cor: ac-as-2}. We will construct an exact sequence of complexes satisfying the assumptions to be able to use the corollary. As described by MacLane \cite{MacLane94}, there is an exact structure $\mathcal{E}$ on $\tt{Mod}^R$ such that the collections on conflations are the short exact sequences such that the kernel functor is exact.
+                We want to construct two complexes, $pM$ and $aM$, by taking the total complexes. We show that $aM$ is acyclic by using Corollary~\ref{cor: ac-as-2}. We will construct an exact sequence of complexes satisfying the assumptions to be able to use the corollary. As described by Mac Lane \cite{MacLane94}, there is an exact structure $\mathcal{E}$ on $\tt{Mod}^R$ such that the collections on conflations are the short exact sequences such that the kernel functor is exact.
                 \begin{center}
                     \begin{tikzcd}
                         L \ar[tail]{r}[]{f} & M \ar[two heads]{r}[]{g} & N \\
@@ -527,7 +622,7 @@
                     \end{tikzcd}
                 \end{center}
 
-                Since limits commute with limits, the kernel functor preserves any limit. Thus the kernel is left exact, and its only obstruction for exactness is to preserve cokernels. We may thus characterize the conflations by inflations and deflations, which are monomorphisms and epimorphisms preserved by the kernel functor. MacLane calls these deflations for proper epimorphisms instead.
+                Since limits commute with limits, the kernel functor preserves any limit. Thus the kernel is left exact, and its only obstruction for exactness is to preserve cokernels. We may thus characterize the conflations by inflations and deflations, which are monomorphisms and epimorphisms preserved by the kernel functor. Mac Lane calls these deflations for proper epimorphisms instead.
 
                 We want to construct $\mathcal{E}$-projectives to be on the form of homotopically projective complexes. $A[-n]$ is $\mathcal{E}$-projective by the following isomorphism,
                 \begin{align*}

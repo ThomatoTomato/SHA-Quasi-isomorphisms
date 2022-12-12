@@ -25,13 +25,9 @@
             \sigma_i(k) = \biggl\{\substack{k\text{, if }k\leq i \\ k-1\text{, otherwise}}
         \end{align*}
 
-        \begin{proposition}
+        \begin{proposition}[{\cite[Lemma][177]{MacLane71}}]
             Every morphism in $\Delta$ factors into coface and codegeneracy maps.
         \end{proposition}
-
-        \begin{proof}
-            Prop ?? \todo{Find result} in \cite{MacLane71}.
-        \end{proof}
 
         This result tells us that understanding how these morphisms work in tandem will be very important in understanding the simplex category. Luckily, there are five identites which characterize these maps. These are called the cosimplical identites.
 
@@ -63,13 +59,9 @@
         $(\Delta_+,+,[-1])$ becomes a monoidal category. Unitality is satisfied as $[-1]+[m] = [1+m-1] = [m] = [m] + [-1]$. Associativity follows from associativity of addition. Since addition acts on morphisms by juxtaposition we get that the maps $id_[0] : [0] \rightarrow [0]$, $\delta_0 : [-1] \rightarrow [0]$ and $\sigma_0 : [1] \rightarrow [0]$ allows us to express any morphism in $\Delta$ by summing them.
 
         Since the object $[0]$ is terminal, it automatically becomes a monoid in $(\Delta, +, [-1])$. The unit is the unique map $\delta_0 : [-1] \rightarrow [0]$, and the multiplication is the uniqe map $\sigma_0 : [1] \rightarrow [0]$. Associativity and unitality is automatically satisfied by uniqueness of any morphism $f:[n]\rightarrow [0]$.
-        \begin{proposition}\label{prop: universal-monoid}
+        \begin{proposition}[{\cite[Proposition 1][175]{MacLane71}}]\label{prop: universal-monoid}
             Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta_+\rightarrow \mathcal{C}$, such that $F[0] \simeq C$, $F\delta_{-1} \simeq \eta$ and $F\sigma_0 \simeq \mu$.
-        \end{proposition} 
-
-        \begin{proof}
-            This is proved in Mac Lanes book \cite{MacLane71}.
-        \end{proof}
+        \end{proposition}
 
 
     \section{Simplicial Objects}
@@ -124,7 +116,7 @@
         % \end{thm}
 
         % \begin{example}[Nerve of a chain complex]
-        %     The above result states that every non-positive cochain complex may be thought of as a simplical object of $\tt{Mod}_\mathbb{K}$. \todo{Lære seg dette?}
+        %     The above result states that every non-positive cochain complex may be thought of as a simplical object of $\tt{Mod}_\mathbb{K}$.
         % \end{example}
 
 \end{document}

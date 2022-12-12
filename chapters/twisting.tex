@@ -2,7 +2,7 @@
 
 \begin{document}
 
-        In Stasheff's papers \cite{Stasheff63I}, and \cite{Stasheff63II}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n: A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations; this will be made precise later. We will regard $m_2$ as a multiplication of $A$, but it is not a priori associative. We choose $m_3$ to be a homotopy of $m_2$'s associator. In this manner, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \overline{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. With this relation, we will define an $A_\infty$-algebra to be a coalgebra on the form $BA$, and we will prefer to do so in this thesis.
+        In Stasheff \cite{Stasheff63}, a strongly homotopy associative algebra, or $A_\infty$-algebra, over a field is a graded vector space together with homogenous linear maps $m_n: A^{\otimes n}\rightarrow A$ of degree $2-n$ satisfying some homotopical relations; this will be made precise later. We will regard $m_2$ as a multiplication of $A$, but it is not a priori associative. We choose $m_3$ to be a homotopy of $m_2$'s associator. In this manner, we know that the homotopy of $A$ is an associative algebra. The maps $m_n$ corresponds uniquely to a map $m^c:BA\rightarrow \overline{A}[1]$, which extends to a coderivation $m^c : BA\rightarrow BA$ of the bar construction of $A$. With this relation, we will define an $A_\infty$-algebra to be a coalgebra on the form $BA$, and we will prefer to do so in this thesis.
 
 
         To understand the bar construction, we will first study it on associative algebras. Given a differential graded coassociative coalgebra $C$ and a differential graded associative algebra $A$, we say that a homogenous linear transformation $\alpha: C\rightarrow A$ is twisting if it satisfies the Maurer-Cartan equation;
@@ -1500,7 +1500,7 @@
                 \end{center}
             \end{example}
             \begin{example}[Normalized cochain complex]
-                Let $A : \Delta^{op} \rightarrow \tt{Mod}_\mathbb{K}$ be a simplicial $\mathbb{K}$-module. \todo{No sources?} We define a collection of diagrams $J^n$ as $J^0 = A_0$, and every other as
+                Let $A : \Delta^{op} \rightarrow \tt{Mod}_\mathbb{K}$ be a simplicial $\mathbb{K}$-module. We define a collection of diagrams $J^n$ as $J^0 = A_0$, and every other as
                 \begin{center}
                     \begin{tikzcd}
                         J^n = A_n \ar[bend left, yshift = 2.5ex]{r}[]{0}\ar[yshift = 1.5ex]{r}[]{d_1} \ar[phantom]{r}[]{\vdots} \ar[yshift = -2ex]{r}[below]{d_{n}} & A_{n-1}
@@ -2562,6 +2562,10 @@
                 A[1]^{\otimes n} \ar[]{r}[]{\widetilde{m}_n} & A[1] \ar[]{u}[right]{\simeq}[]{s}
             \end{tikzcd}
         \end{center}
+
+        \begin{remark}
+            The choice of isomorphisms here is not canonical. Different choices may lead to different signs in the following formulas. We will follow the sign convention of Loday and Vallette \cite{Loday12}. This will give us the same signs as in Lef\`evre-Hasegawa \cite{LefevreHasegawa03}, as his signs always come in a pair to cancel each other out.
+        \end{remark}
 
         \begin{proposition}\label{prop: A-infinity def}
             An $A_\infty$-algebra is equivalent to a graded vector space $A$ together with homogenous morphisms $m_n: A^{\otimes n}\rightarrow A$ of degree $2-n$. Moreover, the morphism must satisfy the following relations for any $n\geq 1$:

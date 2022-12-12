@@ -1,7 +1,9 @@
 \documentclass[../thesis.tex]{subfiles}
 
 \begin{document}
-    \todo{Spør Elias om historiske kilder}
+
+    Here we will summarize spectral sequences and the classical convergence theorem of filtered spectral sequences. For a thorough account, look in Weibel \cite{Weibel94}.
+
     \section{Filtrations}
         Let $\mathcal{A}$ be an abelian category. Given two objects $A$ and $B$, we denote an inclusion $B \rightarrow A$ by $B \subseteq A$. This section is devoted to filtration terminology.
 
@@ -226,6 +228,25 @@
             Let $E$ and $E'$ be homology spectral sequences converging to $H_*$ and $H_*'$ respectively. Suppose that there is a morphism $h : H_* \rightarrow H_*'$, which is compatible with a morphism of spectral sequences $f : E \rightarrow E'$. If $f^r : E^r \rightarrow F^r$ is an isomorphism, then $h$ is an isomorphism as well.
         \end{thm}
 
+        \begin{proof}
+            There are short exact sequences and a morphism between them,
+            \begin{center}
+                \begin{tikzcd}
+                    0 \ar[]{r}[]{} & \sfrac{F_{p-1}H_n}{F_s H_n} \ar[]{d}[]{} \ar[]{r}[]{} & \sfrac{F_p H_n}{F_s H_n} \ar[]{d}[]{} \ar[]{r}[]{} & E^\infty_{p,n-p} \ar[]{d}[]{\simeq} \ar[]{r}[]{} & 0\\
+                    0 \ar[]{r}[]{} & \sfrac{F_{p-1} H'_n}{F_s H'_n} \ar[]{r}[]{} & \sfrac{F_p H'_n}{F_s H'_n} \ar[]{r}[]{} & E'^\infty_{p,n-p} \ar[]{r}[]{} & 0
+                \end{tikzcd}
+            \end{center}
+            by weak convergence. Since we assume $f^\infty$ to be an isomorphism, we get the isomorphism on the last component. If we fix $s \geq 0$, then by doing induction on $p \geq s$ the $5$-lemma tells us that there are isomorphisms,
+            \begin{align*}
+                \sfrac{F_p H_n}{F_s H_n} \simeq \sfrac{F_p H'n}{F_s H'n}\tt{.}
+            \end{align*}
+            Since we assume $F_pH_n$ to be exhaustive, it follows that
+            \begin{align*}
+                \sfrac{H_n}{F_sH_n} \simeq \sfrac{H'_n}{F_s H'_n}\tt{.}
+            \end{align*}
+            Moreover, since $F_pH_n$ is complete, we get that $H_n \simeq H'n$ by taking the limit over $s$.
+        \end{proof}
+
     \section{Spectral Sequence of a Filtration}
 
         Associated to a filtration $F$ on a chain complex $C$, there is a homology spectral sequence $E$ starting at page $0$. We define $E^0_{p,q} = \sfrac{F_pC_{p+q}}{F_{p-1}C_{p+q}}$, where the differential is induced by the associated graded. The $1$-page is then the homology along each associated graded piece, $E^1_{p,q} = H_*(E_{p,*}^0)$.
@@ -244,7 +265,7 @@
         Every page may then be described as $E^r_p = \sfrac{Z^r_p}{B^r_p}$.
 
         The important takeaway is the following theorem.
-        \begin{thm}[Classical convergence theorem, {\cite[Theorem 5.5.1][135]{Weibel94}}]
+        \begin{thm}[Classical convergence theorem, {\cite[Theorem 5.5.1][135]{Weibel94}}]\label{thm: class-conv}
             Let $C$ be a chain complex.
             \begin{itemize}
                 \item Suppose that the filtration on $C$ is bounded. Then the spectral sequence $E$ is bounded and $E^1_{p,q} \Rightarrow H_{p+q}(C)$.

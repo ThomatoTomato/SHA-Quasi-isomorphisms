@@ -178,14 +178,14 @@
 \RequirePackage{csquotes}                   % recommended for biblatex
 \RequirePackage[
     backend=biber,
-    style=ieee,
+    style=alphabetic,
     maxbibnames=99,
     minbibnames=3,
     maxcitenames=2,
     mincitenames=1,
-    citestyle=numeric-comp,
-    sorting=none,
-    dashed=false
+    % citestyle=numeric-comp,
+    sorting=none
+    % dashed=false
 ]{biblatex}                                 % for bibliography
 \RequirePackage{booktabs}                   % better formatting of tables
 \RequirePackage{hyperref}                   % interactive cross references

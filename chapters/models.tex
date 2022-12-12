@@ -963,7 +963,7 @@
                     F_p\Omega C = \startset{\langle c_1 | \cdots | c_n \rangle \mid |c_1|+...+|c_n|\leq p}
                 \end{align*}
 
-                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, a subcomplex of $\Omega C$. This filtration is bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, \cite[Theorem 5.5.1][135]{Weibel94}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
+                Since $C$ is a dg-coalgebra, the coradical filtration respects the differential. In other words, $F_p\Omega C$ is still a chain complex, a subcomplex of $\Omega C$. This filtration is bounded below and exhaustive. Thus by the classical convergence theorem of spectral sequences, Theorem \ref{thm: class-conv}, the spectral sequence converges to the homology $E\Omega C \Rightarrow H^*\Omega C$.
 
                 By definition, the $0$'th page is 
                 \begin{align*}
@@ -1005,7 +1005,7 @@
                 Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A: \Omega BA \rightarrow A$ is a quasi-isomorphism. The unit $\eta_C: C \rightarrow B\Omega C$ is a filtered quasi-isomorphism. Moreover, $\Omega \eta_C$ is a quasi-isomorphism.
             \end{proposition}
 
-            The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a previous proof.
+            The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a previous proof, using the method of iterated spectral sequences.
 
             \begin{proof}
                We start by showing that the counit is a quasi-isomorphism. Define the following filtration for $A$.
@@ -1455,7 +1455,7 @@
 
     We now have many different notions of homotopy, coming from either homological algebra or the model categorical structure. In the case for $A_\infty$-algebras, these notions will luckily coincide.
 
-    \begin{proposition}\label{prop: homotopy-is-homotopy}
+    \begin{proposition}[{\cite[Proposition 1.3.4.1][49]{LefevreHasegawa03}}]\label{prop: homotopy-is-homotopy}
         Let $C$ and $D$ be two conilpotent dg-coalgebras, where $f,g: C \rightarrow D$ are two morphisms. Then:
         \begin{itemize}
             \item If $f-g$ is null homotopic by an $(f,g)$-coderivation $h$, then they are left homotopic.
