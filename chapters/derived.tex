@@ -453,7 +453,7 @@
 
             Let $A$ be a dg-algebra. $A$ is then free in the enriched sense; i.e. for any right $A$-module $M$, ${\tt{Hom}}^\bullet_A(A,M) \simeq M$. Recall that $P$ is projective if it is a direct summand of $A^n$ for some $n\in \mathbb{N}$. 
             
-            Given a right bounded complex $M$, we know how to construct a projective resolution $p: pM \rightarrow M$. Associated with this resolution is a triangle in $K(\mathbb{K})$ consisting of the complexes $M$, $pM$, and $aM$, where $aM$ is an acyclic complex.
+            Given a right bounded complex $M$, we know how to construct a projective resolution $p:pM\rightarrow~M$. Associated with this resolution is a triangle in $K(\mathbb{K})$ consisting of the complexes $M$, $pM$, and $aM$, where $aM$ is an acyclic complex.
 
             \begin{center}
                 \begin{tikzcd}
@@ -477,7 +477,7 @@
             \end{definition}
 
             \begin{remark}
-                The properties (F1) and (F2) may be reformulated to require that $P'$ should be the homotopy colimit of the filtration. Thus there is a canonical triangle in $K(A)$:
+                The properties (F1) and (F2) may be reformulated to require that $P'$ should be the homotopy colimit of the filtration, see Krause \cite{Krause21}. Thus there is a canonical triangle in $K(A)$:
                 \begin{center}
                     \begin{tikzcd}
                         \bigoplus F_n \ar[]{r}[]{\Phi} & \bigoplus F_n \ar[]{r}[]{} & P' \ar[]{r}[]{} & \bigoplus F_p[1] 
@@ -1381,16 +1381,15 @@
                 This result is more or less identical to the proof of Theorem~\ref{thm: model-Alg-inf}.
             \end{proof}
 
-            Like in the case of algebras, Proposition~\ref{prop: homotopy-is-homotopy}, we may consider ordinary homotopies of comodules as left homotopies. In this way, we can think of the model categorical homotopies as homological homotopies. And this is even more true for polydules.
+            Like in the case of algebras, Proposition~\ref{prop: homotopy-is-homotopy}, we may consider ordinary homotopies of comodules as left homotopies. In this way, we can think of the homological homotopies as model categorical homotopies. Since polydules are exactly the bifibrant comodules, we get that the homological homotopies are exactly the model categorical homotopies.
 
             \begin{corollary}
                 Homotopy equivalence defined in $\tt{suMod}_\infty^A$ is an equivalence relation, and every $\infty$-quasi-isomorphism is a homotopy equivalence.
-
-                If $A$ is an ordinary associative augmented algebra, then $\tt{Mod}^A$ fully-faithfully embeds into $\tt{suMod}_{\infty, \tt{strict}}^A$. This inclusion defines an equivalence
-                \begin{align*}
-                    DA \simeq \sfrac{\tt{suMod}^A_{\infty, \tt{strict}}}{\sim_\infty}\tt{.}
-                \end{align*}
             \end{corollary}
+
+            \begin{proof}
+                This corollary follows from the above discussion, as the homological homotopies coincide with the model categorical homotopies. It is thus an equivalence relation, and Whitehead's theorem, Theorem \ref{thm: Whitehead}, gives us a lift to an $\infty$-quasi-isomorphism.
+            \end{proof}
 
             We now want this model structure on $\tt{suMod}^A_\infty$ to respect the model structure on the category $\tt{coMod}_{conil}^{BA}$. In other words, we want the functor $B_A: \tt{suMod}_\infty^A \to \tt{coMod}_{conil}^{BA}$ to preserve and reflect the model structure of both categories.
 
@@ -1445,7 +1444,7 @@
                 Since $B_Af$ is a weak equivalence, $iL_{\iota_{BA}}B_Af$ is an $\infty$-quasi-isomorphism by definition. By the above lemma, the horizontal maps are $\infty$-quasi-isomorphisms. Thus by the $2$-out-of-$3$ property, $f$ is an $\infty$-quasi-isomorphism.
             \end{proof}
 
-            There is a homotopy category associated with every augmented $A_\infty$-algebra. Since homotopy equivalence $\sim_\infty$ in $\tt{suMod}_\infty^A$ defines a congruence relation, we may construct the homotopy category $K_\infty A$.
+            There is a homotopy category associated with every augmented $A_\infty$-algebra. Since homotopy equivalence $\sim$ in $\tt{suMod}_\infty^A$ defines a congruence relation, we may construct the homotopy category $K_\infty A$.
 
             \begin{corollary}
                 The identity gives the localization $K_\infty A \to D_\infty A$. Moreover, $K_\infty A = D_\infty A$.
@@ -1474,17 +1473,27 @@
                 Since the three functors $R_{\iota_{BA}}$, $i$, and $B_A$ all induce equivalences on the derived categories, then $\iota$ has to as well.
             \end{proof}
 
-            To summarize, we have established an equivalence between 4 different categories:
+            To summarize, we have established an equivalence between 5 different categories:
             \begin{itemize}
-                \item $D_\infty A$, derived category of $A$,
-                \item $\tt{suMod}_{\infty, \tt{strict}}^A[Qis^{-1}]$ derived category of $A$ with only strict morphisms,
-                \item $DBA$, derived category of $BA$ as a dg-coalgebra,
+                \item $D_\infty A$, derived category of $A$;
+                \item $K_\infty A$, the homotopy category associated to $A$;
+                \item $\tt{suMod}_{\infty, \tt{strict}}^A[Qis^{-1}]$, derived category of $A$ with only strict morphisms;
+                \item $DBA$, derived category of $BA$ as a dg-coalgebra;
                 \item $DUA$ derived category of the universal enveloping algebra of $A$.
             \end{itemize}
 
             We may see that within the derived category, all of the higher homotopic data of each morphism have been collapsed by the homotopy.
 
             The triangulated structure on $D_\infty A$ may be lifted along these equivalences, making them triangulated as well. Note that $R_{\iota_{BA}}$ is already triangulated, and there is only one way of forcing the triangulated structure on $\tt{suMod}_\infty^A$. Since $\tt{suMod}_{\infty}^A$ isn't complete, it isn't easy to obtain a description of the triangles along any $\infty$-morphism $f$. However, this problem does not appear in $\tt{suMod}_{\infty, \tt{strict}}^A$, so one should think of only strict morphisms instead, but in this case, we are already working in the category $\tt{Mod}^{UA}$. 
+
+            If we let $A$ to be an ordinary associative augmented algebra, we can obtain a similar characterization. Notice first that by Lemma~\ref{lem: Polydules-are-modules} and Proposition~\ref{prop: Quill-Eq}, there is a quasi-isomorphism $UA \rightarrow A$. By Corollary~\ref{cor: ring-qiso-is-eq}, we get that their derived categories have to be equivalent. In other words, the six categories below are equivalent:
+            \begin{itemize}
+                \item $DA$, the derived category of $A$;
+                \item $D_\infty A$, the derived category of $A$ considered as an $A_\infty$-algebra;
+                \item $K_\infty A$, the homotopy category associated to $A$ considered as an $A_\infty$-algebra;
+                \item $\tt{suMod}^A_{\infty, \tt{strict}}[\tt{Qis}^{-1}]$, the derived category of $A$ considered as an $A_\infty$-algebra considering only strict morphisms;
+                \item and $DUA$, the derived category of $UA$.
+            \end{itemize}
 
         \subsection{The Derived Category of Strictly Unital SHA-Algebras}
 

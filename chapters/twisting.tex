@@ -56,7 +56,7 @@
                 Let $\widehat{\tt{Alg}}_{\mathbb{K}}$ denote the category of non-unital algebras. Its objects consist of every non-unital algebra $A$, and the morphisms are non-unital algebra homomorphisms. The sets of morphisms between $A$ and $B$ are denoted as $\widehat{\tt{Alg}}_{\mathbb{K}}(A,B)$.
             \end{definition}
 
-            The category $(\tt{Mod}_\mathbb{K},\otimes_\mathbb{K},\mathbb{Z})$ is symmetric monoidal. Observe that given any algebra $A$ in $\tt{Mod}_\mathbb{K}$, the triple $(A,(\cdot_A),1_A)$ is a monoid. There is thus an isomorphism of categories, namely $\tt{Alg}_\mathbb{K}$ is the category of monoids in $\tt{Mod}_\mathbb{K}$. The algebra axioms are then equivalent to the commutative diagrams below.
+            There is an equivalent description of algebras by considering the symmetric monoidal category $(\tt{Mod}_\mathbb{K},\otimes_\mathbb{K},\mathbb{Z})$. Observe that given any algebra $A$ in $\tt{Mod}_\mathbb{K}$, the triple $(A,(\cdot_A),1_A)$ is a monoid. There is thus an isomorphism of categories, namely $\tt{Alg}_\mathbb{K}$ is the category of monoids in $\tt{Mod}_\mathbb{K}$. The algebra axioms are then equivalent to the commutative diagrams below.
             \begin{center}
                 \begin{tikzcd}
                     A \otimes_{\mathbb{K}} A \otimes_{\mathbb{K}} A \ar[]{r}{(\cdot_A)\otimes id_{\mathbb{K}}} \ar[]{d}[]{id_{\mathbb{K}}\otimes (\cdot_A)} & A \otimes_{\mathbb{K}} A \ar[]{d}{(\cdot_A)} \\
@@ -422,7 +422,7 @@
                 \end{align*}
 
     \subsection{Coalgebras}
-            A coalgebra is like an algebra, but we reverse every arrow. In this section, we dualize the definitions as given for algebras. For many purposes, this dualization is good, but as we will observe, some finiteness conditions are necessary. We will denote the category of "ill-behaved" coalgebras as $\tt{coAlg}_\mathbb{K}$.
+            A coalgebra is like an algebra, but we reverse every arrow. In this section, we dualize the definitions as given for algebras. For many purposes, this dualization is good, but as we will observe, some finiteness conditions are necessary. We will denote the category of coalgebras as $\tt{coAlg}_\mathbb{K}$.
 
             \begin{definition}[$\mathbb{K}$-Coalgebra]
                 Let $\mathbb{K}$ be a field. A coalgebra $C$ over $\mathbb{K}$ is a $\mathbb{K}$-module with structure morphisms called comultiplication and counit,
@@ -835,7 +835,7 @@
 
                 This time around, we will instead have a problem calculating kernels. Let $f: C \rightarrow D$ be a morphism of coalgebras. The set $\{c\in C \mid f(c) = 0\}$ is not necessarily closed under comultiplication. We require that $f^{\otimes 2}(\Delta_C(c)) = f(c_{(1)})\otimes f(c_{(2)}) = \Delta_D(f(c)) = \Delta_D(0) = 0$, but then only one of $f(c_{(1)})$ or $f(c_{(2)})$ has to be $0$.
 
-                It is not that this does not always work. If $f$ is a cokernel map, that is if $f : D \rightarrow \sfrac{\overline{D}}{\overline{C}}^+$, then $C = \{d\in D \mid f(d) = 0\}$. One may see that this is the case whenever $f$ is epi and regular. Then this is no longer a problem for any regular morphism $f: C \rightarrow D$, as we can consider the morphism $\pi: C \rightarrow \tt{coIm}f$ instead. Since $\widetilde{f}: \tt{coIm}f \rightarrow \tt{Im}f$ is an isomorphism, we can use the set-theoretic description instead,
+                The abovementioned construction will sometimes work. If $f$ is a cokernel map, that is if $f : D \rightarrow \sfrac{\overline{D}}{\overline{C}}^+$, then $C = \{d\in D \mid f(d) = 0\}$. Whenever $f: C \rightarrow D$ is epi and regular, $f$ will then be a cokernel map. In particular, it is enough that $f: C \rightarrow D$ is regular, as we can consider the morphism $\pi: C \rightarrow \tt{coIm}f$ instead of $f$. Since $\widetilde{f}: \tt{coIm}f \rightarrow \tt{Im}f$ is an isomorphism, $\tt{Ker}f \simeq \tt{Ker}\pi$, so we can use the set-theoretic description instead,
                 \begin{align*}
                     \tt{Ker}f = \{c\in C \mid f(c) = 0\}\tt{.}
                 \end{align*}
@@ -1850,7 +1850,7 @@
                 \end{tikzpicture}
             \end{center}
 
-            One of our main tools will be this coderivation. The ungraded case determines a ring morphism with little to no complications.
+            This coderivation will be very important for the rest of this thesis. In the ungraded case, we may transform it into a ring homomorphism.
 
             \begin{proposition}\label{prop: convolution to endomorphism}
                 $d_{\argument}^r:\tt{Hom}_\mathbb{K}(C,A)\rightarrow \tt{End}(C\otimes_\mathbb{K}A)$ is a morphism of algebras. Moreover, if $\alpha\star \alpha = 0$, then $(d_\alpha^r)^2 = 0$.
@@ -2222,25 +2222,27 @@
             \begin{proof}
                 This proposition is clear from the previous discussion.
             \end{proof}
+            
+            \begin{remark}
+                The functoriality of the right twisted tensor at the level of chain maps does not work. To show where it may go wrong, pick two twisting morphisms $\alpha: C \rightarrow A$ and $\beta: C' \rightarrow A'$. Given a pair of morphisms $f: C \rightarrow C'$ and $g: A \rightarrow A'$, it is unclear if $f\otimes g$ will preserve the perturbed differential, and it is not valid in general.
 
-            The functoriality of the right twisted tensor at the level of chain maps does not work. To show where it may go wrong, pick two twisting morphisms $\alpha: C \rightarrow A$ and $\beta: C' \rightarrow A'$. Given a pair of morphisms $f: C \rightarrow C'$ and $g: A \rightarrow A'$, it is unclear if $f\otimes g$ will preserve the perturbated differential, and it should not be true in general.
-
-            However, it is the case that the right twisted tensor product defines a tri-functor from the category of elements to chain complexes,
-            \begin{align*}
-                \argument\otimes_{\argument}\argument : \sum_{\tt{Coalg}\otimes\tt{Alg}}\tt{Tw} \rightarrow \tt{Mod}_C^A\tt{.}
-            \end{align*}
-            Any commutative square as below gets mapped to a morphism of its right twisted tensors. Here $f$ is a morphism of coalgebras, and $g$ is a morphism of algebras,
-            \begin{center}
-                \begin{tikzcd}
-                    C \ar[]{r}[]{\alpha} \ar[]{d}[]{f} & A \ar[]{d}[]{g} \\
-                    C' \ar[]{r}[]{\alpha '} & A'
-                \end{tikzcd}\quad\rightsquigarrow\quad
-                \begin{tikzcd}
-                    C\otimes_\alpha A \ar[]{d}[]{f\otimes g} \\
-                    C'\otimes_{\alpha '} A'
-                \end{tikzcd}
-            \end{center}
-            The important property to obtain this is that $f$ and $g$ are morphisms in their respective categories, allowing us to collapse the different compositions to the same map up to sign.
+                However, it is the case that the right twisted tensor product defines a tri-functor from the category of elements to cochain complexes,
+                \begin{align*}
+                    \argument\otimes_{\argument}\argument : \sum_{\tt{Coalg}\otimes\tt{Alg}}\tt{Tw} \rightarrow \tt{Mod}_C^A\tt{.}
+                \end{align*}
+                Any commutative square as below gets mapped to a morphism of its right twisted tensors. Here $f$ is a morphism of coalgebras, and $g$ is a morphism of algebras,
+                \begin{center}
+                    \begin{tikzcd}
+                        C \ar[]{r}[]{\alpha} \ar[]{d}[]{f} & A \ar[]{d}[]{g} \\
+                        C' \ar[]{r}[]{\alpha '} & A'
+                    \end{tikzcd}\quad\rightsquigarrow\quad
+                    \begin{tikzcd}
+                        C\otimes_\alpha A \ar[]{d}[]{f\otimes g} \\
+                        C'\otimes_{\alpha '} A'
+                    \end{tikzcd}
+                \end{center}
+                The important property to obtain this is that $f$ and $g$ are morphisms in their respective categories, allowing us to collapse the different compositions to the same map up to sign.
+            \end{remark}
 
             % \begin{remark}
             %     Functoriality of $\otimes_\alpha$ is obtained from the category of elements. I propose that there is an equivalence of categories, that is:

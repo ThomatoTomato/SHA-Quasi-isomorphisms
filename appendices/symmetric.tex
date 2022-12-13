@@ -3,7 +3,7 @@
 \begin{document}
     \section{Monoidal Categories}
 
-        Here we will give a brief summary of symmetric monoidal categories. More detailed accounts may be found in Mac Lane \cite{MacLane71}, Riehl \cite{Riehl14} or Kelly \cite{Kelly05}. 
+        Here we will give a brief summary of symmetric monoidal categories. More detailed accounts may be found in Mac Lane \cite{MacLane71}, Riehl \cite{Riehl14}, or Kelly \cite{Kelly05}. 
 
         \begin{definition}[Monoidal category]
             
@@ -42,7 +42,7 @@
             \end{center}
         \end{definition}
 
-        The coherence diagrams allow us to think of the monoidal product $\otimes$ as an associative and unital product. If $\alpha$, $\lambda$ and $\rho$ are given by identities, then we say that the monoidal category is strict.
+        The coherence diagrams allow us to think of the monoidal product $\otimes$ as an associative and unital product. If the identities give $\alpha$, $\lambda$, and $\rho$, we say that the monoidal category is strict.
 
         \begin{definition}[Lax monoidal functors]
             Let $(\mathcal{C}, \otimes, Z)$ and $(\mathcal{D}, \boxtimes, W)$ be monoidal categories. A functor $F : \mathcal{C} \rightarrow \mathcal{D}$ is monoidal if it comes equipped with
@@ -83,7 +83,7 @@
         The monoidal functor is said to be strong monoidal if $\mu$ is a natural isomorphism and $\upsilon$ is an isomorphism. If the morphisms $\mu$ and $\upsilon$ are given by identities, then we say that the functor is strict monoidal.
 
         \begin{definition}[Monoidal natural transformation]
-            Let $F,G : \mathcal{C} \rightarrow \mathcal{D}$ be lax monoidal functors between monoidal categories. We say that a natural transformation $\theta : F \Rightarrow G$ is a monoidal natural transformation if the following diagrams commute
+            Let $F, G: \mathcal{C} \rightarrow \mathcal{D}$ be lax monoidal functors between monoidal categories. We say that a natural transformation $\theta: F \Rightarrow G$ is a monoidal natural transformation if the following diagrams commute
             \begin{center}
                 \scalebox{1}{
                     \begin{tikzcd}[ampersand replacement = \&]
@@ -131,7 +131,7 @@
             \end{center}
         \end{definition}
         \begin{definition}[Symmetric monoidal category]
-            A braided monoidal category $\mathcal{C}$ is called symmetric if the braiding $\beta$ is chosen so that it has its own inverses, i.e. the following diagram commutes.
+            A braided monoidal category $\mathcal{C}$ is called symmetric if the braiding $\beta$ is chosen so that it has its own inverses, i.e., the following diagram commutes.
             \begin{center}
                 \begin{tikzcd}
                     A\otimes B \ar[equal]{rr}[]{} \ar[]{rd}[]{\beta_{A,B}} &[-10pt] &[-10pt] A \otimes B \\
@@ -140,10 +140,10 @@
             \end{center}
         \end{definition}
 
-        In the case of a symmetric braiding, one only has to check that either one of the braiding hexagons commute, as the other follows from symmetry.
+        In the case of symmetric braiding, one only has to check that either one of the braiding hexagons commutes, as the other follows from symmetry.
 
         \begin{definition}[Braided lax monoidal functor]
-            We say that a monoidal functor $F : \mathcal{C} \rightarrow \mathcal{D}$ between braided categories is braided if it commutes with braiding in the sense of the following commutative diagram.
+            We say that a monoidal functor $F: \mathcal{C} \rightarrow \mathcal{D}$ between braided categories is braided if it commutes with braiding in the sense of the following commutative diagram.
             \begin{center}
                 \begin{tikzcd}
                     F(A) \boxtimes F(B) \ar[]{d}[]{\mu_{A,B}} \ar[]{r}[]{\beta_{F(A),F(B)}^\mathcal{D}} & F(B) \boxtimes F(A) \ar[]{d}[]{\mu_{B,A}} \\

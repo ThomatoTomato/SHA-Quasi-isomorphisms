@@ -6,6 +6,55 @@
     
     \section{Introduction}
 
-        
+        A differential graded algebra, or simply dg-algebra, is an associative algebra where the underlying object is a cochain complex. Any dg-algebra $A$ naturally carries a homotopical structure, as the homology, $H^*A$, defines an algebra where some elements are unique up to homology. Since homology algebras are determined by their dg-counterparts, we are very interested to understand quasi-isomorphisms; that is, morphisms $f:A\rightarrow~B$ between dg-algebras such that $H^*f:H^*A\rightarrow~H^*B$ is an isomorphism.
+
+        It is quite known that quasi-isomorphisms $f:A\rightarrow~B$ between associative dg-algebras admit a homotopy inverse whenever we consider them as $A_\infty$-algebras. This allows us to think of homology algebras as homotopy algebras of $A_\infty$-algebras,
+        \begin{align*}
+            \tt{HoAlg}_\mathbb{K} \simeq \sfrac{\tt{Alg}_\infty}{\sim}\tt{.}
+        \end{align*}
+
+        This result is still true if we consider quasi-isomorphisms $f:M\rightarrow~N$ between $A$-modules. The morphism $f$ admits a homotopy inverse whenever we consider the modules as corresponding $A_\infty$-modules. With this in mind, there are equivalences of categories,
+        \begin{align*}
+            D_\infty A \simeq K_\infty A \simeq DA\tt{.}
+        \end{align*}
+        Here, $D_\infty A$ and $K_\infty A$ denote the derived and homotopy category of the category of $A_\infty$-modules, respectively.
+
+        In this thesis we investigate a proof provided by Lef\`evre-Hasegawa \cite{LefevreHasegawa03} while taking a lot of inspiration from Loday and Vallette \cite{Loday12}. The thesis is split into three different chapters.
+
+        \subsubsection*{Chapter 1 - The Bar and Cobar Construction}
+            In Chapter 1, we develop the theory of dg-algebras and dg-coalgebras. We try to make the theory of coalgebras more intuitive by comparing how they differ from algebras. The augmented algebras and conilpotent coalgebras are of utmost importance in this thesis.
+
+            The essential tool developed in this chapter is the bar and cobar construction, denoted as $B$ and $\Omega$, respectively. Twisting morphisms play a unique role as they define a functor, represented by the bar and cobar construction. Thus, we have an adjoint pair of functors,
+            \begin{center}
+                \begin{tikzcd}
+                    \tt{coAlg}_{\mathbb{K}, \tt{conil}}^\bullet \ar[yshift = 1ex]{r}[]{\Omega} \ar[phantom]{r}[]{\bot} & \tt{Alg}_{\mathbb{K},+}^\bullet \ar[yshift = -1ex]{l}[below]{B}
+                \end{tikzcd}
+            \end{center}
+
+            Lastly, we define $A_\infty$-algebras in terms of the bar construction. We will think of these as the algebras which make the bar construction fully faithful on the image of quasi-free conilpotent dg-coalgebras. We can thus think of an $A_\infty$-algebra in two different ways, either as a dg-algebra with strong homotopy associativity or as a conilpotent dg-coalgebra. Both points of view will be fruitful.
+
+        \subsubsection*{Chapter 2 - Homotopy Theory of Algebras}
+            Chapter 2 aims to explain some of the homotopy theories of dg-algebras, conilpotent dg-coalgebras, and $A_\infty$-algebras. We start by giving an exposition on model categories, having a special interest in Whitehead's theorem, the fundamental theorem of model categories, and Quillen equivalences.
+
+            We upgrade the cobar-bar adjunction into a Quillen equivalence, identifying the homotopy category of dg-algebras and conilpotent dg-coalgebras. The category of $A_\infty$-algebra will be equivalent to the bifibrant conilpotent dg-coalgebras. This will allow us to show the first claim,
+            \begin{align*}
+                \tt{HoAlg}_\mathbb{K} \simeq \sfrac{\tt{Alg}_\infty}{\sim}\tt{.}
+            \end{align*}
+
+        \subsubsection*{Chapter 3 - Derived Categories of Strongly Homotopy Associative Algebras}
+            In the final chapter, we investigate the homotopy theory of modules over dg-algebras and comodules over dg-coalgebras. We will further develop the theory of twisting morphisms to obtain Quillen equivalences,
+
+            \begin{center}
+                \begin{tikzcd}
+                    \tt{coMod}^C \ar[yshift = 1ex]{r}[]{L_\alpha} \ar[phantom]{r}[]{\bot} & \tt{Mod}^A \ar[yshift = -1ex]{l}[below]{R_\alpha}
+                \end{tikzcd}
+            \end{center}
+
+            We prove the fundamental theorem of twisting morphisms, which allows us to characterize whenever a twisting morphism defines a Quillen equivalence.
+
+            $A_\infty$-modules of $A$, called $A$-polydules are defined to be objects being the converse of $R_\alpha$ whenever $C = BA$. We may then see that $A$-polydules are the bifibrant $BA$-comodules. We will then define the derived category of polydules, $D_\infty A$. The thesis will conclude by showing that,
+            \begin{align*}
+                D_\infty A \simeq K_\infty A \simeq DA\tt{.}
+            \end{align*}
 
 \end{document}

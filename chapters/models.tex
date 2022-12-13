@@ -116,7 +116,7 @@
             \end{proposition}
 
             \begin{proof}
-            Assume that $f$ is a cofibration. By MC3, we know that $f$ has LLP with respect to acyclic fibrations. Assume instead that $f$ has LLP with respect to every acyclic fibration. By \textbf{MC4}, we factor $f = f_\alpha\circ f_\beta$, where $f_\alpha$ is a cofibration, and $f_\beta$ is an acyclic fibration. Since we assume $f$ to have LLP with respect to $f_\beta$, by Lemma \ref{lem: retract-argument}, we know that $f$ is a retract of $f_\alpha$. Thus by \textbf{MC2}, we know that $f$ is a cofibration. 
+            Assume that $f$ is a cofibration. By \textbf{MC3}, we know that $f$ has LLP with respect to acyclic fibrations. Assume instead that $f$ has LLP with respect to every acyclic fibration. By \textbf{MC4}, we factor $f = f_\alpha\circ f_\beta$, where $f_\alpha$ is a cofibration, and $f_\beta$ is an acyclic fibration. Since we assume $f$ to have LLP with respect to $f_\beta$, by Lemma \ref{lem: retract-argument}, we know that $f$ is a retract of $f_\alpha$. Thus by \textbf{MC2}, we know that $f$ is a cofibration. 
             \end{proof}
 
             \begin{corollary}\label{cor: stable-cofib-base-change}
@@ -152,9 +152,9 @@
             \begin{construction}
                 Let $X$ be an object of a model category $\mathcal{C}$. The morphism $i:\emptyset\rightarrow X$ has a functorial factorization $i=i_\beta\circ i_\alpha$, where $i_\alpha: \emptyset\rightarrow QX$ is a cofibration and $i_\beta: QX\rightarrow X$ is an acyclic fibration. By definition, $QX$ is cofibrant and weakly equivalent to $X$.
 
-                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this, we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{cod} \circ \alpha$.
+                $Q: \mathcal{C}\rightarrow \mathcal{C}$ defines a functor called the cofibrant replacement. To see this, we first look at the slice category $\sfrac{\emptyset}{\mathcal{C}}$. The objects are morphisms $f:\emptyset \rightarrow X$ for any object $X$ in $\mathcal{C}$, while morphisms are commutative triangles. We first observe that $\sfrac{\emptyset}{\mathcal{C}}\subset\mathcal{C}^\rightarrow$ is a subcategory of the arrow category. Thus $(\alpha, \beta)$ may be interpreted as functors on the slice category to the arrow category. Moreover, since every arrow $f:\emptyset \rightarrow X$ is unique, we observe that this category is equivalent to $\mathcal{C}$. Thus $(\alpha, \beta)$ may be interpreted as functors on $\mathcal{C}$ into arrows. We define $Q$ as the composition $Q = \tt{cod} \circ \alpha$, where $\tt{cod} : \mathcal{C}^{\rightarrow} \rightarrow \mathcal{C}$ is the codomain functor.
 
-                Dually, we get a fibrant replacement $R$ by dualizing the above argument.
+                Dually, we get a fibrant replacement functor $R: \mathcal{C} \rightarrow \mathcal{C}$. By the functorial factorizations, we have natural transformations $q : Q \Rightarrow \tt{Id}_\mathcal{C}$ and $r : \tt{Id}_\mathcal{C} \Rightarrow R$.
             \end{construction}
 
             We collect the following properties
@@ -240,7 +240,7 @@
             \end{definition}
 
             \begin{remark}
-                A renowned problem with localizations is that even if $\mathcal{C}$ is a locally small category, localizations $\mathcal{C}[S^{-1}]$ does not need to be. Thus, without a good theory of classes or higher universes, we cannot generally ensure that localization still exists as a locally small category.
+                A renowned problem with localizations is that even if $\mathcal{C}$ is a locally small category, localizations $\mathcal{C}[S^{-1}]$ do not need to be. Thus, without a good theory of classes or higher universes, we cannot generally ensure that localization still exists as a locally small category.
             \end{remark}
 
             From the definition of the homotopy category, a functor $F$ admits a lift $F'$ from the homotopy category whenever weak equivalences are mapped to isomorphisms. Moreover, if we have a functor $F$ between homotopical categories, which preserves weak equivalences, it then induces a functor between the homotopy categories.
@@ -402,7 +402,7 @@
             \end{definition}
 
             \begin{remark}
-                Even though we have written $X\wedge I$ suggestively to be a functor, it is not. There may be many choices for a cylinder object. However, by using the functorial factorization from \textbf{MC4}, we get a canonical choice of a cylinder object, as it factors every map into a cofibration and an acyclic fibration. By letting the cylinder object be this object, we obtain a functor.
+                Even though we have written $X\wedge I$ suggestively to be a functor, it is not. There may be many choices for a cylinder object. However, by using the functorial factorization from \textbf{MC4}, we get a canonical choice of a cylinder object, as it factors every map into a cofibration and an acyclic fibration. If we let the cylinder object denote this functorial choice, we can define it as a functor.
             \end{remark}
 
             \begin{proposition}
@@ -652,7 +652,7 @@
                 There is a somewhat weaker statement by Dwyer and Spalinski \cite[Proposition 9.3][111]{Dwyer95}. If we instead ask for functors $F$, which have the cofibrant replacement $Q$ (fibrant replacement $R$) as a left (right) deformation, we may make this proof more explicit.
             \end{remark}
 
-            Equipped with the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
+            With the above proposition and remark, it makes sense to define Quillen functors as left and right Quillen functors. A left Quillen functor should be left deformable by the cofibrant replacement. Moreover, for the composition of two left Quillen functors to make sense, we also need weak equivalences between cofibrant objects to be mapped to weak equivalences between cofibrant objects. We make the following definition.
 
             \begin{definition}[Quillen adjunction]
                 Let $\mathcal{C}$ and $\mathcal{D}$ be model categories. \begin{enumerate}
@@ -1111,7 +1111,7 @@
                 \end{center}
             \end{lemma}
 
-            This proof has a troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof from \cite{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may sometimes work but fails in its full generality \cite{Keller06}. The proof presented here is a modification of Vallette's proof of "A technical lemma" \cite[Appendix B]{Vallette20}.
+            This proof has a slightly troubled past. In \cite{LefevreHasegawa03}, Lefevre-Hasegawa made a proof which was a straightforward modification of Hinich's proof \cite[Key Lemma]{Hinich01}. However, this translation does not behave as well as one would like. Keller points out that this method may sometimes work but fails in its full generality \cite{Keller06}. The proof presented here is a modification of Vallette's proof of "A technical lemma" \cite[Appendix B]{Vallette20}.
 
             \begin{proof}
                 $\pi$ being a cofibration is immediate by Corollary~\ref{cor: stable-cofib-base-change}. 
@@ -1123,7 +1123,7 @@
                         \tt{Ker}(p)[1] \ar[hook]{r} & \tt{cone}(d')[1] \ar[two heads]{r}[]{} & \cdots
                     \end{tikzcd}
                 \end{center}
-                As graded modules, $A \simeq \tt{cone}(d') \simeq \tt{Ker}(p) \oplus \Omega D$. We denote $K = \tt{Ker}(p)$, so that the differential of $A$ is then the differential coming from 
+                Between each of the extensions, there is a connecting morphism $d'$, which comes from the differential of $\tt{cone}(d')$. As graded modules, $A \simeq \tt{cone}(d') \simeq \tt{Ker}(p) \oplus \Omega D$. We denote $K = \tt{Ker}(p)$, so that the differential of $A$ is then the differential coming from 
                 \begin{align*}
                     d_K & : K \rightarrow K, \\
                     d_{\Omega D} & : \Omega D \rightarrow \Omega D \tt{ and} \\
@@ -1247,7 +1247,7 @@
 
         We restate the corollary of the adjunction.
         \begin{corollary}\label{cor: cobar-bar-quill-eq}
-            The bar-cobar construction $B: {Alg}^\bullet_{\mathbb{K},+} \rightleftharpoons \tt{coAlg}^\bullet_{\mathbb{K},conil} : \Omega$ as a Quillen equivalence.
+            The bar-cobar construction $\Omega : {coAlg}^\bullet_{\mathbb{K},conil} \rightleftharpoons \tt{Alg}^\bullet_{\mathbb{K},+} : B$ as a Quillen equivalence.
         \end{corollary}
 
         \begin{proof}
@@ -1302,6 +1302,8 @@
 
             Dually, if $j: A \rightsquigarrow D$ is a fibration, then there is an isomorphism $l: A' \rightsquigarrow A$ such that the composition $j\circ l: A' \rightsquigarrow D$ is a strict morphism of $A_\infty$-algebras.
         \end{lemma}
+
+        We will need the following lemma.
 
         \begin{proof}[Proof of Theorem~\ref{thm: model-A-inf}]
             We start by showing (b). Suppose we have a diagram of $A_\infty$-algebras, such that $g_1$ is an epimorphism.
@@ -1358,9 +1360,9 @@
                 \end{tikzcd}
             \end{center}
 
-            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is acyclic. Since $c'$ is a cycle, it necessarily has to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
+            Now, $c'$ is a morphism between two $A_\infty$-algebras. Since $q$ is assumed to be an $\infty$-quasi-isomorphism, it follows that $\tt{Ker}q_1$ is acyclic. Since $c'$ is a cycle in $\tt{Hom}_\mathbb{K}^*(\tt{Cok}j_1,\tt{Ker}q_1)$, it necessarily has to be in the image of the differential. Let $h$ be a morphism such that $\partial h = c'$, and define $a_{n+1} = b - i\circ h\circ p$. One may check that this morphism satisfies all three properties.
 
-            We will now show \textbf{MC4}. Since the two properties have similar proof, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism. Let $C = \tt{cone}(id_{B[-1]})$. The complex $C$ may be considered as an $A_\infty$-algebra. Let $j: A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1: A\oplus C \rightarrow B$ gives a lift of the following diagram.
+            We will now show \textbf{MC4}. Since the two properties have similar proofs, we will only show one direction. Let $f: A \rightsquigarrow B$ be an $\infty$-morphism, an $C = \tt{cone}(id_{B[-1]})$, where the complex $C$ is considered as an $A_\infty$-algebra. Let $j: A \rightsquigarrow A\prod C$ be the morphism induced by $id_A$ and $0:A \rightarrow C$. The canonical projection $q_1: A\oplus C \rightarrow B$ gives a lift of the following diagram.
 
             \begin{center}
                 \begin{tikzcd}
