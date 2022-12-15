@@ -1666,7 +1666,7 @@
             \end{definition}
             The hom-objects are defined analogously. We use $\tt{Hom}_{A^\bullet}^\bullet$ to denote the $\mathbb{K}$-linear cochain complex.
 
-            With this definition, the categories $\tt{Mod}_\mathbb{K}$ where $\mathbb{K}$ is considered as a cochain complex, and the category $\tt{Mod}_\mathbb{K}^\bullet$ is the same category because a chain complex already satisfies the first two bullet points by definition. Being a $\mathbb{K}^\bullet$-derivation is a trivial condition, so every map meets this.
+            With this definition, the categories $\tt{Mod}_\mathbb{K}$ where $\mathbb{K}$ is considered as a cochain complex, and the category $\tt{Mod}_\mathbb{K}^\bullet$ is the same category because a cochain complex already satisfies the first two bullet points by definition. Being a $\mathbb{K}^\bullet$-derivation is a trivial condition, so every map meets this.
 
             We also have the dual definition to obtain dg-coalgebras, $(f,g)$-coderivations and their comodules.
             
@@ -1930,7 +1930,7 @@
             \end{proposition}
 
             \begin{proof}
-                We know that $(\tt{Hom}_\mathbb{K}^*(C,A),\star)$ is a convolution algebra and that $(\tt{Hom}_\mathbb{K}^*(C,A),\partial)$ is a chain complex. It remains to verify that the differential is compatible with the multiplication, i.e., $\partial(f\star g) = \partial{f}\star g + (-1)^{|f|}f\star\partial{g}$.
+                We know that $(\tt{Hom}_\mathbb{K}^*(C,A),\star)$ is a convolution algebra and that $(\tt{Hom}_\mathbb{K}^*(C,A),\partial)$ is a cochain complex. It remains to verify that the differential is compatible with the multiplication, i.e., $\partial(f\star g) = \partial{f}\star g + (-1)^{|f|}f\star\partial{g}$.
 
                 Let $f,g\in \tt{Hom}_\mathbb{K}^*(C,A)$ be two homogenous morphisms. The key property to arrive at the result is that the differential in a dg-(co)algebra is a (co)derivation. We denote the degree of $f\star g$ as $|f\star g| = |f| + |g| = d$. Then
 
@@ -2190,7 +2190,7 @@
             \end{proof}
 
             \begin{corollary}
-                If $\alpha: C\rightarrow A$ is a twisting morphism, then $(C\otimes_\mathbb{K}A, d_\alpha^\bullet)$ is a chain complex which is also a left $C$-comodule and a right $A$-module. We call this the right twisted tensor product, denoted as $C\otimes_\alpha A$.
+                If $\alpha: C\rightarrow A$ is a twisting morphism, then $(C\otimes_\mathbb{K}A, d_\alpha^\bullet)$ is a cochain complex which is also a left $C$-comodule and a right $A$-module. We call this the right twisted tensor product, denoted as $C\otimes_\alpha A$.
             \end{corollary}
 
             Normally $A\otimes C$ and $C\otimes A$ are isomorphic as modules. In general, it is not true that $C\otimes_\alpha A$ and $A\otimes_\alpha C$ are isomorphic since we have to choose a particular side to perform the twisting. However, if $A$ is commutative and $C$ is cocommutative, they are isomorphic. To illustrate, we realize the unique derivation above as a right derivative. The left derivative $d_\alpha^l$ is then defined analogously,
@@ -2280,9 +2280,9 @@
             % Let $W^?:\Delta^{op}\rightarrow\mathcal{C}$ denote the simplicial functor. If $C\in\mathcal{C}$ is an object, then there is a simplicial object, denoted $W_C^?$. The face and degeneracy maps are obtained by applying $C$, i.e., $(d_n^i)_C$ and $(s_n^i)_C$. Dually, if $M$ is a monad, we obtain a cosimplicial object $M_C^?$.
 
             % \begin{definition}
-            %     Suppose that $\mathcal{A}$ is an abelian category. Let $W:\mathcal{A}\rightarrow\mathcal{A}$ be a comonad and $A$ and object of $\mathcal{A}$. The canonical $W$-projective resolution of $A$ is the chain complex $W^\bullet_A$ together with an augmentation $\varepsilon_A: W^\bullet_A \rightarrow A$.
+            %     Suppose that $\mathcal{A}$ is an abelian category. Let $W:\mathcal{A}\rightarrow\mathcal{A}$ be a comonad and $A$ and object of $\mathcal{A}$. The canonical $W$-projective resolution of $A$ is the cochain complex $W^\bullet_A$ together with an augmentation $\varepsilon_A: W^\bullet_A \rightarrow A$.
 
-            %     Dually, suppose that $M:\mathcal{A}\rightarrow\mathcal{A}$ is a monad. A's canonical $M$-injective resolution is the chain complex $M_A^\bullet$ together with an augmentation $\eta_A: A\rightarrow MA$.
+            %     Dually, suppose that $M:\mathcal{A}\rightarrow\mathcal{A}$ is a monad. A's canonical $M$-injective resolution is the cochain complex $M_A^\bullet$ together with an augmentation $\eta_A: A\rightarrow MA$.
             % \end{definition}
 
             % \begin{remark}
@@ -2317,7 +2317,7 @@
             %     \end{center}
             % \end{example}
 
-            An algebra $A$ is a monoid in the monoidal category $(\tt{Mod}_\mathbb{K}, \otimes_\mathbb{K}, \mathbb{K})$. By proposition \ref{prop: universal-monoid}, we may think of $A$ as an augmented cosimplicial object $A:\Delta_+ \rightarrow \tt{Mod}_\mathbb{K}$. Notice that all of the cosimplicial identities follow from associativity and unitality. If $A$ is an augmented algebra, we may instead give it the structure of an augmented simplicial set. Let $d^0_0 = \varepsilon_A$ be the augmentation. We define $d^n_n = A^{\otimes n-1}\otimes\varepsilon_A$ and set $d^i_n = A^{i-1}\otimes (\cdot_A) \otimes A^{\otimes n-i-1}$. The degeneracies are chosen to be the units, that is, the morphisms $s^i_n = A^{\otimes i}\otimes \upsilon_A \otimes A^{\otimes n-i-1}$. One may check that this structure defines an augmented simplicial object $A:\Delta_+^{op}\rightarrow \tt{Mod}_\mathbb{K}$. Observe that the chain complex $\tt{C}A$ is exactly the Hochschild complex of $A$. We depict the simplicial object in the following diagram:
+            An algebra $A$ is a monoid in the monoidal category $(\tt{Mod}_\mathbb{K}, \otimes_\mathbb{K}, \mathbb{K})$. By proposition \ref{prop: universal-monoid}, we may think of $A$ as an augmented cosimplicial object $A:\Delta_+ \rightarrow \tt{Mod}_\mathbb{K}$. Notice that all of the cosimplicial identities follow from associativity and unitality. If $A$ is an augmented algebra, we may instead give it the structure of an augmented simplicial set. Let $d^0_0 = \varepsilon_A$ be the augmentation. We define $d^n_n = A^{\otimes n-1}\otimes\varepsilon_A$ and set $d^i_n = A^{i-1}\otimes (\cdot_A) \otimes A^{\otimes n-i-1}$. The degeneracies are chosen to be the units, that is, the morphisms $s^i_n = A^{\otimes i}\otimes \upsilon_A \otimes A^{\otimes n-i-1}$. One may check that this structure defines an augmented simplicial object $A:\Delta_+^{op}\rightarrow \tt{Mod}_\mathbb{K}$. Observe that the cochain complex $\tt{C}A$ is exactly the Hochschild complex of $A$. We depict the simplicial object in the following diagram:
             \begin{center}
                 \begin{tikzcd}
                     \mathbb{K} & A \ar[]{l}[above]{\varepsilon_A} & A^{\otimes 2} \ar[yshift = 0.5ex]{l}[above]{(\cdot_A)} \ar[yshift = -0.5ex]{l}[]{A\otimes \varepsilon_A} & A^{\otimes 3} \ar[yshift = 0.75ex]{l}[above]{(\cdot_A)} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{A^{\otimes 2}\otimes \varepsilon_A} & ... \ar[yshift = 1ex]{l}[above]{(\cdot_A)} \ar[yshift = 0.33ex]{l}[]{} \ar[yshift = -0.33ex]{l}[]{} \ar[yshift = -1ex]{l}[]{A^{\otimes 4}\otimes\varepsilon_A} 
@@ -2335,7 +2335,7 @@
                 \end{tikzcd}
             \end{center}
 
-            As graded modules, the chain complex $\tt{C}\overline{A}$ is isomorphic to $T^c(\overline{A})$. Here we think of the grading $T^c(\overline{A})$ as starting at $0$ and going down to negative degrees. Consider instead the looped non-unital algebra $\overline{A}[1]$. There is a natural grading on every algebra, concentrating it in degree $0$. The shift functor then changes the degree to which we concentrate the algebra. However, $\overline{A}[1]$ is no longer an associative algebra. To understand this looped multiplication, we will first consider $\mathbb{K}\startset{\omega}$, where $|\omega| = -1$. We define a looped multiplication $(\cdot):\mathbb{K}\startset{\omega}^{\otimes 2} \rightarrow \mathbb{K}\startset{\omega}$ as
+            As graded modules, the cochain complex $\tt{C}\overline{A}$ is isomorphic to $T^c(\overline{A})$. Here we think of the grading $T^c(\overline{A})$ as starting at $0$ and going down to negative degrees. Consider instead the looped non-unital algebra $\overline{A}[1]$. There is a natural grading on every algebra, concentrating it in degree $0$. The shift functor then changes the degree to which we concentrate the algebra. However, $\overline{A}[1]$ is no longer an associative algebra. To understand this looped multiplication, we will first consider $\mathbb{K}\startset{\omega}$, where $|\omega| = -1$. We define a looped multiplication $(\cdot):\mathbb{K}\startset{\omega}^{\otimes 2} \rightarrow \mathbb{K}\startset{\omega}$ as
             \begin{align*}
                 \omega \cdot \omega = \omega\tt{.}
             \end{align*}
@@ -2373,7 +2373,7 @@
             For simplicity, we will write $d_1$ for the horizontal differential and $d_2$ for the vertical differential. $\tt{C}A$ is thus the total complex of the double complex above. Instead of considering the abovementioned double complex, we will consider the double complex associated with the looped algebra $\overline{A}[1]$. The following lemma states that this double complex is well-defined.
             
             \begin{proposition}
-                Let $A$ be an augmented dg-algebra. The bar complex $BA$ is the total associated chain complex of the augmentation ideal $\overline{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
+                Let $A$ be an augmented dg-algebra. The bar complex $BA$ is the total associated cochain complex of the augmentation ideal $\overline{A}$. $(BA, d_{BA}^\bullet)$ is the cofree conilpotent coalgebra equipped with $d_{BA}^\bullet = d_1 + d_2$ as coderivation.
             \end{proposition}
 
             \begin{proof}
@@ -2391,7 +2391,7 @@
                 We don't need to show that $BA$ is a functor. This property follows from $BA$ representing the object of $\tt{Tw}(\argument, A)$.
             \end{remark}
 
-            On the other hand, a coalgebra $C$ is a comonoid in $\tt{Mod}_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid}, we may think of it as an augmented simplicial object $C:(\Delta_+)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplicial identities follow from coassociativity and counitality. A coaugmented coalgebra $C$ may be given an augmented cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\overline{C}$ is a semi-cosimplicial object of $\tt{Mod}_\mathbb{K}$. Observe that $\overline{C}$ has an associated chain complex like $\overline{A}$, but every arrow goes in the opposite direction.
+            On the other hand, a coalgebra $C$ is a comonoid in $\tt{Mod}_\mathbb{K}$. By the dual of proposition \ref{prop: universal-monoid}, we may think of it as an augmented simplicial object $C:(\Delta_+)^{op} \rightarrow Mod_\mathbb{K}$. Dually, all of the simplicial identities follow from coassociativity and counitality. A coaugmented coalgebra $C$ may be given an augmented cosimplicial structure in the opposite way of algebras. We then get that the coaugmentation quotient $\overline{C}$ is a semi-cosimplicial object of $\tt{Mod}_\mathbb{K}$. Observe that $\overline{C}$ has an associated cochain complex like $\overline{A}$, but every arrow goes in the opposite direction.
 
             \begin{center}
                 \begin{tikzcd}
@@ -2421,7 +2421,7 @@
             \end{center}
 
             \begin{proposition}
-                Let $C$ be a coaugmented dg-coalgebra. The cobar complex $\Omega C$ is the total associated chain complex of the suspended coaugmentation quotient $\overline{C}[-1]$. $(\Omega C, d_{\Omega C})$ is the free algebra equipped with the differential $d_{\Omega C} = d_1 + d_2$ as derivation.
+                Let $C$ be a coaugmented dg-coalgebra. The cobar complex $\Omega C$ is the total associated cochain complex of the suspended coaugmentation quotient $\overline{C}[-1]$. $(\Omega C, d_{\Omega C})$ is the free algebra equipped with the differential $d_{\Omega C} = d_1 + d_2$ as derivation.
             \end{proposition}
 
             \begin{proof}
@@ -2654,16 +2654,16 @@
             (\text{rel}_3)\qquad & m_1\circ m_3 - m_2\circ_1 m_2 + m_2\circ_2m_2 + m_3\circ_1m_1 + m_3\circ_2m_1 + m_3\circ_3m_1 = 0 
         \end{align*}
 
-        We see that $(\text{rel}_1)$ states that $m_1$ should be a differential. Thus we may think of $(A, m_1)$ as a chain complex. Furthermore, $(\text{rel}_2)$ says that $m_2 : (A^{\otimes 2}, m_1\otimes id_A + id_A\otimes m_1) \rightarrow (A, m_1)$ is a morphism of chain complexes. Lastly, $(\text{rel}_3)$ gives us a homotopy for the associator of $m_2$, namely $m_3$. Thus we may regard $(A, m_1, m_2)$ as an algebra that is associative up to the homotopy $m_3$. Regarding $A$ as a chain complex, instead, we obtain our final equivalent definition of an $A_\infty$-algebra.
+        We see that $(\text{rel}_1)$ states that $m_1$ should be a differential. Thus we may think of $(A, m_1)$ as a cochain complex. Furthermore, $(\text{rel}_2)$ says that $m_2 : (A^{\otimes 2}, m_1\otimes id_A + id_A\otimes m_1) \rightarrow (A, m_1)$ is a morphism of chain complexes. Lastly, $(\text{rel}_3)$ gives us a homotopy for the associator of $m_2$, namely $m_3$. Thus we may regard $(A, m_1, m_2)$ as an algebra that is associative up to the homotopy $m_3$. Regarding $A$ as a cochain complex, instead, we obtain our final equivalent definition of an $A_\infty$-algebra.
 
         \begin{proposition}
-            Suppose that $(A, d)$ is a chain complex and that there exist morphisms $m_n: A^{\otimes n} \rightarrow A$ of degree $2-n$ for any $n\geq 2$. A is an $A_\infty$-algebra if and only it satisfies the following relations:
+            Suppose that $(A, d)$ is a cochain complex and that there exist morphisms $m_n: A^{\otimes n} \rightarrow A$ of degree $2-n$ for any $n\geq 2$. A is an $A_\infty$-algebra if and only it satisfies the following relations:
             \begin{align*}
                 (\text{rel'}_n)\qquad & \partial(m_n) = -\sum_{\substack{n = p + q + r \\ k = p + 1 + r \\ k > 1, q > 1}}(-1)^{pq + r}m_k\circ_{p+1}m_q
             \end{align*}
         \end{proposition}
 
-        We define the homotopy of an $A_\infty$-algebra to be the homology of the chain complex $(A, m_1)$. Since $\partial(m_3) = m_2\circ_1m_2 - m_2\circ_2m_2$, we get that $m_2$ is associative in homology. Thus for any $A_\infty$-algebra $A$, the homotopy $HA$ is an associative algebra. The operadic homology of $A$ is defined as the homology of $(T^c(A[1]), m)$, which is the non-unital augmented Hochschild homology of $A$.
+        We define the homotopy of an $A_\infty$-algebra to be the homology of the cochain complex $(A, m_1)$. Since $\partial(m_3) = m_2\circ_1m_2 - m_2\circ_2m_2$, we get that $m_2$ is associative in homology. Thus for any $A_\infty$-algebra $A$, the homotopy $HA$ is an associative algebra. The operadic homology of $A$ is defined as the homology of $(T^c(A[1]), m)$, which is the non-unital augmented Hochschild homology of $A$.
 
         \begin{example}
             Suppose that $V$ is a cochain complex with differential $d$. Then $V$ is an $A_\infty$-algebra with trivial multiplication. In other words $m^1 = d$ and $m^i = 0$ for any $i>1$.
@@ -2763,7 +2763,7 @@
         \end{remark}
 
         \begin{corollary}
-            $C$ is an $A_\infty$-coalgebra with differential $d$ then there is a chain complex $(C, d^1)$, where $d^1$ is of degree $1$, and together with morphisms $d^n : C \rightarrow C^{\otimes n}$ such that $d$ uniquely determines each $d^i$ for any $i>0$. Conversely, if the morphisms $d^i$ satisfy $\text{(rel)}_n$, then they uniquely determine a $d$ such that $C$ is an $A_\infty$-coalgebra,
+            $C$ is an $A_\infty$-coalgebra with differential $d$ then there is a cochain complex $(C, d^1)$, where $d^1$ is of degree $1$, and together with morphisms $d^n : C \rightarrow C^{\otimes n}$ such that $d$ uniquely determines each $d^i$ for any $i>0$. Conversely, if the morphisms $d^i$ satisfy $\text{(rel)}_n$, then they uniquely determine a $d$ such that $C$ is an $A_\infty$-coalgebra,
             \begin{align*}
                 (\text{rel}_n)\tt{ is}\qquad & \sum_{p+q+r = n}(-1)^{pq+r}d^{p+1+q}\circ^{op}_{p+1}d^q = 0
             \end{align*}
