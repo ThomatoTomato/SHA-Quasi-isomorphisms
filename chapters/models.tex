@@ -792,7 +792,7 @@
             \end{proposition}
 
             \begin{proof}
-                Let $(f,t)\in h_{A,\alpha}(B)$ for some $B\in\mathcal{C}$. The condition that $\partial t = f^\#\alpha$ is equivalent to say that $f^\#$ extends to a morphism $f' : \tt{cone}(\alpha) \rightarrow B^\#$ along $t$, i.e. $f' = \begin{pmatrix}f^\# & t\end{pmatrix}$. This construction concludes the isomorphism part, as an element $(f,t)$ is equivalent to the diagram below, where $\widetilde{f}$ is uniquely determined.
+                Let $(f,t)\in h_{A,\alpha}(B)$ for some $B\in\mathcal{C}$. The condition that $\partial t = f^\#\alpha$ is equivalent to say that $f^\#$ extends to a morphism $f' : \tt{cone}(\alpha) \rightarrow B^\#$ along $t$, i.e. there is a vector of morphisms $f' = \begin{pmatrix}f^\# & t\end{pmatrix}$. This construction concludes the isomorphism part, as an element $(f,t)$ is equivalent to the diagram below, where $\widetilde{f}$ is uniquely determined.
                 \begin{center}
                     \begin{tikzcd}
                         F(A^\#) \ar[]{r}[]{\varepsilon_A} \ar[]{d}[]{} & A \ar[]{d}[]{a} \ar[bend left]{ddr}[]{f} \\
@@ -807,15 +807,15 @@
             We are now in a position to find some crucial cofibrations. We collect these morphisms into the "standard" cofibrations.
 
             \begin{definition}
-                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Suppose that $f$ factors as a transfinite composition of morphisms on the form $A_i \rightarrow A_i\langle M,\alpha\rangle$, i.e. $f$ factors into the diagram below, where $A_{i+1} = A_i\langle M,\alpha\rangle$.
+                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Suppose that $f$ factors as a transfinite composition of morphisms on the form $A_i \rightarrow A_i\langle M_i,\alpha_i\rangle$, i.e. $f$ factors into the diagram below, where $A_{i+1} = A_i\langle M_i,\alpha_i\rangle$.
                 \begin{center}
                     \begin{tikzcd}
                         A \ar[]{r}[]{} & A_1 \ar[]{r}[]{} & A_2 \ar[]{r}[]{} & ... \ar[]{r}[]{} & B
                     \end{tikzcd}
                 \end{center}
                 \begin{itemize}
-                    \item If every such $M$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call $f$ a standard cofibration.
-                    \item If every such $M$ is an acyclic complex and $\alpha = 0$, we call $f$ a standard acyclic cofibration.
+                    \item If every such $M_i$ is a complex consisting of free $\mathbb{K}$-modules and has a $0$-differential, we call $f$ a standard cofibration.
+                    \item If every such $M_i$ is a contractible complex and $\alpha = 0$, we call $f$ a standard acyclic cofibration.
                 \end{itemize}
             \end{definition}
 
@@ -838,7 +838,7 @@
                     \end{tikzcd}
                 \end{center}
                 
-                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f',t')$ such that $f': A \rightarrow B$, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, such that $\partial t' = f'^\#\alpha$ and $h$ induces a morphism $h : (f',t') \rightarrow g$. We are forced to choose $f' = f$ as $hf = ga$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration, $h^\#$ is a surjective quasi-isomorphism. Since $M \simeq \mathbb{K}[n]$, the morphism $t$ is really an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity, there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
+                By the universal property of $h_{A,\alpha}$, Proposition \ref{prop: universal-h}, it suffices to find a pair $(f,t')\in h_{A,\alpha}$ which makes the lower triangle commute. That is, $t' : M \rightarrow B^\#$ is homogenous of degree $-1$, such that $\partial t' = f^\#\alpha$, and post composing $h$ with the morphism determined by $(f,t')$ is $g$. By the existence of $g$, there exists a $t : M \rightarrow C^\#$ such that $\partial t = g^\#a^\#\alpha = h^\#f^\#\alpha$. Since $h$ is an acyclic fibration, $h^\#$ is a surjective quasi-isomorphism. We assumed $M \simeq \mathbb{K}[n]$, so we can consider the morphism $t$ as an element of $(C^{\#})^{n-1}$. By surjectivity of $h^\#$ there is an element $u$ of $(B^{\#})^{n-1}$ such that $h^\#(u) = t$. Moreover, the difference $h^\#(\partial u - f^\#\alpha) = 0$, so $\partial u - f^\#\alpha$ factors through the kernel $\tt{Ker} h^\#$, which is assumed to be acyclic. This element is furthermore a cycle, so by acyclicity, there is another element $u'$ such that $\partial u' = \partial u - f^\#\alpha$. We may now see that $(f, u - u')$ is our desired factorization.
                 
                 Secondly, we see that it is enough to prove that if $M$ is as in (H1) and $\alpha = 0$, then the map $A \rightarrow A\langle M,\alpha\rangle$ is an acyclic cofibration. By (H1), we know that the map is already a weak equivalence, so we show that it has LLP to every acyclic fibration.
                 
@@ -854,7 +854,7 @@
 
             \end{proof}
 
-            Given the above proposition, we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle." If $M$ is the acyclic complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$ for $A\langle M; dT = 0 \rangle$. This construction can be thought of as "adding a variable and a cycle to kill itself."
+            Given the above proposition, we would like to make some more convenient notation. If $M\simeq \mathbb{K}[n]$ and $\alpha: M \rightarrow Z^n(A^\#)$, s.t. $\alpha(1) = a$, we write $A\langle M,\alpha\rangle$ as $A\langle T; dT = a\rangle$ instead. Hinich calls this "adding a variable to kill a cycle." If $M$ is the contractible complex as below and $\alpha = 0$, we write $A\langle T, S; dT = S\rangle$ for $A\langle M; dT = 0 \rangle$. This construction can be thought of as "adding a variable and a cycle to kill itself."
 
             \begin{center}
                 \begin{tikzcd}
@@ -865,7 +865,7 @@
             \begin{proof}[proof of Theorem \ref{thm: model-str-alg}]
                 \textbf{MC1} and \textbf{MC2} are satisfied. By definition, we also have the first part of \textbf{MC3}. We start by checking \textbf{MC4}.
 
-                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Given any $b\in B^\#$, let $C_b = A\langle T_b,S_b; dT_b = S_b\rangle$. We define $g_b: C_b \rightarrow B$ by the conditions that it acts on $A$ as $f$, $g_b^\#(T_b) = b$ and $g_b^\#(S_b)=db$. Iterating this construction for every $b\in B$, we obtain an object $C$, such that the injection $A \rightarrow C$ is an acyclic standard cofibration, and the map $g: C \rightarrow B$ is a fibration. We obtain a factorization $f = f_\delta\circ f_\gamma$, where $f_\gamma$ is the injection and $f_\delta = g$.
+                Let $f:A\rightarrow B$ be a morphism in $\mathcal{C}$. Given any $b\in B^\#$, let $C_b = A\langle T_b,S_b; dT_b = S_b\rangle$. We define $g_b: C_b \rightarrow B$ by the conditions that it acts on $A$ as $f$, $g_b^\#(T_b) = b$ and $g_b^\#(S_b)=db$. By adding a "variable to kill a cycle" for every $b\in B$, we obtain an object $C$, such that the injection $A \rightarrow C$ is an acyclic standard cofibration, and the map $g: C \rightarrow B$ is a fibration. This is the desired factorization $f = f_\delta\circ f_\gamma$, where $f_\gamma$ is the injection and $f_\delta = g$.
 
                 To obtain the other factorization, we want to make a standard cofibration. We already know that the map $A\rightarrow C$ is a standard cofibration, so let $C_0 = C$. From here on, we will make each $C_i$ inductively, such that $\varinjlim C_i$ has the factorization property we desire. Notice that from $C_0$, there is a morphism $g_0: C_0 \rightarrow B$, which is surjective and surjective on every kernel. This morphism may fail to be a quasi-isomorphism, so it is not an acyclic fibration.
                 
@@ -882,7 +882,7 @@
                 \end{center}
             \end{proof}
 
-            The following corollary will concretize what it means that the standard cofibrations generate every cofibration. This corollary is a step used within the proof.
+            The following corollary will concretize what it means that the standard cofibrations generate every cofibration. This corollary is an emphasis on the last diagram in the previous proof.
 
             \begin{corollary}
                 Any (acyclic) cofibration is a retract of a standard (acyclic) cofibration.
@@ -895,7 +895,7 @@
             \end{corollary}
 
             \begin{proof}[sketch of proof]
-                We establish the adjunction by letting $F = A\otimes_\mathbb{K}\argument$. H0 is satisfied as this category is bicomplete, and we can think of filtered colimits as unions of sets. Moreover, since $\tt{Mod}_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
+                We establish the adjunction by letting $FM = A\otimes_\mathbb{K}\argument$. H0 is satisfied as this category is bicomplete, and we can think of filtered colimits as unions of sets. Moreover, since $\tt{Mod}_A$ is an Abelian category, the forgetful functor $\#$ commutes with coproducts, or direct sums, which makes H1 trivially satisfied.
             \end{proof}
 
             \begin{corollary}
@@ -918,7 +918,7 @@
 
                 To define a map $f: A[N^\bullet] \rightarrow T$ it is enough by the ring homomorphism property to define a map $g: A \rightarrow T$ and a map $h: T(N^\bullet) \rightarrow T$. This choice of $g$ and $h$ is unique for any $f$, establishing the universal property. I.e. $A[N^\bullet] \simeq A\ast T(N^\bullet)$.
                 
-                To see that the map $i^\#: A^\# \rightarrow A[M^\bullet]^\#$ is a quasi-isomorphism, it is enough to see that acyclic complexes are stable under tensoring. Given any acyclic complex $C^\bullet$, there is a homotopy $h: C^\bullet \rightarrow C^\bullet$ such that $\partial h = id_C$. Observe that $id_N\otimes h : N^\bullet\otimes C^\bullet \rightarrow N^\bullet\otimes C^\bullet$ is a homotopy witnessing $id_{N^\bullet\otimes C^\bullet} \sim 0$. Since $M$ is acyclic, we know that the homology of the inclusion is $H^*i = id_{H^*A}$, which shows H1.
+                To see that the map $i^\#: A^\# \rightarrow A[M^\bullet]^\#$ is a quasi-isomorphism, it is enough to see that contractible complexes are stable under tensoring. Given any contractible complex $C^\bullet$, there is a homotopy $h: C^\bullet \rightarrow C^\bullet$ such that $\partial h = id_C$. Observe that $id_N\otimes h : N^\bullet\otimes C^\bullet \rightarrow N^\bullet\otimes C^\bullet$ is a homotopy witnessing $id_{N^\bullet\otimes C^\bullet} \sim 0$. Since $M$ is acyclic, we know that the homology of the inclusion is $H^*i = id_{H^*A}$, which shows H1.
             \end{proof}
 
             We summarize the last result:
@@ -950,7 +950,7 @@
             To see that these classes of morphisms do indeed define a model structure, we will get a better description of a subclass of weak equivalences. We can only check if a morphism is a weak equivalence by calculating homologies since $f$ is a weak equivalence if and only if $H^*\tt{cone}(\Omega f) \simeq 0$. Using spectral sequences to calculate these homologies is not crucial, but it gives us a method to handle the problems we will face.
 
             \begin{definition}
-                A filtered chain map $f: M \rightarrow N$ of filtered complexes $M$ and $N$ is a filtered quasi-isomorphism if $\tt{gr}f: \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
+                A filtered chain map $f: M \rightarrow N$ of filtered complexes $M$ and $N$ is a graded quasi-isomorphism if $\tt{gr}f: \tt{gr}M \rightarrow \tt{gr}N$ is a quasi-isomorphism of the associated graded complexes.
             \end{definition}
 
             \begin{lemma}\label{lem: graded-qif-are-w}
@@ -979,15 +979,15 @@
                 \end{align*}
                 We see that $G_0 = E^0_{p, \bullet}\Omega C$ by definition and $G_{-p-1} \simeq 0$ on the coaugmentation quotient $\overline{C}$. The classical convergence theorem of spectral sequences defines a spectral sequence such that $EG \Rightarrow H^*E^0_{p, \bullet}\Omega C$.
 
-                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, we will show that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a filtered quasi-isomorphisms and by the K\"unneth-formula, Theorem 3.6.3 \cite[Theorem 3.6.3][88]{Weibel94}, it follows that $E^0Gf$ is a quasi-isomorphism.
+                To see that $\Omega \tt{gr}f$ is a quasi-isomorphism, we will show that $E^0Gf$ is a quasi-isomorphism for any $p$. Notice that $E^0_{l,\bullet}G \subseteq (\tt{gr}C[-1])^{\otimes l}$ where the total grading is $p$. Since $f$ is a graded quasi-isomorphism, it follows by the K\"unneth-formula \cite[Theorem 3.6.3][88]{Weibel94} that $E^0Gf$ is a quasi-isomorphism.
             \end{proof}
 
-            This proof will serve as a template for how we approach many of the proofs we encounter. With the lemma, to show that $f$ is a weak equivalence, it suffices to show that $f$ is a filtered quasi-isomorphism. However, to show that $f$ is a filtered quasi-isomorphism, we first need a good filtering, and once we have a filtering, we look at its spectral sequence. The mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. We proceed then to calculate a page where we can assert that $f$ becomes a quasi-isomorphism. If there still are problems with calculations, we look at complexes within a page on a spectral sequence and define new filtrations on these complexes to calculate the next page. We will informally call this technique for an iterated spectral sequence argument.
+            This proof will serve as a template for how we approach many of the proofs we encounter. With the lemma, to show that $f$ is a weak equivalence, it suffices to show that $f$ is a graded quasi-isomorphism. However, to show that $f$ is a graded quasi-isomorphism, we first need a good filtering, and once we have a filtering, we look at its spectral sequence. The mapping lemma says that it is enough to verify that a morphism becomes a quasi-isomorphism on any page to see that it is a quasi-isomorphism. We proceed then to calculate a page where we can assert that $f$ becomes a quasi-isomorphism. If there still are problems with calculations, we look at complexes within a page on a spectral sequence and define new filtrations on these complexes to calculate the next page. We will informally call this technique for an iterated spectral sequence argument.
 
             For completeness, we include the following statement.
 
             \begin{lemma}
-                Let $f: A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf: BA \rightarrow BA'$ is a filtered quasi-isomorphism.
+                Let $f: A \rightarrow A'$ be a quasi-isomorphism between dg-algebras, then $Bf: BA \rightarrow BA'$ is a graded quasi-isomorphism.
             \end{lemma}
 
             \begin{proof}
@@ -1002,7 +1002,7 @@
             We will call this the induced filtration on the bar or cobar construction.
 
             \begin{proposition}\label{prop: unit-counit-qif}
-                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A: \Omega BA \rightarrow A$ is a quasi-isomorphism. The unit $\eta_C: C \rightarrow B\Omega C$ is a filtered quasi-isomorphism. Moreover, $\Omega \eta_C$ is a quasi-isomorphism.
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra. The counit $\varepsilon_A: \Omega BA \rightarrow A$ is a quasi-isomorphism. The unit $\eta_C: C \rightarrow B\Omega C$ is a graded quasi-isomorphism. Moreover, $\Omega \eta_C$ is a quasi-isomorphism.
             \end{proposition}
 
             The following proof is due to \cite{LefevreHasegawa03}, but with corrections given by \cite{Keller05}. Some minor modifications are given to the proof as it resembles a previous proof, using the method of iterated spectral sequences.
@@ -1116,7 +1116,7 @@
             \begin{proof}
                 $\pi$ being a cofibration is immediate by Corollary~\ref{cor: stable-cofib-base-change}. 
                 
-                To see that $\pi$ is a weak equivalence, We show that it is a filtered quasi-isomorphism by Lemma~\ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra, we may realize the algebra $A$ as the following extension.
+                To see that $\pi$ is a weak equivalence, We show that it is a graded quasi-isomorphism by Lemma~\ref{lem: graded-qif-are-w}. Since we assume $p$ to be a fibration onto a quasi-free algebra, we may realize the algebra $A$ as the following extension.
                 \begin{center}
                     \begin{tikzcd}
                         \cdots \ar[hook]{r} & \tt{cone}(d') \ar[two heads]{r}[]{p} & \Omega D[1] \ar[dashed, out = -10, in = 170, looseness = 1.5]{dll}[]{d'[1]} \\
@@ -1136,7 +1136,7 @@
                     & BA \ast_{B\Omega D} D \simeq BK \ast D\tt{.}
                 \end{align*}
                 
-                Using this identification of the underlying graded modules, we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbed by $d'$, then we could have appealed to the morphism $\pi$ being a filtered quasi-isomorphism to conclude that it is a quasi-isomorphism. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
+                Using this identification of the underlying graded modules, we may identify the morphism $\pi$ with $id_{BK} \ast \eta_D$. If the differential of $BA$ was not perturbed by $d'$, then we could have appealed to the morphism $\pi$ being a graded quasi-isomorphism to conclude that it is a quasi-isomorphism. Instead, we will employ some smart filtrations onto $BA$ and $BA \ast_{B\Omega D}D$.
 
                 Since $BK$ is quasi-free, by the comonadic presentation of $D$, we can obtain an identification of graded modules, $BK\ast D \subseteq T^c(\overline{K}[1]\oplus \overline{D})$. Likewise, since both $BK$ and $B\Omega D$ are quasi-free, we realize the product as $BK\ast B\Omega D \simeq T^c(\overline{K}[1]\oplus (\overline{\Omega}D)[1])$.
 
@@ -1181,7 +1181,7 @@
 
                 Since $|[k]+d'(d_i)| = 0$, the total degree of this element goes down at least $1$ if $d_i \neq 0$. If $d_i = 0$, then $d'(d_i) = 0$ anyway. In this manner, this morphism does not survive at the $\widetilde{E}_0$ page. Likewise, given an element on the form $[k_1 + \langle d_{1,1} \mid \cdots \mid d_{1,t_1} \rangle \mid \cdots \mid k_k + \langle d_{k,1} \mid \cdots \mid d_{k,t_k} \rangle ]$, then $|d'(\langle d_{i,1} \mid \cdots \mid d_{i,t_i} \rangle)| = 0$. So the phenomenon occurs at the other spectral sequence as well.
                 
-                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as Lemma~\ref{prop: unit-counit-qif}. By the classical convergence theorem, this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a filtered quasi-isomorphism.
+                In this way $\tt{gr}(id_{BK}\ast\tt{gr}\eta_D)$, is in fact a quasi-isomorphism between the sequences $\widetilde{E}(BK\ast\tt{gr}D) \rightarrow \widetilde{E}(BK\ast B\Omega\tt{gr}D)$ just as Lemma~\ref{prop: unit-counit-qif}. By the classical convergence theorem, this assembles into a quasi-isomorphism on the $E_1$ page of the previous spectral sequences, showing that $\pi$ is a graded quasi-isomorphism.
             \end{proof}
 
             \begin{thm}\label{thm: model-coalg}
@@ -1406,13 +1406,13 @@
         The model structure of $A_\infty$-algebras is compatible with the model structure of conilpotent dg-coalgebras in the following sense. If $f: A \rightsquigarrow A'$ is an $\infty$-morphism, we denote its dg-coalgebra counterpart as $Bf: BA \rightarrow BA'$. Remember that the bar construction is extended as an equivalence of categories on its image. We use this to realize $\tt{Alg}_\infty$ as a subcategory of $\tt{coAlg}_\mathbb{K}$ to obtain two different model structures on this category. The following proposition tells us that these structures do not differ.
 
         \begin{lemma}\label{lem: qif-infty-qi}
-            Let $A$ and $A'$ be $A_\infty$-algebras. Suppose that $f: A \rightsquigarrow A'$ is an $\infty$-morphism and $Bf: BA \rightarrow BA'$ is a filtered quasi-isomorphism, then $f$ is an $\infty$-quasi-isomorphism. 
+            Let $A$ and $A'$ be $A_\infty$-algebras. Suppose that $f: A \rightsquigarrow A'$ is an $\infty$-morphism and $Bf: BA \rightarrow BA'$ is a graded quasi-isomorphism, then $f$ is an $\infty$-quasi-isomorphism. 
         \end{lemma}
 
         \begin{proof}
             Given $Bf : BA \rightarrow BA'$, we may reconstruct $f_i = s \circ \pi_{B[1]} Bf \circ (\omega \circ \iota_A)^{\otimes i}$.
 
-            We know that the unit $\eta_{BA}$ is a filtered quasi-isomorphism from Proposition~\ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA}: A \rightarrow \Omega BA$, which is is again a quasi-isomorphism by assumption.
+            We know that the unit $\eta_{BA}$ is a graded quasi-isomorphism from Proposition~\ref{prop: unit-counit-qif}. The inverse of the bar construction restricts this morphism to the first filtered degree, together with some shift; $B^{-1}\eta_{BA}: A \rightarrow \Omega BA$, which is is again a quasi-isomorphism by assumption.
         \end{proof}
 
         \begin{proposition}\label{prop: coherent-model-structure}
@@ -1425,9 +1425,9 @@
         \end{proposition}
 
         \begin{proof}
-            Suppose that $f: A \rightarrow A'$ is an $\infty$-quasi-isomorphism. The K\"unneth theorem shows that $Bf: BA \rightarrow BA'$ is a filtered quasi-isomorphism.
+            Suppose that $f: A \rightarrow A'$ is an $\infty$-quasi-isomorphism. The K\"unneth theorem shows that $Bf: BA \rightarrow BA'$ is a graded quasi-isomorphism.
 
-            Suppose that $Bf: BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf: B\Omega BA \rightarrow B\Omega BA'$ is a filtered quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both filtered quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property, we get that $f$ has to be as well.
+            Suppose that $Bf: BA \rightarrow BA'$ is a weak equivalence. Then $B\Omega Bf: B\Omega BA \rightarrow B\Omega BA'$ is a graded quasi-isomorphism. By Proposition~\ref{prop: unit-counit-qif}, we know that $\eta_{BA}$ and $\eta_{BA'}$ are both graded quasi-isomorphism. By Lemma~\ref{lem: qif-infty-qi}, we get that the $\infty$-morphisms $\Omega Bf$, $B^{-1}\eta_{BA}$ and $B^{-1}\eta_{BA'}$ are $\infty$-quasi-isomorphisms. By the $2$-out-of-$3$ property, we get that $f$ has to be as well.
 
             The cofibrations of $\tt{coAlg}_{\mathbb{K},conil}^\bullet$ are monomorphisms. Since $B$ is an equivalence of categories, it must preserve and reflect monomorphisms.
 

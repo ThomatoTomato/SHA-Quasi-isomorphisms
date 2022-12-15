@@ -27,13 +27,13 @@
 }
 
 % Title Page
-\DeclareOption{titlepage}{
-    \AtBeginDocument{
-        \begin{titlepage}
-            \maketitle
-        \end{titlepage}
-    }
-}
+% \DeclareOption{titlepage}{
+%     \AtBeginDocument{
+%         \begin{titlepage}
+%             \maketitle
+%         \end{titlepage}
+%     }
+% }
 
 % British
 \newif\ifcapitalize

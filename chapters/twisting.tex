@@ -13,7 +13,7 @@
 
         \begin{center}
             \begin{tikzcd}
-                \tt{Alg}_{\mathbb{K}, +}^\bullet \ar[bend left]{r}[pos=0.55]{B} \ar[phantom]{r}{\top} & \tt{Coalg}_{\mathbb{K},\tt{conil}}^\bullet \ar[bend left]{l}[pos=0.45]{\Omega}
+                \tt{Alg}_{\mathbb{K}, +}^\bullet \ar[yshift = -1ex]{r}[below]{B} \ar[phantom]{r}{\bot} & \tt{Coalg}_{\mathbb{K},\tt{conil}}^\bullet \ar[yshift = 1ex]{l}[above]{\Omega}
             \end{tikzcd}
         \end{center}
 
@@ -841,7 +841,7 @@
                 \end{align*}
 
     \subsection{Electronic Circuits}
-            Calculations involving both algebras and coalgebras tend to become convoluted and unmanageable. Since we want to study the interplay between algebras and coalgebras, using other tools to write equations can be handy. We will develop a graphical calculus briefly mentioned in \cite{Loday12}. This graphical calculus will consist of string diagrams, referred to as electronic circuits, which describe the function composition on tensors. Since we only care about the interplay of tensors, we may develop this graphical calculus in any closed symmetric monoidal category. Why do we want to introduce this abstraction? A closed symmetric monoidal category is a good category to model functions, or morphisms, which may take several variables in its argument. Moreover, in the next section, we are going to switch categories. In this manner, we can reuse the same notions and proofs.
+            Calculations involving both algebras and coalgebras tend to become convoluted and unmanageable. Since we want to study the interplay between algebras and coalgebras, using other tools to write equations can be handy. We will develop a graphical calculus briefly mentioned in \cite{Loday12}, where we take a lot of inspiration from Sobocinski's blog \cite{Sob15}. This graphical calculus will consist of string diagrams, referred to as electronic circuits, which describe the function composition on tensors. Since we only care about the interplay of tensors, we may develop this graphical calculus in any closed symmetric monoidal category. Why do we want to introduce this abstraction? A closed symmetric monoidal category is a good category to model functions, or morphisms, which may take several variables in its argument. Moreover, in the next section, we are going to switch categories. In this manner, we can reuse the same notions and proofs.
             
             This section will use closed symmetric monoidal categories to define electronic circuits. The definitions can be found in Appendix \ref{ch: sym-mon}. For our purposes, a closed symmetric monoidal category is a category $\mathcal{C}$ together with a bifunctor $\argument\otimes\argument: \mathcal{C}\times\mathcal{C}\rightarrow\mathcal{C}$ usually called tensor, and a unit object $Z\in \mathcal{C}$. Additionally, we have four natural isomorphisms relating the functors and the unit to what they are supposed to represent:
             \begin{align*}
@@ -1396,13 +1396,13 @@
                 \simeq \prod_{w\in\mathbb{Z}}\tt{Hom}_\mathbb{K}^w(A^*,\tt{Hom}_\mathbb{K}^*(B^*,C^*)) = \tt{Hom}_\mathbb{K}^*(A^*,\tt{Hom}_\mathbb{K}^*(B^*,C^*))\tt{.}
             \end{multline*}
             
-            We give a braiding on homogenous elementary tensors as
+            Following Kelly \cite{Kelly05}, we define a symmetric monoidal structure on this category. We give a braiding on homogenous elementary tensors as
             \begin{align*}
                 \beta(a\otimes b) = (-1)^{|a||b|}b\otimes a\tt{.}
             \end{align*}
             It is immediate that $\beta_{A,B}$ is inverse to $\beta_{B,A}$. Observe that this category also admits a braiding where we don't introduce a sign. However, this does not work when we want to add differentials to our graded modules, so we stick with this sign. This braiding is also commonly known as the Koszul sign convention. 
 
-            Since $\tt{Mod}_\mathbb{K}^*$ is a closed symmetric monoidal category, it admits electronic circuits. Thus the previous results we have proved by electronic circuits also apply to this category, as the proof is identical in this language. One should note that the specific implementation may differ as vertical braiding works differently. We will now study vertical braiding in more detail. Following Kelly \cite{Kelly05}, we must define the application of two homogenous morphisms $f : A \rightarrow A'$ and \\ $g : B \rightarrow B'$ on elements $a \in A$ and $b\in B$ on tensors as
+            Since $\tt{Mod}_\mathbb{K}^*$ is a closed symmetric monoidal category, it admits electronic circuits. Thus the previous results we have proved by electronic circuits also apply to this category, as the proof is identical in this language. One should note that the specific implementation may differ as vertical braiding works differently. The application of two homogenous morphisms $f : A \rightarrow A'$ and $g : B \rightarrow B'$ on elements $a \in A$ and $b\in B$ on tensors is defined as
             \begin{align*}
                 (f\otimes g)(a\otimes b) = (-1)^{|g||a|}f(a)\otimes g(b)\tt{.}
             \end{align*}
@@ -2720,11 +2720,17 @@
 
         A quasi-isomorphism between $A_\infty$-algebras is called an $\infty$-quasi-isomorphism. Given an $\infty$-morphism $f: A\rightsquigarrow B$, we say that it is an $\infty$-quasi-isomorphism if $f_1$ is a quasi-isomorphism. If we wanted to be more stringent with this definition, we would define an $\infty$-quasi-isomorphism to be an $\infty$-morphism which is a quasi-isomorphism of dg-coalgebras. We will later see that these definitions are equivalent.
 
-        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f-g$ is null-homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $n$ such that the following relations are satisfied for any $n \geq 1$:
-        \begin{multline*}
-            f_n - g_n = \sum (-1)^s m^B_{r+1+t}\circ (f_{i_1}\otimes ... \otimes f_{i_r} \otimes h_k \otimes g_{j_1} \otimes ... \otimes g_{j_t}) +  \sum (-1)^{j+kl}h_i \circ_{j+1} m_k^A\tt{.}
-        \end{multline*}
-        $s$ is some constant depending on $t,r$, and $k$, and more details may be found in \cite{LefevreHasegawa03}. One may observe that this definition of homotopy is exactly the same as requiring that the morphisms $Bf$ and $Bg$ are homotopic by a $(Bf, Bg)$-coderivation $Bh$.
+        A homotopy between two $A_\infty$-algebras is a homotopy between the dg-coalgebras they define. We may trace this definition back along the quasi-inverse of the bar construction to get a new definition in terms of many morphisms. 
+        \begin{definition}    
+            Let $f,g: A\rightsquigarrow B$ be two $\infty$-morphisms, we say that $f\sim g$ are homotopic if there is a collection of morphisms $h_n : A^{\otimes n} \rightarrow B$ of degree $-n$ such that the following relations are satisfied for any $n \geq 1$:
+            \begin{multline*}
+                f_n - g_n = \sum (-1)^s m^B_{r+1+t}\circ (f_{i_1}\otimes ... \otimes f_{i_r} \otimes h_k \otimes g_{j_1} \otimes ... \otimes g_{j_t}) +  \sum (-1)^{j+kl}h_i \circ_{j+1} m_k^A\tt{.}
+            \end{multline*}
+            $s$ is some constant depending on $t,r$, and $k$, which is calculable with Koszul's sign rule. More specific details may be found in \cite{LefevreHasegawa03}. 
+        \end{definition}
+        One may observe that this definition of homotopy is exactly the same as requiring that the morphisms $Bf$ and $Bg$ are homotopic by a $(Bf, Bg)$-coderivation $Bh$. 
+        
+        If we have morphisms of algebras $f,g:A\rightarrow~A'$ such that they are homotopic, then the $(f,g)$-derivation $h:A\rightarrow~A'$ defines a homotopy between $f$ and $g$ if we consider them as strict $\infty$-morphisms. The relations for when $n = 2$ describes the property of being an $(f,g)$-derivation whenever $f_2$ and $g_2$ are both $0$, which is the case by strictness. The higher relations will be trivially satisfied in this case. Thus, we may see that the bar construction maps $(f,g)$-derivations to $(f,g)$-coderivations.
 
         As in the same case for algebras, there is also a notion of unital $A_\infty$-algebras and augmented $A_\infty$-algebras. For this discussion, it is essential to observe that the field $\mathbb{K}$ is also an $A_\infty$-algebra. This algebra will be the initial algebra like it does for ordinary algebras.
 

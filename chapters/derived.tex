@@ -2,11 +2,11 @@
 
 \begin{document}
 
-    In this chapter, we wish to study the derived categories of $A_\infty$-algebras. This category lies at the heart of homological algebra, so it is only natural to ask what this category looks like in the case of an $A_\infty$-algebra. In the last chapter, we studied the relationship between the category of dg-algebras and dg-coalgebras to understand how quasi-isomorphisms between $A_\infty$-algebras worked. In this chapter, we will instead examine the relationship between module and comodule categories to understand how quasi-isomorphisms between $A_\infty$-modules will work. Twisting morphisms $\alpha: C \rightarrow A$ will reappear, allowing us to study the relationship between $\tt{Mod}^A$ and $\tt{coMod}^C$.
+    In this chapter, we wish to study the derived categories of $A_\infty$-algebras. This category lies at the heart of homological algebra, so it is only natural to ask what this category looks like in the case of an $A_\infty$-algebra. In Chapter 2, we studied the relationship between the category of dg-algebras and dg-coalgebras to understand how quasi-isomorphisms between $A_\infty$-algebras worked. In this chapter, we will instead examine the relationship between module and comodule categories to understand how quasi-isomorphisms between $A_\infty$-modules will work. Twisting morphisms $\alpha: C \rightarrow A$ will reappear, allowing us to study the relationship between $\tt{Mod}^A$ and $\tt{coMod}^C$.
 
     From twisting morphisms we obtain functors $L_\alpha : \tt{coMod}^C \rightarrow \tt{Mod}^A$ and $R_\alpha : \tt{Mod}^A \rightarrow \tt{coMod}^C$, which creates an adjoint pair of functors. This adjoint pair will become a Quillen equivalence whenever the twisting morphism $\alpha$ is acyclic.
 
-    We wish to reuse all the methods we have gained and acquired throughout this thesis. The first part of this chapter will therefore mostly be reformulations and recontextualizations of previous definitions, concepts, and techniques. 
+    We wish to reuse all the methods we have gained and acquired throughout this thesis. The first part of this chapter will mostly be reformulations and recontextualizations of previous definitions, concepts, and techniques. In this chapter, we will mainly follow Lef\`evre-Hasegawa \cite{LefevreHasegawa03} to obtain our desired results. 
 
     \section{Twisting Morphisms}
 
@@ -14,7 +14,7 @@
 
         \subsection{Twisted Tensor Products}
 
-            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra, and $\alpha: C \rightarrow A$ a twisting morphism. The right (left) twisted tensor product is the complex $C \otimes_\alpha A$ ($A\otimes_\alpha C$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. Confusing notation is impossible to avoid. Since we want the right twisted tensor to be associated to a right adjoint, we redefine the right perturbation as
+            Let $A$ be an augmented dg-algebra, $C$ a conilpotent dg-coalgebra, and $\alpha: C \rightarrow A$ a twisting morphism. In this chapter, we choose to switch the handedness of the twisted tensor. We make this choice in the hope that it lessens confusing notation. The right (left) twisted tensor product is the complex $A \otimes_\alpha C$ ($C\otimes_\alpha A$) together with the differential $d_\alpha^\bullet = d_{C\otimes A}^\bullet + d_\alpha^r$. Since we want the right twisted tensor to be associated with a right adjoint, we redefine the right perturbation as
             \begin{align*}
                 d_\alpha^r = (\nabla_A\otimes id_C) \circ (id_A \otimes \alpha \otimes id_C) \circ (id_A \otimes \Delta_C)\tt{.}
             \end{align*}
@@ -33,10 +33,10 @@
                 Suppose that $M\in \tt{Mod}^A$ ($M\in \tt{Mod}_A$) and $N\in \tt{coMod}_C$ ($N\in \tt{coMod}^C$), then the left (right) twisted tensor product is the $\mathbb{K}$-module $M\otimes_\alpha N$ ($N\otimes_\alpha M$).
             \end{definition}
 
-            In this setting, right-handedness and left-handedness for the twisted tensor product are distinct, as we only have an action or coaction from one of the chosen sides. Trying to force the other-handedness on the twisted tensors would be ill-defined.
+            We see now that right-handedness and left-handedness for the twisted tensor product are distinct, as we only have an action or coaction from one of the chosen sides. Trying to force the other-handedness on the twisted tensors would be ill-defined.
 
             \begin{definition}
-                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra, such that there is a twisting morphism $\alpha: C\rightarrow A$. Given a linear map $f: N \rightarrow M$ between a right $C$-comodule $N$ and a right $A$-module $M$ we say that it is an $\alpha$ right-twisted linear morphism if it satisfies
+                Let $A$ be an augmented dg-algebra and $C$ a conilpotent dg-coalgebra, such that there is a twisting morphism $\alpha: C\rightarrow A$. Given a linear map $f: N \rightarrow M$ between a right $C$-comodule $N$ and a right $A$-module $M$ we say that it is an $\alpha$ right twisted linear morphism if it satisfies
                 \begin{align*}
                     \partial f + f\star \alpha = 0\tt{.}
                 \end{align*}
@@ -140,13 +140,13 @@
                     \end{tikzpicture}
                 \end{center}
 
-                By sending in the identity of $A$ in the rightmost string at each summand, we get the condition that $f$ is $\alpha$ right-twisted,
+                By sending in the identity of $A$ in the rightmost string at each summand, we get the condition that $f$ is $\alpha$ right twisted,
                 \begin{align*}
                     \partial f + f \star \alpha = 0\tt{.}
                 \end{align*}
                 This is because $d_A(1_A) = 0$, $\mu_M(m \cdot 1_?) = m$, and $f(m) = F(m, 1_A)$.
 
-                By the abovementioned isomorphism, we are now able to deduce that any $\alpha$ right-twisted morphism $f: N \rightarrow M$ defines an $A$-linear morphism $F = \mu_M(f \otimes A): L_\alpha N \rightarrow M$.
+                By the abovementioned isomorphism, we are now able to deduce that any $\alpha$ right twisted morphism $f: N \rightarrow M$ defines an $A$-linear morphism $F = \mu_M(f \otimes A): L_\alpha N \rightarrow M$.
 
                 Notice that by turning every circuit upside-down, we get equations establishing the natural isomorphism
                 \begin{align*}
@@ -157,14 +157,14 @@
 
             Let $A$ be a dg-algebra, and $M$ a right $A$-module. Recall that by the cobar-bar adjunction, Theorem~\ref{thm: cobar-bar-adj}, there exists a universal twisting morphism $\pi_A: BA \rightarrow A$. We define the bar construction of $M$ as $B_AM = R_{\pi_A}M = M\otimes_{\pi_A}BA$. Likewise, given a conilpotent dg-coalgebra $C$ and $N$ a right $C$-comodule we define the cobar construction as $\Omega_CN = L_{\iota_C}N = N\otimes_{\iota_C}\Omega C$. In these cases we obtain adjunctions $\Omega_{BA} \dashv B_A$ and $\Omega_C \dashv B_{\Omega C}$.
 
-            Let $A$ and $B$ be two algebras, and $f: A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^*: \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as algebroids are small, and the category of abelian groups is cocomplete, the left Kan extension (induction) along this functor exists. This result can, for instance, be found in Riehl \cite{Riehl14}.
+            Let $A$ and $B$ be two algebras, and $f: A \rightarrow B$ is an algebra morphism. Then $f$ induces a functor between the module categories by restriction: $f^*: \tt{Mod}^B \rightarrow \tt{Mod}^A$. Since $A$ and $B$ considered as categories are small, and the category of abelian groups is cocomplete, the left Kan extension (induction) along this functor exists. This result can, for instance, be found in Riehl \cite{Riehl14}.
             \begin{center}
                 \begin{tikzcd}
                     \tt{Mod}^B \ar[]{r}[]{f^*} & \tt{Mod}^A \ar[bend right]{l}[above]{f_!}
                 \end{tikzcd}
             \end{center}
 
-            Dually, if $C$ and $D$ are two coalgebras and $g: C \rightarrow D$ is a coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $g*: \tt{coMod}^C \rightarrow \tt{coMod}^D$. Since $C$ and $D$ considered as coalgebroids are small, and the category of abelian groups is complete, the right Kan extension (coinduction) along this functor exists.
+            Dually, if $C$ and $D$ are two coalgebras and $g: C \rightarrow D$ is a coalgebra morphism. Then $g$ induces a functor between the module categories by composing: $g*: \tt{coMod}^C \rightarrow \tt{coMod}^D$. Since $C$ and $D$ considered as categories are small, and the category of abelian groups is complete, the right Kan extension (coinduction) along this functor exists.
             \begin{center}
                 \begin{tikzcd}
                     \tt{coMod}^C \ar[]{r}[]{g_*} & \tt{coMod}^D \ar[bend left]{l}[above]{g^!}
@@ -440,7 +440,7 @@
             At this point, things start to differ. The definition for the homotopy category $\tt{Ho} \tt{coMod}^C$ is $\tt{coMod}^C[\tt{Ac}^{-1}]$, here $\tt{Ac}$ denotes the class of weak equivalences in $\tt{coMod}^C$. By abuse of notation, we also let $\tt{Ac}\subset K(C)$ be the collection of objects which are cones of weak equivalences. This subcategory is equivalent to the preimage of acyclic objects $\tt{Ac}\subset K(A)$ along $L_\tau: \tt{coMod}^C \rightarrow \tt{Mod}^A$. To see this, look at the image of the triangle where the cone is in $\tt{Ac}$. For this identification, it suffices to show that $\tt{Ac}\subset K(C)$ is a triangulated subcategory. In this manner, $\tt{Ho} \tt{coMod}^C$ is the category $\sfrac{K(C)}{Ac}$, which is a triangulated category.
 
             \begin{remark}
-                We may show that $\tt{Ac}\subset K(C)$ is a subcategory of acyclic objects, and we get that $D(C) \simeq \tt{Ho} \tt{coMod}^C[\tt{Qis}^{-1}]$. This is done in Lefevre-Hasegawa as \cite[Proposition 1.3.5.1][51]{LefevreHasegawa03} \cite[Lemma 2.2.2.11][75]{LefevreHasegawa03}. This result follows from the fact that we have an equivalence of categories $\tt{coMod}^C[\tt{fQis}^{-1}]\simeq \tt{Ho} \tt{coMod}^C$, where fQis means the collection of filtered quasi-isomorphisms. Since every filtered quasi-isomorphism is a quasi-isomorphism, we get the inclusion of triangulated subcategories $\langle \tt{cone}(\tt{fQis})\rangle \subseteq \langle \tt{cone}(\tt{Qis})\rangle \subseteq K(C)$.
+                We may show that $\tt{Ac}\subset K(C)$ is a subcategory of acyclic objects, and we get that $D(C) \simeq \tt{Ho} \tt{coMod}^C[\tt{Qis}^{-1}]$. This is done in Lefevre-Hasegawa as \cite[Proposition 1.3.5.1][51]{LefevreHasegawa03} \cite[Lemma 2.2.2.11][75]{LefevreHasegawa03}. This result follows from the fact that we have an equivalence of categories $\tt{coMod}^C[\tt{fQis}^{-1}]\simeq \tt{Ho} \tt{coMod}^C$, where fQis means the collection of graded quasi-isomorphisms. Since every graded quasi-isomorphism is a quasi-isomorphism, we get the inclusion of triangulated subcategories $\langle \tt{cone}(\tt{fQis})\rangle \subseteq \langle \tt{cone}(\tt{Qis})\rangle \subseteq K(C)$.
             \end{remark}
 
             Let $\tau: C \rightarrow A$ and $\upsilon: C \rightarrow A'$ be two acyclic twisting morphisms. These independently defines two different model structures on $\tt{coMod}^C$ by the adjunctions $(L_\tau, R_\tau)$ and $(L_\upsilon, R_\upsilon)$. By Lemma~\ref{lem: twist-fac} we have the identification $(L_\tau, R_\tau) = (f_{\tau !},f_\tau^*)(L_{\iota_C},R_{\iota_C}) = (f_{\tau !}L_{\iota_C},R_{\iota_C}f_\tau^*)$, and likewise for $\upsilon$. To show that $\tau$ and $\upsilon$ define equivalent model structures on $\tt{coMod}^C$, it is enough that both define the same structure as $\iota_C$. By symmetry, we may assume that $\upsilon = \iota_C$. From Lemma~\ref{lem: uni-twist-ac}, we know that $\iota_C$ is acyclic, so this assumption is well-founded.
@@ -922,6 +922,10 @@
 
             We say that a homotopy is strictly unital if it is a strictly unital $\infty$-morphism.
 
+            \begin{definition}
+                Suppose there are two $\infty$-morphisms $f,g : M \rightsquigarrow N$ between two $A$-polydules, then $f$ is homotopic to $g$, written as $f \sim g$, if there is a homotopy $h : M \rightsquigarrow N$ as above.s
+            \end{definition}
+
         \subsection{Universal Enveloping Algebra}
 
             Given any augmented $A_\infty$-algebra $A$, there is a universal enveloping algebra $UA$. This algebra is universal in the sense that given any augmented algebra $A'$ and an $\infty$-morphism  $A' \rightarrow A$, then this factors through $UA$ by an algebra map $A' \rightarrow UA$. By the cobar-bar adjunction, there is essentially only one way to define this algebra.
@@ -955,7 +959,7 @@
 
         \subsection{Bipolydules}
 
-            For ordinary algebras $A$ and $A'$, an $A$-$A'$-bimodule $M$ may serve as a kind of morphism from $\tt{Mod}^A$ to $\tt{Mod}^{A'}$, which is used with the tensor product to form the correct functors. We will now look at this idea for $A_\infty$-algebras.
+            We will look at bipolydules over two $A_\infty$-algebras $A$ and $A'$. This construction will be analogous to that of $A$-$A'$-bimodules, and by considering the tensor product, it is similar to ordinary polydules.
 
             \begin{definition}[$A$-$A'$-Bipolydule]
                 Suppose that $A$ and $A'$ are $A_\infty$-algebras, and that $M$ is a graded $\mathbb{K}$-module. $M$ is an $A$-$A'$-bipolydule if there are morphisms
@@ -1011,7 +1015,7 @@
             \end{align*}
             In particular, this functor will be a left adjoint to its corresponding hom-functor. In its most general form, the hom functor will be a bifunctor:
             \begin{align*}
-                \tt{Hom}^\infty_{A'} : \tt{Mod}_{A,\infty}^{A'}\otimes\tt{Mod}_{A',\infty}^{A''} \rightarrow \tt{Mod}_{A,\infty}^{A''}\tt{.}
+                \tt{Hom}^\infty_{A'} : \tt{Mod}_{A,\infty}^{A'}\otimes\tt{Mod}_{A'',\infty}^{A'} \rightarrow \tt{Mod}_{A'',\infty}^{A}\tt{.}
             \end{align*}
 
             We start by describing the tensor product in the simplest case. Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be a right and left $A$-polydule, respectively. We define $M \otimes_A^\infty N$ as a cochain complex
@@ -1035,7 +1039,7 @@
             \begin{align*}
                 [m \mid\mid a_1 \mid \cdots \mid a_n \mid\mid n]\tt{.}
             \end{align*}
-            Its differential is induced by the restriction of the differential on the cochain-complex $B_{A^+}M \otimes B_{A^+}N$. Since $d_{B_{A^+}M\otimes B_{A^+}N}$ is well-defined on each element in $B_{A^+}M \otimes B_{A^+}N$, the restricted differential $d_{B_{A^+}M} \otimes id_{N[1]} + id_{M[1]}\otimes d_{BA} \otimes id_{N[1]} + id_{M[1]}\otimes d_{B_{A^+}N}$ on $M[1] \otimes BA \otimes N[1]$ is well defined as well.
+            Its differential is induced by the restriction of the differential on the cochain complex $B_{A^+}M \otimes B_{A^+}N$. Since $d_{B_{A^+}M\otimes B_{A^+}N}$ is well-defined on each element in $B_{A^+}M \otimes B_{A^+}N$, the restricted differential $d_{B_{A^+}M} \otimes id_{N[1]} + id_{M[1]}\otimes d_{BA} \otimes id_{N[1]} + id_{M[1]}\otimes d_{B_{A^+}N}$ on $M[1] \otimes BA \otimes N[1]$ is well-defined as well.
 
             \begin{definition}[The tensor product]
                 Let $A$ be an $A_\infty$-algebra, and let $M$ and $N$ be respectively a right and a left $A$-polydule. The tensor $M \otimes^\infty_A N = M \otimes BA \otimes N$ is a cochain complex with differential
@@ -1278,7 +1282,7 @@
                 d_\tau^l = \sum_{i=1}^\infty (N \otimes m_i) (N \otimes \tau^{\otimes i-1} \otimes A)(\nu_N^i \otimes A)\tt{.}
             \end{align*}
 
-            We define the perturbated differential of the cochain complexes $M \otimes C$ and $N \otimes A$ as
+            We define the perturbed differential of the cochain complexes $M \otimes C$ and $N \otimes A$ as
             \begin{align*}
                 d_\tau^\bullet = d_{M \otimes C} + d_\tau^r\tt{, and} \\
                 d_\tau^\bullet = d_{N \otimes A} - d_\tau^l\tt{.}
@@ -1405,7 +1409,7 @@
                     F_p UA & = \startset{\langle [a_{1_1} \mid \cdots \mid a_{n_1}] \mid \cdots \mid [a_{1_k} \mid \cdots \mid a_{n_k}] \rangle \mid n_1 + \cdots + n_k \leq p}\tt{.}
                 \end{align*} 
 
-                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes BA \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$ is a filtered quasi-isomorphism on the primitives.
+                We see that $\tt{gr}_0M[1] \simeq M[1]$ and otherwise $\simeq 0$. In the same way, $\tt{gr}_0\eta$ acts as the identity on $M[1]$. By the similar lemma, we know that each $\tt{gr}_p M[1] \otimes BA \otimes UA$ is acyclic for $p \geq 1$. Thus $\tt{gr}\eta$ is a graded quasi-isomorphism on the primitives.
 
             \end{proof}
 
@@ -1423,7 +1427,7 @@
 
                 We show only the first bullet point. The last two are identical to the proof of proposition \ref{prop: coherent-model-structure}.
 
-                If $f_1$ is a quasi-isomorphism, then $B_Af$ is a filtered quasi-isomorphism. So suppose that $B_Af$ is a weak equivalence instead. The unit transformation gives us a natural square.
+                If $f_1$ is a quasi-isomorphism, then $B_Af$ is a graded quasi-isomorphism. So suppose that $B_Af$ is a weak equivalence instead. The unit transformation gives us a natural square.
 
                 \begin{center}
                     \begin{tikzcd}
