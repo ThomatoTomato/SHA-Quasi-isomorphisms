@@ -1356,9 +1356,10 @@
 
                         \node at (3.5, 0) {$+$};
 
-                        \node[diff, scale=0.75] (d1) at (4, 0) {};
+                        \node[op, scale = 0.75] (s2) at (4, 0.75) {};
+                        \node[diff, scale=0.75] (d1) at (4, 0.25) {};
 
-                        \draw [line width = 1pt] (4, 1) -- (d1) -- (4, -1);
+                        \draw [line width = 1pt] (s2) -- (d1) -- (4, -1);
                         \draw [line width = 1pt] (4.5, 1) -- (4.5, -1);
 
                         \node at (5.5, 0) {$=$};
@@ -1617,9 +1618,9 @@
             \end{align*}
             We say that $f$ is a quasi-isomorphism if $H^*f$ is an isomorphism, which is equivalent to saying that $\tt{cone}(f)$ is exact.
 
-            A cochain complex $N^\bullet$ is said to be contractible if $id_N$ is null-homotopic. Then it follows for any other cochain complexes $M^\bullet$ that $H^0\tt{Hom}_\mathbb{K}^\bullet(M^\bullet, N^\bullet) \simeq 0$.
+            A cochain complex $N^\bullet$ is said to be contractible if $id_N$ is null-homotopic. Then it follows for any other cochain complex $M^\bullet$ that $H^0\tt{Hom}_\mathbb{K}^\bullet(M^\bullet, N^\bullet) \simeq 0$.
 
-            We define the shift functor $\argument [n] : \tt{Mod}_\mathbb{K}^\bullet \rightarrow \tt{Mod}_\mathbb{K}^\bullet$ is defined on cochains $M^\bullet$ as
+            The shift functor $\argument [n] : \tt{Mod}_\mathbb{K}^\bullet \rightarrow \tt{Mod}_\mathbb{K}^\bullet$ is defined on cochains $M^\bullet$ as
             \begin{align*}
                 (M^\bullet, d_M)[n] = (M^\bullet[n], (-1)^nd_M)\tt{.}
             \end{align*}
@@ -1650,7 +1651,7 @@
             In the case of differential graded algebras, we can naively define homotopies like homotopies for cochain complexes. Given morphisms $f, g : A^\bullet \rightarrow B^\bullet$, a homotopy between $f$ and $g$ is a morphism $h : A^\bullet \rightarrow B^\bullet$ of degree $-1$ such that $\partial h = f - g$. We know that such morphisms allow us to say that these morphisms are isomorphic in homotopy on the underlying cochain complexes. However, the ring structure is no longer required to be preserved. We amend this problem by $(f,g)$-derivations.
 
             \begin{definition}
-                Suppose there are morphisms $f,g: A^\bullet \rightarrow B^\bullet$. We say that $h : A \rightarrow B$ is an $(f,g)$-derivation if $|h| = -1$ and $h \circ (\cdot) = (\cdot)\circ (f \otimes h + g \otimes h)$.
+                Suppose there are morphisms $f,g: A^\bullet \rightarrow B^\bullet$. We say that $h : A \rightarrow B$ is an $(f,g)$-derivation if $|h| = -1$ and $h \circ (\cdot_A) = (\cdot_A)\circ (f \otimes h + g \otimes h)$.
             \end{definition}
 
             We will say that the morphisms $f$ and $g$ are homotopic whenever there is an $(f,g)$-derivation $h$ such that $\partial h = f - g$.
@@ -2749,7 +2750,7 @@
             An augmented $A_\infty$-algebra is a strictly unital $A_\infty$-algebra $A$ together with a strict unital morphism $\varepsilon_A: A \rightarrow \mathbb{K}$. The $\infty$-morphism $\varepsilon_A$ is called the augmentation of $A$.
         \end{definition}
 
-        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $\tt{Alg}_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $\tt{Alg}_\infty \simeq \tt{Alg}_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra, is the kernel of the augmentation $\varepsilon_A$. It does not make sense to talk about this limit a priori, as we do not know if it exists. However, we will see in section 2.3.3 that such morphisms have kernels. This defines a functor, $\overline{\underline{\phantom{A}}} : \tt{Alg}_{\infty ,+} \rightarrow \tt{Alg}_\infty$, where $\tt{Ker}\varepsilon_A = \overline{A}$. Free augmentations give the quasi-inverse to this functor. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \circ_k 1 = 0$ in the same manner. We obtain a functor $\argument^+ : \tt{Alg}_\infty \rightarrow \tt{Alg}_{\infty, +}$, where $A\oplus \mathbb{K} = A^+$.
+        The collection of augmented $A_\infty$-algebras and strictly unital morphism is the category of augmented $A_\infty$-algebras, denoted as $\tt{Alg}_{\infty,+}$. As in the same way for algebras, there is an equivalence of categories $\tt{Alg}_\infty \simeq \tt{Alg}_{\infty,+}$. The augmentation ideal, or the reduced $A_\infty$-algebra, is the kernel of the augmentation $\varepsilon_A$. It does not make sense to talk about this limit a priori, as we do not know if it exists. However, we will see in Section 2.3.3 that such morphisms have kernels. This defines a functor, $\overline{\underline{\phantom{A}}} : \tt{Alg}_{\infty ,+} \rightarrow \tt{Alg}_\infty$, where $\tt{Ker}\varepsilon_A = \overline{A}$. Free augmentations give the quasi-inverse to this functor. Given an $A_\infty$-algebra $A$, we may construct the $A_\infty$-algebra $A\oplus \mathbb{K}$. The structure morphisms are given by $m_i^A$, but there is now a unit $\upsilon_{A\oplus\mathbb{K}}$. Thus we get that $m_1(1) = 0$, $m_2 (a\otimes 1) = a$ and $m_i \circ_k 1 = 0$ in the same manner. We obtain a functor $\argument^+ : \tt{Alg}_\infty \rightarrow \tt{Alg}_{\infty, +}$, where $A\oplus \mathbb{K} = A^+$.
 
     \subsection{$A_\infty$-Coalgebras}    
         Dual to $A_\infty$-algebras, we got conilpotent $A_\infty$-coalgebras. Here we ask ourselves if the cobar construction has some converse, i.e., if $C$ is a graded vector space such that $T(C[-1])$ together with a derivation $m$ is a dg-algebra, is then $C$ a coalgebra? Again, the answer to this is no, but we obtain a definition for conilpotent $A_\infty$-coalgebras.

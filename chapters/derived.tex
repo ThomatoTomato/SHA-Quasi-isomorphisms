@@ -675,7 +675,7 @@
                 $a$ and $p$ are well-defined functors that commute with infinite direct sums. 
             \end{corollary}
 
-            \begin{corollary}
+            \begin{corollary}\label{cor: small-n-thick}
                 Let $\langle A \rangle$ denote the smallest thick triangulated subcategory of $D(A)$, which is closed under homotopy colimits and contains $\startset{A}$. Then $D(A) \simeq \langle A \rangle$.
             \end{corollary}
 
@@ -722,7 +722,7 @@
             \begin{proof}
                 Notice that 1. is equivalent to 2. since $\mathbb{L}L$ and $\mathbb{R}R$ are quasi-inverse. 3. is a special case of 1. and 4. is a special case of 2. Observe that 5. and 6. are equivalent since the cobar-bar-adjunction is a Quillen equivalence, which is Corollary~\ref{cor: cobar-bar-quill-eq}.
 
-                We show 3. implies 1. Let $\mathcal{T}\subseteq D(A)$ be the full subcategory consisting of objects M where $\varepsilon_M$ is a quasi-isomorphism. This subcategory is, by assumption, non-empty and contains $A$. By the $5$-lemma, making triangles (and smallness of $A$), this subcategory contains the smallest thick triangulated subcategory closed under homotopy colimits which contains $A$. We know this to be all of $D(A)$.
+                We show 3. implies 1. Let $\mathcal{T}\subseteq D(A)$ be the full subcategory consisting of objects M where $\varepsilon_M$ is a quasi-isomorphism. This subcategory is, by assumption, non-empty and contains $A$. By the $5$-lemma, making triangles (and smallness of $A$), this subcategory contains the smallest thick triangulated subcategory closed under homotopy colimits which contains $A$. We know this to be all of $D(A)$ by Corollary \ref{cor: small-n-thick}.
 
                 To show 4. implies 5. we consider the twisting morphism $\iota_C$. Since $\iota_C$ is acyclic, we know that the counit at $A$ is a quasi-isomorphism. 
                 \begin{align*}
@@ -923,7 +923,7 @@
             We say that a homotopy is strictly unital if it is a strictly unital $\infty$-morphism.
 
             \begin{definition}
-                Suppose there are two $\infty$-morphisms $f,g : M \rightsquigarrow N$ between two $A$-polydules, then $f$ is homotopic to $g$, written as $f \sim g$, if there is a homotopy $h : M \rightsquigarrow N$ as above.s
+                Suppose there are two $\infty$-morphisms $f,g : M \rightsquigarrow N$ between two $A$-polydules, then $f$ is homotopic to $g$, written as $f \sim g$, if there is a homotopy $h : M \rightsquigarrow N$ as above.
             \end{definition}
 
         \subsection{Universal Enveloping Algebra}
