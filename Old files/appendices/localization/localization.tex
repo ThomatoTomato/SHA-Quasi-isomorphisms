@@ -1,0 +1,98 @@
+\documentclass[../../../thesis.tex]{subfiles}
+
+\begin{document}    
+    
+    \section{Localization}
+    
+        We will briefly explain the localization of a category at a set. We will look at local objects and localizations by adjoint functors. This section is based on \cite{Krause21}.
+
+        \subsection{Definition and Local Objects}
+
+            The localization of a category at some set of morphisms is a universal category where these morphisms have been inverted. In this manner, we will think of the localization as adding formal inverses to the morphisms in this set to the category.
+
+            \begin{definition}
+                Let $\mathcal{C}$ be a category and $S \subseteq Mor(\mathcal{C})$ a set of morphisms in $\mathcal{C}$. We define the localization of $\mathcal{C}$ at $S$ as a category $\mathcal{C}[S^{-1}]$ together with a functor $Q : \mathcal{C} \rightarrow \mathcal{C}[S^{-1}]$ satisfying the properties:
+                \begin{enumerate}
+                    \item For any morphism $s\in S$, $Qs$ is an invertible morphism.
+                    \item Any functor $F : \mathcal{C} \rightarrow \mathcal{D}$ satisfying $Fs$ is invertible if $s\in S$ factors through $Q$. Thus there exists a unique functor $\bar{F} : \mathcal{C}[S]^{-1} \rightarrow \mathcal{D}$ and a natural isomorphism $\alpha : F \implies \bar{F} \circ Q$ relating the functors.
+                \end{enumerate}
+
+                \begin{center}
+                    \begin{tikzcd}
+                        \mathcal{C} \ar{rd}{Q} \ar{rr}{F} & & \mathcal{D} \\
+                        & \mathcal{C}[S^{-1}] \ar[dashed]{ur}{\bar{F}}
+                    \end{tikzcd}
+                \end{center}
+            \end{definition}
+
+            Informally, the category $\mathcal{C}[S^{-1}]$ may be constructed as the category with the same objects as $\mathcal{C}$. The morphisms are constructed with paths of morphisms in $\mathcal{C}$, where we also allow formal inverse paths $s^{-1}$ for any morphism in $S$. The constant paths would be the new identity morphisms, while every path from an object $X$ to $Y$ represents a morphism.
+
+            \begin{remark}
+                Beware whenever localizing a locally small category. Adding more morphisms to this category may make some set of morphisms between objects big.
+            \end{remark}
+
+            By the universality of the functor $Q$ we have the following lemma.
+
+            \begin{lemma}
+                Let $\mathcal{D}$ be a category, then the pre-composition functor is fully faithful.
+                \begin{align*}
+                    \_ \circ Q : Fun(\mathcal{C}[S^{-1}],\mathcal{D}) & \rightarrow Fun(\mathcal{C}, \mathcal{D}) \\
+                    F & \mapsto F \circ Q
+                \end{align*}
+                Moreover, we may identify $Fun(\mathcal{C}[S^{-1}],\mathcal{D})$ as the full subcategory of functors in $Fun(\mathcal{C}, \mathcal{D})$ which sends every morphism in $S$ to an isomorphism.
+            \end{lemma}
+
+            We proceed to define $S$-local objects, and informally, these are all the objects which does not change after the localization process.
+
+            \begin{definition}
+                An object $Y\in \mathcal{C}$ is called $S$-local ($S$-closed or $S$-orthogonal) if for any $s\in S$, the map $\mathcal{C}(s, Y)$ is a bijection. Define $S\perp$ to be the full subcategory of $S$-local objects.
+            \end{definition}
+
+            The following lemma gives an equivalent definition for "localness".
+
+            \begin{lemma}
+                An object $Y\in \mathcal{C}$ is $S$-local if and only if the canonical map $q$ is a natural isomorphism.
+                \begin{align*}
+                    q_{X,Y} : \mathcal{C}(X,Y) \rightarrow \mathcal{C}[S^{-1}](X,Y)
+                \end{align*}
+            \end{lemma}
+
+        \subsection{Localizing at Adjoint Functors}
+
+            Given two functors $F : \mathcal{C} \rightarrow \mathcal{D}$ and $G : \mathcal{D} \rightarrow \mathcal{C}$ such that they form an adjoint pair $F \dashv G$, we want to see how they react with localizations.
+
+            \begin{proposition}
+                Let $F \dashv G$ be an adjoint pair as above, and define $S = $\startset{$s\in Mor\mathcal{C}$ $\mid$ $Fs$ is invertible}. Draw out the following diagram, with the relations $F = \bar{F}\circ Q$.
+                \begin{center}
+                    \begin{tikzcd}
+                        & \mathcal{C} \ar{ld}[description]{Q} \ar[bend right = 20]{dd}[description]{F} \\
+                        \mathcal{C}[S^{-1}] \ar{rd}[description]{\bar{F}} \\
+                        & \mathcal{D} \ar[bend right = 20]{uu}[description]{G}
+                    \end{tikzcd}
+                \end{center}
+                The following are equivalent:
+                \begin{enumerate}
+                    \item $G$ is fully faithful.
+                    \item The counit $\varepsilon : FG \implies Id_\mathcal{D}$ is invertible for any object $X\in \mathcal{D}$.
+                    \item The functor $F$ induces an equivalence $\bar{F}:\mathcal{C}[S^{-1}] \rightarrow \mathcal{D}$.
+                \end{enumerate}
+            \end{proposition}
+        
+            In the light of the last proposition, we may define "short exact sequences" of pre-additive categories.
+
+            \begin{definition}
+                Suppose there is a diagram of additive functors like below.
+                \begin{center}
+                    \begin{tikzcd}[column sep = large]
+                        \mathcal{A} \ar[bend left = 30, tail]{r}{E} \ar[phantom]{r}{\bot} & \mathcal{B} \ar[bend left = 30, two heads]{r}{F} \ar[bend left = 30, two heads]{l}{E_\rho} \ar[phantom]{r}{\bot} & \mathcal{C} \ar[bend left = 30, tail]{l}{F_\rho}    
+                    \end{tikzcd}
+                \end{center}
+                It is called a localization sequence whenever the following holds:
+                \begin{enumerate}
+                    \item $(E,E_\rho)$ and $(F,F_\rho)$ are adjoint pairs.
+                    \item $E$ and $F_\rho$ are fully faithful.
+                    \item $ImE \simeq KerF$.
+                \end{enumerate}
+            \end{definition}
+
+\end{document}

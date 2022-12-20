@@ -1,0 +1,104 @@
+\documentclass[../thesis.tex]{subfiles}
+
+\begin{document}
+    \section{The Simplex Category}
+        The simplex category is, in some sense, the categorification of the standard topological simplices, $\Delta^n$. This category carries the necessary data in order to define concepts such as homology or homotopy. This section will give a brief review of this category.
+
+        \begin{definition}[The simplex category]
+            The simplex category $\Delta$ consists of ordered sets $[n] = \startset{0,...,n}$ for any $n\in\mathbb{N}$. A morphism $f\in\Delta([m],[n])$ is a monotone function, i.e.
+            \begin{align*}
+              a\leq b \in [m] \implies f(a) \leq f(b) \in [n]\tt{.}  
+            \end{align*}
+        \end{definition}
+
+        \begin{definition}[The augmented simplex category]
+            $\Delta_+$ is called the augmented simplex category, where we add an initial object $[-1] = \emptyset$.
+        \end{definition}
+
+        \begin{definition}[The reduced simplex category]
+            $\Delta_inj$ is called the reduced simplex category. The morphisms consist only of the injective morphisms in $\Delta$.
+        \end{definition}
+
+        Inspired by the topological simplices, the simplex category has coface and codegeneracy morphisms. The coface maps are the injective morphisms $\delta_i : [n] \rightarrow [n+1]$, while the codegeneracy maps are the surjective morphisms $\sigma_i: [n] \rightarrow [n-1]$.
+        \begin{align*}
+            \delta_i(k) = \biggl\{\substack{k\text{, if }k<i \\ k+1\text{, otherwise}} \qquad
+            \sigma_i(k) = \biggl\{\substack{k\text{, if }k\leq i \\ k-1\text{, otherwise}}
+        \end{align*}
+
+        \begin{proposition}[{\cite[Lemma][177]{MacLane71}}]
+            Every morphism in $\Delta$ factors into coface and codegeneracy maps.
+        \end{proposition}
+
+        This result tells us that understanding how these morphisms work in tandem will be very important in understanding the simplex category. Luckily, there are five identities that characterize these maps. These are called cosimplical identities.
+
+        \begin{align*}
+            1.&\ \delta_j\delta_i = \delta_i\delta_{j-1} \text{, if }i<j \\
+            2.&\ \sigma_j\delta_i = \delta_i\sigma_{j-1} \text{, if }i<j \\
+            3.&\ \sigma_j\delta_i = id \text{, if }i=j\text{ or }i=j+1 \\
+            4.&\ \sigma_j\delta_i = \delta_{i-1}\sigma_j \text{, if }i>j+1 \\
+            5.&\ \sigma_j\sigma_i = \sigma_i\sigma_{j+1} \text{, if }i\leq j
+        \end{align*}
+        
+        If we want a more visual description of the simplex category, we may think of them in this manner. An inductive tower with an increasing amount of morphisms. 
+        \begin{center}
+            \begin{tikzcd}
+                {[}-1{]} \ar[]{r}[]{} & {[}0{]} \ar[yshift = 0.5ex]{r}[]{\delta_i} \ar[yshift = -0.5ex]{r}[]{} & {[}1{]} \ar[yshift = 0.75ex]{r}[]{\delta_i} \ar[]{r}[]{} \ar[yshift = -0.75ex]{r}[]{} & {[}2{]} \ar[yshift = 1ex]{r}[]{\delta_i} \ar[yshift = 0.33ex]{r}[]{} \ar[yshift = -0.33ex]{r}[]{} \ar[yshift = -1ex]{r}[]{} & ...
+            \end{tikzcd}
+
+            \begin{tikzcd}
+                {[}-1{]} & {[}0{]} & {[}1{]} \ar[]{l}[above]{\sigma_0} & {[}2{]} \ar[yshift = 0.5ex]{l}[above]{\sigma_i} \ar[yshift = -0.5ex]{l}[]{} & ... \ar[yshift = 0.75ex]{l}[above]{\sigma_i} \ar[]{l}[]{} \ar[yshift = -0.75ex]{l}[]{}
+            \end{tikzcd}
+        \end{center}
+
+        The augmented simplex category has a universal monoid. Let $+:\Delta_+ \times \Delta_+ \rightarrow \Delta_+$ be the functor acting on objects and morphisms as:
+        \begin{align*}
+            [m]+[n] = [m+n+1] \\
+            (f+g)(k) = \biggl\{\substack{f(k)\text{, if }k\leq m \\ g(k)+m\text{, otherwise}}
+        \end{align*}
+
+        $(\Delta_+,+,[-1])$ becomes a monoidal category. Unitality is satisfied as $[-1]+[m] = [1+m-1] = [m] = [m] + [-1]$. Associativity follows from the associativity of addition. Since addition acts on morphisms by juxtaposition, we get that the maps $id_[0] : [0] \rightarrow [0]$, $\delta_0 : [-1] \rightarrow [0]$ and $\sigma_0 : [1] \rightarrow [0]$ allows us to express any morphism in $\Delta$ by summing them.
+
+        Since the object $[0]$ is terminal, it automatically becomes a monoid in $(\Delta, +, [-1])$. The unit is the unique map $\delta_0 : [-1] \rightarrow [0]$, and the multiplication is the uniqe map $\sigma_0 : [1] \rightarrow [0]$. Associativity and unitality are automatically satisfied by the uniqueness of any morphism $f:[n]\rightarrow [0]$.
+        \begin{proposition}[{\cite[Proposition 1][175]{MacLane71}}]\label{prop: universal-monoid}
+            Let $(\mathcal{C}, \otimes, Z)$ be a monoidal category. If $(C, \eta, \mu)$ is a monoid in $\mathcal{C}$, then there is a strong monoidal functor $:\Delta_+\rightarrow \mathcal{C}$, such that $F[0] \simeq C$, $F\delta_{-1} \simeq \eta$ and $F\sigma_0 \simeq \mu$.
+        \end{proposition}
+
+
+    \section{Simplicial Objects}
+        To exert the properties of the simplex category on another category $\mathcal{C}$, we look at functors from $\Delta$ into $\mathcal{C}$. 
+        
+        \begin{definition}[Simplical object]
+            A simplicial object in $\mathcal{C}$ is a functor $S:\Delta^{op}\rightarrow \mathcal{C}$. 
+        \end{definition}
+        Such an object may be viewed as a collection of objects $\startset{S_n}_{n\in\mathbb{N}}$ together with face maps $d^i: S_n\rightarrow S_{n-1}$ and degeneracy maps $s^i: S_n \rightarrow S_{n+1}$. Additionally, these maps must satisfy the simplicial identities, which are dual to the cosimplical identities.
+        
+        \begin{definition}[Augmented simplical object]
+            An augmented simplicial object is then a functor $S:\Delta_+^{op}\rightarrow \mathcal{C}$. 
+            
+            The restricted functor $\bar{S}:\Delta^{op}\rightarrow \mathcal{C}$ is called the augmentation ideal of $S$. 
+        \end{definition}
+
+        \begin{definition}[Semi-simplicial object]
+            A semi-simplicial object is a functor $S: \Delta_{inj} \rightarrow \mathcal{C}$.
+        \end{definition}
+
+        Observe that a semi-simplicial object may be considered as a collection of objects $\startset{S_n}$ such that we only have face maps satisfying the $1$st simplicial identity.
+        
+        \begin{definition}[cosimplical object]
+            A cosimplicial object is a functor $S:\Delta\rightarrow \mathcal{C}$. 
+        \end{definition}
+        Such an object may be regarded as a collection of objects together with coface and codegeneracy maps satisfying the cosimplicial identities.
+        
+        Simplicial objects are studied across many different fields of mathematics.
+        \begin{example}[Simplicial sets]
+            A simplicial set $S$ is a collection of sets together with face and degeneracy maps. This is a functor $S : \Delta^{op} \rightarrow \tt{Set}$. The category of simplicial sets is usually denoted as $\tt{sSet}$ or $\tt{Set}_\Delta$.
+        \end{example}
+
+        \begin{example}[The standard topological $n$-simplex]
+            The topological $n$-simplex $\Delta^n$ is a topological space. Abstracting away the $n$ we get a functor $\Delta^{\argument} : \Delta \rightarrow \tt{Top}$. In this manner, the collection of standard $n$-simplicies is a cosimplical object of Top.
+        \end{example}
+
+        \begin{example}[Rings]
+            Any ring $R$ is, by definition, a monoid in the category of abelian groups. By the above proposition, this monoid is uniquely determined by a strong monoidal functor $R: \Delta_+ \rightarrow \tt{Ab}$. Thus any ring is a cosimplical object of $\tt{Ab}$.
+        \end{example}
+\end{document}
